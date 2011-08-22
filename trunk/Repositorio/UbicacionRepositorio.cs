@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using Repositorio.Conexiones;
 using Dominio;
+using System.Data;
 
 namespace Repositorio
 {
@@ -18,7 +19,13 @@ namespace Repositorio
 
         public List<Dominio.Pais> ListarPaises()
         {
-            Conex.Listar("select * from Paises");
+            DataTable Tabla = Conex.Listar("select * from Paises");
+            List<Pais> ListaPaises = new List<Pais>();
+            foreach (DataRow Dr in Tabla.Rows)
+            {
+                ListaPaises.Add( Mapear(Dr));
+            }
+            return ListaPaises;
         }
 
         public void AgregarPais(Pais Pais)
