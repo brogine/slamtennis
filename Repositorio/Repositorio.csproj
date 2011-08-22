@@ -45,7 +45,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Conexion\AbstractDB.cs" />
+    <Compile Include="Conexion\Conexion.cs" />
+    <Compile Include="Conexion\ConexionException.cs" />
+    <Compile Include="Conexion\MySqlDB.cs" />
+    <Compile Include="Conexion\SqlServerDB.cs" />
+    <Compile Include="IJugadorRepositorio.cs" />
+    <Compile Include="IMapeador.cs" />
+    <Compile Include="IUbicacionRepositorio.cs" />
+    <Compile Include="JugadorRepositorio.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RepositorioExeption.cs" />
+    <Compile Include="UbicacionRepositorio.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Dominio\Dominio.csproj">

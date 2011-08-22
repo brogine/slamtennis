@@ -48,8 +48,68 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="App.Context.cs" />
+    <Compile Include="FrmListaArbitros.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmListaArbitros.designer.cs">
+      <DependentUpon>FrmListaArbitros.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmListaClubes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmListaClubes.designer.cs">
+      <DependentUpon>FrmListaClubes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmListaJugadores.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmListaJugadores.designer.cs">
+      <DependentUpon>FrmListaJugadores.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmLogin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmLogin.designer.cs">
+      <DependentUpon>FrmLogin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmNuevaPersona.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmNuevaPersona.designer.cs">
+      <DependentUpon>FrmNuevaPersona.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmNuevaUbicacion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmNuevaUbicacion.designer.cs">
+      <DependentUpon>FrmNuevaUbicacion.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmPrincipal.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmPrincipal.Designer.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="FrmListaArbitros.resx">
+      <DependentUpon>FrmListaArbitros.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmListaClubes.resx">
+      <DependentUpon>FrmListaClubes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmListaJugadores.resx">
+      <DependentUpon>FrmListaJugadores.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmLogin.resx">
+      <DependentUpon>FrmLogin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmNuevaPersona.resx">
+      <DependentUpon>FrmNuevaPersona.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmNuevaUbicacion.resx">
+      <DependentUpon>FrmNuevaUbicacion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmPrincipal.resx" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -59,6 +119,7 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <None Include="App.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -68,12 +129,17 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <Compile Include="Utils.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Servicio\Servicio.csproj">
       <Project>{2F2D0BB4-3527-426C-B8CD-0C40D1250853}</Project>
       <Name>Servicio</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Configuracion.xml" />
+    <Content Include="icon.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
