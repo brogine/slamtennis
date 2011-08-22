@@ -27,8 +27,8 @@ namespace Slam
 
         private void FrmNuevaUbicacion_Load(object sender, EventArgs e)
         {
-            //PaisServicio = (IPaisServicio)AppContext.Instance.GetObject(ImplementaUbicacion);
-            PaisServicio = new UbicacionServicio();
+            PaisServicio = (IPaisServicio)AppContext.Instance.GetObject(ImplementaUbicacion);
+            //PaisServicio = new UbicacionServicio();
             //PaisServicio.ListarPaises(this);
             //ProvinciaServicio = (IProvinciaServicio)AppContext.Instance.GetObject(ImplementaUbicacion);
             //LocalidadServicio = (ILocalidadServicio)AppContext.Instance.GetObject(ImplementaUbicacion);
