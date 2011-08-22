@@ -1,0 +1,8 @@
+﻿<?xml version="1.0" ?>
+<configuraciones>
+
+  <config nombre="SqlServer"
+          Proveedor="System.Data.SqlClient"
+          ConnectionString="Server=(local)\SQLEXPRESS;Database=SlamDB;Trusted_Connection=True;"></config>
+
+</configuraciones>
