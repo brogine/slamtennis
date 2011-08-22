@@ -7,7 +7,7 @@ using Dominio;
 
 namespace Repositorio
 {
-   public class UbicacionRepositorio:IUbicacionRepositorio
+   public class UbicacionRepositorio:IUbicacionRepositorio,IMapeador<Pais>
     {
        Conexion Conex;
        public UbicacionRepositorio()
@@ -18,7 +18,7 @@ namespace Repositorio
 
         public List<Dominio.Pais> ListarPaises()
         {
-            throw new NotImplementedException();
+            Conex.Listar("select * from Paises");
         }
 
         public void AgregarPais(Pais Pais)
@@ -59,6 +59,23 @@ namespace Repositorio
         public int BuscarIdLocalidad(string Nombre, int IdProvincia)
         {
             throw new NotImplementedException();
+        }
+
+        #endregion
+
+        #region Miembros de IMapeador<Pais>
+
+        public Pais Mapear(System.Data.DataRow Fila)
+        {
+            Pais Pais = null;
+            if (Fila != null)
+            {
+                int IdPais = (Fila.IsNull("IdPais") == true ? 0 : Convert.ToInt32(Fila["IdPais"]));
+                string Nombre = (Fila.IsNull("Nombre") == true ? string.Empty : Convert.ToString(Fila["Nombre"]));
+                bool Estado = (Fila.IsNull("Estado") == true ? false : Convert.ToBoolean(Fila["Estado"]));
+                Pais = new Pais(IdPais, Nombre, Estado);
+            }
+            return Pais;
         }
 
         #endregion

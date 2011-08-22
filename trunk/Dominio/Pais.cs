@@ -15,6 +15,12 @@ namespace Dominio
        {
            this.Nombre = NombrePais;
        }
+       public Pais(int IdPais, string NombrePais, bool Estado)
+       {
+           this.IdPais = IdPais;
+           this.Nombre = NombrePais;
+           this.Estado = Estado;
+       }
        public int IdPais { get; set; }
        public string Nombre { get; set; }
        public bool Estado { get; set; }
