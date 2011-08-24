@@ -7,7 +7,9 @@ namespace Servicio.InterfacesUI
 {
     public interface IUbicacionUI
     {
+        int IdPais { get; }
         string NombrePais { get; }
+        int IdProvincia { get; }
         string NombreProvincia { get; }
         string NombreLocalidad { get; }
     }

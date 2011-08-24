@@ -8,7 +8,6 @@ namespace Servicio
     public interface IListadoProvincias
     {
         List<String> ListarProvincias { set; }
-
-        string Pais { get; }
+        int Pais { get; }
     }
 }

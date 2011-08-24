@@ -21,18 +21,17 @@ namespace Servicio
         {
             Pais PaisNuevo = new Pais(ui.NombrePais);
             UbicaRepo.AgregarPais(PaisNuevo);
-            
         }
 
         public void ListarPaises(IListadoPaises ui)
         {
-            Dictionary<int,string> ListaUI = new Dictionary<int,string>();
+            Dictionary<int,string> ListaPaises = new Dictionary<int,string>();
             List<Pais> Lista = UbicaRepo.ListarPaises();
-            foreach (Pais P in Lista)
+            foreach (Pais Pais in Lista)
             {
-                ListaUI.Add(P.IdPais, P.Nombre);
+                ListaPaises.Add(Pais.IdPais, Pais.Nombre);
             }
-            ui.ListarPaises = ListaUI;
+            ui.ListarPaises = ListaPaises;
         }
 
         #endregion
@@ -41,12 +40,19 @@ namespace Servicio
 
         public void AgregarProvincia(Servicio.InterfacesUI.IUbicacionUI ui)
         {
-            throw new NotImplementedException();
+            Provincia ProvinciaNueva = new Provincia(ui.NombreProvincia, ui.IdPais);
+            UbicaRepo.AgregarProvincia(ProvinciaNueva);
         }
 
         public void ListarProvincias(IListadoProvincias ui)
         {
-            throw new NotImplementedException();
+            Dictionary<int, string> ListaProvincias = new Dictionary<int, string>();
+            List<Provincia> Lista = UbicaRepo.ListarProvincias(new Pais(ui.Pais));
+            foreach (Provincia Prov in Lista)
+            {
+                ListaProvincias.Add(Prov.IdProvincia, Prov.Nombre);
+            }
+            ui.ListarProvincias = ListaProvincias;
         }
 
         #endregion
