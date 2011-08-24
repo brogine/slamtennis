@@ -8,7 +8,7 @@ namespace Servicio
 {
     public interface ILocalidadServicio
     {
-        void AgregarLocalidad(IUbicacionUI ui);
+        void AgregarLocalidad(IUbicacionUI ui, IListadoLocalidades uiLoc);
 
         void ListarLocalidades(IListadoLocalidades ui);
     }
