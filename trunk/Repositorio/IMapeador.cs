@@ -7,6 +7,6 @@ namespace Repositorio
 {
     interface IMapeador<T>
     {
-        T Mapear(System.Data.DataRow Fila);
+        T MapearLocalidad(System.Data.DataRow Fila);
     }
 }

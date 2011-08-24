@@ -23,7 +23,7 @@ namespace Repositorio
             List<Pais> ListaPaises = new List<Pais>();
             foreach (DataRow Dr in Tabla.Rows)
             {
-                ListaPaises.Add( Mapear(Dr));
+                ListaPaises.Add( MapearPais(Dr));
             }
             return ListaPaises;
         }
@@ -53,26 +53,11 @@ namespace Repositorio
             throw new NotImplementedException();
         }
 
-        public int BuscarIdPais(string Nombre)
-        {
-            throw new NotImplementedException();
-        }
-
-        public int BuscarIdProvincia(string Nombre, int IdPais)
-        {
-            throw new NotImplementedException();
-        }
-
-        public int BuscarIdLocalidad(string Nombre, int IdProvincia)
-        {
-            throw new NotImplementedException();
-        }
-
         #endregion
 
         #region Miembros de IMapeador<Pais>
 
-        public Pais Mapear(System.Data.DataRow Fila)
+        public Pais MapearPais(System.Data.DataRow Fila)
         {
             Pais Pais = null;
             if (Fila != null)
@@ -89,12 +74,13 @@ namespace Repositorio
 
         #region Miembros de IMapeador<Localidad>
 
-        Localidad IMapeador<Localidad>.Mapear(DataRow Fila)
+        Localidad MapearLocalidad(DataRow Fila)
         {
             Localidad Loc = null;
             if (Fila != null)
             {
                 
+
             }
         }
 
@@ -102,9 +88,38 @@ namespace Repositorio
 
         #region Miembros de IMapeador<Provincia>
 
-        Provincia IMapeador<Provincia>.Mapear(DataRow Fila)
+        Provincia MapearProvincia(DataRow Fila)
         {
-            throw new NotImplementedException();
+            Provincia Prov = null;
+            if (Fila != null)
+            {
+                int IdProv = (Fila.IsNull("IdProvincia") == true ? 0 : Convert.ToInt32(Fila["IdProvincia"]));
+                string Nombre = (Fila.IsNull("Nombre") == true ? string.Empty : Convert.ToString(Fila["Nombre"]));
+                bool Estado = (Fila.IsNull("Estado") == true ? false : Convert.ToBoolean(Fila["Estado"]));
+                int IdPais = (Fila.IsNull("IdPais") == true ? 0 : Convert.ToInt32(Fila["IdPais"]));
+                Pais Pais = ObtenerPais(IdPais);
+                
+            }
+        }
+
+        #endregion
+
+        #region Miembros de IUbicacionRepositorio
+
+
+        public Pais ObtenerPais(int IdPais)
+        {
+           return this.MapearPais( Conex.Buscar("select * from Paises where IdPais=" + IdPais));
+        }
+
+        public Provincia ObetenerProvincia(int IdProvincia)
+        {
+            return this.MapearProvincia(Conex.Buscar("Select * from Provincias where IdProvincia="+IdProvincia));
+        }
+
+        public Localidad ObtenerLocalidad(int IdLocalidad)
+        {
+            return this.MapearLocalidad(Conex.Buscar("Select * from Localidades where IdLocalidad=" + IdLocalidad));
         }
 
         #endregion
