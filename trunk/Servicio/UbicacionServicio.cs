@@ -26,7 +26,13 @@ namespace Servicio
 
         public void ListarPaises(IListadoPaises ui)
         {
-            throw new NotImplementedException();
+            Dictionary<int,string> ListaUI = new Dictionary<int,string>();
+            List<Pais> Lista = UbicaRepo.ListarPaises();
+            foreach (Pais P in Lista)
+            {
+                ListaUI.Add(P.IdPais, P.Nombre);
+            }
+            ui.ListarPaises = ListaUI;
         }
 
         #endregion
