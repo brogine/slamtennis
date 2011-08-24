@@ -28,7 +28,6 @@ namespace Slam
         private void FrmNuevaUbicacion_Load(object sender, EventArgs e)
         {
             PaisServicio = (IPaisServicio)AppContext.Instance.GetObject(ImplementaUbicacion);
-     
             PaisServicio.ListarPaises(this);
             ProvinciaServicio = (IProvinciaServicio)AppContext.Instance.GetObject(ImplementaUbicacion);
             LocalidadServicio = (ILocalidadServicio)AppContext.Instance.GetObject(ImplementaUbicacion);
@@ -49,7 +48,10 @@ namespace Slam
         private void BtnAgregarPais_Click(object sender, EventArgs e)
         {
             if (CboListaPaises.Text != "")
+            {
                 PaisServicio.AgregarPais(this);
+                PaisServicio.ListarPaises(this);
+            }
             else
                 MessageBox.Show("El nombre del Pais no puede estar en blanco.");
         }
@@ -57,7 +59,10 @@ namespace Slam
         private void BtnAgregarProvincia_Click(object sender, EventArgs e)
         {
             if (CboListaProvincias.Text != "")
-                ProvinciaServicio.AgregarProvincia(this,this);
+            {
+                ProvinciaServicio.AgregarProvincia(this, this);
+                ProvinciaServicio.ListarProvincias(this, this);
+            }
             else
                 MessageBox.Show("El nombre de la Provincia no puede estar en blanco.");
         }
@@ -65,7 +70,10 @@ namespace Slam
         private void BtnAgregarLocalidad_Click(object sender, EventArgs e)
         {
             if (CboListaLocalidades.Text != "")
-                LocalidadServicio.AgregarLocalidad(this,this);
+            {
+                LocalidadServicio.AgregarLocalidad(this, this);
+                LocalidadServicio.ListarLocalidades(this);
+            }
             else
                 MessageBox.Show("El nombre de la Localidad no puede estar en blanco.");
         }
@@ -98,10 +106,13 @@ namespace Slam
         {
             set 
             {
-                CboListaProvincias.DataSource = new BindingSource(value, null);
-                CboListaProvincias.DisplayMember = "Value";
-                CboListaProvincias.ValueMember = "Key";
-                CboListaProvincias.SelectedIndex = -1;
+                if (value.Count > 0)
+                {
+                    CboListaProvincias.DataSource = new BindingSource(value, null);
+                    CboListaProvincias.DisplayMember = "Value";
+                    CboListaProvincias.ValueMember = "Key";
+                    CboListaProvincias.SelectedIndex = -1;
+                }
             }
         }
 
@@ -118,10 +129,13 @@ namespace Slam
         {
             set 
             {
-                CboListaLocalidades.DataSource = new BindingSource(value, null);
-                CboListaLocalidades.DisplayMember = "Value";
-                CboListaLocalidades.ValueMember = "Key";
-                CboListaLocalidades.SelectedIndex = -1;
+                if (value.Count > 0)
+                {
+                    CboListaLocalidades.DataSource = new BindingSource(value, null);
+                    CboListaLocalidades.DisplayMember = "Value";
+                    CboListaLocalidades.ValueMember = "Key";
+                    CboListaLocalidades.SelectedIndex = -1;
+                }
             }
         }
 
