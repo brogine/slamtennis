@@ -5,6 +5,7 @@ using System.Text;
 
 using Repositorio;
 using Dominio;
+using Servicio.InterfacesUI;
 
 namespace Servicio
 {
@@ -18,7 +19,7 @@ namespace Servicio
 
         #region Miembros de IPaisServicio
 
-        public void AgregarPais(Servicio.InterfacesUI.IUbicacionUI ui)
+        public void AgregarPais(IUbicacionUI ui)
         {
             Pais PaisNuevo = new Pais(ui.NombrePais);
             UbicaRepo.AgregarPais(PaisNuevo);
@@ -39,16 +40,16 @@ namespace Servicio
 
         #region Miembros de IProvinciaServicio
 
-        public void AgregarProvincia(Servicio.InterfacesUI.IUbicacionUI ui)
+        public void AgregarProvincia(IUbicacionUI ui, IListadoProvincias uiPro)
         {
-            Provincia ProvinciaNueva = new Provincia(ui.NombreProvincia, UbicaRepo.ObtenerPais(ui.IdPais));
+            Provincia ProvinciaNueva = new Provincia(ui.NombreProvincia, UbicaRepo.ObtenerPais(uiPro.Pais));
             UbicaRepo.AgregarProvincia(ProvinciaNueva);
         }
 
-        public void ListarProvincias(IListadoProvincias ui)
+        public void ListarProvincias(IListadoProvincias ui, IListadoProvincias uiPro)
         {
             Dictionary<int, string> ListaProvincias = new Dictionary<int, string>();
-            List<Provincia> Lista = UbicaRepo.ListarProvincias(UbicaRepo.ObtenerPais(ui.Pais));
+            List<Provincia> Lista = UbicaRepo.ListarProvincias(UbicaRepo.ObtenerPais(uiPro.Pais));
             foreach (Provincia Prov in Lista)
             {
                 ListaProvincias.Add(Prov.IdProvincia, Prov.Nombre);
@@ -60,9 +61,9 @@ namespace Servicio
 
         #region Miembros de ILocalidadServicio
 
-        public void AgregarLocalidad(Servicio.InterfacesUI.IUbicacionUI ui)
+        public void AgregarLocalidad(IUbicacionUI ui, IListadoLocalidades uiLoc)
         {
-            Provincia bProvincia = UbicaRepo.ObetenerProvincia(ui.IdProvincia);
+            Provincia bProvincia = UbicaRepo.ObetenerProvincia(uiLoc.Provincia);
             Localidad LocalidadNueva = new Localidad(bProvincia, ui.NombreLocalidad);
             UbicaRepo.AgregarLocalidad(LocalidadNueva);
         }

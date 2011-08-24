@@ -8,8 +8,8 @@ namespace Servicio
 {
     public interface IProvinciaServicio
     {
-        void AgregarProvincia(IUbicacionUI ui);
+        void AgregarProvincia(IUbicacionUI ui, IListadoProvincias uiPro);
 
-        void ListarProvincias(IListadoProvincias ui);
+        void ListarProvincias(IListadoProvincias ui, IListadoProvincias uiPro);
     }
 }
