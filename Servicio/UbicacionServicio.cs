@@ -61,7 +61,7 @@ namespace Servicio
 
         public void AgregarLocalidad(Servicio.InterfacesUI.IUbicacionUI ui)
         {
-            throw new NotImplementedException();
+            Localidad LocalidadNueva = new Localidad (
         }
 
         public void ListarLocalidades(IListadoLocalidades ui)
