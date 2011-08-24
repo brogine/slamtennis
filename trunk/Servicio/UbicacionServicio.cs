@@ -15,6 +15,7 @@ namespace Servicio
         {
             UbicaRepo = new UbicacionRepositorio();
         }
+
         #region Miembros de IPaisServicio
 
         public void AgregarPais(Servicio.InterfacesUI.IUbicacionUI ui)
@@ -40,14 +41,14 @@ namespace Servicio
 
         public void AgregarProvincia(Servicio.InterfacesUI.IUbicacionUI ui)
         {
-            Provincia ProvinciaNueva = new Provincia(ui.NombreProvincia, ui.IdPais);
+            Provincia ProvinciaNueva = new Provincia(ui.NombreProvincia, UbicaRepo.ObtenerPais(ui.IdPais));
             UbicaRepo.AgregarProvincia(ProvinciaNueva);
         }
 
         public void ListarProvincias(IListadoProvincias ui)
         {
             Dictionary<int, string> ListaProvincias = new Dictionary<int, string>();
-            List<Provincia> Lista = UbicaRepo.ListarProvincias(new Pais(ui.Pais));
+            List<Provincia> Lista = UbicaRepo.ListarProvincias(UbicaRepo.ObtenerPais(ui.Pais));
             foreach (Provincia Prov in Lista)
             {
                 ListaProvincias.Add(Prov.IdProvincia, Prov.Nombre);
@@ -61,12 +62,20 @@ namespace Servicio
 
         public void AgregarLocalidad(Servicio.InterfacesUI.IUbicacionUI ui)
         {
-            Localidad LocalidadNueva = new Localidad (
+            Provincia bProvincia = UbicaRepo.ObetenerProvincia(ui.IdProvincia);
+            Localidad LocalidadNueva = new Localidad(bProvincia, ui.NombreLocalidad);
+            UbicaRepo.AgregarLocalidad(LocalidadNueva);
         }
 
         public void ListarLocalidades(IListadoLocalidades ui)
         {
-            throw new NotImplementedException();
+            Dictionary<int, string> ListaLocalidades = new Dictionary<int, string>();
+            List<Localidad> Lista = UbicaRepo.ListarLocalidades(UbicaRepo.ObetenerProvincia(ui.Provincia));
+            foreach (Localidad Loc in Lista)
+            {
+                ListaLocalidades.Add(Loc.IdLocalidad, Loc.Nombre);
+            }
+            ui.ListarLocalidades = ListaLocalidades;
         }
 
         #endregion
