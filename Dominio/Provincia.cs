@@ -7,9 +7,13 @@ namespace Dominio
 {
     public class Provincia
     {
-        int IdProvincia { get; set; }
-        string Nombre { get; set; }
-        bool Estado { get; set; }
-        Pais Pais { get; set; }
+        public Provincia(string NombreProvincia, int IdPais)
+        {
+            this.Nombre = NombreProvincia; this.Pais = new Pais(IdPais);
+        }
+        public int IdProvincia { get; set; }
+        public string Nombre { get; set; }
+        public bool Estado { get; set; }
+        public Pais Pais { get; set; }
     }
 }
