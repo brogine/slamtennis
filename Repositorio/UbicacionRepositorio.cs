@@ -8,7 +8,7 @@ using System.Data;
 
 namespace Repositorio
 {
-   public class UbicacionRepositorio:IUbicacionRepositorio,IMapeador<Pais>,IMapeador<Provincia>,IMapeador<Localidad>
+   public class UbicacionRepositorio:IUbicacionRepositorio
     {
        Conexion Conex;
        public UbicacionRepositorio()
@@ -33,24 +33,36 @@ namespace Repositorio
             Conex.Agregar("Paises", "Nombre,Estado", "'" + Pais.Nombre + "',1");
         }
 
-        public List<Dominio.Provincia> ListarProvincias(Dominio.Pais Pais)
+        public List<Provincia> ListarProvincias(Pais Pais)
         {
-            throw new NotImplementedException();
+            DataTable Tabla = Conex.Listar("Select * From Provincias where IdPais ="+Pais.IdPais);
+            List<Provincia> ListaProvincia = new List<Provincia>();
+            foreach (DataRow Dr in Tabla.Rows)
+            {
+                ListaProvincia.Add(MapearProvincia(Dr));
+            }
+            return ListaProvincia;
         }
 
         public void AgregarProvincia(Provincia Provincia)
         {
-            throw new NotImplementedException();
+            Conex.Agregar("Provincias","Nombre,Estado,IdPais","'"+Provincia.Nombre+"',1,"+Provincia.Pais.IdPais);
         }
 
-        public List<Dominio.Localidad> ListarLocalidades(Dominio.Provincia Provincia)
+        public List<Localidad> ListarLocalidades(Provincia Provincia)
         {
-            throw new NotImplementedException();
+            DataTable Tabla = Conex.Listar("Select * From Localidades where IdProvincia=" + Provincia.IdProvincia);
+            List<Localidad> ListaLocalidad = new List<Localidad>();
+            foreach (DataRow Dr in Tabla.Rows)
+            {
+                ListaLocalidad.Add(MapearLocalidad(Dr));
+            }
+            return ListaLocalidad;
         }
 
         public void AgregarLocalidad(Localidad Localidad)
         {
-            throw new NotImplementedException();
+            Conex.Agregar("Localidades", "Nombre,Estado,IdProvincia", "'" + Localidad.Nombre + "',1," + Localidad.Provincia.IdProvincia);
         }
 
         #endregion
@@ -79,9 +91,14 @@ namespace Repositorio
             Localidad Loc = null;
             if (Fila != null)
             {
-                
-
+                int IdLoc = (Fila.IsNull("IdLocalidad") == true ? 0 : Convert.ToInt32(Fila["IdLocalidad"]));
+                string Nombre = (Fila.IsNull("Nombre") == true ? string.Empty : Convert.ToString(Fila["Nombre"]));
+                bool Estado = (Fila.IsNull("Estado")==true ? false : Convert.ToBoolean(Fila["Estado"]));
+                int IdProv = (Fila.IsNull("IdProvincia") == true ? 0 : Convert.ToInt32(Fila["IdProvincia"]));
+                Provincia Prov = ObetenerProvincia(IdProv);
+                Loc = new Localidad(IdLoc, Nombre, Estado, Prov);
             }
+            return Loc;
         }
 
         #endregion
@@ -98,8 +115,9 @@ namespace Repositorio
                 bool Estado = (Fila.IsNull("Estado") == true ? false : Convert.ToBoolean(Fila["Estado"]));
                 int IdPais = (Fila.IsNull("IdPais") == true ? 0 : Convert.ToInt32(Fila["IdPais"]));
                 Pais Pais = ObtenerPais(IdPais);
-                
+                Prov = new Provincia(IdProv, Nombre, Estado, Pais);
             }
+            return Prov;
         }
 
         #endregion
