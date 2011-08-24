@@ -30,8 +30,8 @@ namespace Slam
             PaisServicio = (IPaisServicio)AppContext.Instance.GetObject(ImplementaUbicacion);
      
             PaisServicio.ListarPaises(this);
-            //ProvinciaServicio = (IProvinciaServicio)AppContext.Instance.GetObject(ImplementaUbicacion);
-            //LocalidadServicio = (ILocalidadServicio)AppContext.Instance.GetObject(ImplementaUbicacion);
+            ProvinciaServicio = (IProvinciaServicio)AppContext.Instance.GetObject(ImplementaUbicacion);
+            LocalidadServicio = (ILocalidadServicio)AppContext.Instance.GetObject(ImplementaUbicacion);
         }
 
         private void CboListaPaises_SelectionChangeCommitted(object sender, EventArgs e)
@@ -83,8 +83,6 @@ namespace Slam
         {
             set 
             {
-
-
                 CboListaPaises.DataSource = new BindingSource(value, null);
                 CboListaPaises.DisplayMember = "Value";
                 CboListaPaises.ValueMember = "Key";
@@ -96,36 +94,40 @@ namespace Slam
 
         #region Miembros de IListadoProvincias
 
-        public List<string> ListarProvincias
+        public Dictionary<int, string> ListarProvincias
         {
             set 
             {
-                CboListaProvincias.DataSource = value;
+                CboListaProvincias.DataSource = new BindingSource(value, null);
+                CboListaProvincias.DisplayMember = "Value";
+                CboListaProvincias.ValueMember = "Key";
                 CboListaProvincias.SelectedIndex = -1;
             }
         }
 
-        public string Pais
+        public int Pais
         {
-            get  { return CboListaPaises.SelectedItem.ToString(); }
+            get { return (int)CboListaPaises.SelectedValue; }
         }
 
         #endregion
 
         #region Miembros de IListadoLocalidades
 
-        public List<string> ListarLocalidades
+        public Dictionary<int, string> ListarLocalidades
         {
             set 
             {
-                CboListaLocalidades.DataSource = value;
+                CboListaLocalidades.DataSource = new BindingSource(value, null);
+                CboListaLocalidades.DisplayMember = "Value";
+                CboListaLocalidades.ValueMember = "Key";
                 CboListaLocalidades.SelectedIndex = -1;
             }
         }
 
-        public string Provincia
+        public int Provincia
         {
-            get { return CboListaProvincias.SelectedItem.ToString(); }
+            get { return (int)CboListaProvincias.SelectedValue; }
         }
 
         #endregion

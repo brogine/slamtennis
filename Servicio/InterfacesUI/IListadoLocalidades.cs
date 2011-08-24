@@ -7,10 +7,10 @@ namespace Servicio
 {
     public interface IListadoLocalidades
     {
-        List<String> ListarLocalidades { set; }
+        Dictionary<int, string> ListarLocalidades { set; }
 
-        string Pais { get; }
+        int Pais { get; }
 
-        string Provincia { get; }
+        int Provincia { get; }
     }
 }
