@@ -28,8 +28,8 @@ namespace Slam
         private void FrmNuevaUbicacion_Load(object sender, EventArgs e)
         {
             PaisServicio = (IPaisServicio)AppContext.Instance.GetObject(ImplementaUbicacion);
-            //PaisServicio = new UbicacionServicio();
-            //PaisServicio.ListarPaises(this);
+     
+            PaisServicio.ListarPaises(this);
             //ProvinciaServicio = (IProvinciaServicio)AppContext.Instance.GetObject(ImplementaUbicacion);
             //LocalidadServicio = (ILocalidadServicio)AppContext.Instance.GetObject(ImplementaUbicacion);
         }
@@ -79,11 +79,15 @@ namespace Slam
 
         #region Miembros de IListadoPaises
 
-        public List<string> ListarPaises
+        public Dictionary<int,string> ListarPaises
         {
             set 
             {
-                CboListaPaises.DataSource = value;
+
+
+                CboListaPaises.DataSource = new BindingSource(value, null);
+                CboListaPaises.DisplayMember = "Value";
+                CboListaPaises.ValueMember = "Key";
                 CboListaPaises.SelectedIndex = -1;
             }
         }

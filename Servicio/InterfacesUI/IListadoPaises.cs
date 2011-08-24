@@ -7,6 +7,6 @@ namespace Servicio
 {
     public interface IListadoPaises
     {
-        List<String> ListarPaises { set; }
+        Dictionary<int,String> ListarPaises { set; }
     }
 }
