@@ -26,7 +26,7 @@ namespace Repositorio
 
         #region Miembros de IMapeador<Jugador>
 
-        public Jugador Mapear(System.Data.DataRow Fila)
+        public Jugador MapearLocalidad(System.Data.DataRow Fila)
         {
             Jugador nJugador = null;
 
