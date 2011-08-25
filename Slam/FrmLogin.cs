@@ -23,9 +23,28 @@ namespace Slam
 
         private void BtnAceptar_Click(object sender, EventArgs e)
         {
-            FrmPrincipal Principal = new FrmPrincipal(this);
-            Principal.Show();
-            this.Hide();
+            if (EpLogin.GetError(TxtUsuario) == "" && EpLogin.GetError(TxtPassword) == "")
+            {
+                FrmPrincipal Principal = new FrmPrincipal(this);
+                Principal.Show();
+                this.Hide();
+            }
+        }
+
+        private void TxtUsuario_Validating(object sender, CancelEventArgs e)
+        {
+            if (TxtUsuario.Text == "")
+                EpLogin.SetError(TxtUsuario, "Ingrese un Usuario válido.");
+            else
+                EpLogin.SetError(TxtUsuario, "");
+        }
+
+        private void TxtPassword_Validating(object sender, CancelEventArgs e)
+        {
+            if (TxtPassword.Text == "")
+                EpLogin.SetError(TxtPassword, "Ingrese un Password válido.");
+            else
+                EpLogin.SetError(TxtPassword, "");
         }
     }
 }
