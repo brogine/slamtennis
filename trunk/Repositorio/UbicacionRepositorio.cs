@@ -8,7 +8,7 @@ using System.Data;
 
 namespace Repositorio
 {
-   public class UbicacionRepositorio:IUbicacionRepositorio
+   public class UbicacionRepositorio:IUbicacionRepositorio,IMapeador<Provincia>,IMapeador<Pais>
     {
        Conexion Conex;
        public UbicacionRepositorio()

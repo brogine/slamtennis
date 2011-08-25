@@ -93,6 +93,12 @@
     <Compile Include="FrmNuevaUbicacion.designer.cs">
       <DependentUpon>FrmNuevaUbicacion.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmNuevoClub.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmNuevoClub.Designer.cs">
+      <DependentUpon>FrmNuevoClub.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmPrincipal.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -116,6 +122,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FrmNuevaUbicacion.resx">
       <DependentUpon>FrmNuevaUbicacion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmNuevoClub.resx">
+      <DependentUpon>FrmNuevoClub.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmPrincipal.resx" />
     <EmbeddedResource Include="Properties\Resources.resx">
