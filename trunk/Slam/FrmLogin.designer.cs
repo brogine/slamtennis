@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.gbLogin = new System.Windows.Forms.GroupBox();
             this.LblOlvidoPassword = new System.Windows.Forms.LinkLabel();
             this.LblPassword = new System.Windows.Forms.Label();
@@ -36,7 +37,9 @@
             this.BtnAceptar = new System.Windows.Forms.Button();
             this.TxtPassword = new System.Windows.Forms.TextBox();
             this.TxtUsuario = new System.Windows.Forms.TextBox();
+            this.EpLogin = new System.Windows.Forms.ErrorProvider(this.components);
             this.gbLogin.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.EpLogin)).BeginInit();
             this.SuspendLayout();
             // 
             // gbLogin
@@ -111,6 +114,7 @@
             this.TxtPassword.PasswordChar = '*';
             this.TxtPassword.Size = new System.Drawing.Size(100, 20);
             this.TxtPassword.TabIndex = 1;
+            this.TxtPassword.Validating += new System.ComponentModel.CancelEventHandler(this.TxtPassword_Validating);
             // 
             // TxtUsuario
             // 
@@ -119,6 +123,11 @@
             this.TxtUsuario.Name = "TxtUsuario";
             this.TxtUsuario.Size = new System.Drawing.Size(100, 20);
             this.TxtUsuario.TabIndex = 0;
+            this.TxtUsuario.Validating += new System.ComponentModel.CancelEventHandler(this.TxtUsuario_Validating);
+            // 
+            // EpLogin
+            // 
+            this.EpLogin.ContainerControl = this;
             // 
             // FrmLogin
             // 
@@ -133,6 +142,7 @@
             this.Text = "Login";
             this.gbLogin.ResumeLayout(false);
             this.gbLogin.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.EpLogin)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -147,5 +157,6 @@
         private System.Windows.Forms.Button BtnAceptar;
         private System.Windows.Forms.TextBox TxtPassword;
         private System.Windows.Forms.TextBox TxtUsuario;
+        private System.Windows.Forms.ErrorProvider EpLogin;
     }
 }

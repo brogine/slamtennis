@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.BtnCerrar = new System.Windows.Forms.Button();
             this.GbLocalidades = new System.Windows.Forms.GroupBox();
             this.CboListaLocalidades = new System.Windows.Forms.ComboBox();
@@ -38,9 +39,11 @@
             this.GbPaises = new System.Windows.Forms.GroupBox();
             this.BtnAgregarPais = new System.Windows.Forms.Button();
             this.CboListaPaises = new System.Windows.Forms.ComboBox();
+            this.EpVerificador = new System.Windows.Forms.ErrorProvider(this.components);
             this.GbLocalidades.SuspendLayout();
             this.GbProvincias.SuspendLayout();
             this.GbPaises.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.EpVerificador)).BeginInit();
             this.SuspendLayout();
             // 
             // BtnCerrar
@@ -142,6 +145,10 @@
             this.CboListaPaises.TabIndex = 0;
             this.CboListaPaises.SelectionChangeCommitted += new System.EventHandler(this.CboListaPaises_SelectionChangeCommitted);
             // 
+            // EpVerificador
+            // 
+            this.EpVerificador.ContainerControl = this;
+            // 
             // FrmNuevaUbicacion
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -157,6 +164,7 @@
             this.GbLocalidades.ResumeLayout(false);
             this.GbProvincias.ResumeLayout(false);
             this.GbPaises.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.EpVerificador)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -173,5 +181,6 @@
         private System.Windows.Forms.GroupBox GbPaises;
         private System.Windows.Forms.Button BtnAgregarPais;
         private System.Windows.Forms.ComboBox CboListaPaises;
+        private System.Windows.Forms.ErrorProvider EpVerificador;
     }
 }
