@@ -55,9 +55,11 @@
     <Compile Include="Conexion\MySqlDB.cs" />
     <Compile Include="Conexion\SqlServerDB.cs" />
     <Compile Include="IJugadorRepositorio.cs" />
+    <Compile Include="ILoginRepositorio.cs" />
     <Compile Include="IMapeador.cs" />
     <Compile Include="IUbicacionRepositorio.cs" />
     <Compile Include="JugadorRepositorio.cs" />
+    <Compile Include="LoginRepositorio.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RepositorioExeption.cs" />
     <Compile Include="UbicacionRepositorio.cs" />

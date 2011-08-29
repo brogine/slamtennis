@@ -7,6 +7,11 @@ namespace Dominio
 {
     public class Login
     {
+        public Login(string usuario, string contraseña, bool estado)
+        {
+            this.usuario = usuario; this.password = contraseña; this.estado = estado;
+        }
+
         string usuario;
         string password;
         bool estado;
@@ -14,19 +19,40 @@ namespace Dominio
         public String Usuario
         {
             get { return usuario; }
-            set { usuario = value; }
+            set 
+            {
+                if (this.ValidarPalabrasInvalidas(value))
+                    throw new DominioException("Caracteres inválidos en cadena ingresada.");
+                usuario = value; 
+            }
         }
 
         public String Password
         {
             get { return password; }
-            set { password = value; }
+            set 
+            {
+                if (this.ValidarPalabrasInvalidas(value))
+                    throw new DominioException("Caracteres inválidos en cadena ingresada.");
+                password = value; 
+            }
         }
 
         public Boolean Estado
         {
             get { return estado; }
             set { estado = value; }
+        }
+
+        bool ValidarPalabrasInvalidas(string cadena)
+        {
+            string[] invalidas = new string[] { "select", "delete", "drop", "count"};
+            foreach (string palabra in invalidas)
+            {
+                if (cadena.Contains(palabra))
+                    return true;
+            }
+            return false;
         }
     }
 }

@@ -94,7 +94,6 @@
       <DependentUpon>FrmNuevaUbicacion.cs</DependentUpon>
     </Compile>
     <Compile Include="FrmNuevoClub.cs">
-      <SubType>Form</SubType>
     </Compile>
     <Compile Include="FrmNuevoClub.Designer.cs">
       <DependentUpon>FrmNuevoClub.cs</DependentUpon>
