@@ -6,14 +6,21 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using Servicio;
+using ApplicationContext;
+using Servicio.InterfacesUI;
 
 namespace Slam
 {
-    public partial class FrmLogin : Form
+    public partial class FrmLogin : Form, ILoginUI
     {
+        ILoginServicio LoginServicio;
+        string ImplementaLogin;
+
         public FrmLogin()
         {
             InitializeComponent();
+            LoginServicio = (ILoginServicio)AppContext.Instance.GetObject(ImplementaLogin);
         }
 
         private void BtnCancelar_Click(object sender, EventArgs e)
@@ -23,12 +30,24 @@ namespace Slam
 
         private void BtnAceptar_Click(object sender, EventArgs e)
         {
-            if (EpLogin.GetError(TxtUsuario) == "" && EpLogin.GetError(TxtPassword) == "")
-            {
-                FrmPrincipal Principal = new FrmPrincipal(this);
-                Principal.Show();
-                this.Hide();
-            }
+            //if (EpLogin.GetError(TxtUsuario) == "" && EpLogin.GetError(TxtPassword) == "")
+            //{
+            //    try
+            //    {
+            //        if (LoginServicio.Validar(this))
+            //        {
+                        FrmPrincipal Principal = new FrmPrincipal(this);
+                        Principal.Show();
+                        this.Hide();
+            //        }
+            //        else
+            //            MessageBox.Show("Datos de Login incorrectos", "Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            //    }
+            //    catch (Exception ex)
+            //    {
+            //        MessageBox.Show(ex.Message);
+            //    }
+            //}
         }
 
         private void TxtUsuario_Validating(object sender, CancelEventArgs e)
@@ -46,5 +65,31 @@ namespace Slam
             else
                 EpLogin.SetError(TxtPassword, "");
         }
+
+        #region Miembros de ILoginUI
+
+        public string Usuario
+        {
+            get { return TxtUsuario.Text; }
+        }
+
+        public string Password
+        {
+            get { return TxtPassword.Text; }
+        }
+
+        public bool Estado
+        {
+            get
+            {
+                throw new NotImplementedException();
+            }
+            set
+            {
+                throw new NotImplementedException();
+            }
+        }
+
+        #endregion
     }
 }
