@@ -8,7 +8,7 @@ using System.Data;
 
 namespace Repositorio
 {
-   public class UbicacionRepositorio:IUbicacionRepositorio,IMapeador<Provincia>,IMapeador<Pais>
+   public class UbicacionRepositorio:IUbicacionRepositorio
     {
        Conexion Conex;
        public UbicacionRepositorio()
@@ -138,6 +138,27 @@ namespace Repositorio
         public Localidad ObtenerLocalidad(int IdLocalidad)
         {
             return this.MapearLocalidad(Conex.Buscar("Select * from Localidades where IdLocalidad=" + IdLocalidad));
+        }
+
+        #endregion
+
+
+
+
+        #region Miembros de IMapeador<Provincia>
+
+        public Provincia Mapear(DataRow Fila)
+        {
+            throw new NotImplementedException();
+        }
+
+        #endregion
+
+        #region Miembros de IMapeador<Pais>
+
+        Pais IMapeador<Pais>.Mapear(DataRow Fila)
+        {
+            throw new NotImplementedException();
         }
 
         #endregion
