@@ -7,23 +7,23 @@ namespace Dominio
 {
     public class Contacto
     {
-        public Contacto(int telefono, int celular, string email)
+        public Contacto(string telefono, string celular, string email)
         {
             this.telefono = telefono; this.celular = celular;
             this.email = email;
         }
 
-        int telefono;
-        int celular;
+        string telefono;
+        string celular;
         string email;
 
-        public int Telefono
+        public string Telefono
         {
             get { return telefono; }
             set { telefono = value; }
         }
 
-        public int Celular
+        public string Celular
         {
             get { return celular; }
             set { celular = value; }

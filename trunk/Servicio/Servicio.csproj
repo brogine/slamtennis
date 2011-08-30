@@ -45,10 +45,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ClubServicio.cs" />
+    <Compile Include="IClubServicio.cs" />
+    <Compile Include="IEmpleadoServicio.cs" />
     <Compile Include="IJugadorServicio.cs" />
+    <Compile Include="IListadoClubServicio.cs" />
     <Compile Include="ILocalidadServicio.cs" />
     <Compile Include="ILoginServicio.cs" />
+    <Compile Include="InterfacesUI\IClubUI.cs" />
     <Compile Include="InterfacesUI\IJugadorUI.cs" />
+    <Compile Include="InterfacesUI\IListadoClubes.cs" />
     <Compile Include="InterfacesUI\IListadoJugadores.cs" />
     <Compile Include="InterfacesUI\IListadoLocalidades.cs" />
     <Compile Include="InterfacesUI\IListadoPaises.cs" />

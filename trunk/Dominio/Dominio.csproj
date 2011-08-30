@@ -47,6 +47,7 @@
   <ItemGroup>
     <Compile Include="Arbitro.cs" />
     <Compile Include="Categoria.cs" />
+    <Compile Include="Club.cs" />
     <Compile Include="Contacto.cs" />
     <Compile Include="DominioException.cs" />
     <Compile Include="Empleado.cs" />
@@ -58,6 +59,7 @@
     <Compile Include="Persona.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Provincia.cs" />
+    <Compile Include="Sede.cs" />
     <Compile Include="Ubicacion.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
