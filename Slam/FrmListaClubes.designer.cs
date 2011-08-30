@@ -36,9 +36,16 @@
             // 
             // DgvClubes
             // 
+            this.DgvClubes.AllowUserToAddRows = false;
+            this.DgvClubes.AllowUserToDeleteRows = false;
+            this.DgvClubes.AllowUserToResizeColumns = false;
+            this.DgvClubes.AllowUserToResizeRows = false;
+            this.DgvClubes.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.DgvClubes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.DgvClubes.Location = new System.Drawing.Point(12, 12);
             this.DgvClubes.Name = "DgvClubes";
+            this.DgvClubes.ReadOnly = true;
+            this.DgvClubes.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.DgvClubes.Size = new System.Drawing.Size(418, 213);
             this.DgvClubes.TabIndex = 0;
             // 
@@ -50,6 +57,7 @@
             this.BtnNuevo.TabIndex = 1;
             this.BtnNuevo.Text = "Nuevo";
             this.BtnNuevo.UseVisualStyleBackColor = true;
+            this.BtnNuevo.Click += new System.EventHandler(this.BtnNuevo_Click);
             // 
             // BtnModificar
             // 
@@ -59,6 +67,7 @@
             this.BtnModificar.TabIndex = 2;
             this.BtnModificar.Text = "Modificar";
             this.BtnModificar.UseVisualStyleBackColor = true;
+            this.BtnModificar.Click += new System.EventHandler(this.BtnModificar_Click);
             // 
             // FrmListaClubes
             // 

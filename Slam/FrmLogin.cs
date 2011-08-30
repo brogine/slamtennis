@@ -15,7 +15,7 @@ namespace Slam
     public partial class FrmLogin : Form, ILoginUI
     {
         ILoginServicio LoginServicio;
-        string ImplementaLogin;
+        string ImplementaLogin = "LoginServicio";
 
         public FrmLogin()
         {

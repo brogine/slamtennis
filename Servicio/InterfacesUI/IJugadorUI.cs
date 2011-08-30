@@ -17,8 +17,8 @@ namespace Servicio.InterfacesUI
         string Sexo { get; set; }
         int DniTutor { get; set; }
         string RelacionTutor { get; set; }
-        int Telefono { get; set; }
-        int Celular { get; set; }
+        string Telefono { get; set; }
+        string Celular { get; set; }
         string Email { get; set; }
         string Provincia { get; set; }
         string Localidad { get; set; }
