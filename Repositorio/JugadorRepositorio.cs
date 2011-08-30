@@ -17,7 +17,7 @@ namespace Repositorio
         }
         #region Miembros de IJugadorRepositorio
 
-        public void Agregar(Dominio.Jugador Jugador)
+        public void Agregar(Jugador Jugador)
         {
          
         }
