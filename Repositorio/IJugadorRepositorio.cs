@@ -6,8 +6,8 @@ using Dominio;
 
 namespace Repositorio
 {
-    interface IJugadorRepositorio
+    public interface IJugadorRepositorio
     {
-      void Agregar(Jugador Jugador);
+        void Agregar(Jugador Jugador);
     }
 }

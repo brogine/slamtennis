@@ -17,21 +17,21 @@ namespace Servicio
             Ubicacion nUbicacion;
 
             nContacto = new Contacto(UI.Telefono, UI.Celular, UI.Email);
-            nUbicacion = new Ubicacion(UI.Provincia, UI.Localidad, UI.Domicilio);
+            //nUbicacion = new Ubicacion(UI.Provincia, UI.Localidad, UI.Domicilio);
 
             if (UI.DniTutor != null && UI.RelacionTutor != "")
             {
-                nJugador = new Jugador(UI.Dni, UI.Nombre, UI.Apellido, UI.FechaNac,
-                    UI.Nacionalidad, UI.Sexo, UI.DniTutor, UI.RelacionTutor, 
-                    nContacto, nUbicacion);
-                if (nJugador.Edad >= 18)
-                    throw new ServicioExeption("El jugador es mayor de edad.");
+                //nJugador = new Jugador(UI.Dni, UI.Nombre, UI.Apellido, UI.FechaNac,
+                //    UI.Nacionalidad, UI.Sexo, UI.DniTutor, UI.RelacionTutor, 
+                //    nContacto, nUbicacion);
+                //if (nJugador.Edad >= 18)
+                //    throw new ServicioExeption("El jugador es mayor de edad.");
                 //Llamar al repo
             }
             else
             {
-                nJugador = new Jugador(UI.Dni, UI.Nombre, UI.Apellido, UI.FechaNac,
-                    UI.Nacionalidad, UI.Sexo, nContacto, nUbicacion);
+                //nJugador = new Jugador(UI.Dni, UI.Nombre, UI.Apellido, UI.FechaNac,
+                //    UI.Nacionalidad, UI.Sexo, nContacto, nUbicacion);
                 //Llamar al repo
             }
         }

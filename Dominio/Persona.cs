@@ -17,8 +17,9 @@ namespace Dominio
         string nombre;
         string apellido;
         DateTime fechaNac;
-        string nacionalidad;
+        Pais nacionalidad;
         string sexo;
+        bool estado;
         #endregion
 
         #region Variables Públicas
@@ -46,7 +47,7 @@ namespace Dominio
             set { fechaNac = value; }
         }
 
-        public String Nacionalidad
+        public Pais Nacionalidad
         {
             get { return nacionalidad; }
             set { nacionalidad = value; }
@@ -67,6 +68,12 @@ namespace Dominio
                     Edad--;
                 return Edad;
             }
+        }
+
+        public bool Estado
+        {
+            get { return estado; }
+            set { estado = value; }
         }
 
         #endregion

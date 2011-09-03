@@ -17,10 +17,14 @@ namespace Dominio
         /// <param name="fechaNac"></param>
         /// <param name="nacionalidad"></param>
         /// <param name="sexo"></param>
+        /// <param name="contacto"></param>
+        /// <param name="ubicacion"></param>
         public Jugador(int dni, string nombre, string apellido, DateTime fechaNac, 
-            string nacionalidad, string sexo, Contacto contacto, Ubicacion ubicacion)
+            Pais nacionalidad, string sexo, Contacto contacto, Ubicacion ubicacion)
         {
-
+            this.Dni = dni; this.Nombre = nombre; this.Apellido = apellido;
+            this.FechaNac = FechaNac; this.Nacionalidad = nacionalidad;
+            this.Sexo = sexo; this.Contacto = contacto; this.Ubicacion = ubicacion;
         }
 
         /// <summary>
@@ -32,14 +36,17 @@ namespace Dominio
         /// <param name="fechaNac"></param>
         /// <param name="nacionalidad"></param>
         /// <param name="sexo"></param>
-        /// <param name="partidosGanados"></param>
-        /// <param name="partidosPerdidos"></param>
-        /// <param name="partidosJugados"></param>
+        /// <param name="Estadisticas"></param>
+        /// <param name="contacto"></param>
+        /// <param name="ubicacion"></param>
         public Jugador(int dni, string nombre, string apellido, DateTime fechaNac,
-            string nacionalidad, string sexo, int partidosGanados, int partidosPerdidos,
-            int partidosJugados, Contacto contacto, Ubicacion ubicacion)
+            Pais nacionalidad, string sexo, List<Estadisticas> Estadisticas, 
+            Contacto contacto, Ubicacion ubicacion)
         {
-
+            this.Dni = dni; this.Nombre = nombre; this.Apellido = apellido;
+            this.FechaNac = FechaNac; this.Nacionalidad = nacionalidad;
+            this.Sexo = sexo; this.Contacto = contacto; this.Ubicacion = ubicacion;
+            this.estadisticas = Estadisticas;
         }
 
         /// <summary>
@@ -53,11 +60,16 @@ namespace Dominio
         /// <param name="sexo"></param>
         /// <param name="dniTutor"></param>
         /// <param name="relacionTutor"></param>
+        /// <param name="contacto"></param>
+        /// <param name="ubicacion"></param>
         public Jugador(int dni, string nombre, string apellido, DateTime fechaNac,
-            string nacionalidad, string sexo, int dniTutor, string relacionTutor,
+            Pais nacionalidad, string sexo, int dniTutor, string relacionTutor,
             Contacto contacto, Ubicacion ubicacion)
         {
-
+            this.Dni = dni; this.Nombre = nombre; this.Apellido = apellido;
+            this.FechaNac = FechaNac; this.Nacionalidad = nacionalidad;
+            this.Sexo = sexo; this.Contacto = contacto; this.Ubicacion = ubicacion;
+            this.dniTutor = dniTutor; this.relacionTutor = relacionTutor;
         }
 
         /// <summary>
@@ -71,24 +83,42 @@ namespace Dominio
         /// <param name="sexo"></param>
         /// <param name="dniTutor"></param>
         /// <param name="relacionTutor"></param>
-        /// <param name="partidosGanados"></param>
-        /// <param name="partidosPerdidos"></param>
-        /// <param name="partidosJugados"></param>
+        /// <param name="Estadisticas"></param>
+        /// <param name="contacto"></param>
+        /// <param name="ubicacion"></param>
         public Jugador(int dni, string nombre, string apellido, DateTime fechaNac,
-            string nacionalidad, string sexo, int dniTutor, string relacionTutor,
-            int partidosGanados, int partidosPerdidos, int partidosJugados, 
-            Contacto contacto, Ubicacion ubicacion)
+            Pais nacionalidad, string sexo, int dniTutor, string relacionTutor,
+            List<Estadisticas> Estadisticas, Contacto contacto, Ubicacion ubicacion)
         {
-
+            this.Dni = dni; this.Nombre = nombre; this.Apellido = apellido;
+            this.FechaNac = FechaNac; this.Nacionalidad = nacionalidad;
+            this.Sexo = sexo; this.Contacto = contacto; this.Ubicacion = ubicacion;
+            this.dniTutor = dniTutor; this.relacionTutor = relacionTutor;
+            this.estadisticas = Estadisticas;
         }
         #endregion
 
         int dniTutor;
         string relacionTutor;
-        List<Categoria> categoria;
-        int pp;
-        int pg;
-        int pj;
-        //Datos de partidos por categorias
+        List<Estadisticas> estadisticas;
+
+        public int DniTutor
+        {
+            get { return dniTutor; }
+            set { dniTutor = value; }
+        }
+
+        public string RelacionTutor
+        {
+            get { return relacionTutor; }
+            set { relacionTutor = value; }
+        }
+
+        public List<Estadisticas> Estadisticas
+        {
+            get { return estadisticas; }
+            set { estadisticas = value; }
+        }
+        
     }
 }
