@@ -11,9 +11,9 @@ namespace Dominio
             bool estado, string telefono, string celular, string email, Provincia provincia, Localidad localidad,
             string domicilio, string puesto, Sede sede)
         {
-            this.Dni = dni; this.Nombre = nombre; this.Apellido = apellido; this.FechaNac = fechanac; this.Nacionalidad = nacionalidad.Nombre;
+            this.Dni = dni; this.Nombre = nombre; this.Apellido = apellido; this.FechaNac = fechanac; this.Nacionalidad = nacionalidad;
             this.Sexo = sexo; this.estado = estado; this.Contacto.Telefono = telefono; this.Contacto.Celular = celular;
-            this.Contacto.Email = email; this.Ubicacion.Provincia = provincia.Nombre; this.Ubicacion.Localidad = localidad.Nombre;
+            this.Contacto.Email = email; this.Ubicacion.Provincia = provincia; this.Ubicacion.Localidad = localidad;
             this.Ubicacion.Domicilio = domicilio; this.puesto = puesto; this.sede = sede;
         }
 
