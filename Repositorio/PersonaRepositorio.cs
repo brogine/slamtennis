@@ -79,10 +79,9 @@ namespace Repositorio
             Objeto.Contacto = Contacto;
 
             // Value Object Domicilio
-            Provincia Provincia = UbicacionRepo.ObetenerProvincia(Fila.IsNull("Provincia") == true ? 0 : (int)Fila["Provincia"]);
             Localidad Localidad = UbicacionRepo.ObtenerLocalidad(Fila.IsNull("Localidad") == true ? 0 : (int)Fila["Localidad"]);
             string Domicilio = (Fila.IsNull("Domicilio") == true ? string.Empty : Convert.ToString(Fila["Domicilio"]));
-            Ubicacion Ubicacion = new Ubicacion(Provincia, Localidad, Domicilio);
+            Ubicacion Ubicacion = new Ubicacion(Localidad, Domicilio);
             Objeto.Ubicacion = Ubicacion;
             
             return Objeto;

@@ -77,6 +77,12 @@
     <Compile Include="FrmListaJugadores.designer.cs">
       <DependentUpon>FrmListaJugadores.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmListaSedes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmListaSedes.Designer.cs">
+      <DependentUpon>FrmListaSedes.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmLogin.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -88,6 +94,12 @@
     </Compile>
     <Compile Include="FrmNuevaPersona.designer.cs">
       <DependentUpon>FrmNuevaPersona.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmNuevaSede.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmNuevaSede.Designer.cs">
+      <DependentUpon>FrmNuevaSede.cs</DependentUpon>
     </Compile>
     <Compile Include="FrmNuevaUbicacion.cs">
       <SubType>Form</SubType>
@@ -118,11 +130,17 @@
     <EmbeddedResource Include="FrmListaJugadores.resx">
       <DependentUpon>FrmListaJugadores.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FrmListaSedes.resx">
+      <DependentUpon>FrmListaSedes.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FrmLogin.resx">
       <DependentUpon>FrmLogin.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmNuevaPersona.resx">
       <DependentUpon>FrmNuevaPersona.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmNuevaSede.resx">
+      <DependentUpon>FrmNuevaSede.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmNuevaUbicacion.resx">
       <DependentUpon>FrmNuevaUbicacion.cs</DependentUpon>
