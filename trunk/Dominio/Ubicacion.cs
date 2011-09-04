@@ -7,21 +7,13 @@ namespace Dominio
 {
     public class Ubicacion
     {
-        public Ubicacion(Provincia provincia, Localidad localidad, string domicilio)
+        public Ubicacion(Localidad localidad, string domicilio)
         {
-            this.provincia = provincia; this.localidad = localidad;
-            this.domicilio = domicilio;
+            this.localidad = localidad; this.domicilio = domicilio;
         }
 
-        Provincia provincia;
         Localidad localidad;
         string domicilio;
-
-        public Provincia Provincia
-        {
-            get { return provincia; }
-            set { provincia = value; }
-        }
 
         public Localidad Localidad
         {

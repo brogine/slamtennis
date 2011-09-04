@@ -8,13 +8,11 @@ namespace Dominio
     public class Empleado : Persona
     {
         public Empleado(int dni, string nombre, string apellido, DateTime fechanac, Pais nacionalidad, string sexo,
-            bool estado, string telefono, string celular, string email, Provincia provincia, Localidad localidad,
-            string domicilio, string puesto, Sede sede)
+            bool estado, Ubicacion ubicacion, Contacto contacto, string puesto, Sede sede)
         {
-            this.Dni = dni; this.Nombre = nombre; this.Apellido = apellido; this.FechaNac = fechanac; this.Nacionalidad = nacionalidad;
-            this.Sexo = sexo; this.estado = estado; this.Contacto.Telefono = telefono; this.Contacto.Celular = celular;
-            this.Contacto.Email = email; this.Ubicacion.Provincia = provincia; this.Ubicacion.Localidad = localidad;
-            this.Ubicacion.Domicilio = domicilio; this.puesto = puesto; this.sede = sede;
+            this.Dni = dni; this.Nombre = nombre; this.Apellido = apellido; this.FechaNac = fechanac; 
+            this.Nacionalidad = nacionalidad; this.Sexo = sexo; this.estado = estado; this.Contacto = contacto; 
+            this.Ubicacion = ubicacion; this.puesto = puesto; this.sede = sede;
         }
 
         bool estado;

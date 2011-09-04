@@ -10,6 +10,6 @@ namespace Servicio
     {
         void AgregarProvincia(IUbicacionUI ui, IListadoProvincias uiPro);
 
-        void ListarProvincias(IListadoProvincias ui, IListadoProvincias uiPro);
+        void ListarProvincias(IListadoProvincias ui);
     }
 }

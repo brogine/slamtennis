@@ -50,6 +50,7 @@
     <Compile Include="IEmpleadoServicio.cs" />
     <Compile Include="IJugadorServicio.cs" />
     <Compile Include="IListadoClubServicio.cs" />
+    <Compile Include="IListadoSedesServicio.cs" />
     <Compile Include="ILocalidadServicio.cs" />
     <Compile Include="ILoginServicio.cs" />
     <Compile Include="InterfacesUI\IClubUI.cs" />
@@ -59,13 +60,17 @@
     <Compile Include="InterfacesUI\IListadoLocalidades.cs" />
     <Compile Include="InterfacesUI\IListadoPaises.cs" />
     <Compile Include="InterfacesUI\IListadoProvincias.cs" />
+    <Compile Include="InterfacesUI\IListadoSedes.cs" />
     <Compile Include="InterfacesUI\ILoginUI.cs" />
+    <Compile Include="InterfacesUI\ISedesUI.cs" />
     <Compile Include="InterfacesUI\IUbicacionUI.cs" />
     <Compile Include="IPaisServicio.cs" />
     <Compile Include="IProvinciaServicio.cs" />
+    <Compile Include="ISedesServicio.cs" />
     <Compile Include="JugadorServicio.cs" />
     <Compile Include="LoginServicio.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SedesServicio.cs" />
     <Compile Include="ServicioExeption.cs" />
     <Compile Include="UbicacionServicio.cs" />
   </ItemGroup>

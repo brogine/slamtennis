@@ -137,6 +137,7 @@
             this.CancelButton = this.BtnCancelar;
             this.ClientSize = new System.Drawing.Size(386, 208);
             this.Controls.Add(this.gbLogin);
+            this.MaximizeBox = false;
             this.Name = "FrmLogin";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Login";

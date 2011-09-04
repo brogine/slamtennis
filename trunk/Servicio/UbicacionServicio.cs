@@ -46,10 +46,10 @@ namespace Servicio
             UbicaRepo.AgregarProvincia(ProvinciaNueva);
         }
 
-        public void ListarProvincias(IListadoProvincias ui, IListadoProvincias uiPro)
+        public void ListarProvincias(IListadoProvincias ui)
         {
             Dictionary<int, string> ListaProvincias = new Dictionary<int, string>();
-            List<Provincia> Lista = UbicaRepo.ListarProvincias(UbicaRepo.ObtenerPais(uiPro.Pais));
+            List<Provincia> Lista = UbicaRepo.ListarProvincias(UbicaRepo.ObtenerPais(ui.Pais));
             foreach (Provincia Prov in Lista)
             {
                 ListaProvincias.Add(Prov.IdProvincia, Prov.Nombre);

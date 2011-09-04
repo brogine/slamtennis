@@ -36,7 +36,7 @@ namespace Slam
         private void CboListaPaises_SelectionChangeCommitted(object sender, EventArgs e)
         {
             if(CboListaPaises.SelectedIndex > -1)
-                ProvinciaServicio.ListarProvincias(this,this);
+                ProvinciaServicio.ListarProvincias(this);
         }
 
         private void CboListaProvincias_SelectionChangeCommitted(object sender, EventArgs e)
@@ -61,7 +61,7 @@ namespace Slam
             if (CboListaProvincias.Text != "")
             {
                 ProvinciaServicio.AgregarProvincia(this, this);
-                ProvinciaServicio.ListarProvincias(this, this);
+                ProvinciaServicio.ListarProvincias(this);
             }
             else
                 MessageBox.Show("El nombre de la Provincia no puede estar en blanco.");
