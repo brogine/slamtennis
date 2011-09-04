@@ -60,6 +60,7 @@
             this.CboClubes.Size = new System.Drawing.Size(121, 21);
             this.CboClubes.TabIndex = 0;
             this.CboClubes.Validating += new System.ComponentModel.CancelEventHandler(this.CboClubes_Validating);
+            this.CboClubes.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.CboClubes_KeyPress);
             // 
             // TxtDireccion
             // 
@@ -75,9 +76,10 @@
             this.CboProvincias.Location = new System.Drawing.Point(175, 108);
             this.CboProvincias.Name = "CboProvincias";
             this.CboProvincias.Size = new System.Drawing.Size(121, 21);
-            this.CboProvincias.TabIndex = 2;
+            this.CboProvincias.TabIndex = 3;
             this.CboProvincias.Validating += new System.ComponentModel.CancelEventHandler(this.CboProvincias_Validating);
             this.CboProvincias.SelectionChangeCommitted += new System.EventHandler(this.CboProvincias_SelectionChangeCommitted);
+            this.CboProvincias.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.CboProvincias_KeyPress);
             // 
             // CboLocalidades
             // 
@@ -85,15 +87,16 @@
             this.CboLocalidades.Location = new System.Drawing.Point(175, 135);
             this.CboLocalidades.Name = "CboLocalidades";
             this.CboLocalidades.Size = new System.Drawing.Size(121, 21);
-            this.CboLocalidades.TabIndex = 3;
+            this.CboLocalidades.TabIndex = 4;
             this.CboLocalidades.Validating += new System.ComponentModel.CancelEventHandler(this.CboLocalidades_Validating);
+            this.CboLocalidades.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.CboLocalidades_KeyPress);
             // 
             // TxtTelefono
             // 
             this.TxtTelefono.Location = new System.Drawing.Point(175, 162);
             this.TxtTelefono.Name = "TxtTelefono";
             this.TxtTelefono.Size = new System.Drawing.Size(121, 20);
-            this.TxtTelefono.TabIndex = 4;
+            this.TxtTelefono.TabIndex = 5;
             this.TxtTelefono.Validating += new System.ComponentModel.CancelEventHandler(this.TxtTelefono_Validating);
             // 
             // TxtEmail
@@ -101,7 +104,7 @@
             this.TxtEmail.Location = new System.Drawing.Point(175, 214);
             this.TxtEmail.Name = "TxtEmail";
             this.TxtEmail.Size = new System.Drawing.Size(121, 20);
-            this.TxtEmail.TabIndex = 5;
+            this.TxtEmail.TabIndex = 7;
             this.TxtEmail.Validating += new System.ComponentModel.CancelEventHandler(this.TxtEmail_Validating);
             // 
             // LblClubes
@@ -163,7 +166,7 @@
             this.BtnGuardar.Location = new System.Drawing.Point(94, 260);
             this.BtnGuardar.Name = "BtnGuardar";
             this.BtnGuardar.Size = new System.Drawing.Size(75, 23);
-            this.BtnGuardar.TabIndex = 12;
+            this.BtnGuardar.TabIndex = 8;
             this.BtnGuardar.Text = "Guardar";
             this.BtnGuardar.UseVisualStyleBackColor = true;
             this.BtnGuardar.Click += new System.EventHandler(this.BtnGuardar_Click);
@@ -174,7 +177,7 @@
             this.BtnCancelar.Location = new System.Drawing.Point(175, 260);
             this.BtnCancelar.Name = "BtnCancelar";
             this.BtnCancelar.Size = new System.Drawing.Size(75, 23);
-            this.BtnCancelar.TabIndex = 13;
+            this.BtnCancelar.TabIndex = 9;
             this.BtnCancelar.Text = "Cancelar";
             this.BtnCancelar.UseVisualStyleBackColor = true;
             this.BtnCancelar.Click += new System.EventHandler(this.BtnCancelar_Click);
@@ -197,7 +200,7 @@
             this.TxtCelular.Location = new System.Drawing.Point(175, 188);
             this.TxtCelular.Name = "TxtCelular";
             this.TxtCelular.Size = new System.Drawing.Size(121, 20);
-            this.TxtCelular.TabIndex = 14;
+            this.TxtCelular.TabIndex = 6;
             this.TxtCelular.Validating += new System.ComponentModel.CancelEventHandler(this.TxtCelular_Validating);
             // 
             // LblPais
@@ -215,9 +218,10 @@
             this.CboPaises.Location = new System.Drawing.Point(175, 81);
             this.CboPaises.Name = "CboPaises";
             this.CboPaises.Size = new System.Drawing.Size(121, 21);
-            this.CboPaises.TabIndex = 16;
+            this.CboPaises.TabIndex = 2;
             this.CboPaises.Validating += new System.ComponentModel.CancelEventHandler(this.CboPaises_Validating);
             this.CboPaises.SelectionChangeCommitted += new System.EventHandler(this.CboPaises_SelectionChangeCommitted);
+            this.CboPaises.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.CboPaises_KeyPress);
             // 
             // LblExplicacion
             // 

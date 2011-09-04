@@ -79,6 +79,13 @@ namespace Servicio
             ui.ListarLocalidades = ListaLocalidades;
         }
 
+        public string ObtenerUbicacion(int IdLocalidad)
+        {
+            Localidad bLocalidad = UbicaRepo.ObtenerLocalidad(IdLocalidad);
+            return bLocalidad.Provincia.Pais.IdPais + "," + bLocalidad.Provincia.IdProvincia;
+
+        }
+
         #endregion
     }
 }

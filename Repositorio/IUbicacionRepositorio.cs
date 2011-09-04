@@ -19,5 +19,7 @@ namespace Repositorio
         List<Localidad> ListarLocalidades(Provincia Provincia);
         void AgregarLocalidad(Localidad Localidad);
         Localidad ObtenerLocalidad(int IdLocalidad);
+
+        
     }
 }
