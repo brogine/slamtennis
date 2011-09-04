@@ -7,19 +7,46 @@ using Repositorio.Conexiones;
 
 namespace Repositorio
 {
-    class JugadorRepositorio:IJugadorRepositorio,IMapeador<Jugador>
+    public class JugadorRepositorio : PersonaRepositorio, IMapeador<Jugador>, IJugadorRepositorio
     {
-        Conexion Conex;
-        string ConsultaSql;
+        Conexion Conn;
         public JugadorRepositorio()
+            : base()
         {
-            Conex = new Conexion();
+            Conn = new Conexion();
         }
+
         #region Miembros de IJugadorRepositorio
 
         public void Agregar(Jugador Jugador)
         {
-         
+            base.Agregar(Jugador);
+            string Campos = "Dni, PartidosGanados, PartidosPerdidos, IdCategoria, Puntos, Estado";
+            string Valores = Jugador.Dni + "," + Jugador.Estadisticas[0].PG + "," + Jugador.Estadisticas[0].PP;
+            Valores += "," + Jugador.Estadisticas[0].Categoria.Id + "," + Jugador.Estadisticas[0].Puntaje;
+            Valores += "," + (Jugador.Estadisticas[0].Estado ? 1 : 0);
+            Conn.AgregarSinId("JugadorCategoria", Campos, Valores);
+        }
+
+        public void Modificar(Jugador Jugador)
+        {
+            base.Agregar(Jugador);
+            string Consulta = " Update JugadorCategoria Set ";
+            Consulta += " PartidosGanados = " + Jugador.Estadisticas[0].PG;
+            Consulta += " PartidosPerdidos = " + Jugador.Estadisticas[0].PP;
+            Consulta += " Puntos = " + Jugador.Estadisticas[0].Puntaje;
+            Consulta += " Estado = " + (Jugador.Estadisticas[0].Estado ? 1 : 0);
+            Conn.ActualizarOEliminar(Consulta);
+        }
+
+        public Jugador Buscar(int Dni)
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<Jugador> Listar()
+        {
+            throw new NotImplementedException();
         }
 
         #endregion
@@ -32,36 +59,17 @@ namespace Repositorio
 
             if (Fila != null)
             {
-                //Agregate Root
-
-                int Dni = (Fila.IsNull("Dni") == true ? 0 : Convert.ToInt32(Fila["Dni"]));
-                string Nombre = (Fila.IsNull("Nombre") == true ? string.Empty : Convert.ToString(Fila["Nombre"]));
-                string Apellido = (Fila.IsNull("Apellido") == true ? string.Empty : Convert.ToString(Fila["Apellido"]));
-                DateTime FechaNac = (Fila.IsNull("FechaNacimiento") == true ? DateTime.Now : Convert.ToDateTime(Fila["FechaNacimiento"]));
-                string Nacionalidad = (Fila.IsNull("Nacionalidad") == true ? string.Empty : Convert.ToString(Fila["Nacionalidad"]));
-                string Sexo = (Fila.IsNull("Sexo")==true?string.Empty:Convert.ToString(Fila["Sexo"]));
-                bool Estado = (Fila.IsNull("Sexo")==true?false:Convert.ToBoolean(Fila["Estado"]));
-                //Value Object Contacto
-
-                string Telefono = (Fila.IsNull("Telefono") == true ? string.Empty : Convert.ToString(Fila["Telefono"]));
-                string Celular = (Fila.IsNull("Celular") == true ? string.Empty : Convert.ToString(Fila["Celular"]));
-                string Email = (Fila.IsNull("Email") == true ? string.Empty : Convert.ToString(Fila["Email"]));
-                
-                // Value Object Domicilio
-
-                string Provincia = (Fila.IsNull("Provincia")== true?string.Empty:Convert.ToString(Fila["Provincia"]));
-                string Localidad = (Fila.IsNull("Localidad") == true ? string.Empty : Convert.ToString(Fila["Localidad"]));
-                string Domicilio = (Fila.IsNull("Domicilio") == true ? string.Empty : Convert.ToString(Fila["Domicilio"]));
-
+                nJugador = new Jugador();
+                nJugador = base.MapearDatosPersonales(Fila, nJugador) as Jugador;
                 if (nJugador.Edad < 18)
-                { 
-                    int DniTutor = (Fila.IsNull("DniTutor")==true?0:Convert.ToInt32(Fila["DniTutor"]));
-                    string Relacion = (Fila.IsNull("Relacion") == true ? string.Empty : Convert.ToString(Fila["Relacion"]));
+                {
+                    nJugador.DniTutor = (Fila.IsNull("DniTutor") == true ? 0 : Convert.ToInt32(Fila["DniTutor"]));
+                    nJugador.RelacionTutor = (Fila.IsNull("Relacion") == true ? string.Empty : Convert.ToString(Fila["Relacion"]));
                 }
-                
+                //mapear datos de estadisticas
             }
-                     
-                return nJugador;
+            
+            return nJugador;
         }
 
         #endregion

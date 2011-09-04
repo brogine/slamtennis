@@ -124,7 +124,6 @@ namespace Repositorio
 
         #region Miembros de IUbicacionRepositorio
 
-
         public Pais ObtenerPais(int IdPais)
         {
            return this.MapearPais( Conex.Buscar("select * from Paises where IdPais=" + IdPais));

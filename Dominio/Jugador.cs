@@ -8,6 +8,8 @@ namespace Dominio
     public class Jugador : Persona
     {
         #region Constructores
+        public Jugador() { }
+
         /// <summary>
         /// Constructor para un Jugador mayor de edad sin historial
         /// </summary>
