@@ -50,5 +50,17 @@ namespace Slam
             Clubes.MdiParent = this;
             Clubes.Show();
         }
+
+        private void TlsmiSedes_Click(object sender, EventArgs e)
+        {
+            FrmListaSedes Sedes = new FrmListaSedes();
+            Sedes.MdiParent = this;
+            Sedes.Show();
+        }
+
+        private void FrmPrincipal_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Padre.Close();
+        }
     }
 }

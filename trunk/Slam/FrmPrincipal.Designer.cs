@@ -131,8 +131,9 @@
             // TlsmiSedes
             // 
             this.TlsmiSedes.Name = "TlsmiSedes";
-            this.TlsmiSedes.Size = new System.Drawing.Size(136, 22);
+            this.TlsmiSedes.Size = new System.Drawing.Size(152, 22);
             this.TlsmiSedes.Text = "Sedes";
+            this.TlsmiSedes.Click += new System.EventHandler(this.TlsmiSedes_Click);
             // 
             // TsmiEventos
             // 
@@ -156,6 +157,7 @@
             this.MainMenuStrip = this.MsPrincipal;
             this.Name = "FrmPrincipal";
             this.Text = "Slam Sistema de Gestión";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FrmPrincipal_FormClosing);
             this.MsPrincipal.ResumeLayout(false);
             this.MsPrincipal.PerformLayout();
             this.ResumeLayout(false);

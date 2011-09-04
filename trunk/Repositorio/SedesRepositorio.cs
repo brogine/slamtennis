@@ -23,7 +23,7 @@ namespace Repositorio
             string Campos = "IdClub, Direccion, IdLocalidad, Telefono, Celular, Email";
             string Valores = Sede.Club.Id + ",'" + Sede.Ubicacion.Domicilio + "'," + Sede.Ubicacion.Localidad.IdLocalidad;
             Valores += ",'" + Sede.Contacto.Telefono + "','" + Sede.Contacto.Celular + "','";
-            Valores += Sede.Contacto.Email;
+            Valores += Sede.Contacto.Email + "'";
             return Conn.Agregar("Sedes", Campos, Valores);
         }
 
@@ -35,7 +35,7 @@ namespace Repositorio
             Consulta += " IdLocalidad = " + Sede.Ubicacion.Localidad.IdLocalidad + ",";
             Consulta += " Telefono = '" + Sede.Contacto.Telefono + "',";
             Consulta += " Celular = '" + Sede.Contacto.Celular + "',";
-            Consulta += " Email = '" + Sede.Contacto.Email + "',";
+            Consulta += " Email = '" + Sede.Contacto.Email + "'";
             Consulta += " Where IdSede = " + Sede.Id;
             Conn.ActualizarOEliminar(Consulta);
         }

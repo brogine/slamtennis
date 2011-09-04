@@ -11,5 +11,7 @@ namespace Servicio
         void AgregarLocalidad(IUbicacionUI ui, IListadoLocalidades uiLoc);
 
         void ListarLocalidades(IListadoLocalidades ui);
+
+        string ObtenerUbicacion(int IdLocalidad);
     }
 }

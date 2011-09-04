@@ -80,15 +80,15 @@ namespace Servicio
                 {
                     if (Sede.Club.Id == UI.IdClub)
                     {
-                        objeto = Sede.Id + "," + Sede.Club.Id + "," + Sede.Club.Nombre + ",";
+                        objeto = Sede.Id + "," + Sede.Club.Nombre + ",";
                         objeto += Sede.Ubicacion.Domicilio;
                         ListaUI.Add(objeto);
                     }
                 }
                 else
                 {
-                    objeto = Sede.Id + "," + Sede.Club.Id + "," + Sede.Club.Nombre + ",";
-                    objeto += Sede.Ubicacion.Domicilio;
+                    objeto = Sede.Id + "," + Sede.Club.Nombre + ",";
+                    objeto += Sede.Ubicacion.Domicilio + "," + Sede.Club.Id;
                     ListaUI.Add(objeto);
                 }
             }

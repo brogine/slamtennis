@@ -38,10 +38,6 @@ namespace Slam
 
         private void FrmNuevaSede_Load(object sender, EventArgs e)
         {
-            if (IdSedeModificar != null && IdSedeModificar > 0)
-                this.Text = "Modificar Sede";
-            else
-                this.Text = "Nueva Sede";
             servicioPaises = (IPaisServicio)AppContext.Instance.GetObject(ImplementaUbicacion);
             servicioProvincias = (IProvinciaServicio)AppContext.Instance.GetObject(ImplementaUbicacion);
             servicioLocalidades = (ILocalidadServicio)AppContext.Instance.GetObject(ImplementaUbicacion);
@@ -49,6 +45,13 @@ namespace Slam
             servicioSedes = (ISedesServicio)AppContext.Instance.GetObject(ImplementaSedes);
             servicioClubes.Listar(this);
             servicioPaises.ListarPaises(this);
+            if (IdSedeModificar > 0)
+            {
+                this.Text = "Modificar Sede";
+                servicioSedes.Buscar(this);
+            }
+            else
+                this.Text = "Nueva Sede";
         }
 
         private void BtnCancelar_Click(object sender, EventArgs e)
@@ -66,14 +69,15 @@ namespace Slam
             {
                 try
                 {
-                    if (IdSedeModificar != null && IdSedeModificar > 0)
+                    if (IdSedeModificar > 0)
                         servicioSedes.Modificar(this);
                     else
                         servicioSedes.Agregar(this);
+                    MessageBox.Show("Acción Realizada con éxito.");
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show(ex.Message);
+                    MessageBox.Show("Error: " + ex.Message);
                 }
             }
         }
@@ -249,8 +253,18 @@ namespace Slam
 
         public int IdClub
         {
-            get { return (int)CboClubes.SelectedValue; }
-            set { CboClubes.SelectedValue = value; }
+            get { return Convert.ToInt32(((DictionaryEntry)CboClubes.SelectedItem).Value); }
+            set 
+            {
+                foreach (object elemento in CboClubes.Items)
+                {
+                    if (Convert.ToInt32(((DictionaryEntry)elemento).Value) == value)
+                    {
+                        CboClubes.SelectedItem = elemento;
+                        break;
+                    }
+                }
+            }
         }
 
         public string Direccion
@@ -261,8 +275,39 @@ namespace Slam
 
         public int IdLocalidad
         {
-            get { return (int)CboLocalidades.SelectedValue; }
-            set { CboLocalidades.SelectedValue = value; }
+            get { return Convert.ToInt32(((KeyValuePair<int, string>)CboLocalidades.SelectedItem).Key); }
+            set 
+            {
+                string[] ids = servicioLocalidades.ObtenerUbicacion(value).Split(',');
+                foreach (KeyValuePair<int, string> elemento in CboPaises.Items)
+                {
+                    if (elemento.Key == int.Parse(ids[0]))
+                    {
+                        CboPaises.SelectedItem = elemento;
+                        servicioProvincias.ListarProvincias(this);
+                        break;
+                    }
+                }
+
+                foreach (KeyValuePair<int, string> elemento in CboProvincias.Items)
+                {
+                    if (elemento.Key == int.Parse(ids[1]))
+                    {
+                        CboProvincias.SelectedItem = elemento;
+                        servicioLocalidades.ListarLocalidades(this);
+                        break;
+                    }
+                }
+
+                foreach (KeyValuePair<int, string> elemento in CboLocalidades.Items)
+                {
+                    if (elemento.Key == value)
+                    {
+                        CboLocalidades.SelectedItem = elemento;
+                        break;
+                    }
+                }
+            }
         }
 
         public string Telefono
@@ -293,6 +338,26 @@ namespace Slam
         private void CboProvincias_SelectionChangeCommitted(object sender, EventArgs e)
         {
             servicioLocalidades.ListarLocalidades(this);
+        }
+
+        private void CboClubes_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = true;
+        }
+
+        private void CboPaises_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = true;
+        }
+
+        private void CboProvincias_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = true;
+        }
+
+        private void CboLocalidades_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = true;
         }
 
     }
