@@ -14,10 +14,11 @@ namespace Dominio
         /// <param name="pp">partidos perdidos</param>
         /// <param name="pg">partidos ganados</param>
         /// <param name="puntos">puntaje total en esa categoria</param>
-        public Estadisticas(Categoria categoria, int pp, int pg, int puntos)
+        /// <param name="estado">estado de las jugador en esa categoría</param>
+        public Estadisticas(Categoria categoria, int pp, int pg, int puntos, bool estado)
         {
             this.categoria = categoria; this.pp = pp; this.pg = pg;
-            this.puntaje = puntos;
+            this.puntaje = puntos; this.estado = estado;
         }
 
         Categoria categoria;
@@ -25,6 +26,7 @@ namespace Dominio
         int pg;
         int pj;
         int puntaje;
+        bool estado;
 
         public Categoria Categoria
         {
@@ -54,6 +56,12 @@ namespace Dominio
         {
             get { return puntaje; }
             set { puntaje = value; }
+        }
+
+        public bool Estado
+        {
+            get { return estado; }
+            set { estado = value; }
         }
     }
 }
