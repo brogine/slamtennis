@@ -12,7 +12,7 @@ namespace Slam
     public partial class FrmPrincipal : Form
     {
         Form Padre;
-        bool Closing = true;
+        bool CerrarPadre = true;
         FrmListaJugadores Jugadores;
         FrmListaArbitros Arbitros;
         FrmListaClubes Clubes;
@@ -25,14 +25,14 @@ namespace Slam
 
         private void TlsmiCerrarSesion_Click(object sender, EventArgs e)
         {
-        	Closing = false;
+        	CerrarPadre = false;
             this.Close();
             Padre.Show();
         }
 
         private void TlsmiSalir_Click(object sender, EventArgs e)
         {
-        	Closing = true;
+        	CerrarPadre = true;
             this.Close();
             Padre.Close();
         }
@@ -85,7 +85,7 @@ namespace Slam
 
         private void FrmPrincipal_FormClosing(object sender, FormClosingEventArgs e)
         {
-        	if (!Closing) {
+        	if (!CerrarPadre) {
         		Padre.Close();
         	}
         }
