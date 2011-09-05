@@ -74,10 +74,13 @@ namespace Slam
                     else
                         servicioSedes.Agregar(this);
                     MessageBox.Show("Acción Realizada con éxito.");
+                    this.DialogResult = DialogResult.OK;
+                    this.Close();
                 }
                 catch (Exception ex)
                 {
                     MessageBox.Show("Error: " + ex.Message);
+                    this.DialogResult = DialogResult.Abort;
                 }
             }
         }
