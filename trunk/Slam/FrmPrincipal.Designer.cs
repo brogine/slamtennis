@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmPrincipal));
             this.MsPrincipal = new System.Windows.Forms.MenuStrip();
             this.TsmiArchivo = new System.Windows.Forms.ToolStripMenuItem();
             this.TlsmiCerrarSesion = new System.Windows.Forms.ToolStripMenuItem();
@@ -124,14 +125,14 @@
             // TlsmiAdministrarClubes
             // 
             this.TlsmiAdministrarClubes.Name = "TlsmiAdministrarClubes";
-            this.TlsmiAdministrarClubes.Size = new System.Drawing.Size(152, 22);
+            this.TlsmiAdministrarClubes.Size = new System.Drawing.Size(136, 22);
             this.TlsmiAdministrarClubes.Text = "Administrar";
             this.TlsmiAdministrarClubes.Click += new System.EventHandler(this.TlsmiAdministrarClubes_Click);
             // 
             // TlsmiSedes
             // 
             this.TlsmiSedes.Name = "TlsmiSedes";
-            this.TlsmiSedes.Size = new System.Drawing.Size(152, 22);
+            this.TlsmiSedes.Size = new System.Drawing.Size(136, 22);
             this.TlsmiSedes.Text = "Sedes";
             this.TlsmiSedes.Click += new System.EventHandler(this.TlsmiSedes_Click);
             // 
@@ -153,10 +154,13 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(793, 499);
             this.Controls.Add(this.MsPrincipal);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.IsMdiContainer = true;
             this.MainMenuStrip = this.MsPrincipal;
             this.Name = "FrmPrincipal";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Slam Sistema de Gestión";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FrmPrincipal_FormClosing);
             this.MsPrincipal.ResumeLayout(false);
             this.MsPrincipal.PerformLayout();

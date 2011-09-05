@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmNuevaUbicacion));
             this.BtnCerrar = new System.Windows.Forms.Button();
             this.GbLocalidades = new System.Windows.Forms.GroupBox();
             this.CboListaLocalidades = new System.Windows.Forms.ComboBox();
@@ -158,6 +159,7 @@
             this.Controls.Add(this.GbLocalidades);
             this.Controls.Add(this.GbProvincias);
             this.Controls.Add(this.GbPaises);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FrmNuevaUbicacion";
             this.Text = "FrmNuevaUbicacion";
             this.Load += new System.EventHandler(this.FrmNuevaUbicacion_Load);

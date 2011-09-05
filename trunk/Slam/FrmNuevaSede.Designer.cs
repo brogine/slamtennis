@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmNuevaSede));
             this.CboClubes = new System.Windows.Forms.ComboBox();
             this.TxtDireccion = new System.Windows.Forms.TextBox();
             this.CboProvincias = new System.Windows.Forms.ComboBox();
@@ -258,6 +259,7 @@
             this.Controls.Add(this.CboProvincias);
             this.Controls.Add(this.TxtDireccion);
             this.Controls.Add(this.CboClubes);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FrmNuevaSede";
             this.Text = "FrmNuevaSede";
             this.Load += new System.EventHandler(this.FrmNuevaSede_Load);
