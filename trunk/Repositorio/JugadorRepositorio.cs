@@ -66,7 +66,7 @@ namespace Repositorio
                     nJugador.DniTutor = (Fila.IsNull("DniTutor") == true ? 0 : Convert.ToInt32(Fila["DniTutor"]));
                     nJugador.RelacionTutor = (Fila.IsNull("Relacion") == true ? string.Empty : Convert.ToString(Fila["Relacion"]));
                 }
-                //mapear datos de estadisticas
+                //TODO: mapear datos de estadisticas Jugador Repositorio
             }
             
             return nJugador;

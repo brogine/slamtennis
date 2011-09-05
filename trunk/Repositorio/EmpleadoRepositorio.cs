@@ -1,30 +1,43 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
-using Repositorio.Conexiones;
+
 using Dominio;
+using Repositorio.Conexiones;
 
 namespace Repositorio
 {
-    public class EmpleadoRepositorio : IEmpleadoRepositorio, IMapeador<Empleado>
+    public class EmpleadoRepositorio : PersonaRepositorio, IEmpleadoRepositorio, IMapeador<Empleado>
     {
         Conexion Conn;
         public EmpleadoRepositorio()
+        	: base()
         {
             Conn = new Conexion();
         }
 
         #region Miembros de IEmpleadoRepositorio
 
-        public void Agregar(Dominio.Empleado Empleado)
+        public void Agregar(Empleado Empleado)
         {
-            throw new NotImplementedException();
+        	base.Agregar(Empleado);
+        	string Campos = "Dni, Puesto, Estado, IdSede";
+        	string Valores = Empleado.Dni + ",'" + Empleado.Puesto + "'," + (Empleado.Estado ? 1 : 0);
+        	Valores += "," + Empleado.Sede.Id;
+        	Conn.AgregarSinId("Empleados", Campos, Valores);
         }
 
-        public void Modificar(Dominio.Empleado Empleado)
+        public void Modificar(Empleado Empleado)
         {
-            throw new NotImplementedException();
+        	base.Modificar(Empleado);
+        	string Consulta = " Update Empleados Set ";
+        	Consulta += " Puesto = '" + Empleado.Puesto + "',";
+        	Consulta += " Estado = " + (Empleado.Estado ? 1 : 0) + ",";
+        	Consulta += " IdSede = " + Empleado.Sede.Id;
+        	Consulta += " Where Dni = " + Empleado.Dni;
+        	Conn.ActualizarOEliminar(Consulta);
         }
 
         public Empleado BuscarPresidente(int IdClub)
@@ -36,14 +49,23 @@ namespace Repositorio
             return this.Buscar(DniPresidente);
         }
 
-        public Dominio.Empleado Buscar(int Dni)
+        public Empleado Buscar(int Dni)
         {
-            throw new NotImplementedException();
+            string Consulta = " Select * From Empleados e inner join Personas p ";
+            Consulta += " on e.Dni = p.Dni Where e.Dni = " + Dni;
+            return this.Mapear(Conn.Buscar(Consulta));
         }
 
-        public List<Dominio.Empleado> Listar()
+        public List<Empleado> Listar()
         {
-            throw new NotImplementedException();
+            string Consulta = " Select * From Empleados e inner join Personas p ";
+            Consulta += " on e.Dni = p.Dni ";
+            DataTable Tabla = Conn.Listar(Consulta);
+            List<Empleado> ListaEmpleados = new List<Empleado>();
+            foreach (DataRow Fila in Tabla.Rows) {
+            	ListaEmpleados.Add(this.Mapear(Fila));
+            }
+            return ListaEmpleados;
         }
 
         #endregion
@@ -55,30 +77,13 @@ namespace Repositorio
             Empleado bEmpleado = null;
             if (Fila != null)
             {
-                //Agregate Root
-
-                int Dni = (Fila.IsNull("Dni") == true ? 0 : Convert.ToInt32(Fila["Dni"]));
-                string Nombre = (Fila.IsNull("Nombre") == true ? string.Empty : Convert.ToString(Fila["Nombre"]));
-                string Apellido = (Fila.IsNull("Apellido") == true ? string.Empty : Convert.ToString(Fila["Apellido"]));
-                DateTime FechaNac = (Fila.IsNull("FechaNacimiento") == true ? DateTime.Now : Convert.ToDateTime(Fila["FechaNacimiento"]));
-                int Nacionalidad = (Fila.IsNull("Nacionalidad") == true ? 0 : Convert.ToInt32(Fila["Nacionalidad"]));
-                string Sexo = (Fila.IsNull("Sexo") == true ? string.Empty : Convert.ToString(Fila["Sexo"]));
-                bool Estado = (Fila.IsNull("Sexo") == true ? false : Convert.ToBoolean(Fila["Estado"]));
-                //Value Object Contacto
-
-                string Telefono = (Fila.IsNull("Telefono") == true ? string.Empty : Convert.ToString(Fila["Telefono"]));
-                string Celular = (Fila.IsNull("Celular") == true ? string.Empty : Convert.ToString(Fila["Celular"]));
-                string Email = (Fila.IsNull("Email") == true ? string.Empty : Convert.ToString(Fila["Email"]));
-
-                // Value Object Domicilio
-
-                int Provincia = (Fila.IsNull("Provincia") == true ? 0 : Convert.ToInt32(Fila["Provincia"]));
-                int Localidad = (Fila.IsNull("Localidad") == true ? 0 : Convert.ToInt32(Fila["Localidad"]));
-                string Domicilio = (Fila.IsNull("Domicilio") == true ? string.Empty : Convert.ToString(Fila["Domicilio"]));
-
+            	bEmpleado = new Empleado();
+            	bEmpleado = base.MapearDatosPersonales(Fila, bEmpleado) as Empleado;
+            	
                 // Datos de Empleado
-                string Puesto = (Fila.IsNull("Puesto") == true ? string.Empty : Fila["Puesto"].ToString());
-                //Sede
+                bEmpleado.Puesto = Fila.IsNull("Puesto") ? string.Empty : Fila["Puesto"].ToString();
+                ISedesRepositorio repoSedes = new SedesRepositorio();
+                bEmpleado.Sede = repoSedes.Buscar(Fila.IsNull("IdSede") ? 0 : Convert.ToInt32(Fila["IdSede"]));
             }
             return bEmpleado;
         }

@@ -7,6 +7,7 @@ namespace Dominio
 {
     public class Empleado : Persona
     {
+    	public Empleado() {}
         public Empleado(int dni, string nombre, string apellido, DateTime fechanac, Pais nacionalidad, string sexo,
             bool estado, Ubicacion ubicacion, Contacto contacto, string puesto, Sede sede)
         {
