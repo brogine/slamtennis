@@ -18,7 +18,12 @@ namespace Repositorio.Conexiones
         {
             XmlDocument doc = new XmlDocument();
             string dir = System.AppDomain.CurrentDomain.BaseDirectory;
-            doc.Load(dir + "\\Configuracion.xml");
+            try {
+            	doc.Load(dir + "\\Configuracion.xml");
+            } catch (Exception) {
+            	throw new RepositorioExeption("El archivo de Configuración no se encuentra.");
+            }
+            
             XmlNodeList ListaNodos = doc.GetElementsByTagName("config");
             XmlNode nodo = doc.GetElementsByTagName("config").Item(0);
             string nombre = nodo.Attributes["nombre"].Value;

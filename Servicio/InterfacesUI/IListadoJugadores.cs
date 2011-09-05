@@ -7,6 +7,6 @@ namespace Servicio
 {
     public interface IListadoJugadores
     {
-        List<String> Listar();
+        List<Object> Listar();
     }
 }
