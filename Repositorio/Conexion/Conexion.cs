@@ -16,6 +16,10 @@ namespace Repositorio.Conexiones
         IDbCommand Com;
         AbstractDB Db;
         CultureInfo info = CultureInfo.CurrentCulture;
+        /// <summary>
+        /// Constructor de clase Conexion. 
+        /// Instancia y establece conexion con la base de datos.
+        /// </summary>
         public Conexion()
         {
             Db = AbstractDB.GetInstance();
@@ -23,6 +27,11 @@ namespace Repositorio.Conexiones
             Db.Conectar();
         }
 
+        /// <summary>
+        /// Método que devuelve la primera fila de la respuesta de la BDD
+        /// </summary>
+        /// <param name="StrSql">Consulta Sql</param>
+        /// <returns>Fila</returns>
         public DataRow Buscar(string StrSql)
         {
             if (Cnn.State == ConnectionState.Closed)
@@ -39,6 +48,12 @@ namespace Repositorio.Conexiones
                 return null;
         }
 
+        /// <summary>
+        /// Método usado para traer muchas filas de una consulta
+        /// desde la BDD.
+        /// </summary>
+        /// <param name="StrSql">Consulta SQL</param>
+        /// <returns>Tabla con datos</returns>
         public DataTable Listar(string StrSql)
         {
             if (Cnn.State == ConnectionState.Closed)
@@ -52,6 +67,13 @@ namespace Repositorio.Conexiones
             return ds.Tables[0];
         }
 
+        /// <summary>
+        /// Agrega a la base de datos devolviendo valor autoincrementable.
+        /// </summary>
+        /// <param name="Tabla">Tabla a la que se quiere agregar</param>
+        /// <param name="Campos">Campos de la Tabla</param>
+        /// <param name="Valores">Valores para los Campos</param>
+        /// <returns>Valor autoincrementable</returns>
         public int Agregar(string Tabla, string Campos, string Valores)
         {
             if (Cnn.State == ConnectionState.Closed)
@@ -65,6 +87,12 @@ namespace Repositorio.Conexiones
             return retorno;
         }
 
+        /// <summary>
+        /// Agrega a la base de datos.
+        /// </summary>
+        /// <param name="Tabla">Tabla a la que se quiere agregar</param>
+        /// <param name="Campos">Campos de la Tabla</param>
+        /// <param name="Valores">Valores para los Campos</param>
         public void AgregarSinId(string Tabla, string Campos, string Valores)
         {
             if (Cnn.State == ConnectionState.Closed)
@@ -77,6 +105,10 @@ namespace Repositorio.Conexiones
             Thread.CurrentThread.CurrentCulture = info;
         }
 
+        /// <summary>
+        /// Actualiza o elimina uno o varios registros de la base de datos
+        /// </summary>
+        /// <param name="StrSql">Consulta SQL</param>
         public void ActualizarOEliminar(string StrSql)
         {
             if (Cnn.State == ConnectionState.Closed)

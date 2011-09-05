@@ -17,7 +17,7 @@ namespace Servicio
             Ubicacion nUbicacion;
 
             nContacto = new Contacto(UI.Telefono, UI.Celular, UI.Email);
-            //nUbicacion = new Ubicacion(UI.Provincia, UI.Localidad, UI.Domicilio);
+            //nUbicacion = new Ubicacion(UI.Localidad, UI.Domicilio);
 
             if (UI.DniTutor != null && UI.RelacionTutor != "")
             {
