@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmLogin));
             this.gbLogin = new System.Windows.Forms.GroupBox();
             this.LblOlvidoPassword = new System.Windows.Forms.LinkLabel();
             this.LblPassword = new System.Windows.Forms.Label();
@@ -137,6 +138,7 @@
             this.CancelButton = this.BtnCancelar;
             this.ClientSize = new System.Drawing.Size(386, 208);
             this.Controls.Add(this.gbLogin);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.Name = "FrmLogin";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

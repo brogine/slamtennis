@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmNuevaPersona));
             this.TcPersonas = new System.Windows.Forms.TabControl();
             this.TpDatosPersonales = new System.Windows.Forms.TabPage();
             this.BtnCancelar = new System.Windows.Forms.Button();
@@ -625,6 +626,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(679, 425);
             this.Controls.Add(this.TcPersonas);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FrmNuevaPersona";
             this.Text = "Nombre por codigo";
             this.Load += new System.EventHandler(this.FrmNuevaPersona_Load);

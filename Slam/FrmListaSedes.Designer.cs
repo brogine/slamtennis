@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmListaSedes));
             this.BtnModificar = new System.Windows.Forms.Button();
             this.BtnNueva = new System.Windows.Forms.Button();
             this.DgvSedes = new System.Windows.Forms.DataGridView();
@@ -100,6 +101,7 @@
             this.Controls.Add(this.BtnModificar);
             this.Controls.Add(this.BtnNueva);
             this.Controls.Add(this.DgvSedes);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FrmListaSedes";
             this.Text = "FrmListaSedes";
             this.Load += new System.EventHandler(this.FrmListaSedes_Load);
