@@ -16,6 +16,18 @@ namespace Dominio
         {
             this.nombre = nombre; this.estado = estado;
         }
+        
+        /// <summary>
+        /// Constructor de nuevo Club con Presidente
+        /// </summary>
+        /// <param name="presidente"></param>
+        /// <param name="nombre"></param>
+        /// <param name="estado"></param>
+        public Club(Empleado presidente, string nombre, bool estado)
+        {
+            this.presidente = presidente; this.nombre = nombre;
+            this.estado = estado;
+        }
 
         /// <summary>
         /// Constructor de Club con Presidente para búsquedas

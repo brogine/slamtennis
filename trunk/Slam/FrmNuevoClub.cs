@@ -15,9 +15,7 @@ namespace Slam
     public partial class FrmNuevoClub : Form, IClubUI
     {
         string ImplementaClubes = "ClubServicio";
-        string ImplementaEmpleados = "EmpleadoServicio";
         IClubServicio ClubServicio;
-        //IEmpleadoServicio
         int idClub = -1;
         public FrmNuevoClub()
         {
@@ -112,7 +110,7 @@ namespace Slam
 
         private void BtnComprobar_Click(object sender, EventArgs e)
         {
-
+			
         }
     }
 }

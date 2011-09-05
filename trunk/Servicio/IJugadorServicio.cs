@@ -11,5 +11,7 @@ namespace Servicio
         void Agregar(IJugadorUI UI);
 
         void Modificar(IJugadorUI UI);
+        
+        void Buscar(IJugadorUI UI);
     }
 }

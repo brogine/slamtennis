@@ -13,15 +13,18 @@ namespace Servicio.InterfacesUI
         string Apellido { get; set; }
         DateTime FechaNac { get; set; }
         List<String> DatosPorCategoria { get; } //Nombre de Categoria, pg, pp, pj, puntos
-        string Nacionalidad { get; set; }
+        int Nacionalidad { get; set; }
         string Sexo { get; set; }
         int DniTutor { get; set; }
         string RelacionTutor { get; set; }
         string Telefono { get; set; }
         string Celular { get; set; }
         string Email { get; set; }
-        string Provincia { get; set; }
-        string Localidad { get; set; }
+        int Provincia { get; set; }
+        int Localidad { get; set; }
         string Domicilio { get; set; }
+        string Usuario { get; set; }
+        string Password { get; set; }
+        bool Estado { get; set; }
     }
 }

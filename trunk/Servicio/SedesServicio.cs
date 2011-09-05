@@ -76,7 +76,7 @@ namespace Servicio
             foreach(Sede Sede in ListaSedes)
             {
                 Object objeto = new object();
-                if (UI.IdClub != null && UI.IdClub > 0)
+                if (UI.IdClub > 0)
                 {
                     if (Sede.Club.Id == UI.IdClub)
                     {
