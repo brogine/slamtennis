@@ -41,7 +41,7 @@ namespace Slam
             {
                 if (TxtUsuario.Text != string.Empty && TxtPassword.Text != string.Empty)
                 {
-
+					this.DialogResult = DialogResult.OK;
                 }
                 else
                     MessageBox.Show("Complete los datos de Login porfavor.");
@@ -56,6 +56,14 @@ namespace Slam
         {
             FrmNuevaUbicacion nUbicacion = new FrmNuevaUbicacion();
             nUbicacion.Show();
+        }
+        
+        void BtnCancelarClick(object sender, EventArgs e)
+        {
+        	GC.Collect();
+        	GC.WaitForPendingFinalizers();
+        	this.DialogResult = DialogResult.Cancel;
+        	this.Close();
         }
     }
 }
