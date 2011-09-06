@@ -18,6 +18,7 @@ namespace Dominio
 
         string puesto;
         Sede sede;
+        bool estado;
 
         public string Puesto
         {
@@ -29,6 +30,12 @@ namespace Dominio
         {
             get { return sede; }
             set { sede = value; }
+        }
+        
+        public bool Estado
+        {
+            get { return estado; }
+            set { estado = value; }
         }
     }
 }

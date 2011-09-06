@@ -57,9 +57,11 @@
     <Compile Include="Conexion\MySqlDB.cs" />
     <Compile Include="Conexion\SqlServerDB.cs" />
     <Compile Include="EmpleadoRepositorio.cs" />
+    <Compile Include="EstadisticaRepositorio.cs" />
     <Compile Include="IArbitroRepositorio.cs" />
     <Compile Include="IClubRepositorio.cs" />
     <Compile Include="IEmpleadoRepositorio.cs" />
+    <Compile Include="IEstadisticaRepositorio.cs" />
     <Compile Include="IJugadorRepositorio.cs" />
     <Compile Include="ILoginRepositorio.cs" />
     <Compile Include="IMapeador.cs" />
