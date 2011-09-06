@@ -32,13 +32,13 @@ namespace Slam
 
         private void CmbClubes_SelectionChangeCommitted(object sender, EventArgs e)
         {
-        	servicioClubes.Listar(this);
+        	
         }
 
         private void BtnNuevo_Click(object sender, EventArgs e)
         {
-            FrmNuevaPersona nuevoJugador = new FrmNuevaPersona(TipoPersona.Arbitro);
-            nuevoJugador.Show();
+            FrmNuevaPersona nuevoArbitro = new FrmNuevaPersona(TipoPersona.Arbitro);
+            nuevoArbitro.Show();
         }
 
         private void BtnModificar_Click(object sender, EventArgs e)
@@ -58,7 +58,6 @@ namespace Slam
         
 		public List<object> ListarClubes {
 			set {
-				CboClubes.Items.Add(new DictionaryEntry("Todos", "-1"));
                 foreach (Object Club in value)
                 {
                     Object[] DatosClub = Club.ToString().Split(',');
