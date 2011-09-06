@@ -45,6 +45,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Afiliacion.cs" />
     <Compile Include="Arbitro.cs" />
     <Compile Include="Categoria.cs" />
     <Compile Include="Club.cs" />
