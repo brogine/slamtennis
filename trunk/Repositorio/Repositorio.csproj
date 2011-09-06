@@ -49,6 +49,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ArbitroRepositorio.cs" />
     <Compile Include="ClubRepositorio.cs" />
     <Compile Include="Conexion\AbstractDB.cs" />
     <Compile Include="Conexion\Conexion.cs" />
@@ -56,6 +57,7 @@
     <Compile Include="Conexion\MySqlDB.cs" />
     <Compile Include="Conexion\SqlServerDB.cs" />
     <Compile Include="EmpleadoRepositorio.cs" />
+    <Compile Include="IArbitroRepositorio.cs" />
     <Compile Include="IClubRepositorio.cs" />
     <Compile Include="IEmpleadoRepositorio.cs" />
     <Compile Include="IJugadorRepositorio.cs" />
