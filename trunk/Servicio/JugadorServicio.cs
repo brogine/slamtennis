@@ -35,14 +35,14 @@ namespace Servicio
             {
                 nJugador = new Jugador(UI.Dni, UI.Nombre, UI.Apellido, UI.FechaNac,
             	    Nacionalidad, UI.Sexo, UI.DniTutor, UI.RelacionTutor,
-                    nContacto, nUbicacion);
+                    nContacto, nUbicacion, UI.Estado);
                 if (nJugador.Edad >= 18)
                     throw new ServicioExeption("Error al agregar: El jugador es mayor de edad.");
             }
             else
             {
                 nJugador = new Jugador(UI.Dni, UI.Nombre, UI.Apellido, UI.FechaNac,
-                    Nacionalidad, UI.Sexo, nContacto, nUbicacion);
+                    Nacionalidad, UI.Sexo, nContacto, nUbicacion, UI.Estado);
             }
             repoJugadores.Agregar(nJugador);
         }
