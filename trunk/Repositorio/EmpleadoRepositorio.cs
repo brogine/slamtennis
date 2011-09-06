@@ -84,6 +84,7 @@ namespace Repositorio
                 bEmpleado.Puesto = Fila.IsNull("Puesto") ? string.Empty : Fila["Puesto"].ToString();
                 ISedesRepositorio repoSedes = new SedesRepositorio();
                 bEmpleado.Sede = repoSedes.Buscar(Fila.IsNull("IdSede") ? 0 : Convert.ToInt32(Fila["IdSede"]));
+                bEmpleado.Estado = Fila.IsNull("Estado") ? false : Convert.ToBoolean(Fila["Estado"]);
             }
             return bEmpleado;
         }

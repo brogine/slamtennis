@@ -32,7 +32,7 @@ namespace Repositorio
             Valores += Persona.FechaNac + "'," + Persona.Nacionalidad.IdPais + ",'" + Persona.Sexo;
             Valores += "','" + Persona.Contacto.Telefono + "','" + Persona.Contacto.Celular;
             Valores += "','" + Persona.Contacto.Email  + "'," + Persona.Ubicacion.Localidad.IdLocalidad;
-            Valores += ",'" + Persona.Ubicacion.Domicilio + "'," + (Persona.Estado ? 1 : 0);
+            Valores += ",'" + Persona.Ubicacion.Domicilio + "'";
             Conn.AgregarSinId("Personas", Campos, Valores);
         }
 
@@ -52,8 +52,7 @@ namespace Repositorio
             Consulta += " Celular = '" + Persona.Contacto.Celular + "',";
             Consulta += " Email = '" + Persona.Contacto.Email + "',";
             Consulta += " Localidad = " + Persona.Ubicacion.Localidad.IdLocalidad + ",";
-            Consulta += " Domicilio = '" + Persona.Ubicacion.Domicilio + "',";
-            Consulta += " Estado = " + (Persona.Estado ? 1 : 0);
+            Consulta += " Domicilio = '" + Persona.Ubicacion.Domicilio + "'";
             Consulta += " Where Dni = " + Persona.Dni;
             Conn.ActualizarOEliminar(Consulta);
         }
@@ -69,7 +68,6 @@ namespace Repositorio
             Objeto.FechaNac = (Fila.IsNull("FechaNacimiento") == true ? DateTime.Now : Convert.ToDateTime(Fila["FechaNacimiento"]));
             Objeto.Nacionalidad = UbicacionRepo.ObtenerPais(Fila.IsNull("Nacionalidad") == true ? 0 : (int)Fila["Nacionalidad"]);
             Objeto.Sexo = (Fila.IsNull("Sexo") == true ? string.Empty : Convert.ToString(Fila["Sexo"]));
-            Objeto.Estado = (Fila.IsNull("Sexo") == true ? false : Convert.ToBoolean(Fila["Estado"]));
 
             //Value Object Contacto
             string Telefono = (Fila.IsNull("Telefono") == true ? string.Empty : Convert.ToString(Fila["Telefono"]));
