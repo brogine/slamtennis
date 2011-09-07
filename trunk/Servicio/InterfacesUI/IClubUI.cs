@@ -9,9 +9,7 @@ namespace Servicio.InterfacesUI
     {
         int IdClub { get; set; }
 
-        int DniPresidente { get; set; }
-
-        string NombrePresidente { set; }
+        string NombrePresidente { get; set; }
 
         string NombreClub { get; set; }
 

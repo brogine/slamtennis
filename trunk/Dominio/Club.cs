@@ -23,7 +23,7 @@ namespace Dominio
         /// <param name="presidente"></param>
         /// <param name="nombre"></param>
         /// <param name="estado"></param>
-        public Club(Empleado presidente, string nombre, bool estado)
+        public Club(string presidente, string nombre, bool estado)
         {
             this.presidente = presidente; this.nombre = nombre;
             this.estado = estado;
@@ -36,14 +36,14 @@ namespace Dominio
         /// <param name="presidente"></param>
         /// <param name="nombre"></param>
         /// <param name="estado"></param>
-        public Club(int id, Empleado presidente, string nombre, bool estado)
+        public Club(int id, string presidente, string nombre, bool estado)
         {
             this.id = id; this.presidente = presidente; this.nombre = nombre;
             this.estado = estado;
         }
 
         int id;
-        Empleado presidente;
+        string presidente;
         string nombre;
         bool estado;
         public int Id
@@ -52,7 +52,7 @@ namespace Dominio
             set { id = value; }
         }
 
-        public Empleado Presidente
+        public string Presidente
         {
             get { return presidente; }
             set { presidente = value; }

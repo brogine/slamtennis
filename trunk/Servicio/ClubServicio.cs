@@ -21,10 +21,10 @@ namespace Servicio
         {
             try {
             	Club nClub;
-            	if(UI.DniPresidente > 0)
+            	if(UI.NombrePresidente != "")
             	{
             		IEmpleadoRepositorio repoEmpleados = new EmpleadoRepositorio();
-            		nClub = new Club(repoEmpleados.Buscar(UI.DniPresidente), 
+            		nClub = new Club(UI.NombrePresidente, 
             		                 UI.NombreClub, UI.Estado);
             	}
             	else
@@ -43,7 +43,7 @@ namespace Servicio
         		mClub.Estado = UI.Estado;
         		mClub.Nombre = UI.NombreClub;
         		IEmpleadoRepositorio repoEmpleados = new EmpleadoRepositorio();
-        		mClub.Presidente = repoEmpleados.Buscar(UI.DniPresidente);
+                mClub.Presidente = UI.NombrePresidente;
         		ClubRepo.Modificar(mClub);
             } catch (Exception ex) {
             	throw new ServicioExeption(ex.Message, ex);
@@ -56,11 +56,7 @@ namespace Servicio
         		 Club bClub = ClubRepo.Buscar(UI.IdClub);
 	            UI.Estado = bClub.Estado;
 	            UI.NombreClub = bClub.Nombre;
-	            if (bClub.Presidente != null)
-	            {
-	                UI.DniPresidente = bClub.Presidente.Dni;
-	                UI.NombrePresidente = bClub.Presidente.Apellido + " " + bClub.Presidente.Nombre;
-	            }
+                UI.NombrePresidente = bClub.Presidente;
         	} catch (Exception ex) {
             	throw new ServicioExeption(ex.Message, ex);
             }
@@ -80,7 +76,7 @@ namespace Servicio
                 if(Club.Presidente == null)
                     presidente = "No está asignado";
                 else
-                    presidente = Club.Presidente.Apellido + " " + Club.Presidente.Nombre;
+                    presidente = Club.Presidente;
                 Lista.Add(Club.Id + "," + Club.Nombre + "," + presidente + "," + Club.Estado);
             }
             UI.ListarClubes = Lista;

@@ -9,27 +9,21 @@ namespace Dominio
     {
     	public Empleado() {}
         public Empleado(int dni, string nombre, string apellido, DateTime fechanac, Pais nacionalidad, string sexo,
-            bool estado, Ubicacion ubicacion, Contacto contacto, string puesto, Sede sede)
+            bool estado, Ubicacion ubicacion, Contacto contacto, string puesto)
         {
             this.Dni = dni; this.Nombre = nombre; this.Apellido = apellido; this.FechaNac = fechanac; 
             this.Nacionalidad = nacionalidad; this.Sexo = sexo; this.Estado = estado; this.Contacto = contacto; 
-            this.Ubicacion = ubicacion; this.puesto = puesto; this.sede = sede;
+            this.Ubicacion = ubicacion; this.puesto = puesto;
         }
 
         string puesto;
-        Sede sede;
+       
         bool estado;
 
         public string Puesto
         {
             get { return puesto; }
             set { puesto = value; }
-        }
-
-        public Sede Sede
-        {
-            get { return sede; }
-            set { sede = value; }
         }
         
         public bool Estado

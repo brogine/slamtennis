@@ -35,8 +35,7 @@ namespace Slam
             {
                 ChkEstado.Checked = true;
                 ChkEstado.Enabled = false;
-                TxtDniPresidente.Enabled = false;
-                BtnComprobar.Enabled = false;
+                TxtNombrePresidente.Enabled = false;
                 this.Text = "Nuevo Club";
             }
             else
@@ -69,17 +68,18 @@ namespace Slam
         {
             get
             {
-                return int.Parse(TxtDniPresidente.Text);
+                return int.Parse(TxtNombrePresidente.Text);
             }
             set
             {
-                TxtDniPresidente.Text = value.ToString();
+                TxtNombrePresidente.Text = value.ToString();
             }
         }
 
         public string NombrePresidente
         {
-            set { LblNombrePresidente.Text = value; }
+            get { return TxtNombrePresidente.Text; }
+            set { TxtNombrePresidente.Text = value; }
         }
 
         public string NombreClub
@@ -108,9 +108,5 @@ namespace Slam
 
         #endregion
 
-        private void BtnComprobar_Click(object sender, EventArgs e)
-        {
-			
-        }
     }
 }
