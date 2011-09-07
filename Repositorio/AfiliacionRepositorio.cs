@@ -8,7 +8,7 @@ using System.Data;
 
 namespace Repositorio
 {
-    class AfiliacionRepositorio:IAfiliacionRepositorio,IMapeador<Afiliacion>
+    public class AfiliacionRepositorio:IAfiliacionRepositorio,IMapeador<Afiliacion>
     {
         Conexion Conex;
        public AfiliacionRepositorio()
@@ -24,7 +24,12 @@ namespace Repositorio
 
         public void Modificar(Afiliacion Afiliacion)
         {
-            throw new NotImplementedException();
+           string Sql = "Update Empleados Set ";
+        	Sql += " FechaBaja = '" + Afiliacion.FechaBaja + "',";
+            Sql += " Estado = " + Afiliacion.Estado;
+            Sql += " where IdClub = " + Afiliacion.Club.Id;
+            Sql += " and Dni = " + Afiliacion.Jugador.Dni;
+            Conex.ActualizarOEliminar(Sql);
         }
 
         public List<Dominio.Afiliacion> Listar(Club Club)
@@ -40,9 +45,10 @@ namespace Repositorio
             return Lista;
         }
 
-        public Dominio.Afiliacion Buscar(Afiliacion Afiliacion)
+        public Afiliacion Buscar(int Dni, int IdClub)
         {
-            throw new NotImplementedException();
+            string Sql = "Select * From Afiliaciones where Dni  = " + Dni + "," + " and IdClub = " + IdClub;
+            return this.Mapear(Conex.Buscar(Sql));
         }
 
         #endregion
