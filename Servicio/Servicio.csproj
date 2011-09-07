@@ -47,11 +47,8 @@
   <ItemGroup>
     <Compile Include="AfiliacionServicio.cs" />
     <Compile Include="ClubServicio.cs" />
-<<<<<<< .mine
     <Compile Include="IAfiliacionServicio.cs" />
-=======
     <Compile Include="EstadisticasServicio.cs" />
->>>>>>> .r44
     <Compile Include="IClubServicio.cs" />
     <Compile Include="IEmpleadoServicio.cs" />
     <Compile Include="IEstadisticasServicio.cs" />
