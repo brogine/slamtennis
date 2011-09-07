@@ -20,7 +20,14 @@ namespace Dominio
             this.categoria = categoria; this.pp = pp; this.pg = pg;
             this.puntaje = puntos; this.estado = estado;
         }
+        
+        public Estadisticas(int dni, Categoria categoria, int pp, int pg, int puntos, bool estado)
+        {
+            this.dni = dni; this.categoria = categoria; this.pp = pp; this.pg = pg;
+            this.puntaje = puntos; this.estado = estado;
+        }
 
+        int dni;
         Categoria categoria;
         int pp;
         int pg;
@@ -28,6 +35,11 @@ namespace Dominio
         int puntaje;
         bool estado;
 
+        public int Dni{
+        	get { return dni; } 
+        	set { dni = value; }
+        }
+        
         public Categoria Categoria
         {
             get { return categoria; }

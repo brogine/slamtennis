@@ -22,6 +22,8 @@ namespace Repositorio
 		
 		Estadisticas Buscar(int Dni, int IdCategoria);
 		
-		List<Estadisticas> Listar(int Dni);
+		List<Estadisticas> ListarPorDni(int Dni);
+		
+		List<Estadisticas> ListarPorCategoria(int IdCategoria);
 	}
 }

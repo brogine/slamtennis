@@ -82,6 +82,7 @@
         	this.TxtUsuario = new System.Windows.Forms.TextBox();
         	this.LblUsuario = new System.Windows.Forms.Label();
         	this.TpStats = new System.Windows.Forms.TabPage();
+        	this.LblNombreCategoria = new System.Windows.Forms.Label();
         	this.DgvStats = new System.Windows.Forms.DataGridView();
         	this.TcPersonas.SuspendLayout();
         	this.TpDatosPersonales.SuspendLayout();
@@ -106,6 +107,7 @@
         	this.TcPersonas.SelectedIndex = 0;
         	this.TcPersonas.Size = new System.Drawing.Size(663, 410);
         	this.TcPersonas.TabIndex = 0;
+        	this.TcPersonas.SelectedIndexChanged += new System.EventHandler(this.TcPersonasSelectedIndexChanged);
         	// 
         	// TpDatosPersonales
         	// 
@@ -604,6 +606,7 @@
         	// 
         	// TpStats
         	// 
+        	this.TpStats.Controls.Add(this.LblNombreCategoria);
         	this.TpStats.Controls.Add(this.DgvStats);
         	this.TpStats.Location = new System.Drawing.Point(4, 22);
         	this.TpStats.Name = "TpStats";
@@ -613,10 +616,18 @@
         	this.TpStats.Text = "Stats";
         	this.TpStats.UseVisualStyleBackColor = true;
         	// 
+        	// LblNombreCategoria
+        	// 
+        	this.LblNombreCategoria.Location = new System.Drawing.Point(26, 11);
+        	this.LblNombreCategoria.Name = "LblNombreCategoria";
+        	this.LblNombreCategoria.Size = new System.Drawing.Size(295, 23);
+        	this.LblNombreCategoria.TabIndex = 1;
+        	this.LblNombreCategoria.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+        	// 
         	// DgvStats
         	// 
         	this.DgvStats.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-        	this.DgvStats.Location = new System.Drawing.Point(25, 19);
+        	this.DgvStats.Location = new System.Drawing.Point(26, 40);
         	this.DgvStats.Name = "DgvStats";
         	this.DgvStats.Size = new System.Drawing.Size(600, 306);
         	this.DgvStats.TabIndex = 0;
@@ -650,6 +661,7 @@
         	((System.ComponentModel.ISupportInitialize)(this.DgvStats)).EndInit();
         	this.ResumeLayout(false);
         }
+        private System.Windows.Forms.Label LblNombreCategoria;
 
         #endregion
 

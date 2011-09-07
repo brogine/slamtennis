@@ -7,10 +7,16 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 
+using ApplicationContext;
+using Servicio;
+using Servicio.InterfacesUI;
+
 namespace Slam
 {
-    public partial class FrmNuevaPersona : Form
+    public partial class FrmNuevaPersona : Form, IListadoEstadisticasDni
     {
+    	string ImplementaEstadisticas = "EstadisticasServicio";
+    	IListadoEstadisticasServicio servicioEstadisticas;
         TipoPersona Tipo;
         public FrmNuevaPersona(TipoPersona _Tipo)
         {
@@ -26,6 +32,7 @@ namespace Slam
 
         private void FrmNuevaPersona_Load(object sender, EventArgs e)
         {
+        	servicioEstadisticas = (IListadoEstadisticasServicio)AppContext.Instance.GetObject(ImplementaEstadisticas);
             if (Tipo == TipoPersona.Empleado)
                 TpStats.Parent = null;
             this.Text = "Nueva/o " + Tipo.ToString();
@@ -65,5 +72,42 @@ namespace Slam
         	this.DialogResult = DialogResult.Cancel;
         	this.Close();
         }
+        
+        void TcPersonasSelectedIndexChanged(object sender, EventArgs e)
+        {
+        	if(TcPersonas.SelectedIndex == 2) {
+        		if(TxtDni.Text != "")
+        			servicioEstadisticas.ListarPorDni(this);
+        		else
+        			MessageBox.Show("Debe buscar un Jugador para ver sus estadísticas.");
+        	}
+        }
+    	
+		public List<object> ListarEstadisticas {
+			set {
+        		LblNombreCategoria.Text = "";
+        		if(DgvStats.ColumnCount > 0)
+        			DgvStats.Columns.Clear();
+        		DgvStats.Columns.Add("pj", "Partidos Jugados");
+        		DgvStats.Columns.Add("pg", "Partidos Ganados");
+        		DgvStats.Columns.Add("pp", "Partidos Perdidos");
+        		DgvStats.Columns.Add("puntos", "Puntos");
+        		if(DgvStats.RowCount > 0)
+        			DgvStats.Rows.Clear();
+        		foreach (object estadistica in value) {
+        			object[] estadisticas = estadistica.ToString().Split(',');
+        			DgvStats.Rows.Add(estadisticas[0], estadisticas[1], estadisticas[2],
+        			                  estadisticas[3]);
+        			if(LblNombreCategoria.Text == "")
+        				LblNombreCategoria.Text = estadisticas[4].ToString();
+        		}
+			}
+		}
+    	
+		public int DniJugador {
+			get {
+        		return int.Parse(TxtDni.Text);
+			}
+		}
     }
 }
