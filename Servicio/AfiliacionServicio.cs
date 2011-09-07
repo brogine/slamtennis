@@ -65,7 +65,7 @@ namespace Servicio
                 Objeto = Afiliacion.Jugador.Dni + " , ";
                 Objeto += Afiliacion.Jugador.Apellido + " " + Afiliacion.Jugador.Nombre+" , ";
                 Objeto += Afiliacion.FechaAlta.ToShortDateString();
-                
+                ListaObjeto.Add(Objeto);
             }
             UI.ListaAfiliaciones = ListaObjeto;
             
