@@ -27,7 +27,7 @@ namespace Repositorio
         public void Modificar(Dominio.Club Club)
         {
             string Sql = " Update Clubes Set Nombre = '" + Club.Nombre + "'," + 
-                " DniPresidente = " + Club.Presidente.Dni + ", Estado = " + 
+                " Presidente = '" + Club.Presidente + "', Estado = " + 
                 (Club.Estado ? 1 : 0);
             Conn.ActualizarOEliminar(Sql);
         }
@@ -62,8 +62,7 @@ namespace Repositorio
                 EmpleadoRepositorio EmpleadoRepo = new EmpleadoRepositorio();
                 int Id = (Fila.IsNull("IdClub") == true ? 0 : Convert.ToInt32(Fila["IdClub"]));
                 string Nombre = (Fila.IsNull("Nombre") == true ? string.Empty : Fila["Nombre"].ToString());
-                Empleado Presidente = (Fila.IsNull("DniPresidente") == true ? null :
-                    EmpleadoRepo.Buscar(Convert.ToInt32(Fila["DniPresidente"])));
+                string Presidente = (Fila.IsNull("Presidente") == true ? string.Empty:Fila["DniPresidente"].ToString());
                 bool Estado = (Fila.IsNull("Estado") == true ? false : Convert.ToBoolean(Fila["Estado"]));
                 nClub = new Club(Id, Presidente, Nombre, Estado);
             }

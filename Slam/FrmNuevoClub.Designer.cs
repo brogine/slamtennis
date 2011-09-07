@@ -32,9 +32,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.TxtNombreClub = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.LblNombrePresidente = new System.Windows.Forms.Label();
-            this.BtnComprobar = new System.Windows.Forms.Button();
-            this.TxtDniPresidente = new System.Windows.Forms.MaskedTextBox();
+            this.TxtNombrePresidente = new System.Windows.Forms.MaskedTextBox();
             this.ChkEstado = new System.Windows.Forms.CheckBox();
             this.BtnGuardar = new System.Windows.Forms.Button();
             this.SuspendLayout();
@@ -60,36 +58,17 @@
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(12, 50);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(144, 13);
+            this.label2.Size = new System.Drawing.Size(166, 13);
             this.label2.TabIndex = 2;
-            this.label2.Text = "Ingrese el Dni Del Presidente";
+            this.label2.Text = "Ingrese El Nombre Del Presidente";
             // 
-            // LblNombrePresidente
+            // TxtNombrePresidente
             // 
-            this.LblNombrePresidente.AutoSize = true;
-            this.LblNombrePresidente.Location = new System.Drawing.Point(12, 76);
-            this.LblNombrePresidente.Name = "LblNombrePresidente";
-            this.LblNombrePresidente.Size = new System.Drawing.Size(0, 13);
-            this.LblNombrePresidente.TabIndex = 3;
-            // 
-            // BtnComprobar
-            // 
-            this.BtnComprobar.Location = new System.Drawing.Point(265, 44);
-            this.BtnComprobar.Name = "BtnComprobar";
-            this.BtnComprobar.Size = new System.Drawing.Size(116, 23);
-            this.BtnComprobar.TabIndex = 4;
-            this.BtnComprobar.Text = "Comprobar Nombre";
-            this.BtnComprobar.UseVisualStyleBackColor = true;
-            this.BtnComprobar.Click += new System.EventHandler(this.BtnComprobar_Click);
-            // 
-            // TxtDniPresidente
-            // 
-            this.TxtDniPresidente.Location = new System.Drawing.Point(162, 47);
-            this.TxtDniPresidente.Mask = "00.000.000";
-            this.TxtDniPresidente.Name = "TxtDniPresidente";
-            this.TxtDniPresidente.Size = new System.Drawing.Size(100, 20);
-            this.TxtDniPresidente.TabIndex = 5;
-            this.TxtDniPresidente.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.TxtNombrePresidente.Location = new System.Drawing.Point(184, 43);
+            this.TxtNombrePresidente.Name = "TxtNombrePresidente";
+            this.TxtNombrePresidente.Size = new System.Drawing.Size(197, 20);
+            this.TxtNombrePresidente.TabIndex = 5;
+            this.TxtNombrePresidente.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // ChkEstado
             // 
@@ -119,9 +98,7 @@
             this.ClientSize = new System.Drawing.Size(394, 128);
             this.Controls.Add(this.BtnGuardar);
             this.Controls.Add(this.ChkEstado);
-            this.Controls.Add(this.TxtDniPresidente);
-            this.Controls.Add(this.BtnComprobar);
-            this.Controls.Add(this.LblNombrePresidente);
+            this.Controls.Add(this.TxtNombrePresidente);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.TxtNombreClub);
             this.Controls.Add(this.label1);
@@ -139,9 +116,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox TxtNombreClub;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label LblNombrePresidente;
-        private System.Windows.Forms.Button BtnComprobar;
-        private System.Windows.Forms.MaskedTextBox TxtDniPresidente;
+        private System.Windows.Forms.MaskedTextBox TxtNombrePresidente;
         private System.Windows.Forms.CheckBox ChkEstado;
         private System.Windows.Forms.Button BtnGuardar;
     }
