@@ -34,7 +34,7 @@ namespace Repositorio
             string Consulta = " Select * From Personas Where Dni = " + Dni;
             IEstadisticaRepositorio repoEstadisticas = new EstadisticaRepositorio();
             Jugador bJugador = this.Mapear(Conn.Buscar(Consulta));
-            bJugador.Estadisticas = repoEstadisticas.Listar(Dni);
+            bJugador.Estadisticas = repoEstadisticas.ListarPorDni(Dni);
             return bJugador;
         }
 
@@ -46,7 +46,7 @@ namespace Repositorio
         	DataTable Tabla = Conn.Listar(Consulta);
         	foreach (DataRow Fila in Tabla.Rows) {
         		Jugador Jugador = this.Mapear(Fila);
-        		Jugador.Estadisticas = repoEstadisticas.Listar(Jugador.Dni);
+        		Jugador.Estadisticas = repoEstadisticas.ListarPorDni(Jugador.Dni);
         		ListaJugadores.Add(Jugador);
         	}
         	return ListaJugadores;

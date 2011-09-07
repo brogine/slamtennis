@@ -41,8 +41,18 @@ namespace Repositorio
     		return this.Mapear(Conn.Buscar(Consulta));
     	}
     	
-    	public List<Estadisticas> Listar(int Dni){
+    	public List<Estadisticas> ListarPorDni(int Dni){
     		string Consulta = " Select * From JugadorCategoria Where Dni = " + Dni;
+    		List<Estadisticas> ListaEstadisticas = new List<Estadisticas>();
+    		DataTable Tabla = Conn.Listar(Consulta);
+    		foreach (DataRow Fila in Tabla.Rows) {
+    			ListaEstadisticas.Add(this.Mapear(Fila));
+    		}
+    		return ListaEstadisticas;
+    	}
+    	
+    	public List<Estadisticas> ListarPorCategoria(int IdCategoria){
+    		string Consulta = " Select * From JugadorCategoria Where IdCategoria = " + IdCategoria;
     		List<Estadisticas> ListaEstadisticas = new List<Estadisticas>();
     		DataTable Tabla = Conn.Listar(Consulta);
     		foreach (DataRow Fila in Tabla.Rows) {
@@ -62,6 +72,7 @@ namespace Repositorio
             {
                 //Categoria repo 
                 Categoria bCategoria = null; //TODO: Traer categoria por repo
+                int Dni = Fila.IsNull("Dni") ? 0 : Convert.ToInt32(Fila["Dni"]);
                 int PartidosPerdidos = Fila.IsNull("PartidosPerdidos") ? 0 : Convert.ToInt32(Fila["PartidosPerdidos"]);
                 int PartidosGanados = Fila.IsNull("PartidosGanados") ? 0 : Convert.ToInt32(Fila["PartidosGanados"]);
                 int Puntos = Fila.IsNull("Puntos") ? 0 : Convert.ToInt32(Fila["Puntos"]);
