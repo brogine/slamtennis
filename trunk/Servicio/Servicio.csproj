@@ -45,20 +45,28 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AfiliacionServicio.cs" />
     <Compile Include="ClubServicio.cs" />
+<<<<<<< .mine
+    <Compile Include="IAfiliacionServicio.cs" />
+=======
     <Compile Include="EstadisticasServicio.cs" />
+>>>>>>> .r44
     <Compile Include="IClubServicio.cs" />
     <Compile Include="IEmpleadoServicio.cs" />
     <Compile Include="IEstadisticasServicio.cs" />
     <Compile Include="IJugadorServicio.cs" />
+    <Compile Include="IListadoAfiliacionServicio.cs" />
     <Compile Include="IListadoClubServicio.cs" />
     <Compile Include="IListadoEstadisticasServicio.cs" />
     <Compile Include="IListadoSedesServicio.cs" />
     <Compile Include="ILocalidadServicio.cs" />
     <Compile Include="ILoginServicio.cs" />
+    <Compile Include="InterfacesUI\IAfiliacionUI.cs" />
     <Compile Include="InterfacesUI\IClubUI.cs" />
     <Compile Include="InterfacesUI\IEstadisticasUI.cs" />
     <Compile Include="InterfacesUI\IJugadorUI.cs" />
+    <Compile Include="InterfacesUI\IlistadoAfiliaciones.cs" />
     <Compile Include="InterfacesUI\IListadoClubes.cs" />
     <Compile Include="InterfacesUI\IListadoEstadisticasCategoria.cs" />
     <Compile Include="InterfacesUI\IListadoEstadisticasDni.cs" />

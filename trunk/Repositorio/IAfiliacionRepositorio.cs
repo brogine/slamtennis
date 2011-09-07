@@ -11,6 +11,6 @@ namespace Repositorio
        void Agregar(Afiliacion Afiliacion);
        void Modificar(Afiliacion Afiliacion);
        List<Afiliacion> Listar(Club Club);
-       Afiliacion Buscar(Afiliacion Afiliacion);
+       Afiliacion Buscar(int Dni, int IdClub);
     }
 }
