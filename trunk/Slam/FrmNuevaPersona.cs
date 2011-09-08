@@ -32,9 +32,13 @@ namespace Slam
 
         private void FrmNuevaPersona_Load(object sender, EventArgs e)
         {
-        	servicioEstadisticas = (IListadoEstadisticasServicio)AppContext.Instance.GetObject(ImplementaEstadisticas);
             if (Tipo == TipoPersona.Empleado)
                 TpStats.Parent = null;
+            else{
+            	LblPuesto.Visible = false;
+            	TxtPuesto.Visible = false;
+            	servicioEstadisticas = (IListadoEstadisticasServicio)AppContext.Instance.GetObject(ImplementaEstadisticas);
+            }
             this.Text = "Nueva/o " + Tipo.ToString();
         }
 

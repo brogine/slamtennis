@@ -35,7 +35,6 @@ namespace Slam
             {
                 ChkEstado.Checked = true;
                 ChkEstado.Enabled = false;
-                TxtNombrePresidente.Enabled = false;
                 this.Text = "Nuevo Club";
             }
             else
@@ -48,6 +47,7 @@ namespace Slam
         private void BtnGuardar_Click(object sender, EventArgs e)
         {
             ClubServicio.Agregar(this);
+            this.DialogResult= DialogResult.OK;
         }
 
         #region Miembros de IClubUI

@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Servicio.InterfacesUI
 {
-    interface IListadoEmpleados
+    public interface IListadoEmpleados
     {
         List<Object> ListaEmpleados { set; }
 

@@ -20,8 +20,8 @@ namespace Repositorio
 
         public int Agregar(Dominio.Club Club)
         {
-            return Conn.Agregar("Clubes", "Nombre, Estado",
-                "'" + Club.Nombre + "'," + (Club.Estado ? 1 : 0));
+            return Conn.Agregar("Clubes", "Presidente, Nombre, Estado", "'" + Club.Presidente + 
+        	                    "','" + Club.Nombre + "'," + (Club.Estado ? 1 : 0));
         }
 
         public void Modificar(Dominio.Club Club)
@@ -62,7 +62,7 @@ namespace Repositorio
                 EmpleadoRepositorio EmpleadoRepo = new EmpleadoRepositorio();
                 int Id = (Fila.IsNull("IdClub") == true ? 0 : Convert.ToInt32(Fila["IdClub"]));
                 string Nombre = (Fila.IsNull("Nombre") == true ? string.Empty : Fila["Nombre"].ToString());
-                string Presidente = (Fila.IsNull("Presidente") == true ? string.Empty:Fila["DniPresidente"].ToString());
+                string Presidente = (Fila.IsNull("Presidente") == true ? string.Empty:Fila["Presidente"].ToString());
                 bool Estado = (Fila.IsNull("Estado") == true ? false : Convert.ToBoolean(Fila["Estado"]));
                 nClub = new Club(Id, Presidente, Nombre, Estado);
             }

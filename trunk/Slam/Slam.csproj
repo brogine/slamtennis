@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="3.5" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -34,7 +34,6 @@
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
     <BootstrapperEnabled>true</BootstrapperEnabled>
-
     <SignAssembly>False</SignAssembly>
     <DelaySign>False</DelaySign>
     <RunPostBuildEvent>OnBuildSuccess</RunPostBuildEvent>
@@ -42,7 +41,6 @@
     <NoStdLib>False</NoStdLib>
     <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
     <RunCodeAnalysis>False</RunCodeAnalysis>
-
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -110,6 +108,10 @@
     <Compile Include="FrmListaClubes.designer.cs">
       <DependentUpon>FrmListaClubes.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmListaEmpleados.cs" />
+    <Compile Include="FrmListaEmpleados.Designer.cs">
+      <DependentUpon>FrmListaEmpleados.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmListaJugadores.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -165,6 +167,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FrmListaClubes.resx">
       <DependentUpon>FrmListaClubes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmListaEmpleados.resx">
+      <DependentUpon>FrmListaEmpleados.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmListaJugadores.resx">
       <DependentUpon>FrmListaJugadores.cs</DependentUpon>
