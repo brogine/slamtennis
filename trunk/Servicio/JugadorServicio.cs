@@ -8,14 +8,12 @@ using Repositorio;
 
 namespace Servicio
 {
-    public class JugadorServicio : IJugadorServicio, IListadoJugadores
+    public class JugadorServicio : IJugadorServicio, IListadoJugadoresServicio
     {
     	IJugadorRepositorio repoJugadores;
     	public JugadorServicio()
     	{
     		repoJugadores = new JugadorRepositorio();
-    		//TODO: Datos por categoria en jugador Servicio
-    		//TODO: Listar Jugador Servicio
     	}
     	
         #region Miembros de IJugadorServicio
@@ -88,14 +86,43 @@ namespace Servicio
 
         #endregion
 
+
+
+
         #region Miembros de IListadoJugadores
 
-        public List<Object> Listar()
+        public List<object> Listar()
         {
             throw new NotImplementedException();
         }
 
+        public int IdClub
+        {
+            get { throw new NotImplementedException(); }
+        }
+
         #endregion
-        
+
+        #region Miembros de IListadoJugadoresServicio
+
+        public List<object> ListarJugadores(IListadoJugadores UI)
+        {
+            List<Jugador> ListaJuga= repoJugadores.Listar(UI.IdClub);
+            List<object> ListaUI = new List<object>();
+            IUbicacionRepositorio UbicaRepo = new UbicacionRepositorio();
+            foreach (Jugador Juga in ListaJuga)
+            {
+                object Objeto = new object();
+                Objeto = Juga.Dni+",";
+                Objeto += Juga.Apellido + " " + Juga.Nombre+",";
+                Objeto += Juga.FechaNac + ",";
+                Objeto += Juga.Nacionalidad.Nombre + ",";
+                Objeto += Juga.Sexo;
+                ListaUI.Add(Objeto);
+            }
+            return ListaUI;
+        }
+
+        #endregion
     }
 }

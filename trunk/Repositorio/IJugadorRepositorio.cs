@@ -14,6 +14,6 @@ namespace Repositorio
 
         Jugador Buscar(int Dni);
 
-        List<Jugador> Listar();
+        List<Jugador> Listar(int IdClub);
     }
 }

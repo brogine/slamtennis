@@ -47,7 +47,6 @@
   <ItemGroup>
     <Compile Include="AfiliacionServicio.cs" />
     <Compile Include="ClubServicio.cs" />
-    <Compile Include="EmpleadoServicio.cs" />
     <Compile Include="IAfiliacionServicio.cs" />
     <Compile Include="EstadisticasServicio.cs" />
     <Compile Include="IClubServicio.cs" />
@@ -58,6 +57,7 @@
     <Compile Include="IListadoClubServicio.cs" />
     <Compile Include="IListadoEmpleadoServicio.cs" />
     <Compile Include="IListadoEstadisticasServicio.cs" />
+    <Compile Include="IListadoJugadoresServicio.cs" />
     <Compile Include="IListadoSedesServicio.cs" />
     <Compile Include="ILocalidadServicio.cs" />
     <Compile Include="ILoginServicio.cs" />

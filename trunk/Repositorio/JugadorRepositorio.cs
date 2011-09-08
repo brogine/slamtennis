@@ -40,7 +40,10 @@ namespace Repositorio
 
         public List<Jugador> Listar(int IdClub)
         {
-        	string Consulta = " Select * From Personas";
+        	string Consulta = " select P.Dni,P.Nombre,P.Apellido,P.FechaNacimiento,p.Nacionalidad,p.Sexo";
+            Consulta += " from JugadorCategoria J inner join Afiliaciones A ";
+            Consulta += " on j.Dni=a.Dni inner join Personas P on P.Dni=J.Dni ";
+            Consulta += " where a.IdClub= " + IdClub;
         	List<Jugador> ListaJugadores = new List<Jugador>();
         	IEstadisticaRepositorio repoEstadisticas = new EstadisticaRepositorio();
         	DataTable Tabla = Conn.Listar(Consulta);
