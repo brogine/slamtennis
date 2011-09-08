@@ -8,13 +8,14 @@ using Servicio.InterfacesUI;
 
 namespace Servicio
 {
-    class EmpleadoServicio:IEmpleadoServicio,IListadoEmpleadoServicio
+    public class EmpleadoServicio : IEmpleadoServicio, IListadoEmpleadoServicio
     {
         IEmpleadoRepositorio EmpleadoRepo;
         public EmpleadoServicio()
         {
             EmpleadoRepo = new EmpleadoRepositorio();
         }
+        
         #region Miembros de IEmpleadoServicio
 
 
@@ -28,19 +29,17 @@ namespace Servicio
             EmpleadoRepo.Agregar(Emp);
         }
 
-        public void Modificar()
+        public void Modificar(IEmpleadoUI UI)
         {
             throw new NotImplementedException();
         }
 
-        public void Buscar()
+        public void Buscar(IEmpleadoUI UI)
         {
             throw new NotImplementedException();
         }
 
         #endregion
-
-
 
         #region Miembros de IListadoEmpleadoServicio
 
@@ -60,5 +59,6 @@ namespace Servicio
         }
 
         #endregion
+        
     }
 }

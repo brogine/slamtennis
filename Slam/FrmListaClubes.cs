@@ -30,7 +30,8 @@ namespace Slam
         private void BtnNuevo_Click(object sender, EventArgs e)
         {
             FrmNuevoClub NuevoClub = new FrmNuevoClub();
-            NuevoClub.Show();
+            if(NuevoClub.ShowDialog() == DialogResult.OK)
+            	ClubServicio.Listar(this);
         }
 
         private void BtnModificar_Click(object sender, EventArgs e)

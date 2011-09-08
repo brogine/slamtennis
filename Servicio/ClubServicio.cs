@@ -21,14 +21,8 @@ namespace Servicio
         {
             try {
             	Club nClub;
-            	if(UI.NombrePresidente != "")
-            	{
-            		IEmpleadoRepositorio repoEmpleados = new EmpleadoRepositorio();
-            		nClub = new Club(UI.NombrePresidente, 
+            	nClub = new Club(UI.NombrePresidente, 
             		                 UI.NombreClub, UI.Estado);
-            	}
-            	else
-                	nClub = new Club(UI.NombreClub, UI.Estado);
                 ClubRepo.Agregar(nClub);
             }
             catch (Exception ex) {
