@@ -8,5 +8,6 @@ namespace Servicio
     public interface IListadoJugadores
     {
         List<Object> Listar();
+        int IdClub { get; }
     }
 }
