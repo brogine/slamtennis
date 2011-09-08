@@ -17,6 +17,7 @@ namespace Slam
         FrmListaArbitros Arbitros;
         FrmListaClubes Clubes;
         FrmListaSedes Sedes;
+        FrmListaEmpleados Empleados;
         public FrmPrincipal(Form _Padre)
         {
             InitializeComponent();
@@ -88,6 +89,17 @@ namespace Slam
         	if (!CerrarPadre) {
         		Padre.Close();
         	}
+        }
+        
+        void TlsmiEmpleadosClick(object sender, EventArgs e)
+        {
+        	if (Empleados == null || Empleados.IsDisposed) {
+        		Empleados = new FrmListaEmpleados();
+	            Empleados.MdiParent = this;
+	            Empleados.Show();
+        	}
+            else
+            	Empleados.BringToFront();
         }
     }
 }

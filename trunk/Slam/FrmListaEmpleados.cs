@@ -30,6 +30,7 @@ namespace Slam
 		void FrmListaEmpleadosLoad(object sender, EventArgs e)
 		{
 			servicioEmpleados = (IListadoEmpleadoServicio)AppContext.Instance.GetObject(ImplementaEmpleados);
+			servicioEmpleados.ListarEmpleados(this);
 		}
 		
 		void BtnNuevoClick(object sender, EventArgs e)
@@ -41,10 +42,14 @@ namespace Slam
 		
 		void BtnModificarClick(object sender, EventArgs e)
 		{
-			FrmNuevaPersona modificarEmpleado = new FrmNuevaPersona(TipoPersona.Empleado,
-			                (int)DgvEmpleados.SelectedRows[0].Cells["Dni"].Value);
-			if(modificarEmpleado.ShowDialog() == DialogResult.OK)
-				servicioEmpleados.ListarEmpleados(this);
+			if(DgvEmpleados.SelectedRows.Count == 1)
+			{
+				int dni = Convert.ToInt32(DgvEmpleados.SelectedRows[0].Cells["Dni"].Value);
+				FrmNuevaPersona modificarEmpleado = new FrmNuevaPersona(TipoPersona.Empleado,
+				                dni);
+				if(modificarEmpleado.ShowDialog() == DialogResult.OK)
+					servicioEmpleados.ListarEmpleados(this);
+			}
 		}
 		
 		public System.Collections.Generic.List<object> ListaEmpleados {

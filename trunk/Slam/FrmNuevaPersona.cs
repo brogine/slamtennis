@@ -13,11 +13,18 @@ using Servicio.InterfacesUI;
 
 namespace Slam
 {
-    public partial class FrmNuevaPersona : Form, IListadoEstadisticasDni
+    public partial class FrmNuevaPersona : Form, IListadoEstadisticasDni, IEmpleadoUI
     {
     	string ImplementaEstadisticas = "EstadisticasServicio";
+        string ImplementaJugadores = "JugadorServicio";
+        string ImplementaEmpleados = "EmpleadoServicio";
+        string ImplementaArbitros = "ArbitroServicio";
     	IListadoEstadisticasServicio servicioEstadisticas;
+        IJugadorServicio servicioJugadores;
+        IEmpleadoServicio servicioEmpleados;
+        
         TipoPersona Tipo;
+        int Dni;
         public FrmNuevaPersona(TipoPersona _Tipo)
         {
             InitializeComponent();
@@ -28,10 +35,25 @@ namespace Slam
         {
             InitializeComponent();
             Tipo = _Tipo;
+            Dni = _Dni;
         }
 
         private void FrmNuevaPersona_Load(object sender, EventArgs e)
         {
+            if (Dni > 0)
+            {
+                switch (Tipo)
+                {
+                    case TipoPersona.Arbitro:
+                        break;
+                    case TipoPersona.Empleado:
+                        servicioEmpleados = (IEmpleadoServicio)AppContext.Instance.GetObject(ImplementaEmpleados);
+                        servicioEmpleados.Buscar(this);
+                        break;
+                    case TipoPersona.Jugador:
+                        break;
+                }
+            }
             if (Tipo == TipoPersona.Empleado)
                 TpStats.Parent = null;
             else{
@@ -113,5 +135,219 @@ namespace Slam
         		return int.Parse(TxtDni.Text);
 			}
 		}
+
+        #region Miembros de IEmpleadoUI
+
+        int IEmpleadoUI.Dni
+        {
+            get
+            {
+                return int.Parse(TxtDni.Text);
+            }
+            set
+            {
+                TxtDni.Text = value.ToString();
+            }
+        }
+
+        public string Nombre
+        {
+            get
+            {
+                return TxtNombre.Text;
+            }
+            set
+            {
+                TxtNombre.Text = value;
+            }
+        }
+
+        public string Apellido
+        {
+            get
+            {
+                return TxtApellido.Text;
+            }
+            set
+            {
+                TxtApellido.Text = value;
+            }
+        }
+
+        public DateTime FechaNac
+        {
+            get
+            {
+                return DtpFechaNac.Value;
+            }
+            set
+            {
+                DtpFechaNac.Value = value;
+            }
+        }
+
+        public int Nacionalidad
+        {
+            get
+            {
+                return (int)CboNacionalidad.SelectedValue;
+            }
+            set
+            {
+                CboNacionalidad.SelectedValue = value;
+            }
+        }
+
+        public string Sexo
+        {
+            get
+            {
+                if (RbMasculino.Checked)
+                    return "Masculino";
+                else
+                    return "Femenino";
+            }
+            set
+            {
+                if (value == "Femenino")
+                    RbFemenino.Checked = true;
+                else
+                    RbMasculino.Checked = true;
+            }
+        }
+
+        public int DniTutor
+        {
+            get
+            {
+                return int.Parse(TxtDniTutor.Text);
+            }
+            set
+            {
+                TxtDniTutor.Text = value.ToString();
+            }
+        }
+
+        public string Puesto
+        {
+            get
+            {
+                return TxtPuesto.Text;
+            }
+            set
+            {
+                TxtPuesto.Text = value;
+            }
+        }
+
+        public string Telefono
+        {
+            get
+            {
+                return TxtTelefono.Text;
+            }
+            set
+            {
+                TxtTelefono.Text = value;
+            }
+        }
+
+        public string Celular
+        {
+            get
+            {
+                return TxtCelular.Text;
+            }
+            set
+            {
+                TxtCelular.Text = value;
+            }
+        }
+
+        public string Email
+        {
+            get
+            {
+                return TxtEmail.Text;
+            }
+            set
+            {
+                TxtEmail.Text = value;
+            }
+        }
+
+        public int Provincia
+        {
+            get
+            {
+                return (int)CboProvincia.SelectedValue;
+            }
+            set
+            {
+                CboProvincia.SelectedValue = value;
+            }
+        }
+
+        public int Localidad
+        {
+            get
+            {
+                return (int)CboLocalidades.SelectedValue;
+            }
+            set
+            {
+                CboLocalidades.SelectedValue = value;
+            }
+        }
+
+        public string Domicilio
+        {
+            get
+            {
+                return TxtDomicilio.Text;
+            }
+            set
+            {
+                TxtDomicilio.Text = value;
+            }
+        }
+
+        public string Usuario
+        {
+            get
+            {
+                return TxtUsuario.Text;
+            }
+            set
+            {
+                TxtUsuario.Text = value;
+            }
+        }
+
+        public string Password
+        {
+            get
+            {
+                return TxtPassword.Text;
+            }
+            set
+            {
+                TxtPassword.Text = value;
+            }
+        }
+
+        public bool Estado
+        {
+            get
+            {
+                return ChkEstado.Checked;
+            }
+            set
+            {
+                ChkEstado.Checked = value;
+            }
+        }
+
+        #endregion
     }
 }
