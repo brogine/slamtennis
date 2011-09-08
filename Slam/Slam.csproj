@@ -108,7 +108,9 @@
     <Compile Include="FrmListaClubes.designer.cs">
       <DependentUpon>FrmListaClubes.cs</DependentUpon>
     </Compile>
-    <Compile Include="FrmListaEmpleados.cs" />
+    <Compile Include="FrmListaEmpleados.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="FrmListaEmpleados.Designer.cs">
       <DependentUpon>FrmListaEmpleados.cs</DependentUpon>
     </Compile>

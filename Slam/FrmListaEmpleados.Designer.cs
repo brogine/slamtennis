@@ -66,8 +66,10 @@ namespace Slam
 			// 
 			this.DgvEmpleados.AllowUserToAddRows = false;
 			this.DgvEmpleados.AllowUserToDeleteRows = false;
+			this.DgvEmpleados.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
 			this.DgvEmpleados.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
 			this.DgvEmpleados.Location = new System.Drawing.Point(12, 21);
+			this.DgvEmpleados.MultiSelect = false;
 			this.DgvEmpleados.Name = "DgvEmpleados";
 			this.DgvEmpleados.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
 			this.DgvEmpleados.Size = new System.Drawing.Size(582, 262);
