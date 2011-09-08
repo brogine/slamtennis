@@ -38,9 +38,9 @@ namespace Repositorio
             return bJugador;
         }
 
-        public List<Jugador> Listar()
+        public List<Jugador> Listar(int IdClub)
         {
-        	string Consulta = " Select * From Personas ";
+        	string Consulta = " Select * From Personas";
         	List<Jugador> ListaJugadores = new List<Jugador>();
         	IEstadisticaRepositorio repoEstadisticas = new EstadisticaRepositorio();
         	DataTable Tabla = Conn.Listar(Consulta);

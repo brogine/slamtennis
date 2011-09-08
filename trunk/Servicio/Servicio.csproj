@@ -61,6 +61,7 @@
     <Compile Include="IListadoSedesServicio.cs" />
     <Compile Include="ILocalidadServicio.cs" />
     <Compile Include="ILoginServicio.cs" />
+    <Compile Include="EmpleadoServicio.cs" />
     <Compile Include="InterfacesUI\IAfiliacionUI.cs" />
     <Compile Include="InterfacesUI\IClubUI.cs" />
     <Compile Include="InterfacesUI\IEmpleadoUI.cs" />
