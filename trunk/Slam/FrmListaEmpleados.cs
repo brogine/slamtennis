@@ -12,6 +12,7 @@ using System.Windows.Forms;
 using ApplicationContext;
 using Servicio;
 using Servicio.InterfacesUI;
+using System.Collections.Generic;
 
 namespace Slam
 {
@@ -52,7 +53,7 @@ namespace Slam
 			}
 		}
 		
-		public System.Collections.Generic.List<object> ListaEmpleados {
+		public List<object> ListaEmpleados {
 			set {
 				if(DgvEmpleados.ColumnCount > 0)
 					DgvEmpleados.Columns.Clear();

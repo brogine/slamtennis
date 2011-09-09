@@ -7,7 +7,7 @@ namespace Servicio
 {
     public interface IListadoJugadores
     {
-        List<Object> Listar();
+        List<Object> Listar { set; }
         int IdClub { get; }
     }
 }

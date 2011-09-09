@@ -8,6 +8,6 @@ namespace Servicio
 {
     public interface IListadoJugadoresServicio
     {
-        List<object> ListarJugadores(IListadoJugadores UI);
+        void ListarJugadores(IListadoJugadores UI);
     }
 }

@@ -12,7 +12,6 @@ namespace Servicio.InterfacesUI
         string Nombre { get; set; }
         string Apellido { get; set; }
         DateTime FechaNac { get; set; }
-        List<String> DatosPorCategoria { get; } //Nombre de Categoria, pg, pp, pj, puntos
         int Nacionalidad { get; set; }
         string Sexo { get; set; }
         int DniTutor { get; set; }

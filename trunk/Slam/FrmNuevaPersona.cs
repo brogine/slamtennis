@@ -13,7 +13,7 @@ using Servicio.InterfacesUI;
 
 namespace Slam
 {
-    public partial class FrmNuevaPersona : Form, IListadoEstadisticasDni, IEmpleadoUI
+    public partial class FrmNuevaPersona : Form, IListadoEstadisticasDni, IEmpleadoUI, IJugadorUI
     {
     	string ImplementaEstadisticas = "EstadisticasServicio";
         string ImplementaJugadores = "JugadorServicio";
@@ -51,6 +51,8 @@ namespace Slam
                         servicioEmpleados.Buscar(this);
                         break;
                     case TipoPersona.Jugador:
+                        servicioJugadores = (IJugadorServicio)AppContext.Instance.GetObject(ImplementaJugadores);
+                        servicioJugadores.Buscar(this);
                         break;
                 }
             }
@@ -118,8 +120,10 @@ namespace Slam
         			MessageBox.Show("Debe buscar un Jugador para ver sus estadísticas.");
         	}
         }
-    	
-		public List<object> ListarEstadisticas {
+
+        #region Miembros de IListadoEstadisticasDni
+
+        public List<object> ListarEstadisticas {
 			set {
         		LblNombreCategoria.Text = "";
         		if(DgvStats.ColumnCount > 0)
@@ -144,7 +148,9 @@ namespace Slam
 			get {
         		return int.Parse(TxtDni.Text);
 			}
-		}
+        }
+
+        #endregion
 
         #region Miembros de IEmpleadoUI
 
@@ -355,6 +361,34 @@ namespace Slam
             set
             {
                 ChkEstado.Checked = value;
+            }
+        }
+
+        #endregion
+
+        #region Miembros de IJugadorUI
+
+        int IJugadorUI.Dni
+        {
+            get
+            {
+                return int.Parse(TxtDni.Text);
+            }
+            set
+            {
+                TxtDni.Text = value.ToString();
+            }
+        }
+
+        public string RelacionTutor
+        {
+            get
+            {
+                return TxtRelacion.Text;
+            }
+            set
+            {
+                TxtRelacion.Text = value;
             }
         }
 
