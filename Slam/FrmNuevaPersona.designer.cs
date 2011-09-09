@@ -87,6 +87,11 @@
             this.TpStats = new System.Windows.Forms.TabPage();
             this.LblNombreCategoria = new System.Windows.Forms.Label();
             this.DgvStats = new System.Windows.Forms.DataGridView();
+            this.GbDatosArbitro = new System.Windows.Forms.GroupBox();
+            this.TxtNivel = new System.Windows.Forms.TextBox();
+            this.TxtBadge = new System.Windows.Forms.TextBox();
+            this.LblNivel = new System.Windows.Forms.Label();
+            this.LblBadge = new System.Windows.Forms.Label();
             this.TcPersonas.SuspendLayout();
             this.TpDatosPersonales.SuspendLayout();
             this.GbMenor.SuspendLayout();
@@ -98,6 +103,7 @@
             this.GbDatosLogin.SuspendLayout();
             this.TpStats.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DgvStats)).BeginInit();
+            this.GbDatosArbitro.SuspendLayout();
             this.SuspendLayout();
             // 
             // TcPersonas
@@ -150,6 +156,7 @@
             // 
             // GbMenor
             // 
+            this.GbMenor.Controls.Add(this.GbDatosArbitro);
             this.GbMenor.Controls.Add(this.TxtRelacion);
             this.GbMenor.Controls.Add(this.LblRelacionMenor);
             this.GbMenor.Controls.Add(this.TxtNombreTutor);
@@ -665,6 +672,52 @@
             this.DgvStats.Size = new System.Drawing.Size(600, 306);
             this.DgvStats.TabIndex = 0;
             // 
+            // GbDatosArbitro
+            // 
+            this.GbDatosArbitro.Controls.Add(this.LblBadge);
+            this.GbDatosArbitro.Controls.Add(this.LblNivel);
+            this.GbDatosArbitro.Controls.Add(this.TxtBadge);
+            this.GbDatosArbitro.Controls.Add(this.TxtNivel);
+            this.GbDatosArbitro.Location = new System.Drawing.Point(0, 2);
+            this.GbDatosArbitro.Name = "GbDatosArbitro";
+            this.GbDatosArbitro.Size = new System.Drawing.Size(336, 106);
+            this.GbDatosArbitro.TabIndex = 28;
+            this.GbDatosArbitro.TabStop = false;
+            this.GbDatosArbitro.Text = "Datos del Arbitro";
+            this.GbDatosArbitro.Visible = false;
+            // 
+            // TxtNivel
+            // 
+            this.TxtNivel.Location = new System.Drawing.Point(112, 17);
+            this.TxtNivel.Name = "TxtNivel";
+            this.TxtNivel.Size = new System.Drawing.Size(154, 20);
+            this.TxtNivel.TabIndex = 0;
+            // 
+            // TxtBadge
+            // 
+            this.TxtBadge.Location = new System.Drawing.Point(112, 54);
+            this.TxtBadge.Name = "TxtBadge";
+            this.TxtBadge.Size = new System.Drawing.Size(154, 20);
+            this.TxtBadge.TabIndex = 1;
+            // 
+            // LblNivel
+            // 
+            this.LblNivel.AutoSize = true;
+            this.LblNivel.Location = new System.Drawing.Point(72, 20);
+            this.LblNivel.Name = "LblNivel";
+            this.LblNivel.Size = new System.Drawing.Size(34, 13);
+            this.LblNivel.TabIndex = 9;
+            this.LblNivel.Text = "Nivel:";
+            // 
+            // LblBadge
+            // 
+            this.LblBadge.AutoSize = true;
+            this.LblBadge.Location = new System.Drawing.Point(65, 57);
+            this.LblBadge.Name = "LblBadge";
+            this.LblBadge.Size = new System.Drawing.Size(41, 13);
+            this.LblBadge.TabIndex = 10;
+            this.LblBadge.Text = "Badge:";
+            // 
             // FrmNuevaPersona
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -692,6 +745,8 @@
             this.GbDatosLogin.PerformLayout();
             this.TpStats.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.DgvStats)).EndInit();
+            this.GbDatosArbitro.ResumeLayout(false);
+            this.GbDatosArbitro.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -756,5 +811,10 @@
         private System.Windows.Forms.Label LblPasswordViejo;
         private System.Windows.Forms.Button BtnCambiarPassword;
         private System.Windows.Forms.CheckBox ChkEstado;
+        private System.Windows.Forms.GroupBox GbDatosArbitro;
+        private System.Windows.Forms.TextBox TxtNivel;
+        private System.Windows.Forms.TextBox TxtBadge;
+        private System.Windows.Forms.Label LblBadge;
+        private System.Windows.Forms.Label LblNivel;
     }
 }

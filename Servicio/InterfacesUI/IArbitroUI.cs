@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Servicio.InterfacesUI
 {
-    interface IArbitroUI
+    public interface IArbitroUI
     {
         int Dni { get; set; }
         string Nombre { get; set; }
