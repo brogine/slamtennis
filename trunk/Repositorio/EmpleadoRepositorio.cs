@@ -23,7 +23,7 @@ namespace Repositorio
         public void Agregar(Empleado Empleado)
         {
         	base.Agregar(Empleado);
-        	string Campos = "Dni, Puesto, Estado";
+        	string Campos = "Dni, Puesto, Estado ";
         	string Valores = Empleado.Dni + ",'" + Empleado.Puesto + "'," + (Empleado.Estado ? 1 : 0);
         	Conn.AgregarSinId("Empleados", Campos, Valores);
         }
@@ -41,14 +41,15 @@ namespace Repositorio
         public Empleado Buscar(int Dni)
         {
             string Consulta = " Select * From Empleados e inner join Personas p ";
-            Consulta += " on e.Dni = p.Dni Where e.Dni = " + Dni;
+            Consulta += " on e.Dni = p.Dni inner join Login L on E.Dni = L.Dni ";
+            Consulta += " Where e.Dni = " + Dni;
             return this.Mapear(Conn.Buscar(Consulta));
         }
 
         public List<Empleado> Listar()
         {
             string Consulta = " Select * From Empleados e inner join Personas p ";
-            Consulta += " on e.Dni = p.Dni ";
+            Consulta += " on e.Dni = p.Dni inner join Login L on E.Dni = L.Dni ";
             DataTable Tabla = Conn.Listar(Consulta);
             List<Empleado> ListaEmpleados = new List<Empleado>();
             foreach (DataRow Fila in Tabla.Rows) {

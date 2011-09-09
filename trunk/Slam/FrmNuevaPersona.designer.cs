@@ -56,6 +56,7 @@
             this.LblLocalidad = new System.Windows.Forms.Label();
             this.LblProvincia = new System.Windows.Forms.Label();
             this.GbDatosPersonales = new System.Windows.Forms.GroupBox();
+            this.ChkEstado = new System.Windows.Forms.CheckBox();
             this.TxtPuesto = new System.Windows.Forms.TextBox();
             this.LblPuesto = new System.Windows.Forms.Label();
             this.RbFemenino = new System.Windows.Forms.RadioButton();
@@ -86,7 +87,6 @@
             this.TpStats = new System.Windows.Forms.TabPage();
             this.LblNombreCategoria = new System.Windows.Forms.Label();
             this.DgvStats = new System.Windows.Forms.DataGridView();
-            this.ChkEstado = new System.Windows.Forms.CheckBox();
             this.TcPersonas.SuspendLayout();
             this.TpDatosPersonales.SuspendLayout();
             this.GbMenor.SuspendLayout();
@@ -337,6 +337,7 @@
             this.CboProvincia.Name = "CboProvincia";
             this.CboProvincia.Size = new System.Drawing.Size(154, 21);
             this.CboProvincia.TabIndex = 12;
+            this.CboProvincia.SelectionChangeCommitted += new System.EventHandler(this.CboProvincia_SelectionChangeCommitted);
             // 
             // LblLocalidad
             // 
@@ -380,6 +381,16 @@
             this.GbDatosPersonales.TabIndex = 22;
             this.GbDatosPersonales.TabStop = false;
             this.GbDatosPersonales.Text = "Datos Personales";
+            // 
+            // ChkEstado
+            // 
+            this.ChkEstado.AutoSize = true;
+            this.ChkEstado.Location = new System.Drawing.Point(250, 219);
+            this.ChkEstado.Name = "ChkEstado";
+            this.ChkEstado.Size = new System.Drawing.Size(59, 17);
+            this.ChkEstado.TabIndex = 18;
+            this.ChkEstado.Text = "Estado";
+            this.ChkEstado.UseVisualStyleBackColor = true;
             // 
             // TxtPuesto
             // 
@@ -653,16 +664,6 @@
             this.DgvStats.Name = "DgvStats";
             this.DgvStats.Size = new System.Drawing.Size(600, 306);
             this.DgvStats.TabIndex = 0;
-            // 
-            // ChkEstado
-            // 
-            this.ChkEstado.AutoSize = true;
-            this.ChkEstado.Location = new System.Drawing.Point(250, 219);
-            this.ChkEstado.Name = "ChkEstado";
-            this.ChkEstado.Size = new System.Drawing.Size(59, 17);
-            this.ChkEstado.TabIndex = 18;
-            this.ChkEstado.Text = "Estado";
-            this.ChkEstado.UseVisualStyleBackColor = true;
             // 
             // FrmNuevaPersona
             // 

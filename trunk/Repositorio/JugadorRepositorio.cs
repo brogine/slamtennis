@@ -31,7 +31,9 @@ namespace Repositorio
 
         public Jugador Buscar(int Dni)
         {
-            string Consulta = " Select * From Personas Where Dni = " + Dni;
+            string Consulta = " Select * From Personas P inner join ";
+            Consulta += " Login L on P.Dni = L.Dni ";
+            Consulta += " Where Dni = " + Dni;
             IEstadisticaRepositorio repoEstadisticas = new EstadisticaRepositorio();
             Jugador bJugador = this.Mapear(Conn.Buscar(Consulta));
             bJugador.Estadisticas = repoEstadisticas.ListarPorDni(Dni);
@@ -40,9 +42,11 @@ namespace Repositorio
 
         public List<Jugador> Listar(int IdClub)
         {
-        	string Consulta = " select P.Dni,P.Nombre,P.Apellido,P.FechaNacimiento,p.Nacionalidad,p.Sexo";
+        	string Consulta = " select P.Dni, P.Nombre, P.Apellido, P.FechaNacimiento, p.Nacionalidad, p.Sexo, ";
+            Consulta += " L.Usuario, L.Password, L.Estado ";
             Consulta += " from JugadorCategoria J inner join Afiliaciones A ";
-            Consulta += " on j.Dni=a.Dni inner join Personas P on P.Dni=J.Dni ";
+            Consulta += " on j.Dni = a.Dni inner join Personas P on P.Dni = J.Dni ";
+            Consulta += " inner join Login L on P.Dni = L.Dni ";
             Consulta += " where a.IdClub= " + IdClub;
         	List<Jugador> ListaJugadores = new List<Jugador>();
         	IEstadisticaRepositorio repoEstadisticas = new EstadisticaRepositorio();
