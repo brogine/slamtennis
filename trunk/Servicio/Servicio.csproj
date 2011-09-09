@@ -46,14 +46,17 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AfiliacionServicio.cs" />
+    <Compile Include="ArbitroServicio.cs" />
     <Compile Include="ClubServicio.cs" />
     <Compile Include="IAfiliacionServicio.cs" />
     <Compile Include="EstadisticasServicio.cs" />
+    <Compile Include="IArbitroServicio.cs" />
     <Compile Include="IClubServicio.cs" />
     <Compile Include="IEmpleadoServicio.cs" />
     <Compile Include="IEstadisticasServicio.cs" />
     <Compile Include="IJugadorServicio.cs" />
     <Compile Include="IListadoAfiliacionServicio.cs" />
+    <Compile Include="IListadoArbitrosServicio.cs" />
     <Compile Include="IListadoClubServicio.cs" />
     <Compile Include="IListadoEmpleadoServicio.cs" />
     <Compile Include="IListadoEstadisticasServicio.cs" />
@@ -63,11 +66,13 @@
     <Compile Include="ILoginServicio.cs" />
     <Compile Include="EmpleadoServicio.cs" />
     <Compile Include="InterfacesUI\IAfiliacionUI.cs" />
+    <Compile Include="InterfacesUI\IArbitroUI.cs" />
     <Compile Include="InterfacesUI\IClubUI.cs" />
     <Compile Include="InterfacesUI\IEmpleadoUI.cs" />
     <Compile Include="InterfacesUI\IEstadisticasUI.cs" />
     <Compile Include="InterfacesUI\IJugadorUI.cs" />
     <Compile Include="InterfacesUI\IlistadoAfiliaciones.cs" />
+    <Compile Include="InterfacesUI\IListadoArbitros.cs" />
     <Compile Include="InterfacesUI\IListadoClubes.cs" />
     <Compile Include="InterfacesUI\IListadoEmpleados.cs" />
     <Compile Include="InterfacesUI\IListadoEstadisticasCategoria.cs" />

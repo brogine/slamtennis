@@ -8,7 +8,7 @@ using System.Data;
 
 namespace Repositorio
 {
-    class ArbitroRepositorio:PersonaRepositorio, IArbitroRepositorio, IMapeador<Arbitro>
+  public  class ArbitroRepositorio:PersonaRepositorio, IArbitroRepositorio, IMapeador<Arbitro>
     {
         Conexion Conex;
 
@@ -22,7 +22,7 @@ namespace Repositorio
         public void Agregar(Dominio.Arbitro Arbitro)
         {
             base.Agregar(Arbitro);
-            Conex.Agregar("Arbitros", "Dni,Badge,Nivel,NumeroInscripcion,Estado", Arbitro.Dni + "," + Arbitro.Badge + "," + Arbitro.Nivel+ ","+Arbitro.NumeroInscripcion + "," +Arbitro.Estado);
+            Conex.Agregar("Arbitros", "Dni,Badge,Nivel,NumeroInscripcion,Estado", Arbitro.Dni + "," + Arbitro.Badge + "," + Arbitro.Nivel+ "," +Arbitro.Estado);
         }
 
         public void Modificar(Arbitro Arbitro)
@@ -69,7 +69,7 @@ namespace Repositorio
                 Arbitro.Badge = Fila.IsNull("Badge") ? string.Empty : Fila["Badge"].ToString();
                 Arbitro.Nivel=Fila.IsNull("Nivel")?0:Convert.ToInt32( Fila["Nivel"]);
                 Arbitro.Estado = Fila.IsNull("Estado") ? false : Convert.ToBoolean(Fila["Estado"]);
-                Arbitro.NumeroInscripcion = Fila.IsNull("NumeroInscripcion") ? 0 : Convert.ToInt32(Fila["NumeroInscripcion"]);
+                
 
             }
             return Arbitro;
