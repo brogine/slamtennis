@@ -14,7 +14,7 @@ using Servicio.InterfacesUI;
 namespace Slam
 {
     public partial class FrmNuevaPersona : Form, IListadoEstadisticasDni, IEmpleadoUI, IJugadorUI,
-        IListadoPaises, IListadoProvincias, IListadoLocalidades
+        IListadoPaises, IListadoProvincias, IListadoLocalidades, IArbitroUI
     {
     	string ImplementaEstadisticas = "EstadisticasServicio";
         string ImplementaJugadores = "JugadorServicio";
@@ -24,6 +24,7 @@ namespace Slam
     	IListadoEstadisticasServicio servicioEstadisticas;
         IJugadorServicio servicioJugadores;
         IEmpleadoServicio servicioEmpleados;
+        IArbitroServicio servicioArbitros;
         IPaisServicio servicioPaises;
         IProvinciaServicio servicioProvincias;
         ILocalidadServicio servicioLocalidades;
@@ -50,6 +51,8 @@ namespace Slam
                 switch (Tipo)
                 {
                     case TipoPersona.Arbitro:
+                        servicioArbitros = (IArbitroServicio)AppContext.Instance.GetObject(ImplementaArbitros);
+                        servicioArbitros.Buscar(this);
                         break;
                     case TipoPersona.Empleado:
                         servicioEmpleados = (IEmpleadoServicio)AppContext.Instance.GetObject(ImplementaEmpleados);
@@ -464,5 +467,45 @@ namespace Slam
         {
             servicioLocalidades.ListarLocalidades(this);
         }
+
+        #region Miembros de IArbitroUI
+
+        int IArbitroUI.Dni
+        {
+            get
+            {
+                return Dni;
+            }
+            set
+            {
+                TxtDni.Text = Dni.ToString();
+            }
+        }
+
+        public string Badge
+        {
+            get
+            {
+                return TxtBadge.Text;
+            }
+            set
+            {
+                TxtBadge.Text = value;
+            }
+        }
+
+        public int Nivel
+        {
+            get
+            {
+                return int.Parse(TxtNivel.Text);
+            }
+            set
+            {
+                TxtNivel.Text = value.ToString();
+            }
+        }
+
+        #endregion
     }
 }

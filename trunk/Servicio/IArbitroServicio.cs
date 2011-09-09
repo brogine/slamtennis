@@ -6,7 +6,7 @@ using Servicio.InterfacesUI;
 
 namespace Servicio
 {
-    interface IArbitroServicio
+    public interface IArbitroServicio
     {
         void Agregar(IArbitroUI UI);
 
