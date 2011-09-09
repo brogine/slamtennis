@@ -28,22 +28,26 @@ namespace Repositorio
         public void Modificar(Arbitro Arbitro)
         {
             base.Modificar(Arbitro);
-            string Consulta="update Arbitros set";
-            Consulta += "Nivel =" + Arbitro.Nivel+",";
-            Consulta += "Badge =" + Arbitro.Badge+",";
-            Consulta += "Estado =" + Arbitro.Estado;
-            Consulta += "where Dni = " + Arbitro.Dni;
+            string Consulta = " Update Arbitros set ";
+            Consulta += " Nivel =" + Arbitro.Nivel + ",";
+            Consulta += " Badge =" + Arbitro.Badge + ",";
+            Consulta += " Estado =" + Arbitro.Estado;
+            Consulta += " where Dni = " + Arbitro.Dni;
         }
 
         public Dominio.Arbitro Buscar(int Dni)
         {
-          return this.Mapear(Conex.Buscar("select * from Arbitros where Dni "+Dni));
+            string Consulta = " Select * from Arbitros a ";
+            Consulta += " inner join Login l ";
+            Consulta += " on a.Dni = l.Dni where Dni " + Dni;
+            return this.Mapear(Conex.Buscar(Consulta));
 
         }
 
         public List<Dominio.Arbitro> Listar()
         {
-            string Sql = "select * from Arbitros A inner join Personas P on A.Dni = P.Dni";
+            string Sql = "select * from Arbitros A inner join Personas P on A.Dni = P.Dni ";
+            Sql += " inner join Login L on A.Dni = L.Dni ";
             DataTable Tabla = Conex.Listar(Sql);
             List<Arbitro> Lista = new List<Arbitro>();
 

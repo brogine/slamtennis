@@ -26,14 +26,18 @@ namespace Repositorio
         /// <param name="Persona">Objeto a guardar</param>
         protected void Agregar(Persona Persona)
         {
-            string Campos = "Dni, Nombre, Apellido, FechaNacimiento, Nacionalidad, Sexo, ";
-            Campos += "Telefono, Celular, Email, Localidad, Domicilio, Estado ";
+            string Campos = " Dni, Nombre, Apellido, FechaNacimiento, Nacionalidad, Sexo, ";
+            Campos += "Telefono, Celular, Email, Localidad, Domicilio ";
             string Valores = Persona.Dni + ",'" + Persona.Nombre + "','" + Persona.Apellido + "','";
             Valores += Persona.FechaNac + "'," + Persona.Nacionalidad.IdPais + ",'" + Persona.Sexo;
             Valores += "','" + Persona.Contacto.Telefono + "','" + Persona.Contacto.Celular;
             Valores += "','" + Persona.Contacto.Email  + "'," + Persona.Ubicacion.Localidad.IdLocalidad;
             Valores += ",'" + Persona.Ubicacion.Domicilio + "'";
             Conn.AgregarSinId("Personas", Campos, Valores);
+
+            Campos = " Usuario, Password, Estado ";
+            Valores = "'" + Persona.Login.Usuario + "','" + Persona.Login.Password + "'," + (Persona.Login.Estado ? 1 : 0);
+            Conn.AgregarSinId("Login", Campos, Valores);
         }
 
         /// <summary>
@@ -54,6 +58,11 @@ namespace Repositorio
             Consulta += " Localidad = " + Persona.Ubicacion.Localidad.IdLocalidad + ",";
             Consulta += " Domicilio = '" + Persona.Ubicacion.Domicilio + "'";
             Consulta += " Where Dni = " + Persona.Dni;
+            Conn.ActualizarOEliminar(Consulta);
+
+            Consulta = " Update Login Set ";
+            Consulta += " Password = '" + Persona.Login.Password + "',";
+            Consulta += " Estado = " + (Persona.Login.Estado ? 1 : 0);
             Conn.ActualizarOEliminar(Consulta);
         }
 
@@ -81,6 +90,13 @@ namespace Repositorio
             string Domicilio = (Fila.IsNull("Domicilio") == true ? string.Empty : Convert.ToString(Fila["Domicilio"]));
             Ubicacion Ubicacion = new Ubicacion(Localidad, Domicilio);
             Objeto.Ubicacion = Ubicacion;
+
+            // Value Object Login
+            string Usuario = Fila.IsNull("Usuario") ? string.Empty : Fila["Usuario"].ToString();
+            string Password = Fila.IsNull("Password") ? string.Empty : Fila["Password"].ToString();
+            bool Estado = Fila.IsNull("Estado") ? false : Convert.ToBoolean(Fila["Estado"]);
+            Login Login = new Login(Usuario, Password, Estado);
+            Objeto.Login = Login;
             
             return Objeto;
         }

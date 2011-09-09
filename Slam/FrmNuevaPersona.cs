@@ -13,15 +13,20 @@ using Servicio.InterfacesUI;
 
 namespace Slam
 {
-    public partial class FrmNuevaPersona : Form, IListadoEstadisticasDni, IEmpleadoUI, IJugadorUI
+    public partial class FrmNuevaPersona : Form, IListadoEstadisticasDni, IEmpleadoUI, IJugadorUI,
+        IListadoPaises, IListadoProvincias, IListadoLocalidades
     {
     	string ImplementaEstadisticas = "EstadisticasServicio";
         string ImplementaJugadores = "JugadorServicio";
         string ImplementaEmpleados = "EmpleadoServicio";
         string ImplementaArbitros = "ArbitroServicio";
+        string ImplementaUbicacion = "UbicacionServicio";
     	IListadoEstadisticasServicio servicioEstadisticas;
         IJugadorServicio servicioJugadores;
         IEmpleadoServicio servicioEmpleados;
+        IPaisServicio servicioPaises;
+        IProvinciaServicio servicioProvincias;
+        ILocalidadServicio servicioLocalidades;
         
         TipoPersona Tipo;
         int Dni;
@@ -64,6 +69,11 @@ namespace Slam
             	servicioEstadisticas = (IListadoEstadisticasServicio)AppContext.Instance.GetObject(ImplementaEstadisticas);
             }
             this.Text = "Nueva/o " + Tipo.ToString();
+            servicioPaises = (IPaisServicio)AppContext.Instance.GetObject(ImplementaUbicacion);
+            servicioPaises.ListarPaises(this);
+            servicioProvincias = (IProvinciaServicio)AppContext.Instance.GetObject(ImplementaUbicacion);
+            servicioProvincias.ListarProvincias(this);
+            servicioLocalidades = (ILocalidadServicio)AppContext.Instance.GetObject(ImplementaUbicacion);
         }
 
         private void BtnGuardar_Click(object sender, EventArgs e)
@@ -158,11 +168,11 @@ namespace Slam
         {
             get
             {
-                return int.Parse(TxtDni.Text);
+                return Dni;
             }
             set
             {
-                TxtDni.Text = value.ToString();
+                TxtDni.Text = Dni.ToString();
             }
         }
 
@@ -372,11 +382,11 @@ namespace Slam
         {
             get
             {
-                return int.Parse(TxtDni.Text);
+                return Dni;
             }
             set
             {
-                TxtDni.Text = value.ToString();
+                TxtDni.Text = Dni.ToString();
             }
         }
 
@@ -393,5 +403,66 @@ namespace Slam
         }
 
         #endregion
+
+        #region Miembros de IListadoPaises
+
+        public Dictionary<int, string> ListarPaises
+        {
+            set 
+            {
+                CboNacionalidad.DataSource = new BindingSource(value, null);
+                CboNacionalidad.DisplayMember = "Value";
+                CboNacionalidad.ValueMember = "Key";
+                CboNacionalidad.SelectedIndex = -1;
+            }
+        }
+
+        #endregion
+
+        #region Miembros de IListadoProvincias
+
+        public Dictionary<int, string> ListarProvincias
+        {
+            set 
+            {
+                if (value.Count > 0)
+                {
+                    CboProvincia.DataSource = new BindingSource(value, null);
+                    CboProvincia.DisplayMember = "Value";
+                    CboProvincia.ValueMember = "Key";
+                    CboProvincia.SelectedIndex = -1;
+                }
+            }
+        }
+
+        public int Pais
+        {
+            get { return 1; }
+        }
+
+        #endregion
+
+        #region Miembros de IListadoLocalidades
+
+        public Dictionary<int, string> ListarLocalidades
+        {
+            set 
+            {
+                if (value.Count > 0)
+                {
+                    CboLocalidades.DataSource = new BindingSource(value, null);
+                    CboLocalidades.DisplayMember = "Value";
+                    CboLocalidades.ValueMember = "Key";
+                    CboLocalidades.SelectedIndex = -1;
+                }
+            }
+        }
+
+        #endregion
+
+        private void CboProvincia_SelectionChangeCommitted(object sender, EventArgs e)
+        {
+            servicioLocalidades.ListarLocalidades(this);
+        }
     }
 }

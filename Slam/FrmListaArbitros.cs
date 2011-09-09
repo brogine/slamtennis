@@ -27,11 +27,6 @@ namespace Slam
 
         }
 
-        private void CmbClubes_SelectionChangeCommitted(object sender, EventArgs e)
-        {
-        	
-        }
-
         private void BtnNuevo_Click(object sender, EventArgs e)
         {
             FrmNuevaPersona nuevoArbitro = new FrmNuevaPersona(TipoPersona.Arbitro);
