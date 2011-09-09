@@ -74,6 +74,16 @@ namespace Slam
             {
                 if (TxtUsuario.Text != string.Empty && TxtPassword.Text != string.Empty)
                 {
+                    switch (Tipo)
+                    {
+                        case TipoPersona.Arbitro:
+                            break;
+                        case TipoPersona.Empleado:
+                            servicioEmpleados.Agregar(this);
+                            break;
+                        case TipoPersona.Jugador:
+                            break;
+                    }
 					this.DialogResult = DialogResult.OK;
                 }
                 else
