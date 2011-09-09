@@ -28,87 +28,63 @@
         /// </summary>
         private void InitializeComponent()
         {
-        	System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmListaArbitros));
-        	this.LblClubes = new System.Windows.Forms.Label();
-        	this.CboClubes = new System.Windows.Forms.ComboBox();
-        	this.BtnModificar = new System.Windows.Forms.Button();
-        	this.BtnNuevo = new System.Windows.Forms.Button();
-        	this.DgvArbitrosClub = new System.Windows.Forms.DataGridView();
-        	((System.ComponentModel.ISupportInitialize)(this.DgvArbitrosClub)).BeginInit();
-        	this.SuspendLayout();
-        	// 
-        	// LblClubes
-        	// 
-        	this.LblClubes.AutoSize = true;
-        	this.LblClubes.Location = new System.Drawing.Point(14, 15);
-        	this.LblClubes.Name = "LblClubes";
-        	this.LblClubes.Size = new System.Drawing.Size(186, 13);
-        	this.LblClubes.TabIndex = 9;
-        	this.LblClubes.Text = "Seleccione un Club para filtrar Arbitros";
-        	// 
-        	// CboClubes
-        	// 
-        	this.CboClubes.FormattingEnabled = true;
-        	this.CboClubes.Location = new System.Drawing.Point(217, 12);
-        	this.CboClubes.Name = "CboClubes";
-        	this.CboClubes.Size = new System.Drawing.Size(164, 21);
-        	this.CboClubes.TabIndex = 8;
-        	this.CboClubes.SelectionChangeCommitted += new System.EventHandler(this.CmbClubes_SelectionChangeCommitted);
-        	// 
-        	// BtnModificar
-        	// 
-        	this.BtnModificar.Location = new System.Drawing.Point(342, 307);
-        	this.BtnModificar.Name = "BtnModificar";
-        	this.BtnModificar.Size = new System.Drawing.Size(75, 23);
-        	this.BtnModificar.TabIndex = 7;
-        	this.BtnModificar.Text = "Modificar";
-        	this.BtnModificar.UseVisualStyleBackColor = true;
-        	this.BtnModificar.Click += new System.EventHandler(this.BtnModificar_Click);
-        	// 
-        	// BtnNuevo
-        	// 
-        	this.BtnNuevo.Location = new System.Drawing.Point(199, 307);
-        	this.BtnNuevo.Name = "BtnNuevo";
-        	this.BtnNuevo.Size = new System.Drawing.Size(75, 23);
-        	this.BtnNuevo.TabIndex = 6;
-        	this.BtnNuevo.Text = "Nuevo";
-        	this.BtnNuevo.UseVisualStyleBackColor = true;
-        	this.BtnNuevo.Click += new System.EventHandler(this.BtnNuevo_Click);
-        	// 
-        	// DgvArbitrosClub
-        	// 
-        	this.DgvArbitrosClub.AllowUserToAddRows = false;
-        	this.DgvArbitrosClub.AllowUserToDeleteRows = false;
-        	this.DgvArbitrosClub.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-        	this.DgvArbitrosClub.Location = new System.Drawing.Point(14, 39);
-        	this.DgvArbitrosClub.Name = "DgvArbitrosClub";
-        	this.DgvArbitrosClub.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-        	this.DgvArbitrosClub.Size = new System.Drawing.Size(582, 262);
-        	this.DgvArbitrosClub.TabIndex = 5;
-        	// 
-        	// FrmListaArbitros
-        	// 
-        	this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-        	this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-        	this.ClientSize = new System.Drawing.Size(610, 343);
-        	this.Controls.Add(this.LblClubes);
-        	this.Controls.Add(this.CboClubes);
-        	this.Controls.Add(this.BtnModificar);
-        	this.Controls.Add(this.BtnNuevo);
-        	this.Controls.Add(this.DgvArbitrosClub);
-        	this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-        	this.Name = "FrmListaArbitros";
-        	this.Text = "Arbitros";
-        	this.Load += new System.EventHandler(this.FrmListaArbitros_Load);
-        	((System.ComponentModel.ISupportInitialize)(this.DgvArbitrosClub)).EndInit();
-        	this.ResumeLayout(false);
-        	this.PerformLayout();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmListaArbitros));
+            this.BtnModificar = new System.Windows.Forms.Button();
+            this.BtnNuevo = new System.Windows.Forms.Button();
+            this.DgvArbitrosClub = new System.Windows.Forms.DataGridView();
+            ((System.ComponentModel.ISupportInitialize)(this.DgvArbitrosClub)).BeginInit();
+            this.SuspendLayout();
+            // 
+            // BtnModificar
+            // 
+            this.BtnModificar.Location = new System.Drawing.Point(342, 307);
+            this.BtnModificar.Name = "BtnModificar";
+            this.BtnModificar.Size = new System.Drawing.Size(75, 23);
+            this.BtnModificar.TabIndex = 7;
+            this.BtnModificar.Text = "Modificar";
+            this.BtnModificar.UseVisualStyleBackColor = true;
+            this.BtnModificar.Click += new System.EventHandler(this.BtnModificar_Click);
+            // 
+            // BtnNuevo
+            // 
+            this.BtnNuevo.Location = new System.Drawing.Point(199, 307);
+            this.BtnNuevo.Name = "BtnNuevo";
+            this.BtnNuevo.Size = new System.Drawing.Size(75, 23);
+            this.BtnNuevo.TabIndex = 6;
+            this.BtnNuevo.Text = "Nuevo";
+            this.BtnNuevo.UseVisualStyleBackColor = true;
+            this.BtnNuevo.Click += new System.EventHandler(this.BtnNuevo_Click);
+            // 
+            // DgvArbitrosClub
+            // 
+            this.DgvArbitrosClub.AllowUserToAddRows = false;
+            this.DgvArbitrosClub.AllowUserToDeleteRows = false;
+            this.DgvArbitrosClub.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.DgvArbitrosClub.Location = new System.Drawing.Point(14, 12);
+            this.DgvArbitrosClub.Name = "DgvArbitrosClub";
+            this.DgvArbitrosClub.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.DgvArbitrosClub.Size = new System.Drawing.Size(582, 289);
+            this.DgvArbitrosClub.TabIndex = 5;
+            // 
+            // FrmListaArbitros
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.ClientSize = new System.Drawing.Size(610, 343);
+            this.Controls.Add(this.BtnModificar);
+            this.Controls.Add(this.BtnNuevo);
+            this.Controls.Add(this.DgvArbitrosClub);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Name = "FrmListaArbitros";
+            this.Text = "Arbitros";
+            this.Load += new System.EventHandler(this.FrmListaArbitros_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.DgvArbitrosClub)).EndInit();
+            this.ResumeLayout(false);
+
         }
-        private System.Windows.Forms.ComboBox CboClubes;
 
         #endregion
 
-        private System.Windows.Forms.Label LblClubes;
         private System.Windows.Forms.Button BtnModificar;
         private System.Windows.Forms.Button BtnNuevo;
         private System.Windows.Forms.DataGridView DgvArbitrosClub;

@@ -86,43 +86,27 @@ namespace Servicio
 
         #endregion
 
-
-
-
-        #region Miembros de IListadoJugadores
-
-        public List<object> Listar()
-        {
-            throw new NotImplementedException();
-        }
-
-        public int IdClub
-        {
-            get { throw new NotImplementedException(); }
-        }
-
-        #endregion
-
         #region Miembros de IListadoJugadoresServicio
 
-        public List<object> ListarJugadores(IListadoJugadores UI)
+        public void ListarJugadores(IListadoJugadores UI)
         {
             List<Jugador> ListaJuga= repoJugadores.Listar(UI.IdClub);
             List<object> ListaUI = new List<object>();
             IUbicacionRepositorio UbicaRepo = new UbicacionRepositorio();
-            foreach (Jugador Juga in ListaJuga)
+            foreach (Jugador Jugador in ListaJuga)
             {
                 object Objeto = new object();
-                Objeto = Juga.Dni+",";
-                Objeto += Juga.Apellido + " " + Juga.Nombre+",";
-                Objeto += Juga.FechaNac + ",";
-                Objeto += Juga.Nacionalidad.Nombre + ",";
-                Objeto += Juga.Sexo;
+                Objeto = Jugador.Dni + ",";
+                Objeto += Jugador.Apellido + " " + Jugador.Nombre + ",";
+                Objeto += Jugador.FechaNac + ",";
+                Objeto += Jugador.Nacionalidad.Nombre + ",";
+                Objeto += Jugador.Sexo;
                 ListaUI.Add(Objeto);
             }
-            return ListaUI;
+            UI.Listar = ListaUI;
         }
 
         #endregion
+        
     }
 }

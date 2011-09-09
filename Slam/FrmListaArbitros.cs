@@ -14,10 +14,8 @@ using Servicio.InterfacesUI;
 
 namespace Slam
 {
-    public partial class FrmListaArbitros : Form, IListadoClubes
+    public partial class FrmListaArbitros : Form
     {
-    	string ImplementaClubes = "ClubServicio";
-    	IListadoClubServicio servicioClubes;
     	//IListadoArbitroServicio servicioArbitros;
         public FrmListaArbitros()
         {
@@ -26,8 +24,7 @@ namespace Slam
 
         private void FrmListaArbitros_Load(object sender, EventArgs e)
         {
-        	servicioClubes = (IListadoClubServicio)AppContext.Instance.GetObject(ImplementaClubes);
-        	servicioClubes.Listar(this);
+
         }
 
         private void CmbClubes_SelectionChangeCommitted(object sender, EventArgs e)
@@ -54,22 +51,5 @@ namespace Slam
                 MessageBox.Show("Elija un Arbitro de la grilla para Modificar", "Ayuda", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
     	
-        #region Miembros de IListadoClubes
-        
-		public List<object> ListarClubes {
-			set {
-                foreach (Object Club in value)
-                {
-                    Object[] DatosClub = Club.ToString().Split(',');
-                    CboClubes.Items.Add(new DictionaryEntry(DatosClub[1], DatosClub[0]));
-                }
-                CboClubes.DisplayMember = "Key";
-                CboClubes.ValueMember = "Value";
-                CboClubes.SelectedIndex = -1;
-			}
-		}
-        
-        #endregion
-        
     }
 }
