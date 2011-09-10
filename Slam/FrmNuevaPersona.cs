@@ -284,18 +284,6 @@ namespace Slam
             }
         }
 
-        public int DniTutor
-        {
-            get
-            {
-                return int.Parse(TxtDniTutor.Text);
-            }
-            set
-            {
-                TxtDniTutor.Text = value.ToString();
-            }
-        }
-
         public string Puesto
         {
             get
@@ -429,6 +417,21 @@ namespace Slam
             set
             {
                 TxtDni.Text = value.ToString();
+            }
+        }
+
+        public int DniTutor
+        {
+            get
+            {
+                if (TxtDniTutor.Text == "")
+                    return 0;
+                else
+                    return int.Parse(TxtDniTutor.Text);
+            }
+            set
+            {
+                TxtDniTutor.Text = value.ToString();
             }
         }
 
