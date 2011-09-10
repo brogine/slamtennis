@@ -15,6 +15,7 @@ namespace Servicio
         {
             ArbRepo = new ArbitroRepositorio();
         }
+
         #region Miembros de IArbitroServicio
 
         public void Agregar(IArbitroUI UI)
@@ -61,9 +62,15 @@ namespace Servicio
             ArbRepo.Modificar(ModArb);
         }
 
+        public bool Existe(int Dni)
+        {
+            return ArbRepo.Existe(Dni);
+        }
+
         public void Buscar(IArbitroUI UI)
         {
             Arbitro BuscaArb = ArbRepo.Buscar(UI.Dni);
+            UI.Dni = BuscaArb.Dni;
             UI.Apellido = BuscaArb.Apellido;
             UI.Nombre = BuscaArb.Nombre;
             UI.FechaNac = BuscaArb.FechaNac;
@@ -90,10 +97,6 @@ namespace Servicio
         }
 
         #endregion
-
-
-
-
 
         #region Miembros de IListadoArbitrosServicio
 

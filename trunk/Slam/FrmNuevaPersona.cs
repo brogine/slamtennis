@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using ApplicationContext;
 using Servicio;
 using Servicio.InterfacesUI;
+using System.Collections;
 
 namespace Slam
 {
@@ -31,6 +32,8 @@ namespace Slam
         
         TipoPersona Tipo;
         int Dni;
+        int IdLocalidad;
+        int EdadJugador;
         public FrmNuevaPersona(TipoPersona _Tipo)
         {
             InitializeComponent();
@@ -46,11 +49,17 @@ namespace Slam
 
         private void FrmNuevaPersona_Load(object sender, EventArgs e)
         {
+            servicioPaises = (IPaisServicio)AppContext.Instance.GetObject(ImplementaUbicacion);
+            servicioPaises.ListarPaises(this);
+            servicioProvincias = (IProvinciaServicio)AppContext.Instance.GetObject(ImplementaUbicacion);
+            servicioProvincias.ListarProvincias(this);
+            servicioLocalidades = (ILocalidadServicio)AppContext.Instance.GetObject(ImplementaUbicacion);
             if (Dni > 0)
             {
                 switch (Tipo)
                 {
                     case TipoPersona.Arbitro:
+                        GbDatosArbitro.Visible = true;
                         servicioArbitros = (IArbitroServicio)AppContext.Instance.GetObject(ImplementaArbitros);
                         servicioArbitros.Buscar(this);
                         break;
@@ -63,6 +72,24 @@ namespace Slam
                         servicioJugadores.Buscar(this);
                         break;
                 }
+                servicioLocalidades.ListarLocalidades(this);
+                CboLocalidades.SelectedValue = IdLocalidad;
+            }
+            else
+            {
+                switch (Tipo)
+                {
+                    case TipoPersona.Arbitro:
+                        GbDatosArbitro.Visible = true;
+                        servicioArbitros = (IArbitroServicio)AppContext.Instance.GetObject(ImplementaArbitros);
+                        break;
+                    case TipoPersona.Empleado:
+                        servicioEmpleados = (IEmpleadoServicio)AppContext.Instance.GetObject(ImplementaEmpleados);
+                        break;
+                    case TipoPersona.Jugador:
+                        servicioJugadores = (IJugadorServicio)AppContext.Instance.GetObject(ImplementaJugadores);
+                        break;
+                }
             }
             if (Tipo == TipoPersona.Empleado)
                 TpStats.Parent = null;
@@ -72,11 +99,6 @@ namespace Slam
             	servicioEstadisticas = (IListadoEstadisticasServicio)AppContext.Instance.GetObject(ImplementaEstadisticas);
             }
             this.Text = "Nueva/o " + Tipo.ToString();
-            servicioPaises = (IPaisServicio)AppContext.Instance.GetObject(ImplementaUbicacion);
-            servicioPaises.ListarPaises(this);
-            servicioProvincias = (IProvinciaServicio)AppContext.Instance.GetObject(ImplementaUbicacion);
-            servicioProvincias.ListarProvincias(this);
-            servicioLocalidades = (ILocalidadServicio)AppContext.Instance.GetObject(ImplementaUbicacion);
         }
 
         private void BtnGuardar_Click(object sender, EventArgs e)
@@ -89,24 +111,41 @@ namespace Slam
             {
                 if (TxtUsuario.Text != string.Empty && TxtPassword.Text != string.Empty)
                 {
+                    Dni = int.Parse(TxtDni.Text);
                     switch (Tipo)
                     {
                         case TipoPersona.Arbitro:
+                            if (servicioArbitros.Existe(Dni))
+                                servicioArbitros.Modificar(this);
+                            else
+                                servicioArbitros.Agregar(this);
                             break;
                         case TipoPersona.Empleado:
-                            servicioEmpleados.Agregar(this);
+                            if (servicioEmpleados.Existe(Dni))
+                                servicioEmpleados.Modificar(this);
+                            else
+                                servicioEmpleados.Agregar(this);
                             break;
                         case TipoPersona.Jugador:
+                            if (servicioJugadores.Existe(Dni))
+                                servicioJugadores.Modificar(this);
+                            else
+                                servicioJugadores.Agregar(this);
                             break;
                     }
-					this.DialogResult = DialogResult.OK;
+                    this.DialogResult = DialogResult.OK;
+                    MessageBox.Show("Carga realizada con éxito.");
                 }
                 else
+                {
                     MessageBox.Show("Complete los datos de Login porfavor.");
+                    TcPersonas.SelectedTab = TpLogin;
+                }
             }
             else
             {
                 MessageBox.Show("Complete todos los campos de Datos Personales porfavor.");
+                TcPersonas.SelectedTab = TpDatosPersonales;
             }
         }
 
@@ -175,7 +214,7 @@ namespace Slam
             }
             set
             {
-                TxtDni.Text = Dni.ToString();
+                TxtDni.Text = value.ToString();
             }
         }
 
@@ -219,7 +258,7 @@ namespace Slam
         {
             get
             {
-                return (int)CboNacionalidad.SelectedValue;
+                return Convert.ToInt32(((KeyValuePair<int, string>)CboNacionalidad.SelectedItem).Key);
             }
             set
             {
@@ -309,7 +348,7 @@ namespace Slam
         {
             get
             {
-                return (int)CboProvincia.SelectedValue;
+                return Convert.ToInt32(((KeyValuePair<int, string>)CboProvincia.SelectedItem).Key);
             }
             set
             {
@@ -321,11 +360,11 @@ namespace Slam
         {
             get
             {
-                return (int)CboLocalidades.SelectedValue;
+                return Convert.ToInt32(((KeyValuePair<int, string>)CboLocalidades.SelectedItem).Key);
             }
             set
             {
-                CboLocalidades.SelectedValue = value;
+                IdLocalidad = value;
             }
         }
 
@@ -389,7 +428,7 @@ namespace Slam
             }
             set
             {
-                TxtDni.Text = Dni.ToString();
+                TxtDni.Text = value.ToString();
             }
         }
 
@@ -403,6 +442,12 @@ namespace Slam
             {
                 TxtRelacion.Text = value;
             }
+        }
+
+        public int Edad 
+        {
+            get { return EdadJugador; }
+            set { EdadJugador = value; }
         }
 
         #endregion
@@ -478,7 +523,7 @@ namespace Slam
             }
             set
             {
-                TxtDni.Text = Dni.ToString();
+                TxtDni.Text = value.ToString();
             }
         }
 
@@ -507,5 +552,14 @@ namespace Slam
         }
 
         #endregion
+
+        private void DtpFechaNac_ValueChanged(object sender, EventArgs e)
+        {
+            if (Tipo == TipoPersona.Jugador)
+            {
+                if (Edad < 18)
+                    GbMenor.Visible = true;
+            }
+        }
     }
 }

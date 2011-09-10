@@ -45,6 +45,11 @@ namespace Servicio
             repoJugadores.Agregar(nJugador);
         }
 
+        public bool Existe(int Dni)
+        {
+            return repoJugadores.Existe(Dni);
+        }
+
         public void Modificar(Servicio.InterfacesUI.IJugadorUI UI)
         {
         	Jugador bJugador = repoJugadores.Buscar(UI.Dni);
@@ -66,6 +71,7 @@ namespace Servicio
         public void Buscar(Servicio.InterfacesUI.IJugadorUI UI)
 		{
         	Jugador bJugador = repoJugadores.Buscar(UI.Dni);
+            UI.Dni = bJugador.Dni;
         	UI.Apellido = bJugador.Apellido;
         	UI.Celular = bJugador.Contacto.Celular;
         	UI.DniTutor = bJugador.DniTutor;
@@ -73,6 +79,7 @@ namespace Servicio
         	UI.Email = bJugador.Contacto.Email;
         	UI.Estado = bJugador.Estado;
         	UI.FechaNac = bJugador.FechaNac;
+            UI.Edad = bJugador.Edad;
         	UI.Localidad = bJugador.Ubicacion.Localidad.IdLocalidad;
         	UI.Nacionalidad = bJugador.Nacionalidad.IdPais;
         	UI.Nombre = bJugador.Nombre;
