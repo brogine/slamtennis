@@ -44,7 +44,7 @@ namespace Repositorio
         {
             string Consulta = " Select Count(Dni) from Personas Where Dni = " + Dni;
             DataRow Fila = Conn.Buscar(Consulta);
-            int cantidad = Fila.IsNull(0) ? 0 : 1;
+            int cantidad = Fila.IsNull(0) ? 1 : 0;
             if (cantidad == 1)
                 return true;
             else

@@ -169,7 +169,7 @@ namespace Slam
         		if(TxtDni.Text != "")
         			servicioEstadisticas.ListarPorDni(this);
         		else
-        			MessageBox.Show("Debe buscar un Jugador para ver sus estadísticas.");
+        			MessageBox.Show("Debe buscar un " + Tipo.ToString() + " para ver sus estadísticas.");
         	}
         }
 
@@ -557,11 +557,76 @@ namespace Slam
         {
             if (Tipo == TipoPersona.Jugador)
             {
-                if (Edad < 18)
+                int EdadTemp = DateTime.Today.Year - this.FechaNac.Year;
+                if (new DateTime(DateTime.Today.Year, this.FechaNac.Month, this.FechaNac.Day) > DateTime.Today)
+                    EdadTemp--;
+                if (EdadTemp < 18)
                     GbMenor.Visible = true;
                 else
                     GbMenor.Visible = false;
             }
+        }
+
+        private void GbDatosPersonales_Validating(object sender, CancelEventArgs e)
+        {
+            if (TxtNombre.Text == "")
+                EpNuevaPersona.SetError(TxtNombre, "El campo no puede estar en blanco.");
+            else
+                EpNuevaPersona.SetError(TxtNombre, "");
+            if (TxtApellido.Text == "")
+                EpNuevaPersona.SetError(TxtApellido, "El campo no puede estar en blanco.");
+            else
+                EpNuevaPersona.SetError(TxtApellido, "");
+            if (CboNacionalidad.SelectedIndex < 0)
+                EpNuevaPersona.SetError(CboNacionalidad, "Debe elegir una Nacionalidad del Desplegable.");
+            else
+                EpNuevaPersona.SetError(CboNacionalidad, "");
+            if (!RbFemenino.Checked && !RbMasculino.Checked)
+                EpNuevaPersona.SetError(RbFemenino, "Debe elegir el sexo correspondiente.");
+            else
+                EpNuevaPersona.SetError(RbFemenino, "");
+            if (Tipo == TipoPersona.Empleado)
+            {
+                if (TxtPuesto.Text == "")
+                    EpNuevaPersona.SetError(TxtPuesto, "El campo no puede estar en blanco.");
+                else
+                    EpNuevaPersona.SetError(TxtPuesto, "");
+            }
+        }
+
+        private void GbDatosArbitro_Validating(object sender, CancelEventArgs e)
+        {
+            if (Tipo == TipoPersona.Arbitro)
+            {
+                if (TxtNivel.Text == "")
+                    EpNuevaPersona.SetError(TxtNivel, "El campo no puede estar en blanco.");
+                else 
+                {
+                    int resultado = 0;
+                    if (!int.TryParse(TxtNivel.Text, out resultado))
+                        EpNuevaPersona.SetError(TxtNivel, "El campo debe ser un número.");
+                    else
+                        EpNuevaPersona.SetError(TxtNivel, "");
+                }
+                if (TxtBadge.Text == "")
+                    EpNuevaPersona.SetError(TxtBadge, "El campo no puede estar en blanco.");
+                else
+                    EpNuevaPersona.SetError(TxtBadge, "");
+            }
+        }
+
+        private void GbDireccion_Validating(object sender, CancelEventArgs e)
+        {
+            if (CboLocalidades.SelectedIndex < 0)
+                EpNuevaPersona.SetError(CboLocalidades, "Elija una Localidad del Desplegable.");
+            else
+                EpNuevaPersona.SetError(CboLocalidades, "");
+            if (CboProvincia.SelectedIndex < 0)
+                EpNuevaPersona.SetError(CboProvincia, "Elija una Provincia del Desplegable.");
+            else
+                EpNuevaPersona.SetError(CboProvincia, "");
+            if(TxtDomicilio.Text == "")
+
         }
 
     }
