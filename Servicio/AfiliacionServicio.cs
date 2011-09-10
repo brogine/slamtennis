@@ -30,19 +30,16 @@ namespace Servicio
             IAfiliacionRepositorio AfilRepo = new AfiliacionRepositorio();
             Afiliacion ModAfil = AfilRepo.Buscar(UI.Dni, UI.IdClub);
             ModAfil.Estado = UI.Estado;
-            ModAfil.FechaBaja = UI.FechaBaja;
+            ModAfil.FechaBaja = DateTime.Today;
             AfilRepo.Modificar(ModAfil);
         }
 
         public void Buscar(Servicio.InterfacesUI.IAfiliacionUI UI)
         {
             IAfiliacionRepositorio AfilRepo = new AfiliacionRepositorio();
-            Afiliacion Afil = AfilRepo.Buscar(UI.Dni, UI.IdClub);
-            UI.NombreClub = Afil.Club.Nombre;
-            UI.NombreJugador = Afil.Jugador.Apellido + " " + Afil.Jugador.Apellido;
-            UI.Estado = Afil.Estado;
-            UI.FechaAlta = Afil.FechaAlta;
-            UI.FechaBaja = Afil.FechaBaja;
+            Afiliacion Afiliacion = AfilRepo.Buscar(UI.Dni, UI.IdClub);
+            UI.Estado = Afiliacion.Estado;
+            
         }
 
         #endregion
