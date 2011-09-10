@@ -22,6 +22,7 @@ namespace Repositorio
         public void Agregar(Jugador Jugador)
         {
             base.Agregar(Jugador);
+            Conn.Agregar("Jugador", "Dni,PartidosGanados,PartidosPerdidos,IdCategoria,Puntos,Estado", Jugador.Dni+",0,0,1,0,1");
         }
 
         public void Modificar(Jugador Jugador)
@@ -33,7 +34,7 @@ namespace Repositorio
         {
             string Consulta = " Select * From Personas P inner join ";
             Consulta += " Login L on P.Dni = L.Dni ";
-            Consulta += " Where Dni = " + Dni;
+            Consulta += " Where P.Dni = " + Dni;
             IEstadisticaRepositorio repoEstadisticas = new EstadisticaRepositorio();
             Jugador bJugador = this.Mapear(Conn.Buscar(Consulta));
             bJugador.Estadisticas = repoEstadisticas.ListarPorDni(Dni);

@@ -26,10 +26,11 @@ namespace Repositorio
         /// <param name="Persona">Objeto a guardar</param>
         protected void Agregar(Persona Persona)
         {
+            string FechaFormateada = Persona.FechaNac.Year+"/"+Persona.FechaNac.Month+"/"+Persona.FechaNac.Day;
             string Campos = " Dni, Nombre, Apellido, FechaNacimiento, Nacionalidad, Sexo, ";
             Campos += "Telefono, Celular, Email, Localidad, Domicilio ";
             string Valores = Persona.Dni + ",'" + Persona.Nombre + "','" + Persona.Apellido + "','";
-            Valores += Persona.FechaNac + "'," + Persona.Nacionalidad.IdPais + ",'" + Persona.Sexo;
+            Valores += FechaFormateada + "'," + Persona.Nacionalidad.IdPais + ",'" + Persona.Sexo;
             Valores += "','" + Persona.Contacto.Telefono + "','" + Persona.Contacto.Celular;
             Valores += "','" + Persona.Contacto.Email  + "'," + Persona.Ubicacion.Localidad.IdLocalidad;
             Valores += ",'" + Persona.Ubicacion.Domicilio + "'";
