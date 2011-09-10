@@ -28,17 +28,18 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmNuevaPersona));
             this.TcPersonas = new System.Windows.Forms.TabControl();
             this.TpDatosPersonales = new System.Windows.Forms.TabPage();
-            this.BtnCancelar = new System.Windows.Forms.Button();
-            this.BtnGuardar = new System.Windows.Forms.Button();
-            this.GbMenor = new System.Windows.Forms.GroupBox();
             this.GbDatosArbitro = new System.Windows.Forms.GroupBox();
             this.LblBadge = new System.Windows.Forms.Label();
             this.LblNivel = new System.Windows.Forms.Label();
             this.TxtBadge = new System.Windows.Forms.TextBox();
             this.TxtNivel = new System.Windows.Forms.TextBox();
+            this.BtnCancelar = new System.Windows.Forms.Button();
+            this.BtnGuardar = new System.Windows.Forms.Button();
+            this.GbMenor = new System.Windows.Forms.GroupBox();
             this.TxtRelacion = new System.Windows.Forms.TextBox();
             this.LblRelacionMenor = new System.Windows.Forms.Label();
             this.TxtNombreTutor = new System.Windows.Forms.TextBox();
@@ -92,10 +93,11 @@
             this.TpStats = new System.Windows.Forms.TabPage();
             this.LblNombreCategoria = new System.Windows.Forms.Label();
             this.DgvStats = new System.Windows.Forms.DataGridView();
+            this.EpNuevaPersona = new System.Windows.Forms.ErrorProvider(this.components);
             this.TcPersonas.SuspendLayout();
             this.TpDatosPersonales.SuspendLayout();
-            this.GbMenor.SuspendLayout();
             this.GbDatosArbitro.SuspendLayout();
+            this.GbMenor.SuspendLayout();
             this.GbContacto.SuspendLayout();
             this.GbDireccion.SuspendLayout();
             this.GbDatosPersonales.SuspendLayout();
@@ -104,6 +106,7 @@
             this.GbDatosLogin.SuspendLayout();
             this.TpStats.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DgvStats)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.EpNuevaPersona)).BeginInit();
             this.SuspendLayout();
             // 
             // TcPersonas
@@ -134,6 +137,53 @@
             this.TpDatosPersonales.TabIndex = 0;
             this.TpDatosPersonales.Text = "Datos Personales";
             this.TpDatosPersonales.UseVisualStyleBackColor = true;
+            // 
+            // GbDatosArbitro
+            // 
+            this.GbDatosArbitro.Controls.Add(this.LblBadge);
+            this.GbDatosArbitro.Controls.Add(this.LblNivel);
+            this.GbDatosArbitro.Controls.Add(this.TxtBadge);
+            this.GbDatosArbitro.Controls.Add(this.TxtNivel);
+            this.GbDatosArbitro.Location = new System.Drawing.Point(6, 265);
+            this.GbDatosArbitro.Name = "GbDatosArbitro";
+            this.GbDatosArbitro.Size = new System.Drawing.Size(336, 108);
+            this.GbDatosArbitro.TabIndex = 28;
+            this.GbDatosArbitro.TabStop = false;
+            this.GbDatosArbitro.Text = "Datos del Arbitro";
+            this.GbDatosArbitro.Visible = false;
+            this.GbDatosArbitro.Validating += new System.ComponentModel.CancelEventHandler(this.GbDatosArbitro_Validating);
+            // 
+            // LblBadge
+            // 
+            this.LblBadge.AutoSize = true;
+            this.LblBadge.Location = new System.Drawing.Point(65, 57);
+            this.LblBadge.Name = "LblBadge";
+            this.LblBadge.Size = new System.Drawing.Size(41, 13);
+            this.LblBadge.TabIndex = 10;
+            this.LblBadge.Text = "Badge:";
+            // 
+            // LblNivel
+            // 
+            this.LblNivel.AutoSize = true;
+            this.LblNivel.Location = new System.Drawing.Point(72, 20);
+            this.LblNivel.Name = "LblNivel";
+            this.LblNivel.Size = new System.Drawing.Size(34, 13);
+            this.LblNivel.TabIndex = 9;
+            this.LblNivel.Text = "Nivel:";
+            // 
+            // TxtBadge
+            // 
+            this.TxtBadge.Location = new System.Drawing.Point(112, 54);
+            this.TxtBadge.Name = "TxtBadge";
+            this.TxtBadge.Size = new System.Drawing.Size(154, 20);
+            this.TxtBadge.TabIndex = 1;
+            // 
+            // TxtNivel
+            // 
+            this.TxtNivel.Location = new System.Drawing.Point(112, 17);
+            this.TxtNivel.Name = "TxtNivel";
+            this.TxtNivel.Size = new System.Drawing.Size(154, 20);
+            this.TxtNivel.TabIndex = 0;
             // 
             // BtnCancelar
             // 
@@ -170,52 +220,6 @@
             this.GbMenor.TabStop = false;
             this.GbMenor.Text = "Tutor Del Menor";
             this.GbMenor.Visible = false;
-            // 
-            // GbDatosArbitro
-            // 
-            this.GbDatosArbitro.Controls.Add(this.LblBadge);
-            this.GbDatosArbitro.Controls.Add(this.LblNivel);
-            this.GbDatosArbitro.Controls.Add(this.TxtBadge);
-            this.GbDatosArbitro.Controls.Add(this.TxtNivel);
-            this.GbDatosArbitro.Location = new System.Drawing.Point(6, 265);
-            this.GbDatosArbitro.Name = "GbDatosArbitro";
-            this.GbDatosArbitro.Size = new System.Drawing.Size(336, 108);
-            this.GbDatosArbitro.TabIndex = 28;
-            this.GbDatosArbitro.TabStop = false;
-            this.GbDatosArbitro.Text = "Datos del Arbitro";
-            this.GbDatosArbitro.Visible = false;
-            // 
-            // LblBadge
-            // 
-            this.LblBadge.AutoSize = true;
-            this.LblBadge.Location = new System.Drawing.Point(65, 57);
-            this.LblBadge.Name = "LblBadge";
-            this.LblBadge.Size = new System.Drawing.Size(41, 13);
-            this.LblBadge.TabIndex = 10;
-            this.LblBadge.Text = "Badge:";
-            // 
-            // LblNivel
-            // 
-            this.LblNivel.AutoSize = true;
-            this.LblNivel.Location = new System.Drawing.Point(72, 20);
-            this.LblNivel.Name = "LblNivel";
-            this.LblNivel.Size = new System.Drawing.Size(34, 13);
-            this.LblNivel.TabIndex = 9;
-            this.LblNivel.Text = "Nivel:";
-            // 
-            // TxtBadge
-            // 
-            this.TxtBadge.Location = new System.Drawing.Point(112, 54);
-            this.TxtBadge.Name = "TxtBadge";
-            this.TxtBadge.Size = new System.Drawing.Size(154, 20);
-            this.TxtBadge.TabIndex = 1;
-            // 
-            // TxtNivel
-            // 
-            this.TxtNivel.Location = new System.Drawing.Point(112, 17);
-            this.TxtNivel.Name = "TxtNivel";
-            this.TxtNivel.Size = new System.Drawing.Size(154, 20);
-            this.TxtNivel.TabIndex = 0;
             // 
             // TxtRelacion
             // 
@@ -347,6 +351,7 @@
             this.GbDireccion.TabIndex = 23;
             this.GbDireccion.TabStop = false;
             this.GbDireccion.Text = "Direccion";
+            this.GbDireccion.Validating += new System.ComponentModel.CancelEventHandler(this.GbDireccion_Validating);
             // 
             // BtnAgregarLocalidad
             // 
@@ -433,6 +438,7 @@
             this.GbDatosPersonales.TabIndex = 22;
             this.GbDatosPersonales.TabStop = false;
             this.GbDatosPersonales.Text = "Datos Personales";
+            this.GbDatosPersonales.Validating += new System.ComponentModel.CancelEventHandler(this.GbDatosPersonales_Validating);
             // 
             // ChkEstado
             // 
@@ -718,6 +724,10 @@
             this.DgvStats.Size = new System.Drawing.Size(600, 306);
             this.DgvStats.TabIndex = 0;
             // 
+            // EpNuevaPersona
+            // 
+            this.EpNuevaPersona.ContainerControl = this;
+            // 
             // FrmNuevaPersona
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -730,10 +740,10 @@
             this.Load += new System.EventHandler(this.FrmNuevaPersona_Load);
             this.TcPersonas.ResumeLayout(false);
             this.TpDatosPersonales.ResumeLayout(false);
-            this.GbMenor.ResumeLayout(false);
-            this.GbMenor.PerformLayout();
             this.GbDatosArbitro.ResumeLayout(false);
             this.GbDatosArbitro.PerformLayout();
+            this.GbMenor.ResumeLayout(false);
+            this.GbMenor.PerformLayout();
             this.GbContacto.ResumeLayout(false);
             this.GbContacto.PerformLayout();
             this.GbDireccion.ResumeLayout(false);
@@ -747,6 +757,7 @@
             this.GbDatosLogin.PerformLayout();
             this.TpStats.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.DgvStats)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.EpNuevaPersona)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -816,5 +827,6 @@
         private System.Windows.Forms.TextBox TxtBadge;
         private System.Windows.Forms.Label LblBadge;
         private System.Windows.Forms.Label LblNivel;
+        private System.Windows.Forms.ErrorProvider EpNuevaPersona;
     }
 }
