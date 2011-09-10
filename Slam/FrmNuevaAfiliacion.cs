@@ -69,5 +69,19 @@ namespace Slam
         }
 
         #endregion
+
+        private void TxtDni_Validating(object sender, CancelEventArgs e)
+        {
+           
+        }
+
+        private void BtnNuevoJugador_Click(object sender, EventArgs e)
+        {
+            FrmNuevaPersona NuevoJugador = new FrmNuevaPersona(TipoPersona.Jugador);
+            if (NuevoJugador.ShowDialog() == DialogResult.OK)
+            {
+                TxtDni.Text = NuevoJugador.DniJugador.ToString();
+            }
+        }
     }
 }
