@@ -34,7 +34,7 @@ namespace Slam
 
         private void BtnNuevo_Click(object sender, EventArgs e)
         {
-            FrmNuevaPersona nuevoJugador = new FrmNuevaPersona(TipoPersona.Jugador);
+            FrmNuevaAfiliacion nuevoJugador = new FrmNuevaAfiliacion();
             nuevoJugador.Show();
         }
 
