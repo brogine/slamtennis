@@ -103,13 +103,13 @@ namespace Slam
 
         private void BtnGuardar_Click(object sender, EventArgs e)
         {
-            if (TxtDni.Text != string.Empty && TxtNombre.Text != string.Empty &&
-                TxtApellido.Text != string.Empty && DtpFechaNac.Value != DateTime.Today &&
-                CboNacionalidad.SelectedIndex > -1 && (RbMasculino.Checked || RbFemenino.Checked) &&
-                CboProvincia.SelectedIndex > -1 && CboLocalidades.SelectedIndex > -1 &&
-                TxtDomicilio.Text != string.Empty)
+            if (EpNuevaPersona.GetError(TxtDni) == "" && EpNuevaPersona.GetError(TxtNombre) == "" &&
+                EpNuevaPersona.GetError(TxtApellido) == "" && EpNuevaPersona.GetError(DtpFechaNac) == "" &&
+                EpNuevaPersona.GetError(CboNacionalidad) == "" && EpNuevaPersona.GetError(RbFemenino) == "" &&
+                EpNuevaPersona.GetError(CboProvincia) == "" && EpNuevaPersona.GetError(CboLocalidades) == "" &&
+                EpNuevaPersona.GetError(TxtDomicilio) == "")
             {
-                if (TxtUsuario.Text != string.Empty && TxtPassword.Text != string.Empty)
+                if (EpNuevaPersona.GetError(TxtUsuario) == "" && EpNuevaPersona.GetError(TxtPassword) == "")
                 {
                     Dni = int.Parse(TxtDni.Text);
                     switch (Tipo)
@@ -570,6 +570,8 @@ namespace Slam
             }
         }
 
+        #region Validaciones
+
         private void GbDatosPersonales_Validating(object sender, CancelEventArgs e)
         {
             if (TxtNombre.Text == "")
@@ -628,9 +630,58 @@ namespace Slam
                 EpNuevaPersona.SetError(CboProvincia, "Elija una Provincia del Desplegable.");
             else
                 EpNuevaPersona.SetError(CboProvincia, "");
-            //if(TxtDomicilio.Text == "")
-
+            if (TxtDomicilio.Text == "")
+                EpNuevaPersona.SetError(TxtDomicilio, "El campo no puede estar en blanco.");
+            else
+                EpNuevaPersona.SetError(TxtDomicilio, "");
         }
+
+        private void GbDatosLogin_Validating(object sender, CancelEventArgs e)
+        {
+            if (TxtUsuario.Text == "")
+                EpNuevaPersona.SetError(TxtUsuario, "El campo no puede estar en blanco.");
+            else
+                EpNuevaPersona.SetError(TxtUsuario, "");
+            if (TxtPassword.Text == "")
+                EpNuevaPersona.SetError(TxtPassword, "El campo no puede estar en blanco.");
+            else
+                EpNuevaPersona.SetError(TxtPassword, "");
+        }
+
+        private void GbMenor_Validating(object sender, CancelEventArgs e)
+        {
+            int EdadTemp = DateTime.Today.Year - this.FechaNac.Year;
+            if (new DateTime(DateTime.Today.Year, this.FechaNac.Month, this.FechaNac.Day) > DateTime.Today)
+                EdadTemp--;
+            if (EdadTemp < 18)
+            {
+                if (TxtDniTutor.Text == "")
+                    EpNuevaPersona.SetError(TxtDniTutor, "El campo no puede estar en blanco.");
+                else
+                    EpNuevaPersona.SetError(TxtDniTutor, "");
+                if (TxtRelacion.Text == "")
+                    EpNuevaPersona.SetError(TxtRelacion, "El campo no puede estar en blanco.");
+                else
+                    EpNuevaPersona.SetError(TxtRelacion, "");
+            }
+        }
+
+        private void CboNacionalidad_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = true;
+        }
+
+        private void CboProvincia_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = true;
+        }
+
+        private void CboLocalidades_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = true;
+        }
+
+        #endregion
 
     }
 }
