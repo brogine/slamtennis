@@ -7,7 +7,7 @@ using Repositorio;
 
 namespace Servicio
 {
-    class AfiliacionServicio:IAfiliacionServicio,IListadoAfiliacionServicio
+    public class AfiliacionServicio : IAfiliacionServicio, IListadoAfiliacionServicio
     {
 
         #region Miembros de IAfiliacionServicio
@@ -30,29 +30,17 @@ namespace Servicio
             IAfiliacionRepositorio AfilRepo = new AfiliacionRepositorio();
             Afiliacion ModAfil = AfilRepo.Buscar(UI.Dni, UI.IdClub);
             ModAfil.Estado = UI.Estado;
-<<<<<<< .mine
-=======
-            ModAfil.FechaBaja = DateTime.Today;
->>>>>>> .r61
             AfilRepo.Modificar(ModAfil);
         }
 
         public void Buscar(Servicio.InterfacesUI.IAfiliacionUI UI)
         {
             IAfiliacionRepositorio AfilRepo = new AfiliacionRepositorio();
-<<<<<<< .mine
-            Afiliacion Afil = AfilRepo.Buscar(UI.Dni, UI.IdClub);
-            UI.Estado = Afil.Estado;
-=======
             Afiliacion Afiliacion = AfilRepo.Buscar(UI.Dni, UI.IdClub);
             UI.Estado = Afiliacion.Estado;
-            
->>>>>>> .r61
         }
 
         #endregion
-
-
 
         #region Miembros de IListadoAfiliacionServicio
 
