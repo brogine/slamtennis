@@ -94,6 +94,7 @@
             this.LblNombreCategoria = new System.Windows.Forms.Label();
             this.DgvStats = new System.Windows.Forms.DataGridView();
             this.EpNuevaPersona = new System.Windows.Forms.ErrorProvider(this.components);
+            this.LblDetalle = new System.Windows.Forms.Label();
             this.TcPersonas.SuspendLayout();
             this.TpDatosPersonales.SuspendLayout();
             this.GbDatosArbitro.SuspendLayout();
@@ -123,6 +124,7 @@
             // 
             // TpDatosPersonales
             // 
+            this.TpDatosPersonales.Controls.Add(this.LblDetalle);
             this.TpDatosPersonales.Controls.Add(this.GbDatosArbitro);
             this.TpDatosPersonales.Controls.Add(this.BtnCancelar);
             this.TpDatosPersonales.Controls.Add(this.BtnGuardar);
@@ -158,18 +160,18 @@
             this.LblBadge.AutoSize = true;
             this.LblBadge.Location = new System.Drawing.Point(65, 57);
             this.LblBadge.Name = "LblBadge";
-            this.LblBadge.Size = new System.Drawing.Size(41, 13);
+            this.LblBadge.Size = new System.Drawing.Size(48, 13);
             this.LblBadge.TabIndex = 10;
-            this.LblBadge.Text = "Badge:";
+            this.LblBadge.Text = "Badge: *";
             // 
             // LblNivel
             // 
             this.LblNivel.AutoSize = true;
             this.LblNivel.Location = new System.Drawing.Point(72, 20);
             this.LblNivel.Name = "LblNivel";
-            this.LblNivel.Size = new System.Drawing.Size(34, 13);
+            this.LblNivel.Size = new System.Drawing.Size(41, 13);
             this.LblNivel.TabIndex = 9;
-            this.LblNivel.Text = "Nivel:";
+            this.LblNivel.Text = "Nivel: *";
             // 
             // TxtBadge
             // 
@@ -220,6 +222,7 @@
             this.GbMenor.TabStop = false;
             this.GbMenor.Text = "Tutor Del Menor";
             this.GbMenor.Visible = false;
+            this.GbMenor.Validating += new System.ComponentModel.CancelEventHandler(this.GbMenor_Validating);
             // 
             // TxtRelacion
             // 
@@ -370,6 +373,7 @@
             this.CboLocalidades.Name = "CboLocalidades";
             this.CboLocalidades.Size = new System.Drawing.Size(154, 21);
             this.CboLocalidades.TabIndex = 13;
+            this.CboLocalidades.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.CboLocalidades_KeyPress);
             // 
             // TxtDomicilio
             // 
@@ -383,9 +387,9 @@
             this.LblDomicilio.AutoSize = true;
             this.LblDomicilio.Location = new System.Drawing.Point(36, 77);
             this.LblDomicilio.Name = "LblDomicilio";
-            this.LblDomicilio.Size = new System.Drawing.Size(52, 13);
+            this.LblDomicilio.Size = new System.Drawing.Size(59, 13);
             this.LblDomicilio.TabIndex = 8;
-            this.LblDomicilio.Text = "Domicilio:";
+            this.LblDomicilio.Text = "Domicilio: *";
             // 
             // CboProvincia
             // 
@@ -395,24 +399,25 @@
             this.CboProvincia.Size = new System.Drawing.Size(154, 21);
             this.CboProvincia.TabIndex = 12;
             this.CboProvincia.SelectionChangeCommitted += new System.EventHandler(this.CboProvincia_SelectionChangeCommitted);
+            this.CboProvincia.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.CboProvincia_KeyPress);
             // 
             // LblLocalidad
             // 
             this.LblLocalidad.AutoSize = true;
             this.LblLocalidad.Location = new System.Drawing.Point(36, 49);
             this.LblLocalidad.Name = "LblLocalidad";
-            this.LblLocalidad.Size = new System.Drawing.Size(56, 13);
+            this.LblLocalidad.Size = new System.Drawing.Size(63, 13);
             this.LblLocalidad.TabIndex = 4;
-            this.LblLocalidad.Text = "Localidad:";
+            this.LblLocalidad.Text = "Localidad: *";
             // 
             // LblProvincia
             // 
             this.LblProvincia.AutoSize = true;
             this.LblProvincia.Location = new System.Drawing.Point(38, 20);
             this.LblProvincia.Name = "LblProvincia";
-            this.LblProvincia.Size = new System.Drawing.Size(54, 13);
+            this.LblProvincia.Size = new System.Drawing.Size(61, 13);
             this.LblProvincia.TabIndex = 2;
-            this.LblProvincia.Text = "Provincia:";
+            this.LblProvincia.Text = "Provincia: *";
             // 
             // GbDatosPersonales
             // 
@@ -459,11 +464,11 @@
             // 
             // LblPuesto
             // 
-            this.LblPuesto.Location = new System.Drawing.Point(34, 215);
+            this.LblPuesto.Location = new System.Drawing.Point(41, 215);
             this.LblPuesto.Name = "LblPuesto";
             this.LblPuesto.Size = new System.Drawing.Size(72, 23);
             this.LblPuesto.TabIndex = 16;
-            this.LblPuesto.Text = "Puesto:";
+            this.LblPuesto.Text = "Puesto: *";
             this.LblPuesto.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // RbFemenino
@@ -491,11 +496,11 @@
             // LblSexo
             // 
             this.LblSexo.AutoSize = true;
-            this.LblSexo.Location = new System.Drawing.Point(65, 197);
+            this.LblSexo.Location = new System.Drawing.Point(72, 195);
             this.LblSexo.Name = "LblSexo";
-            this.LblSexo.Size = new System.Drawing.Size(34, 13);
+            this.LblSexo.Size = new System.Drawing.Size(41, 13);
             this.LblSexo.TabIndex = 15;
-            this.LblSexo.Text = "Sexo:";
+            this.LblSexo.Text = "Sexo: *";
             // 
             // CboNacionalidad
             // 
@@ -504,6 +509,7 @@
             this.CboNacionalidad.Name = "CboNacionalidad";
             this.CboNacionalidad.Size = new System.Drawing.Size(154, 21);
             this.CboNacionalidad.TabIndex = 5;
+            this.CboNacionalidad.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.CboNacionalidad_KeyPress);
             // 
             // DtpFechaNac
             // 
@@ -520,18 +526,18 @@
             this.LblNacionalidad.AutoSize = true;
             this.LblNacionalidad.Location = new System.Drawing.Point(34, 160);
             this.LblNacionalidad.Name = "LblNacionalidad";
-            this.LblNacionalidad.Size = new System.Drawing.Size(72, 13);
+            this.LblNacionalidad.Size = new System.Drawing.Size(79, 13);
             this.LblNacionalidad.TabIndex = 8;
-            this.LblNacionalidad.Text = "Nacionalidad:";
+            this.LblNacionalidad.Text = "Nacionalidad: *";
             // 
             // LblFechaNac
             // 
             this.LblFechaNac.AutoSize = true;
             this.LblFechaNac.Location = new System.Drawing.Point(43, 124);
             this.LblFechaNac.Name = "LblFechaNac";
-            this.LblFechaNac.Size = new System.Drawing.Size(63, 13);
+            this.LblFechaNac.Size = new System.Drawing.Size(70, 13);
             this.LblFechaNac.TabIndex = 6;
-            this.LblFechaNac.Text = "Fecha Nac:";
+            this.LblFechaNac.Text = "Fecha Nac: *";
             // 
             // TxtApellido
             // 
@@ -545,9 +551,9 @@
             this.LblApellido.AutoSize = true;
             this.LblApellido.Location = new System.Drawing.Point(59, 89);
             this.LblApellido.Name = "LblApellido";
-            this.LblApellido.Size = new System.Drawing.Size(47, 13);
+            this.LblApellido.Size = new System.Drawing.Size(54, 13);
             this.LblApellido.TabIndex = 4;
-            this.LblApellido.Text = "Apellido:";
+            this.LblApellido.Text = "Apellido: *";
             // 
             // TxtNombre
             // 
@@ -561,9 +567,9 @@
             this.LblNombre.AutoSize = true;
             this.LblNombre.Location = new System.Drawing.Point(59, 58);
             this.LblNombre.Name = "LblNombre";
-            this.LblNombre.Size = new System.Drawing.Size(47, 13);
+            this.LblNombre.Size = new System.Drawing.Size(54, 13);
             this.LblNombre.TabIndex = 2;
-            this.LblNombre.Text = "Nombre:";
+            this.LblNombre.Text = "Nombre: *";
             // 
             // TxtDni
             // 
@@ -580,9 +586,9 @@
             this.LblDni.AutoSize = true;
             this.LblDni.Location = new System.Drawing.Point(77, 26);
             this.LblDni.Name = "LblDni";
-            this.LblDni.Size = new System.Drawing.Size(29, 13);
+            this.LblDni.Size = new System.Drawing.Size(36, 13);
             this.LblDni.TabIndex = 0;
-            this.LblDni.Text = "DNI:";
+            this.LblDni.Text = "DNI: *";
             // 
             // TpLogin
             // 
@@ -663,6 +669,7 @@
             this.GbDatosLogin.TabIndex = 23;
             this.GbDatosLogin.TabStop = false;
             this.GbDatosLogin.Text = "Datos de Login";
+            this.GbDatosLogin.Validating += new System.ComponentModel.CancelEventHandler(this.GbDatosLogin_Validating);
             // 
             // TxtPassword
             // 
@@ -676,9 +683,9 @@
             this.LblPassword.AutoSize = true;
             this.LblPassword.Location = new System.Drawing.Point(36, 51);
             this.LblPassword.Name = "LblPassword";
-            this.LblPassword.Size = new System.Drawing.Size(56, 13);
+            this.LblPassword.Size = new System.Drawing.Size(63, 13);
             this.LblPassword.TabIndex = 20;
-            this.LblPassword.Text = "Password:";
+            this.LblPassword.Text = "Password: *";
             // 
             // TxtUsuario
             // 
@@ -692,9 +699,9 @@
             this.LblUsuario.AutoSize = true;
             this.LblUsuario.Location = new System.Drawing.Point(46, 22);
             this.LblUsuario.Name = "LblUsuario";
-            this.LblUsuario.Size = new System.Drawing.Size(46, 13);
+            this.LblUsuario.Size = new System.Drawing.Size(53, 13);
             this.LblUsuario.TabIndex = 19;
-            this.LblUsuario.Text = "Usuario:";
+            this.LblUsuario.Text = "Usuario: *";
             // 
             // TpStats
             // 
@@ -728,6 +735,15 @@
             // 
             this.EpNuevaPersona.ContainerControl = this;
             // 
+            // LblDetalle
+            // 
+            this.LblDetalle.AutoSize = true;
+            this.LblDetalle.Location = new System.Drawing.Point(423, 282);
+            this.LblDetalle.Name = "LblDetalle";
+            this.LblDetalle.Size = new System.Drawing.Size(168, 13);
+            this.LblDetalle.TabIndex = 29;
+            this.LblDetalle.Text = "Los campos con * son obligatorios";
+            // 
             // FrmNuevaPersona
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -740,6 +756,7 @@
             this.Load += new System.EventHandler(this.FrmNuevaPersona_Load);
             this.TcPersonas.ResumeLayout(false);
             this.TpDatosPersonales.ResumeLayout(false);
+            this.TpDatosPersonales.PerformLayout();
             this.GbDatosArbitro.ResumeLayout(false);
             this.GbDatosArbitro.PerformLayout();
             this.GbMenor.ResumeLayout(false);
@@ -828,5 +845,6 @@
         private System.Windows.Forms.Label LblBadge;
         private System.Windows.Forms.Label LblNivel;
         private System.Windows.Forms.ErrorProvider EpNuevaPersona;
+        private System.Windows.Forms.Label LblDetalle;
     }
 }
