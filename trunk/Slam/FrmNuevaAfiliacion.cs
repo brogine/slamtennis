@@ -19,6 +19,12 @@ namespace Slam
             InitializeComponent();
         }
 
+        public FrmNuevaAfiliacion(int IdClub, int DniJugador)
+        {
+            InitializeComponent();
+            this.IdClub = IdClub;
+            this.Dni = DniJugador;
+        }
         private void FrmNuevaAfiliacion_Load(object sender, EventArgs e)
         {
 
