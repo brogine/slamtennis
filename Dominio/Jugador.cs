@@ -25,7 +25,7 @@ namespace Dominio
             Pais nacionalidad, string sexo, Contacto contacto, Ubicacion ubicacion, bool estado)
         {
             this.Dni = dni; this.Nombre = nombre; this.Apellido = apellido;
-            this.FechaNac = FechaNac; this.Nacionalidad = nacionalidad;
+            this.FechaNac = fechaNac; this.Nacionalidad = nacionalidad;
             this.Sexo = sexo; this.Contacto = contacto; this.Ubicacion = ubicacion; this.estado = estado;
         }
 
@@ -46,7 +46,7 @@ namespace Dominio
             Contacto contacto, Ubicacion ubicacion, bool estado)
         {
             this.Dni = dni; this.Nombre = nombre; this.Apellido = apellido;
-            this.FechaNac = FechaNac; this.Nacionalidad = nacionalidad;
+            this.FechaNac = fechaNac; this.Nacionalidad = nacionalidad;
             this.Sexo = sexo; this.Contacto = contacto; this.Ubicacion = ubicacion;
             this.estadisticas = Estadisticas; this.estado = estado;
         }
@@ -69,7 +69,7 @@ namespace Dominio
             Contacto contacto, Ubicacion ubicacion, bool estado)
         {
             this.Dni = dni; this.Nombre = nombre; this.Apellido = apellido;
-            this.FechaNac = FechaNac; this.Nacionalidad = nacionalidad;
+            this.FechaNac = fechaNac; this.Nacionalidad = nacionalidad;
             this.Sexo = sexo; this.Contacto = contacto; this.Ubicacion = ubicacion;
             this.dniTutor = dniTutor; this.relacionTutor = relacionTutor; this.estado = estado;
         }
@@ -93,7 +93,7 @@ namespace Dominio
             List<Estadisticas> Estadisticas, Contacto contacto, Ubicacion ubicacion, bool estado)
         {
             this.Dni = dni; this.Nombre = nombre; this.Apellido = apellido;
-            this.FechaNac = FechaNac; this.Nacionalidad = nacionalidad;
+            this.FechaNac = fechaNac; this.Nacionalidad = nacionalidad;
             this.Sexo = sexo; this.Contacto = contacto; this.Ubicacion = ubicacion;
             this.dniTutor = dniTutor; this.relacionTutor = relacionTutor;
             this.estadisticas = Estadisticas; this.estado = estado;
