@@ -120,6 +120,7 @@
             // 
             // TpDatosPersonales
             // 
+            this.TpDatosPersonales.Controls.Add(this.GbDatosArbitro);
             this.TpDatosPersonales.Controls.Add(this.BtnCancelar);
             this.TpDatosPersonales.Controls.Add(this.BtnGuardar);
             this.TpDatosPersonales.Controls.Add(this.GbMenor);
@@ -156,7 +157,6 @@
             // 
             // GbMenor
             // 
-            this.GbMenor.Controls.Add(this.GbDatosArbitro);
             this.GbMenor.Controls.Add(this.TxtRelacion);
             this.GbMenor.Controls.Add(this.LblRelacionMenor);
             this.GbMenor.Controls.Add(this.TxtNombreTutor);
@@ -177,9 +177,9 @@
             this.GbDatosArbitro.Controls.Add(this.LblNivel);
             this.GbDatosArbitro.Controls.Add(this.TxtBadge);
             this.GbDatosArbitro.Controls.Add(this.TxtNivel);
-            this.GbDatosArbitro.Location = new System.Drawing.Point(0, 2);
+            this.GbDatosArbitro.Location = new System.Drawing.Point(6, 265);
             this.GbDatosArbitro.Name = "GbDatosArbitro";
-            this.GbDatosArbitro.Size = new System.Drawing.Size(336, 106);
+            this.GbDatosArbitro.Size = new System.Drawing.Size(336, 108);
             this.GbDatosArbitro.TabIndex = 28;
             this.GbDatosArbitro.TabStop = false;
             this.GbDatosArbitro.Text = "Datos del Arbitro";
