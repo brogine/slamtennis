@@ -11,6 +11,8 @@ namespace Servicio
 
         void Modificar(IEmpleadoUI UI);
 
+        bool Existe(int Dni);
+
         void Buscar(IEmpleadoUI UI);
 
     }

@@ -60,9 +60,15 @@ namespace Servicio
             EmpleadoRepo.Modificar(ModEmp);
         }
 
+        public bool Existe(int Dni)
+        {
+            return EmpleadoRepo.Existe(Dni);
+        }
+
         public void Buscar(IEmpleadoUI UI)
         {
            Empleado BuscaEmpleado = EmpleadoRepo.Buscar(UI.Dni);
+           UI.Dni = BuscaEmpleado.Dni;
            UI.Apellido = BuscaEmpleado.Apellido;
            UI.Nombre = BuscaEmpleado.Nombre;
            UI.FechaNac = BuscaEmpleado.FechaNac;

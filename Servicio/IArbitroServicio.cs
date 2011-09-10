@@ -12,6 +12,8 @@ namespace Servicio
 
         void Modificar(IArbitroUI UI);
 
+        bool Existe(int Dni);
+
         void Buscar(IArbitroUI UI);
     }
 }

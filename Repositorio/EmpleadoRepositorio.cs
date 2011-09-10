@@ -33,7 +33,7 @@ namespace Repositorio
         	base.Modificar(Empleado);
         	string Consulta = " Update Empleados Set ";
         	Consulta += " Puesto = '" + Empleado.Puesto + "',";
-        	Consulta += " Estado = " + (Empleado.Estado ? 1 : 0) + ",";
+        	Consulta += " Estado = " + (Empleado.Estado ? 1 : 0);
         	Consulta += " Where Dni = " + Empleado.Dni;
         	Conn.ActualizarOEliminar(Consulta);
         }

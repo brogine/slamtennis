@@ -11,6 +11,9 @@ namespace Repositorio
         void Agregar(Arbitro Arbitro);
         void Modificar(Arbitro Arbitro);
         Arbitro Buscar(int Dni);
+
+        bool Existe(int Dni);
+
         List<Arbitro> Listar();
 
     }

@@ -14,6 +14,8 @@ namespace Repositorio
 
         Empleado Buscar(int Dni);
 
+        bool Existe(int Dni);
+
         List<Empleado> Listar();
     }
 }

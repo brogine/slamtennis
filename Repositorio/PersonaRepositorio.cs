@@ -35,9 +35,20 @@ namespace Repositorio
             Valores += ",'" + Persona.Ubicacion.Domicilio + "'";
             Conn.AgregarSinId("Personas", Campos, Valores);
 
-            Campos = " Usuario, Password, Estado ";
-            Valores = "'" + Persona.Login.Usuario + "','" + Persona.Login.Password + "'," + (Persona.Login.Estado ? 1 : 0);
+            Campos = " Dni, Usuario, Password, Estado ";
+            Valores = Persona.Dni + ",'" + Persona.Login.Usuario + "','" + Persona.Login.Password + "'," + (Persona.Login.Estado ? 1 : 0);
             Conn.AgregarSinId("Login", Campos, Valores);
+        }
+
+        public bool Existe(int Dni)
+        {
+            string Consulta = " Select Count(Dni) from Personas Where Dni = " + Dni;
+            DataRow Fila = Conn.Buscar(Consulta);
+            int cantidad = Fila.IsNull(0) ? 0 : 1;
+            if (cantidad == 1)
+                return true;
+            else
+                return false;
         }
 
         /// <summary>
@@ -61,8 +72,10 @@ namespace Repositorio
             Conn.ActualizarOEliminar(Consulta);
 
             Consulta = " Update Login Set ";
+            Consulta += " Usuario = '" + Persona.Login.Usuario + "',";
             Consulta += " Password = '" + Persona.Login.Password + "',";
             Consulta += " Estado = " + (Persona.Login.Estado ? 1 : 0);
+            Consulta += " Where Dni = " + Persona.Dni;
             Conn.ActualizarOEliminar(Consulta);
         }
 
