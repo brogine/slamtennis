@@ -105,7 +105,7 @@ namespace Slam
         {
             if (TxtDni.Text != string.Empty && TxtNombre.Text != string.Empty &&
                 TxtApellido.Text != string.Empty && DtpFechaNac.Value != DateTime.Today &&
-                CboNacionalidad.SelectedIndex > -1 && (RbMasculino.Checked || RbMasculino.Checked) &&
+                CboNacionalidad.SelectedIndex > -1 && (RbMasculino.Checked || RbFemenino.Checked) &&
                 CboProvincia.SelectedIndex > -1 && CboLocalidades.SelectedIndex > -1 &&
                 TxtDomicilio.Text != string.Empty)
             {
