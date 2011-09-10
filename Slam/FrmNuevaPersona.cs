@@ -559,7 +559,10 @@ namespace Slam
             {
                 if (Edad < 18)
                     GbMenor.Visible = true;
+                else
+                    GbMenor.Visible = false;
             }
         }
+
     }
 }
