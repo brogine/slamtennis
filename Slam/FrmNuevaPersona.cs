@@ -625,7 +625,7 @@ namespace Slam
                 EpNuevaPersona.SetError(CboProvincia, "Elija una Provincia del Desplegable.");
             else
                 EpNuevaPersona.SetError(CboProvincia, "");
-            if(TxtDomicilio.Text == "")
+            //if(TxtDomicilio.Text == "")
 
         }
 
