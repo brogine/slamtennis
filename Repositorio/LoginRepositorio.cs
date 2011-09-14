@@ -32,7 +32,7 @@ namespace Repositorio
 
         public void Modificar(Dominio.Login Objeto)
         {
-            string sql = " Update Login Set Password = '" + Objeto.Password + "', Estado = " + (Objeto.Estado ? 1 : 0);
+            string sql = " Update Login Set Usuario = '" + Objeto.Usuario + "', Password = '" + Objeto.Password + "', Estado = " + (Objeto.Estado ? 1 : 0);
             try
             {
                 Conn.ActualizarOEliminar(sql);
