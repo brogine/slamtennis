@@ -112,26 +112,33 @@ namespace Slam
                 if (EpNuevaPersona.GetError(TxtUsuario) == "" && EpNuevaPersona.GetError(TxtPassword) == "")
                 {
                     Dni = int.Parse(TxtDni.Text);
-                    switch (Tipo)
+                    try
                     {
-                        case TipoPersona.Arbitro:
-                            if (servicioArbitros.Existe(Dni))
-                                servicioArbitros.Modificar(this);
-                            else
-                                servicioArbitros.Agregar(this);
-                            break;
-                        case TipoPersona.Empleado:
-                            if (servicioEmpleados.Existe(Dni))
-                                servicioEmpleados.Modificar(this);
-                            else
-                                servicioEmpleados.Agregar(this);
-                            break;
-                        case TipoPersona.Jugador:
-                            if (servicioJugadores.Existe(Dni))
-                                servicioJugadores.Modificar(this);
-                            else
-                                servicioJugadores.Agregar(this);
-                            break;
+                        switch (Tipo)
+                        {
+                            case TipoPersona.Arbitro:
+                                if (servicioArbitros.Existe(Dni))
+                                    servicioArbitros.Modificar(this);
+                                else
+                                    servicioArbitros.Agregar(this);
+                                break;
+                            case TipoPersona.Empleado:
+                                if (servicioEmpleados.Existe(Dni))
+                                    servicioEmpleados.Modificar(this);
+                                else
+                                    servicioEmpleados.Agregar(this);
+                                break;
+                            case TipoPersona.Jugador:
+                                if (servicioJugadores.Existe(Dni))
+                                    servicioJugadores.Modificar(this);
+                                else
+                                    servicioJugadores.Agregar(this);
+                                break;
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message + " " + ex.InnerException.ToString());
                     }
                     this.DialogResult = DialogResult.OK;
                     MessageBox.Show("Carga realizada con éxito.");
