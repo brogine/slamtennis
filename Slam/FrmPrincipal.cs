@@ -86,7 +86,7 @@ namespace Slam
 
         private void FrmPrincipal_FormClosing(object sender, FormClosingEventArgs e)
         {
-        	if (!CerrarPadre) {
+        	if (CerrarPadre) {
         		Padre.Close();
         	}
         }
