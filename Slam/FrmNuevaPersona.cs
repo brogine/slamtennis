@@ -135,13 +135,13 @@ namespace Slam
                                     servicioJugadores.Agregar(this);
                                 break;
                         }
+                        this.DialogResult = DialogResult.OK;
+                        MessageBox.Show("Carga realizada con éxito.");
                     }
                     catch (Exception ex)
                     {
                         MessageBox.Show(ex.Message + " " + ex.InnerException.ToString());
                     }
-                    this.DialogResult = DialogResult.OK;
-                    MessageBox.Show("Carga realizada con éxito.");
                 }
                 else
                 {
