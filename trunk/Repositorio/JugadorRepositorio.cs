@@ -44,8 +44,7 @@ namespace Repositorio
 
         public List<Jugador> Listar(int IdClub)
         {
-        	string Consulta = " select P.Dni, P.Nombre, P.Apellido, P.FechaNacimiento, p.Nacionalidad, p.Sexo, ";
-            Consulta += " L.Usuario, L.Password, L.Estado ";
+        	string Consulta = " select * ";
             Consulta += " from Jugadores J inner join Afiliaciones A ";
             Consulta += " on j.Dni = a.Dni inner join Personas P on P.Dni = J.Dni ";
             Consulta += " inner join Login L on P.Dni = L.Dni ";

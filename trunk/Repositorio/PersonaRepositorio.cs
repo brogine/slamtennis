@@ -68,6 +68,7 @@ namespace Repositorio
         /// <param name="Persona">Objeto a modificar</param>
         protected void Modificar(Persona Persona)
         {
+            string FechaFormateada = Persona.FechaNac.Year + "/" + Persona.FechaNac.Month + "/" + Persona.FechaNac.Day;
             string Consulta = " Update Personas Set ";
             Consulta += " Nombre = '" + Persona.Nombre + "',";
             Consulta += " Apellido = '" + Persona.Apellido + "',";
