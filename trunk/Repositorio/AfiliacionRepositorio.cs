@@ -19,7 +19,8 @@ namespace Repositorio
 
         public void Agregar(Afiliacion Afiliacion)
         {
-            Conex.AgregarSinId("Afiliaciones", "Dni,IdClub,FechaAlta,Estado", Afiliacion.Jugador.Dni + "," + Afiliacion.Club.Id + ",'" + DateTime.Today.ToShortDateString() + "'," + 1);
+            string FechaFormateada = Afiliacion.FechaAlta.Year + "/" + Afiliacion.FechaAlta.Month + "/" + Afiliacion.FechaAlta.Day;
+            Conex.AgregarSinId("Afiliaciones", "Dni,IdClub,FechaAlta,Estado", Afiliacion.Jugador.Dni + "," + Afiliacion.Club.Id + ",'" + FechaFormateada + "'," + 1);
         }
 
         public void Modificar(Afiliacion Afiliacion)

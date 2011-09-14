@@ -21,6 +21,7 @@ namespace Servicio
             Club ClubAfil = ClubRepo.Buscar(UI.IdClub);
             Jugador JugaAfil = JugaRepo.Buscar(UI.Dni);
             Afiliacion NuevaAfil = new Afiliacion(ClubAfil, JugaAfil, DateTime.Today, UI.Estado);
+            AfilRepo.Agregar(NuevaAfil);
           
             
         }
