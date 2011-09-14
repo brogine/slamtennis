@@ -3,6 +3,6 @@
 
   <config nombre="SqlServer"
           Proveedor="System.Data.SqlClient"
-          ConnectionString="Server=(local)\SQLEXPRESS;Database=SlamDB;Trusted_Connection=True;"></config>
+          ConnectionString="Server=NICO-DESk;Database=SlamDB;Integrated Security =SSPI;"></config>
 
 </configuraciones>

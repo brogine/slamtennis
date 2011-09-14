@@ -22,11 +22,11 @@ namespace Repositorio
     		string Campos = "Dni, PartidosGanados, PartidosPerdidos, IdCategoria, Puntos, Estado";
     		string Valores = Jugador.Dni + "," + Estadistica.PG + "," + Estadistica.PP +",";
     		Valores += Estadistica.Categoria.Id + "," + Estadistica.Puntaje + "," + (Estadistica.Estado ? 1 : 0);
-    		Conn.AgregarSinId("JugadorCategoria", Campos, Valores);
+    		Conn.AgregarSinId("Jugadores", Campos, Valores);
     	}
     	
     	public void Modificar(Jugador Jugador, Estadisticas Estadistica) {
-    		string Consulta = " Update JugadorCategoria Set ";
+    		string Consulta = " Update Jugadores Set ";
     		Consulta += " PartidosGanados = " + Estadistica.PG + ",";
     		Consulta += " PartidosPerdidos = " + Estadistica.PP + ",";
     		Consulta += " Puntos = " + Estadistica.Puntaje + ",";
@@ -36,13 +36,13 @@ namespace Repositorio
     	}
     	
     	public Estadisticas Buscar(int Dni, int IdCategoria){
-    		String Consulta = " Select * From JugadorCategoria Where Dni = ";
+    		String Consulta = " Select * From Jugadores Where Dni = ";
     		Consulta += Dni + " And IdCategoria = " + IdCategoria;
     		return this.Mapear(Conn.Buscar(Consulta));
     	}
     	
     	public List<Estadisticas> ListarPorDni(int Dni){
-    		string Consulta = " Select * From JugadorCategoria Where Dni = " + Dni;
+    		string Consulta = " Select * From Jugadores Where Dni = " + Dni;
     		List<Estadisticas> ListaEstadisticas = new List<Estadisticas>();
     		DataTable Tabla = Conn.Listar(Consulta);
     		foreach (DataRow Fila in Tabla.Rows) {
@@ -52,7 +52,7 @@ namespace Repositorio
     	}
     	
     	public List<Estadisticas> ListarPorCategoria(int IdCategoria){
-    		string Consulta = " Select * From JugadorCategoria Where IdCategoria = " + IdCategoria;
+    		string Consulta = " Select * From Jugadores Where IdCategoria = " + IdCategoria;
     		List<Estadisticas> ListaEstadisticas = new List<Estadisticas>();
     		DataTable Tabla = Conn.Listar(Consulta);
     		foreach (DataRow Fila in Tabla.Rows) {
