@@ -14,6 +14,8 @@ namespace Repositorio
 
         Login Obtener(string Usuario);
 
+        bool Existe(int Dni);
+
         bool Existe(string Usuario);
     }
 }

@@ -34,11 +34,21 @@ namespace Repositorio
             Valores += "','" + Persona.Contacto.Telefono + "','" + Persona.Contacto.Celular;
             Valores += "','" + Persona.Contacto.Email  + "'," + Persona.Ubicacion.Localidad.IdLocalidad;
             Valores += ",'" + Persona.Ubicacion.Domicilio + "'";
-            Conn.AgregarSinId("Personas", Campos, Valores);
+            try
+            {
+                Conn.AgregarSinId("Personas", Campos, Valores);
+            }
+            catch (Exception ex)
+            {
+                throw new RepositorioExeption("No se pudieron agregar los datos personales.", ex);
+            }
 
-            Campos = " Dni, Usuario, Password, Estado ";
-            Valores = Persona.Dni + ",'" + Persona.Login.Usuario + "','" + Persona.Login.Password + "'," + (Persona.Login.Estado ? 1 : 0);
-            Conn.AgregarSinId("Login", Campos, Valores);
+            ILoginRepositorio repoLogin = new LoginRepositorio();
+            if (!repoLogin.Existe(Persona.Dni))
+            {
+                Login nLogin = new Login(Persona.Login.Usuario, Persona.Login.Password, Persona.Login.Estado);
+                repoLogin.Agregar(nLogin, Persona.Dni);
+            }
         }
 
         public bool Existe(int Dni)
@@ -70,14 +80,23 @@ namespace Repositorio
             Consulta += " Localidad = " + Persona.Ubicacion.Localidad.IdLocalidad + ",";
             Consulta += " Domicilio = '" + Persona.Ubicacion.Domicilio + "'";
             Consulta += " Where Dni = " + Persona.Dni;
-            Conn.ActualizarOEliminar(Consulta);
+            try
+            {
+                Conn.ActualizarOEliminar(Consulta);
+            }
+            catch (Exception ex)
+            {
+                throw new RepositorioExeption("No se pudieron modificar los datos personales.", ex);
+            }
 
-            Consulta = " Update Login Set ";
-            Consulta += " Usuario = '" + Persona.Login.Usuario + "',";
-            Consulta += " Password = '" + Persona.Login.Password + "',";
-            Consulta += " Estado = " + (Persona.Login.Estado ? 1 : 0);
-            Consulta += " Where Dni = " + Persona.Dni;
-            Conn.ActualizarOEliminar(Consulta);
+            ILoginRepositorio repoLogin = new LoginRepositorio();
+            if (repoLogin.Existe(Persona.Dni))
+            {
+                Login bLogin = repoLogin.Obtener(Persona.Login.Usuario);
+                bLogin.Password = Persona.Login.Password;
+                bLogin.Estado = Persona.Login.Estado;
+                repoLogin.Modificar(bLogin);
+            }
         }
 
         protected Persona MapearDatosPersonales(DataRow Fila, Persona Objeto)

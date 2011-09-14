@@ -32,6 +32,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmNuevaPersona));
             this.TcPersonas = new System.Windows.Forms.TabControl();
             this.TpDatosPersonales = new System.Windows.Forms.TabPage();
+            this.LblDetalle = new System.Windows.Forms.Label();
             this.GbDatosArbitro = new System.Windows.Forms.GroupBox();
             this.LblBadge = new System.Windows.Forms.Label();
             this.LblNivel = new System.Windows.Forms.Label();
@@ -94,7 +95,6 @@
             this.LblNombreCategoria = new System.Windows.Forms.Label();
             this.DgvStats = new System.Windows.Forms.DataGridView();
             this.EpNuevaPersona = new System.Windows.Forms.ErrorProvider(this.components);
-            this.LblDetalle = new System.Windows.Forms.Label();
             this.TcPersonas.SuspendLayout();
             this.TpDatosPersonales.SuspendLayout();
             this.GbDatosArbitro.SuspendLayout();
@@ -139,6 +139,15 @@
             this.TpDatosPersonales.TabIndex = 0;
             this.TpDatosPersonales.Text = "Datos Personales";
             this.TpDatosPersonales.UseVisualStyleBackColor = true;
+            // 
+            // LblDetalle
+            // 
+            this.LblDetalle.AutoSize = true;
+            this.LblDetalle.Location = new System.Drawing.Point(423, 282);
+            this.LblDetalle.Name = "LblDetalle";
+            this.LblDetalle.Size = new System.Drawing.Size(168, 13);
+            this.LblDetalle.TabIndex = 29;
+            this.LblDetalle.Text = "Los campos con * son obligatorios";
             // 
             // GbDatosArbitro
             // 
@@ -610,6 +619,7 @@
             this.BtnCambiarPassword.TabIndex = 25;
             this.BtnCambiarPassword.Text = "Cambiar Password";
             this.BtnCambiarPassword.UseVisualStyleBackColor = true;
+            this.BtnCambiarPassword.Click += new System.EventHandler(this.BtnCambiarPassword_Click);
             // 
             // GbCambiarPassword
             // 
@@ -734,15 +744,6 @@
             // EpNuevaPersona
             // 
             this.EpNuevaPersona.ContainerControl = this;
-            // 
-            // LblDetalle
-            // 
-            this.LblDetalle.AutoSize = true;
-            this.LblDetalle.Location = new System.Drawing.Point(423, 282);
-            this.LblDetalle.Name = "LblDetalle";
-            this.LblDetalle.Size = new System.Drawing.Size(168, 13);
-            this.LblDetalle.TabIndex = 29;
-            this.LblDetalle.Text = "Los campos con * son obligatorios";
             // 
             // FrmNuevaPersona
             // 
