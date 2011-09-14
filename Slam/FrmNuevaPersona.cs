@@ -140,7 +140,7 @@ namespace Slam
                     }
                     catch (Exception ex)
                     {
-                        MessageBox.Show(ex.Message + " " + ex.InnerException.ToString());
+                        MessageBox.Show(ex.Message + " " + ex.StackTrace);
                     }
                 }
                 else
