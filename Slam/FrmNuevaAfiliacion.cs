@@ -25,18 +25,22 @@ namespace Slam
         public FrmNuevaAfiliacion()
         {
             InitializeComponent();
+            servicioClubes = (IListadoClubServicio)AppContext.Instance.GetObject(ImplementaClubes);
+            servicioClubes.Listar(this);
         }
 
         public FrmNuevaAfiliacion(int IdClub, int DniJugador)
         {
             InitializeComponent();
+            servicioClubes = (IListadoClubServicio)AppContext.Instance.GetObject(ImplementaClubes);
+            servicioClubes.Listar(this);
             this.IdClub = IdClub;
             this.Dni = DniJugador;
+
         }
         private void FrmNuevaAfiliacion_Load(object sender, EventArgs e)
         {
-            servicioClubes = (IListadoClubServicio)AppContext.Instance.GetObject(ImplementaClubes);
-            servicioClubes.Listar(this);
+            
            AfilServ = (IAfiliacionServicio)AppContext.Instance.GetObject(ImplementaAfiliacion);
            ServicioJugador = (IJugadorServicio)AppContext.Instance.GetObject(ImplementaJugador);
         }
@@ -52,6 +56,7 @@ namespace Slam
             set
             {
                 CboListaClubes.SelectedValue = value;
+              //  ((KeyValuePair<int,string>) CboListaClubes.SelectedItem).Key = value;
             }
         }
 
