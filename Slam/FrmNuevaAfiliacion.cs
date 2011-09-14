@@ -36,6 +36,9 @@ namespace Slam
             servicioClubes.Listar(this);
             this.IdClub = IdClub;
             this.Dni = DniJugador;
+            this.CboListaClubes.Enabled = false;
+            this.TxtDni.Enabled = false;
+            
 
         }
         private void FrmNuevaAfiliacion_Load(object sender, EventArgs e)
@@ -43,6 +46,10 @@ namespace Slam
             
            AfilServ = (IAfiliacionServicio)AppContext.Instance.GetObject(ImplementaAfiliacion);
            ServicioJugador = (IJugadorServicio)AppContext.Instance.GetObject(ImplementaJugador);
+           if (CboListaClubes.SelectedIndex > -1 && TxtDni.Text != "")
+           {
+               AfilServ.Buscar(this);
+           }
         }
 
         #region Miembros de IAfiliacionUI
@@ -51,11 +58,12 @@ namespace Slam
         {
             get
             {
-                return Convert.ToInt32(((DictionaryEntry)CboListaClubes.SelectedItem).Value);
+                return Convert.ToInt32(((KeyValuePair<int,string>)CboListaClubes.SelectedItem).Key);
             }
             set
             {
                 CboListaClubes.SelectedValue = value;
+
             }
         }
 
