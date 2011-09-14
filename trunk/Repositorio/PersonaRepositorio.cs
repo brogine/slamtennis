@@ -93,7 +93,7 @@ namespace Repositorio
             ILoginRepositorio repoLogin = new LoginRepositorio();
             if (repoLogin.Existe(Persona.Dni))
             {
-                Login bLogin = repoLogin.Obtener(Persona.Login.Usuario);
+                Login bLogin = repoLogin.Obtener(Persona.Dni);
                 bLogin.Password = Persona.Login.Password;
                 bLogin.Estado = Persona.Login.Estado;
                 repoLogin.Modificar(bLogin);
