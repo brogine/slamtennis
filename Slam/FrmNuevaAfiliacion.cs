@@ -56,7 +56,6 @@ namespace Slam
             set
             {
                 CboListaClubes.SelectedValue = value;
-              //  ((KeyValuePair<int,string>) CboListaClubes.SelectedItem).Key = value;
             }
         }
 
@@ -101,13 +100,15 @@ namespace Slam
         {
             set
             {
+                Dictionary<int, string> ListaClubes = new Dictionary<int, string>();
                 foreach (Object Club in value)
                 {
                     Object[] DatosClub = Club.ToString().Split(',');
-                    CboListaClubes.Items.Add(new DictionaryEntry(DatosClub[1], DatosClub[0]));
+                    ListaClubes.Add(Convert.ToInt32(DatosClub[0]), DatosClub[1].ToString());
                 }
-                CboListaClubes.DisplayMember = "Key";
-                CboListaClubes.ValueMember = "Value";
+                CboListaClubes.DataSource = new BindingSource(ListaClubes, null);
+                CboListaClubes.DisplayMember = "Value";
+                CboListaClubes.ValueMember = "Key";
                 CboListaClubes.SelectedIndex = -1;
             }
         }
