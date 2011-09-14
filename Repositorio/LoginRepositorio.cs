@@ -49,6 +49,12 @@ namespace Repositorio
             return this.Mapear(Conn.Buscar(sql));
         }
 
+        public Login Obtener(int Dni)
+        {
+            string sql = " Select * From Login Where Dni = " + Dni;
+            return this.Mapear(Conn.Buscar(sql));
+        }
+
         public bool Existe(int Dni)
         {
             string sql = " Select * From Login Where Dni = " + Dni;
