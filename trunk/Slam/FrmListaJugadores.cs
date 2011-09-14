@@ -20,6 +20,8 @@ namespace Slam
         string ImplementaJugadores = "JugadorServicio";
     	IListadoClubServicio servicioClubes;
         IListadoJugadoresServicio servicioJugadores;
+
+
         public FrmListaJugadores()
         {
             InitializeComponent();
@@ -104,5 +106,16 @@ namespace Slam
         }
 
         #endregion
+
+        private void BtnSalir_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void BtnCambiaEstado_Click(object sender, EventArgs e)
+        {
+            FrmNuevaAfiliacion ModificaAfiliacion = new FrmNuevaAfiliacion(Convert.ToInt32(((DictionaryEntry)CboClubes.SelectedItem).Value),Convert.ToInt32(this.DgvJugadoresClub.SelectedRows[0].Cells["Dni"].Value));
+            ModificaAfiliacion.Show();
+        }
     }
 }
