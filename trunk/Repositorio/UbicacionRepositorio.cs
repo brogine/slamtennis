@@ -30,7 +30,14 @@ namespace Repositorio
 
         public void AgregarPais(Pais Pais)
         {
-            Conex.Agregar("Paises", "Nombre,Estado", "'" + Pais.Nombre + "',1");
+            try
+            {
+                Conex.Agregar("Paises", "Nombre,Estado", "'" + Pais.Nombre + "',1");
+            }
+            catch(Exception ex)
+            {
+                throw new RepositorioExeption("No se pudo agregar el pais.", ex);
+            }
         }
 
         public List<Provincia> ListarProvincias(Pais Pais)
@@ -46,7 +53,14 @@ namespace Repositorio
 
         public void AgregarProvincia(Provincia Provincia)
         {
-            Conex.Agregar("Provincias","Nombre,Estado,IdPais","'"+Provincia.Nombre+"',1,"+Provincia.Pais.IdPais);
+            try
+            {
+                Conex.Agregar("Provincias","Nombre,Estado,IdPais","'"+Provincia.Nombre+"',1,"+Provincia.Pais.IdPais);
+            }
+            catch (Exception ex)
+            {
+                throw new RepositorioExeption("No se pudo agregar la provincia.", ex);
+            }
         }
 
         public List<Localidad> ListarLocalidades(Provincia Provincia)
@@ -62,7 +76,14 @@ namespace Repositorio
 
         public void AgregarLocalidad(Localidad Localidad)
         {
-            Conex.Agregar("Localidades", "Nombre,Estado,IdProvincia", "'" + Localidad.Nombre + "',1," + Localidad.Provincia.IdProvincia);
+            try
+            {
+                Conex.Agregar("Localidades", "Nombre,Estado,IdProvincia", "'" + Localidad.Nombre + "',1," + Localidad.Provincia.IdProvincia);
+            }
+            catch (Exception ex)
+            {
+                throw new RepositorioExeption("No se pudo agregar la localidad.", ex);
+            }
         }
 
         #endregion

@@ -22,7 +22,14 @@ namespace Repositorio
     		string Campos = "Dni, PartidosGanados, PartidosPerdidos, IdCategoria, Puntos, Estado";
     		string Valores = Jugador.Dni + "," + Estadistica.PG + "," + Estadistica.PP +",";
     		Valores += Estadistica.Categoria.Id + "," + Estadistica.Puntaje + "," + (Estadistica.Estado ? 1 : 0);
-    		Conn.AgregarSinId("Jugadores", Campos, Valores);
+            try
+            {
+                Conn.AgregarSinId("Jugadores", Campos, Valores);
+            }
+            catch (Exception ex)
+            {
+                throw new RepositorioExeption("No se pudieron agregar las estadisticas del jugador.", ex);
+            }
     	}
     	
     	public void Modificar(Jugador Jugador, Estadisticas Estadistica) {
@@ -32,7 +39,14 @@ namespace Repositorio
     		Consulta += " Puntos = " + Estadistica.Puntaje + ",";
     		Consulta += " Estado = " + (Estadistica.Estado ? 1 : 0);
     		Consulta += " Where Dni = " + Jugador.Dni + " And IdCategoria = " + Estadistica.Categoria.Id;
-    		Conn.ActualizarOEliminar(Consulta);
+            try
+            {
+                Conn.ActualizarOEliminar(Consulta);
+            }
+            catch (Exception ex)
+            {
+                throw new RepositorioExeption("No se pudieron modificar las estadisticas del jugador.", ex);
+            }
     	}
     	
     	public Estadisticas Buscar(int Dni, int IdCategoria){

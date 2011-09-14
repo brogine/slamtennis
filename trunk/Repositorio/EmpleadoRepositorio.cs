@@ -25,7 +25,14 @@ namespace Repositorio
         	base.Agregar(Empleado);
         	string Campos = "Dni, Puesto, Estado ";
         	string Valores = Empleado.Dni + ",'" + Empleado.Puesto + "'," + (Empleado.Estado ? 1 : 0);
-        	Conn.AgregarSinId("Empleados", Campos, Valores);
+            try
+            {
+                Conn.AgregarSinId("Empleados", Campos, Valores);
+            }
+            catch (Exception ex)
+            {
+                throw new RepositorioExeption("No se pudo agregar al empleado.", ex);
+            }
         }
 
         public void Modificar(Empleado Empleado)
@@ -35,7 +42,14 @@ namespace Repositorio
         	Consulta += " Puesto = '" + Empleado.Puesto + "',";
         	Consulta += " Estado = " + (Empleado.Estado ? 1 : 0);
         	Consulta += " Where Dni = " + Empleado.Dni;
-        	Conn.ActualizarOEliminar(Consulta);
+            try
+            {
+                Conn.ActualizarOEliminar(Consulta);
+            }
+            catch (Exception ex)
+            {
+                throw new RepositorioExeption("No se pudo modificar al empleado.", ex);
+            }
         }
 
         public Empleado Buscar(int Dni)

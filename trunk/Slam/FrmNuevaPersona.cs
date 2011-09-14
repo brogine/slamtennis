@@ -683,5 +683,36 @@ namespace Slam
 
         #endregion
 
+        private void BtnCambiarPassword_Click(object sender, EventArgs e)
+        {
+            if (!GbCambiarPassword.Visible)
+                GbCambiarPassword.Visible = true;
+            else
+            {
+                if (Password == TxtPasswordViejo.Text)
+                {
+                    TxtPassword.Text = TxtPasswordNuevo.Text;
+                    switch (Tipo)
+                    {
+                        case TipoPersona.Arbitro:
+                            servicioArbitros.Modificar(this);
+                            break;
+                        case TipoPersona.Empleado:
+                            servicioEmpleados.Modificar(this);
+                            break;
+                        case TipoPersona.Jugador:
+                            servicioJugadores.Modificar(this);
+                            break;
+                    }
+                    MessageBox.Show("Password cambiado con éxito");
+                    TxtPasswordViejo.Text = "";
+                    TxtPasswordNuevo.Text = "";
+                    GbCambiarPassword.Visible = false;
+                }
+                else
+                    MessageBox.Show("Los Password no concuerdan.");
+            }
+        }
+
     }
 }

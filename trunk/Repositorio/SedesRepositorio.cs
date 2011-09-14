@@ -24,7 +24,14 @@ namespace Repositorio
             string Valores = Sede.Club.Id + ",'" + Sede.Ubicacion.Domicilio + "'," + Sede.Ubicacion.Localidad.IdLocalidad;
             Valores += ",'" + Sede.Contacto.Telefono + "','" + Sede.Contacto.Celular + "','";
             Valores += Sede.Contacto.Email + "'";
-            return Conn.Agregar("Sedes", Campos, Valores);
+            try
+            {
+                return Conn.Agregar("Sedes", Campos, Valores);
+            }
+            catch (Exception ex)
+            {
+                throw new RepositorioExeption("No se pudo agregar la sede.", ex);
+            }
         }
 
         public void Modificar(Dominio.Sede Sede)
@@ -37,7 +44,14 @@ namespace Repositorio
             Consulta += " Celular = '" + Sede.Contacto.Celular + "',";
             Consulta += " Email = '" + Sede.Contacto.Email + "'";
             Consulta += " Where IdSede = " + Sede.Id;
-            Conn.ActualizarOEliminar(Consulta);
+            try
+            {
+                Conn.ActualizarOEliminar(Consulta);
+            }
+            catch (Exception ex)
+            {
+                throw new RepositorioExeption("No se pudo modificar la sede.", ex);
+            }
         }
 
         public Dominio.Sede Buscar(int Id)

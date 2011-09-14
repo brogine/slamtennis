@@ -19,20 +19,43 @@ namespace Repositorio
 
         public void Agregar(Dominio.Login Objeto, int Dni)
         {
-            Conn.AgregarSinId("Login", "Dni,Usuario,Password,Estado", Dni + ",'" + Objeto.Usuario +
-                "','" + Objeto.Password + "'," + (Objeto.Estado ? 1 : 0));
+            try
+            {
+                Conn.AgregarSinId("Login", "Dni,Usuario,Password,Estado", Dni + ",'" + Objeto.Usuario +
+                    "','" + Objeto.Password + "'," + (Objeto.Estado ? 1 : 0));
+            }
+            catch (Exception ex)
+            {
+                throw new RepositorioExeption("No se pudieron agregar los datos de login.", ex);
+            }
         }
 
         public void Modificar(Dominio.Login Objeto)
         {
             string sql = " Update Login Set Password = '" + Objeto.Password + "', Estado = " + (Objeto.Estado ? 1 : 0);
-            Conn.ActualizarOEliminar(sql);
+            try
+            {
+                Conn.ActualizarOEliminar(sql);
+            }
+            catch (Exception ex)
+            {
+                throw new RepositorioExeption("No se pudieron modificar los datos de login.", ex);
+            }
         }
 
         public Dominio.Login Obtener(string Usuario)
         {
             string sql = " Select * From Login Where Usuario = '" + Usuario + "'";
             return this.Mapear(Conn.Buscar(sql));
+        }
+
+        public bool Existe(int Dni)
+        {
+            string sql = " Select * From Login Where Dni = " + Dni;
+            if (Conn.Buscar(sql) == null)
+                return false;
+            else
+                return true;
         }
 
         public bool Existe(string Usuario)

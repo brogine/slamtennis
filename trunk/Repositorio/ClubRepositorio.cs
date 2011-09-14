@@ -20,8 +20,15 @@ namespace Repositorio
 
         public int Agregar(Dominio.Club Club)
         {
-            return Conn.Agregar("Clubes", "Presidente, Nombre, Estado", "'" + Club.Presidente + 
-        	                    "','" + Club.Nombre + "'," + (Club.Estado ? 1 : 0));
+            try
+            {
+                return Conn.Agregar("Clubes", "Presidente, Nombre, Estado", "'" + Club.Presidente +
+                                    "','" + Club.Nombre + "'," + (Club.Estado ? 1 : 0));
+            }
+            catch (Exception ex)
+            {
+                throw new RepositorioExeption("No se pudo agregar el club.", ex);
+            }
         }
 
         public void Modificar(Dominio.Club Club)
@@ -29,7 +36,14 @@ namespace Repositorio
             string Sql = " Update Clubes Set Nombre = '" + Club.Nombre + "'," + 
                 " Presidente = '" + Club.Presidente + "', Estado = " + 
                 (Club.Estado ? 1 : 0);
-            Conn.ActualizarOEliminar(Sql);
+            try
+            {
+                Conn.ActualizarOEliminar(Sql);
+            }
+            catch (Exception ex)
+            {
+                throw new RepositorioExeption("No se pudo modificar el club.", ex);
+            }
         }
 
         public Club Buscar(int IdClub)
