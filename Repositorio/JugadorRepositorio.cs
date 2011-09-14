@@ -22,7 +22,7 @@ namespace Repositorio
         public void Agregar(Jugador Jugador)
         {
             base.Agregar(Jugador);
-
+            
             Conn.AgregarSinId("Jugadores", "Dni,PartidosGanados,PartidosPerdidos,IdCategoria,Puntos,Estado", Jugador.Dni+",0,0,1,0,1");
         }
 

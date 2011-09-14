@@ -72,7 +72,7 @@ namespace Repositorio
             string Consulta = " Update Personas Set ";
             Consulta += " Nombre = '" + Persona.Nombre + "',";
             Consulta += " Apellido = '" + Persona.Apellido + "',";
-            Consulta += " FechaNacimiento = '" + Persona.FechaNac + "',";
+            Consulta += " FechaNacimiento = '" + FechaFormateada + "',";
             Consulta += " Nacionalidad = " + Persona.Nacionalidad.IdPais + ",";
             Consulta += " Sexo = '" + Persona.Sexo + "',";
             Consulta += " Telefono = '" + Persona.Contacto.Telefono + "',";
