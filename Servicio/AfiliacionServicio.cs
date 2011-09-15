@@ -31,6 +31,7 @@ namespace Servicio
         {
             IAfiliacionRepositorio AfilRepo = new AfiliacionRepositorio();
             Afiliacion ModAfil = AfilRepo.Buscar(UI.Dni, UI.IdClub);
+            ModAfil.FechaBaja = DateTime.Today;
             ModAfil.Estado = UI.Estado;
             AfilRepo.Modificar(ModAfil);
         }
