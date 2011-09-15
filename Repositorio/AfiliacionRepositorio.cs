@@ -48,7 +48,7 @@ namespace Repositorio
 
         public Afiliacion Buscar(int Dni, int IdClub)
         {
-            string Sql = "Select * From Afiliaciones where Dni  = " + Dni + "," + " and IdClub = " + IdClub;
+            string Sql = "Select * From Afiliaciones where Dni  = " + Dni + " " + " and IdClub = " + IdClub;
             return this.Mapear(Conex.Buscar(Sql));
         }
 
@@ -84,7 +84,16 @@ namespace Repositorio
             }
             return Afiliacion;
         }
-
+        public bool Existe(int Dni,int IdClub)
+        {
+            string Consulta = " Select Count(Dni) from Afiliaciones Where Dni = " + Dni+" and IdClub = "+IdClub;
+            DataRow Fila = Conex.Buscar(Consulta);
+            int cantidad = Convert.ToInt32(Fila[0]);
+            if (cantidad == 1)
+                return true;
+            else
+                return false;
+        }
         #endregion
     }
 }

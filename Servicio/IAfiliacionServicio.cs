@@ -13,5 +13,7 @@ namespace Servicio
         void Modificar(IAfiliacionUI UI);
 
         void Buscar(IAfiliacionUI UI);
+
+        bool Existe(IAfiliacionUI UI);
     }
 }
