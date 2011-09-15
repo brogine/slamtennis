@@ -12,5 +12,6 @@ namespace Repositorio
        void Modificar(Afiliacion Afiliacion);
        List<Afiliacion> Listar(Club Club);
        Afiliacion Buscar(int Dni, int IdClub);
+       bool Existe(int Dni, int IdClub);
     }
 }

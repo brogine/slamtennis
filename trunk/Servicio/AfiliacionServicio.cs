@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using Dominio;
 using Repositorio;
+using Servicio.InterfacesUI;
 
 namespace Servicio
 {
@@ -39,6 +40,13 @@ namespace Servicio
             IAfiliacionRepositorio AfilRepo = new AfiliacionRepositorio();
             Afiliacion Afiliacion = AfilRepo.Buscar(UI.Dni, UI.IdClub);
             UI.Estado = Afiliacion.Estado;
+        }
+
+        public bool Existe(IAfiliacionUI UI)
+        {
+            IAfiliacionRepositorio AfilRepo = new AfiliacionRepositorio();
+            return AfilRepo.Existe(UI.Dni, UI.IdClub);
+
         }
 
         #endregion

@@ -123,8 +123,14 @@ namespace Slam
 
         private void button1_Click(object sender, EventArgs e)
         {
-            
+            if (AfilServ.Existe(this))
+            {
+                AfilServ.Modificar(this);
+            }
+            else
+            {
                 AfilServ.Agregar(this);
+            }
         }
 
         #endregion
