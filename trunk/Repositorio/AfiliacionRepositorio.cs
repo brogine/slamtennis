@@ -25,9 +25,10 @@ namespace Repositorio
 
         public void Modificar(Afiliacion Afiliacion)
         {
-           string Sql = "Update Empleados Set ";
-        	Sql += " FechaBaja = '" + Afiliacion.FechaBaja + "',";
-            Sql += " Estado = " + Afiliacion.Estado;
+            string FechaFormateada = Afiliacion.FechaBaja.Year + "/" + Afiliacion.FechaBaja.Month + "/" + Afiliacion.FechaBaja.Day;
+            string Sql = "Update Afiliaciones Set ";
+            Sql += " FechaBaja = '" + FechaFormateada + "',";
+            Sql += " Estado = '" + Afiliacion.Estado + "'";
             Sql += " where IdClub = " + Afiliacion.Club.Id;
             Sql += " and Dni = " + Afiliacion.Jugador.Dni;
             Conex.ActualizarOEliminar(Sql);
