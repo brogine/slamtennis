@@ -13,17 +13,21 @@ using System.Collections;
 
 namespace Slam
 {
-    public partial class FrmListaSedes : Form, IListadoClubes, IListadoSedes
+    public partial class FrmListaSedes : Form, IListadoClubes, IListadoSedes, IListadoCanchas
     {
         string ImplementaSedes = "SedesServicio";
         string ImplementaClubes = "ClubServicio";
+        string ImplementaCanchas = "CanchasServicio";
         IListadoSedesServicio servicioSedes;
         IListadoClubServicio servicioClubes;
+        IListadoCanchasServicio servicioCanchas;
+
         public FrmListaSedes()
         {
             InitializeComponent();
             servicioSedes = (IListadoSedesServicio)AppContext.Instance.GetObject(ImplementaSedes);
             servicioClubes = (IListadoClubServicio)AppContext.Instance.GetObject(ImplementaClubes);
+            servicioCanchas = (IListadoCanchasServicio)AppContext.Instance.GetObject(ImplementaCanchas);
         }
 
         private void FrmListaSedes_Load(object sender, EventArgs e)
@@ -114,6 +118,62 @@ namespace Slam
         private void CboClubes_KeyPress(object sender, KeyPressEventArgs e)
         {
             e.Handled = true;
+        }
+
+        private void BtnNuevaCancha_Click(object sender, EventArgs e)
+        {
+            FrmCanchas nuevaCancha = new FrmCanchas();
+            if (nuevaCancha.ShowDialog() == DialogResult.OK)
+                servicioCanchas.Listar(this);
+        }
+
+        private void BtnModificarCancha_Click(object sender, EventArgs e)
+        {
+            if (DgvCanchas.SelectedRows.Count == 1)
+            {
+                FrmCanchas nuevaCancha = new FrmCanchas(Convert.ToInt32(DgvCanchas.SelectedRows[0].Cells["Id"].Value));
+                if (nuevaCancha.ShowDialog() == DialogResult.OK)
+                    servicioCanchas.Listar(this);
+            }
+        }
+
+        #region Miembros de IListadoCanchas
+
+        public int IdSede
+        {
+            get { return Convert.ToInt32(DgvSedes.SelectedRows[0].Cells["Id"].Value); }
+        }
+
+        public List<object> ListaCanchas
+        {
+            set 
+            {
+                if (DgvCanchas.ColumnCount > 0)
+                    DgvCanchas.Columns.Clear();
+                DgvCanchas.Columns.Add("Id", "Id");
+                DgvCanchas.Columns["Id"].Visible = false;
+                DgvCanchas.Columns.Add("Superficie", "Superficie");
+                DgvCanchas.Columns.Add("Tipo", "Tipo");
+                DgvCanchas.Columns.Add("Luz", "Luz");
+                DgvCanchas.Columns.Add("Cantidad", "Cantidad");
+                if (DgvCanchas.RowCount > 0)
+                    DgvCanchas.Rows.Clear();
+                foreach (Object cancha in value)
+                {
+                    object[] DatosCancha = cancha.ToString().Split(',');
+                    DgvCanchas.Rows.Add(DatosCancha);
+                }
+            }
+        }
+
+        #endregion
+
+        private void DgvSedes_SelectionChanged(object sender, EventArgs e)
+        {
+            if (DgvSedes.SelectedRows.Count == 1)
+            {
+                servicioCanchas.Listar(this);
+            }
         }
     }
 }

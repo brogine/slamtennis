@@ -47,6 +47,7 @@
   <ItemGroup>
     <Compile Include="Afiliacion.cs" />
     <Compile Include="Arbitro.cs" />
+    <Compile Include="Cancha.cs" />
     <Compile Include="Categoria.cs" />
     <Compile Include="Club.cs" />
     <Compile Include="Contacto.cs" />
