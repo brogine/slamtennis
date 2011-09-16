@@ -23,6 +23,7 @@ namespace Dominio
         Club club;
         Contacto contacto;
         Ubicacion ubicacion;
+        List<Cancha> canchas;
 
         public int Id
         {
@@ -46,6 +47,12 @@ namespace Dominio
         {
             get { return ubicacion; }
             set { ubicacion = value; }
+        }
+
+        public List<Cancha> Canchas
+        {
+            get { return canchas; }
+            set { canchas = value; }
         }
 
     }

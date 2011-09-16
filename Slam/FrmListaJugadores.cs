@@ -21,7 +21,6 @@ namespace Slam
     	IListadoClubServicio servicioClubes;
         IListadoJugadoresServicio servicioJugadores;
 
-
         public FrmListaJugadores()
         {
             InitializeComponent();
@@ -114,12 +113,16 @@ namespace Slam
 
         private void BtnCambiaEstado_Click(object sender, EventArgs e)
         {
-            if (DgvJugadoresClub.SelectedRows == null)
+            if (DgvJugadoresClub.SelectedRows.Count == 1)
+            {
+                FrmNuevaAfiliacion ModificaAfiliacion = new FrmNuevaAfiliacion(Convert.ToInt32(((DictionaryEntry)CboClubes.SelectedItem).Value), Convert.ToInt32(this.DgvJugadoresClub.SelectedRows[0].Cells["Dni"].Value));
+                if (ModificaAfiliacion.ShowDialog() == DialogResult.OK)
+                    servicioJugadores.ListarJugadores(this);
+            }
+            else
             {
                 MessageBox.Show("Debe Seleccionar Un Club De La Lista Para Poder Modificar su estado");
             }
-            FrmNuevaAfiliacion ModificaAfiliacion = new FrmNuevaAfiliacion(Convert.ToInt32(((DictionaryEntry)CboClubes.SelectedItem).Value),Convert.ToInt32(this.DgvJugadoresClub.SelectedRows[0].Cells["Dni"].Value));
-            ModificaAfiliacion.Show();
         }
     }
 }

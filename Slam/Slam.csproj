@@ -96,6 +96,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App.Context.cs" />
+    <Compile Include="FrmCanchas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmCanchas.Designer.cs">
+      <DependentUpon>FrmCanchas.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmListaArbitros.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -170,6 +176,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="FrmCanchas.resx">
+      <DependentUpon>FrmCanchas.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FrmListaArbitros.resx">
       <DependentUpon>FrmListaArbitros.cs</DependentUpon>
     </EmbeddedResource>

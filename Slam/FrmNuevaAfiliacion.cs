@@ -16,40 +16,35 @@ namespace Slam
     public partial class FrmNuevaAfiliacion : Form, IAfiliacionUI, IListadoClubes
     {
         string ImplementaClubes = "ClubServicio";
+        string ImplementaJugador = "JugadorServicio";
+        string ImplementaAfiliacion = "AfiliacionServicio";
         IListadoClubServicio servicioClubes;
         IJugadorServicio ServicioJugador;
-        string ImplementaJugador="JugadorServicio";
-
-        string ImplementaAfiliacion = "AfiliacionServicio";
         IAfiliacionServicio AfilServ;
+
         public FrmNuevaAfiliacion()
         {
-            InitializeComponent();
-            servicioClubes = (IListadoClubServicio)AppContext.Instance.GetObject(ImplementaClubes);
-            servicioClubes.Listar(this);
+             InitializeComponent();
+             servicioClubes = (IListadoClubServicio)AppContext.Instance.GetObject(ImplementaClubes);
+             servicioClubes.Listar(this);
         }
 
         public FrmNuevaAfiliacion(int IdClub, int DniJugador)
         {
-            InitializeComponent();
-            servicioClubes = (IListadoClubServicio)AppContext.Instance.GetObject(ImplementaClubes);
-            servicioClubes.Listar(this);
-            this.IdClub = IdClub;
-            this.Dni = DniJugador;
-            this.CboListaClubes.Enabled = false;
-            this.TxtDni.Enabled = false;
-            
-
+             InitializeComponent();
+             servicioClubes = (IListadoClubServicio)AppContext.Instance.GetObject(ImplementaClubes);
+             servicioClubes.Listar(this);
+             this.IdClub = IdClub;
+             this.Dni = DniJugador;
+             this.CboListaClubes.Enabled = false;
+             this.TxtDni.Enabled = false;
         }
         private void FrmNuevaAfiliacion_Load(object sender, EventArgs e)
         {
-            
-           AfilServ = (IAfiliacionServicio)AppContext.Instance.GetObject(ImplementaAfiliacion);
-           ServicioJugador = (IJugadorServicio)AppContext.Instance.GetObject(ImplementaJugador);
-           if (CboListaClubes.SelectedIndex > -1 && TxtDni.Text != "")
-           {
-               AfilServ.Buscar(this);
-           }
+             AfilServ = (IAfiliacionServicio)AppContext.Instance.GetObject(ImplementaAfiliacion);
+             ServicioJugador = (IJugadorServicio)AppContext.Instance.GetObject(ImplementaJugador);
+             if (CboListaClubes.SelectedIndex > -1 && TxtDni.Text != "")
+                 AfilServ.Buscar(this);
         }
 
         #region Miembros de IAfiliacionUI
@@ -95,11 +90,11 @@ namespace Slam
 
         private void BtnNuevoJugador_Click(object sender, EventArgs e)
         {
-            FrmNuevaPersona NuevoJugador = new FrmNuevaPersona(TipoPersona.Jugador);
-            if (NuevoJugador.ShowDialog() == DialogResult.OK)
-            {
-                TxtDni.Text = NuevoJugador.DniJugador.ToString();
-            }
+             FrmNuevaPersona NuevoJugador = new FrmNuevaPersona(TipoPersona.Jugador);
+             if (NuevoJugador.ShowDialog() == DialogResult.OK)
+             {
+                 TxtDni.Text = NuevoJugador.DniJugador.ToString();
+             }
         }
 
         #region Miembros de IListadoClubes
@@ -135,13 +130,12 @@ namespace Slam
 
         #endregion
 
-        
-
         private void BtnComprobar_Click(object sender, EventArgs e)
         {
             if (TxtDni.Text == "")
             {
-                MessageBox.Show("El Dni No Puede Estar En Blanco");
+                LblExiste.ForeColor = Color.Red;
+                LblExiste.Text = "El Dni No Puede Estar En Blanco";
             }
             else
             {

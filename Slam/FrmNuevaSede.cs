@@ -24,7 +24,7 @@ namespace Slam
         ILocalidadServicio servicioLocalidades;
         IListadoClubServicio servicioClubes;
         ISedesServicio servicioSedes;
-        int IdSedeModificar;
+        int IdSedeModificar = 0;
         public FrmNuevaSede()
         {
             InitializeComponent();
