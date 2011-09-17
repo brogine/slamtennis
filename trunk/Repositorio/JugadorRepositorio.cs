@@ -49,11 +49,14 @@ namespace Repositorio
 
         public Jugador Buscar(int Dni)
         {
+            
             string Consulta = " Select * From Personas P inner join ";
             Consulta += " Login L on P.Dni = L.Dni ";
             Consulta += " Where P.Dni = " + Dni;
+                       
             IEstadisticaRepositorio repoEstadisticas = new EstadisticaRepositorio();
             Jugador bJugador = this.Mapear(Conn.Buscar(Consulta));
+            
             bJugador.Estadisticas = repoEstadisticas.ListarPorDni(Dni);
             return bJugador;
         }
