@@ -68,10 +68,28 @@ namespace Repositorio
 
         public Empleado Buscar(int Dni)
         {
-            string Consulta = " Select * From Empleados e inner join Personas p ";
-            Consulta += " on e.Dni = p.Dni inner join Login L on E.Dni = L.Dni ";
-            Consulta += " Where e.Dni = " + Dni;
-            return this.Mapear(Conn.Buscar(Consulta));
+            Empleado Emp = new Empleado();
+            if (base.Existe(Dni))
+            {
+                if (Existe(Dni))
+                {
+                    string Consulta = " Select * From Empleados e inner join Personas p ";
+                    Consulta += " on e.Dni = p.Dni inner join Login L on E.Dni = L.Dni ";
+                    Consulta += " Where e.Dni = " + Dni;
+                    return this.Mapear(Conn.Buscar(Consulta));
+                }
+                else
+                {
+                    string Consulta = "Select * From Personas P inner join Login L on P.Dni = L.Dni";
+                    Consulta += "where Dni = " + Dni;
+                    return this.Mapear(Conn.Buscar(Consulta));
+                }
+            }
+            else
+            {
+                throw new RepositorioExeption("No Existen Registros en la Base de Datos con Dni: " + Dni.ToString());
+            }
+            
         }
 
         public List<Empleado> Listar()
