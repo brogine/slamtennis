@@ -69,7 +69,7 @@ namespace Dominio
         Singles = 0, Dobles = 1
     }
 
-    public enum TipoSuperficie
+    public enum TipoSuperficie : int
     {
         PolvoLadrillo = 0, CespedVerde = 1, Dura = 2, Sintetica = 3
     }
