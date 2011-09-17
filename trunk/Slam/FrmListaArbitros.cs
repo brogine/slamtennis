@@ -14,9 +14,10 @@ using Servicio.InterfacesUI;
 
 namespace Slam
 {
-    public partial class FrmListaArbitros : Form
+    public partial class FrmListaArbitros : Form, IListadoArbitros
     {
-    	//IListadoArbitroServicio servicioArbitros;
+        string ImplementaArbitros = "ArbitroServicio";
+        IListadoArbitrosServicio servicioArbitros;
         public FrmListaArbitros()
         {
             InitializeComponent();
@@ -24,7 +25,8 @@ namespace Slam
 
         private void FrmListaArbitros_Load(object sender, EventArgs e)
         {
-
+            servicioArbitros = (IListadoArbitrosServicio)AppContext.Instance.GetObject(ImplementaArbitros);
+            servicioArbitros.ListarArbitros(this);
         }
 
         private void BtnNuevo_Click(object sender, EventArgs e)
@@ -39,12 +41,36 @@ namespace Slam
             {
                 FrmNuevaPersona modificarJugador = new FrmNuevaPersona(TipoPersona.Arbitro,
                     Convert.ToInt32(DgvArbitrosClub.SelectedRows[0].Cells["Dni"].Value));
-            	if(modificarJugador.ShowDialog() == DialogResult.OK)
-            		Application.DoEvents(); //TODO: Listar arbitros (Refrescar)
+                if (modificarJugador.ShowDialog() == DialogResult.OK)
+                    servicioArbitros.ListarArbitros(this);
             }
             else
                 MessageBox.Show("Elija un Arbitro de la grilla para Modificar", "Ayuda", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
-    	
+
+
+        #region Miembros de IListadoArbitros
+
+        public List<object> ListarArbitros
+        {
+            set 
+            {
+                if (DgvArbitrosClub.ColumnCount > 0)
+                    DgvArbitrosClub.Columns.Clear();
+                DgvArbitrosClub.Columns.Add("Dni", "Dni");
+                DgvArbitrosClub.Columns.Add("ApellidoNombre", "Apellido y Nombre");
+                DgvArbitrosClub.Columns.Add("Nivel", "Nivel");
+                DgvArbitrosClub.Columns.Add("Badge", "Badge");
+                if (DgvArbitrosClub.RowCount > 0)
+                    DgvArbitrosClub.Rows.Clear();
+                foreach (object Arbitro in value)
+                {
+                    object[] DatosArbitro = Arbitro.ToString().Split(',');
+                    DgvArbitrosClub.Rows.Add(DatosArbitro);
+                }
+            }
+        }
+
+        #endregion
     }
 }
