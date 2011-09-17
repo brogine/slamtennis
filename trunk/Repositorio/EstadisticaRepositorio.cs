@@ -54,6 +54,18 @@ namespace Repositorio
     		Consulta += Dni + " And IdCategoria = " + IdCategoria;
     		return this.Mapear(Conn.Buscar(Consulta));
     	}
+
+        public bool Existe(int Dni, int IdCategoria)
+        {
+            string Consulta = " Select Count(*) From Jugadores Where Dni = ";
+            Consulta += Dni + " And IdCategoria = " + IdCategoria;
+            DataRow Fila = Conn.Buscar(Consulta);
+            int cantidad = Convert.ToInt32(Fila[0]);
+            if (cantidad == 1)
+                return true;
+            else
+                return false;
+        }
     	
     	public List<Estadisticas> ListarPorDni(int Dni){
     		string Consulta = " Select * From Jugadores Where Dni = " + Dni;

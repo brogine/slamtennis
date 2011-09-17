@@ -11,17 +11,22 @@ namespace Repositorio
     public class JugadorRepositorio : PersonaRepositorio, IMapeador<Jugador>, IJugadorRepositorio
     {
         Conexion Conn;
+        IEstadisticaRepositorio repoEstadisticas;
         public JugadorRepositorio()
             : base()
         {
             Conn = new Conexion();
+            repoEstadisticas = new EstadisticaRepositorio();
         }
 
         #region Miembros de IJugadorRepositorio
 
         public void Agregar(Jugador Jugador)
         {
-            base.Agregar(Jugador);
+            if (!base.Existe(Jugador.Dni))
+                base.Agregar(Jugador);
+            else
+                base.Modificar(Jugador);
             
             Conn.AgregarSinId("Jugadores", "Dni,PartidosGanados,PartidosPerdidos,IdCategoria,Puntos,Estado", Jugador.Dni+",0,0,1,0,1");
         }
