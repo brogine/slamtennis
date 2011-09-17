@@ -29,6 +29,17 @@ namespace Repositorio
                 Arbitro.Dni + "," + Arbitro.Badge + "," + Arbitro.Nivel + "," + Arbitro.Estado);
         }
 
+        public override bool Existe(int Dni)
+        {
+            string Consulta = " Select Count(*) From Arbitros Where Dni = " + Dni;
+            DataRow Fila = Conex.Buscar(Consulta);
+            int cantidad = Convert.ToInt32(Fila[0]);
+            if (cantidad == 1)
+                return true;
+            else
+                return false;
+        }
+
         public void Modificar(Arbitro Arbitro)
         {
             base.Modificar(Arbitro);
