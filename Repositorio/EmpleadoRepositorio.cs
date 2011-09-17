@@ -22,11 +22,14 @@ namespace Repositorio
 
         public void Agregar(Empleado Empleado)
         {
-        	base.Agregar(Empleado);
+            if (!base.Existe(Empleado.Dni))
+                base.Agregar(Empleado);
+            else
+                base.Modificar(Empleado);
         	string Campos = "Dni, Puesto, Estado ";
-        	string Valores = Empleado.Dni + ",'" + Empleado.Puesto + "'," + (Empleado.Estado ? 1 : 0);
             try
             {
+                string Valores = Empleado.Dni + ",'" + Empleado.Puesto + "'," + (Empleado.Estado ? 1 : 0);
                 Conn.AgregarSinId("Empleados", Campos, Valores);
             }
             catch (Exception ex)

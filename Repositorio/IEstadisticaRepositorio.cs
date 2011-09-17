@@ -21,6 +21,8 @@ namespace Repositorio
 		void Modificar(Jugador Jugador, Estadisticas Estadistica);
 		
 		Estadisticas Buscar(int Dni, int IdCategoria);
+
+        bool Existe(int Dni, int IdCategoria);
 		
 		List<Estadisticas> ListarPorDni(int Dni);
 		

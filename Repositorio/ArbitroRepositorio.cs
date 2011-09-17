@@ -21,8 +21,12 @@ namespace Repositorio
 
         public void Agregar(Dominio.Arbitro Arbitro)
         {
-            base.Agregar(Arbitro);
-            Conex.Agregar("Arbitros", "Dni,Badge,Nivel,NumeroInscripcion,Estado", Arbitro.Dni + "," + Arbitro.Badge + "," + Arbitro.Nivel+ "," +Arbitro.Estado);
+            if (!base.Existe(Arbitro.Dni))
+                base.Agregar(Arbitro);
+            else
+                base.Modificar(Arbitro);
+            Conex.Agregar("Arbitros", "Dni,Badge,Nivel,NumeroInscripcion,Estado",
+                Arbitro.Dni + "," + Arbitro.Badge + "," + Arbitro.Nivel + "," + Arbitro.Estado);
         }
 
         public void Modificar(Arbitro Arbitro)
