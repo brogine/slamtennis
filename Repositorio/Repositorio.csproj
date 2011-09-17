@@ -51,6 +51,7 @@
   <ItemGroup>
     <Compile Include="AfiliacionRepositorio.cs" />
     <Compile Include="ArbitroRepositorio.cs" />
+    <Compile Include="CanchasRepositorio.cs" />
     <Compile Include="ClubRepositorio.cs" />
     <Compile Include="Conexion\AbstractDB.cs" />
     <Compile Include="Conexion\Conexion.cs" />
@@ -61,6 +62,7 @@
     <Compile Include="EstadisticaRepositorio.cs" />
     <Compile Include="IAfiliacionRepositorio.cs" />
     <Compile Include="IArbitroRepositorio.cs" />
+    <Compile Include="ICanchasRepositorio.cs" />
     <Compile Include="IClubRepositorio.cs" />
     <Compile Include="IEmpleadoRepositorio.cs" />
     <Compile Include="IEstadisticaRepositorio.cs" />
