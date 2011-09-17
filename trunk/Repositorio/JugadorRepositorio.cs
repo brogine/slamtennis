@@ -31,6 +31,17 @@ namespace Repositorio
             Conn.AgregarSinId("Jugadores", "Dni,PartidosGanados,PartidosPerdidos,IdCategoria,Puntos,Estado", Jugador.Dni+",0,0,1,0,1");
         }
 
+        public override bool Existe(int Dni)
+        {
+            string Consulta = " Select Count(*) From Jugadores Where Dni = " + Dni;
+            DataRow Fila = Conn.Buscar(Consulta);
+            int cantidad = Convert.ToInt32(Fila[0]);
+            if (cantidad == 1)
+                return true;
+            else
+                return false;
+        }
+
         public void Modificar(Jugador Jugador)
         {
             base.Modificar(Jugador);

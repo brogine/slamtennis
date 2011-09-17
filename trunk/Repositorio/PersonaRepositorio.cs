@@ -51,7 +51,7 @@ namespace Repositorio
             }
         }
 
-        public bool Existe(int Dni)
+        public virtual bool Existe(int Dni)
         {
             string Consulta = " Select Count(Dni) from Personas Where Dni = " + Dni;
             DataRow Fila = Conn.Buscar(Consulta);
