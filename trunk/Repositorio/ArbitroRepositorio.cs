@@ -30,8 +30,8 @@ namespace Repositorio
             base.Modificar(Arbitro);
             string Consulta = " Update Arbitros set ";
             Consulta += " Nivel =" + Arbitro.Nivel + ",";
-            Consulta += " Badge =" + Arbitro.Badge + ",";
-            Consulta += " Estado =" + Arbitro.Estado;
+            Consulta += " Badge ='" + Arbitro.Badge + "',";
+            Consulta += " Estado ='" + Arbitro.Estado + "'";
             Consulta += " where Dni = " + Arbitro.Dni;
         }
 
