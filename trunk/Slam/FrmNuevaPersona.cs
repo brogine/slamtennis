@@ -721,5 +721,25 @@ namespace Slam
             }
         }
 
+        private void TxtDni_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == 13)
+            {
+                Dni = int.Parse(TxtDni.Text);
+                switch (Tipo)
+                {
+                    case TipoPersona.Arbitro:
+                        servicioArbitros.Buscar(this);
+                        break;
+                    case TipoPersona.Empleado:
+                        servicioEmpleados.Buscar(this);
+                        break;
+                    case TipoPersona.Jugador:
+                        servicioJugadores.Buscar(this);
+                        break;
+                }
+            }
+        }
+
     }
 }

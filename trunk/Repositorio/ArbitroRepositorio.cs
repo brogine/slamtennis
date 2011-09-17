@@ -52,11 +52,27 @@ namespace Repositorio
 
         public Dominio.Arbitro Buscar(int Dni)
         {
-            string Consulta = " Select * from Arbitros a ";
-            Consulta += " inner join Login l ";
-            Consulta += " on a.Dni = l.Dni where Dni " + Dni;
-            return this.Mapear(Conex.Buscar(Consulta));
-
+            if (base.Existe(Dni))
+            {
+                if (Existe(Dni))
+                {
+                    string Consulta = " Select * from Arbitros a ";
+                    Consulta += " inner join Login l ";
+                    Consulta += " on a.Dni = l.Dni inner join Personas P ";
+                    Consulta += " on a.Dni = P.Dni Where a.Dni = " + Dni;
+                    return this.Mapear(Conex.Buscar(Consulta));
+                }
+                else
+                {
+                    string Consulta = " Select * From Personas P ";
+                    Consulta += " inner join Login L ";
+                    Consulta += " on P.Dni = L.Dni ";
+                    Consulta += " on P.Dni = " + Dni;
+                    return this.Mapear(Conex.Buscar(Consulta));
+                }
+            }
+            else
+                throw new RepositorioExeption("No Existen Registros en la Base de Datos con Dni: " + Dni.ToString());
         }
 
         public List<Dominio.Arbitro> Listar()
@@ -68,7 +84,7 @@ namespace Repositorio
 
             foreach (DataRow Dr in Tabla.Rows)
             { 
-            Lista.Add(this.Mapear(Dr));
+                Lista.Add(this.Mapear(Dr));
             }
             return Lista;
         }
@@ -80,15 +96,17 @@ namespace Repositorio
         public Arbitro Mapear(System.Data.DataRow Fila)
         {
             Arbitro Arbitro = null;
-            if (Fila!=null)
+            if (Fila != null)
             {
                 Arbitro = new Arbitro();
                 Arbitro = base.MapearDatosPersonales(Fila, Arbitro) as Arbitro;
 
-                Arbitro.Badge = Fila.IsNull("Badge") ? string.Empty : Fila["Badge"].ToString();
-                Arbitro.Nivel=Fila.IsNull("Nivel")?0:Convert.ToInt32( Fila["Nivel"]);
-                Arbitro.Estado = Fila.IsNull("Estado") ? false : Convert.ToBoolean(Fila["Estado"]);
-                
+                if (Fila["Badge"] != null && Fila["Nivel"] != null && Fila["Estado"] != null)
+                {
+                    Arbitro.Badge = Fila.IsNull("Badge") ? string.Empty : Fila["Badge"].ToString();
+                    Arbitro.Nivel = Fila.IsNull("Nivel") ? 0 : Convert.ToInt32(Fila["Nivel"]);
+                    Arbitro.Estado = Fila.IsNull("Estado") ? false : Convert.ToBoolean(Fila["Estado"]);
+                }
 
             }
             return Arbitro;
