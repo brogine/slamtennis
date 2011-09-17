@@ -25,8 +25,8 @@ namespace Repositorio
                 base.Agregar(Arbitro);
             else
                 base.Modificar(Arbitro);
-            Conex.Agregar("Arbitros", "Dni,Badge,Nivel,NumeroInscripcion,Estado",
-                Arbitro.Dni + "," + Arbitro.Badge + "," + Arbitro.Nivel + "," + Arbitro.Estado);
+            Conex.AgregarSinId("Arbitros", "Dni,Badge,Nivel,Estado",
+                Arbitro.Dni + ",'" + Arbitro.Badge + "'," + Arbitro.Nivel + "," + (Arbitro.Estado ? 1 : 0));
         }
 
         public override bool Existe(int Dni)
@@ -67,7 +67,7 @@ namespace Repositorio
                     string Consulta = " Select * From Personas P ";
                     Consulta += " inner join Login L ";
                     Consulta += " on P.Dni = L.Dni ";
-                    Consulta += " on P.Dni = " + Dni;
+                    Consulta += " Where P.Dni = " + Dni;
                     return this.Mapear(Conex.Buscar(Consulta));
                 }
             }
@@ -101,7 +101,8 @@ namespace Repositorio
                 Arbitro = new Arbitro();
                 Arbitro = base.MapearDatosPersonales(Fila, Arbitro) as Arbitro;
 
-                if (Fila["Badge"] != null && Fila["Nivel"] != null && Fila["Estado"] != null)
+                if (Fila.Table.Columns.Contains("Badge") && Fila.Table.Columns.Contains("Nivel")
+                    && Fila.Table.Columns.Contains("Estado"))
                 {
                     Arbitro.Badge = Fila.IsNull("Badge") ? string.Empty : Fila["Badge"].ToString();
                     Arbitro.Nivel = Fila.IsNull("Nivel") ? 0 : Convert.ToInt32(Fila["Nivel"]);

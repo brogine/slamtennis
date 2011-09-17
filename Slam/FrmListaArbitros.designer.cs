@@ -59,6 +59,7 @@
             // 
             this.DgvArbitrosClub.AllowUserToAddRows = false;
             this.DgvArbitrosClub.AllowUserToDeleteRows = false;
+            this.DgvArbitrosClub.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.DgvArbitrosClub.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.DgvArbitrosClub.Location = new System.Drawing.Point(14, 12);
             this.DgvArbitrosClub.Name = "DgvArbitrosClub";

@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Servicio.InterfacesUI
 {
-    interface IListadoArbitros
+    public interface IListadoArbitros
     {
         List<Object> ListarArbitros { set; }
     }

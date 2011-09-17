@@ -80,8 +80,8 @@ namespace Repositorio
                 }
                 else
                 {
-                    string Consulta = "Select * From Personas P inner join Login L on P.Dni = L.Dni";
-                    Consulta += "where Dni = " + Dni;
+                    string Consulta = " Select * From Personas P inner join Login L on P.Dni = L.Dni ";
+                    Consulta += " Where P.Dni = " + Dni;
                     return this.Mapear(Conn.Buscar(Consulta));
                 }
             }
@@ -115,12 +115,15 @@ namespace Repositorio
             {
             	bEmpleado = new Empleado();
             	bEmpleado = base.MapearDatosPersonales(Fila, bEmpleado) as Empleado;
-            	
-                // Datos de Empleado
-                bEmpleado.Puesto = Fila.IsNull("Puesto") ? string.Empty : Fila["Puesto"].ToString();
-                ISedesRepositorio repoSedes = new SedesRepositorio();
-                
-                bEmpleado.Estado = Fila.IsNull("Estado") ? false : Convert.ToBoolean(Fila["Estado"]);
+
+                if (Fila.Table.Columns.Contains("Puesto") && Fila.Table.Columns.Contains("Estado"))
+                {
+                    // Datos de Empleado
+                    bEmpleado.Puesto = Fila.IsNull("Puesto") ? string.Empty : Fila["Puesto"].ToString();
+                    ISedesRepositorio repoSedes = new SedesRepositorio();
+
+                    bEmpleado.Estado = Fila.IsNull("Estado") ? false : Convert.ToBoolean(Fila["Estado"]);
+                }
             }
             return bEmpleado;
         }

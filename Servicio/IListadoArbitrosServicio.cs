@@ -6,7 +6,7 @@ using Servicio.InterfacesUI;
 
 namespace Servicio
 {
-    interface IListadoArbitrosServicio
+    public interface IListadoArbitrosServicio
     {
         void ListarArbitros(IListadoArbitros UI);
     }
