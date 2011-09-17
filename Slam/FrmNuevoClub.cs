@@ -46,7 +46,14 @@ namespace Slam
 
         private void BtnGuardar_Click(object sender, EventArgs e)
         {
+            if (ClubServicio.Existe(this.idClub))
+            {
+            ClubServicio.Modificar(this);
+            }
+            else
+            {
             ClubServicio.Agregar(this);
+            }
             this.DialogResult= DialogResult.OK;
         }
 
