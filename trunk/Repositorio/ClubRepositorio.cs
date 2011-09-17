@@ -63,6 +63,16 @@ namespace Repositorio
             }
             return ListaClubes;
         }
+        public bool Existe(int IdClub)
+        {
+            string Consulta = " Select Count(*) From Club Where IdClub = " + IdClub;
+            DataRow Fila = Conn.Buscar(Consulta);
+            int cantidad = Convert.ToInt32(Fila[0]);
+            if (cantidad == 1)
+                return true;
+            else
+                return false;
+        }
 
         #endregion
 

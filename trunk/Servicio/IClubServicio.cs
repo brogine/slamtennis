@@ -13,5 +13,7 @@ namespace Servicio
         void Modificar(IClubUI UI);
 
         void Buscar(IClubUI UI);
+
+        bool Existe(int IdClub);
     }
 }

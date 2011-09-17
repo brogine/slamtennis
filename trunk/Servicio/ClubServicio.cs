@@ -55,7 +55,10 @@ namespace Servicio
             	throw new ServicioExeption(ex.Message, ex);
             }
         }
-
+        public bool Existe(int IdClub)
+        {
+            return ClubRepo.Existe(IdClub);
+        }
         #endregion
 
         #region Miembros de IListadoClubServicio

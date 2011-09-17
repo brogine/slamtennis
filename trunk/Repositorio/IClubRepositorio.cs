@@ -14,6 +14,8 @@ namespace Repositorio
 
         Club Buscar(int IdClub);
 
+        bool Existe(int IdClub);
+
         List<Club> Listar();
     }
 }

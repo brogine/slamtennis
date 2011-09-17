@@ -82,7 +82,7 @@ namespace Repositorio
                 {
                     string Consulta = " Select * From Personas P inner join Login L on P.Dni = L.Dni ";
                     Consulta += " Where P.Dni = " + Dni;
-                    return this.Mapear(Conn.Buscar(Consulta));
+                    return Mapear(Conn.Buscar(Consulta));
                 }
             }
             else
