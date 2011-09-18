@@ -87,6 +87,7 @@ namespace Slam
                 DgvJugadoresClub.Columns.Add("Dni", "Dni");
                 DgvJugadoresClub.Columns.Add("NombreApellido", "Nombre y Apellido");
                 DgvJugadoresClub.Columns.Add("FechaNac", "Fecha de Nac.");
+                DgvJugadoresClub.Columns["FechaNac"].DefaultCellStyle.Format = "dd/MM/yyyy";
                 DgvJugadoresClub.Columns.Add("Nacionalidad", "Nacionalidad");
                 DgvJugadoresClub.Columns.Add("Sexo", "Sexo");
                 if (DgvJugadoresClub.RowCount > 0)

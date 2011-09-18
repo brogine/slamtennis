@@ -31,10 +31,10 @@ namespace Servicio
 
             Login nLogin = new Login(UI.Usuario, UI.Password, UI.Estado);
 
-            if (UI.DniTutor > 0 && UI.RelacionTutor != "")
+            if (UI.Tutor != "" && UI.RelacionTutor != "")
             {
                 nJugador = new Jugador(UI.Dni, UI.Nombre, UI.Apellido, UI.FechaNac,
-            	    Nacionalidad, UI.Sexo, UI.DniTutor, UI.RelacionTutor,
+            	    Nacionalidad, UI.Sexo, UI.Tutor, UI.RelacionTutor,
                     nContacto, nUbicacion, UI.Estado, nLogin);
                 if (nJugador.Edad >= 18)
                     throw new ServicioExeption("Error al agregar: El jugador es mayor de edad.");
@@ -57,7 +57,7 @@ namespace Servicio
         	Jugador bJugador = repoJugadores.Buscar(UI.Dni);
 			bJugador.Apellido = UI.Apellido;
 			bJugador.Contacto = new Contacto(UI.Telefono, UI.Celular, UI.Email);
-			bJugador.DniTutor = UI.DniTutor;
+			bJugador.Tutor = UI.Tutor;
 			bJugador.Estado = UI.Estado;
 			bJugador.FechaNac = UI.FechaNac;
 			bJugador.Login = new Login(UI.Usuario, UI.Password, UI.Estado);
@@ -76,7 +76,7 @@ namespace Servicio
             UI.Dni = bJugador.Dni;
         	UI.Apellido = bJugador.Apellido;
         	UI.Celular = bJugador.Contacto.Celular;
-        	UI.DniTutor = bJugador.DniTutor;
+        	UI.Tutor = bJugador.Tutor;
         	UI.Domicilio = bJugador.Ubicacion.Domicilio;
         	UI.Email = bJugador.Contacto.Email;
         	UI.Estado = bJugador.Estado;
@@ -107,7 +107,7 @@ namespace Servicio
                 object Objeto = new object();
                 Objeto = Jugador.Dni + ",";
                 Objeto += Jugador.Apellido + " " + Jugador.Nombre + ",";
-                Objeto += Jugador.FechaNac + ",";
+                Objeto += Jugador.FechaNac.ToShortDateString() + ",";
                 Objeto += Jugador.Nacionalidad.Nombre + ",";
                 Objeto += Jugador.Sexo;
                 ListaUI.Add(Objeto);

@@ -13,7 +13,7 @@ namespace Servicio
         void Modificar(IJugadorUI UI);
 
         bool Existe(int Dni);
-        
+
         void Buscar(IJugadorUI UI);
     }
 }

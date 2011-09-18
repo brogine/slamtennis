@@ -45,8 +45,6 @@
             this.LblRelacionMenor = new System.Windows.Forms.Label();
             this.TxtNombreTutor = new System.Windows.Forms.TextBox();
             this.LblNombreTutor = new System.Windows.Forms.Label();
-            this.TxtDniTutor = new System.Windows.Forms.MaskedTextBox();
-            this.LblDniTutor = new System.Windows.Forms.Label();
             this.GbContacto = new System.Windows.Forms.GroupBox();
             this.TxtEmail = new System.Windows.Forms.TextBox();
             this.LblEmail = new System.Windows.Forms.Label();
@@ -222,8 +220,6 @@
             this.GbMenor.Controls.Add(this.LblRelacionMenor);
             this.GbMenor.Controls.Add(this.TxtNombreTutor);
             this.GbMenor.Controls.Add(this.LblNombreTutor);
-            this.GbMenor.Controls.Add(this.TxtDniTutor);
-            this.GbMenor.Controls.Add(this.LblDniTutor);
             this.GbMenor.Location = new System.Drawing.Point(6, 265);
             this.GbMenor.Name = "GbMenor";
             this.GbMenor.Size = new System.Drawing.Size(336, 108);
@@ -235,7 +231,7 @@
             // 
             // TxtRelacion
             // 
-            this.TxtRelacion.Location = new System.Drawing.Point(144, 75);
+            this.TxtRelacion.Location = new System.Drawing.Point(145, 54);
             this.TxtRelacion.Name = "TxtRelacion";
             this.TxtRelacion.Size = new System.Drawing.Size(154, 20);
             this.TxtRelacion.TabIndex = 23;
@@ -243,7 +239,7 @@
             // LblRelacionMenor
             // 
             this.LblRelacionMenor.AutoSize = true;
-            this.LblRelacionMenor.Location = new System.Drawing.Point(14, 78);
+            this.LblRelacionMenor.Location = new System.Drawing.Point(15, 57);
             this.LblRelacionMenor.Name = "LblRelacionMenor";
             this.LblRelacionMenor.Size = new System.Drawing.Size(116, 13);
             this.LblRelacionMenor.TabIndex = 22;
@@ -251,39 +247,19 @@
             // 
             // TxtNombreTutor
             // 
-            this.TxtNombreTutor.Location = new System.Drawing.Point(144, 49);
+            this.TxtNombreTutor.Location = new System.Drawing.Point(145, 17);
             this.TxtNombreTutor.Name = "TxtNombreTutor";
-            this.TxtNombreTutor.ReadOnly = true;
             this.TxtNombreTutor.Size = new System.Drawing.Size(154, 20);
             this.TxtNombreTutor.TabIndex = 3;
             // 
             // LblNombreTutor
             // 
             this.LblNombreTutor.AutoSize = true;
-            this.LblNombreTutor.Location = new System.Drawing.Point(39, 56);
+            this.LblNombreTutor.Location = new System.Drawing.Point(40, 24);
             this.LblNombreTutor.Name = "LblNombreTutor";
             this.LblNombreTutor.Size = new System.Drawing.Size(91, 13);
             this.LblNombreTutor.TabIndex = 2;
             this.LblNombreTutor.Text = "Nombre Del Tutor";
-            // 
-            // TxtDniTutor
-            // 
-            this.TxtDniTutor.Location = new System.Drawing.Point(144, 23);
-            this.TxtDniTutor.Mask = "00.000.000";
-            this.TxtDniTutor.Name = "TxtDniTutor";
-            this.TxtDniTutor.Size = new System.Drawing.Size(100, 20);
-            this.TxtDniTutor.TabIndex = 1;
-            this.TxtDniTutor.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.TxtDniTutor.TextMaskFormat = System.Windows.Forms.MaskFormat.ExcludePromptAndLiterals;
-            // 
-            // LblDniTutor
-            // 
-            this.LblDniTutor.AutoSize = true;
-            this.LblDniTutor.Location = new System.Drawing.Point(60, 30);
-            this.LblDniTutor.Name = "LblDniTutor";
-            this.LblDniTutor.Size = new System.Drawing.Size(70, 13);
-            this.LblDniTutor.TabIndex = 0;
-            this.LblDniTutor.Text = "Dni Del Tutor";
             // 
             // GbContacto
             // 
@@ -407,7 +383,7 @@
             this.CboProvincia.Name = "CboProvincia";
             this.CboProvincia.Size = new System.Drawing.Size(154, 21);
             this.CboProvincia.TabIndex = 12;
-            this.CboProvincia.SelectionChangeCommitted += new System.EventHandler(this.CboProvincia_SelectionChangeCommitted);
+            this.CboProvincia.SelectedIndexChanged += new System.EventHandler(this.CboProvincia_SelectedIndexChanged);
             this.CboProvincia.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.CboProvincia_KeyPress);
             // 
             // LblLocalidad
@@ -794,8 +770,6 @@
         private System.Windows.Forms.Label LblRelacionMenor;
         private System.Windows.Forms.TextBox TxtNombreTutor;
         private System.Windows.Forms.Label LblNombreTutor;
-        private System.Windows.Forms.MaskedTextBox TxtDniTutor;
-        private System.Windows.Forms.Label LblDniTutor;
         private System.Windows.Forms.GroupBox GbContacto;
         private System.Windows.Forms.TextBox TxtEmail;
         private System.Windows.Forms.Label LblEmail;
