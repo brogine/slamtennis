@@ -9,13 +9,16 @@ using System.Windows.Forms;
 using Servicio.InterfacesUI;
 using Servicio;
 using ApplicationContext;
+using System.Collections;
 
 namespace Slam
 {
-    public partial class FrmCanchas : Form, ICanchasUI
+    public partial class FrmCanchas : Form, ICanchasUI, IListadoSedes
     {
         string ImplementaCanchas = "CanchasServicio";
+        string ImplementaSedes = "SedesServicio";
         ICanchasServicio servicioCanchas;
+        IListadoSedesServicio servicioSedes;
         int IdCanchaActual = 0;
         public FrmCanchas()
         {
@@ -31,8 +34,13 @@ namespace Slam
         private void FrmCanchas_Load(object sender, EventArgs e)
         {
             servicioCanchas = (ICanchasServicio)AppContext.Instance.GetObject(ImplementaCanchas);
+            servicioSedes = (IListadoSedesServicio)AppContext.Instance.GetObject(ImplementaSedes);
+            servicioSedes.ListarSedes(this);
+            if (IdCanchaActual > 0)
+                servicioCanchas.Buscar(this);
         }
 
+        #region Validaciones
         private void CboSede_KeyPress(object sender, KeyPressEventArgs e)
         {
             e.Handled = true;
@@ -71,6 +79,7 @@ namespace Slam
             else
                 EpCanchas.SetError(CboTipo, "");
         }
+        #endregion
 
         private void BtnCancelar_Click(object sender, EventArgs e)
         {
@@ -110,17 +119,18 @@ namespace Slam
         public int IdSede
         {
             get { return (int)CboSede.SelectedValue; }
+            set { CboSede.SelectedValue = value; }
         }
 
         public int TipoCancha
         {
             get
             {
-                return (int)CboTipo.SelectedValue;
+                return CboTipo.SelectedIndex;
             }
             set
             {
-                CboTipo.SelectedValue = value;
+                CboTipo.SelectedIndex = value;
             }
         }
 
@@ -128,11 +138,11 @@ namespace Slam
         {
             get
             {
-                return (int)CboSuperficie.SelectedValue;
+                return CboSuperficie.SelectedIndex;
             }
             set
             {
-                CboSuperficie.SelectedValue = value;
+                CboSuperficie.SelectedIndex = value;
             }
         }
 
@@ -157,6 +167,34 @@ namespace Slam
             set
             {
                 TxtCantidad.Text = value.ToString();
+            }
+        }
+
+        #endregion
+
+        #region Miembros de IListadoSedes
+
+        public int IdClub
+        {
+            get { return 0; }
+        }
+
+        public List<object> ListarSedes
+        {
+            set 
+            {
+                Dictionary<int, string> ListaSedes = new Dictionary<int, string>();
+                if (CboSede.Items.Count > 0)
+                    CboSede.Items.Clear();
+                foreach (object Sede in value)
+                {
+                    object[] DatosSede = Sede.ToString().Split(',');
+                    ListaSedes.Add(Convert.ToInt32(DatosSede[0]), DatosSede[2].ToString());
+                }
+                CboSede.DataSource = new BindingSource(ListaSedes, null);
+                CboSede.DisplayMember = "Value";
+                CboSede.ValueMember = "Key";
+                CboSede.SelectedIndex = -1;
             }
         }
 

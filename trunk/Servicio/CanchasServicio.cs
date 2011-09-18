@@ -38,6 +38,7 @@ namespace Servicio
         public void Buscar(Servicio.InterfacesUI.ICanchasUI UI)
         {
             Cancha bCancha = repoCanchas.Buscar(UI.IdCancha);
+            UI.IdSede = bCancha.Sede.Id;
             UI.Cantidad = bCancha.Cantidad;
             UI.Luz = bCancha.Luz;
             UI.Superficie = (int)bCancha.Superficie;

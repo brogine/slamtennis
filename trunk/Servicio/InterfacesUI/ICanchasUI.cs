@@ -8,7 +8,7 @@ namespace Servicio.InterfacesUI
     public interface ICanchasUI
     {
         int IdCancha { get; }
-        int IdSede { get; }
+        int IdSede { get; set; }
         int TipoCancha { get; set; }
         int Superficie { get; set; }
         bool Luz { get; set; }

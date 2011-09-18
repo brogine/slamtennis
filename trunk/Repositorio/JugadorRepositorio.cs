@@ -29,7 +29,7 @@ namespace Repositorio
                 base.Modificar(Jugador);
 
             if (Jugador.Edad < 18 && Jugador.Tutor != "" && Jugador.RelacionTutor != "")
-                Conn.ActualizarOEliminar(" Update Personas Set Tutor = '" + Jugador.Tutor + "','" + Jugador.RelacionTutor + "' Where Dni = " + Jugador.Dni);
+                Conn.ActualizarOEliminar(" Update Personas Set Tutor = '" + Jugador.Tutor + "', Relacion = '" + Jugador.RelacionTutor + "' Where Dni = " + Jugador.Dni);
             Conn.AgregarSinId("Jugadores", "Dni,PartidosGanados,PartidosPerdidos,IdCategoria,Puntos,Estado", Jugador.Dni+",0,0,1,0,1");
         }
 
@@ -93,6 +93,9 @@ namespace Repositorio
             {
                 nJugador = new Jugador();
                 nJugador = base.MapearDatosPersonales(Fila, nJugador) as Jugador;
+
+                if (Fila.Table.Columns.Contains("Estado"))
+                    nJugador.Estado = Fila.IsNull("Estado") ? false : Convert.ToBoolean(Fila["Estado"]);
                 
                 if (nJugador.Edad < 18)
                 {
