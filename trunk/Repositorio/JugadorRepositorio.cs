@@ -27,7 +27,9 @@ namespace Repositorio
                 base.Agregar(Jugador);
             else
                 base.Modificar(Jugador);
-            
+
+            if (Jugador.Edad < 18 && Jugador.Tutor != "" && Jugador.RelacionTutor != "")
+                Conn.ActualizarOEliminar(" Update Personas Set Tutor = '" + Jugador.Tutor + "','" + Jugador.RelacionTutor + "' Where Dni = " + Jugador.Dni);
             Conn.AgregarSinId("Jugadores", "Dni,PartidosGanados,PartidosPerdidos,IdCategoria,Puntos,Estado", Jugador.Dni+",0,0,1,0,1");
         }
 
@@ -94,7 +96,7 @@ namespace Repositorio
                 
                 if (nJugador.Edad < 18)
                 {
-                    nJugador.DniTutor = (Fila.IsNull("DniTutor") == true ? 0 : Convert.ToInt32(Fila["DniTutor"]));
+                    nJugador.Tutor = (Fila.IsNull("Tutor") == true ? "" : Fila["Tutor"].ToString());
                     nJugador.RelacionTutor = (Fila.IsNull("Relacion") == true ? string.Empty : Convert.ToString(Fila["Relacion"]));
                 }
             }

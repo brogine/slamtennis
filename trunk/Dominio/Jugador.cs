@@ -65,13 +65,13 @@ namespace Dominio
         /// <param name="contacto"></param>
         /// <param name="ubicacion"></param>
         public Jugador(int dni, string nombre, string apellido, DateTime fechaNac,
-            Pais nacionalidad, string sexo, int dniTutor, string relacionTutor,
+            Pais nacionalidad, string sexo, string Tutor, string relacionTutor,
             Contacto contacto, Ubicacion ubicacion, bool estado, Login login)
         {
             this.Dni = dni; this.Nombre = nombre; this.Apellido = apellido;
             this.FechaNac = fechaNac; this.Nacionalidad = nacionalidad; this.Login = login;
             this.Sexo = sexo; this.Contacto = contacto; this.Ubicacion = ubicacion;
-            this.dniTutor = dniTutor; this.relacionTutor = relacionTutor; this.estado = estado;
+            this.tutor = Tutor; this.relacionTutor = relacionTutor; this.estado = estado;
         }
 
         /// <summary>
@@ -89,26 +89,26 @@ namespace Dominio
         /// <param name="contacto"></param>
         /// <param name="ubicacion"></param>
         public Jugador(int dni, string nombre, string apellido, DateTime fechaNac,
-            Pais nacionalidad, string sexo, int dniTutor, string relacionTutor,
+            Pais nacionalidad, string sexo, string Tutor, string relacionTutor,
             List<Estadisticas> Estadisticas, Contacto contacto, Ubicacion ubicacion, bool estado, Login login)
         {
             this.Dni = dni; this.Nombre = nombre; this.Apellido = apellido;
             this.FechaNac = fechaNac; this.Nacionalidad = nacionalidad;
             this.Sexo = sexo; this.Contacto = contacto; this.Ubicacion = ubicacion;
-            this.dniTutor = dniTutor; this.relacionTutor = relacionTutor;
+            this.tutor = Tutor; this.relacionTutor = relacionTutor;
             this.estadisticas = Estadisticas; this.estado = estado; this.Login = login;
         }
         #endregion
 
-        int dniTutor;
+        string tutor;
         string relacionTutor;
         List<Estadisticas> estadisticas;
         bool estado;
 
-        public int DniTutor
+        public string Tutor
         {
-            get { return dniTutor; }
-            set { dniTutor = value; }
+            get { return tutor; }
+            set { tutor = value; }
         }
 
         public string RelacionTutor

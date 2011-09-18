@@ -51,9 +51,9 @@ namespace Slam
         {
             servicioPaises = (IPaisServicio)AppContext.Instance.GetObject(ImplementaUbicacion);
             servicioPaises.ListarPaises(this);
+            servicioLocalidades = (ILocalidadServicio)AppContext.Instance.GetObject(ImplementaUbicacion);
             servicioProvincias = (IProvinciaServicio)AppContext.Instance.GetObject(ImplementaUbicacion);
             servicioProvincias.ListarProvincias(this);
-            servicioLocalidades = (ILocalidadServicio)AppContext.Instance.GetObject(ImplementaUbicacion);
             if (Dni > 0)
             {
                 switch (Tipo)
@@ -159,10 +159,15 @@ namespace Slam
         private void BtnAgregarLocalidad_Click(object sender, EventArgs e)
         {
             FrmNuevaUbicacion nUbicacion = new FrmNuevaUbicacion();
-            nUbicacion.Show();
+            if (nUbicacion.ShowDialog() == DialogResult.OK)
+            {
+                servicioPaises.ListarPaises(this);
+                servicioProvincias.ListarProvincias(this);
+                servicioLocalidades.ListarLocalidades(this);
+            }
         }
         
-        void BtnCancelarClick(object sender, EventArgs e)
+        private void BtnCancelarClick(object sender, EventArgs e)
         {
         	GC.Collect();
         	GC.WaitForPendingFinalizers();
@@ -170,7 +175,7 @@ namespace Slam
         	this.Close();
         }
         
-        void TcPersonasSelectedIndexChanged(object sender, EventArgs e)
+        private void TcPersonasSelectedIndexChanged(object sender, EventArgs e)
         {
         	if(TcPersonas.SelectedIndex == 2) {
         		if(TxtDni.Text != "")
@@ -427,18 +432,18 @@ namespace Slam
             }
         }
 
-        public int DniTutor
+        public string Tutor
         {
             get
             {
-                if (TxtDniTutor.Text == "")
-                    return 0;
+                if (TxtNombreTutor.Text == "")
+                    return "";
                 else
-                    return int.Parse(TxtDniTutor.Text);
+                    return TxtNombreTutor.Text;
             }
             set
             {
-                TxtDniTutor.Text = value.ToString();
+                TxtNombreTutor.Text = value;
             }
         }
 
@@ -517,11 +522,6 @@ namespace Slam
         }
 
         #endregion
-
-        private void CboProvincia_SelectionChangeCommitted(object sender, EventArgs e)
-        {
-            servicioLocalidades.ListarLocalidades(this);
-        }
 
         #region Miembros de IArbitroUI
 
@@ -662,10 +662,10 @@ namespace Slam
                 EdadTemp--;
             if (EdadTemp < 18)
             {
-                if (TxtDniTutor.Text == "")
-                    EpNuevaPersona.SetError(TxtDniTutor, "El campo no puede estar en blanco.");
+                if (TxtNombreTutor.Text == "")
+                    EpNuevaPersona.SetError(TxtNombreTutor, "El campo no puede estar en blanco.");
                 else
-                    EpNuevaPersona.SetError(TxtDniTutor, "");
+                    EpNuevaPersona.SetError(TxtNombreTutor, "");
                 if (TxtRelacion.Text == "")
                     EpNuevaPersona.SetError(TxtRelacion, "El campo no puede estar en blanco.");
                 else
@@ -745,6 +745,15 @@ namespace Slam
                 {
                     MessageBox.Show(ex.Message);
                 }
+            }
+        }
+
+        private void CboProvincia_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (CboProvincia.SelectedIndex > -1)
+            {
+                servicioLocalidades.ListarLocalidades(this);
+                CboLocalidades.SelectedValue = IdLocalidad;
             }
         }
 

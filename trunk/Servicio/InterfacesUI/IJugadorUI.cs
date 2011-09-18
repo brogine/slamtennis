@@ -14,7 +14,7 @@ namespace Servicio.InterfacesUI
         DateTime FechaNac { get; set; }
         int Nacionalidad { get; set; }
         string Sexo { get; set; }
-        int DniTutor { get; set; }
+        string Tutor { get; set; }
         int Edad { get; set; }
         string RelacionTutor { get; set; }
         string Telefono { get; set; }
