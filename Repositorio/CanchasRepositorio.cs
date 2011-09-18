@@ -27,17 +27,17 @@ namespace Repositorio
         public void Modificar(Cancha Cancha)
         {
             string Consulta = " Update Canchas Set ";
-            Consulta += " Tipo = " + (int)Cancha.TipoCancha;
-            Consulta += " Superficie = " + (int)Cancha.Superficie;
-            Consulta += " Luz = " + (Cancha.Luz ? 1 : 0);
+            Consulta += " Tipo = " + (int)Cancha.TipoCancha + ",";
+            Consulta += " Superficie = " + (int)Cancha.Superficie + ",";
+            Consulta += " Luz = " + (Cancha.Luz ? 1 : 0) + ",";
             Consulta += " Cantidad = " + Cancha.Cantidad;
-            Consulta += " Where IdCancha = " + Cancha.Id;
+            Consulta += " Where IdCanchas = " + Cancha.Id;
             Conn.ActualizarOEliminar(Consulta);
         }
 
         public Cancha Buscar(int IdCancha)
         {
-            string Consulta = " Select * From Canchas Where IdCancha = " + IdCancha;
+            string Consulta = " Select * From Canchas Where IdCanchas = " + IdCancha;
             return this.Mapear(Conn.Buscar(Consulta));
         }
 
@@ -65,7 +65,7 @@ namespace Repositorio
                 ISedesRepositorio repoSedes = new SedesRepositorio();
                 Sede bSede = Fila.IsNull("IdSede") ? null : repoSedes.Buscar(Convert.ToInt32(Fila["IdSede"]));
 
-                int IdCancha = Fila.IsNull("IdCancha") ? 0 : Convert.ToInt32(Fila["IdCancha"]);
+                int IdCancha = Fila.IsNull("IdCanchas") ? 0 : Convert.ToInt32(Fila["IdCanchas"]);
                 int Superficie = Fila.IsNull("Superficie") ? 0 : Convert.ToInt32(Fila["Superficie"]);
                 int TipoCancha = Fila.IsNull("Tipo") ? 0 : Convert.ToInt32(Fila["Tipo"]);
                 bool Luz = Fila.IsNull("Luz") ? false : Convert.ToBoolean(Fila["Luz"]);
