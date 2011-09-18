@@ -68,6 +68,7 @@
             this.DgvSedes.AllowUserToResizeColumns = false;
             this.DgvSedes.AllowUserToResizeRows = false;
             this.DgvSedes.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.DgvSedes.BackgroundColor = System.Drawing.SystemColors.ControlDark;
             this.DgvSedes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.DgvSedes.Location = new System.Drawing.Point(16, 39);
             this.DgvSedes.MultiSelect = false;
