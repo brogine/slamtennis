@@ -36,6 +36,7 @@ namespace Repositorio
             string Sql = " Update Clubes Set Nombre = '" + Club.Nombre + "'," + 
                 " Presidente = '" + Club.Presidente + "', Estado = " + 
                 (Club.Estado ? 1 : 0);
+            Sql += " where IdClub = " + Club.Id;
             try
             {
                 Conn.ActualizarOEliminar(Sql);
@@ -65,7 +66,7 @@ namespace Repositorio
         }
         public bool Existe(int IdClub)
         {
-            string Consulta = " Select Count(*) From Club Where IdClub = " + IdClub;
+            string Consulta = " Select Count(*) From Clubes Where IdClub = " + IdClub;
             DataRow Fila = Conn.Buscar(Consulta);
             int cantidad = Convert.ToInt32(Fila[0]);
             if (cantidad == 1)

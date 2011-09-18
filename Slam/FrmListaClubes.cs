@@ -40,11 +40,16 @@ namespace Slam
             {
                 FrmNuevoClub ModificarClub = new FrmNuevoClub(
                     Convert.ToInt32(DgvClubes.SelectedRows[0].Cells[0].Value));
-                ModificarClub.Show();
+
+                if (ModificarClub.ShowDialog() == DialogResult.OK)
+                {
+                    ClubServicio.Listar(this);
+                }
             }
             else
                 MessageBox.Show("Seleccione un Club de la grilla para modificar.");
         }
+            
 
         #region Miembros de IListadoClubes
 
@@ -58,12 +63,18 @@ namespace Slam
                 DgvClubes.Columns.Add("NombreClub", "Nombre");
                 DgvClubes.Columns.Add("Presidente", "Presidente");
                 DgvClubes.Columns.Add("Estado", "Estado");
+                DgvClubes.Columns["Estado"].Visible = false;
+                
                 if (DgvClubes.Rows.Count > 0)
                     DgvClubes.Rows.Clear();
                 foreach (Object Club in value)
                 {
                     Object[] DatosClub = Club.ToString().Split(',');
-                    DgvClubes.Rows.Add(DatosClub[0], DatosClub[1], DatosClub[2], Convert.ToBoolean(DatosClub[3]));
+                    int IdFila = DgvClubes.Rows.Add(DatosClub[0], DatosClub[1], DatosClub[2], Convert.ToBoolean(DatosClub[3]));
+                    if (Convert.ToBoolean(DatosClub[3]) == false)
+                    {
+                        DgvClubes.Rows[IdFila].DefaultCellStyle.BackColor = Color.Red;
+                    }
                 }
             }
         }

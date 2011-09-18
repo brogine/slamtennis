@@ -48,6 +48,7 @@ namespace Repositorio
             Consulta += " Badge ='" + Arbitro.Badge + "',";
             Consulta += " Estado ='" + Arbitro.Estado + "'";
             Consulta += " where Dni = " + Arbitro.Dni;
+            Conex.ActualizarOEliminar(Consulta);
         }
 
         public Dominio.Arbitro Buscar(int Dni)
