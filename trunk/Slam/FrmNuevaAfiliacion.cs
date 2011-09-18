@@ -126,6 +126,8 @@ namespace Slam
             {
                 AfilServ.Agregar(this);
             }
+            this.DialogResult = DialogResult.OK;
+            this.Close();
         }
 
         #endregion

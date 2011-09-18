@@ -55,6 +55,7 @@ namespace Slam
             ClubServicio.Agregar(this);
             }
             this.DialogResult= DialogResult.OK;
+            this.Close();
         }
 
         #region Miembros de IClubUI

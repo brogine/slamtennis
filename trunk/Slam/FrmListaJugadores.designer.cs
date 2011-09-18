@@ -43,7 +43,7 @@
             // 
             this.DgvJugadoresClub.AllowUserToAddRows = false;
             this.DgvJugadoresClub.AllowUserToDeleteRows = false;
-            this.DgvJugadoresClub.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells;
+            this.DgvJugadoresClub.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.DgvJugadoresClub.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.DgvJugadoresClub.Location = new System.Drawing.Point(12, 41);
             this.DgvJugadoresClub.Name = "DgvJugadoresClub";
