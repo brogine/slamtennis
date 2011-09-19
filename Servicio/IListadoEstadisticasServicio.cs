@@ -16,6 +16,8 @@ namespace Servicio
 	public interface IListadoEstadisticasServicio
 	{
 		void ListarPorCategoria(IListadoEstadisticasCategoria ui);
+
+        void ListarPorCategoriaClub(IListadoEstadisticasCategoria ui);
 		
 		void ListarPorDni(IListadoEstadisticasDni ui);
 	}
