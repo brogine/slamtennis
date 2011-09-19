@@ -71,17 +71,19 @@ namespace Slam
             {
                 if (DgvEstadisticas.ColumnCount > 0)
                     DgvEstadisticas.Columns.Clear();
-                DgvEstadisticas.Columns.Add("pj", "Partidos Jugados");
-                DgvEstadisticas.Columns.Add("pg", "Partidos Ganados");
-                DgvEstadisticas.Columns.Add("pp", "Partidos Perdidos");
+                DgvEstadisticas.Columns.Add("NombreApellido", "Nombre y Apellido");
+                DgvEstadisticas.Columns.Add("pj", "PJ");
+                DgvEstadisticas.Columns.Add("pg", "PG");
+                DgvEstadisticas.Columns.Add("pp", "PP");
+                DgvEstadisticas.Columns.Add("tj", "TJ");
+                DgvEstadisticas.Columns.Add("tc", "TC");
                 DgvEstadisticas.Columns.Add("puntos", "Puntos");
                 if (DgvEstadisticas.RowCount > 0)
                     DgvEstadisticas.Rows.Clear();
                 foreach (object estadistica in value)
                 {
                     object[] estadisticas = estadistica.ToString().Split(',');
-                    DgvEstadisticas.Rows.Add(estadisticas[0], estadisticas[1], estadisticas[2],
-                                      estadisticas[3]);
+                    DgvEstadisticas.Rows.Add(estadisticas);
                 }
             }
         }
@@ -112,9 +114,26 @@ namespace Slam
 
         public List<object> ListarClubes
         {
-            set { throw new NotImplementedException(); }
+            set 
+            {
+                Dictionary<int, string> ListaClubes = new Dictionary<int, string>();
+                foreach (Object Club in value)
+                {
+                    Object[] DatosClub = Club.ToString().Split(',');
+                    ListaClubes.Add(Convert.ToInt32(DatosClub[0]), DatosClub[1].ToString());
+                }
+                CboClubes.DataSource = new BindingSource(ListaClubes, null);
+                CboClubes.DisplayMember = "Value";
+                CboClubes.ValueMember = "Key";
+                CboClubes.SelectedIndex = -1;
+            }
         }
 
         #endregion
+
+        private void BtnReporte_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
