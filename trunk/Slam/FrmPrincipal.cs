@@ -18,6 +18,7 @@ namespace Slam
         FrmListaClubes Clubes;
         FrmListaSedes Sedes;
         FrmListaEmpleados Empleados;
+        FrmListaCategorias Categorias;
         public FrmPrincipal(Form _Padre)
         {
             InitializeComponent();
@@ -100,6 +101,18 @@ namespace Slam
         	}
             else
             	Empleados.BringToFront();
+        }
+
+        private void TlsmiCategorias_Click(object sender, EventArgs e)
+        {
+            if (Categorias == null || Categorias.IsDisposed)
+            {
+                Categorias = new FrmListaCategorias();
+                Categorias.MdiParent = this;
+                Categorias.Show();
+            }
+            else
+                Categorias.BringToFront();
         }
     }
 }
