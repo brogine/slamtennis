@@ -86,6 +86,33 @@ namespace Repositorio
     		}
     		return ListaEstadisticas;
     	}
+
+        public List<Estadisticas> ListarPorCategoria(int IdCategoria)
+        {
+            string Consulta = " Select * From Jugadores Where IdCategoria = " + IdCategoria;
+            List<Estadisticas> ListaEstadisticas = new List<Estadisticas>();
+            DataTable Tabla = Conn.Listar(Consulta);
+            foreach (DataRow Fila in Tabla.Rows)
+            {
+                ListaEstadisticas.Add(this.Mapear(Fila));
+            }
+            return ListaEstadisticas;
+        }
+        
+        public List<Estadisticas> ListarPorCategoriaClub(int IdClub, int IdCategoria)
+        { 
+        string Consulta = "select J.*";
+            Consulta +=" from Jugadores J inner join Afiliaciones A ";
+            Consulta += " on A.Dni = J.Dni inner join Categorias C";
+            Consulta += "on J.IdCategoria = C.IdCategoria where j.IdCategoria ="+IdCategoria+" and a.IdClub= "+IdClub;
+            List<Estadisticas> ListaEstadisticas = new List<Estadisticas>();
+            DataTable Tabla = Conn.Listar(Consulta);
+            foreach (DataRow Fila in Tabla.Rows)
+            {
+                ListaEstadisticas.Add(this.Mapear(Fila));
+            }
+            return ListaEstadisticas;
+        }
     	
     	#endregion
 
