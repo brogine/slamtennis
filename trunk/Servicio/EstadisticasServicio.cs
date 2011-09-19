@@ -84,7 +84,7 @@ namespace Servicio
 				Objeto = tempJugador.Apellido + " " + tempJugador.Nombre + ",";
 				Objeto += Estadistica.PJ + "," + Estadistica.PG + "," + Estadistica.PP + ",";
                 Objeto += Estadistica.TorneosJugados + "," + Estadistica.TorneosCompletados + ",";
-				Objeto += Estadistica.Puntaje + "," + Estadistica.Categoria.Nombre;
+				Objeto += Estadistica.Puntaje.ToString();
 				ListaUI.Add(Objeto);
 			}
 			ui.ListarEstadisticas = ListaUI;
@@ -102,7 +102,8 @@ namespace Servicio
                 Objeto = tempJugador.Apellido + " " + tempJugador.Nombre + ",";
                 Objeto += Estadistica.PJ + "," + Estadistica.PG + "," + Estadistica.PP + ",";
                 Objeto += Estadistica.TorneosJugados + "," + Estadistica.TorneosCompletados + ",";
-                Objeto += Estadistica.Puntaje + "," + Estadistica.Categoria.Nombre;
+                Objeto += Estadistica.Puntaje.ToString();
+                ListaUI.Add(Objeto);
             }
             ui.ListarEstadisticas = ListaUI;
         }
@@ -110,11 +111,12 @@ namespace Servicio
 		public void ListarPorDni(IListadoEstadisticasDni ui){
 			List<Estadisticas> ListaEstadisticas = repoEstadisticas.ListarPorDni(ui.DniJugador);
 			List<Object> ListaUI = new List<object>();
-			foreach (Estadisticas estadistica in ListaEstadisticas) {
-				Object Objeto = new object();
-				Objeto = estadistica.PJ + "," + estadistica.PG + "," + estadistica.PP + ",";
-				Objeto += estadistica.Puntaje + "," + estadistica.Categoria.Nombre;
-				ListaUI.Add(Objeto);
+			foreach (Estadisticas Estadistica in ListaEstadisticas) {
+                Object Objeto = new object();
+                Objeto = Estadistica.PJ + "," + Estadistica.PG + "," + Estadistica.PP + ",";
+                Objeto += Estadistica.TorneosJugados + "," + Estadistica.TorneosCompletados + ",";
+                Objeto += Estadistica.Puntaje.ToString();
+                ListaUI.Add(Objeto);
 			}
 			ui.ListarEstadisticas = ListaUI;
 		}

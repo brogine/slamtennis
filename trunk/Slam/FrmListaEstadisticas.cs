@@ -68,8 +68,21 @@ namespace Slam
         public List<object> ListarEstadisticas
         {
             set 
-            { 
-                throw new NotImplementedException(); 
+            {
+                if (DgvEstadisticas.ColumnCount > 0)
+                    DgvEstadisticas.Columns.Clear();
+                DgvEstadisticas.Columns.Add("pj", "Partidos Jugados");
+                DgvEstadisticas.Columns.Add("pg", "Partidos Ganados");
+                DgvEstadisticas.Columns.Add("pp", "Partidos Perdidos");
+                DgvEstadisticas.Columns.Add("puntos", "Puntos");
+                if (DgvEstadisticas.RowCount > 0)
+                    DgvEstadisticas.Rows.Clear();
+                foreach (object estadistica in value)
+                {
+                    object[] estadisticas = estadistica.ToString().Split(',');
+                    DgvEstadisticas.Rows.Add(estadisticas[0], estadisticas[1], estadisticas[2],
+                                      estadisticas[3]);
+                }
             }
         }
 
