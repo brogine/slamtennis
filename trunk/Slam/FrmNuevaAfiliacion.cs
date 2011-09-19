@@ -93,7 +93,7 @@ namespace Slam
              FrmNuevaPersona NuevoJugador = new FrmNuevaPersona(TipoPersona.Jugador);
              if (NuevoJugador.ShowDialog() == DialogResult.OK)
              {
-                 TxtDni.Text = NuevoJugador.DniJugador.ToString();
+                 TxtDni.Text = NuevoJugador.Dni.ToString();
              }
         }
 
