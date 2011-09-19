@@ -48,11 +48,13 @@
     <Compile Include="AfiliacionServicio.cs" />
     <Compile Include="ArbitroServicio.cs" />
     <Compile Include="CanchasServicio.cs" />
+    <Compile Include="CategoriaServicio.cs" />
     <Compile Include="ClubServicio.cs" />
     <Compile Include="IAfiliacionServicio.cs" />
     <Compile Include="EstadisticasServicio.cs" />
     <Compile Include="IArbitroServicio.cs" />
     <Compile Include="ICanchasServicio.cs" />
+    <Compile Include="ICategoriaServicio.cs" />
     <Compile Include="IClubServicio.cs" />
     <Compile Include="IEmpleadoServicio.cs" />
     <Compile Include="IEstadisticasServicio.cs" />
@@ -71,6 +73,7 @@
     <Compile Include="InterfacesUI\IAfiliacionUI.cs" />
     <Compile Include="InterfacesUI\IArbitroUI.cs" />
     <Compile Include="InterfacesUI\ICanchasUI.cs" />
+    <Compile Include="InterfacesUI\ICategoriaUI.cs" />
     <Compile Include="InterfacesUI\IClubUI.cs" />
     <Compile Include="InterfacesUI\IEmpleadoUI.cs" />
     <Compile Include="InterfacesUI\IEstadisticasUI.cs" />
@@ -78,6 +81,7 @@
     <Compile Include="InterfacesUI\IlistadoAfiliaciones.cs" />
     <Compile Include="InterfacesUI\IListadoArbitros.cs" />
     <Compile Include="InterfacesUI\IListadoCanchas.cs" />
+    <Compile Include="InterfacesUI\IListadoCategorias.cs" />
     <Compile Include="InterfacesUI\IListadoClubes.cs" />
     <Compile Include="InterfacesUI\IListadoEmpleados.cs" />
     <Compile Include="InterfacesUI\IListadoEstadisticasCategoria.cs" />
