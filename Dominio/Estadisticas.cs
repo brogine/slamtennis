@@ -33,6 +33,8 @@ namespace Dominio
         int pg;
         int pj;
         int puntaje;
+        int tj;
+        int tc;
         bool estado;
 
         public int Dni{
@@ -68,6 +70,18 @@ namespace Dominio
         {
             get { return puntaje; }
             set { puntaje = value; }
+        }
+
+        public int TorneosJugados
+        {
+            get { return tj; }
+            set { tj = value; }
+        }
+
+        public int TorneosCompletados
+        {
+            get { return tc; }
+            set { tc = value; }
         }
 
         public bool Estado
