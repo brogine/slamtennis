@@ -16,7 +16,9 @@ namespace Servicio.InterfacesUI
 	public interface IListadoEstadisticasCategoria
 	{
 		List<Object> ListarEstadisticas { set; }
-		
+
+        int IdClub { get; }
+
 		int IdCategoria { get; }
 	}
 }
