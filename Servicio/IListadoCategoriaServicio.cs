@@ -6,12 +6,8 @@ using Servicio.InterfacesUI;
 
 namespace Servicio
 {
-    public interface ICategoriaServicio
+    public interface IListadoCategoriaServicio
     {
-        void Buscar(ICategoriaUI UI);
-
-        int Agregar(ICategoriaUI UI);
-
-        void Modificar(ICategoriaUI UI);
+        void Listar(IListadoCategorias UI);
     }
 }

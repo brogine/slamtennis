@@ -62,6 +62,7 @@
     <Compile Include="IListadoAfiliacionServicio.cs" />
     <Compile Include="IListadoArbitrosServicio.cs" />
     <Compile Include="IListadoCanchasServicio.cs" />
+    <Compile Include="IListadoCategoriaServicio.cs" />
     <Compile Include="IListadoClubServicio.cs" />
     <Compile Include="IListadoEmpleadoServicio.cs" />
     <Compile Include="IListadoEstadisticasServicio.cs" />
