@@ -12,12 +12,14 @@ using ApplicationContext;
 
 namespace Slam
 {
-    public partial class FrmListaEstadisticas : Form, IListadoEstadisticasCategoria, IListadoClubes
+    public partial class FrmListaEstadisticas : Form, IListadoEstadisticasCategoria, IListadoClubes, IListadoCategorias
     {
         string ImplementaEstadisticas = "EstadisticasServicio";
         string ImplementaClubes = "ClubServicio";
+        string ImplementaCategorias = "CategoriaServicio";
         IListadoEstadisticasServicio servicioEstadisticas;
         IListadoClubServicio servicioClubes;
+        IListadoCategoriaServicio servicioCategorias;
         public FrmListaEstadisticas()
         {
             InitializeComponent();
@@ -28,6 +30,8 @@ namespace Slam
             servicioEstadisticas = (IListadoEstadisticasServicio)AppContext.Instance.GetObject(ImplementaEstadisticas);
             servicioClubes = (IListadoClubServicio)AppContext.Instance.GetObject(ImplementaClubes);
             servicioClubes.Listar(this);
+            servicioCategorias = (IListadoCategoriaServicio)AppContext.Instance.GetObject(ImplementaCategorias);
+            servicioCategorias.Listar(this);
         }
 
         private void BtnSalir_Click(object sender, EventArgs e)
@@ -135,5 +139,26 @@ namespace Slam
         {
 
         }
+
+        #region Miembros de IListadoCategorias
+
+        public List<object> ListaUI
+        {
+            set 
+            {
+                Dictionary<int, string> ListaCategorias = new Dictionary<int, string>();
+                foreach (Object Categoria in value)
+                {
+                    Object[] DatosClub = Categoria.ToString().Split(',');
+                    ListaCategorias.Add(Convert.ToInt32(DatosClub[0]), DatosClub[1].ToString());
+                }
+                CboCategorias.DataSource = new BindingSource(ListaCategorias, null);
+                CboCategorias.DisplayMember = "Value";
+                CboCategorias.ValueMember = "Key";
+                CboCategorias.SelectedIndex = -1;
+            }
+        }
+
+        #endregion
     }
 }

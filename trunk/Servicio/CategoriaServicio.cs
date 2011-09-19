@@ -8,7 +8,7 @@ using Servicio.InterfacesUI;
 
 namespace Servicio
 {
-    public class CategoriaServicio : ICategoriaService
+    public class CategoriaServicio : ICategoriaServicio, IListadoCategoriaServicio
     {
         
         ICategoriaRepositorio repositorio;
@@ -47,6 +47,10 @@ namespace Servicio
             repositorio.Modificar(nCat);
         }
 
+        #endregion
+
+        #region Miembros de IListadoCategoriaServicio
+
         public void Listar(IListadoCategorias UI)
         {
             List<Object> ListaUI = new List<object>();
@@ -55,7 +59,7 @@ namespace Servicio
             {
                 Object Objeto = new object();
                 Objeto = Categoria.Id + ",";
-                Objeto += Categoria.Nombre +",";
+                Objeto += Categoria.Nombre + ",";
                 Objeto += Categoria.EdadMin + ",";
                 Objeto += Categoria.EdadMax + ",";
                 Objeto += Categoria.Estado.ToString();
