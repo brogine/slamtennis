@@ -78,17 +78,35 @@ namespace Servicio
 			List<Estadisticas> ListaEstadisticas = repoEstadisticas.ListarPorCategoria(ui.IdCategoria);
 			IJugadorRepositorio repoJugadores = new JugadorRepositorio();
 			List<Object> ListaUI = new List<object>();
-			foreach (Estadisticas estadistica in ListaEstadisticas) {
+			foreach (Estadisticas Estadistica in ListaEstadisticas) {
 				Object Objeto = new object();
-				Jugador tempJugador = repoJugadores.Buscar(estadistica.Dni);
+				Jugador tempJugador = repoJugadores.Buscar(Estadistica.Dni);
 				Objeto = tempJugador.Apellido + " " + tempJugador.Nombre + ",";
-				Objeto += estadistica.PJ + "," + estadistica.PG + "," + estadistica.PP + ",";
-				Objeto += estadistica.Puntaje + "," + estadistica.Categoria.Nombre;
+				Objeto += Estadistica.PJ + "," + Estadistica.PG + "," + Estadistica.PP + ",";
+                Objeto += Estadistica.TorneosJugados + "," + Estadistica.TorneosCompletados + ",";
+				Objeto += Estadistica.Puntaje + "," + Estadistica.Categoria.Nombre;
 				ListaUI.Add(Objeto);
 			}
 			ui.ListarEstadisticas = ListaUI;
 		}
-		
+
+        public void ListarPorCategoriaClub(IListadoEstadisticasCategoria ui)
+        {
+            List<Estadisticas> ListaEstadisticas = null;
+            IJugadorRepositorio repoJugadores = new JugadorRepositorio();
+            List<Object> ListaUI = new List<object>();
+            foreach (Estadisticas Estadistica in ListaEstadisticas)
+            {
+                Object Objeto = new object();
+                Jugador tempJugador = repoJugadores.Buscar(Estadistica.Dni);
+                Objeto = tempJugador.Apellido + " " + tempJugador.Nombre + ",";
+                Objeto += Estadistica.PJ + "," + Estadistica.PG + "," + Estadistica.PP + ",";
+                Objeto += Estadistica.TorneosJugados + "," + Estadistica.TorneosCompletados + ",";
+                Objeto += Estadistica.Puntaje + "," + Estadistica.Categoria.Nombre;
+            }
+            ui.ListarEstadisticas = ListaUI;
+        }
+
 		public void ListarPorDni(IListadoEstadisticasDni ui){
 			List<Estadisticas> ListaEstadisticas = repoEstadisticas.ListarPorDni(ui.DniJugador);
 			List<Object> ListaUI = new List<object>();
