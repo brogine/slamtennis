@@ -27,5 +27,6 @@ namespace Repositorio
 		List<Estadisticas> ListarPorDni(int Dni);
 		
 		List<Estadisticas> ListarPorCategoria(int IdCategoria);
+        List<Estadisticas> ListarPorCategoriaClub(int IdClub, int IdCategoria);
 	}
 }
