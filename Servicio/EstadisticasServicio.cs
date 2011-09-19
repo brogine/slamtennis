@@ -30,9 +30,9 @@ namespace Servicio
 		{
 			IJugadorRepositorio repoJugadores = new JugadorRepositorio();
 			Jugador bJugador = repoJugadores.Buscar(ui.Dni);
+			ICategoriaRepositorio CatRepo = new CategoriaRepositorio();
 			
-			//TODO: Repo Categorias por Id
-			Categoria bCategoria = new Categoria();
+            Categoria bCategoria = CatRepo.Buscar(ui.IdCategoria); 
 			
 			Estadisticas nEstadistica = new Estadisticas(bCategoria, ui.PartidosPerdidos,
 			                                             ui.PartidosGanados, ui.Puntos, ui.Estado);
