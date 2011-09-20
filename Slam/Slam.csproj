@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="3.5" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -102,11 +102,23 @@
     <Compile Include="FrmCanchas.Designer.cs">
       <DependentUpon>FrmCanchas.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmEstadisticasJugador.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmEstadisticasJugador.Designer.cs">
+      <DependentUpon>FrmEstadisticasJugador.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmListaArbitros.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="FrmListaArbitros.designer.cs">
       <DependentUpon>FrmListaArbitros.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmListaCategorias.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmListaCategorias.designer.cs">
+      <DependentUpon>FrmListaCategorias.cs</DependentUpon>
     </Compile>
     <Compile Include="FrmListaCategorias.cs">
       <SubType>Form</SubType>
@@ -196,6 +208,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="FrmCanchas.resx">
       <DependentUpon>FrmCanchas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmEstadisticasJugador.resx">
+      <DependentUpon>FrmEstadisticasJugador.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmListaArbitros.resx">
       <DependentUpon>FrmListaArbitros.cs</DependentUpon>

@@ -15,8 +15,8 @@ namespace Servicio.InterfacesUI
 	public interface IEstadisticasUI
 	{
 		int Dni { get; set; }
-		
-		int PartidosJugados { set; }
+
+        int PartidosJugados { set; }
 		
 		int PartidosGanados { get; set; }
 		
