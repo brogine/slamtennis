@@ -30,6 +30,16 @@ namespace Repositorio
             return Lista;
         }
 
+        public bool Existe(int Id)
+        {
+            string Consulta = "Select Count(IdCategoria) from Categorias Where IdCategoria = " + Id;
+            DataRow Fila = conn.Buscar(Consulta);
+            int cantidad = Convert.ToInt32(Fila[0]);
+            if (cantidad == 1)
+                return true;
+            else
+                return false;
+        }
         public Categoria Buscar(int Id)
         {
             sql = " Select * From Categorias Where IdCategoria = " + Id;
