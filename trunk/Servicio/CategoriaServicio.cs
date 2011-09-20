@@ -29,6 +29,11 @@ namespace Servicio
             UI.Estado = Cat.Estado;
         }
 
+        public bool Existe(int Id)
+        {
+           return repositorio.Existe(Id);
+        }
+
         public int Agregar(ICategoriaUI UI)
         {
             repositorio = new CategoriaRepositorio();

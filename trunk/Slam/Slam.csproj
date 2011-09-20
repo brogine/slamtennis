@@ -108,6 +108,12 @@
     <Compile Include="FrmListaArbitros.designer.cs">
       <DependentUpon>FrmListaArbitros.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmListaCategorias.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmListaCategorias.Designer.cs">
+      <DependentUpon>FrmListaCategorias.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmListaClubes.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -150,6 +156,12 @@
     <Compile Include="FrmNuevaAfiliacion.Designer.cs">
       <DependentUpon>FrmNuevaAfiliacion.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmNuevaCategoria.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmNuevaCategoria.Designer.cs">
+      <DependentUpon>FrmNuevaCategoria.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmNuevaPersona.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -188,6 +200,9 @@
     <EmbeddedResource Include="FrmListaArbitros.resx">
       <DependentUpon>FrmListaArbitros.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FrmListaCategorias.resx">
+      <DependentUpon>FrmListaCategorias.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FrmListaClubes.resx">
       <DependentUpon>FrmListaClubes.cs</DependentUpon>
     </EmbeddedResource>
@@ -208,6 +223,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FrmNuevaAfiliacion.resx">
       <DependentUpon>FrmNuevaAfiliacion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmNuevaCategoria.resx">
+      <DependentUpon>FrmNuevaCategoria.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmNuevaPersona.resx">
       <DependentUpon>FrmNuevaPersona.cs</DependentUpon>

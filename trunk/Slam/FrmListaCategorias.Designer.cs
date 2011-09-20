@@ -52,6 +52,7 @@
             this.BtnAgregar.TabIndex = 1;
             this.BtnAgregar.Text = "Agregar Categoria";
             this.BtnAgregar.UseVisualStyleBackColor = true;
+            this.BtnAgregar.Click += new System.EventHandler(this.BtnAgregar_Click);
             // 
             // BtnModificar
             // 
@@ -61,6 +62,7 @@
             this.BtnModificar.TabIndex = 2;
             this.BtnModificar.Text = "Modificar Categoria";
             this.BtnModificar.UseVisualStyleBackColor = true;
+            this.BtnModificar.Click += new System.EventHandler(this.BtnModificar_Click);
             // 
             // BtnSalir
             // 
@@ -70,6 +72,7 @@
             this.BtnSalir.TabIndex = 3;
             this.BtnSalir.Text = "Salir";
             this.BtnSalir.UseVisualStyleBackColor = true;
+            this.BtnSalir.Click += new System.EventHandler(this.BtnSalir_Click);
             // 
             // FrmListaCategorias
             // 

@@ -13,5 +13,7 @@ namespace Servicio
         int Agregar(ICategoriaUI UI);
 
         void Modificar(ICategoriaUI UI);
+
+        bool Existe(int Id);
     }
 }

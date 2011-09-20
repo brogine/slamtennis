@@ -12,6 +12,7 @@ namespace Repositorio
         Categoria Buscar(int Id);
         int Agregar(Categoria Categoria);
         void Modificar(Categoria Categoria);
+        bool Existe(int Id);
         
     }
 }
