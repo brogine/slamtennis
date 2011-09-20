@@ -35,7 +35,8 @@ namespace Servicio
             Categoria bCategoria = CatRepo.Buscar(ui.IdCategoria); 
 			
 			Estadisticas nEstadistica = new Estadisticas(bCategoria, ui.PartidosPerdidos,
-			                                             ui.PartidosGanados, ui.Puntos, ui.Estado);
+			                                             ui.PartidosGanados, ui.Puntos, ui.TorneosCompletados,
+                                                         ui.TorneosJugados, ui.Estado);
 			
 			repoEstadisticas.Agregar(bJugador, nEstadistica);
 		}

@@ -204,6 +204,30 @@ namespace Slam
             }
         }
 
+        public int TorneosCompletados
+        {
+            get
+            {
+                return int.Parse(TxtTC.Text);
+            }
+            set
+            {
+                TxtTC.Text = value.ToString();
+            }
+        }
+
+        public int TorneosJugados
+        {
+            get
+            {
+                return int.Parse(TxtTJ.Text);
+            }
+            set
+            {
+                TxtTJ.Text = value.ToString();
+            }
+        }
+
         public bool Estado
         {
             get
@@ -238,5 +262,6 @@ namespace Slam
         }
 
         #endregion
+
     }
 }

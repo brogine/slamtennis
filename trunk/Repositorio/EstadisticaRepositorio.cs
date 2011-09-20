@@ -117,9 +117,11 @@ namespace Repositorio
                 int PartidosPerdidos = Fila.IsNull("PartidosPerdidos") ? 0 : Convert.ToInt32(Fila["PartidosPerdidos"]);
                 int PartidosGanados = Fila.IsNull("PartidosGanados") ? 0 : Convert.ToInt32(Fila["PartidosGanados"]);
                 int Puntos = Fila.IsNull("Puntos") ? 0 : Convert.ToInt32(Fila["Puntos"]);
+                int TorneosCompletados = Fila.IsNull("TorneosCompletados") ? 0 : Convert.ToInt32(Fila["TorneosCompletados"]);
+                int TorneosJugados = Fila.IsNull("TorneosJugados") ? 0 : Convert.ToInt32(Fila["TorneosJugados"]);
                 bool Estado = Fila.IsNull("Estado") ? false : Convert.ToBoolean(Fila["Estado"]);
                 Estadistica = new Estadisticas(bCategoria, PartidosPerdidos, PartidosGanados,
-                    Puntos, Estado);
+                    Puntos,TorneosCompletados, TorneosJugados, Estado);
             }
             return Estadistica;
         }

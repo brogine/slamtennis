@@ -25,6 +25,10 @@ namespace Servicio.InterfacesUI
 		int IdCategoria { get; set; }
 		
 		int Puntos { get; set; }
+
+        int TorneosCompletados { get; set; }
+
+        int TorneosJugados { get; set; }
 		
 		bool Estado { get; set; }
 	}
