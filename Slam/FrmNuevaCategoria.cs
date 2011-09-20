@@ -31,6 +31,22 @@ namespace Slam
         }
         private void BtnGuardar_Click(object sender, EventArgs e)
         {
+            int Result = 0;
+            if (TxtNombre.Text == "")
+            {
+                MessageBox.Show("El Nombre No Puede Estar En Blanco");
+                return;
+            }
+            if (TxtEdadMax.Text == "" && !int.TryParse(TxtEdadMax.Text, out Result))
+            {
+                MessageBox.Show("El Valor De La Edad Minima Debe Ser Numerico");
+                return;
+            }
+            if (TxtEdadMin.Text == "" && !int.TryParse(TxtEdadMin.Text, out Result))
+            {
+                MessageBox.Show("El Valor De La Edad Minima Debe Ser Numerico");
+                return;
+            }
             if(ServicioCategoria.Existe(this.idCat))
             {
             ServicioCategoria.Modificar(this);
