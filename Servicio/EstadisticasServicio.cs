@@ -82,7 +82,8 @@ namespace Servicio
 			foreach (Estadisticas Estadistica in ListaEstadisticas) {
 				Object Objeto = new object();
 				Jugador tempJugador = repoJugadores.Buscar(Estadistica.Dni);
-				Objeto = tempJugador.Apellido + " " + tempJugador.Nombre + ",";
+                Objeto = tempJugador.Dni + ",";
+				Objeto += tempJugador.Apellido + " " + tempJugador.Nombre + ",";
 				Objeto += Estadistica.PJ + "," + Estadistica.PG + "," + Estadistica.PP + ",";
                 Objeto += Estadistica.TorneosJugados + "," + Estadistica.TorneosCompletados + ",";
 				Objeto += Estadistica.Puntaje.ToString();
@@ -100,7 +101,8 @@ namespace Servicio
             {
                 Object Objeto = new object();
                 Jugador tempJugador = repoJugadores.Buscar(Estadistica.Dni);
-                Objeto = tempJugador.Apellido + " " + tempJugador.Nombre + ",";
+                Objeto = tempJugador.Dni + ",";
+                Objeto += tempJugador.Apellido + " " + tempJugador.Nombre + ",";
                 Objeto += Estadistica.PJ + "," + Estadistica.PG + "," + Estadistica.PP + ",";
                 Objeto += Estadistica.TorneosJugados + "," + Estadistica.TorneosCompletados + ",";
                 Objeto += Estadistica.Puntaje.ToString();
