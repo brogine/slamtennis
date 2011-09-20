@@ -26,8 +26,6 @@ namespace Slam
         {
             InitializeComponent();
             this.idCat = IdCat;
-            this.Text = "Modificar Categoria";
-            ServicioCategoria.Buscar(this);
         }
         private void BtnGuardar_Click(object sender, EventArgs e)
         {
@@ -36,7 +34,7 @@ namespace Slam
             {
                 MessageBox.Show("El Nombre No Puede Estar En Blanco");
                 return;
-            }
+            } 
             if (TxtEdadMax.Text == "" && !int.TryParse(TxtEdadMax.Text, out Result))
             {
                 MessageBox.Show("El Valor De La Edad Minima Debe Ser Numerico");
@@ -47,13 +45,19 @@ namespace Slam
                 MessageBox.Show("El Valor De La Edad Minima Debe Ser Numerico");
                 return;
             }
-            if(ServicioCategoria.Existe(this.idCat))
+            try
             {
-            ServicioCategoria.Modificar(this);
+                if (ServicioCategoria.Existe(this.idCat))
+                    ServicioCategoria.Modificar(this);
+                else
+                    ServicioCategoria.Agregar(this);
+                this.DialogResult = DialogResult.OK;
+                MessageBox.Show("Los cambios fueron realizados con éxito");
+                this.Close();
             }
-            else
+            catch (Exception ex)
             {
-            ServicioCategoria.Agregar(this);
+                MessageBox.Show(ex.Message);
             }
         }
 
@@ -124,10 +128,20 @@ namespace Slam
         private void FrmNuevaCategoria_Load(object sender, EventArgs e)
         {
             ServicioCategoria = (ICategoriaServicio)AppContext.Instance.GetObject(ImplementaCategorias);
-            if (idCat != 0)
-            {
+            if (idCat == 0)
                 this.Text = "Agregar Una Nueva Categoria";
+            else
+            {
+                this.Text = "Modificar Categoria";
+                ServicioCategoria.Buscar(this);
             }
+        }
+
+        private void BtnSalir_Click(object sender, EventArgs e)
+        {
+            GC.Collect();
+            GC.WaitForPendingFinalizers();
+            this.Close();
         }
     }
 }

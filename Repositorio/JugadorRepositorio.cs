@@ -51,7 +51,6 @@ namespace Repositorio
 
         public Jugador Buscar(int Dni)
         {
-            
             string Consulta = " Select * From Personas P inner join ";
             Consulta += " Login L on P.Dni = L.Dni ";
             Consulta += " Where P.Dni = " + Dni;

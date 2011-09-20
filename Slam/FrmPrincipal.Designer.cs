@@ -37,12 +37,14 @@
             this.TlsmiJugadores = new System.Windows.Forms.ToolStripMenuItem();
             this.TlsmiArbitros = new System.Windows.Forms.ToolStripMenuItem();
             this.TlsmiEmpleados = new System.Windows.Forms.ToolStripMenuItem();
+            this.TlsmiCategorias = new System.Windows.Forms.ToolStripMenuItem();
             this.TsmiClubes = new System.Windows.Forms.ToolStripMenuItem();
             this.TlsmiAdministrarClubes = new System.Windows.Forms.ToolStripMenuItem();
             this.TlsmiSedes = new System.Windows.Forms.ToolStripMenuItem();
             this.TsmiEventos = new System.Windows.Forms.ToolStripMenuItem();
             this.TsmiReportes = new System.Windows.Forms.ToolStripMenuItem();
-            this.TlsmiCategorias = new System.Windows.Forms.ToolStripMenuItem();
+            this.TlsmiAdministrarJugadores = new System.Windows.Forms.ToolStripMenuItem();
+            this.TlsmiEstadisticasJugador = new System.Windows.Forms.ToolStripMenuItem();
             this.MsPrincipal.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -97,10 +99,12 @@
             // 
             // TlsmiJugadores
             // 
+            this.TlsmiJugadores.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.TlsmiAdministrarJugadores,
+            this.TlsmiEstadisticasJugador});
             this.TlsmiJugadores.Name = "TlsmiJugadores";
             this.TlsmiJugadores.Size = new System.Drawing.Size(152, 22);
             this.TlsmiJugadores.Text = "Jugadores";
-            this.TlsmiJugadores.Click += new System.EventHandler(this.TlsmiJugadores_Click);
             // 
             // TlsmiArbitros
             // 
@@ -115,6 +119,13 @@
             this.TlsmiEmpleados.Size = new System.Drawing.Size(152, 22);
             this.TlsmiEmpleados.Text = "Empleados";
             this.TlsmiEmpleados.Click += new System.EventHandler(this.TlsmiEmpleadosClick);
+            // 
+            // TlsmiCategorias
+            // 
+            this.TlsmiCategorias.Name = "TlsmiCategorias";
+            this.TlsmiCategorias.Size = new System.Drawing.Size(152, 22);
+            this.TlsmiCategorias.Text = "Categorias";
+            this.TlsmiCategorias.Click += new System.EventHandler(this.TlsmiCategorias_Click);
             // 
             // TsmiClubes
             // 
@@ -151,12 +162,19 @@
             this.TsmiReportes.Size = new System.Drawing.Size(65, 20);
             this.TsmiReportes.Text = "Reportes";
             // 
-            // TlsmiCategorias
+            // TlsmiAdministrarJugadores
             // 
-            this.TlsmiCategorias.Name = "TlsmiCategorias";
-            this.TlsmiCategorias.Size = new System.Drawing.Size(152, 22);
-            this.TlsmiCategorias.Text = "Categorias";
-            this.TlsmiCategorias.Click += new System.EventHandler(this.TlsmiCategorias_Click);
+            this.TlsmiAdministrarJugadores.Name = "TlsmiAdministrarJugadores";
+            this.TlsmiAdministrarJugadores.Size = new System.Drawing.Size(152, 22);
+            this.TlsmiAdministrarJugadores.Text = "Administrar";
+            this.TlsmiAdministrarJugadores.Click += new System.EventHandler(this.TlsmiAdministrarJugadores_Click);
+            // 
+            // TlsmiEstadisticasJugador
+            // 
+            this.TlsmiEstadisticasJugador.Name = "TlsmiEstadisticasJugador";
+            this.TlsmiEstadisticasJugador.Size = new System.Drawing.Size(152, 22);
+            this.TlsmiEstadisticasJugador.Text = "Estadisticas";
+            this.TlsmiEstadisticasJugador.Click += new System.EventHandler(this.TlsmiEstadisticasJugador_Click);
             // 
             // FrmPrincipal
             // 
@@ -195,5 +213,7 @@
         private System.Windows.Forms.ToolStripMenuItem TlsmiSedes;
         private System.Windows.Forms.ToolStripMenuItem TsmiReportes;
         private System.Windows.Forms.ToolStripMenuItem TlsmiCategorias;
+        private System.Windows.Forms.ToolStripMenuItem TlsmiAdministrarJugadores;
+        private System.Windows.Forms.ToolStripMenuItem TlsmiEstadisticasJugador;
     }
 }

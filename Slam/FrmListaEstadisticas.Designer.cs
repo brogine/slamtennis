@@ -72,7 +72,8 @@
             // 
             this.DgvEstadisticas.AllowUserToAddRows = false;
             this.DgvEstadisticas.AllowUserToDeleteRows = false;
-            this.DgvEstadisticas.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.DgvEstadisticas.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells;
+            this.DgvEstadisticas.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.DgvEstadisticas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.DgvEstadisticas.Location = new System.Drawing.Point(12, 86);
             this.DgvEstadisticas.Name = "DgvEstadisticas";

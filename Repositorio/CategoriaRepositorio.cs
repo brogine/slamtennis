@@ -49,14 +49,14 @@ namespace Repositorio
 
         public int Agregar(Categoria Categoria)
         {
-            string Valores = "'" + Categoria.Nombre + "'," + Categoria.EdadMin + "," + Categoria.EdadMax+","+Categoria.Estado;
+            string Valores = "'" + Categoria.Nombre + "'," + Categoria.EdadMin + "," + Categoria.EdadMax+","+(Categoria.Estado ? 1 : 0);
             return conn.Agregar("Categorias", "Nombre, EdadMinima, EdadMaxima, Estado", Valores);
         }
 
         public void Modificar(Categoria Categoria)
         {
             sql = " Update Categorias Set Nombre = '" + Categoria.Nombre + "', EdadMinima = " + Categoria.EdadMin +
-                ", EdadMaxima = " + Categoria.EdadMax + ", Estado = "+Categoria.Estado +" where IdCategoria = " + Categoria.Id;
+                ", EdadMaxima = " + Categoria.EdadMax + ", Estado = " + (Categoria.Estado ? 1 : 0) + " where IdCategoria = " + Categoria.Id;
             conn.ActualizarOEliminar(sql);
         }
         #endregion

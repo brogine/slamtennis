@@ -19,9 +19,10 @@ namespace Repositorio
     	#region Miembros de IEstadisticaRepositorio
     	
         public void Agregar(Jugador Jugador, Estadisticas Estadistica) {
-    		string Campos = "Dni, PartidosGanados, PartidosPerdidos, IdCategoria, Puntos, Estado";
+    		string Campos = "Dni, PartidosGanados, PartidosPerdidos, IdCategoria, Puntos, TorneosJugados, TorneosCompletados, Estado";
     		string Valores = Jugador.Dni + "," + Estadistica.PG + "," + Estadistica.PP +",";
-    		Valores += Estadistica.Categoria.Id + "," + Estadistica.Puntaje + "," + (Estadistica.Estado ? 1 : 0);
+            Valores += Estadistica.Categoria.Id + "," + Estadistica.Puntaje + "," + Estadistica.TorneosJugados + ",";
+            Valores += Estadistica.TorneosCompletados + "," + (Estadistica.Estado ? 1 : 0);
             try
             {
                 Conn.AgregarSinId("Jugadores", Campos, Valores);
@@ -37,6 +38,8 @@ namespace Repositorio
     		Consulta += " PartidosGanados = " + Estadistica.PG + ",";
     		Consulta += " PartidosPerdidos = " + Estadistica.PP + ",";
     		Consulta += " Puntos = " + Estadistica.Puntaje + ",";
+            Consulta += " TorneosJugados = " + Estadistica.TorneosJugados + ",";
+            Consulta += " TorneosCompletados = " + Estadistica.TorneosCompletados + ",";
     		Consulta += " Estado = " + (Estadistica.Estado ? 1 : 0);
     		Consulta += " Where Dni = " + Jugador.Dni + " And IdCategoria = " + Estadistica.Categoria.Id;
             try
@@ -89,10 +92,10 @@ namespace Repositorio
 
         public List<Estadisticas> ListarPorCategoriaClub(int IdClub, int IdCategoria)
         { 
-        string Consulta = "select J.*";
+            string Consulta = " Select J.*";
             Consulta +=" from Jugadores J inner join Afiliaciones A ";
-            Consulta += " on A.Dni = J.Dni inner join Categorias C";
-            Consulta += "on J.IdCategoria = C.IdCategoria where j.IdCategoria ="+IdCategoria+" and a.IdClub= "+IdClub;
+            Consulta += " on A.Dni = J.Dni inner join Categorias C ";
+            Consulta += " on J.IdCategoria = C.IdCategoria where j.IdCategoria =" + IdCategoria + " and a.IdClub= "+IdClub;
             List<Estadisticas> ListaEstadisticas = new List<Estadisticas>();
             DataTable Tabla = Conn.Listar(Consulta);
             foreach (DataRow Fila in Tabla.Rows)
@@ -111,8 +114,8 @@ namespace Repositorio
         	Estadisticas Estadistica = null;
             if (Fila != null)
             {
-                //Categoria repo 
-                Categoria bCategoria = null; //TODO: Traer categoria por repo
+                ICategoriaRepositorio repoCategorias = new CategoriaRepositorio();
+                Categoria bCategoria = repoCategorias.Buscar(Fila.IsNull("IdCategoria") ? 0 : Convert.ToInt32(Fila["IdCategoria"]));
                 int Dni = Fila.IsNull("Dni") ? 0 : Convert.ToInt32(Fila["Dni"]);
                 int PartidosPerdidos = Fila.IsNull("PartidosPerdidos") ? 0 : Convert.ToInt32(Fila["PartidosPerdidos"]);
                 int PartidosGanados = Fila.IsNull("PartidosGanados") ? 0 : Convert.ToInt32(Fila["PartidosGanados"]);
@@ -120,7 +123,7 @@ namespace Repositorio
                 int TorneosCompletados = Fila.IsNull("TorneosCompletados") ? 0 : Convert.ToInt32(Fila["TorneosCompletados"]);
                 int TorneosJugados = Fila.IsNull("TorneosJugados") ? 0 : Convert.ToInt32(Fila["TorneosJugados"]);
                 bool Estado = Fila.IsNull("Estado") ? false : Convert.ToBoolean(Fila["Estado"]);
-                Estadistica = new Estadisticas(bCategoria, PartidosPerdidos, PartidosGanados,
+                Estadistica = new Estadisticas(Dni, bCategoria, PartidosPerdidos, PartidosGanados,
                     Puntos,TorneosCompletados, TorneosJugados, Estado);
             }
             return Estadistica;

@@ -18,6 +18,8 @@ namespace Servicio
 		void Agregar(IEstadisticasUI ui);
 		
 		void Modificar(IEstadisticasUI ui);
+
+        bool Existe(IEstadisticasUI ui);
 		
 		void Buscar(IEstadisticasUI ui);
 	}
