@@ -70,8 +70,8 @@ namespace Repositorio
             {
                 int IdCateg = (fila.IsNull("IdCategoria") == true ? 0 : Convert.ToInt32(fila["IdCategoria"]));
                 string Nombre = (fila.IsNull("Nombre") == true ? string.Empty : fila["Nombre"].ToString());
-                int EdadMin = (fila.IsNull("EdadMin") == true ? 0 : Convert.ToInt32(fila["EdadMin"]));
-                int EdadMax = (fila.IsNull("EdadMax") == true ? 0 : Convert.ToInt32(fila["EdadMax"]));
+                int EdadMin = (fila.IsNull("EdadMinima") == true ? 0 : Convert.ToInt32(fila["EdadMinima"]));
+                int EdadMax = (fila.IsNull("EdadMaxima") == true ? 0 : Convert.ToInt32(fila["EdadMaxima"]));
                 bool Estado = (fila.IsNull("Estado") == true ? false : Convert.ToBoolean(fila["Estado"]));
                 Retorno = new Categoria(IdCateg, Nombre, EdadMin, EdadMax, Estado);
             }
