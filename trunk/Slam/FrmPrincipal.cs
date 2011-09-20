@@ -19,6 +19,7 @@ namespace Slam
         FrmListaSedes Sedes;
         FrmListaEmpleados Empleados;
         FrmListaCategorias Categorias;
+        FrmListaEstadisticas EstadisticasJugadores;
         public FrmPrincipal(Form _Padre)
         {
             InitializeComponent();
@@ -37,18 +38,6 @@ namespace Slam
         	CerrarPadre = true;
             this.Close();
             Padre.Close();
-        }
-
-        private void TlsmiJugadores_Click(object sender, EventArgs e)
-        {
-        	if(Jugadores == null || Jugadores.IsDisposed)
-        	{
-            	Jugadores = new FrmListaJugadores();
-            	Jugadores.MdiParent = this;
-            	Jugadores.Show();
-        	}
-        	else
-        		Jugadores.BringToFront();
         }
 
         private void TlsmiArbitros_Click(object sender, EventArgs e)
@@ -113,6 +102,30 @@ namespace Slam
             }
             else
                 Categorias.BringToFront();
+        }
+
+        private void TlsmiAdministrarJugadores_Click(object sender, EventArgs e)
+        {
+            if (Jugadores == null || Jugadores.IsDisposed)
+            {
+                Jugadores = new FrmListaJugadores();
+                Jugadores.MdiParent = this;
+                Jugadores.Show();
+            }
+            else
+                Jugadores.BringToFront();
+        }
+
+        private void TlsmiEstadisticasJugador_Click(object sender, EventArgs e)
+        {
+            if (EstadisticasJugadores == null || EstadisticasJugadores.IsDisposed)
+            {
+                EstadisticasJugadores = new FrmListaEstadisticas();
+                EstadisticasJugadores.MdiParent = this;
+                EstadisticasJugadores.Show();
+            }
+            else
+                EstadisticasJugadores.BringToFront();
         }
     }
 }

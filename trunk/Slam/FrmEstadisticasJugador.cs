@@ -19,7 +19,7 @@ namespace Slam
         IEstadisticasServicio servicioEstadisticas;
         IListadoCategoriaServicio servicioCategorias;
         int DniJugador = 0;
-        int IdEstadistica = 0;
+        int IdCategoriaActual = 0;
         public FrmEstadisticasJugador(int DniJugador, string NombreApellido)
         {
             InitializeComponent();
@@ -27,10 +27,10 @@ namespace Slam
             LblJugador.Text = NombreApellido;
         }
 
-        public FrmEstadisticasJugador(int DniJugador, int IdEstadistica, string NombreApellido)
+        public FrmEstadisticasJugador(int DniJugador, int IdCategoriaActual, string NombreApellido)
         {
             InitializeComponent();
-            this.IdEstadistica = IdEstadistica;
+            this.IdCategoriaActual = IdCategoriaActual;
             this.DniJugador = DniJugador;
             LblJugador.Text = NombreApellido;
         }
@@ -40,8 +40,9 @@ namespace Slam
             servicioCategorias = (IListadoCategoriaServicio)AppContext.Instance.GetObject(ImplementaCategorias);
             servicioCategorias.Listar(this);
             servicioEstadisticas = (IEstadisticasServicio)AppContext.Instance.GetObject(ImplementaEstadisticas);
-            if (IdEstadistica > 0 && DniJugador > 0)
+            if (IdCategoriaActual > 0 && DniJugador > 0)
             {
+                CboCategorias.SelectedValue = IdCategoriaActual;
                 servicioEstadisticas.Buscar(this);
                 this.Text = "Modificar Estadisticas del Jugador";
             }
@@ -57,7 +58,7 @@ namespace Slam
 
         private void CboCategorias_Validating(object sender, CancelEventArgs e)
         {
-            if (CboCategorias.SelectedIndex > -1)
+            if (CboCategorias.SelectedIndex < 0)
                 EpEstadisticas.SetError(CboCategorias, "Debe elegir una Categoría");
             else
                 EpEstadisticas.SetError(CboCategorias, "");
@@ -111,13 +112,20 @@ namespace Slam
 
         private void BtnGuardar_Click(object sender, EventArgs e)
         {
-            if (EpEstadisticas.GetError(CboCategorias) != "" && EpEstadisticas.GetError(TxtPG) != "" &&
-                EpEstadisticas.GetError(TxtPP) != "" && EpEstadisticas.GetError(TxtTJ) != "" &&
-                EpEstadisticas.GetError(TxtTC) != "" && EpEstadisticas.GetError(TxtPuntos) != "")
+            if (EpEstadisticas.GetError(CboCategorias) == "" && EpEstadisticas.GetError(TxtPG) == "" &&
+                EpEstadisticas.GetError(TxtPP) == "" && EpEstadisticas.GetError(TxtTJ) == "" &&
+                EpEstadisticas.GetError(TxtTC) == "" && EpEstadisticas.GetError(TxtPuntos) == "")
             {
                 try
                 {
-                    servicioEstadisticas.Agregar(this);
+                    if (DniJugador > 0)
+                    {
+                        if (!servicioEstadisticas.Existe(this))
+                            servicioEstadisticas.Agregar(this);
+                        else
+                            servicioEstadisticas.Modificar(this);
+                    }
+                    
                     this.DialogResult = DialogResult.OK;
                     MessageBox.Show("Acción realizada con éxito");
                     this.Close();

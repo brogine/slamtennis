@@ -38,10 +38,12 @@
             // DgvListaCategorias
             // 
             this.DgvListaCategorias.AllowUserToAddRows = false;
+            this.DgvListaCategorias.AllowUserToDeleteRows = false;
             this.DgvListaCategorias.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.DgvListaCategorias.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.DgvListaCategorias.Location = new System.Drawing.Point(12, 12);
             this.DgvListaCategorias.Name = "DgvListaCategorias";
+            this.DgvListaCategorias.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.DgvListaCategorias.Size = new System.Drawing.Size(457, 150);
             this.DgvListaCategorias.TabIndex = 0;
             // 

@@ -35,7 +35,14 @@ namespace Repositorio.Conexiones
         }
         public override void Conectar()
         {
-            conn.Open();
+            try
+            {
+                conn.Open();
+            }
+            catch (Exception)
+            {
+                throw new RepositorioExeption("No se puede conectar el servidor de Base de Datos");
+            }
         }
 
         public override void Desconectar()

@@ -72,22 +72,20 @@ namespace Slam
         {
             FrmNuevaCategoria NuevaCat = new FrmNuevaCategoria();
             if (NuevaCat.ShowDialog() == DialogResult.OK)
-            {
                 ServicioCategoria.Listar(this);
-            }
-            
         }
 
         private void BtnModificar_Click(object sender, EventArgs e)
         {
             if (DgvListaCategorias.SelectedRows.Count == 1)
             {
-                FrmNuevaCategoria NuevaCat = new FrmNuevaCategoria(Convert.ToInt32(DgvListaCategorias.SelectedRows[0].Cells["Id"].Value));
-                ServicioCategoria.Listar(this);
+                FrmNuevaCategoria ModificarCat = new FrmNuevaCategoria(Convert.ToInt32(DgvListaCategorias.SelectedRows[0].Cells["Id"].Value));
+                if(ModificarCat.ShowDialog() == DialogResult.OK)
+                    ServicioCategoria.Listar(this);
             }
             else
             { 
-            MessageBox.Show("Debe Seleccionar Una Categoria De La Lista Para Poder Modificarla");
+                MessageBox.Show("Debe Seleccionar Una Categoria De La Lista Para Poder Modificarla");
             }
         }
     }

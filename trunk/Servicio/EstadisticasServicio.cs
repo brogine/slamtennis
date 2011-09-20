@@ -48,12 +48,19 @@ namespace Servicio
 			bEstadistica.PP = ui.PartidosPerdidos;
 			bEstadistica.Puntaje = ui.Puntos;
 			bEstadistica.Estado = ui.Estado;
+            bEstadistica.TorneosCompletados = ui.TorneosCompletados;
+            bEstadistica.TorneosJugados = ui.TorneosJugados;
 			
 			IJugadorRepositorio repoJugadores = new JugadorRepositorio();
 			Jugador bJugador = repoJugadores.Buscar(ui.Dni);
 			
 			repoEstadisticas.Modificar(bJugador, bEstadistica);
 		}
+
+        public bool Existe(IEstadisticasUI ui)
+        {
+            return repoEstadisticas.Existe(ui.Dni, ui.IdCategoria);
+        }
 		
 		public void Buscar(IEstadisticasUI ui)
 		{
@@ -62,6 +69,8 @@ namespace Servicio
 			ui.PartidosGanados = bEstadistica.PG;
 			ui.PartidosPerdidos = bEstadistica.PP;
 			ui.PartidosJugados = bEstadistica.PJ;
+            ui.TorneosCompletados = bEstadistica.TorneosCompletados;
+            ui.TorneosJugados = bEstadistica.TorneosJugados;
 			ui.Puntos = bEstadistica.Puntaje;
 		}
 		
@@ -94,7 +103,7 @@ namespace Servicio
 
         public void ListarPorCategoriaClub(IListadoEstadisticasCategoria ui)
         {
-            List<Estadisticas> ListaEstadisticas = null;
+            List<Estadisticas> ListaEstadisticas = repoEstadisticas.ListarPorCategoriaClub(ui.IdClub, ui.IdCategoria);
             IJugadorRepositorio repoJugadores = new JugadorRepositorio();
             List<Object> ListaUI = new List<object>();
             foreach (Estadisticas Estadistica in ListaEstadisticas)
