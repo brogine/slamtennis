@@ -38,6 +38,7 @@
             // DgvListaCategorias
             // 
             this.DgvListaCategorias.AllowUserToAddRows = false;
+            this.DgvListaCategorias.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.DgvListaCategorias.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.DgvListaCategorias.Location = new System.Drawing.Point(12, 12);
             this.DgvListaCategorias.Name = "DgvListaCategorias";
