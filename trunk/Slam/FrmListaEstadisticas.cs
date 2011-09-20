@@ -75,6 +75,7 @@ namespace Slam
             {
                 if (DgvEstadisticas.ColumnCount > 0)
                     DgvEstadisticas.Columns.Clear();
+                DgvEstadisticas.Columns.Add("Dni", "Dni");
                 DgvEstadisticas.Columns.Add("NombreApellido", "Nombre y Apellido");
                 DgvEstadisticas.Columns.Add("pj", "PJ");
                 DgvEstadisticas.Columns.Add("pg", "PG");
@@ -106,12 +107,27 @@ namespace Slam
 
         private void BtnNuevaEstadistica_Click(object sender, EventArgs e)
         {
-
+            if (DgvEstadisticas.SelectedRows.Count == 1)
+            {
+                FrmEstadisticasJugador nuevaEstadistica = new FrmEstadisticasJugador(
+                    Convert.ToInt32(DgvEstadisticas.SelectedRows[0].Cells["Dni"].Value),
+                    DgvEstadisticas.SelectedRows[0].Cells["NombreApellido"].Value.ToString());
+                if (nuevaEstadistica.ShowDialog() == DialogResult.OK)
+                    servicioEstadisticas.ListarPorCategoriaClub(this);
+            }
         }
 
         private void BtnVerEstadisticas_Click(object sender, EventArgs e)
         {
-
+            if (DgvEstadisticas.SelectedRows.Count == 1)
+            {
+                FrmEstadisticasJugador modificarEstadistica = new FrmEstadisticasJugador(
+                    Convert.ToInt32(DgvEstadisticas.SelectedRows[0].Cells["Dni"].Value),
+                    (int)CboCategorias.SelectedValue,
+                    DgvEstadisticas.SelectedRows[0].Cells["NombreApellido"].Value.ToString());
+                if (modificarEstadistica.ShowDialog() == DialogResult.OK)
+                    servicioEstadisticas.ListarPorCategoriaClub(this);
+            }
         }
 
         #region Miembros de IListadoClubes
