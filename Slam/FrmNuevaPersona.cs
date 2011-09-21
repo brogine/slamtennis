@@ -6,7 +6,6 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
-
 using ApplicationContext;
 using Servicio;
 using Servicio.InterfacesUI;
@@ -760,29 +759,39 @@ namespace Slam
                 CboLocalidades.SelectedValue = IdLocalidad;
             }
         }
+
         private void Blanquear()
         {
             this.TxtApellido.Text = "";
-            this.TxtBadge.Text = "";
             this.TxtCelular.Text = "";
             this.TxtDni.Text = "";
             this.TxtDomicilio.Text = "";
             this.TxtEmail.Text = "";
-            this.TxtNivel.Text = "";
             this.TxtNombre.Text = "";
-            this.TxtNombreTutor.Text = "";
             this.TxtPassword.Text = "";
             this.TxtPasswordNuevo.Text = "";
             this.TxtPasswordViejo.Text = "";
             this.TxtPuesto.Text = "";
-            this.TxtRelacion.Text = "";
             this.TxtTelefono.Text = "";
             this.TxtUsuario.Text = "";
             this.CboLocalidades.SelectedIndex = -1;
             this.CboNacionalidad.SelectedIndex = -1;
             this.CboProvincia.SelectedIndex = -1;
             this.ChkEstado.Checked = false;
+            if (GbDatosArbitro.Visible)
+            {
+                TxtNivel.Text = "";
+                TxtBadge.Text = "";
+                GbDatosArbitro.Visible = false;
+            }
+            if (GbMenor.Visible)
+            {
+                TxtNombreTutor.Text = "";
+                TxtRelacion.Text = "";
+                GbMenor.Visible = false;
+            }
         }
+
         private void BtnBuscarFoto_Click(object sender, EventArgs e)
         {
             OpenFileDialog Ofd = new OpenFileDialog();
@@ -801,7 +810,6 @@ namespace Slam
                 }
             }
         }
-
 
     }
 }
