@@ -32,6 +32,7 @@ namespace Slam
         public int Dni;
         int IdLocalidad;
         int EdadJugador;
+        string PathFoto = "";
         public FrmNuevaPersona(TipoPersona _Tipo)
         {
             InitializeComponent();
@@ -133,6 +134,7 @@ namespace Slam
                         }
                         this.DialogResult = DialogResult.OK;
                         MessageBox.Show("Carga realizada con éxito.");
+                        this.Close();
                     }
                     catch (Exception ex)
                     {
@@ -419,6 +421,24 @@ namespace Slam
             get { return EdadJugador; }
             set { EdadJugador = value; }
         }
+
+        public string Foto
+        {
+            get
+            {
+                if (PathFoto != "")
+                    return PathFoto;
+                else
+                    throw new Exception("Debe Agregar una foto.");
+            }
+            set
+            {
+                PathFoto = value;
+                if(value != "")
+                    PbFoto.Image = Image.FromFile(value);
+            }
+        }
+
 
         #endregion
 
@@ -709,6 +729,25 @@ namespace Slam
             {
                 servicioLocalidades.ListarLocalidades(this);
                 CboLocalidades.SelectedValue = IdLocalidad;
+            }
+        }
+
+        private void BtnBuscarFoto_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog Ofd = new OpenFileDialog();
+            Ofd.Filter = "Archivos de Imagen|*.jpg;*.gif;*.bmp;*.png;*.jpeg|Todos los Archivos|*.*";
+            Ofd.Multiselect = false;
+            if (Ofd.ShowDialog() == DialogResult.OK)
+            {
+                try
+                {
+                    PathFoto = Ofd.FileName;
+                    PbFoto.Image = Image.FromFile(Ofd.FileName);
+                }
+                catch(Exception)
+                {
+                    MessageBox.Show("El archivo que buscó no es una foto soportada por el sistema. Busque nuevamente.");
+                }
             }
         }
 

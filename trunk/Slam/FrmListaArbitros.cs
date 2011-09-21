@@ -32,7 +32,8 @@ namespace Slam
         private void BtnNuevo_Click(object sender, EventArgs e)
         {
             FrmNuevaPersona nuevoArbitro = new FrmNuevaPersona(TipoPersona.Arbitro);
-            nuevoArbitro.Show();
+            if (nuevoArbitro.ShowDialog() == DialogResult.OK)
+                servicioArbitros.ListarArbitros(this);
         }
 
         private void BtnModificar_Click(object sender, EventArgs e)

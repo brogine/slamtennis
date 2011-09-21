@@ -80,6 +80,7 @@ namespace Slam
 
         private void BtnCerrar_Click(object sender, EventArgs e)
         {
+            this.DialogResult = DialogResult.OK;
             GC.Collect();
             GC.WaitForPendingFinalizers();
             this.Close();

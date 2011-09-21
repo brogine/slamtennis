@@ -28,7 +28,7 @@ namespace Repositorio
         {
             string FechaFormateada = Persona.FechaNac.Year+"/"+Persona.FechaNac.Month+"/"+Persona.FechaNac.Day;
             string Campos = " Dni, Nombre, Apellido, FechaNacimiento, Nacionalidad, Sexo, ";
-            Campos += "Telefono, Celular, Email, Localidad, Domicilio ";
+            Campos += "Telefono, Celular, Email, Localidad, Domicilio, Foto ";
             string Valores = Persona.Dni + ",'" + Persona.Nombre + "','" + Persona.Apellido + "','";
             Valores += FechaFormateada + "'," + Persona.Nacionalidad.IdPais + ",'" + Persona.Sexo;
             Valores += "','" + Persona.Contacto.Telefono + "','" + Persona.Contacto.Celular;
