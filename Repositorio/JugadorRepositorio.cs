@@ -38,10 +38,10 @@ namespace Repositorio
             string Consulta = " Select Count(*) From Jugadores Where Dni = " + Dni;
             DataRow Fila = Conn.Buscar(Consulta);
             int cantidad = Convert.ToInt32(Fila[0]);
-            if (cantidad == 1)
-                return true;
-            else
+            if (cantidad == 0)
                 return false;
+            else
+                return true;
         }
 
         public void Modificar(Jugador Jugador)
