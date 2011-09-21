@@ -64,10 +64,12 @@ namespace Repositorio
 
         public List<Jugador> Listar(int IdClub)
         {
-        	string Consulta = " select * ";
-            Consulta += " from Jugadores J inner join Afiliaciones A ";
-            Consulta += " on j.Dni = a.Dni inner join Personas P on P.Dni = J.Dni ";
-            Consulta += " inner join Login L on P.Dni = L.Dni ";
+        	string Consulta = " SELECT * FROM Afiliaciones A ";
+            Consulta += " INNER JOIN Personas P ";
+            Consulta += " ON A.Dni = P.Dni INNER JOIN Clubes C ";
+            Consulta += " ON A.IdClub = C.IdClub ";
+            Consulta += " INNER JOIN Login L ";
+            Consulta += " ON A.Dni = L.Dni ";
             Consulta += " where a.IdClub= " + IdClub;
         	List<Jugador> ListaJugadores = new List<Jugador>();
         	IEstadisticaRepositorio repoEstadisticas = new EstadisticaRepositorio();
