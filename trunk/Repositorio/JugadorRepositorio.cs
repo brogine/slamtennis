@@ -5,6 +5,7 @@ using System.Text;
 using Dominio;
 using Repositorio.Conexiones;
 using System.Data;
+using System.IO;
 
 namespace Repositorio
 {
@@ -61,7 +62,7 @@ namespace Repositorio
             bJugador.Estadisticas = repoEstadisticas.ListarPorDni(Dni);
             return bJugador;
         }
-
+        
         public List<Jugador> Listar(int IdClub)
         {
         	string Consulta = " SELECT * FROM Afiliaciones A ";

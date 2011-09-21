@@ -33,7 +33,8 @@ namespace Repositorio
             Valores += FechaFormateada + "'," + Persona.Nacionalidad.IdPais + ",'" + Persona.Sexo;
             Valores += "','" + Persona.Contacto.Telefono + "','" + Persona.Contacto.Celular;
             Valores += "','" + Persona.Contacto.Email  + "'," + Persona.Ubicacion.Localidad.IdLocalidad;
-            Valores += ",'" + Persona.Ubicacion.Domicilio + "'";
+            Valores += ",'" + Persona.Ubicacion.Domicilio + "',";
+            Valores += "'" + Persona.Foto + "'";
             try
             {
                 Conn.AgregarSinId("Personas", Campos, Valores);
@@ -47,6 +48,7 @@ namespace Repositorio
             if (!repoLogin.Existe(Persona.Dni))
             {
                 Login nLogin = new Login(Persona.Login.Usuario, Persona.Login.Password, Persona.Login.Estado);
+                
                 repoLogin.Agregar(nLogin, Persona.Dni);
             }
         }
@@ -79,7 +81,8 @@ namespace Repositorio
             Consulta += " Celular = '" + Persona.Contacto.Celular + "',";
             Consulta += " Email = '" + Persona.Contacto.Email + "',";
             Consulta += " Localidad = " + Persona.Ubicacion.Localidad.IdLocalidad + ",";
-            Consulta += " Domicilio = '" + Persona.Ubicacion.Domicilio + "'";
+            Consulta += " Domicilio = '" + Persona.Ubicacion.Domicilio + "',";
+            Consulta += " Foto ='" + Persona.Foto+"'";
             Consulta += " Where Dni = " + Persona.Dni;
             try
             {
@@ -111,7 +114,7 @@ namespace Repositorio
             Objeto.FechaNac = (Fila.IsNull("FechaNacimiento") == true ? DateTime.Now : Convert.ToDateTime(Fila["FechaNacimiento"]));
             Objeto.Nacionalidad = UbicacionRepo.ObtenerPais(Fila.IsNull("Nacionalidad") == true ? 0 : (int)Fila["Nacionalidad"]);
             Objeto.Sexo = (Fila.IsNull("Sexo") == true ? string.Empty : Convert.ToString(Fila["Sexo"]));
-
+            Objeto.Foto=(Fila.IsNull("Foto")==true?string.Empty: Convert.ToString(Fila["Foto"]));
             //Value Object Contacto
             string Telefono = (Fila.IsNull("Telefono") == true ? string.Empty : Convert.ToString(Fila["Telefono"]));
             string Celular = (Fila.IsNull("Celular") == true ? string.Empty : Convert.ToString(Fila["Celular"]));

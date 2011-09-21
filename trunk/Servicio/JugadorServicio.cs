@@ -20,10 +20,11 @@ namespace Servicio
 
         public void Agregar(Servicio.InterfacesUI.IJugadorUI UI)
         {
+           
             Jugador nJugador;
             Contacto nContacto;
             Ubicacion nUbicacion;
-
+            
             nContacto = new Contacto(UI.Telefono, UI.Celular, UI.Email);
             IUbicacionRepositorio repoUbicacion = new UbicacionRepositorio();
             nUbicacion = new Ubicacion(repoUbicacion.ObtenerLocalidad(UI.Localidad), UI.Domicilio);
@@ -44,7 +45,8 @@ namespace Servicio
                 nJugador = new Jugador(UI.Dni, UI.Nombre, UI.Apellido, UI.FechaNac,
                     Nacionalidad, UI.Sexo, nContacto, nUbicacion, UI.Estado, nLogin);
             }
-            nJugador.Foto = UI.Foto;
+
+            nJugador.Foto = nJugador.CopiarFoto(UI.Foto, UI.Dni);
             repoJugadores.Agregar(nJugador);
         }
 
@@ -67,7 +69,7 @@ namespace Servicio
 			bJugador.Nombre = UI.Nombre;
 			bJugador.RelacionTutor = UI.RelacionTutor;
 			bJugador.Sexo = UI.Sexo;
-            bJugador.Foto = UI.Foto;
+            bJugador.Foto = bJugador.CopiarFoto(UI.Foto, UI.Dni);
 			bJugador.Ubicacion = new Ubicacion(repoUbicacion.ObtenerLocalidad(UI.Localidad), UI.Domicilio);
 			repoJugadores.Modificar(bJugador);
         }
