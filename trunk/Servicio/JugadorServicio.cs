@@ -72,6 +72,7 @@ namespace Servicio
             bJugador.Foto = bJugador.CopiarFoto(UI.Foto, UI.Dni);
 			bJugador.Ubicacion = new Ubicacion(repoUbicacion.ObtenerLocalidad(UI.Localidad), UI.Domicilio);
 			repoJugadores.Modificar(bJugador);
+            GC.Collect();
         }
         
         public void Buscar(Servicio.InterfacesUI.IJugadorUI UI)

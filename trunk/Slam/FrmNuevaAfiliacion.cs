@@ -153,6 +153,11 @@ namespace Slam
                 }
             }
         }
+
+        private void CboListaClubes_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = true;
+        }
     }
 }
 

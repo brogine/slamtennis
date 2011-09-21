@@ -125,5 +125,10 @@ namespace Slam
                 MessageBox.Show("Debe Seleccionar Un Club De La Lista Para Poder Modificar su estado");
             }
         }
+
+        private void CboClubes_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = true;
+        }
     }
 }

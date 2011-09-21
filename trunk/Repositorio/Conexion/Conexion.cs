@@ -15,6 +15,7 @@ namespace Repositorio.Conexiones
         IDbConnection Cnn;
         IDbCommand Com;
         AbstractDB Db;
+        
         CultureInfo info = CultureInfo.CurrentCulture;
         /// <summary>
         /// Constructor de clase Conexion. 
@@ -25,6 +26,7 @@ namespace Repositorio.Conexiones
             Db = AbstractDB.GetInstance();
             Cnn = Db.crearConexion();
             Db.Conectar();
+            
         }
 
         /// <summary>
