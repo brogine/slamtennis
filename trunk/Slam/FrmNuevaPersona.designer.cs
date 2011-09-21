@@ -61,6 +61,8 @@
             this.LblLocalidad = new System.Windows.Forms.Label();
             this.LblProvincia = new System.Windows.Forms.Label();
             this.GbDatosPersonales = new System.Windows.Forms.GroupBox();
+            this.BtnBuscarFoto = new System.Windows.Forms.Button();
+            this.PbFoto = new System.Windows.Forms.PictureBox();
             this.ChkEstado = new System.Windows.Forms.CheckBox();
             this.TxtPuesto = new System.Windows.Forms.TextBox();
             this.LblPuesto = new System.Windows.Forms.Label();
@@ -90,8 +92,6 @@
             this.TxtUsuario = new System.Windows.Forms.TextBox();
             this.LblUsuario = new System.Windows.Forms.Label();
             this.EpNuevaPersona = new System.Windows.Forms.ErrorProvider(this.components);
-            this.PbFoto = new System.Windows.Forms.PictureBox();
-            this.BtnBuscarFoto = new System.Windows.Forms.Button();
             this.TcPersonas.SuspendLayout();
             this.TpDatosPersonales.SuspendLayout();
             this.GbDatosArbitro.SuspendLayout();
@@ -99,11 +99,11 @@
             this.GbContacto.SuspendLayout();
             this.GbDireccion.SuspendLayout();
             this.GbDatosPersonales.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.PbFoto)).BeginInit();
             this.TpLogin.SuspendLayout();
             this.GbCambiarPassword.SuspendLayout();
             this.GbDatosLogin.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.EpNuevaPersona)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.PbFoto)).BeginInit();
             this.SuspendLayout();
             // 
             // TcPersonas
@@ -428,6 +428,25 @@
             this.GbDatosPersonales.Text = "Datos Personales";
             this.GbDatosPersonales.Validating += new System.ComponentModel.CancelEventHandler(this.GbDatosPersonales_Validating);
             // 
+            // BtnBuscarFoto
+            // 
+            this.BtnBuscarFoto.Location = new System.Drawing.Point(330, 128);
+            this.BtnBuscarFoto.Name = "BtnBuscarFoto";
+            this.BtnBuscarFoto.Size = new System.Drawing.Size(115, 23);
+            this.BtnBuscarFoto.TabIndex = 20;
+            this.BtnBuscarFoto.Text = "Buscar Foto";
+            this.BtnBuscarFoto.UseVisualStyleBackColor = true;
+            this.BtnBuscarFoto.Click += new System.EventHandler(this.BtnBuscarFoto_Click);
+            // 
+            // PbFoto
+            // 
+            this.PbFoto.Location = new System.Drawing.Point(330, 15);
+            this.PbFoto.Name = "PbFoto";
+            this.PbFoto.Size = new System.Drawing.Size(115, 107);
+            this.PbFoto.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.PbFoto.TabIndex = 19;
+            this.PbFoto.TabStop = false;
+            // 
             // ChkEstado
             // 
             this.ChkEstado.AutoSize = true;
@@ -692,25 +711,6 @@
             // 
             this.EpNuevaPersona.ContainerControl = this;
             // 
-            // PbFoto
-            // 
-            this.PbFoto.Location = new System.Drawing.Point(330, 15);
-            this.PbFoto.Name = "PbFoto";
-            this.PbFoto.Size = new System.Drawing.Size(115, 107);
-            this.PbFoto.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.PbFoto.TabIndex = 19;
-            this.PbFoto.TabStop = false;
-            // 
-            // BtnBuscarFoto
-            // 
-            this.BtnBuscarFoto.Location = new System.Drawing.Point(330, 128);
-            this.BtnBuscarFoto.Name = "BtnBuscarFoto";
-            this.BtnBuscarFoto.Size = new System.Drawing.Size(115, 23);
-            this.BtnBuscarFoto.TabIndex = 20;
-            this.BtnBuscarFoto.Text = "Buscar Foto";
-            this.BtnBuscarFoto.UseVisualStyleBackColor = true;
-            this.BtnBuscarFoto.Click += new System.EventHandler(this.BtnBuscarFoto_Click);
-            // 
             // FrmNuevaPersona
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -734,13 +734,13 @@
             this.GbDireccion.PerformLayout();
             this.GbDatosPersonales.ResumeLayout(false);
             this.GbDatosPersonales.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.PbFoto)).EndInit();
             this.TpLogin.ResumeLayout(false);
             this.GbCambiarPassword.ResumeLayout(false);
             this.GbCambiarPassword.PerformLayout();
             this.GbDatosLogin.ResumeLayout(false);
             this.GbDatosLogin.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.EpNuevaPersona)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.PbFoto)).EndInit();
             this.ResumeLayout(false);
 
         }
