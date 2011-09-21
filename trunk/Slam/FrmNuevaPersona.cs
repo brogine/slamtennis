@@ -118,22 +118,41 @@ namespace Slam
                         switch (Tipo)
                         {
                             case TipoPersona.Arbitro:
-                                if (servicioArbitros.Existe(Dni))
-                                    servicioArbitros.Modificar(this);
-                                else
-                                    servicioArbitros.Agregar(this);
+                                if (EpNuevaPersona.GetError(TxtNivel) == "" && EpNuevaPersona.GetError(TxtBadge) == "")
+                                {
+                                    if (servicioArbitros.Existe(Dni))
+                                        servicioArbitros.Modificar(this);
+                                    else
+                                        servicioArbitros.Agregar(this);
+                                }
                                 break;
                             case TipoPersona.Empleado:
-                                if (servicioEmpleados.Existe(Dni))
-                                    servicioEmpleados.Modificar(this);
-                                else
-                                    servicioEmpleados.Agregar(this);
+                                if (EpNuevaPersona.GetError(TxtPuesto) == "")
+                                {
+                                    if (servicioEmpleados.Existe(Dni))
+                                        servicioEmpleados.Modificar(this);
+                                    else
+                                        servicioEmpleados.Agregar(this);
+                                }
                                 break;
                             case TipoPersona.Jugador:
-                                if (servicioJugadores.Existe(Dni))
-                                    servicioJugadores.Modificar(this);
+                                if (GbMenor.Visible)
+                                {
+                                    if (EpNuevaPersona.GetError(TxtNombreTutor) == "" && EpNuevaPersona.GetError(TxtRelacion) == "")
+                                    {
+                                        if (servicioJugadores.Existe(Dni))
+                                            servicioJugadores.Modificar(this);
+                                        else
+                                            servicioJugadores.Agregar(this);
+                                    }
+                                }
                                 else
-                                    servicioJugadores.Agregar(this);
+                                {
+                                    if (servicioJugadores.Existe(Dni))
+                                        servicioJugadores.Modificar(this);
+                                    else
+                                        servicioJugadores.Agregar(this);
+                                }
                                 break;
                         }
                         this.DialogResult = DialogResult.OK;
