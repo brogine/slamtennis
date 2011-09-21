@@ -28,6 +28,7 @@ namespace Servicio
             Login Login = new Login(UI.Usuario, UI.Password, true);
             Arbitro NuevoArb = new Arbitro(UI.Dni, UI.Nombre, UI.Apellido, UI.FechaNac, Nacionalidad, UI.Sexo, Contacto, Ubicacion, UI.Badge, UI.Nivel, UI.Estado);
             NuevoArb.Login = Login;
+            NuevoArb.Foto = UI.Foto;
             ArbRepo.Agregar(NuevoArb);
 
 
@@ -48,6 +49,7 @@ namespace Servicio
             ModArb.Badge = UI.Badge;
             ModArb.Login.Usuario = UI.Usuario;
             ModArb.Login.Password = UI.Password;
+            ModArb.Foto = UI.Foto;
 
             //Atributos de Value Object "Contacto"
             ModArb.Contacto.Celular = UI.Celular;
@@ -78,7 +80,7 @@ namespace Servicio
             UI.Nivel = BuscaArb.Nivel;
             UI.Badge = BuscaArb.Badge;
             UI.Sexo = BuscaArb.Sexo;
-
+            UI.Foto = BuscaArb.Foto;
 
             // Value Object Login
             UI.Usuario = BuscaArb.Login.Usuario;
@@ -110,7 +112,8 @@ namespace Servicio
                 Objeto = Arbitro.Dni + ",";
                 Objeto += Arbitro.Apellido + " " + Arbitro.Nombre + ",";
                 Objeto += Arbitro.Nivel + ",";
-                Objeto += Arbitro.Badge;
+                Objeto += Arbitro.Badge + ",";
+                Objeto += Arbitro.Foto;
                 ListaUI.Add(Objeto);
             }
             UI.ListarArbitros = ListaUI;
