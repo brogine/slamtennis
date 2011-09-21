@@ -11,6 +11,7 @@ using ApplicationContext;
 using Servicio;
 using Servicio.InterfacesUI;
 using System.Collections;
+using System.IO;
 
 namespace Slam
 {
@@ -111,6 +112,9 @@ namespace Slam
                     Dni = int.Parse(TxtDni.Text);
                     try
                     {
+                        PbFoto.Dispose();
+                        GC.Collect();
+                        GC.WaitForPendingFinalizers();
                         switch (Tipo)
                         {
                             case TipoPersona.Arbitro:
@@ -434,8 +438,9 @@ namespace Slam
             set
             {
                 PathFoto = value;
-                if(value != "")
-                    PbFoto.Image = Image.FromFile(AppDomain.CurrentDomain.BaseDirectory + value);
+                FileStream Fs = new FileStream(AppDomain.CurrentDomain.BaseDirectory + value, FileMode.Open, FileAccess.Read);
+                if (value != "")
+                    PbFoto.Image = Image.FromStream(Fs);
             }
         }
 
