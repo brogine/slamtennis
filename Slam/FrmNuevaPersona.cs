@@ -742,9 +742,11 @@ namespace Slam
                             servicioJugadores.Buscar(this);
                             break;
                     }
+                    
                 }
                 catch (Exception ex)
                 {
+                    Blanquear();
                     MessageBox.Show(ex.Message);
                 }
             }
@@ -758,7 +760,29 @@ namespace Slam
                 CboLocalidades.SelectedValue = IdLocalidad;
             }
         }
-
+        private void Blanquear()
+        {
+            this.TxtApellido.Text = "";
+            this.TxtBadge.Text = "";
+            this.TxtCelular.Text = "";
+            this.TxtDni.Text = "";
+            this.TxtDomicilio.Text = "";
+            this.TxtEmail.Text = "";
+            this.TxtNivel.Text = "";
+            this.TxtNombre.Text = "";
+            this.TxtNombreTutor.Text = "";
+            this.TxtPassword.Text = "";
+            this.TxtPasswordNuevo.Text = "";
+            this.TxtPasswordViejo.Text = "";
+            this.TxtPuesto.Text = "";
+            this.TxtRelacion.Text = "";
+            this.TxtTelefono.Text = "";
+            this.TxtUsuario.Text = "";
+            this.CboLocalidades.SelectedIndex = -1;
+            this.CboNacionalidad.SelectedIndex = -1;
+            this.CboProvincia.SelectedIndex = -1;
+            this.ChkEstado.Checked = false;
+        }
         private void BtnBuscarFoto_Click(object sender, EventArgs e)
         {
             OpenFileDialog Ofd = new OpenFileDialog();
@@ -777,6 +801,7 @@ namespace Slam
                 }
             }
         }
+
 
     }
 }
