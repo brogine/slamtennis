@@ -71,31 +71,36 @@ namespace Servicio
 
         public void Buscar(IArbitroUI UI)
         {
-            Arbitro BuscaArb = ArbRepo.Buscar(UI.Dni);
-            UI.Dni = BuscaArb.Dni;
-            UI.Apellido = BuscaArb.Apellido;
-            UI.Nombre = BuscaArb.Nombre;
-            UI.FechaNac = BuscaArb.FechaNac;
-            UI.Nacionalidad = BuscaArb.Nacionalidad.IdPais;
-            UI.Nivel = BuscaArb.Nivel;
-            UI.Badge = BuscaArb.Badge;
-            UI.Sexo = BuscaArb.Sexo;
-            UI.Foto = BuscaArb.Foto;
+            if (Existe(UI.Dni))
+            {
+                Arbitro BuscaArb = ArbRepo.Buscar(UI.Dni);
+                UI.Dni = BuscaArb.Dni;
+                UI.Apellido = BuscaArb.Apellido;
+                UI.Nombre = BuscaArb.Nombre;
+                UI.FechaNac = BuscaArb.FechaNac;
+                UI.Nacionalidad = BuscaArb.Nacionalidad.IdPais;
+                UI.Nivel = BuscaArb.Nivel;
+                UI.Badge = BuscaArb.Badge;
+                UI.Sexo = BuscaArb.Sexo;
+                UI.Foto = BuscaArb.Foto;
 
-            // Value Object Login
-            UI.Usuario = BuscaArb.Login.Usuario;
-            UI.Password = BuscaArb.Login.Password;
+                // Value Object Login
+                UI.Usuario = BuscaArb.Login.Usuario;
+                UI.Password = BuscaArb.Login.Password;
 
-            //Value Object Ubicacion
-            UI.Provincia = BuscaArb.Ubicacion.Localidad.Provincia.IdProvincia;
-            UI.Localidad = BuscaArb.Ubicacion.Localidad.IdLocalidad;
-            UI.Domicilio = BuscaArb.Ubicacion.Domicilio;
+                //Value Object Ubicacion
+                UI.Provincia = BuscaArb.Ubicacion.Localidad.Provincia.IdProvincia;
+                UI.Localidad = BuscaArb.Ubicacion.Localidad.IdLocalidad;
+                UI.Domicilio = BuscaArb.Ubicacion.Domicilio;
 
 
-            //Value Object Contacto
-            UI.Telefono = BuscaArb.Contacto.Telefono;
-            UI.Email = BuscaArb.Contacto.Email;
-            UI.Celular = BuscaArb.Contacto.Celular;
+                //Value Object Contacto
+                UI.Telefono = BuscaArb.Contacto.Telefono;
+                UI.Email = BuscaArb.Contacto.Email;
+                UI.Celular = BuscaArb.Contacto.Celular;
+            }
+            else
+                throw new ServicioExeption("El Arbitro con Dni " + UI.Dni + " No Existe.");
         }
 
         #endregion

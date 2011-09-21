@@ -77,26 +77,31 @@ namespace Servicio
         
         public void Buscar(Servicio.InterfacesUI.IJugadorUI UI)
 		{
-        	Jugador bJugador = repoJugadores.Buscar(UI.Dni);
-            UI.Dni = bJugador.Dni;
-        	UI.Apellido = bJugador.Apellido;
-        	UI.Celular = bJugador.Contacto.Celular;
-        	UI.Tutor = bJugador.Tutor;
-        	UI.Domicilio = bJugador.Ubicacion.Domicilio;
-        	UI.Email = bJugador.Contacto.Email;
-        	UI.Estado = bJugador.Estado;
-        	UI.FechaNac = bJugador.FechaNac;
-            UI.Edad = bJugador.Edad;
-        	UI.Localidad = bJugador.Ubicacion.Localidad.IdLocalidad;
-        	UI.Nacionalidad = bJugador.Nacionalidad.IdPais;
-        	UI.Nombre = bJugador.Nombre;
-        	UI.Password = bJugador.Login.Password;
-        	UI.Provincia = bJugador.Ubicacion.Localidad.Provincia.IdProvincia;
-        	UI.RelacionTutor = bJugador.RelacionTutor;
-        	UI.Sexo = bJugador.Sexo;
-        	UI.Telefono = bJugador.Contacto.Telefono;
-        	UI.Usuario = bJugador.Login.Usuario;
-            UI.Foto = bJugador.Foto;
+            if (this.Existe(UI.Dni))
+            {
+                Jugador bJugador = repoJugadores.Buscar(UI.Dni);
+                UI.Dni = bJugador.Dni;
+                UI.Apellido = bJugador.Apellido;
+                UI.Celular = bJugador.Contacto.Celular;
+                UI.Tutor = bJugador.Tutor;
+                UI.Domicilio = bJugador.Ubicacion.Domicilio;
+                UI.Email = bJugador.Contacto.Email;
+                UI.Estado = bJugador.Estado;
+                UI.FechaNac = bJugador.FechaNac;
+                UI.Edad = bJugador.Edad;
+                UI.Localidad = bJugador.Ubicacion.Localidad.IdLocalidad;
+                UI.Nacionalidad = bJugador.Nacionalidad.IdPais;
+                UI.Nombre = bJugador.Nombre;
+                UI.Password = bJugador.Login.Password;
+                UI.Provincia = bJugador.Ubicacion.Localidad.Provincia.IdProvincia;
+                UI.RelacionTutor = bJugador.RelacionTutor;
+                UI.Sexo = bJugador.Sexo;
+                UI.Telefono = bJugador.Contacto.Telefono;
+                UI.Usuario = bJugador.Login.Usuario;
+                UI.Foto = bJugador.Foto;
+            }
+            else
+                throw new ServicioExeption("El Jugador con Dni " + UI.Dni + " No existe");
 		}
 
         #endregion

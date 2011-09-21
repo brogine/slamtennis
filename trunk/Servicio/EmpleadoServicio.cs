@@ -68,30 +68,35 @@ namespace Servicio
 
         public void Buscar(IEmpleadoUI UI)
         {
-           Empleado BuscaEmpleado = EmpleadoRepo.Buscar(UI.Dni);
-           UI.Dni = BuscaEmpleado.Dni;
-           UI.Apellido = BuscaEmpleado.Apellido;
-           UI.Nombre = BuscaEmpleado.Nombre;
-           UI.FechaNac = BuscaEmpleado.FechaNac;
-           UI.Nacionalidad = BuscaEmpleado.Nacionalidad.IdPais;
-           UI.Puesto = BuscaEmpleado.Puesto;
-           UI.Sexo = BuscaEmpleado.Sexo;
-           UI.Foto = BuscaEmpleado.Foto;
+            if (this.Existe(UI.Dni))
+            {
+                Empleado BuscaEmpleado = EmpleadoRepo.Buscar(UI.Dni);
+                UI.Dni = BuscaEmpleado.Dni;
+                UI.Apellido = BuscaEmpleado.Apellido;
+                UI.Nombre = BuscaEmpleado.Nombre;
+                UI.FechaNac = BuscaEmpleado.FechaNac;
+                UI.Nacionalidad = BuscaEmpleado.Nacionalidad.IdPais;
+                UI.Puesto = BuscaEmpleado.Puesto;
+                UI.Sexo = BuscaEmpleado.Sexo;
+                UI.Foto = BuscaEmpleado.Foto;
 
-            // Value Object Login
-           UI.Usuario = BuscaEmpleado.Login.Usuario;
-           UI.Password = BuscaEmpleado.Login.Password;
-           
-            //Value Object Ubicacion
-           UI.Provincia = BuscaEmpleado.Ubicacion.Localidad.Provincia.IdProvincia;
-           UI.Localidad = BuscaEmpleado.Ubicacion.Localidad.IdLocalidad;
-           UI.Domicilio = BuscaEmpleado.Ubicacion.Domicilio;
+                // Value Object Login
+                UI.Usuario = BuscaEmpleado.Login.Usuario;
+                UI.Password = BuscaEmpleado.Login.Password;
 
-            
-           //Value Object Contacto
-           UI.Telefono = BuscaEmpleado.Contacto.Telefono;
-           UI.Email = BuscaEmpleado.Contacto.Email;
-           UI.Celular = BuscaEmpleado.Contacto.Celular;
+                //Value Object Ubicacion
+                UI.Provincia = BuscaEmpleado.Ubicacion.Localidad.Provincia.IdProvincia;
+                UI.Localidad = BuscaEmpleado.Ubicacion.Localidad.IdLocalidad;
+                UI.Domicilio = BuscaEmpleado.Ubicacion.Domicilio;
+
+
+                //Value Object Contacto
+                UI.Telefono = BuscaEmpleado.Contacto.Telefono;
+                UI.Email = BuscaEmpleado.Contacto.Email;
+                UI.Celular = BuscaEmpleado.Contacto.Celular;
+            }
+            else
+                throw new ServicioExeption("El Empleado con Dni " + UI.Dni + " No Existe");
         }
 
         #endregion
