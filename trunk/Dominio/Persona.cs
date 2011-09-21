@@ -2,12 +2,14 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.IO;
+
 
 namespace Dominio
 {
     public enum Tipo
     {
-        Afiliado, Empleado, Arbitro, Presidente
+        Afiliado, Empleado, Arbitro
     }
 
     public abstract class Persona
@@ -19,6 +21,7 @@ namespace Dominio
         DateTime fechaNac;
         Pais nacionalidad;
         string sexo;
+        string foto;
         #endregion
 
         #region Variables Públicas
@@ -69,6 +72,11 @@ namespace Dominio
             }
         }
 
+        public String Foto
+        {
+            get { return foto; }
+            set { foto = value; }
+        }
         #endregion
 
         #region Value Objects
@@ -95,5 +103,10 @@ namespace Dominio
         }
         #endregion
 
+        void CopiarFoto(string RutaOrigen)
+        { 
+            string Destino = System.AppDomain.CurrentDomain.BaseDirectory+@"\Imagenes\";
+            System.IO.File.Copy(RutaOrigen, Destino);
+        }
     }
 }
