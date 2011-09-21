@@ -35,9 +35,9 @@
             this.ChkEstado = new System.Windows.Forms.CheckBox();
             this.BtnAceptar = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.BtnNuevoJugador = new System.Windows.Forms.Button();
-            this.LblExiste = new System.Windows.Forms.Label();
             this.BtnComprobar = new System.Windows.Forms.Button();
+            this.LblExiste = new System.Windows.Forms.Label();
+            this.BtnNuevoJugador = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -48,6 +48,7 @@
             this.CboListaClubes.Name = "CboListaClubes";
             this.CboListaClubes.Size = new System.Drawing.Size(198, 21);
             this.CboListaClubes.TabIndex = 0;
+            this.CboListaClubes.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.CboListaClubes_KeyPress);
             // 
             // LblNombreClub
             // 
@@ -67,8 +68,6 @@
             this.TxtDni.TabIndex = 2;
             this.TxtDni.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.TxtDni.TextMaskFormat = System.Windows.Forms.MaskFormat.ExcludePromptAndLiterals;
-            
-          
             // 
             // label1
             // 
@@ -112,24 +111,6 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Si el jugador esta cargado en la base de datos  escriba el DNI";
             // 
-            // BtnNuevoJugador
-            // 
-            this.BtnNuevoJugador.Location = new System.Drawing.Point(15, 150);
-            this.BtnNuevoJugador.Name = "BtnNuevoJugador";
-            this.BtnNuevoJugador.Size = new System.Drawing.Size(101, 23);
-            this.BtnNuevoJugador.TabIndex = 7;
-            this.BtnNuevoJugador.Text = "Nuevo Jugador";
-            this.BtnNuevoJugador.UseVisualStyleBackColor = true;
-            this.BtnNuevoJugador.Click += new System.EventHandler(this.BtnNuevoJugador_Click);
-            // 
-            // LblExiste
-            // 
-            this.LblExiste.AutoSize = true;
-            this.LblExiste.Location = new System.Drawing.Point(6, 60);
-            this.LblExiste.Name = "LblExiste";
-            this.LblExiste.Size = new System.Drawing.Size(0, 13);
-            this.LblExiste.TabIndex = 8;
-            // 
             // BtnComprobar
             // 
             this.BtnComprobar.Location = new System.Drawing.Point(242, 50);
@@ -139,6 +120,24 @@
             this.BtnComprobar.Text = "Comprobar";
             this.BtnComprobar.UseVisualStyleBackColor = true;
             this.BtnComprobar.Click += new System.EventHandler(this.BtnComprobar_Click);
+            // 
+            // LblExiste
+            // 
+            this.LblExiste.AutoSize = true;
+            this.LblExiste.Location = new System.Drawing.Point(6, 60);
+            this.LblExiste.Name = "LblExiste";
+            this.LblExiste.Size = new System.Drawing.Size(0, 13);
+            this.LblExiste.TabIndex = 8;
+            // 
+            // BtnNuevoJugador
+            // 
+            this.BtnNuevoJugador.Location = new System.Drawing.Point(15, 150);
+            this.BtnNuevoJugador.Name = "BtnNuevoJugador";
+            this.BtnNuevoJugador.Size = new System.Drawing.Size(101, 23);
+            this.BtnNuevoJugador.TabIndex = 7;
+            this.BtnNuevoJugador.Text = "Nuevo Jugador";
+            this.BtnNuevoJugador.UseVisualStyleBackColor = true;
+            this.BtnNuevoJugador.Click += new System.EventHandler(this.BtnNuevoJugador_Click);
             // 
             // FrmNuevaAfiliacion
             // 
