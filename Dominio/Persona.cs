@@ -103,10 +103,13 @@ namespace Dominio
         }
         #endregion
 
-        void CopiarFoto(string RutaOrigen)
+        public string CopiarFoto(string RutaOrigen,int Dni)
         { 
-            string Destino = System.AppDomain.CurrentDomain.BaseDirectory+@"\Imagenes\";
-            System.IO.File.Copy(RutaOrigen, Destino);
+            string extension = RutaOrigen.Substring(RutaOrigen.LastIndexOf('.'), RutaOrigen.Length - RutaOrigen.LastIndexOf('.'));
+            string Destino = System.AppDomain.CurrentDomain.BaseDirectory+@"\Imagenes\"+Dni.ToString()+extension;
+            
+            System.IO.File.Copy(RutaOrigen, Destino,true);
+            return Destino;
         }
     }
 }
