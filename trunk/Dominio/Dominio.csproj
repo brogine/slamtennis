@@ -54,6 +54,7 @@
     <Compile Include="DominioException.cs" />
     <Compile Include="Empleado.cs" />
     <Compile Include="Estadisticas.cs" />
+    <Compile Include="Inscripcion.cs" />
     <Compile Include="Jugador.cs" />
     <Compile Include="Localidad.cs" />
     <Compile Include="Login.cs" />
