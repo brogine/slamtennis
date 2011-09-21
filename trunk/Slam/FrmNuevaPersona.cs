@@ -435,7 +435,7 @@ namespace Slam
             {
                 PathFoto = value;
                 if(value != "")
-                    PbFoto.Image = Image.FromFile(value);
+                    PbFoto.Image = Image.FromFile(AppDomain.CurrentDomain.BaseDirectory + value);
             }
         }
 

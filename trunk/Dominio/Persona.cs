@@ -111,7 +111,7 @@ namespace Dominio
             string Destino = System.AppDomain.CurrentDomain.BaseDirectory+@"Imagenes\"+Dni.ToString()+extension;
             
             System.IO.File.Copy(RutaOrigen, Destino,true);
-            return Destino;
+            return @"Imagenes\" + Dni.ToString() + extension;
         }
     }
 }
