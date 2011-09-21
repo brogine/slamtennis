@@ -449,17 +449,20 @@ namespace Slam
         {
             get
             {
-                if (PathFoto != "")
-                    return PathFoto;
-                else
-                    throw new Exception("Debe Agregar una foto.");
+                return PathFoto;
             }
             set
             {
                 PathFoto = value;
-                FileStream Fs = new FileStream(AppDomain.CurrentDomain.BaseDirectory + value, FileMode.Open, FileAccess.Read);
                 if (value != "")
-                    PbFoto.Image = Image.FromStream(Fs);
+                {
+                    string Path = AppDomain.CurrentDomain.BaseDirectory + value;
+                    if(File.Exists(Path))
+                    {
+                        FileStream Fs = new FileStream(AppDomain.CurrentDomain.BaseDirectory + value, FileMode.Open, FileAccess.Read);
+                        PbFoto.Image = Image.FromStream(Fs);
+                    }
+                }
             }
         }
 
