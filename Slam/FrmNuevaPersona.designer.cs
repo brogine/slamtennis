@@ -90,6 +90,8 @@
             this.TxtUsuario = new System.Windows.Forms.TextBox();
             this.LblUsuario = new System.Windows.Forms.Label();
             this.EpNuevaPersona = new System.Windows.Forms.ErrorProvider(this.components);
+            this.PbFoto = new System.Windows.Forms.PictureBox();
+            this.BtnBuscarFoto = new System.Windows.Forms.Button();
             this.TcPersonas.SuspendLayout();
             this.TpDatosPersonales.SuspendLayout();
             this.GbDatosArbitro.SuspendLayout();
@@ -101,6 +103,7 @@
             this.GbCambiarPassword.SuspendLayout();
             this.GbDatosLogin.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.EpNuevaPersona)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PbFoto)).BeginInit();
             this.SuspendLayout();
             // 
             // TcPersonas
@@ -110,7 +113,7 @@
             this.TcPersonas.Location = new System.Drawing.Point(12, 12);
             this.TcPersonas.Name = "TcPersonas";
             this.TcPersonas.SelectedIndex = 0;
-            this.TcPersonas.Size = new System.Drawing.Size(663, 410);
+            this.TcPersonas.Size = new System.Drawing.Size(750, 404);
             this.TcPersonas.TabIndex = 0;
             // 
             // TpDatosPersonales
@@ -126,7 +129,7 @@
             this.TpDatosPersonales.Location = new System.Drawing.Point(4, 22);
             this.TpDatosPersonales.Name = "TpDatosPersonales";
             this.TpDatosPersonales.Padding = new System.Windows.Forms.Padding(3);
-            this.TpDatosPersonales.Size = new System.Drawing.Size(655, 384);
+            this.TpDatosPersonales.Size = new System.Drawing.Size(742, 378);
             this.TpDatosPersonales.TabIndex = 0;
             this.TpDatosPersonales.Text = "Datos Personales";
             this.TpDatosPersonales.UseVisualStyleBackColor = true;
@@ -134,7 +137,7 @@
             // LblDetalle
             // 
             this.LblDetalle.AutoSize = true;
-            this.LblDetalle.Location = new System.Drawing.Point(423, 282);
+            this.LblDetalle.Location = new System.Drawing.Point(463, 287);
             this.LblDetalle.Name = "LblDetalle";
             this.LblDetalle.Size = new System.Drawing.Size(168, 13);
             this.LblDetalle.TabIndex = 29;
@@ -189,7 +192,7 @@
             // 
             // BtnCancelar
             // 
-            this.BtnCancelar.Location = new System.Drawing.Point(515, 306);
+            this.BtnCancelar.Location = new System.Drawing.Point(555, 311);
             this.BtnCancelar.Name = "BtnCancelar";
             this.BtnCancelar.Size = new System.Drawing.Size(96, 35);
             this.BtnCancelar.TabIndex = 27;
@@ -199,7 +202,7 @@
             // 
             // BtnGuardar
             // 
-            this.BtnGuardar.Location = new System.Drawing.Point(408, 306);
+            this.BtnGuardar.Location = new System.Drawing.Point(448, 311);
             this.BtnGuardar.Name = "BtnGuardar";
             this.BtnGuardar.Size = new System.Drawing.Size(96, 35);
             this.BtnGuardar.TabIndex = 26;
@@ -262,16 +265,16 @@
             this.GbContacto.Controls.Add(this.LblCelular);
             this.GbContacto.Controls.Add(this.TxtTelefono);
             this.GbContacto.Controls.Add(this.LblTelefono);
-            this.GbContacto.Location = new System.Drawing.Point(348, 155);
+            this.GbContacto.Location = new System.Drawing.Point(463, 152);
             this.GbContacto.Name = "GbContacto";
-            this.GbContacto.Size = new System.Drawing.Size(301, 104);
+            this.GbContacto.Size = new System.Drawing.Size(273, 107);
             this.GbContacto.TabIndex = 24;
             this.GbContacto.TabStop = false;
             this.GbContacto.Text = "Contacto";
             // 
             // TxtEmail
             // 
-            this.TxtEmail.Location = new System.Drawing.Point(98, 76);
+            this.TxtEmail.Location = new System.Drawing.Point(84, 76);
             this.TxtEmail.Name = "TxtEmail";
             this.TxtEmail.Size = new System.Drawing.Size(154, 20);
             this.TxtEmail.TabIndex = 18;
@@ -279,7 +282,7 @@
             // LblEmail
             // 
             this.LblEmail.AutoSize = true;
-            this.LblEmail.Location = new System.Drawing.Point(50, 79);
+            this.LblEmail.Location = new System.Drawing.Point(36, 79);
             this.LblEmail.Name = "LblEmail";
             this.LblEmail.Size = new System.Drawing.Size(35, 13);
             this.LblEmail.TabIndex = 4;
@@ -287,7 +290,7 @@
             // 
             // TxtCelular
             // 
-            this.TxtCelular.Location = new System.Drawing.Point(98, 47);
+            this.TxtCelular.Location = new System.Drawing.Point(84, 47);
             this.TxtCelular.Name = "TxtCelular";
             this.TxtCelular.Size = new System.Drawing.Size(154, 20);
             this.TxtCelular.TabIndex = 17;
@@ -295,7 +298,7 @@
             // LblCelular
             // 
             this.LblCelular.AutoSize = true;
-            this.LblCelular.Location = new System.Drawing.Point(50, 50);
+            this.LblCelular.Location = new System.Drawing.Point(36, 50);
             this.LblCelular.Name = "LblCelular";
             this.LblCelular.Size = new System.Drawing.Size(42, 13);
             this.LblCelular.TabIndex = 2;
@@ -303,7 +306,7 @@
             // 
             // TxtTelefono
             // 
-            this.TxtTelefono.Location = new System.Drawing.Point(98, 19);
+            this.TxtTelefono.Location = new System.Drawing.Point(84, 19);
             this.TxtTelefono.Name = "TxtTelefono";
             this.TxtTelefono.Size = new System.Drawing.Size(154, 20);
             this.TxtTelefono.TabIndex = 16;
@@ -311,7 +314,7 @@
             // LblTelefono
             // 
             this.LblTelefono.AutoSize = true;
-            this.LblTelefono.Location = new System.Drawing.Point(40, 22);
+            this.LblTelefono.Location = new System.Drawing.Point(26, 22);
             this.LblTelefono.Name = "LblTelefono";
             this.LblTelefono.Size = new System.Drawing.Size(52, 13);
             this.LblTelefono.TabIndex = 0;
@@ -326,9 +329,9 @@
             this.GbDireccion.Controls.Add(this.CboProvincia);
             this.GbDireccion.Controls.Add(this.LblLocalidad);
             this.GbDireccion.Controls.Add(this.LblProvincia);
-            this.GbDireccion.Location = new System.Drawing.Point(348, 9);
+            this.GbDireccion.Location = new System.Drawing.Point(463, 6);
             this.GbDireccion.Name = "GbDireccion";
-            this.GbDireccion.Size = new System.Drawing.Size(301, 140);
+            this.GbDireccion.Size = new System.Drawing.Size(273, 140);
             this.GbDireccion.TabIndex = 23;
             this.GbDireccion.TabStop = false;
             this.GbDireccion.Text = "Direccion";
@@ -336,7 +339,7 @@
             // 
             // BtnAgregarLocalidad
             // 
-            this.BtnAgregarLocalidad.Location = new System.Drawing.Point(176, 107);
+            this.BtnAgregarLocalidad.Location = new System.Drawing.Point(119, 111);
             this.BtnAgregarLocalidad.Name = "BtnAgregarLocalidad";
             this.BtnAgregarLocalidad.Size = new System.Drawing.Size(119, 23);
             this.BtnAgregarLocalidad.TabIndex = 15;
@@ -347,7 +350,7 @@
             // CboLocalidades
             // 
             this.CboLocalidades.FormattingEnabled = true;
-            this.CboLocalidades.Location = new System.Drawing.Point(98, 46);
+            this.CboLocalidades.Location = new System.Drawing.Point(84, 49);
             this.CboLocalidades.Name = "CboLocalidades";
             this.CboLocalidades.Size = new System.Drawing.Size(154, 21);
             this.CboLocalidades.TabIndex = 13;
@@ -355,7 +358,7 @@
             // 
             // TxtDomicilio
             // 
-            this.TxtDomicilio.Location = new System.Drawing.Point(98, 76);
+            this.TxtDomicilio.Location = new System.Drawing.Point(84, 79);
             this.TxtDomicilio.Name = "TxtDomicilio";
             this.TxtDomicilio.Size = new System.Drawing.Size(154, 20);
             this.TxtDomicilio.TabIndex = 14;
@@ -363,7 +366,7 @@
             // LblDomicilio
             // 
             this.LblDomicilio.AutoSize = true;
-            this.LblDomicilio.Location = new System.Drawing.Point(36, 77);
+            this.LblDomicilio.Location = new System.Drawing.Point(22, 80);
             this.LblDomicilio.Name = "LblDomicilio";
             this.LblDomicilio.Size = new System.Drawing.Size(59, 13);
             this.LblDomicilio.TabIndex = 8;
@@ -372,7 +375,7 @@
             // CboProvincia
             // 
             this.CboProvincia.FormattingEnabled = true;
-            this.CboProvincia.Location = new System.Drawing.Point(98, 17);
+            this.CboProvincia.Location = new System.Drawing.Point(84, 20);
             this.CboProvincia.Name = "CboProvincia";
             this.CboProvincia.Size = new System.Drawing.Size(154, 21);
             this.CboProvincia.TabIndex = 12;
@@ -382,7 +385,7 @@
             // LblLocalidad
             // 
             this.LblLocalidad.AutoSize = true;
-            this.LblLocalidad.Location = new System.Drawing.Point(36, 49);
+            this.LblLocalidad.Location = new System.Drawing.Point(22, 52);
             this.LblLocalidad.Name = "LblLocalidad";
             this.LblLocalidad.Size = new System.Drawing.Size(63, 13);
             this.LblLocalidad.TabIndex = 4;
@@ -391,7 +394,7 @@
             // LblProvincia
             // 
             this.LblProvincia.AutoSize = true;
-            this.LblProvincia.Location = new System.Drawing.Point(38, 20);
+            this.LblProvincia.Location = new System.Drawing.Point(24, 23);
             this.LblProvincia.Name = "LblProvincia";
             this.LblProvincia.Size = new System.Drawing.Size(61, 13);
             this.LblProvincia.TabIndex = 2;
@@ -399,6 +402,8 @@
             // 
             // GbDatosPersonales
             // 
+            this.GbDatosPersonales.Controls.Add(this.BtnBuscarFoto);
+            this.GbDatosPersonales.Controls.Add(this.PbFoto);
             this.GbDatosPersonales.Controls.Add(this.ChkEstado);
             this.GbDatosPersonales.Controls.Add(this.TxtPuesto);
             this.GbDatosPersonales.Controls.Add(this.LblPuesto);
@@ -417,7 +422,7 @@
             this.GbDatosPersonales.Controls.Add(this.LblDni);
             this.GbDatosPersonales.Location = new System.Drawing.Point(6, 6);
             this.GbDatosPersonales.Name = "GbDatosPersonales";
-            this.GbDatosPersonales.Size = new System.Drawing.Size(336, 253);
+            this.GbDatosPersonales.Size = new System.Drawing.Size(451, 253);
             this.GbDatosPersonales.TabIndex = 22;
             this.GbDatosPersonales.TabStop = false;
             this.GbDatosPersonales.Text = "Datos Personales";
@@ -576,7 +581,7 @@
             this.TpLogin.Controls.Add(this.GbDatosLogin);
             this.TpLogin.Location = new System.Drawing.Point(4, 22);
             this.TpLogin.Name = "TpLogin";
-            this.TpLogin.Size = new System.Drawing.Size(655, 384);
+            this.TpLogin.Size = new System.Drawing.Size(742, 378);
             this.TpLogin.TabIndex = 2;
             this.TpLogin.Text = "Datos de Login";
             this.TpLogin.UseVisualStyleBackColor = true;
@@ -687,11 +692,30 @@
             // 
             this.EpNuevaPersona.ContainerControl = this;
             // 
+            // PbFoto
+            // 
+            this.PbFoto.Location = new System.Drawing.Point(330, 15);
+            this.PbFoto.Name = "PbFoto";
+            this.PbFoto.Size = new System.Drawing.Size(115, 107);
+            this.PbFoto.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.PbFoto.TabIndex = 19;
+            this.PbFoto.TabStop = false;
+            // 
+            // BtnBuscarFoto
+            // 
+            this.BtnBuscarFoto.Location = new System.Drawing.Point(330, 128);
+            this.BtnBuscarFoto.Name = "BtnBuscarFoto";
+            this.BtnBuscarFoto.Size = new System.Drawing.Size(115, 23);
+            this.BtnBuscarFoto.TabIndex = 20;
+            this.BtnBuscarFoto.Text = "Buscar Foto";
+            this.BtnBuscarFoto.UseVisualStyleBackColor = true;
+            this.BtnBuscarFoto.Click += new System.EventHandler(this.BtnBuscarFoto_Click);
+            // 
             // FrmNuevaPersona
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(679, 425);
+            this.ClientSize = new System.Drawing.Size(774, 422);
             this.Controls.Add(this.TcPersonas);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FrmNuevaPersona";
@@ -716,6 +740,7 @@
             this.GbDatosLogin.ResumeLayout(false);
             this.GbDatosLogin.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.EpNuevaPersona)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PbFoto)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -782,5 +807,7 @@
         private System.Windows.Forms.Label LblNivel;
         private System.Windows.Forms.ErrorProvider EpNuevaPersona;
         private System.Windows.Forms.Label LblDetalle;
+        private System.Windows.Forms.PictureBox PbFoto;
+        private System.Windows.Forms.Button BtnBuscarFoto;
     }
 }

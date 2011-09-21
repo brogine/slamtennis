@@ -105,8 +105,10 @@ namespace Dominio
 
         public string CopiarFoto(string RutaOrigen,int Dni)
         { 
+            if(!Directory.Exists(System.AppDomain.CurrentDomain.BaseDirectory+@"Imagenes\"))
+                Directory.CreateDirectory(System.AppDomain.CurrentDomain.BaseDirectory+@"Imagenes\");
             string extension = RutaOrigen.Substring(RutaOrigen.LastIndexOf('.'), RutaOrigen.Length - RutaOrigen.LastIndexOf('.'));
-            string Destino = System.AppDomain.CurrentDomain.BaseDirectory+@"\Imagenes\"+Dni.ToString()+extension;
+            string Destino = System.AppDomain.CurrentDomain.BaseDirectory+@"Imagenes\"+Dni.ToString()+extension;
             
             System.IO.File.Copy(RutaOrigen, Destino,true);
             return Destino;
