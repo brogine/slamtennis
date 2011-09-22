@@ -5,9 +5,48 @@ using System.Text;
 
 namespace Dominio
 {
-    enum TipoTorneo {Single,Doble};
+    public enum TipoTorneo : int {Single,Doble};
     public class Torneo
     {
+        public Torneo(int IdTorneo,string Nombre,DateTime FechaInicio, DateTime FechaFin,DateTime FechaInicioInscripciones, DateTime FechaFinInscripciones,
+            int Cupo, string Sexo,TipoTorneo Tipo,Club Club,Categoria Categoria,bool TipoInscripcion,TipoSuperficie Superficie,bool Estado)
+        {
+            this.idtorneo=IdTorneo;
+            this.Nombre= Nombre;
+            this.fecfin=FechaFin;
+            this.fecinicio= FechaInicio;
+            this.fecinicioinsc = FechaInicioInscripcion;
+            this.fecfininsc = FechaFinInscripcion;
+            this.cupo=Cupo;
+            this.sexo =Sexo;
+            this.tipo=TipoTorneo;
+            this.club = Club;
+            this.categoria = Categoria;
+            this.tipoinscripcion =TipoInscripcion;
+            this.superficie=Superficie;
+            this.estado = Estado;
+        }
+
+        
+        public Torneo(string Nombre,DateTime FechaInicio, DateTime FechaFin,DateTime FechaInicioInscripciones, DateTime FechaFinInscripciones,
+            int Cupo, string Sexo,TipoTorneo Tipo,Club Club,Categoria Categoria,bool TipoInscripcion,TipoSuperficie Superficie,bool Estado)
+        {
+            
+            this.Nombre= Nombre;
+            this.fecfin=FechaFin;
+            this.fecinicio= FechaInicio;
+            this.fecinicioinsc = FechaInicioInscripcion;
+            this.fecfininsc = FechaFinInscripcion;
+            this.cupo=Cupo;
+            this.sexo =Sexo;
+            this.tipo=TipoTorneo;
+            this.club = Club;
+            this.categoria = Categoria;
+            this.tipoinscripcion =TipoInscripcion;
+            this.superficie=Superficie;
+            this.estado = Estado;
+        }
+
         
         int idtorneo;
         string nombre;

@@ -1,0 +1,19 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using Dominio;
+
+namespace Repositorio
+{
+   public interface ITorneoRepositorio
+    {
+       void Agregar(Torneo Torneo);
+
+       void Modificar(Torneo Torneo);
+
+       Torneo Buscar(int IdTorneo);
+
+       List<Torneo> Listar();
+    }
+}
