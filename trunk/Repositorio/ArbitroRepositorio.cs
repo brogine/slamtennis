@@ -90,6 +90,20 @@ namespace Repositorio
             return Lista;
         }
 
+        public List<Arbitro> Listar(int IdPartido)
+        {
+            string Consulta = " Select * From Arbitros A Inner Join ArbitroPartido P ";
+            Consulta += " On A.Dni = P.DniArbitro Where P.IdPartido = " + IdPartido;
+            DataTable Tabla = Conex.Listar(Consulta);
+            List<Arbitro> Lista = new List<Arbitro>();
+
+            foreach (DataRow Fila in Tabla.Rows)
+            {
+                Lista.Add(this.Mapear(Fila));
+            }
+            return Lista;
+        }
+
         #endregion
 
         #region Miembros de IMapeador<Arbitro>

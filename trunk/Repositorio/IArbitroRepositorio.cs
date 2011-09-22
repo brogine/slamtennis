@@ -16,5 +16,7 @@ namespace Repositorio
 
         List<Arbitro> Listar();
 
+        List<Arbitro> Listar(int IdPartido);
+
     }
 }
