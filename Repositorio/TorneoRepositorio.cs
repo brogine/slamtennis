@@ -8,16 +8,16 @@ using System.Data;
 
 namespace Repositorio
 {
-    class TorneoRepositorio : ITorneoRepositorio, IMapeador<Torneo>
+    public class TorneoRepositorio : ITorneoRepositorio, IMapeador<Torneo>
     {
 
         Conexion Conex;
-        #region Miembros de ITorneoRepositorio
-
         public TorneoRepositorio()
         {
             Conex = new Conexion();
         }
+
+        #region Miembros de ITorneoRepositorio
 
         public void Agregar(Torneo Torneo)
         {

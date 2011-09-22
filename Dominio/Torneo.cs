@@ -5,7 +5,8 @@ using System.Text;
 
 namespace Dominio
 {
-    public enum TipoTorneo : int {Single,Doble};
+    public enum TipoTorneo : int { Single, Doble };
+
     public class Torneo
     {
         public Torneo(int IdTorneo,string Nombre,DateTime FechaInicio, DateTime FechaFin,DateTime FechaInicioInscripciones, DateTime FechaFinInscripciones,
@@ -86,8 +87,8 @@ namespace Dominio
         }
         public DateTime FechaInicioInscripcion
         {
-            get { return fecfininsc; }
-            set { fecfininsc = value; }
+            get { return fecinicioinsc; }
+            set { fecinicioinsc = value; }
         }
         public DateTime FechaFinInscripcion
         {

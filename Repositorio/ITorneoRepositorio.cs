@@ -14,6 +14,8 @@ namespace Repositorio
 
        Torneo Buscar(int IdTorneo);
 
+       TipoTorneo GetTipoTorneo(int IdTorneo);
+
        List<Torneo> Listar();
     }
 }

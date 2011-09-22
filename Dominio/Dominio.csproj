@@ -53,6 +53,7 @@
     <Compile Include="Contacto.cs" />
     <Compile Include="DominioException.cs" />
     <Compile Include="Empleado.cs" />
+    <Compile Include="Equipo.cs" />
     <Compile Include="Estadisticas.cs" />
     <Compile Include="Inscripcion.cs" />
     <Compile Include="Jugador.cs" />
