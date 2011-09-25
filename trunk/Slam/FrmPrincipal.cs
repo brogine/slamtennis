@@ -20,6 +20,8 @@ namespace Slam
         FrmListaEmpleados Empleados;
         FrmListaCategorias Categorias;
         FrmListaEstadisticas EstadisticasJugadores;
+        FrmListaTorneos Torneos;
+       // FrmListaInscripciones Inscripciones;
         public FrmPrincipal(Form _Padre)
         {
             InitializeComponent();
@@ -126,6 +128,31 @@ namespace Slam
             }
             else
                 EstadisticasJugadores.BringToFront();
+        }
+
+        private void TSMITorneos_Click(object sender, EventArgs e)
+        {
+            if (Torneos == null || Torneos.IsDisposed)
+            {
+                Torneos = new FrmListaTorneos();
+                Torneos.MdiParent = this;
+                Torneos.Show();
+            }
+            else
+                Torneos.BringToFront();
+
+        }
+
+        private void TSMIInscripciones_Click(object sender, EventArgs e)
+        {
+            //if (Inscripciones == null || Inscripciones.IsDisposed)
+            //{
+            //    Inscripciones = new FrmListaTorneos();
+            //    Inscripciones.MdiParent = this;
+            //    Inscripciones.Show();
+            //}
+            //else
+            //    Inscripciones.BringToFront();
         }
     }
 }
