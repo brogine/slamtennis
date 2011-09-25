@@ -16,8 +16,8 @@ namespace Dominio
             this.Nombre= Nombre;
             this.fecfin=FechaFin;
             this.fecinicio= FechaInicio;
-            this.fecinicioinsc = FechaInicioInscripcion;
-            this.fecfininsc = FechaFinInscripcion;
+            this.fecinicioinsc = FechaInicioInscripciones;
+            this.fecfininsc = FechaFinInscripciones;
             this.cupo=Cupo;
             this.sexo =Sexo;
             this.tipo=TipoTorneo;
@@ -35,9 +35,9 @@ namespace Dominio
             
             this.Nombre= Nombre;
             this.fecfin=FechaFin;
-            this.fecinicio= FechaInicio;
-            this.fecinicioinsc = FechaInicioInscripcion;
-            this.fecfininsc = FechaFinInscripcion;
+            this.fecinicio = FechaInicio;
+            this.fecinicioinsc = FechaInicioInscripciones;
+            this.fecfininsc = FechaFinInscripciones;
             this.cupo=Cupo;
             this.sexo =Sexo;
             this.tipo=TipoTorneo;
