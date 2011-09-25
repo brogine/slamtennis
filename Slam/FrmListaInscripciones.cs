@@ -9,13 +9,16 @@ using System.Windows.Forms;
 using Servicio;
 using ApplicationContext;
 using Servicio.InterfacesUI;
+using System.Collections;
 
 namespace Slam
 {
-    public partial class FrmListaInscripciones : Form, IListadoInscripciones
+    public partial class FrmListaInscripciones : Form, IListadoInscripciones, IListadoTorneos
     {
         string ImplementaInscripciones = "InscripcionServicio";
+        string ImplementaTorneos = "TorneoServicio";
         IListadoInscripcionServicio servicioInscripciones;
+        IListadoTorneoServicio servicioTorneos;
         public FrmListaInscripciones()
         {
             InitializeComponent();
@@ -24,6 +27,8 @@ namespace Slam
         private void FrmListaInscripciones_Load(object sender, EventArgs e)
         {
             servicioInscripciones = (IListadoInscripcionServicio)AppContext.Instance.GetObject(ImplementaInscripciones);
+            servicioTorneos = (IListadoTorneoServicio)AppContext.Instance.GetObject(ImplementaTorneos);
+            servicioTorneos.ListarTorneos(this);
         }
 
         private void BtnSalir_Click(object sender, EventArgs e)
@@ -76,6 +81,27 @@ namespace Slam
         public int IdPartido
         {
             get { throw new NotImplementedException(); }
+        }
+
+        #endregion
+
+        #region Miembros de IListadoTorneos
+
+        public List<object> ListaUI
+        {
+            set 
+            {
+                Dictionary<int, string> ListaTorneos = new Dictionary<int, string>();
+                foreach (Object Torneo in value)
+                {
+                    Object[] DatosTorneo = Torneo.ToString().Split(',');
+                    ListaTorneos.Add(Convert.ToInt32(DatosTorneo[0]), DatosTorneo[1].ToString());
+                }
+                CboTorneos.DataSource = new BindingSource(ListaTorneos, null);
+                CboTorneos.DisplayMember = "Value";
+                CboTorneos.ValueMember = "Key";
+                CboTorneos.SelectedIndex = -1;
+            }
         }
 
         #endregion
