@@ -16,7 +16,7 @@ namespace Repositorio
         {
             Conex = new Conexion();
         }
-
+        
         #region Miembros de ITorneoRepositorio
 
         public void Agregar(Torneo Torneo)
@@ -113,5 +113,15 @@ namespace Repositorio
 
         #endregion
         }
+
+        #region Miembros de ITorneoRepositorio
+
+
+        public TipoTorneo GetTipoTorneo(int IdTorneo)
+        {
+            throw new NotImplementedException();
+        }
+
+        #endregion
     }
 }
