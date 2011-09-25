@@ -12,6 +12,8 @@ namespace Repositorio
 
         void Modificar(Inscripcion Inscripcion);
 
+        bool Existe(int IdTorneo, int DniJugador);
+
         Inscripcion Buscar(int IdInscripcion);
 
         List<Inscripcion> Listar(int IdTorneo);

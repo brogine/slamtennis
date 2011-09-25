@@ -138,6 +138,12 @@
     <Compile Include="FrmListaEstadisticas.Designer.cs">
       <DependentUpon>FrmListaEstadisticas.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmListaInscripciones.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmListaInscripciones.Designer.cs">
+      <DependentUpon>FrmListaInscripciones.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmListaJugadores.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -220,6 +226,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FrmListaEstadisticas.resx">
       <DependentUpon>FrmListaEstadisticas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmListaInscripciones.resx">
+      <DependentUpon>FrmListaInscripciones.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmListaJugadores.resx">
       <DependentUpon>FrmListaJugadores.cs</DependentUpon>
