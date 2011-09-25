@@ -6,8 +6,9 @@ using Servicio.InterfacesUI;
 
 namespace Servicio
 {
-    public interface IListadoAfiliacionServicio
+    public interface IListadoInscripcionServicio
     {
-        void Listar(IlistadoAfiliaciones UI);
+        void ListarPorTorneo(IListadoInscripciones UI);
+        void ListarPorPartido(IListadoInscripciones UI);
     }
 }
