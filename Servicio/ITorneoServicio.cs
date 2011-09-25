@@ -12,6 +12,6 @@ namespace Servicio
 
         void Modificar(ITorneoUI UI);
 
-        void Buscar(int IdTorneo);
+        void Buscar(ITorneoUI UI);
     }
 }

@@ -156,6 +156,12 @@
     <Compile Include="FrmListaSedes.Designer.cs">
       <DependentUpon>FrmListaSedes.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmListaTorneos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmListaTorneos.Designer.cs">
+      <DependentUpon>FrmListaTorneos.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmLogin.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -235,6 +241,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FrmListaSedes.resx">
       <DependentUpon>FrmListaSedes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmListaTorneos.resx">
+      <DependentUpon>FrmListaTorneos.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmLogin.resx">
       <DependentUpon>FrmLogin.cs</DependentUpon>

@@ -4,26 +4,78 @@ using System.Linq;
 using System.Text;
 using Servicio.InterfacesUI;
 using Dominio;
+using Repositorio;
 
 namespace Servicio
 {
     public class TorneoServicio:ITorneoServicio,IListadoTorneoServicio
     {
+        ITorneoRepositorio TorneoRepo;
+        public TorneoServicio()
+        {
+            TorneoRepo = new TorneoRepositorio();
+        }
         #region Miembros de ITorneoServicio
 
         public void Agregar(ITorneoUI UI)
         {
-            throw new NotImplementedException();
+            IClubRepositorio ClubRepo = new ClubRepositorio();
+            ICategoriaRepositorio CatRepo = new CategoriaRepositorio();
+            
+            Club Club = ClubRepo.Buscar(UI.IdClub);
+            Categoria Categoria = CatRepo.Buscar(UI.IdCategoria);
+            string Nombre = UI.Nombre;
+            string Sexo = UI.Sexo;
+            TipoSuperficie Superficie = (TipoSuperficie)UI.Superficie;
+            DateTime FechaInicio = UI.FechaInicio;
+            DateTime FechaFin = UI.FechaFin;
+            DateTime FechaFinInscripcion = UI.FechaFinInscripcion;
+            DateTime FechaInicioInscripcion = UI.FechaInicioInscripcion;
+            int Cupo = UI.Cupo;
+            bool TipoInscripcion = UI.TipoInscripcion;
+            TipoTorneo Tipo =(TipoTorneo) UI.Tipo;
+            bool Estado = UI.Estado;
+
+            Torneo NuevoTorneo = new Torneo(Nombre, FechaInicio, FechaFin, FechaInicioInscripcion, FechaFinInscripcion, Cupo, Sexo, Tipo, Club, Categoria, TipoInscripcion, Superficie, Estado);
+            TorneoRepo.Agregar(NuevoTorneo);
         }
 
         public void Modificar(ITorneoUI UI)
         {
-            throw new NotImplementedException();
+            IClubRepositorio ClubRepo = new ClubRepositorio();
+            ICategoriaRepositorio CatRepo = new CategoriaRepositorio();
+            Club Club = ClubRepo.Buscar(UI.IdClub);
+            Categoria Cat = CatRepo.Buscar(UI.IdCategoria);
+            Torneo Torneo = TorneoRepo.Buscar(UI.IdTorneo);
+            Torneo.Nombre = UI.Nombre;
+            Torneo.Cupo = UI.Cupo;
+            Torneo.FechaInicio = UI.FechaInicio;
+            Torneo.FechaFin = UI.FechaFin;
+            Torneo.FechaInicioInscripcion = UI.FechaInicioInscripcion;
+            Torneo.FechaFinInscripcion = UI.FechaFinInscripcion;
+            Torneo.Sexo = UI.Sexo;
+            Torneo.Superficie = (TipoSuperficie)UI.Superficie;
+            Torneo.TipoInscripcion = UI.TipoInscripcion;
+            Torneo.TipoTorneo = (TipoTorneo)UI.Tipo;
+            Torneo.Club = Club;
+            Torneo.Categoria = Cat;
+            TorneoRepo.Modificar(Torneo);
         }
 
-        public void Buscar(int IdTorneo)
+        public void Buscar(ITorneoUI UI)
         {
-            throw new NotImplementedException();
+            Torneo Torneo = TorneoRepo.Buscar(UI.IdTorneo);
+            UI.Nombre = Torneo.Nombre;
+            UI.Cupo = Torneo.Cupo;
+            UI.Estado = Torneo.Estado;
+            UI.FechaFin = Torneo.FechaFin;
+            UI.FechaFinInscripcion = Torneo.FechaFinInscripcion;
+            UI.FechaInicio = Torneo.FechaInicio;
+            UI.FechaInicioInscripcion = Torneo.FechaInicioInscripcion;
+            UI.Sexo = Torneo.Sexo;
+            UI.Tipo =(int) Torneo.TipoTorneo;
+            UI.TipoInscripcion = Torneo.TipoInscripcion;
+            UI.Superficie = (int)Torneo.Superficie;
         }
 
         #endregion
@@ -32,7 +84,14 @@ namespace Servicio
 
         public void ListarTorneos(IListadoTorneos UI)
         {
-            throw new NotImplementedException();
+            List<Torneo> ListaTorneo = TorneoRepo.Listar();
+            List<Object> Lista = new List<object>();
+            foreach (Torneo Torneo in ListaTorneo)
+            {
+                Lista.Add(Torneo.IdTorneo + "," + Torneo.Nombre + "," + Torneo.Categoria.Nombre + "," + Torneo.Sexo + "," + Torneo.Cupo + "," + Torneo.FechaInicio + "," + Torneo.FechaFin + "," + Torneo.FechaInicioInscripcion + "," + Torneo.FechaFinInscripcion + "," + Torneo.TipoTorneo.ToString() + "," + (Torneo.TipoInscripcion==true?"Abierto":"Cerrado")+","+Torneo.Estado);
+            }
+            
+            UI.ListaUI = Lista;
         }
 
         #endregion

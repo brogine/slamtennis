@@ -98,7 +98,7 @@ namespace Repositorio
                 string Nombre = Fila.IsNull("Nombre") ? string.Empty : Convert.ToString(Fila["Nombre"]);
                 DateTime FecInicio = Fila.IsNull("FecInicio") ? DateTime.Today : Convert.ToDateTime(Fila["FecInicio"]);
                 DateTime FecFin = Fila.IsNull("FecFin") ? DateTime.MaxValue : Convert.ToDateTime(Fila["FecFin"]);
-                DateTime FecIniInsc = Fila.IsNull("FecIniInsc") ? DateTime.Today : Convert.ToDateTime(Fila["FecIniInsc"]);
+                DateTime FecIniInsc = Fila.IsNull("FecInicInsc") ? DateTime.Today : Convert.ToDateTime(Fila["FecInicInsc"]);
                 DateTime FecFinInsc = Fila.IsNull("FecFinInsc") ? DateTime.MaxValue : Convert.ToDateTime(Fila["FecFinInsc"]);
                 int Cupo = Fila.IsNull("Cupo") ? 0 : Convert.ToInt32(Fila["Cupo"]);
                 string Sexo = Fila.IsNull("Sexo") ? string.Empty : Convert.ToString(Fila["Sexo"]);

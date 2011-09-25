@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Servicio.InterfacesUI
 {
-    interface IListadoTorneos
+   public interface IListadoTorneos
     {
         List<Object> ListaUI { set; }
     }
