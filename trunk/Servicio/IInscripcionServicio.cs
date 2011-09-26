@@ -8,11 +8,13 @@ namespace Servicio
 {
     public interface IInscripcionServicio
     {
-        void Agregar(IInscripcionUI UI);
+        int Agregar(IInscripcionUI UI);
 
         void Modificar(IInscripcionUI UI);
 
         bool Existe(int IdTorneo, int DniJugador);
+
+        bool ValidarInscripcion(int IdTorneo, int DniJugador);
 
         void Buscar(IInscripcionUI UI);
     }

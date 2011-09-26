@@ -180,6 +180,12 @@
     <Compile Include="FrmNuevaCategoria.Designer.cs">
       <DependentUpon>FrmNuevaCategoria.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmNuevaInscripcion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmNuevaInscripcion.Designer.cs">
+      <DependentUpon>FrmNuevaInscripcion.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmNuevaPersona.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -259,6 +265,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FrmNuevaCategoria.resx">
       <DependentUpon>FrmNuevaCategoria.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmNuevaInscripcion.resx">
+      <DependentUpon>FrmNuevaInscripcion.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmNuevaPersona.resx">
       <DependentUpon>FrmNuevaPersona.cs</DependentUpon>

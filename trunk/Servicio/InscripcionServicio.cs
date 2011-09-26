@@ -17,7 +17,7 @@ namespace Servicio
 
         #region Miembros de IInscripcionServicio
 
-        public void Agregar(Servicio.InterfacesUI.IInscripcionUI UI)
+        public int Agregar(Servicio.InterfacesUI.IInscripcionUI UI)
         {
             if (!repoInscripciones.Existe(UI.IdTorneo, UI.DniJugador1))
             {
@@ -34,7 +34,7 @@ namespace Servicio
                         throw new ServicioExeption("El Jugador con Dni " + UI.DniJugador2 + " ya está Inscripto a ese torneo.");
                 }
                 Inscripcion nInscripcion = new Inscripcion(bTorneo, UI.Fecha, UI.Estado, nEquipo);
-                repoInscripciones.Agregar(nInscripcion);
+                return repoInscripciones.Agregar(nInscripcion);
             }
             else
                 throw new ServicioExeption("El Jugador con Dni = " + UI.DniJugador1 + " ya está Inscripto a ese torneo.");
@@ -56,6 +56,26 @@ namespace Servicio
         public bool Existe(int IdTorneo, int DniJugador)
         {
             return repoInscripciones.Existe(IdTorneo, DniJugador);
+        }
+
+        /// <summary>
+        /// Valida que un la Categoría de un Jugador coincida con la del Torneo
+        /// </summary>
+        /// <param name="IdTorneo">Torneo al cual se desea validar</param>
+        /// <param name="DniJugador">Jugador a validar</param>
+        /// <returns>True: Correcto. False: Incorrecto</returns>
+        public bool ValidarInscripcion(int IdTorneo, int DniJugador)
+        {
+            ITorneoRepositorio repoTorneos = new TorneoRepositorio();
+            Torneo bTorneo = repoTorneos.Buscar(IdTorneo);
+            IJugadorRepositorio repoJugadores = new JugadorRepositorio();
+            Jugador bJugador = repoJugadores.Buscar(DniJugador);
+            ICategoriaRepositorio repoCategorias = new CategoriaRepositorio();
+            Categoria bCategoria = repoCategorias.ObtenerPorEdad(bJugador.Edad);
+            if (bTorneo.Categoria == bCategoria)
+                return true;
+            else
+                return false;
         }
 
         public void Buscar(Servicio.InterfacesUI.IInscripcionUI UI)

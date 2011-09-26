@@ -59,6 +59,13 @@ namespace Repositorio
                 ", EdadMaxima = " + Categoria.EdadMax + ", Estado = " + (Categoria.Estado ? 1 : 0) + " where IdCategoria = " + Categoria.Id;
             conn.ActualizarOEliminar(sql);
         }
+
+        public Categoria ObtenerPorEdad(int Edad)
+        {
+            sql = " Select * From Categorias C Where " + Edad + " Between C.EdadMinima And C.EdadMaxima ";
+            return this.Mapear(conn.Buscar(sql));
+        }
+
         #endregion
 
         #region Miembros de IMapeador<Categoria>

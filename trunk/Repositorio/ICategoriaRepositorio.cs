@@ -9,9 +9,15 @@ namespace Repositorio
     public interface ICategoriaRepositorio
     {
         List<Categoria> Listar();
+
         Categoria Buscar(int Id);
+
         int Agregar(Categoria Categoria);
+
         void Modificar(Categoria Categoria);
+
+        Categoria ObtenerPorEdad(int Edad);
+
         bool Existe(int Id);
         
     }
