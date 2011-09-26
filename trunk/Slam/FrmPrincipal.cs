@@ -21,7 +21,7 @@ namespace Slam
         FrmListaCategorias Categorias;
         FrmListaEstadisticas EstadisticasJugadores;
         FrmListaTorneos Torneos;
-       // FrmListaInscripciones Inscripciones;
+        FrmListaInscripciones Inscripciones;
         public FrmPrincipal(Form _Padre)
         {
             InitializeComponent();
@@ -145,14 +145,14 @@ namespace Slam
 
         private void TSMIInscripciones_Click(object sender, EventArgs e)
         {
-            //if (Inscripciones == null || Inscripciones.IsDisposed)
-            //{
-            //    Inscripciones = new FrmListaTorneos();
-            //    Inscripciones.MdiParent = this;
-            //    Inscripciones.Show();
-            //}
-            //else
-            //    Inscripciones.BringToFront();
+            if (Inscripciones == null || Inscripciones.IsDisposed)
+            {
+                Inscripciones = new FrmListaInscripciones();
+                Inscripciones.MdiParent = this;
+                Inscripciones.Show();
+            }
+            else
+                Inscripciones.BringToFront();
         }
     }
 }
