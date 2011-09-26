@@ -110,16 +110,16 @@ namespace Repositorio
                 Torneo = new Torneo(IdTorneo, Nombre, FecInicio, FecFin, FecIniInsc, FecFinInsc, Cupo, Sexo, Tipo, Club, Categoria, TipoInscripcion, Superficie, Estado);
             }
             return Torneo;
-
-        #endregion
         }
-
+        #endregion
+        
         #region Miembros de ITorneoRepositorio
-
 
         public TipoTorneo GetTipoTorneo(int IdTorneo)
         {
-            throw new NotImplementedException();
+            string Consulta = " Select Tipo From Torneos Where IdTorneo = " + IdTorneo;
+            DataRow Fila = Conex.Buscar(Consulta);
+            return (TipoTorneo)Convert.ToInt32(Fila["Tipo"]);
         }
 
         #endregion

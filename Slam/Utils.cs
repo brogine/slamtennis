@@ -4,4 +4,6 @@
     {
         Jugador, Empleado, Arbitro
     }
+
+    public enum TipoTorneo : int { Single, Doble };
 }

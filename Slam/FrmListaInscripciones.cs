@@ -62,9 +62,33 @@ namespace Slam
 
         public List<object> ListarPorTorneo
         {
-            set 
-            { 
-                throw new NotImplementedException(); 
+            set
+            {
+                TipoTorneo tipoDeTorneo = TipoTorneo.Single;
+                if (value.Count > 0)
+                {
+                    object[] datos = value[0].ToString().Split(',');
+                    tipoDeTorneo = (TipoTorneo)datos[1];
+                }
+                if (DgvListaInscripciones.ColumnCount > 0)
+                    DgvListaInscripciones.Columns.Clear();
+                DgvListaInscripciones.Columns.Add("Id", "Nro. Inscripción");
+                DgvListaInscripciones.Columns.Add("Jugador1", "Jugador1");
+                if (tipoDeTorneo == TipoTorneo.Doble)
+                    DgvListaInscripciones.Columns.Add("Jugador2", "Jugador2");
+                DgvListaInscripciones.Columns.Add("Fecha", "Fecha de Inscripción");
+                if (DgvListaInscripciones.RowCount > 0)
+                    DgvListaInscripciones.Rows.Clear();
+                foreach (object Inscripcion in value)
+                {
+                    object[] datosInscripcion = Inscripcion.ToString().Split(',');
+                    if(tipoDeTorneo == TipoTorneo.Doble)
+                        DgvListaInscripciones.Rows.Add(datosInscripcion[0], datosInscripcion[2], datosInscripcion[3],
+                            datosInscripcion[4], datosInscripcion[5]);
+                    else
+                        DgvListaInscripciones.Rows.Add(datosInscripcion[0], datosInscripcion[2], datosInscripcion[3],
+                            datosInscripcion[4]);
+                }
             }
         }
 

@@ -77,20 +77,25 @@ namespace Servicio
         {
             List<Inscripcion> ListaInscripciones = repoInscripciones.Listar(UI.IdTorneo);
             List<Object> ListaUI = new List<object>();
+            ITorneoRepositorio repoTorneos = new TorneoRepositorio();
+            TipoTorneo tipoTorneo = repoTorneos.GetTipoTorneo(UI.IdTorneo);
             foreach (Inscripcion Inscripcion in ListaInscripciones)
             {
                 if (Inscripcion.Equipo.Jugador2 != null)
                 {
-                    ListaUI.Add(Inscripcion.IdInscripcion + "," + Inscripcion.Fecha + "," + Inscripcion.Equipo.Jugador1.Apellido + " " +
-                        Inscripcion.Equipo.Jugador1.Nombre + "," + Inscripcion.Equipo.Jugador2.Apellido + " " + Inscripcion.Equipo.Jugador2.Nombre +
-                        Inscripcion.Estado);
+                    ListaUI.Add(Inscripcion.IdInscripcion + "," + (int)tipoTorneo + "," +
+                        Inscripcion.Equipo.Jugador1.Apellido + " " + Inscripcion.Equipo.Jugador1.Nombre + "," + 
+                        Inscripcion.Equipo.Jugador2.Nombre + " " + Inscripcion.Equipo.Jugador2.Apellido + "," +
+                        Inscripcion.Fecha + "," + Inscripcion.Estado);
                 }
                 else
                 {
-                    ListaUI.Add(Inscripcion.IdInscripcion + "," + Inscripcion.Fecha + "," + Inscripcion.Equipo.Jugador1.Apellido + " " +
-                        Inscripcion.Equipo.Jugador1.Nombre + "," + Inscripcion.Estado);
+                    ListaUI.Add(Inscripcion.IdInscripcion + "," + (int)tipoTorneo + "," +
+                        Inscripcion.Equipo.Jugador1.Apellido + " " + Inscripcion.Equipo.Jugador1.Nombre + "," +
+                        Inscripcion.Fecha + "," + Inscripcion.Estado);
                 }
             }
+            UI.ListarPorTorneo = ListaUI;
         }
 
         public void ListarPorPartido(Servicio.InterfacesUI.IListadoInscripciones UI)
@@ -111,6 +116,7 @@ namespace Servicio
                         Inscripcion.Equipo.Jugador1.Nombre + "," + Inscripcion.Estado);
                 }
             }
+            UI.ListarPorPartido = ListaUI;
         }
 
         #endregion
