@@ -12,13 +12,13 @@ namespace Repositorio
     {
 
         Conexion Conex;
+        #region Miembros de ITorneoRepositorio
+
         public TorneoRepositorio()
         {
             Conex = new Conexion();
         }
         
-        #region Miembros de ITorneoRepositorio
-
         public void Agregar(Torneo Torneo)
         {
             string FechaFormateadaInicio = Torneo.FechaInicio.Year + "/" + Torneo.FechaInicio.Month + "/" + Torneo.FechaInicio.Day;
@@ -106,8 +106,8 @@ namespace Repositorio
                 bool TipoInscripcion = Fila.IsNull("TipoInscripcion") ? false : Convert.ToBoolean(Fila["TipoInscripcion"]);
                 TipoSuperficie Superficie = Fila.IsNull("Superficie") ? 0 :(TipoSuperficie) Convert.ToInt32(Fila["Superficie"]);
                 bool Estado = Fila.IsNull("Estado") ? false : Convert.ToBoolean(Fila["Estado"]);
-                Torneo = new Torneo(IdTorneo, Nombre, FecInicio, FecFin, FecIniInsc, FecFinInsc, Cupo, Sexo, Tipo, Club,Categoria, TipoInscripcion, Superficie, Estado);
-
+                Torneo = new Torneo(IdTorneo, Nombre, FecInicio, FecFin, FecIniInsc, FecFinInsc, Cupo, Sexo, Tipo, Club, Categoria, TipoInscripcion, Superficie, Estado);
+                Torneo = new Torneo(IdTorneo, Nombre, FecInicio, FecFin, FecIniInsc, FecFinInsc, Cupo, Sexo, Tipo, Club, Categoria, TipoInscripcion, Superficie, Estado);
             }
             return Torneo;
 
