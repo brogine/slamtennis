@@ -45,14 +45,18 @@ namespace Slam
 
         private void BtnAgregar_Click(object sender, EventArgs e)
         {
-
+            FrmNuevaInscripcion nuevaInscripcion = new FrmNuevaInscripcion();
+            nuevaInscripcion.ShowDialog();
         }
 
         private void BtnModificar_Click(object sender, EventArgs e)
         {
             if (DgvListaInscripciones.SelectedColumns.Count == 1)
             {
-
+                FrmNuevaInscripcion modificarInscripcion = new FrmNuevaInscripcion
+                    (Convert.ToInt32(DgvListaInscripciones.SelectedRows[0].Cells["Id"].Value));
+                if (modificarInscripcion.ShowDialog() == DialogResult.OK)
+                    servicioInscripciones.ListarPorTorneo(this);
             }
             else
                 MessageBox.Show("Seleccione una Inscripción para modificarla.");
@@ -67,8 +71,13 @@ namespace Slam
                 TipoTorneo tipoDeTorneo = TipoTorneo.Single;
                 if (value.Count > 0)
                 {
-                    object[] datos = value[0].ToString().Split(',');
-                    tipoDeTorneo = (TipoTorneo)datos[1];
+                    foreach (object Inscripcion in value)
+                    {
+                        object[] datos = Inscripcion.ToString().Split(',');
+                        tipoDeTorneo = (TipoTorneo)datos[1];
+                        if (tipoDeTorneo == TipoTorneo.Doble)
+                            break;
+                    }
                 }
                 if (DgvListaInscripciones.ColumnCount > 0)
                     DgvListaInscripciones.Columns.Clear();
@@ -129,5 +138,10 @@ namespace Slam
         }
 
         #endregion
+
+        private void CboTorneos_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = true;
+        }
     }
 }

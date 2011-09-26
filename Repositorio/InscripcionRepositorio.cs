@@ -50,6 +50,12 @@ namespace Repositorio
             }
         }
 
+        /// <summary>
+        /// Verfica si Existe una Inscripción en un Torneo para un Jugador Específico
+        /// </summary>
+        /// <param name="IdTorneo">Torneo en el que se busca la inscripcion</param>
+        /// <param name="DniJugador">Jugador a inscribir</param>
+        /// <returns></returns>
         public bool Existe(int IdTorneo, int DniJugador)
         {
             String Consulta = " SELECT COUNT(*) From Inscripciones I INNER JOIN InscripcionesJugador J ";
