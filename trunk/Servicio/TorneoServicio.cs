@@ -34,10 +34,16 @@ namespace Servicio
             int Cupo = UI.Cupo;
             bool TipoInscripcion = UI.TipoInscripcion;
             TipoTorneo Tipo =(TipoTorneo) UI.Tipo;
-            bool Estado = UI.Estado;
+            int Estado = UI.Estado;
 
             Torneo NuevoTorneo = new Torneo(Nombre, FechaInicio, FechaFin, FechaInicioInscripcion, FechaFinInscripcion, Cupo, Sexo, Tipo, Club, Categoria, TipoInscripcion, Superficie, Estado);
             TorneoRepo.Agregar(NuevoTorneo);
+        }
+
+        public bool Existe(int IdTorneo)
+        {
+            ITorneoRepositorio TorneoRepo = new TorneoRepositorio();
+            return TorneoRepo.Existe(IdTorneo);
         }
 
         public void Modificar(ITorneoUI UI)
@@ -67,8 +73,10 @@ namespace Servicio
             Torneo Torneo = TorneoRepo.Buscar(UI.IdTorneo);
             UI.Nombre = Torneo.Nombre;
             UI.Cupo = Torneo.Cupo;
-            UI.Estado = Torneo.Estado;
-            UI.FechaFin = Torneo.FechaFin;
+            UI.IdClub = Torneo.Club.Id;
+            UI.IdCategoria = Torneo.Categoria.Id;
+            
+            
             UI.FechaFinInscripcion = Torneo.FechaFinInscripcion;
             UI.FechaInicio = Torneo.FechaInicio;
             UI.FechaInicioInscripcion = Torneo.FechaInicioInscripcion;
@@ -76,6 +84,8 @@ namespace Servicio
             UI.Tipo =(int) Torneo.TipoTorneo;
             UI.TipoInscripcion = Torneo.TipoInscripcion;
             UI.Superficie = (int)Torneo.Superficie;
+            UI.FechaFin = Torneo.FechaFin;
+            UI.Estado = Torneo.Estado;
         }
 
         #endregion
@@ -88,7 +98,7 @@ namespace Servicio
             List<Object> Lista = new List<object>();
             foreach (Torneo Torneo in ListaTorneo)
             {
-                Lista.Add(Torneo.IdTorneo + "," + Torneo.Nombre + "," + Torneo.Categoria.Nombre + "," + Torneo.Sexo + "," + Torneo.Cupo + "," + Torneo.FechaInicio + "," + Torneo.FechaFin + "," + Torneo.FechaInicioInscripcion + "," + Torneo.FechaFinInscripcion + "," + Torneo.TipoTorneo.ToString() + "," + (Torneo.TipoInscripcion==true?"Abierto":"Cerrado")+","+Torneo.Estado);
+                Lista.Add(Torneo.IdTorneo + "," + Torneo.Nombre + "," + Torneo.Categoria.Nombre + "," + Torneo.Sexo + "," + Torneo.Cupo + "," + Torneo.FechaInicio.ToShortDateString() + "," + Torneo.FechaFin.ToShortDateString() + "," + Torneo.FechaInicioInscripcion.ToShortDateString() + "," + Torneo.FechaFinInscripcion.ToShortDateString() + "," + Torneo.TipoTorneo.ToString() + "," + (Torneo.TipoInscripcion == true ? "Abierto" : "Cerrado") + "," + Torneo.Estado);
             }
             
             UI.ListaUI = Lista;

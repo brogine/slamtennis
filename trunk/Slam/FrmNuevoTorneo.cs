@@ -8,26 +8,48 @@ using System.Text;
 using Servicio.InterfacesUI;
 using Servicio;
 using System.Windows.Forms;
+using ApplicationContext;
 
 namespace Slam
 {
-    public partial class FrmNuevoTorneo : Form,ITorneoUI
+    public partial class FrmNuevoTorneo : Form, ITorneoUI, IListadoClubes, IListadoCategorias
     {
-        int idtorneo;
+        int idtorneo = -1;
+        string ImplementaClubes = "ClubServicio";
+        string ImplementaCategorias = "CategoriaServicio";
+        IListadoClubServicio ClubServicio;
+        IListadoCategoriaServicio servicioCategorias;
+        ITorneoServicio TorneoServicio;
+        string ImplementaTorneo = "TorneoServicio";
+
         public FrmNuevoTorneo(int IdTorneo)
         {
             InitializeComponent();
             this.idtorneo = IdTorneo;
+            this.Text = "Modificar Torneo";
         }
 
         public FrmNuevoTorneo()
         {
             InitializeComponent();
+            this.Text = "Nuevo Torneo";
         }
 
         private void FrmNuevoTorneo_Load(object sender, EventArgs e)
         {
 
+            CboEstado.DataSource = Enum.GetValues(typeof(EstadoTorneo));
+            CboSuperficie.DataSource = Enum.GetValues(typeof(TipoSuperficie));
+            ClubServicio = (IListadoClubServicio)AppContext.Instance.GetObject(ImplementaClubes);
+            ClubServicio.Listar(this);
+            servicioCategorias = (IListadoCategoriaServicio)AppContext.Instance.GetObject(ImplementaCategorias);
+            servicioCategorias.Listar(this);
+            TorneoServicio = (ITorneoServicio)AppContext.Instance.GetObject(ImplementaTorneo);
+            if (idtorneo > -1)
+            {
+                TorneoServicio.Buscar(this);
+            }
+           
         }
 
         #region Miembros de ITorneoUI
@@ -154,11 +176,25 @@ namespace Slam
         {
             get
             {
-                throw new NotImplementedException();
+                if (RBSingle.Checked)
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 1;
+                }
             }
             set
             {
-                throw new NotImplementedException();
+                if (value == 0)
+                {
+                    RBSingle.Checked = true;
+                }
+                else
+                {
+                    RBDouble.Checked = true;
+                }
             }
         }
 
@@ -166,11 +202,11 @@ namespace Slam
         {
             get
             {
-                throw new NotImplementedException();
+                return (int)CboClub.SelectedValue;
             }
             set
             {
-                throw new NotImplementedException();
+                CboClub.SelectedValue = value;
             }
         }
 
@@ -178,11 +214,11 @@ namespace Slam
         {
             get
             {
-                throw new NotImplementedException();
+                return (int)CboCategoria.SelectedValue;
             }
             set
             {
-                throw new NotImplementedException();
+                CboCategoria.SelectedValue = value;
             }
         }
 
@@ -190,11 +226,11 @@ namespace Slam
         {
             get
             {
-                throw new NotImplementedException();
+                return ChkInscripcion.Checked;
             }
             set
             {
-                throw new NotImplementedException();
+                ChkInscripcion.Checked = value;
             }
         }
 
@@ -202,26 +238,95 @@ namespace Slam
         {
             get
             {
-                throw new NotImplementedException();
+                return (int) CboSuperficie.SelectedValue; 
             }
             set
             {
-                throw new NotImplementedException();
+                CboSuperficie.SelectedIndex = value;
             }
         }
 
-        public bool Estado
+        public int Estado
         {
             get
             {
-                throw new NotImplementedException();
+                return (int)CboEstado.SelectedValue;
             }
             set
             {
-                throw new NotImplementedException();
+                CboEstado.SelectedIndex = value;
             }
         }
 
         #endregion
+
+        #region Miembros de IListadoClubes
+
+        public List<object> ListarClubes
+        {
+            set 
+            {
+                Dictionary<int, string> ListaClubes = new Dictionary<int, string>();
+                foreach (Object Club in value)
+                {
+                    Object[] DatosClub = Club.ToString().Split(',');
+                    ListaClubes.Add(Convert.ToInt32(DatosClub[0]), DatosClub[1].ToString());
+                }
+                CboClub.DataSource = new BindingSource(ListaClubes, null);
+                CboClub.DisplayMember = "Value";
+                CboClub.ValueMember = "Key";
+                CboClub.SelectedIndex = -1;
+            }
+        }
+
+        #endregion
+
+        #region Miembros de IListadoCategorias
+
+        public List<object> ListaUI
+        {
+            set 
+            {
+                Dictionary<int, string> ListaCategorias = new Dictionary<int, string>();
+                foreach (Object Categoria in value)
+                {
+                    Object[] DatosClub = Categoria.ToString().Split(',');
+                    ListaCategorias.Add(Convert.ToInt32(DatosClub[0]), DatosClub[1].ToString());
+                }
+                CboCategoria.DataSource = new BindingSource(ListaCategorias, null);
+                CboCategoria.DisplayMember = "Value";
+                CboCategoria.ValueMember = "Key";
+                CboCategoria.SelectedIndex = -1;
+            }
+        }
+
+        #endregion
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (TorneoServicio.Existe(IdTorneo))
+                {
+                    TorneoServicio.Modificar(this);
+                }
+                else
+                {
+                    TorneoServicio.Agregar(this);
+                }
+                this.DialogResult = DialogResult.OK;
+                MessageBox.Show("Operacion Realizada Con Exito");
+                this.Dispose();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void BtnSalir_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }

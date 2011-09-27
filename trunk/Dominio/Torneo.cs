@@ -5,12 +5,12 @@ using System.Text;
 
 namespace Dominio
 {
-    public enum TipoTorneo : int { Single, Doble };
-
+    public enum TipoTorneo : int { Single = 0, Doble = 1};
+    public enum EstadoTorneo : int { Abierto, Cerrado, Jugando, Finalizado, Terminado, Cancelado }
     public class Torneo
     {
         public Torneo(int IdTorneo,string Nombre,DateTime FechaInicio, DateTime FechaFin,DateTime FechaInicioInscripciones, DateTime FechaFinInscripciones,
-            int Cupo, string Sexo,TipoTorneo Tipo,Club Club,Categoria Categoria,bool TipoInscripcion,TipoSuperficie Superficie,bool Estado)
+            int Cupo, string Sexo,TipoTorneo Tipo,Club Club,Categoria Categoria,bool TipoInscripcion,TipoSuperficie Superficie,int Estado)
         {
             this.idtorneo=IdTorneo;
             this.Nombre= Nombre;
@@ -20,7 +20,7 @@ namespace Dominio
             this.fecfininsc = FechaFinInscripciones;
             this.cupo=Cupo;
             this.sexo =Sexo;
-            this.tipo=TipoTorneo;
+            this.tipo=Tipo;
             this.club = Club;
             this.categoria = Categoria;
             this.tipoinscripcion =TipoInscripcion;
@@ -30,7 +30,7 @@ namespace Dominio
 
         
         public Torneo(string Nombre,DateTime FechaInicio, DateTime FechaFin,DateTime FechaInicioInscripciones, DateTime FechaFinInscripciones,
-            int Cupo, string Sexo,TipoTorneo Tipo,Club Club,Categoria Categoria,bool TipoInscripcion,TipoSuperficie Superficie,bool Estado)
+            int Cupo, string Sexo,TipoTorneo Tipo,Club Club,Categoria Categoria,bool TipoInscripcion,TipoSuperficie Superficie,int Estado)
         {
             
             this.Nombre= Nombre;
@@ -40,7 +40,7 @@ namespace Dominio
             this.fecfininsc = FechaFinInscripciones;
             this.cupo=Cupo;
             this.sexo =Sexo;
-            this.tipo=TipoTorneo;
+            this.tipo=Tipo;
             this.club = Club;
             this.categoria = Categoria;
             this.tipoinscripcion =TipoInscripcion;
@@ -62,7 +62,7 @@ namespace Dominio
         Categoria categoria;
         bool tipoinscripcion;
         TipoSuperficie superficie;
-        bool estado;
+        int estado;
 
         public int IdTorneo
         {
@@ -130,7 +130,7 @@ namespace Dominio
             get { return superficie; }
             set { superficie = value; }
         }
-        public bool Estado
+        public int Estado
         {
             get { return estado; }
             set { estado = value; }

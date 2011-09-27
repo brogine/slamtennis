@@ -16,6 +16,8 @@ namespace Repositorio
 
        TipoTorneo GetTipoTorneo(int IdTorneo);
 
+       bool Existe(int IdTorneo);
+
        List<Torneo> Listar();
     }
 }

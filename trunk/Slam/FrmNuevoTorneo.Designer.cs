@@ -53,10 +53,11 @@
             this.label8 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.CboEstado = new System.Windows.Forms.ComboBox();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
+            this.BtnAceptar = new System.Windows.Forms.Button();
+            this.BtnSalir = new System.Windows.Forms.Button();
             this.label11 = new System.Windows.Forms.Label();
             this.TxtCupo = new System.Windows.Forms.TextBox();
+            this.ChkInscripcion = new System.Windows.Forms.CheckBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
@@ -256,7 +257,7 @@
             // CboSuperficie
             // 
             this.CboSuperficie.FormattingEnabled = true;
-            this.CboSuperficie.Location = new System.Drawing.Point(75, 250);
+            this.CboSuperficie.Location = new System.Drawing.Point(75, 273);
             this.CboSuperficie.Name = "CboSuperficie";
             this.CboSuperficie.Size = new System.Drawing.Size(199, 21);
             this.CboSuperficie.TabIndex = 16;
@@ -264,7 +265,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(12, 250);
+            this.label8.Location = new System.Drawing.Point(10, 281);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(54, 13);
             this.label8.TabIndex = 17;
@@ -273,7 +274,7 @@
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(12, 283);
+            this.label9.Location = new System.Drawing.Point(12, 306);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(40, 13);
             this.label9.TabIndex = 18;
@@ -282,33 +283,35 @@
             // CboEstado
             // 
             this.CboEstado.FormattingEnabled = true;
-            this.CboEstado.Location = new System.Drawing.Point(75, 280);
+            this.CboEstado.Location = new System.Drawing.Point(75, 303);
             this.CboEstado.Name = "CboEstado";
             this.CboEstado.Size = new System.Drawing.Size(199, 21);
             this.CboEstado.TabIndex = 19;
             // 
-            // button1
+            // BtnAceptar
             // 
-            this.button1.Location = new System.Drawing.Point(289, 278);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 20;
-            this.button1.Text = "Aceptar";
-            this.button1.UseVisualStyleBackColor = true;
+            this.BtnAceptar.Location = new System.Drawing.Point(280, 301);
+            this.BtnAceptar.Name = "BtnAceptar";
+            this.BtnAceptar.Size = new System.Drawing.Size(75, 23);
+            this.BtnAceptar.TabIndex = 20;
+            this.BtnAceptar.Text = "Aceptar";
+            this.BtnAceptar.UseVisualStyleBackColor = true;
+            this.BtnAceptar.Click += new System.EventHandler(this.button1_Click);
             // 
-            // button2
+            // BtnSalir
             // 
-            this.button2.Location = new System.Drawing.Point(370, 278);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
-            this.button2.TabIndex = 21;
-            this.button2.Text = "Salir";
-            this.button2.UseVisualStyleBackColor = true;
+            this.BtnSalir.Location = new System.Drawing.Point(370, 301);
+            this.BtnSalir.Name = "BtnSalir";
+            this.BtnSalir.Size = new System.Drawing.Size(75, 23);
+            this.BtnSalir.TabIndex = 21;
+            this.BtnSalir.Text = "Salir";
+            this.BtnSalir.UseVisualStyleBackColor = true;
+            this.BtnSalir.Click += new System.EventHandler(this.BtnSalir_Click);
             // 
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(280, 253);
+            this.label11.Location = new System.Drawing.Point(12, 250);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(32, 13);
             this.label11.TabIndex = 23;
@@ -316,20 +319,31 @@
             // 
             // TxtCupo
             // 
-            this.TxtCupo.Location = new System.Drawing.Point(325, 250);
+            this.TxtCupo.Location = new System.Drawing.Point(75, 247);
             this.TxtCupo.Name = "TxtCupo";
             this.TxtCupo.Size = new System.Drawing.Size(39, 20);
             this.TxtCupo.TabIndex = 24;
+            // 
+            // ChkInscripcion
+            // 
+            this.ChkInscripcion.AutoSize = true;
+            this.ChkInscripcion.Location = new System.Drawing.Point(142, 249);
+            this.ChkInscripcion.Name = "ChkInscripcion";
+            this.ChkInscripcion.Size = new System.Drawing.Size(96, 17);
+            this.ChkInscripcion.TabIndex = 25;
+            this.ChkInscripcion.Text = "Torneo Abierto";
+            this.ChkInscripcion.UseVisualStyleBackColor = true;
             // 
             // FrmNuevoTorneo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(458, 313);
+            this.ClientSize = new System.Drawing.Size(458, 339);
+            this.Controls.Add(this.ChkInscripcion);
             this.Controls.Add(this.TxtCupo);
             this.Controls.Add(this.label11);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.BtnSalir);
+            this.Controls.Add(this.BtnAceptar);
             this.Controls.Add(this.CboEstado);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.label8);
@@ -389,9 +403,10 @@
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.ComboBox CboEstado;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button BtnAceptar;
+        private System.Windows.Forms.Button BtnSalir;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.TextBox TxtCupo;
+        private System.Windows.Forms.CheckBox ChkInscripcion;
     }
 }
