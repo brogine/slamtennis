@@ -87,6 +87,9 @@ namespace Slam
             }
             catch (Exception ex)
             {
+                System.Media.SoundPlayer soundPlayer = new System.Media.SoundPlayer();
+                soundPlayer.SoundLocation = AppDomain.CurrentDomain.BaseDirectory + "No.wav";
+                soundPlayer.Play();
                 MessageBox.Show(ex.Message);
             }
         }
@@ -216,12 +219,16 @@ namespace Slam
 
         private void TxtDniJugador1_KeyPress(object sender, KeyPressEventArgs e)
         {
-            this.ValidarJugador(TxtDniJugador1);
+            if (TxtDniJugador1.Text != "")
+                if (e.KeyChar == 13)
+                    this.ValidarJugador(TxtDniJugador1);
         }
 
         private void TxtDniJugador2_KeyPress(object sender, KeyPressEventArgs e)
         {
-            this.ValidarJugador(TxtDniJugador2);
+            if (TxtDniJugador2.Text != "")
+                if (e.KeyChar == 13)
+                    this.ValidarJugador(TxtDniJugador2);
         }
 
         private void TxtDniJugador1_Leave(object sender, EventArgs e)
