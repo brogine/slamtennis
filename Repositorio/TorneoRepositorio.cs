@@ -27,10 +27,23 @@ namespace Repositorio
             string FechaFormateadaFinInscrip = Torneo.FechaFinInscripcion.Year + "/" + Torneo.FechaFinInscripcion.Month + "/" + Torneo.FechaFinInscripcion.Day;
 
             string valores = "'" + Torneo.Nombre + "','" + FechaFormateadaInicio + "','" + FechaFormateadaFin + "','" + FechaFormateadaInicioInscrip + "','" + FechaFormateadaFinInscrip + "',";
-            valores += Torneo.Cupo + "','" + Torneo.Sexo + "'," + Torneo.TipoTorneo + "," + Torneo.Club.Id + "," + Torneo.Categoria.Id + "," + Torneo.TipoInscripcion + ",";
-            valores += Torneo.Superficie + "," + Torneo.Estado;
+            valores += Torneo.Cupo + ",'" + Torneo.Sexo + "'," +(int) Torneo.TipoTorneo + "," + Torneo.Club.Id + "," + Torneo.Categoria.Id + "," +(Torneo.TipoInscripcion?1 :0)+ ",";
+            valores += (int)Torneo.Superficie + "," +(int) Torneo.Estado;
 
             Conex.Agregar("Torneos", "Nombre,FecInicio,FecFin,FecInicInsc,FecFinInsc,Cupo,Sexo,Tipo,IdClub,IdCategoria,TipoInscripcion,Superficie,Estado", valores);
+        }
+
+      
+        public bool Existe(int IdTorneo)
+        {
+            String Consulta = " SELECT COUNT(*) from Torneos where IdTorneo = " + IdTorneo;
+            
+            DataRow Fila = Conex.Buscar(Consulta);
+            int cantidad = Convert.ToInt32(Fila[0]);
+            if (cantidad == 1)
+                return true;
+            else
+                return false;
         }
 
         public void Modificar(Torneo Torneo)
@@ -42,24 +55,28 @@ namespace Repositorio
 
             string sql = "update Torneos set ";
             sql += "Nombre = '" + Torneo.Nombre + "'";
-            sql += ",FecInicio = '" + Torneo.FechaInicio + "'";
-            sql += ",FecFin = '" + Torneo.FechaFin + "'";
-            sql += ",FecInicInsc = '" + Torneo.FechaInicioInscripcion + "'";
-            sql += ",FecFinInsc = '" + Torneo.FechaFinInscripcion + "'";
+            sql += ",FecInicio = '" + FechaFormateadaInicio + "'";
+            sql += ",FecFin = '" + FechaFormateadaFin + "'";
+            sql += ",FecInicInsc = '" + FechaFormateadaInicioInscrip + "'";
+            sql += ",FecFinInsc = '" + FechaFormateadaFinInscrip + "'";
             sql += ",Cupo = " + Torneo.Cupo;
             sql += ",Sexo = '" + Torneo.Sexo + "'";
-            sql += ",Tipo = " + Torneo.TipoTorneo;
+            sql += ",Tipo = " + (int)Torneo.TipoTorneo;
             sql += ",IdClub =" + Torneo.Club.Id;
             sql += ",IdCategoria =" + Torneo.Categoria.Id;
-            sql += ",TipoInscripcion =" + Torneo.TipoInscripcion;
-            sql += ",Superficie =" + Torneo.Superficie;
+            
+            sql += ",TipoInscripcion =" + (Torneo.TipoInscripcion?1:0);
+            sql += ",Superficie =" + (int)Torneo.Superficie;
             sql += ",Estado =" + Torneo.Estado;
+            sql += " where IdTorneo = " + Torneo.IdTorneo;
+            Conex.ActualizarOEliminar(sql);
         }
 
         public Torneo Buscar(int IdTorneo)
         {
-           string sql = "select * from Torneos where Id Torneo = " + IdTorneo;
-           return this.Mapear(Conex.Buscar(sql));
+           string sql = "select * from Torneos where IdTorneo = " + IdTorneo;
+           DataRow Dr = Conex.Buscar(sql);
+            return Mapear(Dr);
             
         }
 
@@ -105,8 +122,7 @@ namespace Repositorio
                 TipoTorneo Tipo = Fila.IsNull("Tipo") ? 0 : (TipoTorneo)Convert.ToInt32(Fila["Tipo"]);
                 bool TipoInscripcion = Fila.IsNull("TipoInscripcion") ? false : Convert.ToBoolean(Fila["TipoInscripcion"]);
                 TipoSuperficie Superficie = Fila.IsNull("Superficie") ? 0 :(TipoSuperficie) Convert.ToInt32(Fila["Superficie"]);
-                bool Estado = Fila.IsNull("Estado") ? false : Convert.ToBoolean(Fila["Estado"]);
-                Torneo = new Torneo(IdTorneo, Nombre, FecInicio, FecFin, FecIniInsc, FecFinInsc, Cupo, Sexo, Tipo, Club, Categoria, TipoInscripcion, Superficie, Estado);
+                int Estado = Fila.IsNull("Estado") ? 0 : Convert.ToInt32(Fila["Estado"]);
                 Torneo = new Torneo(IdTorneo, Nombre, FecInicio, FecFin, FecIniInsc, FecFinInsc, Cupo, Sexo, Tipo, Club, Categoria, TipoInscripcion, Superficie, Estado);
             }
             return Torneo;

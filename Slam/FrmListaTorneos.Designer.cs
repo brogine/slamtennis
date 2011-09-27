@@ -40,6 +40,7 @@
             this.DgvListaTorneos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.DgvListaTorneos.Location = new System.Drawing.Point(12, 12);
             this.DgvListaTorneos.Name = "DgvListaTorneos";
+            this.DgvListaTorneos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.DgvListaTorneos.Size = new System.Drawing.Size(898, 197);
             this.DgvListaTorneos.TabIndex = 0;
             // 
@@ -51,6 +52,7 @@
             this.BtnAgregar.TabIndex = 1;
             this.BtnAgregar.Text = "Agregar Torneo";
             this.BtnAgregar.UseVisualStyleBackColor = true;
+            this.BtnAgregar.Click += new System.EventHandler(this.BtnAgregar_Click);
             // 
             // BtnModificar
             // 
@@ -60,6 +62,7 @@
             this.BtnModificar.TabIndex = 2;
             this.BtnModificar.Text = "Modificar Torneo";
             this.BtnModificar.UseVisualStyleBackColor = true;
+            this.BtnModificar.Click += new System.EventHandler(this.BtnModificar_Click);
             // 
             // BtnSalir
             // 
@@ -69,6 +72,7 @@
             this.BtnSalir.TabIndex = 3;
             this.BtnSalir.Text = "Salir";
             this.BtnSalir.UseVisualStyleBackColor = true;
+            this.BtnSalir.Click += new System.EventHandler(this.BtnSalir_Click);
             // 
             // FrmListaTorneos
             // 

@@ -20,7 +20,7 @@ namespace Servicio.InterfacesUI
        int IdCategoria { get; set; }
        bool TipoInscripcion { get; set; }
        int Superficie { get; set; }
-       bool Estado { get; set; }
+       int Estado { get; set; }
 
     }
 }

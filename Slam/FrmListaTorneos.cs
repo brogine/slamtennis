@@ -49,22 +49,52 @@ namespace Slam
                 DgvListaTorneos.Columns.Add("Tipo", "Tipo");
                 DgvListaTorneos.Columns.Add("TipoInsc", "Tipo De Inscripcion");
                 DgvListaTorneos.Columns.Add("Estado", "Estado");
-                DgvListaTorneos.Columns["Estado"].Visible=false;
                 DgvListaTorneos.Columns["IdTorneo"].Visible=false;
                 if (DgvListaTorneos.RowCount > 0)
                     DgvListaTorneos.Rows.Clear();
                 foreach (object Torneo in value)
                 {
                     object[] DatosTorneo = Torneo.ToString().Split(',');
-                    int index = DgvListaTorneos.Rows.Add(DatosTorneo);
-                    if(Convert.ToBoolean(DatosTorneo[11])==false)
-                    {
-                    DgvListaTorneos.Rows[index].DefaultCellStyle.BackColor=Color.Red;
-                    }
+                    DatosTorneo[11] = ((EstadoTorneo)Convert.ToInt32(DatosTorneo[11])).ToString();
+                    DgvListaTorneos.Rows.Add(DatosTorneo);
+
                 }
             }
             
             }
+
+        private void BtnAgregar_Click(object sender, EventArgs e)
+        {
+            FrmNuevoTorneo NuevoTorneo = new FrmNuevoTorneo();
+            NuevoTorneo.ShowDialog();
+            if (NuevoTorneo.DialogResult == DialogResult.OK)
+            {
+                TorneoServicio.ListarTorneos(this);
+            }
+        }
+
+        private void BtnModificar_Click(object sender, EventArgs e)
+        {
+            if (DgvListaTorneos.SelectedRows.Count == 1)
+            {
+                FrmNuevoTorneo ModificaTorneo = new FrmNuevoTorneo(Convert.ToInt32(DgvListaTorneos.SelectedRows[0].Cells["IdTorneo"].Value));
+                
+                if (ModificaTorneo.ShowDialog() == DialogResult.OK)
+                    {
+                    TorneoServicio.ListarTorneos(this);
+                    }
+            }
+             else
+             { 
+            MessageBox.Show("Debe Seleccionar un Torneo De La Lista");
+             }
+           
+        }
+
+        private void BtnSalir_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
         }
 
         #endregion
