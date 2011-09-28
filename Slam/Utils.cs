@@ -14,6 +14,6 @@
 
     public enum TipoSuperficie : int
     {
-        PolvoLadrillo = 0, CespedVerde = 1, Dura = 2, Sintetica = 3
+        Ladrillo = 0, Cesped = 1, Dura = 2, Sintetica = 3
     }
 }
