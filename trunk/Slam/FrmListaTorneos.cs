@@ -38,6 +38,7 @@ namespace Slam
             if (DgvListaTorneos.ColumnCount > 0)
                     DgvListaTorneos.Columns.Clear();
                 DgvListaTorneos.Columns.Add("IdTorneo", "IdTorneo");
+                DgvListaTorneos.Columns.Add("Club", "Organiza");
                 DgvListaTorneos.Columns.Add("Nombre", "Nombre");
                 DgvListaTorneos.Columns.Add("Categoria", "Categoria");
                 DgvListaTorneos.Columns.Add("Sexo", "Sexo");
@@ -55,7 +56,7 @@ namespace Slam
                 foreach (object Torneo in value)
                 {
                     object[] DatosTorneo = Torneo.ToString().Split(',');
-                    DatosTorneo[11] = ((EstadoTorneo)Convert.ToInt32(DatosTorneo[11])).ToString();
+                    DatosTorneo[12] = ((EstadoTorneo)Convert.ToInt32(DatosTorneo[12])).ToString();
                     DgvListaTorneos.Rows.Add(DatosTorneo);
 
                 }
