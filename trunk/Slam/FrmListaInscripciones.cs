@@ -128,7 +128,7 @@ namespace Slam
                 foreach (Object Torneo in value)
                 {
                     Object[] DatosTorneo = Torneo.ToString().Split(',');
-                    ListaTorneos.Add(Convert.ToInt32(DatosTorneo[0]), DatosTorneo[1].ToString());
+                    ListaTorneos.Add(Convert.ToInt32(DatosTorneo[0]), DatosTorneo[2].ToString());
                 }
                 CboTorneos.DataSource = new BindingSource(ListaTorneos, null);
                 CboTorneos.DisplayMember = "Value";
