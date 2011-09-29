@@ -20,16 +20,34 @@ namespace Repositorio
 
         public int Agregar(Inscripcion Inscripcion)
         {
-            if (!Existe(Inscripcion.Torneo.IdTorneo, Inscripcion.Equipo.Jugador1.Dni))
+            if (Inscripcion.IdInscripcion > 0)
             {
-                string FechaFormateada = Inscripcion.Fecha.Year + "/" + Inscripcion.Fecha.Month + "/" + Inscripcion.Fecha.Day;
-                String Campos = " IdInscripcion, IdTorneo, Fecha, Estado ";
-                String Valores = Inscripcion.IdInscripcion + "," + Inscripcion.Torneo.IdTorneo + ",'";
-                Valores += FechaFormateada + "'," + (Inscripcion.Estado ? 1 : 0);
-                return Conn.Agregar("Inscripciones", Campos, Valores);
+                Conn.AgregarSinId("InscripcionesJugador", "Dni, IdInscripcion", Inscripcion.Equipo.Jugador1.Dni + "," + Inscripcion.IdInscripcion);
+                if (Inscripcion.Equipo.Jugador2 != null)
+                {
+                    Conn.AgregarSinId("InscripcionesJugador", "Dni, IdInscripcion", Inscripcion.Equipo.Jugador2.Dni + "," + Inscripcion.IdInscripcion);
+                }
+                return Inscripcion.IdInscripcion;
             }
             else
-                throw new RepositorioExeption("El Jugador ya está inscripto a ese Torneo.");
+            {
+                if (!Existe(Inscripcion.Torneo.IdTorneo, Inscripcion.Equipo.Jugador1.Dni))
+                {
+                    string FechaFormateada = Inscripcion.Fecha.Year + "/" + Inscripcion.Fecha.Month + "/" + Inscripcion.Fecha.Day;
+                    String Campos = " IdTorneo, Fecha, Estado ";
+                    String Valores = Inscripcion.Torneo.IdTorneo + ",'";
+                    Valores += FechaFormateada + "'," + (Inscripcion.Estado ? 1 : 0);
+                    int IdInscripcion = Conn.Agregar("Inscripciones", Campos, Valores);
+                    Conn.AgregarSinId("InscripcionesJugador", "Dni, IdInscripcion", Inscripcion.Equipo.Jugador1.Dni + "," + IdInscripcion);
+                    if (Inscripcion.Equipo.Jugador2 != null)
+                    {
+                        Conn.AgregarSinId("InscripcionesJugador", "Dni, IdInscripcion", Inscripcion.Equipo.Jugador2.Dni + "," + IdInscripcion);
+                    }
+                    return IdInscripcion;
+                }
+                else
+                    throw new RepositorioExeption("El Jugador ya está inscripto a ese Torneo.");
+            }
         }
 
         public void Modificar(Inscripcion Inscripcion)
@@ -58,6 +76,9 @@ namespace Repositorio
         /// <returns></returns>
         public bool Existe(int IdTorneo, int DniJugador)
         {
+            IJugadorRepositorio repoJugadores = new JugadorRepositorio();
+            if (!repoJugadores.Existe(DniJugador))
+                return false;
             String Consulta = " SELECT COUNT(*) From Inscripciones I INNER JOIN InscripcionesJugador J ";
             Consulta += " ON I.IdInscripcion = J.IdInscripcion WHERE I.IdTorneo = " + IdTorneo;
             Consulta += " AND J.Dni = " + DniJugador;
@@ -72,7 +93,7 @@ namespace Repositorio
         public Inscripcion Buscar(int IdInscripcion)
         {
             String Consulta = " Select * From InscripcionesJugador J Inner Join Inscripciones I ";
-            Consulta += " On J.IdInscripciones = I.IdInscripcion Where IdInscripcion = " + IdInscripcion;
+            Consulta += " On J.IdInscripcion = I.IdInscripcion Where J.IdInscripcion = " + IdInscripcion;
             DataTable Tabla = Conn.Listar(Consulta);
             Inscripcion bInscripcion = null;
             if (Tabla.Rows.Count == 1)

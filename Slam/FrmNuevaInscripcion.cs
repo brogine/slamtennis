@@ -26,6 +26,9 @@ namespace Slam
         {
             InitializeComponent();
             this.Text = "Nueva Inscripción";
+            servicioTorneos = (IListadoTorneoServicio)AppContext.Instance.GetObject(ImplementaTorneos);
+            servicioTorneos.ListarTorneos(this);
+            servicioInscripciones = (IInscripcionServicio)AppContext.Instance.GetObject(ImplementaInscripciones);
             ChkEstado.Checked = true;
         }
 
@@ -34,14 +37,15 @@ namespace Slam
             InitializeComponent();
             IdInscripcionActual = IdInscripcion;
             this.Text = "Modificar Inscripción";
+            servicioTorneos = (IListadoTorneoServicio)AppContext.Instance.GetObject(ImplementaTorneos);
+            servicioTorneos.ListarTorneos(this);
+            servicioInscripciones = (IInscripcionServicio)AppContext.Instance.GetObject(ImplementaInscripciones);
             servicioInscripciones.Buscar(this);
         }
 
         private void FrmNuevaInscripcion_Load(object sender, EventArgs e)
         {
-            servicioTorneos = (IListadoTorneoServicio)AppContext.Instance.GetObject(ImplementaTorneos);
-            servicioTorneos.ListarTorneos(this);
-            servicioInscripciones = (IInscripcionServicio)AppContext.Instance.GetObject(ImplementaInscripciones);
+            
             servicioTorneoTipo = (ITorneoServicio)AppContext.Instance.GetObject(ImplementaTorneos);
         }
 
@@ -70,8 +74,8 @@ namespace Slam
         {
             try
             {
-                if (EpInscripciones.GetError(CboTorneos) != "" && EpInscripciones.GetError(TxtDniJugador1) != "" &&
-                    EpInscripciones.GetError(TxtDniJugador2) != "")
+                if (EpInscripciones.GetError(CboTorneos) == "" && EpInscripciones.GetError(TxtDniJugador1) == "" &&
+                    EpInscripciones.GetError(TxtDniJugador2) == "")
                 {
                     if (IdInscripcionActual > 0)
                     {
@@ -124,6 +128,8 @@ namespace Slam
             set
             {
                 IdInscripcionActual = value;
+                CboTorneos.SelectedValue = value;
+                TxtNroInscripcion.Text = value.ToString();
             }
         }
 
@@ -179,7 +185,10 @@ namespace Slam
         {
             get
             {
-                return int.Parse(TxtDniJugador2.Text);
+                if (TxtDniJugador2.Text == "")
+                    return 0;
+                else
+                    return int.Parse(TxtDniJugador2.Text);
             }
             set
             {
@@ -196,7 +205,17 @@ namespace Slam
 
         private void CboTorneos_SelectionChangeCommitted(object sender, EventArgs e)
         {
-            //servicioTorneoTipo.
+            TipoTorneo tipoTorneo = (TipoTorneo)servicioTorneoTipo.GetTipoTorneo((int)CboTorneos.SelectedValue);
+            if (tipoTorneo == TipoTorneo.Single)
+            {
+                TxtDniJugador2.Enabled = false;
+                TxtNroInscripcion.Enabled = false;
+            }
+            else
+            {
+                TxtDniJugador2.Enabled = true;
+                TxtNroInscripcion.Enabled = true;
+            }
         }
 
         private void CboTorneos_Validating(object sender, CancelEventArgs e)
@@ -217,10 +236,13 @@ namespace Slam
 
         private void TxtDniJugador2_Validating(object sender, CancelEventArgs e)
         {
-            if (TxtDniJugador2.Text == "")
-                EpInscripciones.SetError(TxtDniJugador2, "Ingrese un Dni de un Jugador Válido");
-            else
-                EpInscripciones.SetError(TxtDniJugador2, "");
+            if(EpInscripciones.GetError(TxtDniJugador2) != "Ingrese un Dni de un Jugador Válido")
+            {
+                if (TxtDniJugador2.Text == "")
+                    EpInscripciones.SetError(TxtDniJugador2, "Ingrese un Dni de un Jugador Válido");
+                else
+                    EpInscripciones.SetError(TxtDniJugador2, "");
+            }
         }
 
         private void TxtDniJugador1_KeyPress(object sender, KeyPressEventArgs e)
@@ -254,7 +276,7 @@ namespace Slam
             else
             {
                 if (!servicioInscripciones.ValidarInscripcion((int)CboTorneos.SelectedValue, int.Parse(Control.Text)))
-                    EpInscripciones.SetError(Control, "La Categoría del Jugador no corresponde con la del Torneo");
+                    EpInscripciones.SetError(Control, "La Categoría del Jugador no corresponde con la del Torneo o El Dni No corresponde a un Jugador Existente");
                 else
                     EpInscripciones.SetError(Control, "");
             }

@@ -46,12 +46,13 @@ namespace Slam
         private void BtnAgregar_Click(object sender, EventArgs e)
         {
             FrmNuevaInscripcion nuevaInscripcion = new FrmNuevaInscripcion();
-            nuevaInscripcion.ShowDialog();
+            if(nuevaInscripcion.ShowDialog() == DialogResult.OK)
+                servicioInscripciones.ListarPorTorneo(this);
         }
 
         private void BtnModificar_Click(object sender, EventArgs e)
         {
-            if (DgvListaInscripciones.SelectedColumns.Count == 1)
+            if (DgvListaInscripciones.SelectedRows.Count == 1)
             {
                 FrmNuevaInscripcion modificarInscripcion = new FrmNuevaInscripcion
                     (Convert.ToInt32(DgvListaInscripciones.SelectedRows[0].Cells["Id"].Value));
@@ -74,7 +75,7 @@ namespace Slam
                     foreach (object Inscripcion in value)
                     {
                         object[] datos = Inscripcion.ToString().Split(',');
-                        tipoDeTorneo = (TipoTorneo)datos[1];
+                        tipoDeTorneo = (TipoTorneo)Convert.ToInt32(datos[1]);
                         if (tipoDeTorneo == TipoTorneo.Doble)
                             break;
                     }
@@ -92,11 +93,19 @@ namespace Slam
                 {
                     object[] datosInscripcion = Inscripcion.ToString().Split(',');
                     if(tipoDeTorneo == TipoTorneo.Doble)
-                        DgvListaInscripciones.Rows.Add(datosInscripcion[0], datosInscripcion[2], datosInscripcion[3],
-                            datosInscripcion[4], datosInscripcion[5]);
-                    else
-                        DgvListaInscripciones.Rows.Add(datosInscripcion[0], datosInscripcion[2], datosInscripcion[3],
-                            datosInscripcion[4]);
+                        if (datosInscripcion.Length == 6)
+                        {
+                            DgvListaInscripciones.Rows.Add(datosInscripcion[0], datosInscripcion[2], datosInscripcion[3],
+                                datosInscripcion[4], datosInscripcion[5]);
+                        }
+                        else
+                        {
+                            DgvListaInscripciones.Rows.Add(datosInscripcion[0], datosInscripcion[2], "No Inscripto", 
+                                datosInscripcion[3], datosInscripcion[4]);
+                        }
+                        else
+                            DgvListaInscripciones.Rows.Add(datosInscripcion[0], datosInscripcion[2], datosInscripcion[3],
+                                datosInscripcion[4]);
                 }
             }
         }
