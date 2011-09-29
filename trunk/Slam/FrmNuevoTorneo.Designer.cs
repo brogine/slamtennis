@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.label1 = new System.Windows.Forms.Label();
             this.TxtNombre = new System.Windows.Forms.TextBox();
             this.DTPInicioTorneo = new System.Windows.Forms.DateTimePicker();
@@ -58,8 +59,10 @@
             this.label11 = new System.Windows.Forms.Label();
             this.TxtCupo = new System.Windows.Forms.TextBox();
             this.ChkInscripcion = new System.Windows.Forms.CheckBox();
+            this.EPTorneos = new System.Windows.Forms.ErrorProvider(this.components);
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.EPTorneos)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -77,6 +80,7 @@
             this.TxtNombre.Name = "TxtNombre";
             this.TxtNombre.Size = new System.Drawing.Size(187, 20);
             this.TxtNombre.TabIndex = 1;
+            this.TxtNombre.Validating += new System.ComponentModel.CancelEventHandler(this.TxtNombre_Validating);
             // 
             // DTPInicioTorneo
             // 
@@ -109,6 +113,7 @@
             this.DTPFinTorneo.Name = "DTPFinTorneo";
             this.DTPFinTorneo.Size = new System.Drawing.Size(200, 20);
             this.DTPFinTorneo.TabIndex = 5;
+            this.DTPFinTorneo.Validating += new System.ComponentModel.CancelEventHandler(this.DTPFinTorneo_Validating);
             // 
             // label4
             // 
@@ -141,6 +146,7 @@
             this.DTPFinInscripciones.Name = "DTPFinInscripciones";
             this.DTPFinInscripciones.Size = new System.Drawing.Size(200, 20);
             this.DTPFinInscripciones.TabIndex = 9;
+            this.DTPFinInscripciones.Validating += new System.ComponentModel.CancelEventHandler(this.DTPFinInscripciones_Validating);
             // 
             // groupBox1
             // 
@@ -153,6 +159,7 @@
             this.groupBox1.TabIndex = 10;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Sexo";
+            this.groupBox1.Validating += new System.ComponentModel.CancelEventHandler(this.groupBox1_Validating);
             // 
             // RBMixto
             // 
@@ -197,6 +204,7 @@
             this.groupBox2.TabIndex = 11;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Tipo De Torneo";
+            this.groupBox2.Validating += new System.ComponentModel.CancelEventHandler(this.groupBox2_Validating);
             // 
             // RBDouble
             // 
@@ -236,6 +244,7 @@
             this.CboClub.Name = "CboClub";
             this.CboClub.Size = new System.Drawing.Size(187, 21);
             this.CboClub.TabIndex = 13;
+            this.CboClub.Validating += new System.ComponentModel.CancelEventHandler(this.CboClub_Validating);
             // 
             // CboCategoria
             // 
@@ -244,6 +253,7 @@
             this.CboCategoria.Name = "CboCategoria";
             this.CboCategoria.Size = new System.Drawing.Size(187, 21);
             this.CboCategoria.TabIndex = 14;
+            this.CboCategoria.Validating += new System.ComponentModel.CancelEventHandler(this.CboCategoria_Validating);
             // 
             // label7
             // 
@@ -261,6 +271,7 @@
             this.CboSuperficie.Name = "CboSuperficie";
             this.CboSuperficie.Size = new System.Drawing.Size(199, 21);
             this.CboSuperficie.TabIndex = 16;
+            this.CboSuperficie.Validating += new System.ComponentModel.CancelEventHandler(this.CboSuperficie_Validating);
             // 
             // label8
             // 
@@ -323,6 +334,7 @@
             this.TxtCupo.Name = "TxtCupo";
             this.TxtCupo.Size = new System.Drawing.Size(39, 20);
             this.TxtCupo.TabIndex = 24;
+            this.TxtCupo.Validating += new System.ComponentModel.CancelEventHandler(this.TxtCupo_Validating);
             // 
             // ChkInscripcion
             // 
@@ -333,6 +345,10 @@
             this.ChkInscripcion.TabIndex = 25;
             this.ChkInscripcion.Text = "Torneo Abierto";
             this.ChkInscripcion.UseVisualStyleBackColor = true;
+            // 
+            // EPTorneos
+            // 
+            this.EPTorneos.ContainerControl = this;
             // 
             // FrmNuevoTorneo
             // 
@@ -371,6 +387,7 @@
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.EPTorneos)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -408,5 +425,6 @@
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.TextBox TxtCupo;
         private System.Windows.Forms.CheckBox ChkInscripcion;
+        private System.Windows.Forms.ErrorProvider EPTorneos;
     }
 }
