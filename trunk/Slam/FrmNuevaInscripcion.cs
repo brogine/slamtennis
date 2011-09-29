@@ -70,20 +70,26 @@ namespace Slam
         {
             try
             {
-                if (IdInscripcionActual > 0)
+                if (EpInscripciones.GetError(CboTorneos) != "" && EpInscripciones.GetError(TxtDniJugador1) != "" &&
+                    EpInscripciones.GetError(TxtDniJugador2) != "")
                 {
-                    servicioInscripciones.Modificar(this);
-                    MessageBox.Show("Inscripción Nro: " + IdInscripcionActual + " Actualizada con éxito");
+                    if (IdInscripcionActual > 0)
+                    {
+                        servicioInscripciones.Modificar(this);
+                        MessageBox.Show("Inscripción Nro: " + IdInscripcionActual + " Actualizada con éxito");
+                    }
+                    else
+                    {
+                        IdInscripcionActual = servicioInscripciones.Agregar(this);
+                        MessageBox.Show("Inscripción Realizada con éxito. Nro Inscripción: " + IdInscripcionActual);
+                    }
+                    GC.Collect();
+                    GC.WaitForPendingFinalizers();
+                    this.DialogResult = DialogResult.OK;
+                    this.Close();
                 }
                 else
-                {
-                    IdInscripcionActual = servicioInscripciones.Agregar(this);
-                    MessageBox.Show("Inscripción Realizada con éxito. Nro Inscripción: " + IdInscripcionActual);
-                }
-                GC.Collect();
-                GC.WaitForPendingFinalizers();
-                this.DialogResult = DialogResult.OK;
-                this.Close();
+                    MessageBox.Show("Complete todos los campos antes de continuar.");
             }
             catch (Exception ex)
             {
