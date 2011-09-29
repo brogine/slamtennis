@@ -14,6 +14,8 @@ namespace Servicio
 
         void Buscar(ITorneoUI UI);
 
+        int GetTipoTorneo(int IdTorneo);
+
         bool Existe(int IdTorneo);
     }
 }

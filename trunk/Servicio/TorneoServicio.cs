@@ -88,6 +88,11 @@ namespace Servicio
             UI.Estado = Torneo.Estado;
         }
 
+        public int GetTipoTorneo(int IdTorneo)
+        {
+            return (int)TorneoRepo.GetTipoTorneo(IdTorneo);
+        }
+
         #endregion
 
         #region Miembros de IListadoTorneoServicio

@@ -87,6 +87,7 @@ namespace Servicio
             UI.Estado = bInscripcion.Estado;
             UI.Fecha = bInscripcion.Fecha;
             UI.IdTorneo = bInscripcion.Torneo.IdTorneo;
+            UI.IdInscripcion = bInscripcion.IdInscripcion;
         }
 
         #endregion
@@ -106,13 +107,13 @@ namespace Servicio
                     ListaUI.Add(Inscripcion.IdInscripcion + "," + (int)tipoTorneo + "," +
                         Inscripcion.Equipo.Jugador1.Apellido + " " + Inscripcion.Equipo.Jugador1.Nombre + "," + 
                         Inscripcion.Equipo.Jugador2.Nombre + " " + Inscripcion.Equipo.Jugador2.Apellido + "," +
-                        Inscripcion.Fecha + "," + Inscripcion.Estado);
+                        Inscripcion.Fecha.ToShortDateString() + "," + Inscripcion.Estado);
                 }
                 else
                 {
                     ListaUI.Add(Inscripcion.IdInscripcion + "," + (int)tipoTorneo + "," +
                         Inscripcion.Equipo.Jugador1.Apellido + " " + Inscripcion.Equipo.Jugador1.Nombre + "," +
-                        Inscripcion.Fecha + "," + Inscripcion.Estado);
+                        Inscripcion.Fecha.ToShortDateString() + "," + Inscripcion.Estado);
                 }
             }
             UI.ListarPorTorneo = ListaUI;
@@ -126,14 +127,14 @@ namespace Servicio
             {
                 if (Inscripcion.Equipo.Jugador2 != null)
                 {
-                    ListaUI.Add(Inscripcion.IdInscripcion + "," + Inscripcion.Fecha + "," + Inscripcion.Equipo.Jugador1.Apellido + " " +
-                        Inscripcion.Equipo.Jugador1.Nombre + "," + Inscripcion.Equipo.Jugador2.Apellido + " " + Inscripcion.Equipo.Jugador2.Nombre +
-                        Inscripcion.Estado);
+                    ListaUI.Add(Inscripcion.IdInscripcion + "," + Inscripcion.Fecha.ToShortDateString() + "," + Inscripcion.Equipo.Jugador1.Apellido + " " +
+                        Inscripcion.Equipo.Jugador1.Nombre + "," + Inscripcion.Equipo.Jugador2.Apellido + " " + 
+                        Inscripcion.Equipo.Jugador2.Nombre + Inscripcion.Estado);
                 }
                 else
                 {
-                    ListaUI.Add(Inscripcion.IdInscripcion + "," + Inscripcion.Fecha + "," + Inscripcion.Equipo.Jugador1.Apellido + " " +
-                        Inscripcion.Equipo.Jugador1.Nombre + "," + Inscripcion.Estado);
+                    ListaUI.Add(Inscripcion.IdInscripcion + "," + Inscripcion.Fecha.ToShortDateString() + "," + 
+                        Inscripcion.Equipo.Jugador1.Apellido + " " + Inscripcion.Equipo.Jugador1.Nombre + "," + Inscripcion.Estado);
                 }
             }
             UI.ListarPorPartido = ListaUI;
