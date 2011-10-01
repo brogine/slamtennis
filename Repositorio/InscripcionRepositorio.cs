@@ -33,9 +33,9 @@ namespace Repositorio
                 if (!Existe(Inscripcion.Torneo.IdTorneo, Inscripcion.Equipo.Jugador1.Dni))
                 {
                     string FechaFormateada = Inscripcion.Fecha.Year + "/" + Inscripcion.Fecha.Month + "/" + Inscripcion.Fecha.Day;
-                    String Campos = " IdTorneo, Fecha, Estado ";
+                    String Campos = " IdTorneo, Fecha ";
                     String Valores = Inscripcion.Torneo.IdTorneo + ",'";
-                    Valores += FechaFormateada + "'," + (Inscripcion.Estado ? 1 : 0);
+                    Valores += FechaFormateada + "'";
                     int IdInscripcion = Conn.Agregar("Inscripciones", Campos, Valores);
                     Conn.AgregarSinId("InscripcionesJugador", "Dni, IdInscripcion", Inscripcion.Equipo.Jugador1.Dni + "," + IdInscripcion);
                     if (Inscripcion.Equipo.Jugador2 != null)
@@ -51,10 +51,6 @@ namespace Repositorio
 
         public void Modificar(Inscripcion Inscripcion)
         {
-            String Consulta = " Update Inscripciones Set ";
-            Consulta += " Estado = " + (Inscripcion.Estado ? 1 : 0);
-            Consulta += " Where IdInscripcion = " + Inscripcion.IdInscripcion;
-            Conn.ActualizarOEliminar(Consulta);
             //Verifica si en la inscripcion hay un solo jugador y si el torneo es de dobles, agregue al segundo jugador
             ITorneoRepositorio repoTorneos = new TorneoRepositorio();
             TipoTorneo tipoTorneo = repoTorneos.GetTipoTorneo(Inscripcion.Torneo.IdTorneo);
@@ -67,13 +63,21 @@ namespace Repositorio
                 if (Existe(Inscripcion.Torneo.IdTorneo, Inscripcion.Equipo.Jugador1.Dni) &&
                     !Existe(Inscripcion.Torneo.IdTorneo, Inscripcion.Equipo.Jugador2.Dni))
                 {
-                    Consulta = " Update InscripcionesJugador Set ";
+                    String Consulta = " Update InscripcionesJugador Set ";
                     Consulta += " Dni = " + Inscripcion.Equipo.Jugador2.Dni;
                     Consulta += " Where IdInscripcion = " + Inscripcion.IdInscripcion;
                     Consulta += " And Dni = " + Inscripcion.Equipo.Jugador1.Dni;
                     Conn.ActualizarOEliminar(Consulta);
                 }
             }
+        }
+
+        public void Eliminar(int IdInscripcion)
+        {
+            String Consulta = " Delete From Inscripciones Where IdInscripcion = " + IdInscripcion;
+            Conn.ActualizarOEliminar(Consulta);
+            Consulta = " Delete From InscripcionesJugador Where IdInscripcion = " + IdInscripcion;
+            Conn.ActualizarOEliminar(Consulta);
         }
 
         /// <summary>
@@ -105,9 +109,7 @@ namespace Repositorio
             DataTable Tabla = Conn.Listar(Consulta);
             Inscripcion bInscripcion = null;
             if (Tabla.Rows.Count == 1)
-            {
                 bInscripcion = this.Mapear(Tabla.Rows[0]);
-            }
             else
             {
                 for (int i = 0; i < Tabla.Rows.Count; i++)
@@ -188,11 +190,10 @@ namespace Repositorio
                 ITorneoRepositorio repoTorneos = new TorneoRepositorio();
                 Torneo bTorneo = Fila.IsNull("IdTorneo") ? null : repoTorneos.Buscar(Convert.ToInt32(Fila["IdTorneo"]));
                 DateTime Fecha = Fila.IsNull("Fecha") ? DateTime.Now : Convert.ToDateTime(Fila["Fecha"]);
-                bool Estado = Fila.IsNull("Estado") ? false : Convert.ToBoolean(Fila["Estado"]);
                 IJugadorRepositorio repoJugadores = new JugadorRepositorio();
                 Equipo nEquipo = new Equipo();
                 nEquipo.Jugador1 = Fila.IsNull("Dni") ? null : repoJugadores.Buscar(Convert.ToInt32(Fila["Dni"]));
-                nInscripcion = new Inscripcion(IdInscripcion, bTorneo, Fecha, Estado, nEquipo);
+                nInscripcion = new Inscripcion(IdInscripcion, bTorneo, Fecha, nEquipo);
             }
             return nInscripcion;
         }

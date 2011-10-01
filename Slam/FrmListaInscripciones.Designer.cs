@@ -35,6 +35,7 @@
             this.BtnAgregar = new System.Windows.Forms.Button();
             this.BtnModificar = new System.Windows.Forms.Button();
             this.BtnSalir = new System.Windows.Forms.Button();
+            this.BtnEliminar = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.DgvListaInscripciones)).BeginInit();
             this.SuspendLayout();
             // 
@@ -100,12 +101,23 @@
             this.BtnSalir.UseVisualStyleBackColor = true;
             this.BtnSalir.Click += new System.EventHandler(this.BtnSalir_Click);
             // 
+            // BtnEliminar
+            // 
+            this.BtnEliminar.Location = new System.Drawing.Point(174, 332);
+            this.BtnEliminar.Name = "BtnEliminar";
+            this.BtnEliminar.Size = new System.Drawing.Size(75, 23);
+            this.BtnEliminar.TabIndex = 5;
+            this.BtnEliminar.Text = "Eliminar";
+            this.BtnEliminar.UseVisualStyleBackColor = true;
+            this.BtnEliminar.Click += new System.EventHandler(this.BtnEliminar_Click);
+            // 
             // FrmListaInscripciones
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.BtnSalir;
             this.ClientSize = new System.Drawing.Size(549, 363);
+            this.Controls.Add(this.BtnEliminar);
             this.Controls.Add(this.BtnSalir);
             this.Controls.Add(this.BtnModificar);
             this.Controls.Add(this.BtnAgregar);
@@ -131,5 +143,6 @@
         private System.Windows.Forms.Button BtnAgregar;
         private System.Windows.Forms.Button BtnModificar;
         private System.Windows.Forms.Button BtnSalir;
+        private System.Windows.Forms.Button BtnEliminar;
     }
 }

@@ -10,7 +10,6 @@ namespace Servicio.InterfacesUI
         int IdInscripcion { get; set; }
         int IdTorneo { get; set; }
         DateTime Fecha { get; set; }
-        bool Estado { get; set; }
         int DniJugador1 { get; set; }
         int DniJugador2 { get; set; }
         bool ModificarJugador { get; }

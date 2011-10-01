@@ -16,12 +16,11 @@ namespace Dominio
         /// <param name="idInscripcion">número de identificacion de la inscripcion</param>
         /// <param name="torneo">torneo al que se inscribe</param>
         /// <param name="fecha">fecha de inscripcion</param>
-        /// <param name="estado">estado de la inscripcion</param>
         /// <param name="jugadores">jugadores vinculados</param>
-        public Inscripcion(int idInscripcion, Torneo torneo, DateTime fecha, bool estado, Equipo equipo)
+        public Inscripcion(int idInscripcion, Torneo torneo, DateTime fecha, Equipo equipo)
         {
             this.idInscripcion = idInscripcion; this.torneo = torneo; this.fecha = fecha;
-            this.estado = estado; this.equipo = equipo;
+            this.equipo = equipo;
         }
 
         /// <summary>
@@ -29,18 +28,16 @@ namespace Dominio
         /// </summary>
         /// <param name="torneo">torneo al que se inscribe</param>
         /// <param name="fecha">fecha de inscripcion</param>
-        /// <param name="estado">estado de la inscripcion</param>
         /// <param name="jugadores">jugadores vinculados</param>
-        public Inscripcion(Torneo torneo, DateTime fecha, bool estado, Equipo equipo)
+        public Inscripcion(Torneo torneo, DateTime fecha, Equipo equipo)
         {
-            this.torneo = torneo; this.fecha = fecha; this.estado = estado;
+            this.torneo = torneo; this.fecha = fecha;
             this.equipo = equipo;
         }
 
         int idInscripcion;
         Torneo torneo;
         DateTime fecha;
-        bool estado;
         Equipo equipo;
 
         public int IdInscripcion
@@ -59,12 +56,6 @@ namespace Dominio
         {
             get { return fecha; }
             set { fecha = value; }
-        }
-
-        public bool Estado
-        {
-            get { return estado; }
-            set { estado = value; }
         }
 
         public Equipo Equipo
