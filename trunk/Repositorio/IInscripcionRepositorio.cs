@@ -12,6 +12,8 @@ namespace Repositorio
 
         void Modificar(Inscripcion Inscripcion);
 
+        void Eliminar(int IdInscripcion);
+
         bool Existe(int IdTorneo, int DniJugador);
 
         Inscripcion Buscar(int IdInscripcion);

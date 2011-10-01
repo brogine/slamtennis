@@ -33,7 +33,7 @@ namespace Servicio
                     else
                         throw new ServicioExeption("El Jugador con Dni " + UI.DniJugador2 + " ya está Inscripto a ese torneo.");
                 }
-                Inscripcion nInscripcion = new Inscripcion(bTorneo, UI.Fecha, UI.Estado, nEquipo);
+                Inscripcion nInscripcion = new Inscripcion(bTorneo, UI.Fecha, nEquipo);
                 return repoInscripciones.Agregar(nInscripcion);
             }
             else
@@ -43,7 +43,6 @@ namespace Servicio
         public void Modificar(Servicio.InterfacesUI.IInscripcionUI UI)
         {
             Inscripcion bInscripcion = repoInscripciones.Buscar(UI.IdInscripcion);
-            bInscripcion.Estado = UI.Estado;
             IJugadorRepositorio repoJugadores = new JugadorRepositorio();
             if(UI.ModificarJugador)
             {
@@ -53,6 +52,11 @@ namespace Servicio
             if (bInscripcion.Equipo.Jugador2 == null && UI.DniJugador2 > 0)
                 bInscripcion.Equipo.Jugador2 = repoJugadores.Buscar(UI.DniJugador2);
             repoInscripciones.Modificar(bInscripcion);
+        }
+
+        public void Eliminar(int IdInscripcion)
+        {
+            repoInscripciones.Eliminar(IdInscripcion);
         }
 
         public bool Existe(int IdTorneo, int DniJugador)
@@ -86,7 +90,6 @@ namespace Servicio
             UI.DniJugador1 = bInscripcion.Equipo.Jugador1.Dni;
             if(bInscripcion.Equipo.Jugador2 != null)
                 UI.DniJugador2 = bInscripcion.Equipo.Jugador2.Dni;
-            UI.Estado = bInscripcion.Estado;
             UI.Fecha = bInscripcion.Fecha;
             UI.IdTorneo = bInscripcion.Torneo.IdTorneo;
             UI.IdInscripcion = bInscripcion.IdInscripcion;
@@ -109,13 +112,13 @@ namespace Servicio
                     ListaUI.Add(Inscripcion.IdInscripcion + "," + (int)tipoTorneo + "," +
                         Inscripcion.Equipo.Jugador1.Apellido + " " + Inscripcion.Equipo.Jugador1.Nombre + "," + 
                         Inscripcion.Equipo.Jugador2.Nombre + " " + Inscripcion.Equipo.Jugador2.Apellido + "," +
-                        Inscripcion.Fecha.ToShortDateString() + "," + Inscripcion.Estado);
+                        Inscripcion.Fecha.ToShortDateString());
                 }
                 else
                 {
                     ListaUI.Add(Inscripcion.IdInscripcion + "," + (int)tipoTorneo + "," +
                         Inscripcion.Equipo.Jugador1.Apellido + " " + Inscripcion.Equipo.Jugador1.Nombre + "," +
-                        Inscripcion.Fecha.ToShortDateString() + "," + Inscripcion.Estado);
+                        Inscripcion.Fecha.ToShortDateString());
                 }
             }
             UI.ListarPorTorneo = ListaUI;
@@ -131,12 +134,12 @@ namespace Servicio
                 {
                     ListaUI.Add(Inscripcion.IdInscripcion + "," + Inscripcion.Fecha.ToShortDateString() + "," + Inscripcion.Equipo.Jugador1.Apellido + " " +
                         Inscripcion.Equipo.Jugador1.Nombre + "," + Inscripcion.Equipo.Jugador2.Apellido + " " + 
-                        Inscripcion.Equipo.Jugador2.Nombre + Inscripcion.Estado);
+                        Inscripcion.Equipo.Jugador2.Nombre);
                 }
                 else
                 {
                     ListaUI.Add(Inscripcion.IdInscripcion + "," + Inscripcion.Fecha.ToShortDateString() + "," + 
-                        Inscripcion.Equipo.Jugador1.Apellido + " " + Inscripcion.Equipo.Jugador1.Nombre + "," + Inscripcion.Estado);
+                        Inscripcion.Equipo.Jugador1.Apellido + " " + Inscripcion.Equipo.Jugador1.Nombre);
                 }
             }
             UI.ListarPorPartido = ListaUI;

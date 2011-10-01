@@ -93,12 +93,12 @@ namespace Slam
                 {
                     object[] datosInscripcion = Inscripcion.ToString().Split(',');
                     if (tipoDeTorneo == TipoTorneo.Doble)
-                        if (datosInscripcion.Length == 6)
+                        if (datosInscripcion.Length == 5)
                             DgvListaInscripciones.Rows.Add(datosInscripcion[0], datosInscripcion[2], datosInscripcion[3],
                                 datosInscripcion[4]);
                         else
                             DgvListaInscripciones.Rows.Add(datosInscripcion[0], datosInscripcion[2], "No Inscripto",
-                                datosInscripcion[3]);
+                                datosInscripcion[4]);
                     else
                         DgvListaInscripciones.Rows.Add(datosInscripcion[0], datosInscripcion[2], datosInscripcion[3]);
                 }
@@ -146,6 +146,11 @@ namespace Slam
         private void CboTorneos_KeyPress(object sender, KeyPressEventArgs e)
         {
             e.Handled = true;
+        }
+
+        private void BtnEliminar_Click(object sender, EventArgs e)
+        {
+            
         }
     }
 }
