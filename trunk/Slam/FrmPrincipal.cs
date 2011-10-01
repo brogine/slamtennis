@@ -132,14 +132,7 @@ namespace Slam
 
         private void TSMITorneos_Click(object sender, EventArgs e)
         {
-            if (Torneos == null || Torneos.IsDisposed)
-            {
-                Torneos = new FrmListaTorneos();
-                Torneos.MdiParent = this;
-                Torneos.Show();
-            }
-            else
-                Torneos.BringToFront();
+            
 
         }
 
@@ -153,6 +146,18 @@ namespace Slam
             }
             else
                 Inscripciones.BringToFront();
+        }
+
+        private void administrarToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (Torneos == null || Torneos.IsDisposed)
+            {
+                Torneos = new FrmListaTorneos();
+                Torneos.MdiParent = this;
+                Torneos.Show();
+            }
+            else
+                Torneos.BringToFront();
         }
     }
 }
