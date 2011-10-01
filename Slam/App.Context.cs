@@ -7,7 +7,7 @@ namespace ApplicationContext
     /// and help to get the objects for the application.
     /// </summary>
     public class AppContext
-    {//a
+    {
         /// <summary>
         /// Object that gonna content the context of the app
         /// </summary>
