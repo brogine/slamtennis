@@ -150,6 +150,12 @@
     <Compile Include="FrmListaJugadores.designer.cs">
       <DependentUpon>FrmListaJugadores.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmListaPartidos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmListaPartidos.Designer.cs">
+      <DependentUpon>FrmListaPartidos.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmListaSedes.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -210,6 +216,12 @@
     <Compile Include="FrmNuevoClub.Designer.cs">
       <DependentUpon>FrmNuevoClub.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmAsignarResultado.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmAsignarResultado.Designer.cs">
+      <DependentUpon>FrmAsignarResultado.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmNuevoTorneo.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -251,6 +263,9 @@
     <EmbeddedResource Include="FrmListaJugadores.resx">
       <DependentUpon>FrmListaJugadores.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FrmListaPartidos.resx">
+      <DependentUpon>FrmListaPartidos.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FrmListaSedes.resx">
       <DependentUpon>FrmListaSedes.cs</DependentUpon>
     </EmbeddedResource>
@@ -280,6 +295,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FrmNuevoClub.resx">
       <DependentUpon>FrmNuevoClub.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmAsignarResultado.resx">
+      <DependentUpon>FrmAsignarResultado.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmNuevoTorneo.resx">
       <DependentUpon>FrmNuevoTorneo.cs</DependentUpon>
