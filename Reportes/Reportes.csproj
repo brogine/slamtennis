@@ -65,6 +65,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>DsLlave.xsd</DependentUpon>
     </Compile>
+    <Compile Include="DsRankingCategoria.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DsRankingCategoria.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RptCuponInscripcion.cs">
       <AutoGen>True</AutoGen>
@@ -76,6 +81,12 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>RptLlave.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="RptRankingCategoria.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>RptRankingCategoria.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
   </ItemGroup>
@@ -102,6 +113,17 @@
     <None Include="DsLlave.xss">
       <DependentUpon>DsLlave.xsd</DependentUpon>
     </None>
+    <None Include="DsRankingCategoria.xsc">
+      <DependentUpon>DsRankingCategoria.xsd</DependentUpon>
+    </None>
+    <None Include="DsRankingCategoria.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DsRankingCategoria.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="DsRankingCategoria.xss">
+      <DependentUpon>DsRankingCategoria.xsd</DependentUpon>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="RptCuponInscripcion.rpt">
@@ -111,6 +133,10 @@
     <EmbeddedResource Include="RptLlave.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>RptLlave.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RptRankingCategoria.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>RptRankingCategoria.cs</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
