@@ -17,7 +17,8 @@ namespace Slam
     {
         string ImplementaInscripciones = "InscripcionServicio";
         string ImplementaTorneos = "TorneoServicio";
-        IListadoInscripcionServicio servicioInscripciones;
+        IListadoInscripcionServicio servicioListadoInscripciones;
+        IInscripcionServicio servicioInscripciones;
         IListadoTorneoServicio servicioTorneos;
         public FrmListaInscripciones()
         {
@@ -26,7 +27,8 @@ namespace Slam
 
         private void FrmListaInscripciones_Load(object sender, EventArgs e)
         {
-            servicioInscripciones = (IListadoInscripcionServicio)AppContext.Instance.GetObject(ImplementaInscripciones);
+            servicioListadoInscripciones = (IListadoInscripcionServicio)AppContext.Instance.GetObject(ImplementaInscripciones);
+            servicioInscripciones = (IInscripcionServicio)AppContext.Instance.GetObject(ImplementaInscripciones);
             servicioTorneos = (IListadoTorneoServicio)AppContext.Instance.GetObject(ImplementaTorneos);
             servicioTorneos.ListarTorneos(this);
         }
@@ -40,14 +42,14 @@ namespace Slam
 
         private void CboTorneos_SelectionChangeCommitted(object sender, EventArgs e)
         {
-            servicioInscripciones.ListarPorTorneo(this);
+            servicioListadoInscripciones.ListarPorTorneo(this);
         }
 
         private void BtnAgregar_Click(object sender, EventArgs e)
         {
             FrmNuevaInscripcion nuevaInscripcion = new FrmNuevaInscripcion();
             if(nuevaInscripcion.ShowDialog() == DialogResult.OK)
-                servicioInscripciones.ListarPorTorneo(this);
+                servicioListadoInscripciones.ListarPorTorneo(this);
         }
 
         private void BtnModificar_Click(object sender, EventArgs e)
@@ -57,7 +59,7 @@ namespace Slam
                 FrmNuevaInscripcion modificarInscripcion = new FrmNuevaInscripcion
                     (Convert.ToInt32(DgvListaInscripciones.SelectedRows[0].Cells["Id"].Value));
                 if (modificarInscripcion.ShowDialog() == DialogResult.OK)
-                    servicioInscripciones.ListarPorTorneo(this);
+                    servicioListadoInscripciones.ListarPorTorneo(this);
             }
             else
                 MessageBox.Show("Seleccione una Inscripción para modificarla.");
@@ -150,7 +152,16 @@ namespace Slam
 
         private void BtnEliminar_Click(object sender, EventArgs e)
         {
-            
+            if (DgvListaInscripciones.SelectedRows.Count == 1)
+            {
+                if (MessageBox.Show("¿Está seguro que desea eliminar esa inscripción?", "¿Está Seguro?", MessageBoxButtons.OKCancel) == DialogResult.OK)
+                {
+                    servicioInscripciones.Eliminar(Convert.ToInt32(DgvListaInscripciones.SelectedRows[0].Cells["Id"].Value));
+                    servicioListadoInscripciones.ListarPorTorneo(this);
+                }
+            }
+            else
+                MessageBox.Show("Debe elegir una Inscripción para eliminarla.");
         }
     }
 }
