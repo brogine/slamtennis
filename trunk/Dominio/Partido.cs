@@ -10,6 +10,8 @@ namespace Dominio
     /// </summary>
     public class Partido
     {
+        public Partido() 
+        { }
         /// <summary>
         /// Constructor para partidos existentes
         /// </summary>
@@ -21,11 +23,11 @@ namespace Dominio
         /// <param name="ronda">ronda del torneo</param>
         /// <param name="arbitros">arbitros que arbitran</param>
         /// <param name="estado">estado del partido</param>
-        public Partido(int idPartido, Torneo torneo, List<Inscripcion> inscripciones, DateTime fecha, string resultado,
-            int ronda, List<Arbitro> arbitros, bool estado)
+        public Partido(int idPartido, Torneo torneo, Inscripcion Equipo1,Inscripcion Equipo2, DateTime fecha, string resultado,
+            int ronda,bool estado)
         {
-            this.idPartido = idPartido; this.torneo = torneo; this.inscripciones = inscripciones; this.fecha = fecha;
-            this.resultado = resultado; this.ronda = ronda; this.arbitros = arbitros; this.estado = estado;
+            this.idPartido = idPartido; this.torneo = torneo; this.equipo1 = Equipo1; this.equipo2 = Equipo2; ; this.fecha = fecha;
+            this.resultado = resultado; this.ronda = ronda; this.estado = estado;
         }
 
         /// <summary>
@@ -38,20 +40,20 @@ namespace Dominio
         /// <param name="ronda">ronda del torneo</param>
         /// <param name="arbitros">arbitros que arbitran</param>
         /// <param name="estado">estado del partido</param>
-        public Partido(Torneo torneo, List<Inscripcion> inscripciones, DateTime fecha, string resultado,
-            int ronda, List<Arbitro> arbitros, bool estado)
+        public Partido(Torneo torneo, Inscripcion Equipo1, Inscripcion Equipo2, DateTime fecha, string resultado,
+            int ronda, bool estado)
         {
-            this.torneo = torneo; this.inscripciones = inscripciones; this.fecha = fecha;
-            this.resultado = resultado; this.ronda = ronda; this.arbitros = arbitros; this.estado = estado;
+            this.torneo = torneo; this.equipo1 = Equipo1; this.equipo2 = Equipo2; ; this.fecha = fecha;
+            this.resultado = resultado; this.ronda = ronda; this.estado = estado;
         }
 
         int idPartido;
         Torneo torneo;
-        List<Inscripcion> inscripciones;
+        Inscripcion equipo1;
+        Inscripcion equipo2;
         DateTime fecha;
         string resultado;
         int ronda;
-        List<Arbitro> arbitros;
         bool estado;
 
         public int IdPartido
@@ -65,13 +67,17 @@ namespace Dominio
             get { return torneo; }
             set { torneo = value; }
         }
-
-        public List<Inscripcion> Inscripciones
+       public  Inscripcion Equipo1
         {
-            get { return inscripciones; }
-            set { inscripciones = value; }
+            get { return equipo1; }
+            set { equipo1 = value; }
         }
 
+        public Inscripcion Equipo2
+        {
+            get { return equipo2; }
+            set { equipo2 = value; }
+        }
         public DateTime Fecha
         {
             get { return fecha; }
@@ -88,12 +94,6 @@ namespace Dominio
         {
             get { return ronda; }
             set { ronda = value; }
-        }
-
-        public List<Arbitro> Arbitros
-        {
-            get { return arbitros; }
-            set { arbitros = value; }
         }
 
         public bool Estado

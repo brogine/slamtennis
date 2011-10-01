@@ -21,10 +21,17 @@ namespace Repositorio
         public int Agregar(Partido Partido)
         {
             string FechaFormateada = Partido.Fecha.Year + "/" + Partido.Fecha.Month + "/" + Partido.Fecha.Day;
-            String Campos = " IdTorneo, Resultado, Fecha, Ronda, Estado ";
-            String Valores = Partido.Torneo.IdTorneo + ",'" + Partido.Resultado + "','" + FechaFormateada;
-            Valores += "'," + Partido.Ronda + "," + (Partido.Estado ? 1 : 0);
-            return Conn.Agregar("Partidos", Campos, Valores);
+            int IdTorneo = Partido.Torneo.IdTorneo;
+            string Resultado = Partido.Resultado;
+            int Ronda = Partido.Ronda;
+            bool Estado = Partido.Estado;
+            int Equipo1 = Partido.Equipo1.IdInscripcion;
+            int Equipo2 = Partido.Equipo2.IdInscripcion;
+
+            int IdPartido = Conn.Agregar("Partidos", "IdTorneo,Resultado,Fecha,Ronda,Estado", IdTorneo + "," + Resultado + "," + FechaFormateada + "," + Ronda + "," + Estado);
+            Conn.AgregarSinId("PartidoInscripcion", "IdPartido,IdInscripcion", IdPartido + "," + Equipo1);
+            Conn.AgregarSinId("PartidoInscripcion", "IdPartido,IdInscripcion", IdPartido + "," + Equipo2);
+            return IdPartido;
         }
 
         public void Modificar(Partido Partido)
@@ -33,7 +40,6 @@ namespace Repositorio
             String Consulta = " Update Partidos Set ";
             Consulta += " Resultado = '" + Partido.Resultado + "', ";
             Consulta += " Fecha = '" + FechaFormateada + "', ";
-            Consulta += " Ronda = " + Partido.Ronda + ", ";
             Consulta += " Estado = " + (Partido.Estado ? 1 : 0);
             Consulta += " Where IdPartido = " + Partido.IdPartido;
             Conn.ActualizarOEliminar(Consulta);
@@ -41,18 +47,34 @@ namespace Repositorio
 
         public Partido Buscar(int IdPartido)
         {
-            String Consulta = " Select * From Partidos Where IdPartido = " + IdPartido;
-            return this.Mapear(Conn.Buscar(Consulta));
+            String Consulta = " select * from Partidos Par inner join PartidoInscripcion Pins on Par.IdPartido = Pins.IdPartido where IdPartido =  " + IdPartido;
+            DataTable Dt = Conn.Listar(Consulta);
+            Partido NuevoPartido = new Partido();
+            for (int i = 0; i < 2; i++)
+            {
+                if (i == 0)
+                {
+                    NuevoPartido = this.Mapear(Dt.Rows[i]);
+                }
+                else
+                {
+                    IInscripcionRepositorio InscRepo = new InscripcionRepositorio();
+                    Inscripcion Jugador2 = InscRepo.Buscar(Convert.ToInt32(Dt.Rows[i]["IdInscripcion"]));
+                    NuevoPartido.Equipo2 = Jugador2;
+
+                }
+            }
+            return NuevoPartido;
         }
 
         public List<Partido> Listar(int IdTorneo)
         {
-            String Consulta = " Select * From Partidos Where IdTorneo = " + IdTorneo;
+            String Consulta = " Select IdPartido From Partidos Where IdTorneo = " + IdTorneo;
             DataTable TablaPartidos = Conn.Listar(Consulta);
             List<Partido> ListaPartidos = new List<Partido>();
             foreach (DataRow Fila in TablaPartidos.Rows)
             {
-                ListaPartidos.Add(this.Mapear(Fila));
+                ListaPartidos.Add(this.Buscar(Convert.ToInt32(Fila["IdPartido"]));
             }
             return ListaPartidos;
         }
@@ -61,7 +83,7 @@ namespace Repositorio
 
         #region Miembros de IMapeador<Partido>
 
-        public Partido Mapear(System.Data.DataRow Fila)
+        public Partido Mapear(DataRow Fila)
         {
             Partido nPartido = null;
             if (Fila != null)
@@ -69,20 +91,25 @@ namespace Repositorio
                 int IdPartido = Fila.IsNull("IdPartido") ? 0 : Convert.ToInt32(Fila["IdPartido"]);
                 ITorneoRepositorio repoTorneos = new TorneoRepositorio();
                 Torneo bTorneo = Fila.IsNull("IdTorneo") ? null : repoTorneos.Buscar(Convert.ToInt32(Fila["IdTorneo"]));
+
                 IInscripcionRepositorio repoInscripciones = new InscripcionRepositorio();
-                List<Inscripcion> ListaInscripciones = repoInscripciones.ListarPorPartido(IdPartido);
+                Inscripcion Equipo1 = repoInscripciones.Buscar(Fila.IsNull("IdInscripcion") ? 0 : Convert.ToInt32(Fila["IdInscripcion"]));
+
                 DateTime Fecha = Fila.IsNull("Fecha") ? DateTime.Now : Convert.ToDateTime(Fila["Fecha"]);
                 string Resultado = Fila.IsNull("Resultado") ? string.Empty : Fila["Resultado"].ToString();
                 int Ronda = Fila.IsNull("Ronda") ? 0 : Convert.ToInt32(Fila["Ronda"]);
-                IArbitroRepositorio repoArbitros = new ArbitroRepositorio();
-                List<Arbitro> ListaArbitros = repoArbitros.Listar(IdPartido);
                 bool Estado = Fila.IsNull("Estado") ? false : Convert.ToBoolean(Fila["Estado"]);
-
-                nPartido = new Partido(IdPartido, bTorneo, ListaInscripciones, Fecha, Resultado, Ronda, ListaArbitros, Estado);
+                nPartido.Equipo1 = Equipo1;
+                nPartido.Estado = Estado;
+                nPartido.Resultado = Resultado;
+                nPartido.Ronda = Ronda;
+                nPartido.Torneo = bTorneo;
+                
             }
-            return nPartido;
-        }
+
+                return nPartido;
+            }
 
         #endregion
+        }
     }
-}
