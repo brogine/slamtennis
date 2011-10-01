@@ -1,7 +1,6 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 10.00
 # Visual Studio 2008
-# SharpDevelop 4.0.1.7146
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dominio", "Dominio\Dominio.csproj", "{31C1D97C-0D78-423A-91C6-9C31BDCE3AA4}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Repositorio", "Repositorio\Repositorio.csproj", "{09F46F6B-190C-46CD-8D8E-4BB117CDD988}"
@@ -11,6 +10,10 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Servicio", "Servicio\Servicio.csproj", "{2F2D0BB4-3527-426C-B8CD-0C40D1250853}"
 EndProject
 Global
+	GlobalSection(SubversionScc) = preSolution
+		Svn-Managed = True
+		Manager = AnkhSVN - Subversion Support for Visual Studio
+	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
@@ -28,10 +31,10 @@ Global
 		{5940F210-F182-4F0B-B75A-C308A0D47473}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5940F210-F182-4F0B-B75A-C308A0D47473}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5940F210-F182-4F0B-B75A-C308A0D47473}.Release|Any CPU.Build.0 = Release|Any CPU
-		{2F2D0BB4-3527-426C-B8CD-0C40D1250853}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2F2D0BB4-3527-426C-B8CD-0C40D1250853}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{2F2D0BB4-3527-426C-B8CD-0C40D1250853}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2F2D0BB4-3527-426C-B8CD-0C40D1250853}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2F2D0BB4-3527-426C-B8CD-0C40D1250853}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2F2D0BB4-3527-426C-B8CD-0C40D1250853}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
