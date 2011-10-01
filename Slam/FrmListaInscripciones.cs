@@ -92,20 +92,15 @@ namespace Slam
                 foreach (object Inscripcion in value)
                 {
                     object[] datosInscripcion = Inscripcion.ToString().Split(',');
-                    if(tipoDeTorneo == TipoTorneo.Doble)
+                    if (tipoDeTorneo == TipoTorneo.Doble)
                         if (datosInscripcion.Length == 6)
-                        {
-                            DgvListaInscripciones.Rows.Add(datosInscripcion[0], datosInscripcion[2], datosInscripcion[3],
-                                datosInscripcion[4], datosInscripcion[5]);
-                        }
-                        else
-                        {
-                            DgvListaInscripciones.Rows.Add(datosInscripcion[0], datosInscripcion[2], "No Inscripto", 
-                                datosInscripcion[3], datosInscripcion[4]);
-                        }
-                        else
                             DgvListaInscripciones.Rows.Add(datosInscripcion[0], datosInscripcion[2], datosInscripcion[3],
                                 datosInscripcion[4]);
+                        else
+                            DgvListaInscripciones.Rows.Add(datosInscripcion[0], datosInscripcion[2], "No Inscripto",
+                                datosInscripcion[3]);
+                    else
+                        DgvListaInscripciones.Rows.Add(datosInscripcion[0], datosInscripcion[2], datosInscripcion[3]);
                 }
             }
         }
