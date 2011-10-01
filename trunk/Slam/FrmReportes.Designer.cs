@@ -52,6 +52,7 @@
             this.TvReportes.Name = "TvReportes";
             this.TvReportes.Size = new System.Drawing.Size(188, 519);
             this.TvReportes.TabIndex = 1;
+            this.TvReportes.NodeMouseClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.TvReportes_NodeMouseClick);
             // 
             // FrmReportes
             // 
