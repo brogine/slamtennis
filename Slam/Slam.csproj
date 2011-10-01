@@ -349,6 +349,10 @@
     <Compile Include="Utils.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Reportes\Reportes.csproj">
+      <Project>{D706359D-54A9-4388-A89E-410C5ED8A715}</Project>
+      <Name>Reportes</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Servicio\Servicio.csproj">
       <Project>{2F2D0BB4-3527-426C-B8CD-0C40D1250853}</Project>
       <Name>Servicio</Name>
