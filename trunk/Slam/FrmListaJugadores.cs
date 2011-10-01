@@ -36,7 +36,8 @@ namespace Slam
         private void BtnNuevo_Click(object sender, EventArgs e)
         {
             FrmNuevaAfiliacion nuevoJugador = new FrmNuevaAfiliacion();
-            nuevoJugador.Show();
+            if(nuevoJugador.ShowDialog() == DialogResult.OK)
+                servicioJugadores.ListarJugadores(this);
         }
 
         private void BtnModificar_Click(object sender, EventArgs e)

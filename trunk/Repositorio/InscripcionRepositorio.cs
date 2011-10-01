@@ -22,11 +22,10 @@ namespace Repositorio
         {
             if (Inscripcion.IdInscripcion > 0)
             {
-                Conn.AgregarSinId("InscripcionesJugador", "Dni, IdInscripcion", Inscripcion.Equipo.Jugador1.Dni + "," + Inscripcion.IdInscripcion);
-                if (Inscripcion.Equipo.Jugador2 != null)
-                {
+                if(!Existe(Inscripcion.Torneo.IdTorneo, Inscripcion.Equipo.Jugador1.Dni))
+                    Conn.AgregarSinId("InscripcionesJugador", "Dni, IdInscripcion", Inscripcion.Equipo.Jugador1.Dni + "," + Inscripcion.IdInscripcion);
+                if (Inscripcion.Equipo.Jugador2 != null && !Existe(Inscripcion.Torneo.IdTorneo, Inscripcion.Equipo.Jugador2.Dni))
                     Conn.AgregarSinId("InscripcionesJugador", "Dni, IdInscripcion", Inscripcion.Equipo.Jugador2.Dni + "," + Inscripcion.IdInscripcion);
-                }
                 return Inscripcion.IdInscripcion;
             }
             else
@@ -56,15 +55,24 @@ namespace Repositorio
             Consulta += " Estado = " + (Inscripcion.Estado ? 1 : 0);
             Consulta += " Where IdInscripcion = " + Inscripcion.IdInscripcion;
             Conn.ActualizarOEliminar(Consulta);
-            //Modifica una inscripcion en el caso que se quiera cambiar al jugador inscripto al torneo
-            if (Existe(Inscripcion.Torneo.IdTorneo, Inscripcion.Equipo.Jugador1.Dni) && 
-                !Existe(Inscripcion.Torneo.IdTorneo, Inscripcion.Equipo.Jugador2.Dni))
+            //Verifica si en la inscripcion hay un solo jugador y si el torneo es de dobles, agregue al segundo jugador
+            ITorneoRepositorio repoTorneos = new TorneoRepositorio();
+            TipoTorneo tipoTorneo = repoTorneos.GetTipoTorneo(Inscripcion.Torneo.IdTorneo);
+            if (tipoTorneo == TipoTorneo.Doble)
             {
-                Consulta = " Update InscripcionesJugador Set ";
-                Consulta += " Dni = " + Inscripcion.Equipo.Jugador2.Dni;
-                Consulta += " Where IdInscripcion = " + Inscripcion.IdInscripcion;
-                Consulta += " And Dni = " + Inscripcion.Equipo.Jugador1.Dni;
-                Conn.ActualizarOEliminar(Consulta);
+                if (Inscripcion.Equipo.Jugador2 != null)
+                    this.Agregar(Inscripcion);
+                else
+                //Modifica una inscripcion en el caso que se quiera cambiar al jugador inscripto al torneo
+                if (Existe(Inscripcion.Torneo.IdTorneo, Inscripcion.Equipo.Jugador1.Dni) &&
+                    !Existe(Inscripcion.Torneo.IdTorneo, Inscripcion.Equipo.Jugador2.Dni))
+                {
+                    Consulta = " Update InscripcionesJugador Set ";
+                    Consulta += " Dni = " + Inscripcion.Equipo.Jugador2.Dni;
+                    Consulta += " Where IdInscripcion = " + Inscripcion.IdInscripcion;
+                    Consulta += " And Dni = " + Inscripcion.Equipo.Jugador1.Dni;
+                    Conn.ActualizarOEliminar(Consulta);
+                }
             }
         }
 

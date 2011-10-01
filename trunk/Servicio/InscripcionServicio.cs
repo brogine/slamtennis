@@ -44,12 +44,14 @@ namespace Servicio
         {
             Inscripcion bInscripcion = repoInscripciones.Buscar(UI.IdInscripcion);
             bInscripcion.Estado = UI.Estado;
+            IJugadorRepositorio repoJugadores = new JugadorRepositorio();
             if(UI.ModificarJugador)
             {
-                IJugadorRepositorio repoJugadores = new JugadorRepositorio();
                 bInscripcion.Equipo.Jugador1 = repoJugadores.Buscar(UI.DniJugador1);
                 bInscripcion.Equipo.Jugador2 = repoJugadores.Buscar(UI.DniJugador2);
             }
+            if (bInscripcion.Equipo.Jugador2 == null && UI.DniJugador2 > 0)
+                bInscripcion.Equipo.Jugador2 = repoJugadores.Buscar(UI.DniJugador2);
             repoInscripciones.Modificar(bInscripcion);
         }
 
