@@ -183,28 +183,28 @@
             this.administrarToolStripMenuItem,
             this.partidosToolStripMenuItem});
             this.TSMITorneos.Name = "TSMITorneos";
-            this.TSMITorneos.Size = new System.Drawing.Size(152, 22);
+            this.TSMITorneos.Size = new System.Drawing.Size(143, 22);
             this.TSMITorneos.Text = "Torneos";
             this.TSMITorneos.Click += new System.EventHandler(this.TSMITorneos_Click);
             // 
             // administrarToolStripMenuItem
             // 
             this.administrarToolStripMenuItem.Name = "administrarToolStripMenuItem";
-            this.administrarToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.administrarToolStripMenuItem.Size = new System.Drawing.Size(136, 22);
             this.administrarToolStripMenuItem.Text = "Administrar";
             this.administrarToolStripMenuItem.Click += new System.EventHandler(this.administrarToolStripMenuItem_Click);
             // 
             // partidosToolStripMenuItem
             // 
             this.partidosToolStripMenuItem.Name = "partidosToolStripMenuItem";
-            this.partidosToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.partidosToolStripMenuItem.Size = new System.Drawing.Size(136, 22);
             this.partidosToolStripMenuItem.Text = "Partidos";
             this.partidosToolStripMenuItem.Click += new System.EventHandler(this.partidosToolStripMenuItem_Click);
             // 
             // TSMIInscripciones
             // 
             this.TSMIInscripciones.Name = "TSMIInscripciones";
-            this.TSMIInscripciones.Size = new System.Drawing.Size(152, 22);
+            this.TSMIInscripciones.Size = new System.Drawing.Size(143, 22);
             this.TSMIInscripciones.Text = "Inscripciones";
             this.TSMIInscripciones.Click += new System.EventHandler(this.TSMIInscripciones_Click);
             // 
@@ -213,6 +213,7 @@
             this.TsmiReportes.Name = "TsmiReportes";
             this.TsmiReportes.Size = new System.Drawing.Size(65, 20);
             this.TsmiReportes.Text = "Reportes";
+            this.TsmiReportes.Click += new System.EventHandler(this.TsmiReportes_Click);
             // 
             // FrmPrincipal
             // 

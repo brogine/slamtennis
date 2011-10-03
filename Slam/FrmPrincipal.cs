@@ -23,6 +23,7 @@ namespace Slam
         FrmListaTorneos Torneos;
         FrmListaInscripciones Inscripciones;
         FrmListaPartidos Partidos;
+        FrmReportes Reportes;
         public FrmPrincipal(Form _Padre)
         {
             InitializeComponent();
@@ -171,6 +172,18 @@ namespace Slam
             }
             else
                 Partidos.BringToFront();
+        }
+
+        private void TsmiReportes_Click(object sender, EventArgs e)
+        {
+            if (Reportes == null || Reportes.IsDisposed)
+            {
+                Reportes = new FrmReportes();
+                Reportes.MdiParent = this;
+                Reportes.Show();
+            }
+            else
+                Reportes.BringToFront();
         }
     }
 }
