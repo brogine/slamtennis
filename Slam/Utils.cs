@@ -10,7 +10,7 @@
         Single = 0, Doble = 1 
     };
 
-    public enum EstadoTorneo : int { Abierto, Cerrado, Jugando, Finalizado, Terminado, Cancelado}
+    public enum EstadoTorneo : int { Abierto = 0, Cerrado = 1, Jugando = 2, Finalizado = 3, Cancelado = 4}
 
     public enum TipoSuperficie : int
     {

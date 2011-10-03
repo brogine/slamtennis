@@ -19,5 +19,6 @@ namespace Repositorio
        bool Existe(int IdTorneo);
 
        List<Torneo> Listar();
+       List<Torneo> ListarCerrados();
     }
 }

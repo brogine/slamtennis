@@ -79,7 +79,7 @@ namespace Slam
         private void FrmListaPartidos_Load(object sender, EventArgs e)
         {
             servicioTorneos = (IListadoTorneoServicio)AppContext.Instance.GetObject(ImplementaTorneos);
-            servicioTorneos.ListarTorneos(this);
+            servicioTorneos.ListarTorneosCerrados(this);
         }
 
         private void CboListaTorneos_SelectionChangeCommitted(object sender, EventArgs e)
