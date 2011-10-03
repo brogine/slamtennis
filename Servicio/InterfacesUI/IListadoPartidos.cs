@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Servicio.InterfacesUI
 {
-    interface IListadoPartidos
+   public interface IListadoPartidos
     {
         List<Object> ListarPartidos { set; }
         int IdTorneo { get; }

@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Servicio.InterfacesUI
 {
-    interface IPartidoUI
+  public  interface IPartidoUI
     {
         int IdPartido { get; set; }
         int IdEquipo1 { get; set; }

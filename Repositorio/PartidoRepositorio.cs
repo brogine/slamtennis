@@ -74,7 +74,7 @@ namespace Repositorio
             List<Partido> ListaPartidos = new List<Partido>();
             foreach (DataRow Fila in TablaPartidos.Rows)
             {
-                ListaPartidos.Add(this.Buscar(Convert.ToInt32(Fila["IdPartido"]));
+                ListaPartidos.Add(this.Buscar(Convert.ToInt32(Fila["IdPartido"])));
             }
             return ListaPartidos;
         }

@@ -44,6 +44,7 @@
             this.CboListaTorneos.Name = "CboListaTorneos";
             this.CboListaTorneos.Size = new System.Drawing.Size(223, 21);
             this.CboListaTorneos.TabIndex = 0;
+            this.CboListaTorneos.SelectionChangeCommitted += new System.EventHandler(this.CboListaTorneos_SelectionChangeCommitted);
             // 
             // DgvListaPartidos
             // 
@@ -102,6 +103,7 @@
             this.Controls.Add(this.CboListaTorneos);
             this.Name = "FrmListaPartidos";
             this.Text = "FrmListaPartidos";
+            this.Load += new System.EventHandler(this.FrmListaPartidos_Load);
             ((System.ComponentModel.ISupportInitialize)(this.DgvListaPartidos)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

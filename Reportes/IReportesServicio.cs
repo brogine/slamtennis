@@ -11,6 +11,6 @@ namespace Reportes
 
         void Parametros(string[] NombresParametros, object[] ValorParametros);
 
-        ListadoReportes getReportes;
+       // ListadoReportes getReportes;
     }
 }

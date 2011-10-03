@@ -8,19 +8,23 @@ using Servicio.InterfacesUI;
 
 namespace Servicio
 {
-    class PartidoServicio:IPartidoServicio,IListadoPartidoServicio
+   public class PartidoServicio:IPartidoServicio,IListadoPartidoServicio
     {
-
+       
         IInscripcionRepositorio InscRepo;
             ITorneoRepositorio TornRepo;
             IPartidoRepositorio PartidoRepo;
-        
+
+            public PartidoServicio()
+            {
+                 InscRepo = new InscripcionRepositorio();
+                 TornRepo = new TorneoRepositorio();
+                 PartidoRepo = new PartidoRepositorio();
+            }
         #region Miembros de IPartidoServicio
 
         public void Agregar(IPartidoUI UI)
         {
-            InscRepo = new InscripcionRepositorio();
-            TornRepo = new TorneoRepositorio();
             Inscripcion Equipo1 = InscRepo.Buscar(UI.IdEquipo1);
             Inscripcion Equipo2 = InscRepo.Buscar(UI.IdEquipo2);
             Torneo Torneo = TornRepo.Buscar(UI.IdTorneo);
@@ -56,6 +60,7 @@ namespace Servicio
 
         public void ListarPartidos(IListadoPartidos UI)
         {
+
             List<Partido> Lista = PartidoRepo.Listar(UI.IdTorneo);
             List<Object> ListaObjeto = new List<object>();
 
@@ -64,6 +69,7 @@ namespace Servicio
                 object Objeto = new object();
                 Objeto = Partido.Equipo1.Equipo.Jugador1.Apellido +" - "+ Partido.Equipo1.Equipo.Jugador2.Apellido+",";
                 Objeto = Partido.Equipo2.Equipo.Jugador1.Apellido + " - " + Partido.Equipo2.Equipo.Jugador2.Apellido + ",";
+                Objeto += Partido.Fecha + ",";
                 Objeto += Partido.Ronda +",";
                 Objeto += Partido.Resultado;
                 ListaObjeto.Add(Objeto);
