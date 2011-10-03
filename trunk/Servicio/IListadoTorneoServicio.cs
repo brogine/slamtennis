@@ -9,5 +9,7 @@ namespace Servicio
    public interface IListadoTorneoServicio
     {
        void ListarTorneos(IListadoTorneos UI);
+
+       void ListarTorneosCerrados(IListadoTorneos UI);
     }
 }
