@@ -22,6 +22,7 @@ namespace Slam
         FrmListaEstadisticas EstadisticasJugadores;
         FrmListaTorneos Torneos;
         FrmListaInscripciones Inscripciones;
+        FrmListaPartidos Partidos;
         public FrmPrincipal(Form _Padre)
         {
             InitializeComponent();
@@ -158,6 +159,18 @@ namespace Slam
             }
             else
                 Torneos.BringToFront();
+        }
+
+        private void partidosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (Partidos == null || Partidos.IsDisposed)
+            {
+                Partidos = new FrmListaPartidos();
+                Partidos.MdiParent = this;
+                Partidos.Show();
+            }
+            else
+                Partidos.BringToFront();
         }
     }
 }

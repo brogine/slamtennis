@@ -45,10 +45,10 @@
             this.TlsmiSedes = new System.Windows.Forms.ToolStripMenuItem();
             this.TsmiEventos = new System.Windows.Forms.ToolStripMenuItem();
             this.TSMITorneos = new System.Windows.Forms.ToolStripMenuItem();
-            this.TSMIInscripciones = new System.Windows.Forms.ToolStripMenuItem();
-            this.TsmiReportes = new System.Windows.Forms.ToolStripMenuItem();
             this.administrarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.partidosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.TSMIInscripciones = new System.Windows.Forms.ToolStripMenuItem();
+            this.TsmiReportes = new System.Windows.Forms.ToolStripMenuItem();
             this.MsPrincipal.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -187,19 +187,6 @@
             this.TSMITorneos.Text = "Torneos";
             this.TSMITorneos.Click += new System.EventHandler(this.TSMITorneos_Click);
             // 
-            // TSMIInscripciones
-            // 
-            this.TSMIInscripciones.Name = "TSMIInscripciones";
-            this.TSMIInscripciones.Size = new System.Drawing.Size(152, 22);
-            this.TSMIInscripciones.Text = "Inscripciones";
-            this.TSMIInscripciones.Click += new System.EventHandler(this.TSMIInscripciones_Click);
-            // 
-            // TsmiReportes
-            // 
-            this.TsmiReportes.Name = "TsmiReportes";
-            this.TsmiReportes.Size = new System.Drawing.Size(65, 20);
-            this.TsmiReportes.Text = "Reportes";
-            // 
             // administrarToolStripMenuItem
             // 
             this.administrarToolStripMenuItem.Name = "administrarToolStripMenuItem";
@@ -212,6 +199,20 @@
             this.partidosToolStripMenuItem.Name = "partidosToolStripMenuItem";
             this.partidosToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.partidosToolStripMenuItem.Text = "Partidos";
+            this.partidosToolStripMenuItem.Click += new System.EventHandler(this.partidosToolStripMenuItem_Click);
+            // 
+            // TSMIInscripciones
+            // 
+            this.TSMIInscripciones.Name = "TSMIInscripciones";
+            this.TSMIInscripciones.Size = new System.Drawing.Size(152, 22);
+            this.TSMIInscripciones.Text = "Inscripciones";
+            this.TSMIInscripciones.Click += new System.EventHandler(this.TSMIInscripciones_Click);
+            // 
+            // TsmiReportes
+            // 
+            this.TsmiReportes.Name = "TsmiReportes";
+            this.TsmiReportes.Size = new System.Drawing.Size(65, 20);
+            this.TsmiReportes.Text = "Reportes";
             // 
             // FrmPrincipal
             // 
