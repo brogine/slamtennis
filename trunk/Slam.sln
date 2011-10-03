@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Servicio", "Servicio\Servic
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Reportes", "Reportes\Reportes.csproj", "{D706359D-54A9-4388-A89E-410C5ED8A715}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SlamWeb", "SlamWeb\SlamWeb.csproj", "{8B339E1B-2F15-41F1-8AE8-DA0AEFFF823F}"
+EndProject
 Global
 	GlobalSection(SubversionScc) = preSolution
 		Svn-Managed = True
@@ -37,11 +39,14 @@ Global
 		{2F2D0BB4-3527-426C-B8CD-0C40D1250853}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2F2D0BB4-3527-426C-B8CD-0C40D1250853}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2F2D0BB4-3527-426C-B8CD-0C40D1250853}.Release|Any CPU.Build.0 = Release|Any CPU
-<<<<<<< .mine		{D706359D-54A9-4388-A89E-410C5ED8A715}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D706359D-54A9-4388-A89E-410C5ED8A715}.Debug|Any CPU.ActiveCfg = Release|Any CPU
 		{D706359D-54A9-4388-A89E-410C5ED8A715}.Debug|Any CPU.Build.0 = Debug|Any CPU
-=======		{D706359D-54A9-4388-A89E-410C5ED8A715}.Debug|Any CPU.ActiveCfg = Release|Any CPU
->>>>>>> .theirs		{D706359D-54A9-4388-A89E-410C5ED8A715}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D706359D-54A9-4388-A89E-410C5ED8A715}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D706359D-54A9-4388-A89E-410C5ED8A715}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8B339E1B-2F15-41F1-8AE8-DA0AEFFF823F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8B339E1B-2F15-41F1-8AE8-DA0AEFFF823F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8B339E1B-2F15-41F1-8AE8-DA0AEFFF823F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8B339E1B-2F15-41F1-8AE8-DA0AEFFF823F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
