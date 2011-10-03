@@ -157,5 +157,23 @@ namespace Repositorio
         }
 
         #endregion
+
+        #region Miembros de ITorneoRepositorio
+
+
+        public List<Torneo> ListarAbiertos()
+        {
+            string Sql = "select * from Torneos where Estado = 0";
+            DataTable Tabla = Conex.Listar(Sql);
+            List<Torneo> Lista = new List<Torneo>();
+
+            foreach (DataRow Dr in Tabla.Rows)
+            {
+                Lista.Add(this.Mapear(Dr));
+            }
+            return Lista;
+        }
+
+        #endregion
     }
 }
