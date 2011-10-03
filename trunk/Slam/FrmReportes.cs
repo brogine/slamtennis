@@ -22,9 +22,14 @@ namespace Slam
         private void FrmReportes_Load(object sender, EventArgs e)
         {
             TvReportes.Nodes.Add("Index", "Reportes");
-            //foreach(ListadoReportes tiposReportes in servicioReportes.getReportes)
-            TvReportes.Nodes["Index"].Nodes.Add("Llave", "Llave de Torneo");
-            TvReportes.Nodes["Index"].Nodes.Add("Ranking", "Ranking por Categoria");
+            IEnumerator<ListadoReportes> Values =
+                (IEnumerator<ListadoReportes>)System.Enum.GetValues(typeof(ListadoReportes)).GetEnumerator();
+            IEnumerator<ListadoReportes> Names =
+                (IEnumerator<ListadoReportes>)System.Enum.GetNames(typeof(ListadoReportes)).GetEnumerator();
+            while(!Values.MoveNext() && !Names.MoveNext())
+            {
+                TvReportes.Nodes["Index"].Nodes.Add(Values.ToString(), Names.ToString());
+            }
         }
 
         private void TvReportes_NodeMouseClick(object sender, TreeNodeMouseClickEventArgs e)
