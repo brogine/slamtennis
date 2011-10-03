@@ -27,7 +27,7 @@ namespace Slam
             InitializeComponent();
             this.Text = "Nueva Inscripción";
             servicioTorneos = (IListadoTorneoServicio)AppContext.Instance.GetObject(ImplementaTorneos);
-            servicioTorneos.ListarTorneos(this);
+            servicioTorneos.ListarTorneosAbiertos(this);
             servicioInscripciones = (IInscripcionServicio)AppContext.Instance.GetObject(ImplementaInscripciones);
             ChkEstado.Checked = true;
         }
@@ -38,7 +38,7 @@ namespace Slam
             IdInscripcionActual = IdInscripcion;
             this.Text = "Modificar Inscripción";
             servicioTorneos = (IListadoTorneoServicio)AppContext.Instance.GetObject(ImplementaTorneos);
-            servicioTorneos.ListarTorneos(this);
+            servicioTorneos.ListarTorneosAbiertos(this);
             servicioInscripciones = (IInscripcionServicio)AppContext.Instance.GetObject(ImplementaInscripciones);
             servicioInscripciones.Buscar(this);
         }
