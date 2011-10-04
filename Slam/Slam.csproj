@@ -234,6 +234,12 @@
     <Compile Include="FrmAsignarResultado.Designer.cs">
       <DependentUpon>FrmAsignarResultado.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmNuevoPartido.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmNuevoPartido.Designer.cs">
+      <DependentUpon>FrmNuevoPartido.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmNuevoTorneo.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -316,6 +322,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FrmAsignarResultado.resx">
       <DependentUpon>FrmAsignarResultado.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmNuevoPartido.resx">
+      <DependentUpon>FrmNuevoPartido.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmNuevoTorneo.resx">
       <DependentUpon>FrmNuevoTorneo.cs</DependentUpon>
