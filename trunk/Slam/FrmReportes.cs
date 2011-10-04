@@ -13,6 +13,7 @@ namespace Slam
     public partial class FrmReportes : Form
     {
         IReportesServicio servicioReportes;
+        public int IdCategoria = 0;
         public FrmReportes()
         {
             InitializeComponent();
@@ -22,25 +23,26 @@ namespace Slam
         private void FrmReportes_Load(object sender, EventArgs e)
         {
             TvReportes.Nodes.Add("Index", "Reportes");
-            IEnumerator<ListadoReportes> Values =
-                (IEnumerator<ListadoReportes>)System.Enum.GetValues(typeof(ListadoReportes)).GetEnumerator();
-            IEnumerator<ListadoReportes> Names =
-                (IEnumerator<ListadoReportes>)System.Enum.GetNames(typeof(ListadoReportes)).GetEnumerator();
-            while(!Values.MoveNext() && !Names.MoveNext())
+            string[] Values =
+                System.Enum.GetNames(typeof(ListadoReportes));
+            foreach (string TipoReporte in Values)
             {
-                TvReportes.Nodes["Index"].Nodes.Add(Values.ToString(), Names.ToString());
+                TvReportes.Nodes["Index"].Nodes.Add(TipoReporte);
             }
         }
 
         private void TvReportes_NodeMouseClick(object sender, TreeNodeMouseClickEventArgs e)
         {
-            switch (e.Node.Name)
+            switch (e.Node.Text)
             {
-                case "Llave":
-                    RptLlave reporteLlave = new RptLlave();
-                    
-                    break;
                 case "Ranking":
+
+                    FrmReporteRanking frmReporteRanking = new FrmReporteRanking();
+                    frmReporteRanking.Parent = this;
+                    if (frmReporteRanking.ShowDialog() == DialogResult.OK)
+                    {
+                        //RptViewer.ReportSource = servicioReportes.CrearInstancia(e.Node.Text, (object)IdCategoria);
+                    }
                     break;
             }
         }

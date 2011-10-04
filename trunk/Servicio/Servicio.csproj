@@ -68,6 +68,7 @@
     <Compile Include="IListadoEmpleadoServicio.cs" />
     <Compile Include="IListadoEstadisticasServicio.cs" />
     <Compile Include="IListadoInscripcionServicio.cs" />
+    <Compile Include="IListadoJugadoresCategoriaServicio.cs" />
     <Compile Include="IListadoJugadoresServicio.cs" />
     <Compile Include="IListadoPartidoServicio.cs" />
     <Compile Include="IListadoSedesServicio.cs" />
@@ -95,6 +96,7 @@
     <Compile Include="InterfacesUI\IListadoEstadisticasDni.cs" />
     <Compile Include="InterfacesUI\IListadoInscripciones.cs" />
     <Compile Include="InterfacesUI\IListadoJugadores.cs" />
+    <Compile Include="InterfacesUI\IListadoJugadoresCategoria.cs" />
     <Compile Include="InterfacesUI\IListadoLocalidades.cs" />
     <Compile Include="InterfacesUI\IListadoPaises.cs" />
     <Compile Include="InterfacesUI\IListadoPartidos.cs" />

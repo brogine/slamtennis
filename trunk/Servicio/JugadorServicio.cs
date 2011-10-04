@@ -5,10 +5,11 @@ using System.Text;
 
 using Dominio;
 using Repositorio;
+using System.Data;
 
 namespace Servicio
 {
-    public class JugadorServicio : IJugadorServicio, IListadoJugadoresServicio
+    public class JugadorServicio : IJugadorServicio, IListadoJugadoresServicio, IListadoJugadoresCategoriaServicio
     {
     	IJugadorRepositorio repoJugadores;
     	public JugadorServicio()
@@ -128,6 +129,31 @@ namespace Servicio
         }
 
         #endregion
-        
+
+
+        #region Miembros de IListadoJugadoresCategoriaServicio
+
+        public void ListarJugadoresCategoria(Servicio.InterfacesUI.IListadoJugadoresCategoria UI)
+        {
+            List<Jugador> ListaJuga = repoJugadores.ListarPorCategoria(UI.IdCategoria);
+            DataTable TablaUI = new DataTable("Datos");
+            TablaUI.Columns.Add("Dni");
+            TablaUI.Columns.Add("NombreApellido");
+            TablaUI.Columns.Add("PJ");
+            TablaUI.Columns.Add("PG");
+            TablaUI.Columns.Add("PP");
+            TablaUI.Columns.Add("TJ");
+            TablaUI.Columns.Add("TC");
+            TablaUI.Columns.Add("Puntos");
+            foreach (Jugador Jugador in ListaJuga)
+            {
+                TablaUI.Rows.Add(Jugador.Dni, Jugador.Nombre + " " + Jugador.Apellido, Jugador.Estadisticas[0].PJ,
+                    Jugador.Estadisticas[0].PG, Jugador.Estadisticas[0].PP, Jugador.Estadisticas[0].TorneosJugados,
+                    Jugador.Estadisticas[0].TorneosCompletados, Jugador.Estadisticas[0].Puntaje);
+            }
+            UI.Listar = TablaUI;
+        }
+
+        #endregion
     }
 }

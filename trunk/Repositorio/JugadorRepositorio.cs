@@ -83,6 +83,22 @@ namespace Repositorio
         	return ListaJugadores;
         }
 
+        public List<Jugador> ListarPorCategoria(int IdCategoria)
+        {
+            string Consulta = " Select * From Jugadores J Inner Join Personas P ";
+            Consulta += " On J.Dni = P.Dni Where IdCategoria = " + IdCategoria;
+            List<Jugador> ListaJugadores = new List<Jugador>();
+            IEstadisticaRepositorio repoEstadisticas = new EstadisticaRepositorio();
+            DataTable Tabla = Conn.Listar(Consulta);
+            foreach (DataRow Fila in Tabla.Rows)
+            {
+                Jugador Jugador = this.Mapear(Fila);
+                Jugador.Estadisticas = repoEstadisticas.ListarPorDni(Jugador.Dni);
+                ListaJugadores.Add(Jugador);
+            }
+            return ListaJugadores;
+        }
+
         #endregion
 
         #region Miembros de IMapeador<Jugador>

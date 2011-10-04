@@ -33,10 +33,8 @@ namespace Slam
         {
             set 
             {
-                if(DgvListaCategorias.Columns.Count>0)
-                {
-                DgvListaCategorias.Columns.Clear();
-                }
+                if(DgvListaCategorias.Columns.Count > 0)
+                    DgvListaCategorias.Columns.Clear();
                 DgvListaCategorias.Columns.Add("Id","Id");
                 DgvListaCategorias.Columns["Id"].Visible=false;
                 DgvListaCategorias.Columns.Add("Nombre","Nombre");
@@ -45,9 +43,7 @@ namespace Slam
                 DgvListaCategorias.Columns.Add("Estado", "Estado");
                 DgvListaCategorias.Columns["Estado"].Visible = false;
                 if (DgvListaCategorias.RowCount > 0)
-                {
                     DgvListaCategorias.Rows.Clear();
-                }
                 foreach (object Categoria in value)
                 {
                     object[] DatosCategoria = Categoria.ToString().Split(',');
