@@ -5,6 +5,9 @@ using System.Text;
 
 namespace Dominio
 {
+    /// <summary>
+    /// Objeto Afiliacion de Jugador a un Club
+    /// </summary>
     public class Afiliacion
     {
         public Afiliacion()

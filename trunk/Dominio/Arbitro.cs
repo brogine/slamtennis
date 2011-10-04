@@ -5,6 +5,9 @@ using System.Text;
 
 namespace Dominio
 {
+    /// <summary>
+    /// Objecto Arbitro de tipo Persona
+    /// </summary>
     public class Arbitro : Persona
     {
         public Arbitro()
