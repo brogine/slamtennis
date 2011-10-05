@@ -86,7 +86,8 @@ namespace Repositorio
         public List<Jugador> ListarPorCategoria(int IdCategoria)
         {
             string Consulta = " Select * From Jugadores J Inner Join Personas P ";
-            Consulta += " On J.Dni = P.Dni Where IdCategoria = " + IdCategoria;
+            Consulta += " On J.Dni = P.Dni Inner Join Login L ";
+            Consulta += " On J.Dni = L.Dni Where IdCategoria = " + IdCategoria;
             List<Jugador> ListaJugadores = new List<Jugador>();
             IEstadisticaRepositorio repoEstadisticas = new EstadisticaRepositorio();
             DataTable Tabla = Conn.Listar(Consulta);

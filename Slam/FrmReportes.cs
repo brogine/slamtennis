@@ -13,7 +13,6 @@ namespace Slam
     public partial class FrmReportes : Form
     {
         IReportesServicio servicioReportes;
-        public int IdCategoria = 0;
         public FrmReportes()
         {
             InitializeComponent();
@@ -38,10 +37,12 @@ namespace Slam
                 case "Ranking":
 
                     FrmReporteRanking frmReporteRanking = new FrmReporteRanking();
-                    frmReporteRanking.Parent = this;
                     if (frmReporteRanking.ShowDialog() == DialogResult.OK)
                     {
-                        //RptViewer.ReportSource = servicioReportes.CrearInstancia(e.Node.Text, (object)IdCategoria);
+                        int IdCategoria = frmReporteRanking.IdCategoria;
+                        object reporteActual = servicioReportes.CrearInstancia(e.Node.Text, IdCategoria);
+                        servicioReportes.Parametros("Categoria", IdCategoria);
+                        RptViewer.ReportSource = reporteActual;
                     }
                     break;
             }

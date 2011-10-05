@@ -16,7 +16,7 @@ namespace Reportes
         #region Miembros de IReportesServicio
 
         object ReporteActual = null;
-        static int idCategoria = 0;
+        int idCategoria = 0;
         public ReportesServicio()
         {
             ReporteActual = new object();
@@ -28,9 +28,9 @@ namespace Reportes
             {
                 case "Ranking":
                     DsRankingCategoria ds = new DsRankingCategoria();
-                    idCategoria = Convert.ToInt32(Sender);
                     IListadoJugadoresCategoriaServicio servicioJugadores = new JugadorServicio();
                     RptRankingCategoria rptRankingCategoria = new RptRankingCategoria();
+                    this.IdCategoria = (int)Sender;
                     ReporteActual = rptRankingCategoria;
                     servicioJugadores.ListarJugadoresCategoria(this);
                     return ReporteActual;
@@ -43,12 +43,9 @@ namespace Reportes
             }
         }
 
-        public void Parametros(string[] NombresParametros, object[] ValorParametros)
+        public void Parametros(string NombresParametro, object ValorParametro)
         {
-            for(int i = 0; i < NombresParametros.Length; i++)
-            {
-                ((ReportClass)ReporteActual).SetParameterValue(NombresParametros[i], ValorParametros[i]);
-            }
+            ((ReportClass)ReporteActual).SetParameterValue(NombresParametro, ValorParametro);
         }
 
         #endregion

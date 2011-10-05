@@ -15,18 +15,19 @@ namespace Dominio
         /// <param name="pg">partidos ganados</param>
         /// <param name="puntos">puntaje total en esa categoria</param>
         /// <param name="estado">estado de las jugador en esa categoría</param>
-        public Estadisticas(Categoria categoria, int pp, int pg, int puntos, int tc, int tj, bool estado)
+        public Estadisticas(int posicionRnk, Categoria categoria, int pj, int pp, int pg, int puntos, int tc, int tj, bool estado)
         {
-            this.categoria = categoria; this.pp = pp; this.pg = pg;
+            this.posicionRnk = posicionRnk; this.categoria = categoria; this.pj = pj; this.pp = pp; this.pg = pg;
             this.puntaje = puntos; this.estado = estado; this.tc = tc; this.tj = tj;
         }
 
-        public Estadisticas(int dni, Categoria categoria, int pp, int pg, int puntos, int tc, int tj, bool estado)
+        public Estadisticas(int posicionRnk, int dni, Categoria categoria, int pj, int pp, int pg, int puntos, int tc, int tj, bool estado)
         {
-            this.dni = dni; this.categoria = categoria; this.pp = pp; this.pg = pg;
+            this.posicionRnk = posicionRnk; this.dni = dni; this.categoria = categoria; this.pj = pj; this.pp = pp; this.pg = pg;
             this.puntaje = puntos; this.estado = estado; this.tc = tc; this.tj = tj;
         }
 
+        int posicionRnk;
         int dni;
         Categoria categoria;
         int pp;
@@ -36,6 +37,12 @@ namespace Dominio
         int tj;
         int tc;
         bool estado;
+
+        public int PosicionRnk
+        {
+            get { return posicionRnk; }
+            set { posicionRnk = value; }
+        }
 
         public int Dni{
         	get { return dni; } 
@@ -63,7 +70,7 @@ namespace Dominio
         public int PJ
         {
             get { return pj; }
-            set { pj = pg + pp; }
+            set { pj = value; }
         }
 
         public int Puntaje

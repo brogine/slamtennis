@@ -42,9 +42,13 @@ namespace Slam
             if (EpReporteRanking.GetError(CboCategorias) == "")
             {
                 this.DialogResult = DialogResult.OK;
-                //(FrmReportes)this.Parent = (Convert.ToInt32(((DictionaryEntry)CboCategorias.SelectedItem).Key));
                 this.Close();
             }
+        }
+
+        public int IdCategoria
+        {
+            get { return Convert.ToInt32(((KeyValuePair<int, string>)CboCategorias.SelectedItem).Key); }
         }
 
         #region Miembros de IListadoCategorias
