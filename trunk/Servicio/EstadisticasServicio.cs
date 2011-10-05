@@ -32,9 +32,9 @@ namespace Servicio
 			Jugador bJugador = repoJugadores.Buscar(ui.Dni);
 			ICategoriaRepositorio CatRepo = new CategoriaRepositorio();
 			
-            Categoria bCategoria = CatRepo.Buscar(ui.IdCategoria); 
-			
-			Estadisticas nEstadistica = new Estadisticas(bCategoria, ui.PartidosPerdidos,
+            Categoria bCategoria = CatRepo.Buscar(ui.IdCategoria);
+
+            Estadisticas nEstadistica = new Estadisticas(0, bCategoria, 0, ui.PartidosPerdidos,
 			                                             ui.PartidosGanados, ui.Puntos, ui.TorneosCompletados,
                                                          ui.TorneosJugados, ui.Estado);
 			
@@ -91,7 +91,8 @@ namespace Servicio
 			foreach (Estadisticas Estadistica in ListaEstadisticas) {
 				Object Objeto = new object();
 				Jugador tempJugador = repoJugadores.Buscar(Estadistica.Dni);
-                Objeto = tempJugador.Dni + ",";
+                Objeto = Estadistica.PosicionRnk + ",";
+                Objeto += tempJugador.Dni + ",";
 				Objeto += tempJugador.Apellido + " " + tempJugador.Nombre + ",";
 				Objeto += Estadistica.PJ + "," + Estadistica.PG + "," + Estadistica.PP + ",";
                 Objeto += Estadistica.TorneosJugados + "," + Estadistica.TorneosCompletados + ",";

@@ -9,7 +9,7 @@ using Repositorio.Conexiones;
 
 namespace Repositorio
 {
-    public class EstadisticaRepositorio : IEstadisticaRepositorio, IMapeador<Estadisticas>
+    public class EstadisticaRepositorio : IEstadisticaRepositorio
     {
     	Conexion Conn;
     	public EstadisticaRepositorio(){
@@ -55,7 +55,7 @@ namespace Repositorio
     	public Estadisticas Buscar(int Dni, int IdCategoria){
     		String Consulta = " Select * From Jugadores Where Dni = ";
     		Consulta += Dni + " And IdCategoria = " + IdCategoria;
-    		return this.Mapear(Conn.Buscar(Consulta));
+    		return this.Mapear(Conn.Buscar(Consulta), 0);
     	}
 
         public bool Existe(int Dni, int IdCategoria)
@@ -74,18 +74,22 @@ namespace Repositorio
     		string Consulta = " Select * From Jugadores Where Dni = " + Dni;
     		List<Estadisticas> ListaEstadisticas = new List<Estadisticas>();
     		DataTable Tabla = Conn.Listar(Consulta);
+            int i = 1;
     		foreach (DataRow Fila in Tabla.Rows) {
-    			ListaEstadisticas.Add(this.Mapear(Fila));
+    			ListaEstadisticas.Add(this.Mapear(Fila, i));
+                i++;
     		}
     		return ListaEstadisticas;
     	}
     	
     	public List<Estadisticas> ListarPorCategoria(int IdCategoria){
-    		string Consulta = " Select * From Jugadores Where IdCategoria = " + IdCategoria;
+            string Consulta = " Select * From Jugadores Where IdCategoria = " + IdCategoria + " Order By Puntos ";
     		List<Estadisticas> ListaEstadisticas = new List<Estadisticas>();
     		DataTable Tabla = Conn.Listar(Consulta);
+            int i = 1;
     		foreach (DataRow Fila in Tabla.Rows) {
-    			ListaEstadisticas.Add(this.Mapear(Fila));
+                ListaEstadisticas.Add(this.Mapear(Fila, i));
+                i++;
     		}
     		return ListaEstadisticas;
     	}
@@ -98,9 +102,11 @@ namespace Repositorio
             Consulta += " on J.IdCategoria = C.IdCategoria where j.IdCategoria =" + IdCategoria + " and a.IdClub= "+IdClub;
             List<Estadisticas> ListaEstadisticas = new List<Estadisticas>();
             DataTable Tabla = Conn.Listar(Consulta);
+            int i = 1;
             foreach (DataRow Fila in Tabla.Rows)
             {
-                ListaEstadisticas.Add(this.Mapear(Fila));
+                ListaEstadisticas.Add(this.Mapear(Fila, i));
+                i++;
             }
             return ListaEstadisticas;
         }
@@ -109,7 +115,7 @@ namespace Repositorio
 
         #region Miembros de IMapeador<Estadisticas>
 
-        public Estadisticas Mapear(DataRow Fila)
+        public Estadisticas Mapear(DataRow Fila, int valor)
         {
         	Estadisticas Estadistica = null;
             if (Fila != null)
@@ -119,11 +125,12 @@ namespace Repositorio
                 int Dni = Fila.IsNull("Dni") ? 0 : Convert.ToInt32(Fila["Dni"]);
                 int PartidosPerdidos = Fila.IsNull("PartidosPerdidos") ? 0 : Convert.ToInt32(Fila["PartidosPerdidos"]);
                 int PartidosGanados = Fila.IsNull("PartidosGanados") ? 0 : Convert.ToInt32(Fila["PartidosGanados"]);
+                int PartidosJugados = PartidosGanados + PartidosPerdidos;
                 int Puntos = Fila.IsNull("Puntos") ? 0 : Convert.ToInt32(Fila["Puntos"]);
                 int TorneosCompletados = Fila.IsNull("TorneosCompletados") ? 0 : Convert.ToInt32(Fila["TorneosCompletados"]);
                 int TorneosJugados = Fila.IsNull("TorneosJugados") ? 0 : Convert.ToInt32(Fila["TorneosJugados"]);
                 bool Estado = Fila.IsNull("Estado") ? false : Convert.ToBoolean(Fila["Estado"]);
-                Estadistica = new Estadisticas(Dni, bCategoria, PartidosPerdidos, PartidosGanados,
+                Estadistica = new Estadisticas(valor, Dni, bCategoria, PartidosJugados, PartidosPerdidos, PartidosGanados,
                     Puntos,TorneosCompletados, TorneosJugados, Estado);
             }
             return Estadistica;

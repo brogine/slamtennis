@@ -9,6 +9,6 @@ namespace Reportes
     {
         object CrearInstancia(string NombreReporte, object Sender);
 
-        void Parametros(string[] NombresParametros, object[] ValorParametros);
+        void Parametros(string NombresParametro, object ValorParametro);
     }
 }
