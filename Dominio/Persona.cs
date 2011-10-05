@@ -103,7 +103,5 @@ namespace Dominio
             set { login = value; }
         }
         #endregion
-
-        
     }
 }
