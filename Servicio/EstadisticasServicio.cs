@@ -88,16 +88,18 @@ namespace Servicio
 			List<Estadisticas> ListaEstadisticas = repoEstadisticas.ListarPorCategoria(ui.IdCategoria);
 			IJugadorRepositorio repoJugadores = new JugadorRepositorio();
 			List<Object> ListaUI = new List<object>();
+            int i = 1;
 			foreach (Estadisticas Estadistica in ListaEstadisticas) {
 				Object Objeto = new object();
 				Jugador tempJugador = repoJugadores.Buscar(Estadistica.Dni);
-                Objeto = Estadistica.PosicionRnk + ",";
-                Objeto += tempJugador.Dni + ",";
+                Objeto = tempJugador.Dni + ",";
 				Objeto += tempJugador.Apellido + " " + tempJugador.Nombre + ",";
 				Objeto += Estadistica.PJ + "," + Estadistica.PG + "," + Estadistica.PP + ",";
                 Objeto += Estadistica.TorneosJugados + "," + Estadistica.TorneosCompletados + ",";
-				Objeto += Estadistica.Puntaje.ToString();
+				Objeto += Estadistica.Puntaje.ToString() + ",";
+                Objeto += i.ToString();
 				ListaUI.Add(Objeto);
+                i++;
 			}
 			ui.ListarEstadisticas = ListaUI;
 		}

@@ -135,7 +135,7 @@ namespace Servicio
 
         public void ListarJugadoresCategoria(Servicio.InterfacesUI.IListadoJugadoresCategoria UI)
         {
-            List<Jugador> ListaJuga = repoJugadores.ListarPorCategoria(UI.IdCategoria);
+            List<Jugador> ListaJugadores = repoJugadores.ListarPorCategoria(UI.IdCategoria);
             DataTable TablaUI = new DataTable("Datos");
             TablaUI.Columns.Add("Dni");
             TablaUI.Columns.Add("NombreApellido");
@@ -145,11 +145,14 @@ namespace Servicio
             TablaUI.Columns.Add("TJ");
             TablaUI.Columns.Add("TC");
             TablaUI.Columns.Add("Puntos");
-            foreach (Jugador Jugador in ListaJuga)
+            TablaUI.Columns.Add("Posicion");
+            int i = 1;
+            foreach (Jugador Jugador in ListaJugadores)
             {
                 TablaUI.Rows.Add(Jugador.Dni, Jugador.Nombre + " " + Jugador.Apellido, Jugador.Estadisticas[0].PJ,
                     Jugador.Estadisticas[0].PG, Jugador.Estadisticas[0].PP, Jugador.Estadisticas[0].TorneosJugados,
-                    Jugador.Estadisticas[0].TorneosCompletados, Jugador.Estadisticas[0].Puntaje);
+                    Jugador.Estadisticas[0].TorneosCompletados, Jugador.Estadisticas[0].Puntaje, i);
+                i++;
             }
             UI.Listar = TablaUI;
         }
