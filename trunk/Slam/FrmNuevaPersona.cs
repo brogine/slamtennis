@@ -745,7 +745,6 @@ namespace Slam
         {
             this.TxtApellido.Text = "";
             this.TxtCelular.Text = "";
-            this.TxtDni.Text = "";
             this.TxtDomicilio.Text = "";
             this.TxtEmail.Text = "";
             this.TxtNombre.Text = "";
@@ -792,8 +791,7 @@ namespace Slam
             }
         }
 
-<<<<<<< .mine
-        Image CopiarFoto(string RutaOrigen)
+        public Image CopiarFoto(string RutaOrigen)
         {
             Bitmap mapabit;
             Image imagen;
@@ -813,7 +811,6 @@ namespace Slam
             }
         }
 
-=======
         private void TxtDni_Leave(object sender, EventArgs e)
         {
             this.BuscarPersona();
@@ -845,6 +842,5 @@ namespace Slam
             }
         }
 
->>>>>>> .r191
     }
 }

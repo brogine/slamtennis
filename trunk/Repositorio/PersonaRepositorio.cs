@@ -36,12 +36,7 @@ namespace Repositorio
             Valores += "','" + Persona.Contacto.Telefono + "','" + Persona.Contacto.Celular;
             Valores += "','" + Persona.Contacto.Email  + "'," + Persona.Ubicacion.Localidad.IdLocalidad;
             Valores += ",'" + Persona.Ubicacion.Domicilio + "',";
-            byte[] imageData;
-            MemoryStream ms = new MemoryStream();
-            Persona.Foto.Save(ms, System.Drawing.Imaging.ImageFormat.Jpeg);
-            ms.Seek(0, SeekOrigin.Begin);
-            imageData = ms.ToArray();
-            Valores += "'" + imageData + "'";
+            Valores += "'" + GetBytes(Persona.Foto) + "'";
             try
             {
                 Conn.AgregarSinId("Personas", Campos, Valores);
@@ -89,7 +84,7 @@ namespace Repositorio
             Consulta += " Email = '" + Persona.Contacto.Email + "',";
             Consulta += " Localidad = " + Persona.Ubicacion.Localidad.IdLocalidad + ",";
             Consulta += " Domicilio = '" + Persona.Ubicacion.Domicilio + "',";
-            Consulta += " Foto ='" + Persona.Foto+"'";
+            Consulta += " Foto = '" + GetBytes(Persona.Foto) + "'";
             Consulta += " Where Dni = " + Persona.Dni;
             try
             {
@@ -150,7 +145,6 @@ namespace Repositorio
             if (bytes == null) return null;
             //
             MemoryStream ms = new MemoryStream(bytes);
-            Stream str;
             Bitmap bm = null;
             try
             {
@@ -161,6 +155,16 @@ namespace Repositorio
                 throw new RepositorioExeption("No se pudo obtener la imagen de la persona...", ex);
             }
             return bm;
+        }
+
+        byte[] GetBytes(Image imagen)
+        {
+            byte[] imageData;
+            MemoryStream ms = new MemoryStream();
+            imagen.Save(ms, System.Drawing.Imaging.ImageFormat.Jpeg);
+            ms.Seek(0, SeekOrigin.Begin);
+            imageData = ms.ToArray();
+            return imageData;
         }
 
     }
