@@ -64,7 +64,6 @@
             this.CboListaTorneo.Name = "CboListaTorneo";
             this.CboListaTorneo.Size = new System.Drawing.Size(219, 21);
             this.CboListaTorneo.TabIndex = 1;
-
             this.CboListaTorneo.SelectedIndexChanged += new System.EventHandler(this.CboListaTorneo_SelectedIndexChanged);
             // 
             // GrpEquipo1
@@ -145,7 +144,6 @@
             this.TxtResultado.Size = new System.Drawing.Size(100, 20);
             this.TxtResultado.TabIndex = 7;
             this.TxtResultado.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.TxtResultado.TextMaskFormat = System.Windows.Forms.MaskFormat.ExcludePromptAndLiterals;
             // 
             // BtnAceptar
             // 
@@ -165,6 +163,7 @@
             this.BtnSalir.TabIndex = 9;
             this.BtnSalir.Text = "Salir";
             this.BtnSalir.UseVisualStyleBackColor = true;
+            this.BtnSalir.Click += new System.EventHandler(this.BtnSalir_Click);
             // 
             // ChkEstado
             // 

@@ -44,8 +44,6 @@ namespace Repositorio
             Consulta += " Estado = " + (Partido.Estado ? 1 : 0);
             Consulta += " Where IdPartido = " + Partido.IdPartido;
             Conn.ActualizarOEliminar(Consulta);
-
-
         }
 
         public Partido Buscar(int IdPartido)

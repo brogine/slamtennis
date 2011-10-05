@@ -48,9 +48,13 @@
             // 
             // DgvListaPartidos
             // 
+            this.DgvListaPartidos.AllowUserToAddRows = false;
+            this.DgvListaPartidos.AllowUserToDeleteRows = false;
+            this.DgvListaPartidos.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.DgvListaPartidos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.DgvListaPartidos.Location = new System.Drawing.Point(12, 39);
             this.DgvListaPartidos.Name = "DgvListaPartidos";
+            this.DgvListaPartidos.ReadOnly = true;
             this.DgvListaPartidos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.DgvListaPartidos.Size = new System.Drawing.Size(551, 150);
             this.DgvListaPartidos.TabIndex = 1;
@@ -83,6 +87,7 @@
             this.BtnSalir.TabIndex = 4;
             this.BtnSalir.Text = "Salir";
             this.BtnSalir.UseVisualStyleBackColor = true;
+            this.BtnSalir.Click += new System.EventHandler(this.BtnSalir_Click);
             // 
             // label1
             // 
@@ -104,6 +109,9 @@
             this.Controls.Add(this.BtnAgregarPartido);
             this.Controls.Add(this.DgvListaPartidos);
             this.Controls.Add(this.CboListaTorneos);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "FrmListaPartidos";
             this.Text = "FrmListaPartidos";
             this.Load += new System.EventHandler(this.FrmListaPartidos_Load);

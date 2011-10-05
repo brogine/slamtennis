@@ -93,13 +93,24 @@ namespace Slam
         private void BtnAgregarPartido_Click(object sender, EventArgs e)
         {
             FrmNuevoPartido NuevoPartido = new FrmNuevoPartido();
-            NuevoPartido.Show();
+            if (NuevoPartido.ShowDialog() == DialogResult.OK)
+            {
+                servicioPartidos.ListarPartidos(this);
+            }
         }
 
         private void BtnModificar_Click(object sender, EventArgs e)
         {
             FrmNuevoPartido ModificaPartido = new FrmNuevoPartido(Convert.ToInt32(DgvListaPartidos.Rows[0].Cells[0].Value));
-            ModificaPartido.Show();
+            if (ModificaPartido.ShowDialog() == DialogResult.OK)
+            {
+                servicioPartidos.ListarPartidos(this);
+            }
+        }
+
+        private void BtnSalir_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }
