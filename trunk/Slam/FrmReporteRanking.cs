@@ -51,6 +51,11 @@ namespace Slam
             get { return Convert.ToInt32(((KeyValuePair<int, string>)CboCategorias.SelectedItem).Key); }
         }
 
+        public string Categoria
+        {
+            get { return ((KeyValuePair<int, string>)CboCategorias.SelectedItem).Value;}
+        }
+
         #region Miembros de IListadoCategorias
 
         public List<object> ListaUI

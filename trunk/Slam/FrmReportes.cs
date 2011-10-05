@@ -40,8 +40,9 @@ namespace Slam
                     if (frmReporteRanking.ShowDialog() == DialogResult.OK)
                     {
                         int IdCategoria = frmReporteRanking.IdCategoria;
+                        string Categoria = frmReporteRanking.Categoria;
                         object reporteActual = servicioReportes.CrearInstancia(e.Node.Text, IdCategoria);
-                        servicioReportes.Parametros("Categoria", IdCategoria);
+                        servicioReportes.Parametros("Categoria", Categoria);
                         RptViewer.ReportSource = reporteActual;
                     }
                     break;
