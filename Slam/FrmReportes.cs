@@ -47,6 +47,7 @@ namespace Slam
                     }
                     break;
             }
+            this.WindowState = FormWindowState.Maximized;
         }
 
     }
