@@ -1,6 +1,6 @@
 ﻿namespace Slam
 {
-    partial class FrmNuevoPartido
+    partial class FrmAsignarResultado
     {
         /// <summary>
         /// Required designer variable.
