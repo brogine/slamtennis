@@ -29,7 +29,7 @@ namespace Servicio
             
             Empleado Emp = new Empleado(UI.Dni, UI.Nombre, UI.Apellido, UI.FechaNac, Nacionalidad, UI.Sexo, UI.Estado, Ubicacion, Contacto, UI.Puesto);
             Emp.Login = Login;
-            Emp.Foto = Emp.CopiarFoto(UI.Foto, UI.Dni);
+            Emp.Foto = UI.Foto;
             EmpleadoRepo.Agregar(Emp);
         }
 
@@ -47,7 +47,7 @@ namespace Servicio
             ModEmp.Puesto = UI.Puesto;
             ModEmp.Login.Usuario = UI.Usuario;
             ModEmp.Login.Password = UI.Password;
-            ModEmp.Foto = ModEmp.CopiarFoto(UI.Foto, UI.Dni);
+            ModEmp.Foto = UI.Foto;
             //Atributos de Value Object "Contacto"
             ModEmp.Contacto.Celular = UI.Celular;
             ModEmp.Contacto.Email = UI.Email;
@@ -113,7 +113,6 @@ namespace Servicio
                 Objeto = Empleado.Dni+",";
                 Objeto += Empleado.Apellido + " " + Empleado.Nombre + ",";
                 Objeto += Empleado.Puesto + ",";
-                Objeto += Empleado.Foto;
                 ListaUI.Add(Objeto);
             }
             UI.ListaEmpleados = ListaUI;

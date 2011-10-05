@@ -20,7 +20,7 @@
 
 body   
 {
-	background-color:#333;
+	background-color:White;
     font-size: .75em;
     font-family: Verdana, Helvetica, Sans-Serif;
     margin: 0px;
@@ -111,7 +111,7 @@ first child of the left and right table columns */
 {
     width: 960px;
     background-color: #fff;
-    margin: 20px auto 0px auto;
+    margin: 0px auto 0px auto;
     border: 1px solid #496077;
 }
 
@@ -284,7 +284,8 @@ div.accountInfo
     border-color:White;
     padding: 10px;
     color: White;
-    background-color:Gray;
+    /*background-color:#000066;*/
+    background: #0094D6 url(Content/bg1.gif) repeat-x;
 }
 
 .loginDisplay a:link

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Drawing;
 
 namespace Servicio.InterfacesUI
 {
@@ -25,6 +26,6 @@ namespace Servicio.InterfacesUI
         string Usuario { get; set; }
         string Password { get; set; }
         bool Estado { get; set; }
-        string Foto { get; set; }
+        Image Foto { get; set; }
     }
 }

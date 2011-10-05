@@ -14,39 +14,57 @@ namespace SlamWeb {
     public partial class Default {
         
         /// <summary>
-        /// Medicos control.
+        /// Estadisticos control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ImageButton Medicos;
+        protected global::System.Web.UI.WebControls.ImageButton Estadisticos;
         
         /// <summary>
-        /// ImageButton2 control.
+        /// Historicos control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ImageButton ImageButton2;
+        protected global::System.Web.UI.WebControls.ImageButton Historicos;
         
         /// <summary>
-        /// Turnos control.
+        /// Consultas control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ImageButton Turnos;
+        protected global::System.Web.UI.WebControls.ImageButton Consultas;
         
         /// <summary>
-        /// HorariosMed control.
+        /// Torneos control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ImageButton HorariosMed;
+        protected global::System.Web.UI.WebControls.ImageButton Torneos;
+        
+        /// <summary>
+        /// Llaves control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ImageButton Llaves;
+        
+        /// <summary>
+        /// Mensajes control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ImageButton Mensajes;
     }
 }
