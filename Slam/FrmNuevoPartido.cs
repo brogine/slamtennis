@@ -19,6 +19,7 @@ namespace Slam
         public FrmNuevoPartido()
         {
             InitializeComponent();
+            this.Text = "Nuevo Partido";
             servicioTorneos = (IListadoTorneoServicio)AppContext.Instance.GetObject(ImplementaTorneos);
             servicioTorneos.ListarTorneosCerrados(this);
             servicioPartido = (IPartidoServicio)AppContext.Instance.GetObject(ImplemetaPartidos);
@@ -27,6 +28,7 @@ namespace Slam
         public FrmNuevoPartido(int IdPartido)
         {
             InitializeComponent();
+            this.Text = "Modificar Partido";
             this.IdPartido = IdPartido;
             servicioTorneos = (IListadoTorneoServicio)AppContext.Instance.GetObject(ImplementaTorneos);
             servicioTorneos.ListarTorneosCerrados(this);
@@ -219,6 +221,12 @@ namespace Slam
                 servicioInscripciones = (IListadoInscripcionServicio)AppContext.Instance.GetObject(ImplementaInscripciones);
                 servicioInscripciones.ListarPorTorneo(this);
             }
+        }
+
+        private void BtnSalir_Click(object sender, EventArgs e)
+        {
+            this.DialogResult = DialogResult.OK;
+            this.Close();
         }
     }
 }
