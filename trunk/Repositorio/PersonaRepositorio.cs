@@ -5,6 +5,8 @@ using System.Text;
 using Dominio;
 using Repositorio.Conexiones;
 using System.Data;
+using System.IO;
+using System.Drawing;
 
 namespace Repositorio
 {
@@ -34,7 +36,12 @@ namespace Repositorio
             Valores += "','" + Persona.Contacto.Telefono + "','" + Persona.Contacto.Celular;
             Valores += "','" + Persona.Contacto.Email  + "'," + Persona.Ubicacion.Localidad.IdLocalidad;
             Valores += ",'" + Persona.Ubicacion.Domicilio + "',";
-            Valores += "'" + Persona.Foto + "'";
+            byte[] imageData;
+            MemoryStream ms = new MemoryStream();
+            Persona.Foto.Save(ms, System.Drawing.Imaging.ImageFormat.Jpeg);
+            ms.Seek(0, SeekOrigin.Begin);
+            imageData = ms.ToArray();
+            Valores += "'" + imageData + "'";
             try
             {
                 Conn.AgregarSinId("Personas", Campos, Valores);
@@ -114,7 +121,7 @@ namespace Repositorio
             Objeto.FechaNac = (Fila.IsNull("FechaNacimiento") == true ? DateTime.Now : Convert.ToDateTime(Fila["FechaNacimiento"]));
             Objeto.Nacionalidad = UbicacionRepo.ObtenerPais(Fila.IsNull("Nacionalidad") == true ? 0 : (int)Fila["Nacionalidad"]);
             Objeto.Sexo = (Fila.IsNull("Sexo") == true ? string.Empty : Convert.ToString(Fila["Sexo"]));
-            Objeto.Foto=(Fila.IsNull("Foto")==true?string.Empty: Convert.ToString(Fila["Foto"]));
+            Objeto.Foto = (Fila.IsNull("Foto") == true ? null : BytesImage((Byte[])Fila["Foto"]));
             //Value Object Contacto
             string Telefono = (Fila.IsNull("Telefono") == true ? string.Empty : Convert.ToString(Fila["Telefono"]));
             string Celular = (Fila.IsNull("Celular") == true ? string.Empty : Convert.ToString(Fila["Celular"]));
@@ -136,6 +143,24 @@ namespace Repositorio
             Objeto.Login = Login;
             
             return Objeto;
+        }
+
+        System.Drawing.Image BytesImage(byte[] bytes)
+        {
+            if (bytes == null) return null;
+            //
+            MemoryStream ms = new MemoryStream(bytes);
+            Stream str;
+            Bitmap bm = null;
+            try
+            {
+                bm = new Bitmap(ms);
+            }
+            catch (Exception ex)
+            {
+                throw new RepositorioExeption("No se pudo obtener la imagen de la persona...", ex);
+            }
+            return bm;
         }
 
     }

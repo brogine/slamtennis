@@ -85,6 +85,13 @@
     <Compile Include="Historicos.aspx.designer.cs">
       <DependentUpon>Historicos.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Llaves.aspx.cs">
+      <DependentUpon>Llaves.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Llaves.aspx.designer.cs">
+      <DependentUpon>Llaves.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Login.aspx.cs">
       <DependentUpon>Login.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -117,14 +124,28 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Consultas.aspx" />
+    <Content Include="Content\bg1.gif" />
+    <Content Include="Content\Consultas.png" />
+    <Content Include="Content\Estadisticos.png" />
+    <Content Include="Content\HistorialCategoria.png" />
+    <Content Include="Content\Laves.png" />
+    <Content Include="Content\Mensajes.png" />
     <Content Include="Content\Slam.jpg" />
+    <Content Include="Content\Torneos.png" />
     <Content Include="Default.aspx" />
     <Content Include="Estadisticos.aspx" />
     <Content Include="Historicos.aspx" />
+    <Content Include="Llaves.aspx" />
     <Content Include="Login.aspx" />
     <Content Include="Mensajes.aspx" />
     <Content Include="Site.Master" />
     <Content Include="Torneos.aspx" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Servicio\Servicio.csproj">
+      <Project>{2F2D0BB4-3527-426C-B8CD-0C40D1250853}</Project>
+      <Name>Servicio</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

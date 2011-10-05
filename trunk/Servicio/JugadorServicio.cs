@@ -47,7 +47,7 @@ namespace Servicio
                     Nacionalidad, UI.Sexo, nContacto, nUbicacion, UI.Estado, nLogin);
             }
 
-            nJugador.Foto = nJugador.CopiarFoto(UI.Foto, UI.Dni);
+            nJugador.Foto = UI.Foto;
             repoJugadores.Agregar(nJugador);
         }
 
@@ -70,7 +70,7 @@ namespace Servicio
 			bJugador.Nombre = UI.Nombre;
 			bJugador.RelacionTutor = UI.RelacionTutor;
 			bJugador.Sexo = UI.Sexo;
-            bJugador.Foto = bJugador.CopiarFoto(UI.Foto, UI.Dni);
+            bJugador.Foto = UI.Foto;
 			bJugador.Ubicacion = new Ubicacion(repoUbicacion.ObtenerLocalidad(UI.Localidad), UI.Domicilio);
 			repoJugadores.Modificar(bJugador);
             GC.Collect();
@@ -122,7 +122,6 @@ namespace Servicio
                 Objeto += Jugador.FechaNac.ToShortDateString() + ",";
                 Objeto += Jugador.Nacionalidad.Nombre + ",";
                 Objeto += Jugador.Sexo+",";
-                Objeto += Jugador.Foto;
                 ListaUI.Add(Objeto);
             }
             UI.Listar = ListaUI;
