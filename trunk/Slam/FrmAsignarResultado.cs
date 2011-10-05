@@ -9,9 +9,9 @@ using System.Windows.Forms;
 
 namespace Slam
 {
-    public partial class FrmNuevoPartido : Form
+    public partial class FrmAsignarResultado : Form
     {
-        public FrmNuevoPartido()
+        public FrmAsignarResultado()
         {
             InitializeComponent();
         }
