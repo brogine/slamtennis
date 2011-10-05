@@ -41,6 +41,7 @@
             this.TxtResultado = new System.Windows.Forms.MaskedTextBox();
             this.BtnAceptar = new System.Windows.Forms.Button();
             this.BtnSalir = new System.Windows.Forms.Button();
+            this.ChkEstado = new System.Windows.Forms.CheckBox();
             this.GrpEquipo1.SuspendLayout();
             this.GrpEquipo2.SuspendLayout();
             this.SuspendLayout();
@@ -160,11 +161,22 @@
             this.BtnSalir.Text = "Salir";
             this.BtnSalir.UseVisualStyleBackColor = true;
             // 
+            // ChkEstado
+            // 
+            this.ChkEstado.AutoSize = true;
+            this.ChkEstado.Location = new System.Drawing.Point(12, 150);
+            this.ChkEstado.Name = "ChkEstado";
+            this.ChkEstado.Size = new System.Drawing.Size(56, 17);
+            this.ChkEstado.TabIndex = 1;
+            this.ChkEstado.Text = "Activo";
+            this.ChkEstado.UseVisualStyleBackColor = true;
+            // 
             // FrmNuevoPartido
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(591, 179);
+            this.Controls.Add(this.ChkEstado);
             this.Controls.Add(this.BtnSalir);
             this.Controls.Add(this.BtnAceptar);
             this.Controls.Add(this.TxtResultado);
@@ -200,5 +212,6 @@
         private System.Windows.Forms.MaskedTextBox TxtResultado;
         private System.Windows.Forms.Button BtnAceptar;
         private System.Windows.Forms.Button BtnSalir;
+        private System.Windows.Forms.CheckBox ChkEstado;
     }
 }
