@@ -37,6 +37,7 @@ namespace Slam
         {
             InitializeComponent();
             Tipo = _Tipo;
+            this.Text = "Nueva/o " + _Tipo.ToString();
         }
 
         public FrmNuevaPersona(TipoPersona _Tipo, int _Dni)
@@ -44,6 +45,7 @@ namespace Slam
             InitializeComponent();
             Tipo = _Tipo;
             Dni = _Dni;
+            this.Text = "Modificar " + _Tipo.ToString();
         }
 
         private void FrmNuevaPersona_Load(object sender, EventArgs e)

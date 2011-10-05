@@ -261,7 +261,7 @@
             this.Controls.Add(this.CboClubes);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FrmNuevaSede";
-            this.Text = "FrmNuevaSede";
+            this.Text = "Nueva Sede";
             this.Load += new System.EventHandler(this.FrmNuevaSede_Load);
             ((System.ComponentModel.ISupportInitialize)(this.EpSedes)).EndInit();
             this.ResumeLayout(false);

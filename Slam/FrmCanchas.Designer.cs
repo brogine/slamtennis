@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmCanchas));
             this.EpCanchas = new System.Windows.Forms.ErrorProvider(this.components);
             this.BtnGuardar = new System.Windows.Forms.Button();
             this.BtnCancelar = new System.Windows.Forms.Button();
@@ -175,8 +176,9 @@
             this.Controls.Add(this.CboSuperficie);
             this.Controls.Add(this.BtnCancelar);
             this.Controls.Add(this.BtnGuardar);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FrmCanchas";
-            this.Text = "FrmCanchas";
+            this.Text = "Nueva Cancha";
             this.Load += new System.EventHandler(this.FrmCanchas_Load);
             ((System.ComponentModel.ISupportInitialize)(this.EpCanchas)).EndInit();
             this.ResumeLayout(false);
