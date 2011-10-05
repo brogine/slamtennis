@@ -14,6 +14,8 @@ namespace Repositorio
 
         Partido Buscar(int IdPartido);
 
+        bool Existe(int IdPartido);
+
         List<Partido> Listar(int IdTorneo);
     }
 }

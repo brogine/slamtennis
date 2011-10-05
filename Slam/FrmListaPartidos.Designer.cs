@@ -51,6 +51,7 @@
             this.DgvListaPartidos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.DgvListaPartidos.Location = new System.Drawing.Point(12, 39);
             this.DgvListaPartidos.Name = "DgvListaPartidos";
+            this.DgvListaPartidos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.DgvListaPartidos.Size = new System.Drawing.Size(551, 150);
             this.DgvListaPartidos.TabIndex = 1;
             // 
@@ -62,6 +63,7 @@
             this.BtnAgregarPartido.TabIndex = 2;
             this.BtnAgregarPartido.Text = "Agregar";
             this.BtnAgregarPartido.UseVisualStyleBackColor = true;
+            this.BtnAgregarPartido.Click += new System.EventHandler(this.BtnAgregarPartido_Click);
             // 
             // BtnModificar
             // 
@@ -71,6 +73,7 @@
             this.BtnModificar.TabIndex = 3;
             this.BtnModificar.Text = "Modificar";
             this.BtnModificar.UseVisualStyleBackColor = true;
+            this.BtnModificar.Click += new System.EventHandler(this.BtnModificar_Click);
             // 
             // BtnSalir
             // 
