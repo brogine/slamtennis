@@ -32,7 +32,7 @@ namespace Slam
         public int Dni;
         int IdLocalidad;
         int EdadJugador;
-        string PathFoto = "";
+        Image PathFoto = null;
         public FrmNuevaPersona(TipoPersona _Tipo)
         {
             InitializeComponent();
@@ -446,7 +446,7 @@ namespace Slam
             set { EdadJugador = value; }
         }
 
-        public string Foto
+        public Image Foto
         {
             get
             {
@@ -455,14 +455,10 @@ namespace Slam
             set
             {
                 PathFoto = value;
-                if (value != "")
+                if (value != null)
                 {
-                    string Path = AppDomain.CurrentDomain.BaseDirectory + value;
-                    if(File.Exists(Path))
-                    {
-                        FileStream Fs = new FileStream(AppDomain.CurrentDomain.BaseDirectory + value, FileMode.Open, FileAccess.Read);
-                        PbFoto.Image = Image.FromStream(Fs);
-                    }
+                    PbFoto.Image = value;
+
                 }
             }
         }
@@ -786,7 +782,7 @@ namespace Slam
             {
                 try
                 {
-                    PathFoto = Ofd.FileName;
+                    PathFoto = CopiarFoto(Ofd.FileName);
                     PbFoto.Image = Image.FromFile(Ofd.FileName);
                 }
                 catch(Exception)
@@ -796,6 +792,28 @@ namespace Slam
             }
         }
 
+<<<<<<< .mine
+        Image CopiarFoto(string RutaOrigen)
+        {
+            Bitmap mapabit;
+            Image imagen;
+            if (File.Exists(RutaOrigen))
+            {
+                FileInfo info = new FileInfo(RutaOrigen);
+                string extenc = info.Name.Replace(info.Extension, "");
+                mapabit = new Bitmap(RutaOrigen);
+                Size size = mapabit.Size;
+                double ratio = size.Height / size.Width;
+                imagen = mapabit.GetThumbnailImage(254, 205, null, IntPtr.Zero);
+                return imagen;
+            }
+            else
+            {
+                return null;
+            }
+        }
+
+=======
         private void TxtDni_Leave(object sender, EventArgs e)
         {
             this.BuscarPersona();
@@ -827,5 +845,6 @@ namespace Slam
             }
         }
 
+>>>>>>> .r191
     }
 }
