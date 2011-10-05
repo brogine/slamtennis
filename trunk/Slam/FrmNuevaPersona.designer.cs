@@ -582,6 +582,7 @@
             this.TxtDni.TabIndex = 1;
             this.TxtDni.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.TxtDni.TextMaskFormat = System.Windows.Forms.MaskFormat.ExcludePromptAndLiterals;
+            this.TxtDni.Leave += new System.EventHandler(this.TxtDni_Leave);
             this.TxtDni.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxtDni_KeyPress);
             // 
             // LblDni
