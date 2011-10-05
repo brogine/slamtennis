@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmListaEstadisticas));
             this.CboCategorias = new System.Windows.Forms.ComboBox();
             this.LblPorCategoria = new System.Windows.Forms.Label();
             this.LblPorClub = new System.Windows.Forms.Label();
@@ -72,7 +73,7 @@
             // 
             this.DgvEstadisticas.AllowUserToAddRows = false;
             this.DgvEstadisticas.AllowUserToDeleteRows = false;
-            this.DgvEstadisticas.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells;
+            this.DgvEstadisticas.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.DgvEstadisticas.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.DgvEstadisticas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.DgvEstadisticas.Location = new System.Drawing.Point(12, 86);
@@ -147,6 +148,7 @@
             this.Controls.Add(this.LblPorClub);
             this.Controls.Add(this.CboCategorias);
             this.Controls.Add(this.LblPorCategoria);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FrmListaEstadisticas";
             this.Text = "Estadísticas de Jugadores";
             this.Load += new System.EventHandler(this.FrmListaEstadisticas_Load);

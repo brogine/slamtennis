@@ -46,16 +46,19 @@ namespace Slam
 
         private void BtnGuardar_Click(object sender, EventArgs e)
         {
-            if (ClubServicio.Existe(this.idClub))
+            if (EpClubes.GetError(TxtNombrePresidente) == "" && EpClubes.GetError(TxtNombreClub) == "")
             {
-            ClubServicio.Modificar(this);
+                if (ClubServicio.Existe(this.idClub))
+                {
+                    ClubServicio.Modificar(this);
+                }
+                else
+                {
+                    ClubServicio.Agregar(this);
+                }
+                this.DialogResult = DialogResult.OK;
+                this.Close();
             }
-            else
-            {
-            ClubServicio.Agregar(this);
-            }
-            this.DialogResult= DialogResult.OK;
-            this.Close();
         }
 
         #region Miembros de IClubUI
@@ -115,6 +118,22 @@ namespace Slam
         }
 
         #endregion
+
+        private void TxtNombreClub_Validating(object sender, CancelEventArgs e)
+        {
+            if (TxtNombreClub.Text == "")
+                EpClubes.SetError(TxtNombreClub, "Este campo no puede estar en blanco.");
+            else
+                EpClubes.SetError(TxtNombreClub, "");
+        }
+
+        private void TxtNombrePresidente_Validating(object sender, CancelEventArgs e)
+        {
+            if (TxtNombrePresidente.Text == "")
+                EpClubes.SetError(TxtNombrePresidente, "Este campo no puede estar en blanco.");
+            else
+                EpClubes.SetError(TxtNombrePresidente, "");
+        }
 
     }
 }

@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmNuevoClub));
             this.label1 = new System.Windows.Forms.Label();
             this.TxtNombreClub = new System.Windows.Forms.TextBox();
@@ -35,6 +36,8 @@
             this.TxtNombrePresidente = new System.Windows.Forms.MaskedTextBox();
             this.ChkEstado = new System.Windows.Forms.CheckBox();
             this.BtnGuardar = new System.Windows.Forms.Button();
+            this.EpClubes = new System.Windows.Forms.ErrorProvider(this.components);
+            ((System.ComponentModel.ISupportInitialize)(this.EpClubes)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -52,6 +55,7 @@
             this.TxtNombreClub.Name = "TxtNombreClub";
             this.TxtNombreClub.Size = new System.Drawing.Size(219, 20);
             this.TxtNombreClub.TabIndex = 1;
+            this.TxtNombreClub.Validating += new System.ComponentModel.CancelEventHandler(this.TxtNombreClub_Validating);
             // 
             // label2
             // 
@@ -69,6 +73,7 @@
             this.TxtNombrePresidente.Size = new System.Drawing.Size(197, 20);
             this.TxtNombrePresidente.TabIndex = 5;
             this.TxtNombrePresidente.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.TxtNombrePresidente.Validating += new System.ComponentModel.CancelEventHandler(this.TxtNombrePresidente_Validating);
             // 
             // ChkEstado
             // 
@@ -90,6 +95,10 @@
             this.BtnGuardar.UseVisualStyleBackColor = true;
             this.BtnGuardar.Click += new System.EventHandler(this.BtnGuardar_Click);
             // 
+            // EpClubes
+            // 
+            this.EpClubes.ContainerControl = this;
+            // 
             // FrmNuevoClub
             // 
             this.AcceptButton = this.BtnGuardar;
@@ -104,8 +113,9 @@
             this.Controls.Add(this.label1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FrmNuevoClub";
-            this.Text = "FrmNuevoClub";
+            this.Text = "Nuevo Club";
             this.Load += new System.EventHandler(this.FrmNuevoClub_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.EpClubes)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -119,5 +129,6 @@
         private System.Windows.Forms.MaskedTextBox TxtNombrePresidente;
         private System.Windows.Forms.CheckBox ChkEstado;
         private System.Windows.Forms.Button BtnGuardar;
+        private System.Windows.Forms.ErrorProvider EpClubes;
     }
 }
