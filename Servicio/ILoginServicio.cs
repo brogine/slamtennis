@@ -15,6 +15,6 @@ namespace Servicio
 
         void OlvidoPassword(string usuario);
 
-        bool Validar(ILoginUI ui);
+        int Validar(ILoginUI ui);
     }
 }

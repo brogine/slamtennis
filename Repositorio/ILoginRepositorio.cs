@@ -8,7 +8,7 @@ namespace Repositorio
 {
     public interface ILoginRepositorio
     {
-        void Agregar(Login Objeto, int Dni);
+        void Agregar(Login Objeto);
 
         void Modificar(Login Objeto);
 

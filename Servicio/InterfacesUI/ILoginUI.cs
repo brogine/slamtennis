@@ -7,6 +7,8 @@ namespace Servicio.InterfacesUI
 {
     public interface ILoginUI
     {
+        int Dni { get; }
+
         string Usuario { get; }
 
         string Password { get; }
