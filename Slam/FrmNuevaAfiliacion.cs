@@ -118,16 +118,19 @@ namespace Slam
 
         private void button1_Click(object sender, EventArgs e)
         {
-            if (AfilServ.Existe(this))
+            if (EpAfiliacion.GetError(TxtDni) == "" && EpAfiliacion.GetError(CboListaClubes) == "")
             {
-                AfilServ.Modificar(this);
+                if (AfilServ.Existe(this))
+                {
+                    AfilServ.Modificar(this);
+                }
+                else
+                {
+                    AfilServ.Agregar(this);
+                }
+                this.DialogResult = DialogResult.OK;
+                this.Close();
             }
-            else
-            {
-                AfilServ.Agregar(this);
-            }
-            this.DialogResult = DialogResult.OK;
-            this.Close();
         }
 
         #endregion
@@ -157,6 +160,32 @@ namespace Slam
         private void CboListaClubes_KeyPress(object sender, KeyPressEventArgs e)
         {
             e.Handled = true;
+        }
+
+        private void CboListaClubes_Validating(object sender, CancelEventArgs e)
+        {
+            if (CboListaClubes.SelectedIndex < 0)
+                EpAfiliacion.SetError(CboListaClubes, "Debe Elegir un Club del desplegable.");
+            else
+                EpAfiliacion.SetError(CboListaClubes, "");
+        }
+
+        private void TxtDni_Validating(object sender, CancelEventArgs e)
+        {
+            if (TxtDni.Text == "")
+                EpAfiliacion.SetError(TxtDni, "Este campo no puede estar en blanco.");
+            else
+            {
+                if (LblExiste.Text == "")
+                    EpAfiliacion.SetError(TxtDni, "Presione Botón Comprobar para validar existencia del jugador");
+                else
+                {
+                    if (LblExiste.BackColor == Color.Red)
+                        EpAfiliacion.SetError(TxtDni, "El Jugador no Existe. No puede continuar.");
+                    else
+                        EpAfiliacion.SetError(TxtDni, "");
+                }
+            }
         }
     }
 }

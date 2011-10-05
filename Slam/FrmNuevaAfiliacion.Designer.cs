@@ -28,6 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmNuevaAfiliacion));
             this.CboListaClubes = new System.Windows.Forms.ComboBox();
             this.LblNombreClub = new System.Windows.Forms.Label();
             this.TxtDni = new System.Windows.Forms.MaskedTextBox();
@@ -38,7 +40,9 @@
             this.BtnComprobar = new System.Windows.Forms.Button();
             this.LblExiste = new System.Windows.Forms.Label();
             this.BtnNuevoJugador = new System.Windows.Forms.Button();
+            this.EpAfiliacion = new System.Windows.Forms.ErrorProvider(this.components);
             this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.EpAfiliacion)).BeginInit();
             this.SuspendLayout();
             // 
             // CboListaClubes
@@ -48,6 +52,7 @@
             this.CboListaClubes.Name = "CboListaClubes";
             this.CboListaClubes.Size = new System.Drawing.Size(198, 21);
             this.CboListaClubes.TabIndex = 0;
+            this.CboListaClubes.Validating += new System.ComponentModel.CancelEventHandler(this.CboListaClubes_Validating);
             this.CboListaClubes.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.CboListaClubes_KeyPress);
             // 
             // LblNombreClub
@@ -68,6 +73,7 @@
             this.TxtDni.TabIndex = 2;
             this.TxtDni.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.TxtDni.TextMaskFormat = System.Windows.Forms.MaskFormat.ExcludePromptAndLiterals;
+            this.TxtDni.Validating += new System.ComponentModel.CancelEventHandler(this.TxtDni_Validating);
             // 
             // label1
             // 
@@ -139,6 +145,10 @@
             this.BtnNuevoJugador.UseVisualStyleBackColor = true;
             this.BtnNuevoJugador.Click += new System.EventHandler(this.BtnNuevoJugador_Click);
             // 
+            // EpAfiliacion
+            // 
+            this.EpAfiliacion.ContainerControl = this;
+            // 
             // FrmNuevaAfiliacion
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -150,11 +160,13 @@
             this.Controls.Add(this.ChkEstado);
             this.Controls.Add(this.LblNombreClub);
             this.Controls.Add(this.CboListaClubes);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FrmNuevaAfiliacion";
-            this.Text = "FrmNuevaAfiliacion";
+            this.Text = "Nueva Afiliación";
             this.Load += new System.EventHandler(this.FrmNuevaAfiliacion_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.EpAfiliacion)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -172,5 +184,6 @@
         private System.Windows.Forms.Button BtnNuevoJugador;
         private System.Windows.Forms.Button BtnComprobar;
         private System.Windows.Forms.Label LblExiste;
+        private System.Windows.Forms.ErrorProvider EpAfiliacion;
     }
 }

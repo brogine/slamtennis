@@ -582,6 +582,10 @@ namespace Slam
 
         private void GbDatosPersonales_Validating(object sender, CancelEventArgs e)
         {
+            if (TxtDni.Text == "")
+                EpNuevaPersona.SetError(TxtDni, "El campo no puede estar en blanco.");
+            else
+                EpNuevaPersona.SetError(TxtDni, "");
             if (TxtNombre.Text == "")
                 EpNuevaPersona.SetError(TxtNombre, "El campo no puede estar en blanco.");
             else
@@ -726,28 +730,7 @@ namespace Slam
         {
             if (e.KeyChar == 13)
             {
-                try
-                {
-                    Dni = int.Parse(TxtDni.Text);
-                    switch (Tipo)
-                    {
-                        case TipoPersona.Arbitro:
-                            servicioArbitros.Buscar(this);
-                            break;
-                        case TipoPersona.Empleado:
-                            servicioEmpleados.Buscar(this);
-                            break;
-                        case TipoPersona.Jugador:
-                            servicioJugadores.Buscar(this);
-                            break;
-                    }
-                    
-                }
-                catch (Exception ex)
-                {
-                    Blanquear();
-                    MessageBox.Show(ex.Message);
-                }
+                this.BuscarPersona();
             }
         }
 
@@ -808,6 +791,37 @@ namespace Slam
                 {
                     MessageBox.Show("El archivo que buscó no es una foto soportada por el sistema. Busque nuevamente.");
                 }
+            }
+        }
+
+        private void TxtDni_Leave(object sender, EventArgs e)
+        {
+            this.BuscarPersona();
+        }
+
+        private void BuscarPersona()
+        {
+            try
+            {
+                Dni = int.Parse(TxtDni.Text);
+                switch (Tipo)
+                {
+                    case TipoPersona.Arbitro:
+                        servicioArbitros.Buscar(this);
+                        break;
+                    case TipoPersona.Empleado:
+                        servicioEmpleados.Buscar(this);
+                        break;
+                    case TipoPersona.Jugador:
+                        servicioJugadores.Buscar(this);
+                        break;
+                }
+
+            }
+            catch (Exception ex)
+            {
+                Blanquear();
+                MessageBox.Show(ex.Message);
             }
         }
 
