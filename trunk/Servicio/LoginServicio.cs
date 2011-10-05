@@ -19,7 +19,7 @@ namespace Servicio
         public void Agregar(Servicio.InterfacesUI.ILoginUI ui)
         {
             if (!loginRepo.Existe(ui.Usuario))
-                loginRepo.Agregar(new Dominio.Login(ui.Usuario, ui.Password, ui.Estado), 123);
+                loginRepo.Agregar(new Dominio.Login(ui.Usuario, ui.Password, ui.Dni, ui.Estado));
             else
                 throw new ServicioExeption("El usuario ingresado ya existe.");
         }
@@ -37,17 +37,17 @@ namespace Servicio
             throw new NotImplementedException();
         }
 
-        public bool Validar(Servicio.InterfacesUI.ILoginUI ui)
+        public int Validar(Servicio.InterfacesUI.ILoginUI ui)
         {
             if (!loginRepo.Existe(ui.Usuario))
-                return false;
+                return 0;
             else
             {
                 Login bLogin = loginRepo.Obtener(ui.Usuario);
                 if (bLogin.Password == ui.Password && bLogin.Estado)
-                    return true;
+                    return bLogin.Dni;
                 else
-                    return false;
+                    return 0;
             }
         }
 

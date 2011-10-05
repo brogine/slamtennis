@@ -31,7 +31,7 @@ namespace Servicio
             nUbicacion = new Ubicacion(repoUbicacion.ObtenerLocalidad(UI.Localidad), UI.Domicilio);
             Pais Nacionalidad = repoUbicacion.ObtenerPais(UI.Nacionalidad);
 
-            Login nLogin = new Login(UI.Usuario, UI.Password, UI.Estado);
+            Login nLogin = new Login(UI.Usuario, UI.Password, UI.Dni, UI.Estado);
 
             if (UI.Tutor != "" && UI.RelacionTutor != "")
             {
@@ -64,7 +64,7 @@ namespace Servicio
 			bJugador.Tutor = UI.Tutor;
 			bJugador.Estado = UI.Estado;
 			bJugador.FechaNac = UI.FechaNac;
-			bJugador.Login = new Login(UI.Usuario, UI.Password, UI.Estado);
+			bJugador.Login = new Login(UI.Usuario, UI.Password, UI.Dni, UI.Estado);
 			IUbicacionRepositorio repoUbicacion = new UbicacionRepositorio();
 			bJugador.Nacionalidad = repoUbicacion.ObtenerPais(UI.Nacionalidad);
 			bJugador.Nombre = UI.Nombre;

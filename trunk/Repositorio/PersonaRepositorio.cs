@@ -47,9 +47,9 @@ namespace Repositorio
             ILoginRepositorio repoLogin = new LoginRepositorio();
             if (!repoLogin.Existe(Persona.Dni))
             {
-                Login nLogin = new Login(Persona.Login.Usuario, Persona.Login.Password, Persona.Login.Estado);
+                Login nLogin = new Login(Persona.Login.Usuario, Persona.Login.Password, Persona.Dni, Persona.Login.Estado);
                 
-                repoLogin.Agregar(nLogin, Persona.Dni);
+                repoLogin.Agregar(nLogin);
             }
         }
 
@@ -132,7 +132,7 @@ namespace Repositorio
             string Usuario = Fila.IsNull("Usuario") ? string.Empty : Fila["Usuario"].ToString();
             string Password = Fila.IsNull("Password") ? string.Empty : Fila["Password"].ToString();
             bool Estado = Fila.IsNull("Estado") ? false : Convert.ToBoolean(Fila["Estado"]);
-            Login Login = new Login(Usuario, Password, Estado);
+            Login Login = new Login(Usuario, Password, Objeto.Dni, Estado);
             Objeto.Login = Login;
             
             return Objeto;

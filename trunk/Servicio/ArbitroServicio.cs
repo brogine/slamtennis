@@ -25,7 +25,7 @@ namespace Servicio
             Pais Nacionalidad = Ubica.ObtenerPais(UI.Nacionalidad);
             Ubicacion Ubicacion = new Ubicacion(Ubica.ObtenerLocalidad(UI.Localidad), UI.Domicilio);
             Contacto Contacto = new Contacto(UI.Telefono, UI.Celular, UI.Email);
-            Login Login = new Login(UI.Usuario, UI.Password, true);
+            Login Login = new Login(UI.Usuario, UI.Password, UI.Dni, true);
             Arbitro NuevoArb = new Arbitro(UI.Dni, UI.Nombre, UI.Apellido, UI.FechaNac, Nacionalidad, UI.Sexo, Contacto, Ubicacion, UI.Badge, UI.Nivel, UI.Estado);
             NuevoArb.Login = Login;
             NuevoArb.Foto = NuevoArb.CopiarFoto(UI.Foto, UI.Dni);

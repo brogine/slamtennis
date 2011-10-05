@@ -7,13 +7,14 @@ namespace Dominio
 {
     public class Login
     {
-        public Login(string usuario, string contraseña, bool estado)
+        public Login(string usuario, string contraseña, int dni, bool estado)
         {
-            this.usuario = usuario; this.password = contraseña; this.estado = estado;
+            this.usuario = usuario; this.password = contraseña; this.dni = dni; this.estado = estado;
         }
 
         string usuario;
         string password;
+        int dni;
         bool estado;
 
         public String Usuario
@@ -36,6 +37,12 @@ namespace Dominio
                     throw new DominioException("Caracteres inválidos en cadena ingresada.");
                 password = value; 
             }
+        }
+
+        public int Dni
+        {
+            get { return dni; }
+            set { dni = value; }
         }
 
         public Boolean Estado

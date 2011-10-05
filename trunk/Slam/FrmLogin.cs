@@ -34,11 +34,11 @@ namespace Slam
             //{
             //    try
             //    {
-            //        if (LoginServicio.Validar(this))
+            //        if (LoginServicio.Validar(this) != 0)
             //        {
-                        FrmPrincipal Principal = new FrmPrincipal(this);
-                        Principal.Show();
-                        this.Hide();
+                          FrmPrincipal Principal = new FrmPrincipal(this);
+                          Principal.Show();
+                          this.Hide();
             //        }
             //        else
             //            MessageBox.Show("Datos de Login incorrectos", "Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
@@ -76,6 +76,14 @@ namespace Slam
         public string Password
         {
             get { return TxtPassword.Text; }
+        }
+
+        public int Dni
+        {
+            get
+            {
+                throw new NotImplementedException();
+            }
         }
 
         public bool Estado

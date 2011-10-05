@@ -17,11 +17,11 @@ namespace Repositorio
 
         #region Miembros de ILoginRepositorio
 
-        public void Agregar(Dominio.Login Objeto, int Dni)
+        public void Agregar(Dominio.Login Objeto)
         {
             try
             {
-                Conn.AgregarSinId("Login", "Dni,Usuario,Password,Estado", Dni + ",'" + Objeto.Usuario +
+                Conn.AgregarSinId("Login", "Dni,Usuario,Password,Estado", Objeto.Dni + ",'" + Objeto.Usuario +
                     "','" + Objeto.Password + "'," + (Objeto.Estado ? 1 : 0));
             }
             catch (Exception ex)
@@ -82,10 +82,11 @@ namespace Repositorio
             Login mLogin = null;
             if (Fila != null)
             {
+                int dni = Fila.IsNull("Dni") ? 0 : Convert.ToInt32(Fila["Dni"]);
                 string usuario = Fila.IsNull("Usuario") == true ? string.Empty : Fila["Usuario"].ToString();
                 string password = Fila.IsNull("Password") == true ? string.Empty : Fila["Password"].ToString();
                 bool estado = Fila.IsNull("Estado") == true ? false : true;
-                mLogin = new Login(usuario, password, estado);
+                mLogin = new Login(usuario, password, dni, estado);
             }
             return mLogin;
         }
