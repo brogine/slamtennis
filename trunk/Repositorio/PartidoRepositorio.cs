@@ -28,7 +28,7 @@ namespace Repositorio
             int Equipo1 = Partido.Equipo1.IdInscripcion;
             int Equipo2 = Partido.Equipo2.IdInscripcion;
 
-            int IdPartido = Conn.Agregar("Partidos", "IdTorneo,Resultado,Fecha,Ronda,Estado", IdTorneo + "," + Resultado + "," + FechaFormateada + "," + Ronda + "," + Estado);
+            int IdPartido = Conn.Agregar("Partidos", "IdTorneo,Resultado,Fecha,Ronda,Estado", IdTorneo + ",'" + Resultado + "','" + FechaFormateada + "'," + Ronda + "," + (Estado?1:0));
             Conn.AgregarSinId("PartidoInscripcion", "IdPartido,IdInscripcion", IdPartido + "," + Equipo1);
             Conn.AgregarSinId("PartidoInscripcion", "IdPartido,IdInscripcion", IdPartido + "," + Equipo2);
             return IdPartido;
@@ -40,14 +40,17 @@ namespace Repositorio
             String Consulta = " Update Partidos Set ";
             Consulta += " Resultado = '" + Partido.Resultado + "', ";
             Consulta += " Fecha = '" + FechaFormateada + "', ";
+            Consulta += "Ronda =" + Partido.Ronda+",";
             Consulta += " Estado = " + (Partido.Estado ? 1 : 0);
             Consulta += " Where IdPartido = " + Partido.IdPartido;
             Conn.ActualizarOEliminar(Consulta);
+
+
         }
 
         public Partido Buscar(int IdPartido)
         {
-            String Consulta = " select * from Partidos Par inner join PartidoInscripcion Pins on Par.IdPartido = Pins.IdPartido where IdPartido =  " + IdPartido;
+            String Consulta = " select * from Partidos Par inner join PartidoInscripcion Pins on Par.IdPartido = Pins.IdPartido where Pins.IdPartido =  " + IdPartido;
             DataTable Dt = Conn.Listar(Consulta);
             Partido NuevoPartido = new Partido();
             for (int i = 0; i < 2; i++)
@@ -67,6 +70,16 @@ namespace Repositorio
             return NuevoPartido;
         }
 
+        public bool Existe(int IdPartido)
+        {
+            string Consulta = " Select Count(*) From Partidos Where IdPartido = " + IdPartido;
+            DataRow Fila = Conn.Buscar(Consulta);
+            int cantidad = Convert.ToInt32(Fila[0]);
+            if (cantidad == 1)
+                return true;
+            else
+                return false;
+        }
         public List<Partido> Listar(int IdTorneo)
         {
             String Consulta = " Select IdPartido From Partidos Where IdTorneo = " + IdTorneo;
@@ -94,11 +107,16 @@ namespace Repositorio
 
                 IInscripcionRepositorio repoInscripciones = new InscripcionRepositorio();
                 Inscripcion Equipo1 = repoInscripciones.Buscar(Fila.IsNull("IdInscripcion") ? 0 : Convert.ToInt32(Fila["IdInscripcion"]));
-
+                
                 DateTime Fecha = Fila.IsNull("Fecha") ? DateTime.Now : Convert.ToDateTime(Fila["Fecha"]);
                 string Resultado = Fila.IsNull("Resultado") ? string.Empty : Fila["Resultado"].ToString();
                 int Ronda = Fila.IsNull("Ronda") ? 0 : Convert.ToInt32(Fila["Ronda"]);
                 bool Estado = Fila.IsNull("Estado") ? false : Convert.ToBoolean(Fila["Estado"]);
+                nPartido = new Partido();
+                nPartido.IdPartido = IdPartido;
+                nPartido.Fecha = Fecha;
+                nPartido.Estado = Estado;
+                
                 nPartido.Equipo1 = Equipo1;
                 nPartido.Estado = Estado;
                 nPartido.Resultado = Resultado;

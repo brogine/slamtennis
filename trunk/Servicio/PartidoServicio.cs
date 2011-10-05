@@ -30,6 +30,7 @@ namespace Servicio
             Torneo Torneo = TornRepo.Buscar(UI.IdTorneo);
 
             Partido Partido = new Partido(Torneo, Equipo1, Equipo2, UI.Fecha, UI.Resultado, UI.Ronda, UI.Estado);
+            PartidoRepo.Agregar(Partido);
         }
 
         public void Modificar(IPartidoUI UI)
@@ -38,6 +39,7 @@ namespace Servicio
            Partido.Resultado = UI.Resultado;
            Partido.Fecha = UI.Fecha;
            Partido.Estado = UI.Estado;
+           Partido.Ronda = UI.Ronda;
            PartidoRepo.Modificar(Partido);
         }
 
@@ -45,6 +47,7 @@ namespace Servicio
         {
             Partido Partido = PartidoRepo.Buscar(UI.IdPartido);
             UI.Estado = Partido.Estado;
+            UI.IdTorneo = Partido.Torneo.IdTorneo;
             UI.IdEquipo1 = Partido.Equipo1.IdInscripcion;
             UI.IdEquipo2 = Partido.Equipo2.IdInscripcion;
             UI.Fecha = Partido.Fecha;
@@ -52,6 +55,10 @@ namespace Servicio
             UI.Ronda = Partido.Ronda;
         }
 
+        public bool Existe(int IdPartido)
+        {
+            return PartidoRepo.Existe(IdPartido);
+        }
         #endregion
 
 
@@ -67,8 +74,9 @@ namespace Servicio
             foreach (Partido Partido in Lista)
             {
                 object Objeto = new object();
-                Objeto = Partido.Equipo1.Equipo.Jugador1.Apellido +" - "+ Partido.Equipo1.Equipo.Jugador2.Apellido+",";
-                Objeto = Partido.Equipo2.Equipo.Jugador1.Apellido + " - " + Partido.Equipo2.Equipo.Jugador2.Apellido + ",";
+                Objeto = Partido.IdPartido + ",";
+                Objeto += Partido.Equipo1.Equipo.Jugador1.Apellido +" - "+ Partido.Equipo1.Equipo.Jugador2.Apellido+",";
+                Objeto += Partido.Equipo2.Equipo.Jugador1.Apellido + " - " + Partido.Equipo2.Equipo.Jugador2.Apellido + ",";
                 Objeto += Partido.Fecha + ",";
                 Objeto += Partido.Ronda +",";
                 Objeto += Partido.Resultado;

@@ -31,7 +31,7 @@
             this.LblTorneo = new System.Windows.Forms.Label();
             this.CboListaTorneo = new System.Windows.Forms.ComboBox();
             this.GrpEquipo1 = new System.Windows.Forms.GroupBox();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.CboEquipo1 = new System.Windows.Forms.ComboBox();
             this.LblVs = new System.Windows.Forms.Label();
             this.GrpEquipo2 = new System.Windows.Forms.GroupBox();
             this.CboEquipo2 = new System.Windows.Forms.ComboBox();
@@ -42,6 +42,8 @@
             this.BtnAceptar = new System.Windows.Forms.Button();
             this.BtnSalir = new System.Windows.Forms.Button();
             this.ChkEstado = new System.Windows.Forms.CheckBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.TxtRonda = new System.Windows.Forms.TextBox();
             this.GrpEquipo1.SuspendLayout();
             this.GrpEquipo2.SuspendLayout();
             this.SuspendLayout();
@@ -62,10 +64,12 @@
             this.CboListaTorneo.Name = "CboListaTorneo";
             this.CboListaTorneo.Size = new System.Drawing.Size(219, 21);
             this.CboListaTorneo.TabIndex = 1;
+
+            this.CboListaTorneo.SelectedIndexChanged += new System.EventHandler(this.CboListaTorneo_SelectedIndexChanged);
             // 
             // GrpEquipo1
             // 
-            this.GrpEquipo1.Controls.Add(this.comboBox1);
+            this.GrpEquipo1.Controls.Add(this.CboEquipo1);
             this.GrpEquipo1.Location = new System.Drawing.Point(12, 43);
             this.GrpEquipo1.Name = "GrpEquipo1";
             this.GrpEquipo1.Size = new System.Drawing.Size(252, 61);
@@ -73,13 +77,13 @@
             this.GrpEquipo1.TabStop = false;
             this.GrpEquipo1.Text = "Seleccione El Equipo 1";
             // 
-            // comboBox1
+            // CboEquipo1
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(6, 19);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(237, 21);
-            this.comboBox1.TabIndex = 0;
+            this.CboEquipo1.FormattingEnabled = true;
+            this.CboEquipo1.Location = new System.Drawing.Point(6, 19);
+            this.CboEquipo1.Name = "CboEquipo1";
+            this.CboEquipo1.Size = new System.Drawing.Size(237, 21);
+            this.CboEquipo1.TabIndex = 0;
             // 
             // LblVs
             // 
@@ -127,7 +131,7 @@
             // LblResultado
             // 
             this.LblResultado.AutoSize = true;
-            this.LblResultado.Location = new System.Drawing.Point(313, 117);
+            this.LblResultado.Location = new System.Drawing.Point(146, 151);
             this.LblResultado.Name = "LblResultado";
             this.LblResultado.Size = new System.Drawing.Size(55, 13);
             this.LblResultado.TabIndex = 6;
@@ -135,7 +139,7 @@
             // 
             // TxtResultado
             // 
-            this.TxtResultado.Location = new System.Drawing.Point(374, 110);
+            this.TxtResultado.Location = new System.Drawing.Point(207, 144);
             this.TxtResultado.Mask = "0-0/0-0/0-0";
             this.TxtResultado.Name = "TxtResultado";
             this.TxtResultado.Size = new System.Drawing.Size(100, 20);
@@ -151,6 +155,7 @@
             this.BtnAceptar.TabIndex = 8;
             this.BtnAceptar.Text = "Aceptar";
             this.BtnAceptar.UseVisualStyleBackColor = true;
+            this.BtnAceptar.Click += new System.EventHandler(this.BtnAceptar_Click);
             // 
             // BtnSalir
             // 
@@ -171,11 +176,29 @@
             this.ChkEstado.Text = "Activo";
             this.ChkEstado.UseVisualStyleBackColor = true;
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(313, 117);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(39, 13);
+            this.label1.TabIndex = 10;
+            this.label1.Text = "Ronda";
+            // 
+            // TxtRonda
+            // 
+            this.TxtRonda.Location = new System.Drawing.Point(358, 110);
+            this.TxtRonda.Name = "TxtRonda";
+            this.TxtRonda.Size = new System.Drawing.Size(50, 20);
+            this.TxtRonda.TabIndex = 11;
+            // 
             // FrmNuevoPartido
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(591, 179);
+            this.ClientSize = new System.Drawing.Size(591, 177);
+            this.Controls.Add(this.TxtRonda);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.ChkEstado);
             this.Controls.Add(this.BtnSalir);
             this.Controls.Add(this.BtnAceptar);
@@ -190,6 +213,7 @@
             this.Controls.Add(this.LblTorneo);
             this.Name = "FrmNuevoPartido";
             this.Text = "FrmNuevoPartido";
+            this.Load += new System.EventHandler(this.FrmNuevoPartido_Load);
             this.GrpEquipo1.ResumeLayout(false);
             this.GrpEquipo2.ResumeLayout(false);
             this.ResumeLayout(false);
@@ -202,7 +226,7 @@
         private System.Windows.Forms.Label LblTorneo;
         private System.Windows.Forms.ComboBox CboListaTorneo;
         private System.Windows.Forms.GroupBox GrpEquipo1;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox CboEquipo1;
         private System.Windows.Forms.Label LblVs;
         private System.Windows.Forms.GroupBox GrpEquipo2;
         private System.Windows.Forms.ComboBox CboEquipo2;
@@ -213,5 +237,7 @@
         private System.Windows.Forms.Button BtnAceptar;
         private System.Windows.Forms.Button BtnSalir;
         private System.Windows.Forms.CheckBox ChkEstado;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.TextBox TxtRonda;
     }
 }

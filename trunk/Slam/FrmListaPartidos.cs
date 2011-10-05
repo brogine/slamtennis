@@ -54,6 +54,8 @@ namespace Slam
             {
                 if (DgvListaPartidos.ColumnCount > 0)
                     DgvListaPartidos.Columns.Clear();
+                DgvListaPartidos.Columns.Add("IdPartido", "IdPartido");
+                DgvListaPartidos.Columns["IdPartido"].Visible = false;
                 DgvListaPartidos.Columns.Add("Equipo1", "Equipo 1");
                 DgvListaPartidos.Columns.Add("Equipo2", "Equipo 2");
                 DgvListaPartidos.Columns.Add("Fecha", "Fecha");
@@ -86,6 +88,18 @@ namespace Slam
         {
             servicioPartidos = (IListadoPartidoServicio)AppContext.Instance.GetObject(ImplementaPartidos);
             servicioPartidos.ListarPartidos(this);
+        }
+
+        private void BtnAgregarPartido_Click(object sender, EventArgs e)
+        {
+            FrmNuevoPartido NuevoPartido = new FrmNuevoPartido();
+            NuevoPartido.Show();
+        }
+
+        private void BtnModificar_Click(object sender, EventArgs e)
+        {
+            FrmNuevoPartido ModificaPartido = new FrmNuevoPartido(Convert.ToInt32(DgvListaPartidos.Rows[0].Cells[0].Value));
+            ModificaPartido.Show();
         }
     }
 }
