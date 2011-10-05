@@ -79,7 +79,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "FrmReporteRanking";
             this.ShowIcon = false;
-            this.StartPosition = System.Windows.Forms.FormStartPosition.WindowsDefaultBounds;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Load += new System.EventHandler(this.FrmReporteRanking_Load);
             ((System.ComponentModel.ISupportInitialize)(this.EpReporteRanking)).EndInit();
             this.ResumeLayout(false);

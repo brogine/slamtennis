@@ -41,7 +41,7 @@
             this.RptViewer.Location = new System.Drawing.Point(0, 0);
             this.RptViewer.Name = "RptViewer";
             this.RptViewer.SelectionFormula = "";
-            this.RptViewer.Size = new System.Drawing.Size(818, 519);
+            this.RptViewer.Size = new System.Drawing.Size(1142, 607);
             this.RptViewer.TabIndex = 0;
             this.RptViewer.ViewTimeSelectionFormula = "";
             // 
@@ -50,7 +50,7 @@
             this.TvReportes.Dock = System.Windows.Forms.DockStyle.Left;
             this.TvReportes.Location = new System.Drawing.Point(0, 0);
             this.TvReportes.Name = "TvReportes";
-            this.TvReportes.Size = new System.Drawing.Size(188, 519);
+            this.TvReportes.Size = new System.Drawing.Size(188, 607);
             this.TvReportes.TabIndex = 1;
             this.TvReportes.NodeMouseClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.TvReportes_NodeMouseClick);
             // 
@@ -58,7 +58,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(818, 519);
+            this.ClientSize = new System.Drawing.Size(1142, 607);
             this.Controls.Add(this.TvReportes);
             this.Controls.Add(this.RptViewer);
             this.Name = "FrmReportes";
