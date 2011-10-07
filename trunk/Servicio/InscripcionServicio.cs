@@ -23,18 +23,25 @@ namespace Servicio
             {
                 ITorneoRepositorio repoTorneos = new TorneoRepositorio();
                 IJugadorRepositorio repoJugadores = new JugadorRepositorio();
-                Torneo bTorneo = repoTorneos.Buscar(UI.IdTorneo);
-                Equipo nEquipo = new Equipo();
-                nEquipo.Jugador1 = repoJugadores.Buscar(UI.DniJugador1);
-                if (UI.DniJugador2 > 0)
+                try
                 {
-                    if (!repoInscripciones.Existe(UI.IdTorneo, UI.DniJugador2))
-                        nEquipo.Jugador2 = repoJugadores.Buscar(UI.DniJugador2);
-                    else
-                        throw new ServicioExeption("El Jugador con Dni " + UI.DniJugador2 + " ya está Inscripto a ese torneo.");
+                    Torneo bTorneo = repoTorneos.Buscar(UI.IdTorneo);
+                    Equipo nEquipo = new Equipo();
+                    nEquipo.Jugador1 = repoJugadores.Buscar(UI.DniJugador1);
+                    if (UI.DniJugador2 > 0)
+                    {
+                        if (!repoInscripciones.Existe(UI.IdTorneo, UI.DniJugador2))
+                            nEquipo.Jugador2 = repoJugadores.Buscar(UI.DniJugador2);
+                        else
+                            throw new ServicioExeption("El Jugador con Dni " + UI.DniJugador2 + " ya está Inscripto a ese torneo.");
+                    }
+                    Inscripcion nInscripcion = new Inscripcion(bTorneo, UI.Fecha, nEquipo);
+                    return repoInscripciones.Agregar(nInscripcion);
                 }
-                Inscripcion nInscripcion = new Inscripcion(bTorneo, UI.Fecha, nEquipo);
-                return repoInscripciones.Agregar(nInscripcion);
+                catch (Exception ex)
+                {
+                    throw new ServicioExeption(ex.Message);
+                }
             }
             else
                 throw new ServicioExeption("El Jugador con Dni = " + UI.DniJugador1 + " ya está Inscripto a ese torneo.");

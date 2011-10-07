@@ -35,7 +35,6 @@ namespace Slam
             switch (e.Node.Text)
             {
                 case "Ranking":
-
                     FrmReporteRanking frmReporteRanking = new FrmReporteRanking();
                     if (frmReporteRanking.ShowDialog() == DialogResult.OK)
                     {

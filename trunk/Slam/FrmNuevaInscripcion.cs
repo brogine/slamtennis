@@ -97,9 +97,6 @@ namespace Slam
             }
             catch (Exception ex)
             {
-                System.Media.SoundPlayer soundPlayer = new System.Media.SoundPlayer();
-                soundPlayer.SoundLocation = AppDomain.CurrentDomain.BaseDirectory + "No.wav";
-                soundPlayer.Play();
                 MessageBox.Show(ex.Message);
             }
         }

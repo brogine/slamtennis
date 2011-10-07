@@ -20,33 +20,38 @@ namespace Repositorio
 
         public int Agregar(Inscripcion Inscripcion)
         {
-            if (Inscripcion.IdInscripcion > 0)
+            if (Inscripcion.Torneo.Cupo > this.Listar(Inscripcion.Torneo.IdTorneo).Count)
             {
-                if(!Existe(Inscripcion.Torneo.IdTorneo, Inscripcion.Equipo.Jugador1.Dni))
-                    Conn.AgregarSinId("InscripcionesJugador", "Dni, IdInscripcion", Inscripcion.Equipo.Jugador1.Dni + "," + Inscripcion.IdInscripcion);
-                if (Inscripcion.Equipo.Jugador2 != null && !Existe(Inscripcion.Torneo.IdTorneo, Inscripcion.Equipo.Jugador2.Dni))
-                    Conn.AgregarSinId("InscripcionesJugador", "Dni, IdInscripcion", Inscripcion.Equipo.Jugador2.Dni + "," + Inscripcion.IdInscripcion);
-                return Inscripcion.IdInscripcion;
-            }
-            else
-            {
-                if (!Existe(Inscripcion.Torneo.IdTorneo, Inscripcion.Equipo.Jugador1.Dni))
+                if (Inscripcion.IdInscripcion > 0)
                 {
-                    string FechaFormateada = Inscripcion.Fecha.Year + "/" + Inscripcion.Fecha.Month + "/" + Inscripcion.Fecha.Day;
-                    String Campos = " IdTorneo, Fecha ";
-                    String Valores = Inscripcion.Torneo.IdTorneo + ",'";
-                    Valores += FechaFormateada + "'";
-                    int IdInscripcion = Conn.Agregar("Inscripciones", Campos, Valores);
-                    Conn.AgregarSinId("InscripcionesJugador", "Dni, IdInscripcion", Inscripcion.Equipo.Jugador1.Dni + "," + IdInscripcion);
-                    if (Inscripcion.Equipo.Jugador2 != null)
-                    {
-                        Conn.AgregarSinId("InscripcionesJugador", "Dni, IdInscripcion", Inscripcion.Equipo.Jugador2.Dni + "," + IdInscripcion);
-                    }
-                    return IdInscripcion;
+                    if (!Existe(Inscripcion.Torneo.IdTorneo, Inscripcion.Equipo.Jugador1.Dni))
+                        Conn.AgregarSinId("InscripcionesJugador", "Dni, IdInscripcion", Inscripcion.Equipo.Jugador1.Dni + "," + Inscripcion.IdInscripcion);
+                    if (Inscripcion.Equipo.Jugador2 != null && !Existe(Inscripcion.Torneo.IdTorneo, Inscripcion.Equipo.Jugador2.Dni))
+                        Conn.AgregarSinId("InscripcionesJugador", "Dni, IdInscripcion", Inscripcion.Equipo.Jugador2.Dni + "," + Inscripcion.IdInscripcion);
+                    return Inscripcion.IdInscripcion;
                 }
                 else
-                    throw new RepositorioExeption("El Jugador ya está inscripto a ese Torneo.");
+                {
+                    if (!Existe(Inscripcion.Torneo.IdTorneo, Inscripcion.Equipo.Jugador1.Dni))
+                    {
+                        string FechaFormateada = Inscripcion.Fecha.Year + "/" + Inscripcion.Fecha.Month + "/" + Inscripcion.Fecha.Day;
+                        String Campos = " IdTorneo, Fecha ";
+                        String Valores = Inscripcion.Torneo.IdTorneo + ",'";
+                        Valores += FechaFormateada + "'";
+                        int IdInscripcion = Conn.Agregar("Inscripciones", Campos, Valores);
+                        Conn.AgregarSinId("InscripcionesJugador", "Dni, IdInscripcion", Inscripcion.Equipo.Jugador1.Dni + "," + IdInscripcion);
+                        if (Inscripcion.Equipo.Jugador2 != null)
+                        {
+                            Conn.AgregarSinId("InscripcionesJugador", "Dni, IdInscripcion", Inscripcion.Equipo.Jugador2.Dni + "," + IdInscripcion);
+                        }
+                        return IdInscripcion;
+                    }
+                    else
+                        throw new RepositorioExeption("El Jugador ya está inscripto a ese Torneo.");
+                }
             }
+            else
+                throw new RepositorioExeption("El Torneo al que desea inscribirse ya está completo.");
         }
 
         public void Modificar(Inscripcion Inscripcion)
