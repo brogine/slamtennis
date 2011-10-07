@@ -11,6 +11,17 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server"> 
 
 <div style="height:600px; text-align:center">
+<div style="text-align: left">
+    <b>Usuario:</b>
+    <asp:Label ID="LblUsuario" runat="server" Text="---"></asp:Label>
+&nbsp;<b>Nombre:</b>
+    <asp:Label ID="LblNombre" runat="server" Text="---"></asp:Label>
+&nbsp;<b>Sexo:</b>
+    <asp:Label ID="LblSexo" runat="server" Text="---"></asp:Label>
+&nbsp;<b>Email:</b>
+    <asp:Label ID="LblEmail" runat="server" Text="---"></asp:Label>
+<br />
+</div>
 <table width="80%" style="height:100%">
     <tr>
         <td class="style1">

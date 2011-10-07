@@ -15,7 +15,10 @@ namespace SlamWeb
             {
                 Response.Redirect("Login.aspx");
             }
-
+            LblEmail.Text = Session["Email"].ToString().Trim();
+            LblNombre.Text = Session["Nombre"].ToString().Trim() + " " + Session["Apellido"].ToString().Trim();
+            LblUsuario.Text = Session["Usuario"].ToString().Trim();
+            LblSexo.Text = Session["Sexo"].ToString().Trim();
         }
 
         protected void Estadisticos_Click(object sender, ImageClickEventArgs e)

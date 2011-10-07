@@ -29,14 +29,8 @@ namespace SlamWeb
 
         public bool Estado
         {
-            get
-            {
-                throw new NotImplementedException();
-            }
-            set
-            {
-                throw new NotImplementedException();
-            }
+            get;
+            set;
         }
 
         #endregion
@@ -53,6 +47,7 @@ namespace SlamWeb
             {
                 IJugadorServicio jugador = new JugadorServicio();
                 jugador.Buscar(this);
+                Session["Logeado"] = true;
                 Response.Redirect("Default.aspx");
             }
         }
@@ -61,11 +56,8 @@ namespace SlamWeb
 
         public int Dni
         {
-            get { return 0; }
-            set
-            {
-                Session["Dni"] = value;
-            }
+            get;
+            set;
         }
 
         public string Nombre
@@ -136,7 +128,7 @@ namespace SlamWeb
             get { return null; }
             set
             {
-                Session["Sexo"] = value;
+                Session["Telefono"] = value;
             }
         }
 
@@ -145,7 +137,7 @@ namespace SlamWeb
             get { return null; }
             set
             {
-                Session["Sexo"] = value;
+                Session["Celular"] = value;
             }
         }
 
@@ -154,7 +146,7 @@ namespace SlamWeb
             get { return null; }
             set
             {
-                Session["Sexo"] = value;
+                Session["Email"] = value;
             }
         }
 
@@ -175,14 +167,17 @@ namespace SlamWeb
             get { return null; }
             set
             {
-                Session["Sexo"] = value;
+                Session["Domicilio"] = value;
             }
         }
 
         string IJugadorUI.Usuario
         {
-            get;
-            set;
+            get { return null; }
+            set
+            {
+                Session["Usuario"] = value;
+            }
         }
 
         string IJugadorUI.Password
@@ -193,14 +188,8 @@ namespace SlamWeb
 
         System.Drawing.Image IJugadorUI.Foto
         {
-            get
-            {
-                throw new NotImplementedException();
-            }
-            set
-            {
-                throw new NotImplementedException();
-            }
+            get;
+            set;
         }
 
         #endregion

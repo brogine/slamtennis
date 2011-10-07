@@ -22,10 +22,10 @@
             <div class="clear hideSkiplink">
                 <asp:Menu ID="NavigationMenu" runat="server" CssClass="menu" 
                     EnableViewState="false" IncludeStyleBlock="false" Orientation="Horizontal" 
-                    Height="25px" Font-Size="Medium" ForeColor="White">
+                    Height="16px" Font-Size="Medium" ForeColor="White" Width="112px">
                 
                     <Items>
-                        <asp:MenuItem NavigateUrl="~/Default.aspx" Text="Inicio"/>
+                        <asp:MenuItem NavigateUrl="~/Default.aspx" ImageUrl="~/Content/Home.png"/>
                     </Items>
                 </asp:Menu>
             </div>
