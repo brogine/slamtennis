@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.LblTorneo = new System.Windows.Forms.Label();
             this.CboListaTorneo = new System.Windows.Forms.ComboBox();
             this.GrpEquipo1 = new System.Windows.Forms.GroupBox();
@@ -44,8 +45,10 @@
             this.ChkEstado = new System.Windows.Forms.CheckBox();
             this.label1 = new System.Windows.Forms.Label();
             this.TxtRonda = new System.Windows.Forms.TextBox();
+            this.EPPartidos = new System.Windows.Forms.ErrorProvider(this.components);
             this.GrpEquipo1.SuspendLayout();
             this.GrpEquipo2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.EPPartidos)).BeginInit();
             this.SuspendLayout();
             // 
             // LblTorneo
@@ -64,6 +67,7 @@
             this.CboListaTorneo.Name = "CboListaTorneo";
             this.CboListaTorneo.Size = new System.Drawing.Size(219, 21);
             this.CboListaTorneo.TabIndex = 1;
+            this.CboListaTorneo.Validating += new System.ComponentModel.CancelEventHandler(this.CboListaTorneo_Validating);
             this.CboListaTorneo.SelectedIndexChanged += new System.EventHandler(this.CboListaTorneo_SelectedIndexChanged);
             // 
             // GrpEquipo1
@@ -83,6 +87,7 @@
             this.CboEquipo1.Name = "CboEquipo1";
             this.CboEquipo1.Size = new System.Drawing.Size(237, 21);
             this.CboEquipo1.TabIndex = 0;
+            this.CboEquipo1.Validating += new System.ComponentModel.CancelEventHandler(this.CboEquipo1_Validating);
             // 
             // LblVs
             // 
@@ -110,6 +115,7 @@
             this.CboEquipo2.Name = "CboEquipo2";
             this.CboEquipo2.Size = new System.Drawing.Size(270, 21);
             this.CboEquipo2.TabIndex = 0;
+            this.CboEquipo2.Validating += new System.ComponentModel.CancelEventHandler(this.CboEquipo2_Validating);
             // 
             // DtpFechaPartido
             // 
@@ -190,6 +196,11 @@
             this.TxtRonda.Name = "TxtRonda";
             this.TxtRonda.Size = new System.Drawing.Size(50, 20);
             this.TxtRonda.TabIndex = 11;
+            this.TxtRonda.Validating += new System.ComponentModel.CancelEventHandler(this.TxtRonda_Validating);
+            // 
+            // EPPartidos
+            // 
+            this.EPPartidos.ContainerControl = this;
             // 
             // FrmNuevoPartido
             // 
@@ -215,6 +226,7 @@
             this.Load += new System.EventHandler(this.FrmNuevoPartido_Load);
             this.GrpEquipo1.ResumeLayout(false);
             this.GrpEquipo2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.EPPartidos)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -238,5 +250,6 @@
         private System.Windows.Forms.CheckBox ChkEstado;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox TxtRonda;
+        private System.Windows.Forms.ErrorProvider EPPartidos;
     }
 }

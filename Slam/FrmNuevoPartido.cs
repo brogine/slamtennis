@@ -9,6 +9,7 @@ using System.Windows.Forms;
 using Servicio;
 using Servicio.InterfacesUI;
 using ApplicationContext;
+using System.Collections;
 
 namespace Slam
 {
@@ -203,17 +204,31 @@ namespace Slam
 
         private void BtnAceptar_Click(object sender, EventArgs e)
         {
-            if(servicioPartido.Existe(this.IdPartido))
+            try
+        {
+                if(EPPartidos.GetError(CboListaTorneo)!=""&&EPPartidos.GetError(CboEquipo1)!=""&&EPPartidos.GetError(CboEquipo2)!=""&&EPPartidos.GetError(TxtRonda)!="")
+                {
+                MessageBox.Show("Complete Todos Los Campos Antes De Continuar");
+                }
+                else
+                {
+                     if(servicioPartido.Existe(this.IdPartido))
+                     {
+                          servicioPartido.Modificar(this);
+                     }
+                     else
+                      {
+                          servicioPartido.Agregar(this);
+                      }
+                          this.DialogResult = DialogResult.OK;
+                      }
+                }
+        
+        catch (Exception ex)
             {
-                servicioPartido.Modificar(this);
+                MessageBox.Show(ex.Message);
             }
-            else
-            {
-            servicioPartido.Agregar(this);
-            }
-            this.DialogResult = DialogResult.OK;
         }
-
         private void CboListaTorneo_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (CboListaTorneo.SelectedIndex> -1)
@@ -228,5 +243,74 @@ namespace Slam
             this.DialogResult = DialogResult.OK;
             this.Close();
         }
+
+        private void CboListaTorneo_Validating(object sender, CancelEventArgs e)
+        {
+            if (CboListaTorneo.SelectedIndex < 0)
+            {
+                EPPartidos.SetError(CboListaTorneo, "Debe Seleccionar Un Torneo De La Lista");
+            }
+            else
+            {
+            EPPartidos.SetError(CboListaTorneo,"");
+            }
+        }
+
+        private void CboEquipo1_Validating(object sender, CancelEventArgs e)
+        {
+            if (CboEquipo1.SelectedIndex < 0)
+            {
+                EPPartidos.SetError(CboEquipo1, "Debe Seleccionar Un Equipo De La Lista");
+            }
+            else
+            {
+            EPPartidos.SetError(CboEquipo1,"");
+            }
+            
+        }
+
+        private void CboEquipo2_Validating(object sender, CancelEventArgs e)
+        {
+            if (CboEquipo2.SelectedIndex < 0)
+            {
+                EPPartidos.SetError(CboEquipo2, "Debe Seleccionar Un Equipo De La Lista");
+            }
+            else
+            {
+            EPPartidos.SetError(CboEquipo2,"");
+            }
+            if (((DictionaryEntry)CboEquipo2.SelectedItem).Key ==((DictionaryEntry)CboEquipo1.SelectedItem).Key)
+            {
+            EPPartidos.SetError(CboEquipo2,"Los Equipos No Pueden Ser Iguales");
+            }
+            else
+            {
+            EPPartidos.SetError(CboEquipo2,"");
+            }
+            
+
+        
     }
+
+        private void TxtRonda_Validating(object sender, CancelEventArgs e)
+        {
+            int ronda=0;
+            if(TxtRonda.Text=="")
+            {
+            EPPartidos.SetError(TxtRonda,"Debe Escribir A Que Ronda Pertenece El Partido");
+            }
+            else
+            {
+            EPPartidos.SetError(TxtRonda,"");
+            }
+
+            if (!int.TryParse(TxtRonda.Text, out ronda))
+            {
+                EPPartidos.SetError(TxtRonda, "La Ronda Debe Ser Un Valor Numerico");
+            }
+            else
+            {
+                EPPartidos.SetError(TxtRonda, "");
+            }
+        }
 }
