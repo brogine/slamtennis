@@ -30,13 +30,12 @@ namespace Repositorio
         {
             string FechaFormateada = Persona.FechaNac.Year+"/"+Persona.FechaNac.Month+"/"+Persona.FechaNac.Day;
             string Campos = " Dni, Nombre, Apellido, FechaNacimiento, Nacionalidad, Sexo, ";
-            Campos += "Telefono, Celular, Email, Localidad, Domicilio, Foto ";
+            Campos += "Telefono, Celular, Email, Localidad, Domicilio ";
             string Valores = Persona.Dni + ",'" + Persona.Nombre + "','" + Persona.Apellido + "','";
             Valores += FechaFormateada + "'," + Persona.Nacionalidad.IdPais + ",'" + Persona.Sexo;
             Valores += "','" + Persona.Contacto.Telefono + "','" + Persona.Contacto.Celular;
             Valores += "','" + Persona.Contacto.Email  + "'," + Persona.Ubicacion.Localidad.IdLocalidad;
-            Valores += ",'" + Persona.Ubicacion.Domicilio + "',";
-            Valores += "'" + GetBytes(Persona.Foto) + "'";
+            Valores += ",'" + Persona.Ubicacion.Domicilio + "'";
             try
             {
                 Conn.AgregarSinId("Personas", Campos, Valores);
@@ -83,8 +82,7 @@ namespace Repositorio
             Consulta += " Celular = '" + Persona.Contacto.Celular + "',";
             Consulta += " Email = '" + Persona.Contacto.Email + "',";
             Consulta += " Localidad = " + Persona.Ubicacion.Localidad.IdLocalidad + ",";
-            Consulta += " Domicilio = '" + Persona.Ubicacion.Domicilio + "',";
-            Consulta += " Foto = '" + GetBytes(Persona.Foto) + "'";
+            Consulta += " Domicilio = '" + Persona.Ubicacion.Domicilio + "'";
             Consulta += " Where Dni = " + Persona.Dni;
             try
             {
@@ -116,7 +114,6 @@ namespace Repositorio
             Objeto.FechaNac = (Fila.IsNull("FechaNacimiento") == true ? DateTime.Now : Convert.ToDateTime(Fila["FechaNacimiento"]));
             Objeto.Nacionalidad = UbicacionRepo.ObtenerPais(Fila.IsNull("Nacionalidad") == true ? 0 : (int)Fila["Nacionalidad"]);
             Objeto.Sexo = (Fila.IsNull("Sexo") == true ? string.Empty : Convert.ToString(Fila["Sexo"]));
-            Objeto.Foto = (Fila.IsNull("Foto") == true ? null : BytesImage((Byte[])Fila["Foto"]));
             //Value Object Contacto
             string Telefono = (Fila.IsNull("Telefono") == true ? string.Empty : Convert.ToString(Fila["Telefono"]));
             string Celular = (Fila.IsNull("Celular") == true ? string.Empty : Convert.ToString(Fila["Celular"]));
@@ -139,33 +136,5 @@ namespace Repositorio
             
             return Objeto;
         }
-
-        System.Drawing.Image BytesImage(byte[] bytes)
-        {
-            if (bytes == null) return null;
-            //
-            MemoryStream ms = new MemoryStream(bytes);
-            Bitmap bm = null;
-            try
-            {
-                bm = new Bitmap(ms);
-            }
-            catch (Exception ex)
-            {
-                throw new RepositorioExeption("No se pudo obtener la imagen de la persona...", ex);
-            }
-            return bm;
-        }
-
-        byte[] GetBytes(Image imagen)
-        {
-            byte[] imageData;
-            MemoryStream ms = new MemoryStream();
-            imagen.Save(ms, System.Drawing.Imaging.ImageFormat.Jpeg);
-            ms.Seek(0, SeekOrigin.Begin);
-            imageData = ms.ToArray();
-            return imageData;
-        }
-
     }
 }

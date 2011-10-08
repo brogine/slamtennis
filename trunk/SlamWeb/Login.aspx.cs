@@ -186,12 +186,6 @@ namespace SlamWeb
             set;
         }
 
-        System.Drawing.Image IJugadorUI.Foto
-        {
-            get;
-            set;
-        }
-
         #endregion
 
        

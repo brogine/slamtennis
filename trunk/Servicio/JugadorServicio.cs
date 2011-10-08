@@ -47,7 +47,6 @@ namespace Servicio
                     Nacionalidad, UI.Sexo, nContacto, nUbicacion, UI.Estado, nLogin);
             }
 
-            nJugador.Foto = UI.Foto;
             repoJugadores.Agregar(nJugador);
         }
 
@@ -70,7 +69,6 @@ namespace Servicio
 			bJugador.Nombre = UI.Nombre;
 			bJugador.RelacionTutor = UI.RelacionTutor;
 			bJugador.Sexo = UI.Sexo;
-            bJugador.Foto = UI.Foto;
 			bJugador.Ubicacion = new Ubicacion(repoUbicacion.ObtenerLocalidad(UI.Localidad), UI.Domicilio);
 			repoJugadores.Modificar(bJugador);
             GC.Collect();
@@ -99,7 +97,6 @@ namespace Servicio
                 UI.Sexo = bJugador.Sexo;
                 UI.Telefono = bJugador.Contacto.Telefono;
                 UI.Usuario = bJugador.Login.Usuario;
-                UI.Foto = bJugador.Foto;
             }
             else
                 throw new ServicioExeption("El Jugador con Dni " + UI.Dni + " No existe");
