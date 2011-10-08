@@ -65,6 +65,8 @@ namespace Slam
                         servicioArbitros.Buscar(this);
                         break;
                     case TipoPersona.Empleado:
+                        LblPuesto.Visible = true;
+                        TxtPuesto.Visible = true;
                         servicioEmpleados = (IEmpleadoServicio)AppContext.Instance.GetObject(ImplementaEmpleados);
                         servicioEmpleados.Buscar(this);
                         break;

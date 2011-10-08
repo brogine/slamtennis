@@ -463,6 +463,7 @@
             this.TxtPuesto.Name = "TxtPuesto";
             this.TxtPuesto.Size = new System.Drawing.Size(100, 20);
             this.TxtPuesto.TabIndex = 17;
+            this.TxtPuesto.Visible = false;
             // 
             // LblPuesto
             // 
@@ -472,6 +473,7 @@
             this.LblPuesto.TabIndex = 16;
             this.LblPuesto.Text = "Puesto: *";
             this.LblPuesto.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.LblPuesto.Visible = false;
             // 
             // RbFemenino
             // 
