@@ -116,7 +116,7 @@ namespace Slam
 
         private void button1_Click(object sender, EventArgs e)
         {
-            if (EpAfiliacion.GetError(TxtDni) != "" && EpAfiliacion.GetError(CboListaClubes) != "")
+            if (EpAfiliacion.GetError(TxtDni) == "" && EpAfiliacion.GetError(CboListaClubes) == "")
             {
                 if (AfilServ.Existe(this))
                 {
@@ -132,10 +132,10 @@ namespace Slam
                 }
             }
             else
-                {
+            {
                 MessageBox.Show("Complete Todos Los Campos Antes De Continuar");
-                }
             }
+        }
            
         
 

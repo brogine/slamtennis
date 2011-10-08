@@ -82,6 +82,7 @@ namespace Servicio
                 UI.Password = BuscaEmpleado.Login.Password;
 
                 //Value Object Ubicacion
+                UI.Pais = BuscaEmpleado.Ubicacion.Localidad.Provincia.Pais.IdPais;
                 UI.Provincia = BuscaEmpleado.Ubicacion.Localidad.Provincia.IdProvincia;
                 UI.Localidad = BuscaEmpleado.Ubicacion.Localidad.IdLocalidad;
                 UI.Domicilio = BuscaEmpleado.Ubicacion.Domicilio;
