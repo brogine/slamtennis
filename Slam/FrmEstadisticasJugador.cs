@@ -38,7 +38,7 @@ namespace Slam
         private void FrmEstadisticasJugador_Load(object sender, EventArgs e)
         {
             servicioCategorias = (IListadoCategoriaServicio)AppContext.Instance.GetObject(ImplementaCategorias);
-            servicioCategorias.Listar(this);
+            servicioCategorias.ListarActivas(this);
             servicioEstadisticas = (IEstadisticasServicio)AppContext.Instance.GetObject(ImplementaEstadisticas);
             if (IdCategoriaActual > 0 && DniJugador > 0)
             {

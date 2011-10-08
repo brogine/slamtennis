@@ -22,7 +22,7 @@ namespace Slam
         ITorneoServicio servicioTorneoTipo;
         int IdInscripcionActual = 0;
         bool ModificarInscripcion = false;
-        TipoTorneo TorneoActual = TipoTorneo.Single;
+      
         public FrmNuevaInscripcion()
         {
             InitializeComponent();
