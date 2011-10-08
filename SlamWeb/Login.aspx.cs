@@ -150,6 +150,12 @@ namespace SlamWeb
             }
         }
 
+        public int Pais
+        {
+            get;
+            set;
+        }
+
         public int Provincia
         {
             get;
@@ -188,6 +194,5 @@ namespace SlamWeb
 
         #endregion
 
-       
     }
 }

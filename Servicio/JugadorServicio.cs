@@ -88,11 +88,11 @@ namespace Servicio
                 UI.Estado = bJugador.Estado;
                 UI.FechaNac = bJugador.FechaNac;
                 UI.Edad = bJugador.Edad;
+                UI.Provincia = bJugador.Ubicacion.Localidad.Provincia.IdProvincia;
                 UI.Localidad = bJugador.Ubicacion.Localidad.IdLocalidad;
                 UI.Nacionalidad = bJugador.Nacionalidad.IdPais;
                 UI.Nombre = bJugador.Nombre;
                 UI.Password = bJugador.Login.Password;
-                UI.Provincia = bJugador.Ubicacion.Localidad.Provincia.IdProvincia;
                 UI.RelacionTutor = bJugador.RelacionTutor;
                 UI.Sexo = bJugador.Sexo;
                 UI.Telefono = bJugador.Contacto.Telefono;

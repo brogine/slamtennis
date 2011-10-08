@@ -22,7 +22,7 @@ namespace Repositorio
         {
             if (Inscripcion.Torneo.Estado == (int)EstadoTorneo.Abierto)
             {
-                if (Inscripcion.Torneo.Cupo > 0 && Inscripcion.Torneo.Cupo > this.Listar(Inscripcion.Torneo.IdTorneo).Count)
+                if (Inscripcion.Torneo.Cupo > this.Listar(Inscripcion.Torneo.IdTorneo).Count)
                 {
                     if (Inscripcion.IdInscripcion > 0)
                     {

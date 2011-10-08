@@ -30,9 +30,7 @@ namespace Slam
         
         TipoPersona Tipo;
         public int Dni;
-        int IdLocalidad;
         int EdadJugador;
-        Image PathFoto = null;
         public FrmNuevaPersona(TipoPersona _Tipo)
         {
             InitializeComponent();
@@ -50,10 +48,10 @@ namespace Slam
 
         private void FrmNuevaPersona_Load(object sender, EventArgs e)
         {
-            servicioPaises = (IPaisServicio)AppContext.Instance.GetObject(ImplementaUbicacion);
-            servicioPaises.ListarPaises(this);
-            servicioLocalidades = (ILocalidadServicio)AppContext.Instance.GetObject(ImplementaUbicacion);
+            servicioPaises = (IPaisServicio)AppContext.Instance.GetObject(ImplementaUbicacion); 
             servicioProvincias = (IProvinciaServicio)AppContext.Instance.GetObject(ImplementaUbicacion);
+            servicioLocalidades = (ILocalidadServicio)AppContext.Instance.GetObject(ImplementaUbicacion);
+            servicioPaises.ListarPaises(this);
             if (Dni > 0)
             {
                 switch (Tipo)
@@ -74,8 +72,6 @@ namespace Slam
                         servicioJugadores.Buscar(this);
                         break;
                 }
-                servicioLocalidades.ListarLocalidades(this);
-                CboLocalidades.SelectedValue = IdLocalidad;
             }
             else
             {
@@ -323,6 +319,18 @@ namespace Slam
             }
         }
 
+        public int Pais
+        {
+            get
+            {
+                return Convert.ToInt32(((KeyValuePair<int, string>)CboPais.SelectedItem).Key);
+            }
+            set
+            {
+                CboPais.SelectedValue = value;
+            }
+        }
+
         public int Provincia
         {
             get
@@ -343,7 +351,7 @@ namespace Slam
             }
             set
             {
-                IdLocalidad = value;
+                CboLocalidades.SelectedValue = value;
             }
         }
 
@@ -479,11 +487,6 @@ namespace Slam
                     CboProvincia.SelectedIndex = -1;
                 }
             }
-        }
-
-        public int Pais
-        {
-            get { return Convert.ToInt32(((KeyValuePair<int, string>)CboPais.SelectedItem).Key); }
         }
 
         #endregion
@@ -675,6 +678,19 @@ namespace Slam
             e.Handled = true;
         }
 
+        private void CboPais_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = true;
+        }
+
+        private void CboPais_Validating(object sender, CancelEventArgs e)
+        {
+            if (CboPais.SelectedIndex < 0)
+                EpNuevaPersona.SetError(CboPais, "Debe Elegir un Pais");
+            else
+                EpNuevaPersona.SetError(CboPais, "");
+        }
+
         #endregion
 
         private void BtnCambiarPassword_Click(object sender, EventArgs e)
@@ -721,7 +737,8 @@ namespace Slam
             if (CboProvincia.SelectedIndex > -1)
             {
                 servicioLocalidades.ListarLocalidades(this);
-                CboLocalidades.SelectedValue = IdLocalidad;
+                if (Dni != 0)
+                    CboLocalidades.SelectedIndex = -1;
             }
         }
 
@@ -786,22 +803,14 @@ namespace Slam
             }
         }
 
-        private void CboPais_SelectionChangeCommitted(object sender, EventArgs e)
+        private void CboPais_SelectedIndexChanged(object sender, EventArgs e)
         {
-            servicioProvincias.ListarProvincias(this);
-        }
-
-        private void CboPais_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            e.Handled = true;
-        }
-
-        private void CboPais_Validating(object sender, CancelEventArgs e)
-        {
-            if (CboPais.SelectedIndex < 0)
-                EpNuevaPersona.SetError(CboPais, "Debe Elegir un Pais");
-            else
-                EpNuevaPersona.SetError(CboPais, "");
+            if (CboPais.SelectedIndex > -1)
+            {
+                servicioProvincias.ListarProvincias(this);
+                if (Dni != 0)
+                    CboProvincia.SelectedIndex = -1;
+            }
         }
 
     }

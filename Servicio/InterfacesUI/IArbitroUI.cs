@@ -16,10 +16,10 @@ namespace Servicio.InterfacesUI
         string Sexo { get; set; }
         string Badge { get; set; }
         int Nivel { get; set; }
-       
         string Telefono { get; set; }
         string Celular { get; set; }
         string Email { get; set; }
+        int Pais { get; set; }
         int Provincia { get; set; }
         int Localidad { get; set; }
         string Domicilio { get; set; }
