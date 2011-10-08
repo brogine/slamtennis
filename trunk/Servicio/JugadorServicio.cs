@@ -88,6 +88,7 @@ namespace Servicio
                 UI.Estado = bJugador.Estado;
                 UI.FechaNac = bJugador.FechaNac;
                 UI.Edad = bJugador.Edad;
+                UI.Pais = bJugador.Ubicacion.Localidad.Provincia.Pais.IdPais;
                 UI.Provincia = bJugador.Ubicacion.Localidad.Provincia.IdProvincia;
                 UI.Localidad = bJugador.Ubicacion.Localidad.IdLocalidad;
                 UI.Nacionalidad = bJugador.Nacionalidad.IdPais;

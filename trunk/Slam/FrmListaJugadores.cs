@@ -37,7 +37,10 @@ namespace Slam
         {
             FrmNuevaAfiliacion nuevoJugador = new FrmNuevaAfiliacion();
             if(nuevoJugador.ShowDialog() == DialogResult.OK)
-                servicioJugadores.ListarJugadores(this);
+            {
+                if(CboClubes.SelectedIndex > -1)
+                    servicioJugadores.ListarJugadores(this);
+            }
         }
 
         private void BtnModificar_Click(object sender, EventArgs e)
