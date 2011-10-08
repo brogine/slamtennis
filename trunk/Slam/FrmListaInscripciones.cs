@@ -48,8 +48,9 @@ namespace Slam
         private void BtnAgregar_Click(object sender, EventArgs e)
         {
             FrmNuevaInscripcion nuevaInscripcion = new FrmNuevaInscripcion();
-            if(nuevaInscripcion.ShowDialog() == DialogResult.OK)
-                servicioListadoInscripciones.ListarPorTorneo(this);
+            if (nuevaInscripcion.ShowDialog() == DialogResult.OK)
+                if(CboTorneos.SelectedIndex > -1)
+                    servicioListadoInscripciones.ListarPorTorneo(this);
         }
 
         private void BtnModificar_Click(object sender, EventArgs e)

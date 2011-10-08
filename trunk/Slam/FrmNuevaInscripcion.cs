@@ -9,6 +9,7 @@ using System.Windows.Forms;
 using Servicio;
 using Servicio.InterfacesUI;
 using ApplicationContext;
+using Reportes;
 
 namespace Slam
 {
@@ -77,15 +78,28 @@ namespace Slam
                 if (EpInscripciones.GetError(CboTorneos) == "" && EpInscripciones.GetError(TxtDniJugador1) == "" &&
                     EpInscripciones.GetError(TxtDniJugador2) == "")
                 {
+                    bool crearReporte = false;
                     if (IdInscripcionActual > 0)
                     {
                         servicioInscripciones.Modificar(this);
-                        MessageBox.Show("Inscripción Nro: " + IdInscripcionActual + " Actualizada con éxito");
+                        if (MessageBox.Show("Inscripción Nro: " + IdInscripcionActual + " Actualizada con éxito" + ". ¿Desea generar comprobante?",
+                            "Inscripción a Torneo", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                            crearReporte = true;
                     }
                     else
                     {
                         IdInscripcionActual = servicioInscripciones.Agregar(this);
-                        MessageBox.Show("Inscripción Realizada con éxito. Nro Inscripción: " + IdInscripcionActual);
+                        if (MessageBox.Show("Inscripción Realizada con éxito. Nro Inscripción: " + IdInscripcionActual + ". ¿Desea generar comprobante?",
+                            "Inscripción a Torneo", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                            crearReporte = true;
+                    }
+                    if (crearReporte)
+                    {
+                        IReportesServicio servicioReportes = new ReportesServicio();
+                        object ReportedeInscripcion = servicioReportes.CrearInstancia("CuponInscripcion", IdInscripcionActual);
+                        FrmReportes frmReportes = new FrmReportes(ReportedeInscripcion);
+                        frmReportes.MdiParent = this.MdiParent;
+                        frmReportes.Show();
                     }
                     GC.Collect();
                     GC.WaitForPendingFinalizers();

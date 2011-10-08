@@ -76,5 +76,11 @@ namespace Slam
         }
 
         #endregion
+
+        private void BtnSalir_Click(object sender, EventArgs e)
+        {
+            this.DialogResult = DialogResult.Cancel;
+            this.Close();
+        }
     }
 }

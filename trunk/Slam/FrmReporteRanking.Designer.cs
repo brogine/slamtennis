@@ -33,6 +33,7 @@
             this.LblCategoria = new System.Windows.Forms.Label();
             this.CboCategorias = new System.Windows.Forms.ComboBox();
             this.EpReporteRanking = new System.Windows.Forms.ErrorProvider(this.components);
+            this.BtnSalir = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.EpReporteRanking)).BeginInit();
             this.SuspendLayout();
             // 
@@ -68,11 +69,22 @@
             // 
             this.EpReporteRanking.ContainerControl = this;
             // 
+            // BtnSalir
+            // 
+            this.BtnSalir.Location = new System.Drawing.Point(352, 12);
+            this.BtnSalir.Name = "BtnSalir";
+            this.BtnSalir.Size = new System.Drawing.Size(35, 23);
+            this.BtnSalir.TabIndex = 6;
+            this.BtnSalir.Text = "X";
+            this.BtnSalir.UseVisualStyleBackColor = true;
+            this.BtnSalir.Click += new System.EventHandler(this.BtnSalir_Click);
+            // 
             // FrmReporteRanking
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(399, 262);
+            this.Controls.Add(this.BtnSalir);
             this.Controls.Add(this.BtnAceptar);
             this.Controls.Add(this.LblCategoria);
             this.Controls.Add(this.CboCategorias);
@@ -93,5 +105,6 @@
         private System.Windows.Forms.Label LblCategoria;
         private System.Windows.Forms.ComboBox CboCategorias;
         private System.Windows.Forms.ErrorProvider EpReporteRanking;
+        private System.Windows.Forms.Button BtnSalir;
     }
 }
