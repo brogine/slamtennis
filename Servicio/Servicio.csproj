@@ -59,6 +59,7 @@
     <Compile Include="IClubServicio.cs" />
     <Compile Include="IEmpleadoServicio.cs" />
     <Compile Include="IEstadisticasServicio.cs" />
+    <Compile Include="IInscripcionReporteServicio.cs" />
     <Compile Include="IInscripcionServicio.cs" />
     <Compile Include="IJugadorServicio.cs" />
     <Compile Include="IListadoAfiliacionServicio.cs" />

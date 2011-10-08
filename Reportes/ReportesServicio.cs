@@ -9,7 +9,7 @@ using System.Data;
 
 namespace Reportes
 {
-    public enum ListadoReportes { Ranking, Llave }
+    public enum ListadoReportes { Ranking, Llave, CuponInscripcion }
 
     public class ReportesServicio : IReportesServicio, IListadoJugadoresCategoria
     {
@@ -27,7 +27,6 @@ namespace Reportes
             switch (NombreReporte)
             {
                 case "Ranking":
-                    DsRankingCategoria ds = new DsRankingCategoria();
                     IListadoJugadoresCategoriaServicio servicioJugadores = new JugadorServicio();
                     RptRankingCategoria rptRankingCategoria = new RptRankingCategoria();
                     this.IdCategoria = (int)Sender;
@@ -37,6 +36,12 @@ namespace Reportes
                 case "Llave":
                     RptLlave rptLlave = new RptLlave();
                     ReporteActual = rptLlave;
+                    return ReporteActual;
+                case "CuponInscripcion":
+                    RptCuponInscripcion rptCuponInscripcion = new RptCuponInscripcion();
+                    IInscripcionReporteServicio servicioInscripciones = new InscripcionServicio();
+                    rptCuponInscripcion.SetDataSource(servicioInscripciones.BuscarPorId((int)Sender));
+                    ReporteActual = rptCuponInscripcion;
                     return ReporteActual;
                 default:
                     return null;

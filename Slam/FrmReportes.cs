@@ -19,6 +19,14 @@ namespace Slam
             servicioReportes = new ReportesServicio();
         }
 
+        public FrmReportes(Object Reporte)
+        {
+            InitializeComponent();
+            servicioReportes = new ReportesServicio();
+            RptViewer.ReportSource = Reporte;
+            RptViewer.RefreshReport();
+        }
+
         private void FrmReportes_Load(object sender, EventArgs e)
         {
             TvReportes.Nodes.Add("Index", "Reportes");
