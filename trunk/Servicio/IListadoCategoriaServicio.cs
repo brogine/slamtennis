@@ -9,5 +9,6 @@ namespace Servicio
     public interface IListadoCategoriaServicio
     {
         void Listar(IListadoCategorias UI);
+        void ListarActivas(IListadoCategorias UI);
     }
 }

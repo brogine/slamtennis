@@ -26,14 +26,14 @@ namespace Slam
         {
              InitializeComponent();
              servicioClubes = (IListadoClubServicio)AppContext.Instance.GetObject(ImplementaClubes);
-             servicioClubes.Listar(this);
+             servicioClubes.ListarActivos(this);
         }
 
         public FrmNuevaAfiliacion(int IdClub, int DniJugador)
         {
              InitializeComponent();
              servicioClubes = (IListadoClubServicio)AppContext.Instance.GetObject(ImplementaClubes);
-             servicioClubes.Listar(this);
+             servicioClubes.ListarActivos(this);
              this.IdClub = IdClub;
              this.Dni = DniJugador;
              this.CboListaClubes.Enabled = false;
@@ -53,7 +53,7 @@ namespace Slam
         {
             get
             {
-                return Convert.ToInt32(((KeyValuePair<int,string>)CboListaClubes.SelectedItem).Key);
+                return Convert.ToInt32(((DictionaryEntry)CboListaClubes.SelectedItem).Value); ;
             }
             set
             {
@@ -103,35 +103,41 @@ namespace Slam
         {
             set
             {
-                Dictionary<int, string> ListaClubes = new Dictionary<int, string>();
                 foreach (Object Club in value)
                 {
                     Object[] DatosClub = Club.ToString().Split(',');
-                    ListaClubes.Add(Convert.ToInt32(DatosClub[0]), DatosClub[1].ToString());
+                    CboListaClubes.Items.Add(new DictionaryEntry(DatosClub[1], DatosClub[0]));
                 }
-                CboListaClubes.DataSource = new BindingSource(ListaClubes, null);
-                CboListaClubes.DisplayMember = "Value";
-                CboListaClubes.ValueMember = "Key";
+                CboListaClubes.DisplayMember = "Key";
+                CboListaClubes.ValueMember = "Value";
                 CboListaClubes.SelectedIndex = -1;
             }
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            if (EpAfiliacion.GetError(TxtDni) == "" && EpAfiliacion.GetError(CboListaClubes) == "")
+            if (EpAfiliacion.GetError(TxtDni) != "" && EpAfiliacion.GetError(CboListaClubes) != "")
             {
                 if (AfilServ.Existe(this))
                 {
                     AfilServ.Modificar(this);
+                    this.DialogResult = DialogResult.OK;
+                    this.Close();
                 }
                 else
                 {
                     AfilServ.Agregar(this);
+                    this.DialogResult = DialogResult.OK;
+                    this.Close();
                 }
-                this.DialogResult = DialogResult.OK;
-                this.Close();
             }
-        }
+            else
+                {
+                MessageBox.Show("Complete Todos Los Campos Antes De Continuar");
+                }
+            }
+           
+        
 
         #endregion
 
@@ -176,17 +182,26 @@ namespace Slam
                 EpAfiliacion.SetError(TxtDni, "Este campo no puede estar en blanco.");
             else
             {
+                EpAfiliacion.SetError(TxtDni, "");
+            }
                 if (LblExiste.Text == "")
                     EpAfiliacion.SetError(TxtDni, "Presione Botón Comprobar para validar existencia del jugador");
                 else
                 {
+                    EpAfiliacion.SetError(TxtDni,"");
+                }
+
                     if (LblExiste.BackColor == Color.Red)
+                    {
                         EpAfiliacion.SetError(TxtDni, "El Jugador no Existe. No puede continuar.");
+                    }
                     else
+                    {
                         EpAfiliacion.SetError(TxtDni, "");
+                    }
                 }
             }
         }
-    }
-}
+    
+
 

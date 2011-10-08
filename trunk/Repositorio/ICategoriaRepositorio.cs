@@ -9,6 +9,7 @@ namespace Repositorio
     public interface ICategoriaRepositorio
     {
         List<Categoria> Listar();
+        List<Categoria> ListarActivas();
 
         Categoria Buscar(int Id);
 

@@ -70,7 +70,7 @@ namespace Servicio
 
         public void ListarSedes(Servicio.InterfacesUI.IListadoSedes UI)
         {
-            List<Sede> ListaSedes = repoSedes.Listar();
+            List<Sede> ListaSedes = repoSedes.Listar(UI.IdClub);
             List<Object> ListaUI = new List<object> ();
 
             foreach(Sede Sede in ListaSedes)

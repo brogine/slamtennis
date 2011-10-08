@@ -9,5 +9,7 @@ namespace Servicio
     public interface IListadoClubServicio
     {
         void Listar(IListadoClubes UI);
+
+        void ListarActivos(IListadoClubes UI);
     }
 }

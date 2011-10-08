@@ -60,9 +60,9 @@ namespace Repositorio
             return this.Mapear(Conn.Buscar(Consulta));
         }
 
-        public List<Dominio.Sede> Listar()
+        public List<Dominio.Sede> Listar(int IdClub)
         {
-            string Consulta = " Select * From Sedes ";
+            string Consulta = " Select * From Sedes where IdClub = "+IdClub;
             DataTable Tabla = Conn.Listar(Consulta);
             List<Sede> ListaSedes = new List<Sede>();
             foreach (DataRow Fila in Tabla.Rows)

@@ -73,6 +73,24 @@ namespace Servicio
             UI.ListaUI = ListaUI;
         }
 
+
+        public void ListarActivas(IListadoCategorias UI)
+        {
+            List<Object> ListaUI = new List<object>();
+            List<Categoria> ListaCat = repositorio.ListarActivas();
+            foreach (Categoria Categoria in ListaCat)
+            {
+                Object Objeto = new object();
+                Objeto = Categoria.Id + ",";
+                Objeto += Categoria.Nombre + ",";
+                Objeto += Categoria.EdadMin + ",";
+                Objeto += Categoria.EdadMax + ",";
+                Objeto += Categoria.Estado.ToString();
+                ListaUI.Add(Objeto);
+            }
+            UI.ListaUI = ListaUI;
+        }
+
         #endregion
     }
 }

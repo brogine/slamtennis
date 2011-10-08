@@ -43,7 +43,7 @@ namespace Slam
             servicioLocalidades = (ILocalidadServicio)AppContext.Instance.GetObject(ImplementaUbicacion);
             servicioClubes = (IListadoClubServicio)AppContext.Instance.GetObject(ImplementaClubes);
             servicioSedes = (ISedesServicio)AppContext.Instance.GetObject(ImplementaSedes);
-            servicioClubes.Listar(this);
+            servicioClubes.ListarActivos(this);
             servicioPaises.ListarPaises(this);
             if (IdSedeModificar > 0)
             {
