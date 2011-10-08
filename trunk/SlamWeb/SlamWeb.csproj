@@ -123,6 +123,9 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Configuracion.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Consultas.aspx" />
     <Content Include="Content\bg1.gif" />
     <Content Include="Content\Consultas.png" />

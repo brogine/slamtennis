@@ -54,7 +54,6 @@ namespace Slam
             servicioPaises.ListarPaises(this);
             servicioLocalidades = (ILocalidadServicio)AppContext.Instance.GetObject(ImplementaUbicacion);
             servicioProvincias = (IProvinciaServicio)AppContext.Instance.GetObject(ImplementaUbicacion);
-            servicioProvincias.ListarProvincias(this);
             if (Dni > 0)
             {
                 switch (Tipo)
@@ -108,7 +107,7 @@ namespace Slam
                 EpNuevaPersona.GetError(TxtApellido) == "" && EpNuevaPersona.GetError(DtpFechaNac) == "" &&
                 EpNuevaPersona.GetError(CboNacionalidad) == "" && EpNuevaPersona.GetError(RbFemenino) == "" &&
                 EpNuevaPersona.GetError(CboProvincia) == "" && EpNuevaPersona.GetError(CboLocalidades) == "" &&
-                EpNuevaPersona.GetError(TxtDomicilio) == "")
+                EpNuevaPersona.GetError(TxtDomicilio) == "" && EpNuevaPersona.GetError(CboPais) == "")
             {
                 if (EpNuevaPersona.GetError(TxtUsuario) == "" && EpNuevaPersona.GetError(TxtPassword) == "")
                 {
@@ -478,6 +477,10 @@ namespace Slam
                 CboNacionalidad.DisplayMember = "Value";
                 CboNacionalidad.ValueMember = "Key";
                 CboNacionalidad.SelectedIndex = -1;
+                CboPais.DataSource = new BindingSource(value, null);
+                CboPais.DisplayMember = "Value";
+                CboPais.ValueMember = "Key";
+                CboPais.SelectedIndex = -1;
             }
         }
 
@@ -501,7 +504,7 @@ namespace Slam
 
         public int Pais
         {
-            get { return 1; }
+            get { return Convert.ToInt32(((KeyValuePair<int, string>)CboPais.SelectedItem).Key); }
         }
 
         #endregion
@@ -783,33 +786,13 @@ namespace Slam
             {
                 try
                 {
-                    PathFoto = CopiarFoto(Ofd.FileName);
-                    PbFoto.Image = Image.FromFile(Ofd.FileName);
+                    PathFoto = Image.FromFile(Ofd.FileName);
+                    PbFoto.Image = PathFoto;
                 }
                 catch(Exception)
                 {
                     MessageBox.Show("El archivo que buscó no es una foto soportada por el sistema. Busque nuevamente.");
                 }
-            }
-        }
-
-        public Image CopiarFoto(string RutaOrigen)
-        {
-            Bitmap mapabit;
-            Image imagen;
-            if (File.Exists(RutaOrigen))
-            {
-                FileInfo info = new FileInfo(RutaOrigen);
-                string extenc = info.Name.Replace(info.Extension, "");
-                mapabit = new Bitmap(RutaOrigen);
-                Size size = mapabit.Size;
-                double ratio = size.Height / size.Width;
-                imagen = mapabit.GetThumbnailImage(254, 205, null, IntPtr.Zero);
-                return imagen;
-            }
-            else
-            {
-                return null;
             }
         }
 
@@ -842,6 +825,24 @@ namespace Slam
                 Blanquear();
                 MessageBox.Show(ex.Message);
             }
+        }
+
+        private void CboPais_SelectionChangeCommitted(object sender, EventArgs e)
+        {
+            servicioProvincias.ListarProvincias(this);
+        }
+
+        private void CboPais_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = true;
+        }
+
+        private void CboPais_Validating(object sender, CancelEventArgs e)
+        {
+            if (CboPais.SelectedIndex < 0)
+                EpNuevaPersona.SetError(CboPais, "Debe Elegir un Pais");
+            else
+                EpNuevaPersona.SetError(CboPais, "");
         }
 
     }
