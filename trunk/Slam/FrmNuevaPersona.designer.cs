@@ -346,7 +346,7 @@
             this.CboPais.Size = new System.Drawing.Size(154, 21);
             this.CboPais.TabIndex = 16;
             this.CboPais.Validating += new System.ComponentModel.CancelEventHandler(this.CboPais_Validating);
-            this.CboPais.SelectionChangeCommitted += new System.EventHandler(this.CboPais_SelectionChangeCommitted);
+            this.CboPais.SelectedIndexChanged += new System.EventHandler(this.CboPais_SelectedIndexChanged);
             this.CboPais.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.CboPais_KeyPress);
             // 
             // BtnAgregarLocalidad

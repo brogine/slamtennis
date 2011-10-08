@@ -18,6 +18,7 @@ namespace Servicio.InterfacesUI
         string Telefono { get; set; }
         string Celular { get; set; }
         string Email { get; set; }
+        int Pais { get; set; }
         int Provincia { get; set; }
         int Localidad { get; set; }
         string Domicilio { get; set; }
