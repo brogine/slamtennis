@@ -25,6 +25,30 @@ namespace Dominio
         Image foto;
         #endregion
 
+        #region Value Objects
+        Ubicacion ubicacion;
+        Contacto contacto;
+        Login login;
+
+        public Ubicacion Ubicacion
+        {
+            get { return ubicacion; }
+            set { ubicacion = value; }
+        }
+
+        public Contacto Contacto
+        {
+            get { return contacto; }
+            set { contacto = value; }
+        }
+
+        public Login Login
+        {
+            get { return login; }
+            set { login = value; }
+        }
+        #endregion
+
         #region Variables Públicas
         public int Dni
         {
@@ -80,48 +104,5 @@ namespace Dominio
         }
         #endregion
 
-        #region Value Objects
-        Ubicacion ubicacion;
-        Contacto contacto;
-        Login login;
-
-        public Ubicacion Ubicacion
-        {
-            get { return ubicacion; }
-            set { ubicacion = value; }
-        }
-
-        public Contacto Contacto
-        {
-            get { return contacto; }
-            set { contacto = value; }
-        }
-
-        public Login Login
-        {
-            get { return login; }
-            set { login = value; }
-        }
-        #endregion
-
-        public Image CopiarFoto(string RutaOrigen)
-        {
-            Bitmap mapabit;
-            Image imagen;
-            if (File.Exists(RutaOrigen))
-            {
-                FileInfo info = new FileInfo(RutaOrigen);
-                string extenc = info.Name.Replace(info.Extension, "");
-                mapabit = new Bitmap(RutaOrigen);
-                Size size = mapabit.Size;
-                double ratio = size.Height / size.Width;
-                imagen = mapabit.GetThumbnailImage(254, 205, null, IntPtr.Zero);
-                return imagen;
-            }
-            else
-            {
-                return null;
-            }
-        }
     }
 }

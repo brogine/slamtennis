@@ -114,9 +114,6 @@ namespace Slam
                     Dni = int.Parse(TxtDni.Text);
                     try
                     {
-                        PbFoto.Dispose();
-                        GC.Collect();
-                        GC.WaitForPendingFinalizers();
                         switch (Tipo)
                         {
                             case TipoPersona.Arbitro:
@@ -447,24 +444,6 @@ namespace Slam
             set { EdadJugador = value; }
         }
 
-        public Image Foto
-        {
-            get
-            {
-                return PathFoto;
-            }
-            set
-            {
-                PathFoto = value;
-                if (value != null)
-                {
-                    PbFoto.Image = value;
-
-                }
-            }
-        }
-
-
         #endregion
 
         #region Miembros de IListadoPaises
@@ -777,25 +756,6 @@ namespace Slam
             }
         }
 
-        private void BtnBuscarFoto_Click(object sender, EventArgs e)
-        {
-            OpenFileDialog Ofd = new OpenFileDialog();
-            Ofd.Filter = "Archivos de Imagen|*.jpg;*.gif;*.bmp;*.png;*.jpeg|Todos los Archivos|*.*";
-            Ofd.Multiselect = false;
-            if (Ofd.ShowDialog() == DialogResult.OK)
-            {
-                try
-                {
-                    PathFoto = Image.FromFile(Ofd.FileName);
-                    PbFoto.Image = PathFoto;
-                }
-                catch(Exception)
-                {
-                    MessageBox.Show("El archivo que buscó no es una foto soportada por el sistema. Busque nuevamente.");
-                }
-            }
-        }
-
         private void TxtDni_Leave(object sender, EventArgs e)
         {
             this.BuscarPersona();
@@ -820,10 +780,9 @@ namespace Slam
                 }
 
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 Blanquear();
-                MessageBox.Show(ex.Message);
             }
         }
 

@@ -31,7 +31,9 @@ namespace Repositorio
 
             if (Jugador.Edad < 18 && Jugador.Tutor != "" && Jugador.RelacionTutor != "")
                 Conn.ActualizarOEliminar(" Update Personas Set Tutor = '" + Jugador.Tutor + "', Relacion = '" + Jugador.RelacionTutor + "' Where Dni = " + Jugador.Dni);
-            Conn.AgregarSinId("Jugadores", "Dni,PartidosGanados,PartidosPerdidos,IdCategoria,Puntos,Estado", Jugador.Dni+",0,0,1,0,1");
+            ICategoriaRepositorio repoCategorias = new CategoriaRepositorio();
+            Categoria bCategoria = repoCategorias.ObtenerPorEdad(Jugador.Edad);
+            Conn.AgregarSinId("Jugadores", "Dni,PartidosGanados,PartidosPerdidos,IdCategoria,Puntos,Estado,TorneosJugados,TorneosCompletados", Jugador.Dni + ",0,0," + bCategoria.Id + ",0,1,0,0");
         }
 
         public override bool Existe(int Dni)
