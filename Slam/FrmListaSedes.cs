@@ -32,7 +32,7 @@ namespace Slam
 
         private void FrmListaSedes_Load(object sender, EventArgs e)
         {
-            servicioClubes.Listar(this);
+            servicioClubes.ListarActivos(this);
             servicioSedes.ListarSedes(this);
         }
 
@@ -122,7 +122,7 @@ namespace Slam
 
         private void BtnNuevaCancha_Click(object sender, EventArgs e)
         {
-            FrmCanchas nuevaCancha = new FrmCanchas();
+            FrmCanchas nuevaCancha = new FrmCanchas(this.IdClub);
             if (nuevaCancha.ShowDialog() == DialogResult.OK)
                 servicioCanchas.Listar(this);
         }
@@ -131,7 +131,7 @@ namespace Slam
         {
             if (DgvCanchas.SelectedRows.Count == 1)
             {
-                FrmCanchas nuevaCancha = new FrmCanchas(Convert.ToInt32(DgvCanchas.SelectedRows[0].Cells["Id"].Value));
+                FrmCanchas nuevaCancha = new FrmCanchas(this.IdClub,Convert.ToInt32(DgvCanchas.SelectedRows[0].Cells["Id"].Value));
                 if (nuevaCancha.ShowDialog() == DialogResult.OK)
                     servicioCanchas.Listar(this);
             }

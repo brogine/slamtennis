@@ -79,6 +79,24 @@ namespace Servicio
             UI.ListarClubes = Lista;
         }
 
+       public void ListarActivos(Servicio.InterfacesUI.IListadoClubes UI)
+        {
+            List<Club> ListaClubes = ClubRepo.ListarActivos();
+            List<Object> Lista = new List<object>();
+            foreach (Club Club in ListaClubes)
+            {
+                object presidente = string.Empty;
+                if(Club.Presidente == null)
+                    presidente = "No está asignado";
+                else
+                    presidente = Club.Presidente;
+                Lista.Add(Club.Id + "," + Club.Nombre + "," + presidente + "," + Club.Estado);
+            }
+            UI.ListarClubes = Lista;
+        }
+        }
+
         #endregion
     }
-}
+
+

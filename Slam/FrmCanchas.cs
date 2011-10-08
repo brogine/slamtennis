@@ -20,14 +20,22 @@ namespace Slam
         ICanchasServicio servicioCanchas;
         IListadoSedesServicio servicioSedes;
         int IdCanchaActual = 0;
+        int idclub;
+
         public FrmCanchas()
         {
             InitializeComponent();
         }
-
-        public FrmCanchas(int IdCancha)
+        public FrmCanchas(int IdClub)
         {
             InitializeComponent();
+            this.idclub = IdClub;
+        }
+
+        public FrmCanchas(int IdClub,int IdCancha)
+        {
+            InitializeComponent();
+            this.idclub = IdClub;
             this.IdCanchaActual = IdCancha;
         }
 
@@ -114,6 +122,7 @@ namespace Slam
         public int IdCancha
         {
             get { return IdCanchaActual; }
+
         }
 
         public int IdSede
@@ -176,7 +185,8 @@ namespace Slam
 
         public int IdClub
         {
-            get { return 0; }
+            get { return idclub; }
+            set { idclub = value;}
         }
 
         public List<object> ListarSedes

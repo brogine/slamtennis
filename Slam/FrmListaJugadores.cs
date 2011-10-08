@@ -30,7 +30,7 @@ namespace Slam
         {
             servicioJugadores = (IListadoJugadoresServicio)AppContext.Instance.GetObject(ImplementaJugadores);
         	servicioClubes = (IListadoClubServicio)AppContext.Instance.GetObject(ImplementaClubes);
-            servicioClubes.Listar(this);
+            servicioClubes.ListarActivos(this);
         }
 
         private void BtnNuevo_Click(object sender, EventArgs e)

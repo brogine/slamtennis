@@ -41,9 +41,9 @@ namespace Slam
             CboEstado.DataSource = Enum.GetValues(typeof(EstadoTorneo));
             CboSuperficie.DataSource = Enum.GetValues(typeof(TipoSuperficie));
             ClubServicio = (IListadoClubServicio)AppContext.Instance.GetObject(ImplementaClubes);
-            ClubServicio.Listar(this);
+            ClubServicio.ListarActivos(this);
             servicioCategorias = (IListadoCategoriaServicio)AppContext.Instance.GetObject(ImplementaCategorias);
-            servicioCategorias.Listar(this);
+            servicioCategorias.ListarActivas(this);
             TorneoServicio = (ITorneoServicio)AppContext.Instance.GetObject(ImplementaTorneo);
             if (idtorneo > -1)
             {

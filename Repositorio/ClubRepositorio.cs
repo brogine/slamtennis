@@ -64,6 +64,18 @@ namespace Repositorio
             }
             return ListaClubes;
         }
+
+        public List<Dominio.Club> ListarActivos()
+        {
+            string Sql = " Select * From Clubes where Estado = 1";
+            DataTable Tabla = Conn.Listar(Sql);
+            List<Club> ListaClubes = new List<Club>();
+            foreach (DataRow Dr in Tabla.Rows)
+            {
+                ListaClubes.Add(this.Mapear(Dr));
+            }
+            return ListaClubes;
+        }
         public bool Existe(int IdClub)
         {
             string Consulta = " Select Count(*) From Clubes Where IdClub = " + IdClub;

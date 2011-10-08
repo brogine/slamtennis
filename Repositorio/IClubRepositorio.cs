@@ -17,5 +17,6 @@ namespace Repositorio
         bool Existe(int IdClub);
 
         List<Club> Listar();
+        List<Club> ListarActivos();
     }
 }

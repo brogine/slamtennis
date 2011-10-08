@@ -14,6 +14,6 @@ namespace Repositorio
 
         Sede Buscar(int Id);
 
-        List<Sede> Listar();
+        List<Sede> Listar(int IdClub);
     }
 }

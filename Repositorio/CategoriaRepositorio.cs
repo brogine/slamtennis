@@ -30,6 +30,18 @@ namespace Repositorio
             return Lista;
         }
 
+        public List<Categoria> ListarActivas()
+        {
+            sql = " Select * From Categorias where Estado = 1";
+            DataTable Dt = conn.Listar(sql);
+            List<Categoria> Lista = new List<Categoria>();
+            foreach (DataRow Dr in Dt.Rows)
+            {
+                Lista.Add(this.Mapear(Dr));
+            }
+            return Lista;
+        }
+
         public bool Existe(int Id)
         {
             string Consulta = "Select Count(IdCategoria) from Categorias Where IdCategoria = " + Id;
