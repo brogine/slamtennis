@@ -145,7 +145,7 @@
             // TxtResultado
             // 
             this.TxtResultado.Location = new System.Drawing.Point(207, 144);
-            this.TxtResultado.Mask = "0-0/0-0/0-0";
+            this.TxtResultado.Mask = "0-0/0-0/00-00";
             this.TxtResultado.Name = "TxtResultado";
             this.TxtResultado.Size = new System.Drawing.Size(100, 20);
             this.TxtResultado.TabIndex = 7;

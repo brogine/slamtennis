@@ -363,5 +363,20 @@ namespace Slam
             e.Handled = true;
         }
 
+        private void button1_Click(object sender, EventArgs e)
+        {
+            FrmNuevaUbicacion NuevaUbicacion = new FrmNuevaUbicacion();
+            if (NuevaUbicacion.ShowDialog() == DialogResult.OK)
+            {
+                servicioPaises.ListarPaises(this);
+                servicioProvincias.ListarProvincias(this);
+                servicioLocalidades.ListarLocalidades(this);
+                CboPaises.SelectedIndex = -1;
+                CboProvincias.SelectedIndex = -1;
+                CboLocalidades.SelectedIndex = -1;
+            }
+
+        }
+
     }
 }

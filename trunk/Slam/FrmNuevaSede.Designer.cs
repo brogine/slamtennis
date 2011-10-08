@@ -50,6 +50,7 @@
             this.LblPais = new System.Windows.Forms.Label();
             this.CboPaises = new System.Windows.Forms.ComboBox();
             this.LblExplicacion = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.EpSedes)).BeginInit();
             this.SuspendLayout();
             // 
@@ -164,7 +165,7 @@
             // 
             // BtnGuardar
             // 
-            this.BtnGuardar.Location = new System.Drawing.Point(94, 260);
+            this.BtnGuardar.Location = new System.Drawing.Point(42, 260);
             this.BtnGuardar.Name = "BtnGuardar";
             this.BtnGuardar.Size = new System.Drawing.Size(75, 23);
             this.BtnGuardar.TabIndex = 8;
@@ -175,7 +176,7 @@
             // BtnCancelar
             // 
             this.BtnCancelar.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.BtnCancelar.Location = new System.Drawing.Point(175, 260);
+            this.BtnCancelar.Location = new System.Drawing.Point(123, 260);
             this.BtnCancelar.Name = "BtnCancelar";
             this.BtnCancelar.Size = new System.Drawing.Size(75, 23);
             this.BtnCancelar.TabIndex = 9;
@@ -233,6 +234,16 @@
             this.LblExplicacion.TabIndex = 18;
             this.LblExplicacion.Text = "Los Campos con * son obligatorios";
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(233, 260);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(116, 23);
+            this.button1.TabIndex = 19;
+            this.button1.Text = "Agregar Localidad";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // FrmNuevaSede
             // 
             this.AcceptButton = this.BtnGuardar;
@@ -240,6 +251,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.BtnCancelar;
             this.ClientSize = new System.Drawing.Size(361, 313);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.LblExplicacion);
             this.Controls.Add(this.LblPais);
             this.Controls.Add(this.CboPaises);
@@ -291,5 +303,6 @@
         private System.Windows.Forms.Label LblPais;
         private System.Windows.Forms.ComboBox CboPaises;
         private System.Windows.Forms.Label LblExplicacion;
+        private System.Windows.Forms.Button button1;
     }
 }
