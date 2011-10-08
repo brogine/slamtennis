@@ -29,9 +29,9 @@ namespace Slam
         {
             servicioEstadisticas = (IListadoEstadisticasServicio)AppContext.Instance.GetObject(ImplementaEstadisticas);
             servicioClubes = (IListadoClubServicio)AppContext.Instance.GetObject(ImplementaClubes);
-            servicioClubes.Listar(this);
+            servicioClubes.ListarActivos(this);
             servicioCategorias = (IListadoCategoriaServicio)AppContext.Instance.GetObject(ImplementaCategorias);
-            servicioCategorias.Listar(this);
+            servicioCategorias.ListarActivas(this);
         }
 
         private void BtnSalir_Click(object sender, EventArgs e)
@@ -115,6 +115,10 @@ namespace Slam
                 if (nuevaEstadistica.ShowDialog() == DialogResult.OK)
                     servicioEstadisticas.ListarPorCategoriaClub(this);
             }
+            else
+            {
+                MessageBox.Show("Debe Seleccionar Un Jugador De La Lista");
+            }
         }
 
         private void BtnVerEstadisticas_Click(object sender, EventArgs e)
@@ -127,6 +131,10 @@ namespace Slam
                     DgvEstadisticas.SelectedRows[0].Cells["NombreApellido"].Value.ToString());
                 if (modificarEstadistica.ShowDialog() == DialogResult.OK)
                     servicioEstadisticas.ListarPorCategoriaClub(this);
+            }
+            else
+            {
+                MessageBox.Show("Debe Seleccionar Un Jugador De La Lista");
             }
         }
 
@@ -150,11 +158,6 @@ namespace Slam
         }
 
         #endregion
-
-        private void BtnReporte_Click(object sender, EventArgs e)
-        {
-
-        }
 
         #region Miembros de IListadoCategorias
 

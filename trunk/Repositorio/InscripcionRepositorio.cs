@@ -30,6 +30,13 @@ namespace Repositorio
                             Conn.AgregarSinId("InscripcionesJugador", "Dni, IdInscripcion", Inscripcion.Equipo.Jugador1.Dni + "," + Inscripcion.IdInscripcion);
                         if (Inscripcion.Equipo.Jugador2 != null && !Existe(Inscripcion.Torneo.IdTorneo, Inscripcion.Equipo.Jugador2.Dni))
                             Conn.AgregarSinId("InscripcionesJugador", "Dni, IdInscripcion", Inscripcion.Equipo.Jugador2.Dni + "," + Inscripcion.IdInscripcion);
+                        
+                        if (Inscripcion.Torneo.Cupo == this.Listar(Inscripcion.Torneo.IdTorneo).Count)
+                        {
+                            ITorneoRepositorio TorneoRepo = new TorneoRepositorio();
+                            Inscripcion.Torneo.Estado = (int)EstadoTorneo.Cerrado;
+                            TorneoRepo.Modificar(Inscripcion.Torneo);
+                        }
                         return Inscripcion.IdInscripcion;
                     }
                     else
