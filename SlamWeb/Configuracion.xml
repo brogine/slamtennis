@@ -1,0 +1,8 @@
+﻿<?xml version="1.0" ?>
+<configuraciones>
+
+  <config nombre="SqlServer"
+          Proveedor="System.Data.SqlClient"
+          ConnectionString="Server=NICO-DESk;Database=SlamDB;Integrated Security =SSPI;"></config>
+
+</configuraciones>

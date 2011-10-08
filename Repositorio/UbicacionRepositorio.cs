@@ -42,7 +42,7 @@ namespace Repositorio
 
         public List<Provincia> ListarProvincias(Pais Pais)
         {
-            DataTable Tabla = Conex.Listar("Select * From Provincias where IdPais ="+Pais.IdPais);
+            DataTable Tabla = Conex.Listar("Select * From Provincias where IdPais = " + Pais.IdPais);
             List<Provincia> ListaProvincia = new List<Provincia>();
             foreach (DataRow Dr in Tabla.Rows)
             {

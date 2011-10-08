@@ -53,6 +53,7 @@
             this.TxtTelefono = new System.Windows.Forms.TextBox();
             this.LblTelefono = new System.Windows.Forms.Label();
             this.GbDireccion = new System.Windows.Forms.GroupBox();
+            this.CboPais = new System.Windows.Forms.ComboBox();
             this.BtnAgregarLocalidad = new System.Windows.Forms.Button();
             this.CboLocalidades = new System.Windows.Forms.ComboBox();
             this.TxtDomicilio = new System.Windows.Forms.TextBox();
@@ -92,6 +93,7 @@
             this.TxtUsuario = new System.Windows.Forms.TextBox();
             this.LblUsuario = new System.Windows.Forms.Label();
             this.EpNuevaPersona = new System.Windows.Forms.ErrorProvider(this.components);
+            this.LblPais = new System.Windows.Forms.Label();
             this.TcPersonas.SuspendLayout();
             this.TpDatosPersonales.SuspendLayout();
             this.GbDatosArbitro.SuspendLayout();
@@ -265,7 +267,7 @@
             this.GbContacto.Controls.Add(this.LblCelular);
             this.GbContacto.Controls.Add(this.TxtTelefono);
             this.GbContacto.Controls.Add(this.LblTelefono);
-            this.GbContacto.Location = new System.Drawing.Point(463, 152);
+            this.GbContacto.Location = new System.Drawing.Point(463, 177);
             this.GbContacto.Name = "GbContacto";
             this.GbContacto.Size = new System.Drawing.Size(273, 107);
             this.GbContacto.TabIndex = 24;
@@ -322,24 +324,37 @@
             // 
             // GbDireccion
             // 
+            this.GbDireccion.Controls.Add(this.CboPais);
             this.GbDireccion.Controls.Add(this.BtnAgregarLocalidad);
             this.GbDireccion.Controls.Add(this.CboLocalidades);
             this.GbDireccion.Controls.Add(this.TxtDomicilio);
             this.GbDireccion.Controls.Add(this.LblDomicilio);
             this.GbDireccion.Controls.Add(this.CboProvincia);
             this.GbDireccion.Controls.Add(this.LblLocalidad);
+            this.GbDireccion.Controls.Add(this.LblPais);
             this.GbDireccion.Controls.Add(this.LblProvincia);
             this.GbDireccion.Location = new System.Drawing.Point(463, 6);
             this.GbDireccion.Name = "GbDireccion";
-            this.GbDireccion.Size = new System.Drawing.Size(273, 140);
+            this.GbDireccion.Size = new System.Drawing.Size(273, 165);
             this.GbDireccion.TabIndex = 23;
             this.GbDireccion.TabStop = false;
             this.GbDireccion.Text = "Direccion";
             this.GbDireccion.Validating += new System.ComponentModel.CancelEventHandler(this.GbDireccion_Validating);
             // 
+            // CboPais
+            // 
+            this.CboPais.FormattingEnabled = true;
+            this.CboPais.Location = new System.Drawing.Point(84, 14);
+            this.CboPais.Name = "CboPais";
+            this.CboPais.Size = new System.Drawing.Size(154, 21);
+            this.CboPais.TabIndex = 16;
+            this.CboPais.Validating += new System.ComponentModel.CancelEventHandler(this.CboPais_Validating);
+            this.CboPais.SelectionChangeCommitted += new System.EventHandler(this.CboPais_SelectionChangeCommitted);
+            this.CboPais.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.CboPais_KeyPress);
+            // 
             // BtnAgregarLocalidad
             // 
-            this.BtnAgregarLocalidad.Location = new System.Drawing.Point(119, 111);
+            this.BtnAgregarLocalidad.Location = new System.Drawing.Point(119, 132);
             this.BtnAgregarLocalidad.Name = "BtnAgregarLocalidad";
             this.BtnAgregarLocalidad.Size = new System.Drawing.Size(119, 23);
             this.BtnAgregarLocalidad.TabIndex = 15;
@@ -350,7 +365,7 @@
             // CboLocalidades
             // 
             this.CboLocalidades.FormattingEnabled = true;
-            this.CboLocalidades.Location = new System.Drawing.Point(84, 49);
+            this.CboLocalidades.Location = new System.Drawing.Point(84, 70);
             this.CboLocalidades.Name = "CboLocalidades";
             this.CboLocalidades.Size = new System.Drawing.Size(154, 21);
             this.CboLocalidades.TabIndex = 13;
@@ -358,7 +373,7 @@
             // 
             // TxtDomicilio
             // 
-            this.TxtDomicilio.Location = new System.Drawing.Point(84, 79);
+            this.TxtDomicilio.Location = new System.Drawing.Point(84, 100);
             this.TxtDomicilio.Name = "TxtDomicilio";
             this.TxtDomicilio.Size = new System.Drawing.Size(154, 20);
             this.TxtDomicilio.TabIndex = 14;
@@ -366,7 +381,7 @@
             // LblDomicilio
             // 
             this.LblDomicilio.AutoSize = true;
-            this.LblDomicilio.Location = new System.Drawing.Point(22, 80);
+            this.LblDomicilio.Location = new System.Drawing.Point(22, 101);
             this.LblDomicilio.Name = "LblDomicilio";
             this.LblDomicilio.Size = new System.Drawing.Size(59, 13);
             this.LblDomicilio.TabIndex = 8;
@@ -375,7 +390,7 @@
             // CboProvincia
             // 
             this.CboProvincia.FormattingEnabled = true;
-            this.CboProvincia.Location = new System.Drawing.Point(84, 20);
+            this.CboProvincia.Location = new System.Drawing.Point(84, 41);
             this.CboProvincia.Name = "CboProvincia";
             this.CboProvincia.Size = new System.Drawing.Size(154, 21);
             this.CboProvincia.TabIndex = 12;
@@ -385,7 +400,7 @@
             // LblLocalidad
             // 
             this.LblLocalidad.AutoSize = true;
-            this.LblLocalidad.Location = new System.Drawing.Point(22, 52);
+            this.LblLocalidad.Location = new System.Drawing.Point(22, 73);
             this.LblLocalidad.Name = "LblLocalidad";
             this.LblLocalidad.Size = new System.Drawing.Size(63, 13);
             this.LblLocalidad.TabIndex = 4;
@@ -394,7 +409,7 @@
             // LblProvincia
             // 
             this.LblProvincia.AutoSize = true;
-            this.LblProvincia.Location = new System.Drawing.Point(24, 23);
+            this.LblProvincia.Location = new System.Drawing.Point(22, 44);
             this.LblProvincia.Name = "LblProvincia";
             this.LblProvincia.Size = new System.Drawing.Size(61, 13);
             this.LblProvincia.TabIndex = 2;
@@ -714,6 +729,15 @@
             // 
             this.EpNuevaPersona.ContainerControl = this;
             // 
+            // LblPais
+            // 
+            this.LblPais.AutoSize = true;
+            this.LblPais.Location = new System.Drawing.Point(22, 17);
+            this.LblPais.Name = "LblPais";
+            this.LblPais.Size = new System.Drawing.Size(37, 13);
+            this.LblPais.TabIndex = 2;
+            this.LblPais.Text = "Pais: *";
+            // 
             // FrmNuevaPersona
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -812,5 +836,7 @@
         private System.Windows.Forms.Label LblDetalle;
         private System.Windows.Forms.PictureBox PbFoto;
         private System.Windows.Forms.Button BtnBuscarFoto;
+        private System.Windows.Forms.ComboBox CboPais;
+        private System.Windows.Forms.Label LblPais;
     }
 }
