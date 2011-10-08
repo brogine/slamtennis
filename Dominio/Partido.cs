@@ -101,5 +101,51 @@ namespace Dominio
             get { return estado; }
             set { estado = value; }
         }
+
+        public int CalcularGanador(string Resultado)
+        {
+            
+            int Sets1 = 0;
+            int Sets2 = 0;
+            if (Convert.ToInt32(Resultado[0]) > Convert.ToInt32(Resultado[2]))
+            {
+                Sets1++;
+            }
+            else
+            {
+                Sets2++;
+            }
+
+            if ((Convert.ToInt32(Resultado[4]) > Convert.ToInt32(Resultado[6])))
+            {
+                Sets1++;
+            }
+            else
+            {
+                Sets2++;
+            }
+            string ResSet3A=Resultado[8].ToString();
+            string ResSet3B=Resultado[9].ToString();
+            string ResultadoSet3Equipo1 = ResSet3A + ResSet3B;
+            ResSet3A = Resultado[11].ToString();
+            ResSet3B = Resultado[12].ToString();
+            string ResultadoSet3Equipo2 = ResSet3A + ResSet3B;
+            if (Convert.ToInt32(ResultadoSet3Equipo1) > Convert.ToInt32(ResultadoSet3Equipo2))
+            {
+                Sets1++;
+            }
+            else
+            {
+                Sets2++;
+            }
+            if (Sets1 > Sets2)
+            {
+                return 1;
+            }
+            else
+            {
+                return 2;
+            }
+        }
     }
 }

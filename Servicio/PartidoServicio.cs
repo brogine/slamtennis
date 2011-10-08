@@ -41,6 +41,7 @@ namespace Servicio
            Partido.Estado = UI.Estado;
            Partido.Ronda = UI.Ronda;
            PartidoRepo.Modificar(Partido);
+           
         }
 
         public void Buscar(IPartidoUI UI)

@@ -13,7 +13,7 @@ using System.Collections;
 
 namespace Slam
 {
-    public partial class FrmNuevoPartido : Form,IPartidoUI,IListadoTorneos,IListadoInscripciones
+    public partial class FrmNuevoPartido : Form, IPartidoUI, IListadoTorneos, IListadoInscripciones
     {
         int idpartido = 0;
 
@@ -85,7 +85,7 @@ namespace Slam
         {
             get
             {
-                return Convert.ToInt32(TxtRonda.Text);   
+                return Convert.ToInt32(TxtRonda.Text);
             }
             set
             {
@@ -97,7 +97,7 @@ namespace Slam
         {
             get
             {
-                return Convert.ToInt32(((KeyValuePair<int,string>)CboListaTorneo.SelectedItem).Key);
+                return Convert.ToInt32(((KeyValuePair<int, string>)CboListaTorneo.SelectedItem).Key);
             }
             set
             {
@@ -147,7 +147,7 @@ namespace Slam
 
         public List<object> ListaUI
         {
-            set 
+            set
             {
                 Dictionary<int, string> ListaTorneos = new Dictionary<int, string>();
                 foreach (Object Torneo in value)
@@ -159,8 +159,8 @@ namespace Slam
                 CboListaTorneo.DisplayMember = "Value";
                 CboListaTorneo.ValueMember = "Key";
                 CboListaTorneo.SelectedIndex = -1;
-                
-                
+
+
             }
         }
 
@@ -175,13 +175,13 @@ namespace Slam
 
         public List<object> ListarPorTorneo
         {
-            set 
+            set
             {
                 Dictionary<int, string> ListaInscripciones = new Dictionary<int, string>();
                 foreach (Object Inscripcion in value)
                 {
                     Object[] DatosTorneo = Inscripcion.ToString().Split(',');
-                    ListaInscripciones.Add(Convert.ToInt32(DatosTorneo[0]),DatosTorneo[2]+"-"+DatosTorneo[3].ToString());
+                    ListaInscripciones.Add(Convert.ToInt32(DatosTorneo[0]), DatosTorneo[2] + "-" + DatosTorneo[3].ToString());
                 }
                 CboEquipo2.DataSource = new BindingSource(ListaInscripciones, null);
                 CboEquipo2.DisplayMember = "Value";
@@ -205,33 +205,33 @@ namespace Slam
         private void BtnAceptar_Click(object sender, EventArgs e)
         {
             try
-        {
-                if(EPPartidos.GetError(CboListaTorneo)!=""&&EPPartidos.GetError(CboEquipo1)!=""&&EPPartidos.GetError(CboEquipo2)!=""&&EPPartidos.GetError(TxtRonda)!="")
+            {
+                if (EPPartidos.GetError(CboListaTorneo) != "" && EPPartidos.GetError(CboEquipo1) != "" && EPPartidos.GetError(CboEquipo2) != "" && EPPartidos.GetError(TxtRonda) != "")
                 {
-                MessageBox.Show("Complete Todos Los Campos Antes De Continuar");
+                    MessageBox.Show("Complete Todos Los Campos Antes De Continuar");
                 }
                 else
                 {
-                     if(servicioPartido.Existe(this.IdPartido))
-                     {
-                          servicioPartido.Modificar(this);
-                     }
-                     else
-                      {
-                          servicioPartido.Agregar(this);
-                      }
-                          this.DialogResult = DialogResult.OK;
-                      }
+                    if (servicioPartido.Existe(this.IdPartido))
+                    {
+                        servicioPartido.Modificar(this);
+                    }
+                    else
+                    {
+                        servicioPartido.Agregar(this);
+                    }
+                    this.DialogResult = DialogResult.OK;
                 }
-        
-        catch (Exception ex)
+            }
+
+            catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }
         }
         private void CboListaTorneo_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (CboListaTorneo.SelectedIndex> -1)
+            if (CboListaTorneo.SelectedIndex > -1)
             {
                 servicioInscripciones = (IListadoInscripcionServicio)AppContext.Instance.GetObject(ImplementaInscripciones);
                 servicioInscripciones.ListarPorTorneo(this);
@@ -252,7 +252,7 @@ namespace Slam
             }
             else
             {
-            EPPartidos.SetError(CboListaTorneo,"");
+                EPPartidos.SetError(CboListaTorneo, "");
             }
         }
 
@@ -264,9 +264,9 @@ namespace Slam
             }
             else
             {
-            EPPartidos.SetError(CboEquipo1,"");
+                EPPartidos.SetError(CboEquipo1, "");
             }
-            
+
         }
 
         private void CboEquipo2_Validating(object sender, CancelEventArgs e)
@@ -277,31 +277,31 @@ namespace Slam
             }
             else
             {
-            EPPartidos.SetError(CboEquipo2,"");
+                EPPartidos.SetError(CboEquipo2, "");
             }
-            if (((DictionaryEntry)CboEquipo2.SelectedItem).Key ==((DictionaryEntry)CboEquipo1.SelectedItem).Key)
+            if (((DictionaryEntry)CboEquipo2.SelectedItem).Key == ((DictionaryEntry)CboEquipo1.SelectedItem).Key)
             {
-            EPPartidos.SetError(CboEquipo2,"Los Equipos No Pueden Ser Iguales");
+                EPPartidos.SetError(CboEquipo2, "Los Equipos No Pueden Ser Iguales");
             }
             else
             {
-            EPPartidos.SetError(CboEquipo2,"");
+                EPPartidos.SetError(CboEquipo2, "");
             }
-            
 
-        
-    }
+
+
+        }
 
         private void TxtRonda_Validating(object sender, CancelEventArgs e)
         {
-            int ronda=0;
-            if(TxtRonda.Text=="")
+            int ronda = 0;
+            if (TxtRonda.Text == "")
             {
-            EPPartidos.SetError(TxtRonda,"Debe Escribir A Que Ronda Pertenece El Partido");
+                EPPartidos.SetError(TxtRonda, "Debe Escribir A Que Ronda Pertenece El Partido");
             }
             else
             {
-            EPPartidos.SetError(TxtRonda,"");
+                EPPartidos.SetError(TxtRonda, "");
             }
 
             if (!int.TryParse(TxtRonda.Text, out ronda))
@@ -313,4 +313,5 @@ namespace Slam
                 EPPartidos.SetError(TxtRonda, "");
             }
         }
+    }
 }
