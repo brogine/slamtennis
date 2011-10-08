@@ -9,7 +9,7 @@ using System.Data;
 
 namespace Reportes
 {
-    public enum ListadoReportes { Ranking, Llave, CuponInscripcion }
+    public enum ListadoReportes { Ranking, Llave }
 
     public class ReportesServicio : IReportesServicio, IListadoJugadoresCategoria
     {
