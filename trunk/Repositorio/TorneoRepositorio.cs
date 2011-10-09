@@ -59,17 +59,28 @@ namespace Repositorio
             sql += ",FecFin = '" + FechaFormateadaFin + "'";
             sql += ",FecInicInsc = '" + FechaFormateadaInicioInscrip + "'";
             sql += ",FecFinInsc = '" + FechaFormateadaFinInscrip + "'";
-            sql += ",Cupo = " + Torneo.Cupo;
+            Torneo tor = this.Buscar(Torneo.IdTorneo);
+            if (Torneo.Cupo > tor.Cupo)
+            {
+                string Cons = "Update Torneos Set Estado = 0";
+                Conex.ActualizarOEliminar("Update Torneos Set Cupo = " + Torneo.Cupo + " where IdTorneo = " + Torneo.IdTorneo);
+                Conex.ActualizarOEliminar(Cons);
+            }
+            else
+            {
+                sql += ",Cupo = " + Torneo.Cupo;
+            }
+            
             sql += ",Sexo = '" + Torneo.Sexo + "'";
             sql += ",Tipo = " + (int)Torneo.TipoTorneo;
             sql += ",IdClub =" + Torneo.Club.Id;
             sql += ",IdCategoria =" + Torneo.Categoria.Id;
-            
             sql += ",TipoInscripcion =" + (Torneo.TipoInscripcion?1:0);
             sql += ",Superficie =" + (int)Torneo.Superficie;
-            sql += ",Estado =" + Torneo.Estado;
             sql += " where IdTorneo = " + Torneo.IdTorneo;
             Conex.ActualizarOEliminar(sql);
+           
+
         }
 
         public Torneo Buscar(int IdTorneo)

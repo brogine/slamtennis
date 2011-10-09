@@ -161,5 +161,21 @@ namespace Servicio
         }
 
         #endregion
+
+        #region Miembros de ITorneoServicio
+
+
+        public void ArmarTorneoAutomatico(int IdTorneo)
+        {
+        //    Torneo Torneo = TorneoRepo.Buscar(IdTorneo);
+        //    IInscripcionRepositorio InscRepo = new InscripcionRepositorio();
+        //    List<Inscripcion> Lista = InscRepo.Listar(IdTorneo);
+        //    foreach (Inscripcion Ins in Lista)
+        //    { 
+        //    Partido Part = new Partido(Torneo,
+        //    }
+        }
+
+        #endregion
     }
 }

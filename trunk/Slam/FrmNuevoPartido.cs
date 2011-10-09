@@ -242,13 +242,11 @@ namespace Slam
                 servicioInscripciones.ListarPorTorneo(this);
             }
         }
-
         private void BtnSalir_Click(object sender, EventArgs e)
         {
             this.DialogResult = DialogResult.OK;
             this.Close();
         }
-
         private void CboListaTorneo_Validating(object sender, CancelEventArgs e)
         {
             if (CboListaTorneo.SelectedIndex < 0)
@@ -260,7 +258,6 @@ namespace Slam
                 EPPartidos.SetError(CboListaTorneo, "");
             }
         }
-
         private void CboEquipo1_Validating(object sender, CancelEventArgs e)
         {
             if (CboEquipo1.SelectedIndex < 0)
@@ -273,7 +270,6 @@ namespace Slam
             }
 
         }
-
         private void CboEquipo2_Validating(object sender, CancelEventArgs e)
         {
             if (CboEquipo2.SelectedIndex < 0)
@@ -296,7 +292,6 @@ namespace Slam
 
 
         }
-
         private void TxtRonda_Validating(object sender, CancelEventArgs e)
         {
             int ronda = 0;
