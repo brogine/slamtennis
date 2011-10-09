@@ -144,5 +144,22 @@ namespace Servicio
         }
 
         #endregion
+
+        #region Miembros de IListadoTorneoServicio
+
+
+        public void ListarCerradosHoy(IListadoTorneos UI)
+        {
+            List<Torneo> ListaTorneo = TorneoRepo.ListarCerradosHoy();
+            List<Object> Lista = new List<object>();
+            foreach (Torneo Torneo in ListaTorneo)
+            {
+                Lista.Add(Torneo.IdTorneo + "," + Torneo.Nombre + "," + Torneo.Categoria.Nombre);
+            }
+
+            UI.ListaUI = Lista;
+        }
+
+        #endregion
     }
 }
