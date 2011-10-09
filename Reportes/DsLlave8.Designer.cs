@@ -581,6 +581,8 @@ namespace Reportes {
             
             private global::System.Data.DataColumn columnRonda;
             
+            private global::System.Data.DataColumn columnNro;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             public PartidosDataTable() {
                 this.TableName = "Partidos";
@@ -654,6 +656,13 @@ namespace Reportes {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public global::System.Data.DataColumn NroColumn {
+                get {
+                    return this.columnNro;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -682,7 +691,7 @@ namespace Reportes {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            public PartidosRow AddPartidosRow(string Equipo1Jugador1, string Equipo1Jugador2, string Equipo2Jugador1, string Equipo2Jugador2, string Resultado, string Ronda) {
+            public PartidosRow AddPartidosRow(string Equipo1Jugador1, string Equipo1Jugador2, string Equipo2Jugador1, string Equipo2Jugador2, string Resultado, string Ronda, string Nro) {
                 PartidosRow rowPartidosRow = ((PartidosRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         Equipo1Jugador1,
@@ -690,7 +699,8 @@ namespace Reportes {
                         Equipo2Jugador1,
                         Equipo2Jugador2,
                         Resultado,
-                        Ronda};
+                        Ronda,
+                        Nro};
                 rowPartidosRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowPartidosRow);
                 return rowPartidosRow;
@@ -716,6 +726,7 @@ namespace Reportes {
                 this.columnEquipo2Jugador2 = base.Columns["Equipo2Jugador2"];
                 this.columnResultado = base.Columns["Resultado"];
                 this.columnRonda = base.Columns["Ronda"];
+                this.columnNro = base.Columns["Nro"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -732,6 +743,8 @@ namespace Reportes {
                 base.Columns.Add(this.columnResultado);
                 this.columnRonda = new global::System.Data.DataColumn("Ronda", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnRonda);
+                this.columnNro = new global::System.Data.DataColumn("Nro", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnNro);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1094,6 +1107,21 @@ namespace Reportes {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public string Nro {
+                get {
+                    try {
+                        return ((string)(this[this.tablePartidos.NroColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'Nro\' de la tabla \'Partidos\' es DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablePartidos.NroColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             public bool IsEquipo1Jugador1Null() {
                 return this.IsNull(this.tablePartidos.Equipo1Jugador1Column);
             }
@@ -1151,6 +1179,16 @@ namespace Reportes {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             public void SetRondaNull() {
                 this[this.tablePartidos.RondaColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public bool IsNroNull() {
+                return this.IsNull(this.tablePartidos.NroColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public void SetNroNull() {
+                this[this.tablePartidos.NroColumn] = global::System.Convert.DBNull;
             }
         }
         

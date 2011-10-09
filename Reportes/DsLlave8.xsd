@@ -32,6 +32,7 @@
               <xs:element name="Equipo2Jugador2" msprop:Generator_UserColumnName="Equipo2Jugador2" msprop:Generator_ColumnPropNameInRow="Equipo2Jugador2" msprop:Generator_ColumnVarNameInTable="columnEquipo2Jugador2" msprop:Generator_ColumnPropNameInTable="Equipo2Jugador2Column" type="xs:string" minOccurs="0" />
               <xs:element name="Resultado" msprop:Generator_UserColumnName="Resultado" msprop:Generator_ColumnPropNameInRow="Resultado" msprop:Generator_ColumnVarNameInTable="columnResultado" msprop:Generator_ColumnPropNameInTable="ResultadoColumn" type="xs:string" minOccurs="0" />
               <xs:element name="Ronda" msprop:Generator_UserColumnName="Ronda" msprop:Generator_ColumnPropNameInRow="Ronda" msprop:Generator_ColumnVarNameInTable="columnRonda" msprop:Generator_ColumnPropNameInTable="RondaColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="Nro" msprop:Generator_UserColumnName="Nro" msprop:Generator_ColumnPropNameInRow="Nro" msprop:Generator_ColumnVarNameInTable="columnNro" msprop:Generator_ColumnPropNameInTable="NroColumn" type="xs:string" minOccurs="0" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>
