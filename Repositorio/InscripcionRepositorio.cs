@@ -31,12 +31,7 @@ namespace Repositorio
                         if (Inscripcion.Equipo.Jugador2 != null && !Existe(Inscripcion.Torneo.IdTorneo, Inscripcion.Equipo.Jugador2.Dni))
                             Conn.AgregarSinId("InscripcionesJugador", "Dni, IdInscripcion", Inscripcion.Equipo.Jugador2.Dni + "," + Inscripcion.IdInscripcion);
                         
-                        if (Inscripcion.Torneo.Cupo == this.Listar(Inscripcion.Torneo.IdTorneo).Count)
-                        {
-                            ITorneoRepositorio TorneoRepo = new TorneoRepositorio();
-                            Inscripcion.Torneo.Estado = (int)EstadoTorneo.Cerrado;
-                            TorneoRepo.Modificar(Inscripcion.Torneo);
-                        }
+                     
                         return Inscripcion.IdInscripcion;
                     }
                     else
@@ -52,6 +47,12 @@ namespace Repositorio
                             if (Inscripcion.Equipo.Jugador2 != null)
                             {
                                 Conn.AgregarSinId("InscripcionesJugador", "Dni, IdInscripcion", Inscripcion.Equipo.Jugador2.Dni + "," + IdInscripcion);
+                            }
+                            if (Inscripcion.Torneo.Cupo == this.Listar(Inscripcion.Torneo.IdTorneo).Count)
+                            {
+                                ITorneoRepositorio TorneoRepo = new TorneoRepositorio();
+                                Inscripcion.Torneo.Estado = (int)EstadoTorneo.Cerrado;
+                                TorneoRepo.Modificar(Inscripcion.Torneo);
                             }
                             return IdInscripcion;
                         }
@@ -90,11 +91,19 @@ namespace Repositorio
         }
 
         public void Eliminar(int IdInscripcion)
-        {
+        {   IInscripcionRepositorio InscRepo = new InscripcionRepositorio();
+            Inscripcion Insc = InscRepo.Buscar(IdInscripcion);
             String Consulta = " Delete From Inscripciones Where IdInscripcion = " + IdInscripcion;
             Conn.ActualizarOEliminar(Consulta);
             Consulta = " Delete From InscripcionesJugador Where IdInscripcion = " + IdInscripcion;
             Conn.ActualizarOEliminar(Consulta);
+
+            if (Insc.Torneo.FechaFinInscripcion <= DateTime.Today && Insc.Torneo.Estado == (int) EstadoTorneo.Cerrado)
+            {
+                Insc.Torneo.Estado = (int)EstadoTorneo.Abierto;
+                ITorneoRepositorio TorneoRepo = new TorneoRepositorio();
+                TorneoRepo.Modificar(Insc.Torneo);
+            }
         }
 
         /// <summary>

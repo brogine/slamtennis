@@ -40,31 +40,37 @@ namespace Repositorio
             
             string FechaFormateada = Partido.Fecha.Year + "/" + Partido.Fecha.Month + "/" + Partido.Fecha.Day;
             String Consulta = " Update Partidos Set ";
-            Consulta += " Resultado = '" + Partido.Resultado + "', ";
+            
             Consulta += " Fecha = '" + FechaFormateada + "', ";
             Consulta += "Ronda =" + Partido.Ronda+",";
             Consulta += " Estado = " + (Partido.Estado ? 1 : 0);
             Consulta += " Where IdPartido = " + Partido.IdPartido;
             Conn.ActualizarOEliminar(Consulta);
             // Agrega A Cada Jugador Los Partidos Perdidos y Ganados Segun Corresponda. Si Lo Entendes Te Doy U$S 100
+            Partido Part = this.Buscar(Partido.IdPartido);
+            if (Part.Resultado != Partido.Resultado)
+            {
+                Consulta = " Update Partidos Set Resultado = '" + Partido.Resultado +"' Where IdPartido = " + Partido.IdPartido;
+                Conn.ActualizarOEliminar(Consulta);
                 Estadisticas Est1Jug1 = Partido.Equipo1.Equipo.Jugador1.Estadisticas.Find(delegate(Estadisticas e)
-                 {
-                     return e.Categoria.Id == Partido.Torneo.Categoria.Id;
-                 });
+                     {
+                         return e.Categoria.Id == Partido.Torneo.Categoria.Id;
+                     });
                 Estadisticas Est2Jug1 = Partido.Equipo2.Equipo.Jugador1.Estadisticas.Find(delegate(Estadisticas e)
                 {
                     return e.Categoria.Id == Partido.Torneo.Categoria.Id;
                 });
-                         if (Partido.CalcularGanador(Partido.Resultado) == 1)
-                         {
-                           Est1Jug1.PG += 1;
-                           Est2Jug1.PP += 1;
-                        }
-                           else
-                          {
-                              Est1Jug1.PP += 1;
-                             Est2Jug1.PG += 1;
-                           }
+
+                if (Partido.CalcularGanador(Partido.Resultado) == 1)
+                {
+                    Est1Jug1.PG += 1;
+                    Est2Jug1.PP += 1;
+                }
+                else
+                {
+                    Est1Jug1.PP += 1;
+                    Est2Jug1.PG += 1;
+                }
                 EstRepo.Modificar(Partido.Equipo1.Equipo.Jugador1, Est1Jug1);
                 EstRepo.Modificar(Partido.Equipo2.Equipo.Jugador1, Est2Jug1);
 
@@ -90,10 +96,10 @@ namespace Repositorio
                     }
                     EstRepo.Modificar(Partido.Equipo1.Equipo.Jugador2, Est1Jug2);
                     EstRepo.Modificar(Partido.Equipo2.Equipo.Jugador2, Est2Jug2);
-                    }
+                }
 
 
-            
+            }
         }
 
         public Partido Buscar(int IdPartido)

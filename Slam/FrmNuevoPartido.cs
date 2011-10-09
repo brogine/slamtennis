@@ -181,7 +181,12 @@ namespace Slam
                 foreach (Object Inscripcion in value)
                 {
                     Object[] DatosTorneo = Inscripcion.ToString().Split(',');
-                    ListaInscripciones.Add(Convert.ToInt32(DatosTorneo[0]), DatosTorneo[2] + "-" + DatosTorneo[3].ToString());
+
+                    ListaInscripciones.Add(Convert.ToInt32(DatosTorneo[0]), DatosTorneo[2].ToString()); 
+                        if(DatosTorneo[3].ToString() != string.Empty)
+                        {
+                            ListaInscripciones.Add(Convert.ToInt32(DatosTorneo[0]), "-" + DatosTorneo[3].ToString());
+                        }
                 }
                 CboEquipo2.DataSource = new BindingSource(ListaInscripciones, null);
                 CboEquipo2.DisplayMember = "Value";
@@ -279,7 +284,7 @@ namespace Slam
             {
                 EPPartidos.SetError(CboEquipo2, "");
             }
-            if (((DictionaryEntry)CboEquipo2.SelectedItem).Key == ((DictionaryEntry)CboEquipo1.SelectedItem).Key)
+            if (Convert.ToInt32(((KeyValuePair<int,string>)CboEquipo2.SelectedItem).Key) == Convert.ToInt32(((KeyValuePair<int,string>)CboEquipo1.SelectedItem).Key))
             {
                 EPPartidos.SetError(CboEquipo2, "Los Equipos No Pueden Ser Iguales");
             }
