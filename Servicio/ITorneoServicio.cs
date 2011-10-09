@@ -17,5 +17,7 @@ namespace Servicio
         int GetTipoTorneo(int IdTorneo);
 
         bool Existe(int IdTorneo);
+
+        void ArmarTorneoAutomatico(int IdTorneo);
     }
 }

@@ -35,6 +35,13 @@ namespace Dominio
             this.equipo = equipo;
         }
 
+        public Inscripcion()
+        {
+            this.Equipo.Jugador1.Nombre = "BYE";
+            this.Equipo.Jugador2.Nombre = "BYE";
+        }
+
+
         int idInscripcion;
         Torneo torneo;
         DateTime fecha;

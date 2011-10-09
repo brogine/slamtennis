@@ -21,5 +21,7 @@ namespace Repositorio
         List<Inscripcion> Listar(int IdTorneo);
 
         List<Inscripcion> ListarPorPartido(int IdPartido);
+
+       
     }
 }
