@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmListaPartidos));
             this.CboListaTorneos = new System.Windows.Forms.ComboBox();
             this.DgvListaPartidos = new System.Windows.Forms.DataGridView();
             this.BtnAgregarPartido = new System.Windows.Forms.Button();
@@ -110,10 +111,11 @@
             this.Controls.Add(this.DgvListaPartidos);
             this.Controls.Add(this.CboListaTorneos);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "FrmListaPartidos";
-            this.Text = "FrmListaPartidos";
+            this.Text = "Lista de Partidos";
             this.Load += new System.EventHandler(this.FrmListaPartidos_Load);
             ((System.ComponentModel.ISupportInitialize)(this.DgvListaPartidos)).EndInit();
             this.ResumeLayout(false);

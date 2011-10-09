@@ -108,7 +108,6 @@
     <Compile Include="InterfacesUI\ILoginUI.cs" />
     <Compile Include="InterfacesUI\IPartidoUI.cs" />
     <Compile Include="InterfacesUI\ISedesUI.cs" />
-    <Compile Include="InterfacesUI\ITorneoInicioUI.cs" />
     <Compile Include="InterfacesUI\ITorneoUI.cs" />
     <Compile Include="InterfacesUI\IUbicacionUI.cs" />
     <Compile Include="IPaisServicio.cs" />

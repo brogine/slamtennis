@@ -28,6 +28,9 @@ namespace Slam
         {
             InitializeComponent();
             this.Padre = _Padre;
+            FrmPopUp popup = new FrmPopUp();
+            popup.MdiParent = this;
+            popup.Show();
         }
 
         private void TlsmiCerrarSesion_Click(object sender, EventArgs e)

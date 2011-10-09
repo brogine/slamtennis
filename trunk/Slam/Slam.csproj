@@ -240,6 +240,12 @@
     <Compile Include="FrmNuevoTorneo.Designer.cs">
       <DependentUpon>FrmNuevoTorneo.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmPopUp.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmPopUp.Designer.cs">
+      <DependentUpon>FrmPopUp.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmPrincipal.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -325,6 +331,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FrmNuevoTorneo.resx">
       <DependentUpon>FrmNuevoTorneo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmPopUp.resx">
+      <DependentUpon>FrmPopUp.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmPrincipal.resx">
       <DependentUpon>FrmPrincipal.cs</DependentUpon>
