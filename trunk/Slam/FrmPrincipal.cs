@@ -6,10 +6,13 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using Servicio.InterfacesUI;
+using Servicio;
+using ApplicationContext;
 
 namespace Slam
 {
-    public partial class FrmPrincipal : Form
+    public partial class FrmPrincipal : Form, IListadoTorneos
     {
         Form Padre;
         bool CerrarPadre = true;
@@ -24,13 +27,14 @@ namespace Slam
         FrmListaInscripciones Inscripciones;
         FrmListaPartidos Partidos;
         FrmReportes Reportes;
+        string ImplementaTorneos = "TorneoServicio";
+        IListadoTorneoServicio servicioTorneos;
         public FrmPrincipal(Form _Padre)
         {
             InitializeComponent();
             this.Padre = _Padre;
-            FrmPopUp popup = new FrmPopUp();
-            popup.MdiParent = this;
-            popup.Show();
+            servicioTorneos = (IListadoTorneoServicio)AppContext.Instance.GetObject(ImplementaTorneos);
+            servicioTorneos.ListarCerradosHoy(this);
         }
 
         private void TlsmiCerrarSesion_Click(object sender, EventArgs e)
@@ -188,5 +192,26 @@ namespace Slam
             else
                 Reportes.BringToFront();
         }
+
+        #region Miembros de IListadoTorneos
+
+        public List<object> ListaUI
+        {
+            set 
+            {
+                if (value.Count > 0)
+                {
+                    foreach (object Torneo in value)
+                    {
+                        object[] DatosTorneo = Torneo.ToString().Split(',');
+                        FrmPopUp popup = new FrmPopUp(Convert.ToInt32(DatosTorneo[0]), DatosTorneo[1].ToString(), DatosTorneo[2].ToString());
+                        popup.MdiParent = this;
+                        popup.Show();
+                    }
+                }
+            }
+        }
+
+        #endregion
     }
 }

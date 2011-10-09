@@ -16,7 +16,6 @@ namespace Slam
         bool ForceClose = false;
         DialogResult origDialogResult;
         int IdTorneoActual = 0;
-        string ImplementaTorneos = "TorneoServicio";
         public FrmPopUp(int IdTorneo, string NombreTorneo, string NombreCategoria)
         {
             InitializeComponent();
@@ -86,7 +85,7 @@ namespace Slam
         private void BtnCompletar_Click(object sender, EventArgs e)
         {
             FrmListaPartidos listaPartidos = new FrmListaPartidos();
-            listaPartidos.MdiParent = (FrmPrincipal)this.Parent;
+            listaPartidos.MdiParent = (FrmPrincipal)this.Parent.Parent;
             listaPartidos.Show();
             this.Close();
         }

@@ -179,7 +179,7 @@ namespace Repositorio
         {
             DateTime Hoy = DateTime.Today;
             string HoyFormateado = Hoy.Year + "/" + Hoy.Month + "/" + Hoy.Day;
-            string Sql = "select * from Torneos where FecFinInsc = " + HoyFormateado;
+            string Sql = "select * from Torneos where FecFinInsc = '" + HoyFormateado + "'";
             DataTable Tabla = Conex.Listar(Sql);
             List<Torneo> Lista = new List<Torneo>();
 
