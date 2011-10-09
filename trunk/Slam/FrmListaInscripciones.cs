@@ -158,6 +158,7 @@ namespace Slam
                 if (MessageBox.Show("¿Está seguro que desea eliminar esa inscripción?", "¿Está Seguro?", MessageBoxButtons.OKCancel) == DialogResult.OK)
                 {
                     servicioInscripciones.Eliminar(Convert.ToInt32(DgvListaInscripciones.SelectedRows[0].Cells["Id"].Value));
+                    
                     servicioListadoInscripciones.ListarPorTorneo(this);
                 }
             }

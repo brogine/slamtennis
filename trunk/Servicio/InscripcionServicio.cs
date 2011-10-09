@@ -145,6 +145,7 @@ namespace Servicio
                 {
                     ListaUI.Add(Inscripcion.IdInscripcion + "," + (int)tipoTorneo + "," +
                         Inscripcion.Equipo.Jugador1.Apellido + " " + Inscripcion.Equipo.Jugador1.Nombre + "," +
+                        string.Empty+"," +
                         Inscripcion.Fecha.ToShortDateString());
                 }
             }

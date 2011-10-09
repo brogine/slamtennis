@@ -76,9 +76,24 @@ namespace Servicio
             {
                 object Objeto = new object();
                 Objeto = Partido.IdPartido + ",";
-                Objeto += Partido.Equipo1.Equipo.Jugador1.Apellido +" - "+ Partido.Equipo1.Equipo.Jugador2.Apellido+",";
-                Objeto += Partido.Equipo2.Equipo.Jugador1.Apellido + " - " + Partido.Equipo2.Equipo.Jugador2.Apellido + ",";
-                Objeto += Partido.Fecha + ",";
+                if (Partido.Equipo1.Equipo.Jugador2 != null)
+                {
+                    Objeto += Partido.Equipo1.Equipo.Jugador1.Apellido + " - " + Partido.Equipo1.Equipo.Jugador2.Apellido + ",";
+                }
+                else
+                {
+                    Objeto += Partido.Equipo1.Equipo.Jugador1.Apellido + ",";
+                }
+
+                if (Partido.Equipo2.Equipo.Jugador2 != null)
+                {
+                    Objeto += Partido.Equipo2.Equipo.Jugador1.Apellido + " - " + Partido.Equipo2.Equipo.Jugador2.Apellido + ",";
+                }
+                else
+                {
+                    Objeto += Partido.Equipo2.Equipo.Jugador1.Apellido + ",";
+                }
+                Objeto += Partido.Fecha.ToShortDateString() + ",";
                 Objeto += Partido.Ronda +",";
                 Objeto += Partido.Resultado;
                 ListaObjeto.Add(Objeto);
