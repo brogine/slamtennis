@@ -14,6 +14,8 @@ namespace Repositorio
 
         Jugador Buscar(int Dni);
 
+        Categoria BuscarCategoria(int Dni);
+
         bool Existe(int Dni);
 
         List<Jugador> Listar(int IdClub);

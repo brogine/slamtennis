@@ -103,6 +103,28 @@ namespace Servicio
                 throw new ServicioExeption("El Jugador con Dni " + UI.Dni + " No existe");
 		}
 
+        public int Categoria(int dni)
+        {
+            int retorno = 0;
+            if (this.Existe(dni))
+            {
+                Categoria catjugador = repoJugadores.BuscarCategoria(dni);
+                if (catjugador == null)
+                {
+                    throw new ServicioExeption("El Jugador no tiene asociada ninguna categoria.");
+                }
+                else
+                {
+                    retorno = catjugador.Id;
+                }
+            }
+            else
+            {
+                throw new ServicioExeption("El Jugador con Dni " + dni + " No existe");
+            }
+            return retorno;
+        }
+
         #endregion
 
         #region Miembros de IListadoJugadoresServicio

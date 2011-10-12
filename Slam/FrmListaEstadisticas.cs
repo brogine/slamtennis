@@ -12,7 +12,7 @@ using ApplicationContext;
 
 namespace Slam
 {
-    public partial class FrmListaEstadisticas : Form, IListadoEstadisticasCategoria, IListadoClubes, IListadoCategorias
+    public partial class FrmListaEstadisticas : Form, IListadoEstadisticasCategoria, IListadoClubes , IListadoCategorias
     {
         string ImplementaEstadisticas = "EstadisticasServicio";
         string ImplementaClubes = "ClubServicio";

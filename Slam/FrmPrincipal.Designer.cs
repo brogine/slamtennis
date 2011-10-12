@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmPrincipal));
             this.MsPrincipal = new System.Windows.Forms.MenuStrip();
             this.TsmiArchivo = new System.Windows.Forms.ToolStripMenuItem();
@@ -49,6 +50,8 @@
             this.partidosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.TSMIInscripciones = new System.Windows.Forms.ToolStripMenuItem();
             this.TsmiReportes = new System.Windows.Forms.ToolStripMenuItem();
+            this.notifyIcon1 = new System.Windows.Forms.NotifyIcon(this.components);
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.MsPrincipal.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -215,6 +218,19 @@
             this.TsmiReportes.Text = "Reportes";
             this.TsmiReportes.Click += new System.EventHandler(this.TsmiReportes_Click);
             // 
+            // notifyIcon1
+            // 
+            this.notifyIcon1.BalloonTipIcon = System.Windows.Forms.ToolTipIcon.Info;
+            this.notifyIcon1.Icon = ((System.Drawing.Icon)(resources.GetObject("notifyIcon1.Icon")));
+            this.notifyIcon1.Text = "Gestion de Tennis";
+            this.notifyIcon1.Visible = true;
+            this.notifyIcon1.BalloonTipClicked += new System.EventHandler(this.notifyIcon1_BalloonTipClicked);
+            // 
+            // timer1
+            // 
+            this.timer1.Interval = 60000;
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            // 
             // FrmPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -258,5 +274,7 @@
         private System.Windows.Forms.ToolStripMenuItem TSMIInscripciones;
         private System.Windows.Forms.ToolStripMenuItem administrarToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem partidosToolStripMenuItem;
+        private System.Windows.Forms.NotifyIcon notifyIcon1;
+        private System.Windows.Forms.Timer timer1;
     }
 }
