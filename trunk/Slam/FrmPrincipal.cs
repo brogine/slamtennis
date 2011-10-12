@@ -35,6 +35,7 @@ namespace Slam
             this.Padre = _Padre;
             servicioTorneos = (IListadoTorneoServicio)AppContext.Instance.GetObject(ImplementaTorneos);
             servicioTorneos.ListarCerradosHoy(this);
+            timer1.Enabled = true;
         }
 
         private void TlsmiCerrarSesion_Click(object sender, EventArgs e)
@@ -213,5 +214,19 @@ namespace Slam
         }
 
         #endregion
+
+        private void notifyIcon1_BalloonTipClicked(object sender, EventArgs e)
+        {
+            FrmMensajes frm = new FrmMensajes();
+            frm.MdiParent = this;
+            frm.Show();
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            notifyIcon1.BalloonTipTitle = "Mensajes de la Web";
+            notifyIcon1.BalloonTipText = "Se encontraron mensajes recibidos de la web, Por favor haga clic aqui para ver los mensajes.";
+            notifyIcon1.ShowBalloonTip(3000);
+        }
     }
 }

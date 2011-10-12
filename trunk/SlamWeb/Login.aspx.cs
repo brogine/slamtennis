@@ -56,8 +56,11 @@ namespace SlamWeb
 
         public int Dni
         {
-            get;
-            set;
+            get { return Convert.ToInt32(Session["DNI"]); }
+            set
+            {
+                Session["DNI"] = value;
+            }
         }
 
         public string Nombre

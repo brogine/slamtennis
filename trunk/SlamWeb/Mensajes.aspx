@@ -1,8 +1,18 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Mensajes.aspx.cs" Inherits="SlamWeb.Mensajes" %>
+<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Mensajes.aspx.cs" Inherits="SlamWeb.Mensajes" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server">
+    <style type="text/css">
+        .style1
+        {
+            text-align: right;
+        }
+        .style2
+        {
+            text-align: left;
+        }
+    </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
-<div style="text-align: left; width:500px">
+    <div style="text-align: left; width:500px">
     <b>Usuario:</b>
     <asp:Label ID="LblUsuario" runat="server" Text="---"></asp:Label>
 &nbsp;<b>Nombre:</b>
@@ -19,5 +29,47 @@
     Mensajes al Administrador</div>
     
     <div style="height:400px; width:100%">
+    <table width="100%">
+        <tr>
+            <td style="width:35%" class="style1">
+                Dirigida a:
+            </td>
+            <td class="style2">
+                <asp:TextBox ID="TextBox1" runat="server" Width="227px"></asp:TextBox>
+                <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" 
+                    ControlToValidate="TextBox1" ErrorMessage="Complete el remitente !"></asp:RequiredFieldValidator>
+            </td>
+        </tr>
+        <tr>
+            <td class="style1">
+                Asunto:
+            </td>
+            <td class="style2">
+                <asp:TextBox ID="TextBox2" runat="server" Width="227px"></asp:TextBox>
+                <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" 
+                    ControlToValidate="TextBox2" ErrorMessage="Ingrese el asunto !"></asp:RequiredFieldValidator>
+            </td>
+        </tr>
+        <tr>
+            <td class="style1">
+                Mensaje:
+            </td>
+            <td class="style2">
+                <asp:TextBox ID="TextBox3" runat="server" Height="184px" TextMode="MultiLine" 
+                    Width="340px"></asp:TextBox>
+                <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" 
+                    ControlToValidate="TextBox3" ErrorMessage="Ingrese un mensaje!"></asp:RequiredFieldValidator>
+            </td>
+        </tr>
+        <tr>
+            <td>
+            </td>
+            <td style="text-align: center">
+                <br />
+                <asp:Button ID="Button1" runat="server" Text="Enviar" Width="112px" 
+                    onclick="Button1_Click" />
+            </td>
+        </tr>
+    </table>
     </div>
 </asp:Content>

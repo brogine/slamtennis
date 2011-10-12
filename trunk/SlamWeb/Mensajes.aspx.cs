@@ -20,5 +20,10 @@ namespace SlamWeb
             LblUsuario.Text = Session["Usuario"].ToString().Trim();
             LblSexo.Text = Session["Sexo"].ToString().Trim();
         }
+
+        protected void Button1_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("Correcto.aspx");
+        }
     }
 }

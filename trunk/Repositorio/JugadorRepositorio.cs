@@ -64,6 +64,16 @@ namespace Repositorio
             bJugador.Estadisticas = repoEstadisticas.ListarPorDni(Dni);
             return bJugador;
         }
+
+        public Categoria BuscarCategoria(int Dni)
+        {
+            string Consulta = string.Empty;
+            Consulta += " select IdCategoria from Jugadores where Dni = " + Dni;
+
+            ICategoriaRepositorio repocategoria = new CategoriaRepositorio();
+            var retorno = repocategoria.Buscar(Convert.ToInt32(Conn.Buscar(Consulta)));
+            return retorno;
+        }
         
         public List<Jugador> Listar(int IdClub)
         {

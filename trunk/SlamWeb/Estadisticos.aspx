@@ -18,6 +18,37 @@
         <br />
     Datos Estadisticos</div>
     
-    <div style="height:400px; width:100%">
+    <div style="height:500px; width:100%">
+    <table width="100%">
+        <tr>
+            <td>
+            Tus Datos Estadisticos
+            </td>
+        </tr>
+        <tr style="text-align:center">
+            <td>
+                <asp:Panel ID="Panel1" runat="server" Height="200px" ScrollBars="Vertical">
+                    <asp:GridView ID="DgvEstadisticas" runat="server" 
+                AutoGenerateSelectButton="True">
+                    </asp:GridView>
+                </asp:Panel>
+            </td>
+        </tr>
+        <tr>
+            <td>
+            Estadistico Categoria
+            <br />
+            </td>
+        </tr>
+        <tr style="text-align:center">
+            <td>
+                <asp:Panel ID="Panel2" runat="server" Height="200px" ScrollBars="Vertical">
+                    <asp:GridView ID="DgvEstadisticasCategoria" runat="server" 
+                AutoGenerateSelectButton="True">
+                    </asp:GridView>
+                </asp:Panel>
+            </td>
+        </tr>
+    </table>
     </div>
 </asp:Content>

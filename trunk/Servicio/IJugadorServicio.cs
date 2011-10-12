@@ -15,5 +15,7 @@ namespace Servicio
         bool Existe(int Dni);
 
         void Buscar(IJugadorUI UI);
+
+        int Categoria(int dni);
     }
 }

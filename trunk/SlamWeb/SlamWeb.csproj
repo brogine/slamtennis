@@ -30,6 +30,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="CrystalDecisions.Web, Version=10.5.3700.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\..\Windows\assembly\GAC_MSIL\CrystalDecisions.Web\10.5.3700.0__692fbea5521e1304\CrystalDecisions.Web.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Core">
@@ -63,6 +67,13 @@
     </Compile>
     <Compile Include="Consultas.aspx.designer.cs">
       <DependentUpon>Consultas.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Correcto.aspx.cs">
+      <DependentUpon>Correcto.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Correcto.aspx.designer.cs">
+      <DependentUpon>Correcto.aspx</DependentUpon>
     </Compile>
     <Compile Include="Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
@@ -135,7 +146,9 @@
     <Content Include="Content\Laves.png" />
     <Content Include="Content\Mensajes.png" />
     <Content Include="Content\Slam.jpg" />
+    <Content Include="Content\Tips.png" />
     <Content Include="Content\Torneos.png" />
+    <Content Include="Correcto.aspx" />
     <Content Include="Default.aspx" />
     <Content Include="Estadisticos.aspx" />
     <Content Include="Historicos.aspx" />
