@@ -26,11 +26,16 @@ namespace Repositorio
             int Ronda = Partido.Ronda;
             bool Estado = Partido.Estado;
             int Equipo1 = Partido.Equipo1.IdInscripcion;
-            int Equipo2 = Partido.Equipo2.IdInscripcion;
-
-            int IdPartido = Conn.Agregar("Partidos", "IdTorneo,Resultado,Fecha,Ronda,Estado", IdTorneo + ",'" + Resultado + "','" + FechaFormateada + "'," + Ronda + "," + (Estado?1:0));
+            int IdPartido = Conn.Agregar("Partidos", "IdTorneo,Resultado,Fecha,Ronda,Estado", IdTorneo + ",'" + Resultado + "','" + FechaFormateada + "'," + Ronda + "," + (Estado ? 1 : 0));
+            if (Partido.Equipo2 != null)
+            {
+                int Equipo2 = Partido.Equipo2.IdInscripcion;
+                Conn.AgregarSinId("PartidoInscripcion", "IdPartido,IdInscripcion", IdPartido + "," + Equipo2);
+            }
+            
             Conn.AgregarSinId("PartidoInscripcion", "IdPartido,IdInscripcion", IdPartido + "," + Equipo1);
-            Conn.AgregarSinId("PartidoInscripcion", "IdPartido,IdInscripcion", IdPartido + "," + Equipo2);
+            
+            
             return IdPartido;
         }
 
@@ -107,7 +112,7 @@ namespace Repositorio
             String Consulta = " select * from Partidos Par inner join PartidoInscripcion Pins on Par.IdPartido = Pins.IdPartido where Pins.IdPartido =  " + IdPartido;
             DataTable Dt = Conn.Listar(Consulta);
             Partido NuevoPartido = new Partido();
-            for (int i = 0; i < 2; i++)
+            for (int i = 0; i < Dt.Rows.Count; i++)
             {
                 if (i == 0)
                 {

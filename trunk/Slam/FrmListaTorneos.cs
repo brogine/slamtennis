@@ -24,6 +24,7 @@ namespace Slam
         private void FrmListaTorneos_Load(object sender, EventArgs e)
         {
             TorneoServicio = (IListadoTorneoServicio)AppContext.Instance.GetObject(ImplementaTorneos);
+            TorneoServicio.ActualizarTorneos();
             TorneoServicio.ListarTorneos(this);
         }
 
@@ -70,6 +71,7 @@ namespace Slam
             NuevoTorneo.ShowDialog();
             if (NuevoTorneo.DialogResult == DialogResult.OK)
             {
+                TorneoServicio.ActualizarTorneos();
                 TorneoServicio.ListarTorneos(this);
             }
         }
@@ -82,6 +84,7 @@ namespace Slam
                 
                 if (ModificaTorneo.ShowDialog() == DialogResult.OK)
                     {
+                    TorneoServicio.ActualizarTorneos();
                     TorneoServicio.ListarTorneos(this);
                     }
             }

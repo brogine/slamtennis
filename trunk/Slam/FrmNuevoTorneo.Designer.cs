@@ -53,13 +53,13 @@
             this.CboSuperficie = new System.Windows.Forms.ComboBox();
             this.label8 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
-            this.CboEstado = new System.Windows.Forms.ComboBox();
             this.BtnAceptar = new System.Windows.Forms.Button();
             this.BtnSalir = new System.Windows.Forms.Button();
             this.label11 = new System.Windows.Forms.Label();
-            this.TxtCupo = new System.Windows.Forms.TextBox();
             this.ChkInscripcion = new System.Windows.Forms.CheckBox();
             this.EPTorneos = new System.Windows.Forms.ErrorProvider(this.components);
+            this.LblEstado = new System.Windows.Forms.Label();
+            this.CboCupo = new System.Windows.Forms.ComboBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.EPTorneos)).BeginInit();
@@ -291,14 +291,6 @@
             this.label9.TabIndex = 18;
             this.label9.Text = "Estado";
             // 
-            // CboEstado
-            // 
-            this.CboEstado.FormattingEnabled = true;
-            this.CboEstado.Location = new System.Drawing.Point(75, 303);
-            this.CboEstado.Name = "CboEstado";
-            this.CboEstado.Size = new System.Drawing.Size(199, 21);
-            this.CboEstado.TabIndex = 19;
-            // 
             // BtnAceptar
             // 
             this.BtnAceptar.Location = new System.Drawing.Point(280, 301);
@@ -328,14 +320,6 @@
             this.label11.TabIndex = 23;
             this.label11.Text = "Cupo";
             // 
-            // TxtCupo
-            // 
-            this.TxtCupo.Location = new System.Drawing.Point(75, 247);
-            this.TxtCupo.Name = "TxtCupo";
-            this.TxtCupo.Size = new System.Drawing.Size(39, 20);
-            this.TxtCupo.TabIndex = 24;
-            this.TxtCupo.Validating += new System.ComponentModel.CancelEventHandler(this.TxtCupo_Validating);
-            // 
             // ChkInscripcion
             // 
             this.ChkInscripcion.AutoSize = true;
@@ -350,17 +334,37 @@
             // 
             this.EPTorneos.ContainerControl = this;
             // 
+            // LblEstado
+            // 
+            this.LblEstado.AutoSize = true;
+            this.LblEstado.Location = new System.Drawing.Point(59, 306);
+            this.LblEstado.Name = "LblEstado";
+            this.LblEstado.Size = new System.Drawing.Size(0, 13);
+            this.LblEstado.TabIndex = 26;
+            // 
+            // CboCupo
+            // 
+            this.CboCupo.FormattingEnabled = true;
+            this.CboCupo.Items.AddRange(new object[] {
+            "8",
+            "16",
+            "32"});
+            this.CboCupo.Location = new System.Drawing.Point(50, 245);
+            this.CboCupo.Name = "CboCupo";
+            this.CboCupo.Size = new System.Drawing.Size(45, 21);
+            this.CboCupo.TabIndex = 27;
+            // 
             // FrmNuevoTorneo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(458, 339);
+            this.Controls.Add(this.CboCupo);
+            this.Controls.Add(this.LblEstado);
             this.Controls.Add(this.ChkInscripcion);
-            this.Controls.Add(this.TxtCupo);
             this.Controls.Add(this.label11);
             this.Controls.Add(this.BtnSalir);
             this.Controls.Add(this.BtnAceptar);
-            this.Controls.Add(this.CboEstado);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.CboSuperficie);
@@ -419,12 +423,12 @@
         private System.Windows.Forms.ComboBox CboSuperficie;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.ComboBox CboEstado;
         private System.Windows.Forms.Button BtnAceptar;
         private System.Windows.Forms.Button BtnSalir;
         private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.TextBox TxtCupo;
         private System.Windows.Forms.CheckBox ChkInscripcion;
         private System.Windows.Forms.ErrorProvider EPTorneos;
+        private System.Windows.Forms.Label LblEstado;
+        private System.Windows.Forms.ComboBox CboCupo;
     }
 }

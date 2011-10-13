@@ -14,6 +14,7 @@ namespace Servicio
 
        void ListarTorneosAbiertos(IListadoTorneos UI);
 
-       void ListarCerradosHoy(IListadoTorneos UI);
+       void ActualizarTorneos();
+
     }
 }

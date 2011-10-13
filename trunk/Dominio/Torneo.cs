@@ -6,7 +6,7 @@ using System.Text;
 namespace Dominio
 {
     public enum TipoTorneo : int { Single = 0, Doble = 1};
-    public enum EstadoTorneo : int { Abierto, Cerrado, Jugando, Finalizado, Terminado, Cancelado }
+    public enum EstadoTorneo : int { Abierto, Cerrado, Jugando, Finalizado, NoIniciado, Cancelado }
     public class Torneo
     {
         public Torneo(int IdTorneo,string Nombre,DateTime FechaInicio, DateTime FechaFin,DateTime FechaInicioInscripciones, DateTime FechaFinInscripciones,

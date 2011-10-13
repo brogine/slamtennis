@@ -145,35 +145,14 @@ namespace Servicio
 
         #endregion
 
-        #region Miembros de IListadoTorneoServicio
 
-
-        public void ListarCerradosHoy(IListadoTorneos UI)
-        {
-            List<Torneo> ListaTorneo = TorneoRepo.ListarCerradosHoy();
-            List<Object> Lista = new List<object>();
-            foreach (Torneo Torneo in ListaTorneo)
-            {
-                Lista.Add(Torneo.IdTorneo + "," + Torneo.Nombre + "," + Torneo.Categoria.Nombre);
-            }
-
-            UI.ListaUI = Lista;
-        }
-
-        #endregion
 
         #region Miembros de ITorneoServicio
 
 
-        public void ArmarTorneoAutomatico(int IdTorneo)
+        public void ActualizarTorneos()
         {
-        //    Torneo Torneo = TorneoRepo.Buscar(IdTorneo);
-        //    IInscripcionRepositorio InscRepo = new InscripcionRepositorio();
-        //    List<Inscripcion> Lista = InscRepo.Listar(IdTorneo);
-        //    foreach (Inscripcion Ins in Lista)
-        //    { 
-        //    Partido Part = new Partido(Torneo,
-        //    }
+            TorneoRepo.ActualizarTorneos();
         }
 
         #endregion
