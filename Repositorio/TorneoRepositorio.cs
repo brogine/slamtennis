@@ -55,20 +55,25 @@ namespace Repositorio
 
             string sql = "update Torneos set ";
             sql += "Nombre = '" + Torneo.Nombre + "'";
+            
             sql += ",FecInicio = '" + FechaFormateadaInicio + "'";
             sql += ",FecFin = '" + FechaFormateadaFin + "'";
             sql += ",FecInicInsc = '" + FechaFormateadaInicioInscrip + "'";
-            sql += ",FecFinInsc = '" + FechaFormateadaFinInscrip + "'";
+            
             Torneo tor = this.Buscar(Torneo.IdTorneo);
-            if (Torneo.Cupo > tor.Cupo)
+            if (Torneo.Cupo > tor.Cupo || Torneo.FechaFinInscripcion>tor.FechaFinInscripcion)
             {
-                string Cons = "Update Torneos Set Estado = 0";
-                Conex.ActualizarOEliminar("Update Torneos Set Cupo = " + Torneo.Cupo + " where IdTorneo = " + Torneo.IdTorneo);
+                string Cons = "Update Torneos Set Estado = 0 where IdTorneo ="+ Torneo.IdTorneo;
+
+                string Sql = "Update Torneos Set Cupo = " + Torneo.Cupo + " , FecFinInsc = '" +FechaFormateadaFinInscrip + "' where IdTorneo = " + Torneo.IdTorneo;
+                Conex.ActualizarOEliminar(Sql);
                 Conex.ActualizarOEliminar(Cons);
             }
             else
             {
+                sql += ",FecFinInsc = '" + FechaFormateadaFinInscrip + "'";
                 sql += ",Cupo = " + Torneo.Cupo;
+                sql += ",Estado =" + (int)Torneo.Estado;
             }
             
             sql += ",Sexo = '" + Torneo.Sexo + "'";
@@ -77,6 +82,7 @@ namespace Repositorio
             sql += ",IdCategoria =" + Torneo.Categoria.Id;
             sql += ",TipoInscripcion =" + (Torneo.TipoInscripcion?1:0);
             sql += ",Superficie =" + (int)Torneo.Superficie;
+            
             sql += " where IdTorneo = " + Torneo.IdTorneo;
             Conex.ActualizarOEliminar(sql);
            
@@ -186,19 +192,57 @@ namespace Repositorio
             return Lista;
         }
 
-        public List<Torneo> ListarCerradosHoy()
+        public void ActualizarTorneos()
         {
             DateTime Hoy = DateTime.Today;
             string HoyFormateado = Hoy.Year + "/" + Hoy.Month + "/" + Hoy.Day;
-            string Sql = "select * from Torneos where FecFinInsc = '" + HoyFormateado + "'";
+            string Sql = "select * from Torneos where Estado <> "+(int)EstadoTorneo.Finalizado+" and Estado <> "+(int)EstadoTorneo.Cancelado; 
             DataTable Tabla = Conex.Listar(Sql);
-            List<Torneo> Lista = new List<Torneo>();
+            IInscripcionRepositorio InsRepo = new InscripcionRepositorio();
 
+            
             foreach (DataRow Dr in Tabla.Rows)
             {
-                Lista.Add(this.Mapear(Dr));
+                Torneo Tor = this.Mapear(Dr);
+                int Inscripciones = InsRepo.Listar(Tor.IdTorneo).Count;
+                
+                    if (Tor.FechaInicioInscripcion < DateTime.Today)
+                    {
+                        Tor.Estado = (int)EstadoTorneo.NoIniciado;
+                    }
+
+                    if (Tor.FechaInicioInscripcion <= DateTime.Today && Tor.FechaFinInscripcion > DateTime.Today && Tor.Cupo > Inscripciones)
+                    {
+                        Tor.Estado = (int)EstadoTorneo.Abierto;
+                        
+                    }
+
+                    if (Tor.Cupo > Inscripciones)
+                    {
+                        if (Tor.FechaFinInscripcion < DateTime.Today && Tor.FechaInicio > DateTime.Today)
+                        {
+                            Tor.Estado = (int)EstadoTorneo.Cerrado;
+                        }
+                    }
+                    else
+                    {
+                        Tor.Estado = (int)EstadoTorneo.Cerrado;
+                    }
+
+                    if (Tor.FechaInicio <= DateTime.Today && Tor.FechaFin > DateTime.Today)
+                    {
+                        Tor.Estado = (int)EstadoTorneo.Jugando;
+                    }
+
+                    if (Tor.FechaFin < DateTime.Today)
+                    {
+                        Tor.Estado = (int)EstadoTorneo.Finalizado;
+                    }
+                    this.Modificar(Tor);
+                
+             
             }
-            return Lista;
+           
         }
         #endregion
     }

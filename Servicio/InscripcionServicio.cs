@@ -154,11 +154,8 @@ namespace Servicio
             Torneo Torneo = TorneoRepo.Buscar(UI.IdTorneo);
             if (Torneo.Estado == (int) EstadoTorneo.Cerrado && ListaUI.Count%2!=0)
             {
-                Inscripcion bye = new Inscripcion();
-                ListaUI.Add(bye.IdInscripcion + "," + (int)tipoTorneo + "," +
-                bye.Equipo.Jugador1.Apellido + " " + bye.Equipo.Jugador1.Nombre + "," +
-                string.Empty + "," +
-                bye.Fecha.ToShortDateString());
+
+                ListaUI.Add(0 + "," + (int)tipoTorneo + ",BYE,,,");
             }
             UI.ListarPorTorneo = ListaUI;
         }

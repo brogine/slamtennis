@@ -38,7 +38,7 @@ namespace Slam
         private void FrmNuevoTorneo_Load(object sender, EventArgs e)
         {
 
-            CboEstado.DataSource = Enum.GetValues(typeof(EstadoTorneo));
+           
             CboSuperficie.DataSource = Enum.GetValues(typeof(TipoSuperficie));
             ClubServicio = (IListadoClubServicio)AppContext.Instance.GetObject(ImplementaClubes);
             ClubServicio.ListarActivos(this);
@@ -130,11 +130,11 @@ namespace Slam
         {
             get
             {
-               return int.Parse(TxtCupo.Text);
+               return Convert.ToInt32(CboCupo.SelectedItem);
             }
             set
             {
-                TxtCupo.Text = value.ToString();
+                CboCupo.Text = value.ToString();
             }
         }
 
@@ -250,11 +250,11 @@ namespace Slam
         {
             get
             {
-                return (int)CboEstado.SelectedValue;
+                return (int)EstadoTorneo.NoIniciado;
             }
             set
             {
-                CboEstado.SelectedIndex = value;
+                LblEstado.Text=((EstadoTorneo)value).ToString();
             }
         }
 
@@ -310,7 +310,7 @@ namespace Slam
                 if (EPTorneos.GetError(TxtNombre) != "" && EPTorneos.GetError(CboClub) != "" && EPTorneos.GetError(CboCategoria) != "" &&
                     EPTorneos.GetError(DTPFinInscripciones) != "" && EPTorneos.GetError(DTPInicioInscripciones) != "" && EPTorneos.GetError(DTPFinTorneo) != "" &&
                     EPTorneos.GetError(DTPInicioTorneo) != "" && EPTorneos.GetError(groupBox1) != "" && EPTorneos.GetError(groupBox2) != "" &&
-                    EPTorneos.GetError(TxtCupo) != "" && EPTorneos.GetError(CboSuperficie) != "")
+                    EPTorneos.GetError(CboSuperficie) != "")
                 {
                     MessageBox.Show("Complete Todos Los Campos Antes de Continuar");
                 }
@@ -425,27 +425,6 @@ namespace Slam
             }
         }
 
-        private void TxtCupo_Validating(object sender, CancelEventArgs e)
-        {
-            int result=0;
-            if (TxtCupo.Text == "")
-            {
-                EPTorneos.SetError(TxtCupo, "El Cupo No Puede Estar en Blanco");
-            }
-            else
-            {
-                EPTorneos.SetError(TxtCupo, "");
-            }
-            if (!int.TryParse(TxtCupo.Text, out result))
-            {
-                EPTorneos.SetError(TxtCupo, "El Cupo Debe Ser Un Valor Numerico");
-            }
-            else
-            {
-                EPTorneos.SetError(TxtCupo, "");
-            }
-
-        }
 
         private void CboSuperficie_Validating(object sender, CancelEventArgs e)
         {

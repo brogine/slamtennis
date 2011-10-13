@@ -21,6 +21,7 @@ namespace Repositorio
        List<Torneo> Listar();
        List<Torneo> ListarCerrados();
        List<Torneo> ListarAbiertos();
-       List<Torneo> ListarCerradosHoy();
+
+       void ActualizarTorneos();
     }
 }

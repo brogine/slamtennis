@@ -34,7 +34,8 @@ namespace Slam
             InitializeComponent();
             this.Padre = _Padre;
             servicioTorneos = (IListadoTorneoServicio)AppContext.Instance.GetObject(ImplementaTorneos);
-            servicioTorneos.ListarCerradosHoy(this);
+            servicioTorneos.ActualizarTorneos();
+            servicioTorneos.ListarTorneosCerrados(this);
             timer1.Enabled = true;
         }
 
@@ -207,6 +208,7 @@ namespace Slam
                         object[] DatosTorneo = Torneo.ToString().Split(',');
                         FrmPopUp popup = new FrmPopUp(Convert.ToInt32(DatosTorneo[0]), DatosTorneo[1].ToString(), DatosTorneo[2].ToString());
                         popup.MdiParent = this;
+                        
                         popup.Show();
                     }
                 }
@@ -214,6 +216,13 @@ namespace Slam
         }
 
         #endregion
+
+
+        private void FrmPrincipal_Load(object sender, EventArgs e)
+        {
+
+        }
+
 
         private void notifyIcon1_BalloonTipClicked(object sender, EventArgs e)
         {
@@ -224,9 +233,12 @@ namespace Slam
 
         private void timer1_Tick(object sender, EventArgs e)
         {
-            notifyIcon1.BalloonTipTitle = "Mensajes de la Web";
-            notifyIcon1.BalloonTipText = "Se encontraron mensajes recibidos de la web, Por favor haga clic aqui para ver los mensajes.";
-            notifyIcon1.ShowBalloonTip(3000);
+            //notifyIcon1.BalloonTipTitle = "Mensajes de la Web";
+            //notifyIcon1.BalloonTipText = "Se encontraron mensajes recibidos de la web, Por favor haga clic aqui para ver los mensajes.";
+            //notifyIcon1.ShowBalloonTip(3000);
+
+
         }
+
     }
 }

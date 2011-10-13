@@ -84,14 +84,20 @@ namespace Servicio
                 {
                     Objeto += Partido.Equipo1.Equipo.Jugador1.Apellido + ",";
                 }
-
-                if (Partido.Equipo2.Equipo.Jugador2 != null)
+                if (Partido.Equipo2 != null)
                 {
-                    Objeto += Partido.Equipo2.Equipo.Jugador1.Apellido + " - " + Partido.Equipo2.Equipo.Jugador2.Apellido + ",";
+                    if (Partido.Equipo2.Equipo.Jugador2 != null)
+                    {
+                        Objeto += Partido.Equipo2.Equipo.Jugador1.Apellido + " - " + Partido.Equipo2.Equipo.Jugador2.Apellido + ",";
+                    }
+                    else
+                    {
+                        Objeto += Partido.Equipo2.Equipo.Jugador1.Apellido + ",";
+                    }
                 }
                 else
                 {
-                    Objeto += Partido.Equipo2.Equipo.Jugador1.Apellido + ",";
+                    Objeto += "BYE,";
                 }
                 Objeto += Partido.Fecha.ToShortDateString() + ",";
                 Objeto += Partido.Ronda +",";

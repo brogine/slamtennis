@@ -3,6 +3,6 @@
 
   <config nombre="SqlServer"
           Proveedor="System.Data.SqlClient"
-          ConnectionString="Server=MAXI-HP;Database=SlamDB;Integrated Security =SSPI;"></config>
+          ConnectionString="Server=Nico-Desk;Database=SlamDB;Integrated Security =SSPI;"></config>
 
 </configuraciones>

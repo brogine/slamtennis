@@ -18,6 +18,8 @@ namespace Servicio
 
         bool Existe(int IdTorneo);
 
-        void ArmarTorneoAutomatico(int IdTorneo);
+
+
+
     }
 }
