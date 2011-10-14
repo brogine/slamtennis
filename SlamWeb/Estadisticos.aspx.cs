@@ -10,7 +10,7 @@ using System.Data;
 
 namespace SlamWeb
 {
-    public partial class Estadisticos : System.Web.UI.Page,IListadoEstadisticasDni,IAfiliacionUI,IListadoEstadisticasCategoria
+    public partial class Estadisticos : System.Web.UI.Page, IListadoEstadisticasCategoria, IListadoClubes, IListadoCategorias
     {
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -22,131 +22,48 @@ namespace SlamWeb
             LblNombre.Text = Session["Nombre"].ToString().Trim() + " " + Session["Apellido"].ToString().Trim();
             LblUsuario.Text = Session["Usuario"].ToString().Trim();
             LblSexo.Text = Session["Sexo"].ToString().Trim();
-            IListadoEstadisticasServicio estadistica = new EstadisticasServicio();
-            estadistica.ListarPorDni(this);
-            IAfiliacionServicio afiliado = new AfiliacionServicio();
-            afiliado.Buscar(this);
-            IListadoEstadisticasServicio categoria = new EstadisticasServicio();
-            categoria.ListarPorCategoriaClub(this);        
+            IListadoEstadisticasServicio servicioEstadisticas = new EstadisticasServicio();
+            IListadoClubServicio servicioClubes = new ClubServicio();
+            servicioClubes.ListarActivos(this);
+            IListadoCategoriaServicio servicioCategorias = new CategoriaServicio();
+            servicioCategorias.ListarActivas(this);
+           
 
         }
 
-        #region IAfiliacionUI Members
-
-        int IAfiliacionUI.IdClub
-        {
-            get
-            {
-                return 1;
-            }
-            set
-            {
-                Session["IdClub"] = value;
-            }
-        }
-
-        public int Dni
-        {
-            get
-            {
-                return Convert.ToInt32(Session["DNI"]);
-            }
-            set
-            {
-                Session["DNI"] =  value;
-            }
-        }
-
-        public bool Estado
-        {
-            get;set;
-        }
-
-        #endregion            
-          
-        #region IListadoEstadisticasDni Members
+        #region IListadoEstadisticasCategoria Members
 
         public List<object> ListarEstadisticas
         {
-            set
-            {
-
-                if (DgvEstadisticas.Columns.Count > 0)
-                    DgvEstadisticas.DataSource = null;
-                DataTable dt = new DataTable();
-                dt.Columns.Add("PJ");
-                dt.Columns.Add("PG");
-                dt.Columns.Add("PP");
-                dt.Columns.Add("TJ");
-                dt.Columns.Add("TC");
-                dt.Columns.Add("Puntos");
-                foreach (object estadistica in value)
-                {
-                    object[] estadisticas = estadistica.ToString().Split(',');
-                    dt.Rows.Add(estadisticas);
-                }
-                //}
-                DgvEstadisticas.DataSource = dt;
-                DgvEstadisticas.DataBind();
-            }
+            set { throw new NotImplementedException(); }
         }
 
-        public int DniJugador
+        public int IdClub
         {
-            get
-            {
-                return Convert.ToInt32(Session["DNI"]);
-            }
-            set
-            {
-                Session["DNI"] = value;
-            }
+            get { throw new NotImplementedException(); }
+        }
+
+        public int IdCategoria
+        {
+            get { throw new NotImplementedException(); }
         }
 
         #endregion
 
-        #region IListadoEstadisticasCategoria Members
+        #region IListadoClubes Members
 
-
-        int IListadoEstadisticasCategoria.IdClub
+        public List<object> ListarClubes
         {
-            get
-            {
-                return Convert.ToInt32(Session["IdClub"]);
-            }
-            
+            set { throw new NotImplementedException(); }
         }
 
-        int IListadoEstadisticasCategoria.IdCategoria
-        {
-            get { return 0; }
-        }
+        #endregion
 
-        List<Object> IListadoEstadisticasCategoria.ListarEstadisticas
-        {
-            set
-            {
+        #region IListadoCategorias Members
 
-                if (this.DgvEstadisticasCategoria.Columns.Count > 0)
-                    DgvEstadisticasCategoria.DataSource = null;
-                DataTable dt = new DataTable();
-                dt.Columns.Add("Dni");
-                dt.Columns.Add("Nombre y Apellido");
-                dt.Columns.Add("PJ");
-                dt.Columns.Add("PG");
-                dt.Columns.Add("PP");
-                dt.Columns.Add("TJ");
-                dt.Columns.Add("TC");
-                dt.Columns.Add("Puntos");
-                foreach (object estadistica in value)
-                {
-                    object[] estadisticas = estadistica.ToString().Split(',');
-                    dt.Rows.Add(estadisticas);
-                }
-                //}
-                DgvEstadisticasCategoria.DataSource = dt;
-                DgvEstadisticasCategoria.DataBind();
-            }
+        public List<object> ListaUI
+        {
+            set { throw new NotImplementedException(); }
         }
 
         #endregion
