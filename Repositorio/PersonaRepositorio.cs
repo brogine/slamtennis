@@ -36,6 +36,7 @@ namespace Repositorio
             Valores += "','" + Persona.Contacto.Telefono + "','" + Persona.Contacto.Celular;
             Valores += "','" + Persona.Contacto.Email  + "'," + Persona.Ubicacion.Localidad.IdLocalidad;
             Valores += ",'" + Persona.Ubicacion.Domicilio + "'";
+            
             try
             {
                 Conn.AgregarSinId("Personas", Campos, Valores);
