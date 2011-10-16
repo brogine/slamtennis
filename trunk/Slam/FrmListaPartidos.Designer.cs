@@ -59,6 +59,7 @@
             this.DgvListaPartidos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.DgvListaPartidos.Size = new System.Drawing.Size(551, 150);
             this.DgvListaPartidos.TabIndex = 1;
+            this.DgvListaPartidos.SelectionChanged += new System.EventHandler(this.DgvListaPartidos_SelectionChanged);
             // 
             // BtnAgregarPartido
             // 

@@ -61,6 +61,8 @@ namespace Slam
                 DgvListaPartidos.Columns.Add("Fecha", "Fecha");
                 DgvListaPartidos.Columns.Add("Ronda", "Ronda");
                 DgvListaPartidos.Columns.Add("Resultado", "Resultado");
+                DgvListaPartidos.Columns.Add("Estado", "Estado");
+                DgvListaPartidos.Columns["Estado"].Visible = false;
                 if (DgvListaPartidos.RowCount > 0)
                     DgvListaPartidos.Rows.Clear();
                 foreach (Object Jugador in value)
@@ -111,6 +113,19 @@ namespace Slam
         private void BtnSalir_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void DgvListaPartidos_SelectionChanged(object sender, EventArgs e)
+        {
+            if (Convert.ToBoolean(DgvListaPartidos.SelectedRows[0].Cells["Estado"].Value) == false)
+            {
+                BtnModificar.Enabled = false;
+
+            }
+            else
+            {
+                BtnModificar.Enabled = true;
+            }
         }
     }
 }

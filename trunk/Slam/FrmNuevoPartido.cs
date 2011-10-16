@@ -73,7 +73,15 @@ namespace Slam
         {
             get
             {
-                return (int)CboEquipo2.SelectedValue;
+                if (CboEquipo2.SelectedItem == "BYE")
+                {
+                    return 0;
+
+                }
+                else
+                {
+                    return (int)CboEquipo2.SelectedValue;
+                }
             }
             set
             {
