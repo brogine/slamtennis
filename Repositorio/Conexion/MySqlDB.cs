@@ -58,7 +58,13 @@ namespace Repositorio.Conexiones
 
         public override IDbDataParameter crearImagenParametro(string ParameterName, object ParameterValue)
         {
-            throw new NotImplementedException();
+            if (comm == null)
+                comm = conn.CreateCommand();
+            MySqlParameter Parametro = comm.CreateParameter();
+            Parametro.MySqlDbType = MySqlDbType.Blob;
+            Parametro.ParameterName = ParameterName;
+            Parametro.Value = ParameterValue;
+            return Parametro;
         }
     }
 }
