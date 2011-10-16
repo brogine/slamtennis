@@ -28,5 +28,6 @@ namespace Servicio.InterfacesUI
         string Usuario { get; set; }
         string Password { get; set; }
         bool Estado { get; set; }
+        Image Foto { get; set; }
     }
 }

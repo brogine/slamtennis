@@ -33,6 +33,7 @@ namespace Repositorio.Conexiones
                 comm = new MySqlCommand(sql, (MySqlConnection)con);
             return comm;
         }
+
         public override void Conectar()
         {
             try
@@ -53,6 +54,11 @@ namespace Repositorio.Conexiones
         public override IDbDataAdapter CrearLector(IDbCommand comando)
         {
             return new MySqlDataAdapter((MySqlCommand)comando);
+        }
+
+        public override IDbDataParameter crearImagenParametro(string ParameterName, object ParameterValue)
+        {
+            throw new NotImplementedException();
         }
     }
 }

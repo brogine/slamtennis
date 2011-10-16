@@ -52,5 +52,16 @@ namespace Repositorio.Conexiones
         {
             return new SqlDataAdapter((SqlCommand)comando);
         }
+
+        public override IDbDataParameter crearImagenParametro(string ParameterName, object ParameterValue)
+        {
+            if (comm == null)
+                comm = conn.CreateCommand();
+            SqlParameter Parametro = comm.CreateParameter();
+            Parametro.SqlDbType = SqlDbType.Image;
+            Parametro.ParameterName = ParameterName;
+            Parametro.Value = ParameterValue;
+            return Parametro;
+        }
     }
 }
