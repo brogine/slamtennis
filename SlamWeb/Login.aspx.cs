@@ -203,7 +203,7 @@ namespace SlamWeb
             }
             set
             {
-                throw new NotImplementedException();
+                
             }
         }
 
