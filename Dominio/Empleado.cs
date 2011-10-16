@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Drawing;
 
 namespace Dominio
 {
@@ -9,11 +10,13 @@ namespace Dominio
     {
     	public Empleado() {}
         public Empleado(int dni, string nombre, string apellido, DateTime fechanac, Pais nacionalidad, string sexo,
-            bool estado, Ubicacion ubicacion, Contacto contacto, string puesto)
+            bool estado, Ubicacion ubicacion, Contacto contacto, string puesto, Image foto)
         {
             this.Dni = dni; this.Nombre = nombre; this.Apellido = apellido; this.FechaNac = fechanac; 
             this.Nacionalidad = nacionalidad; this.Sexo = sexo; this.Estado = estado; this.Contacto = contacto; 
             this.Ubicacion = ubicacion; this.puesto = puesto;
+            if (foto != null)
+                this.Foto = ImagenABytes(foto);
         }
 
         string puesto;

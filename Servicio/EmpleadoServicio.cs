@@ -5,6 +5,8 @@ using System.Text;
 using Dominio;
 using Repositorio;
 using Servicio.InterfacesUI;
+using System.Drawing;
+using System.Drawing.Drawing2D;
 
 namespace Servicio
 {
@@ -26,8 +28,19 @@ namespace Servicio
             Ubicacion Ubicacion = new Ubicacion(Ubica.ObtenerLocalidad(UI.Localidad),UI.Domicilio);
             Contacto Contacto = new Contacto(UI.Telefono,UI.Celular,UI.Email);
             Login Login = new Login(UI.Usuario, UI.Password, UI.Dni, true);
-            
-            Empleado Emp = new Empleado(UI.Dni, UI.Nombre, UI.Apellido, UI.FechaNac, Nacionalidad, UI.Sexo, UI.Estado, Ubicacion, Contacto, UI.Puesto);
+            Bitmap newImage = null;
+            if (UI.Foto != null)
+            {
+                newImage = new Bitmap(320, 240);
+                using (Graphics gr = Graphics.FromImage(newImage))
+                {
+                    gr.SmoothingMode = SmoothingMode.AntiAlias;
+                    gr.InterpolationMode = InterpolationMode.HighQualityBicubic;
+                    gr.PixelOffsetMode = PixelOffsetMode.HighQuality;
+                    gr.DrawImage(UI.Foto, new Rectangle(0, 0, 320, 240));
+                }
+            }
+            Empleado Emp = new Empleado(UI.Dni, UI.Nombre, UI.Apellido, UI.FechaNac, Nacionalidad, UI.Sexo, UI.Estado, Ubicacion, Contacto, UI.Puesto, newImage);
             Emp.Login = Login;
             EmpleadoRepo.Agregar(Emp);
         }
@@ -46,6 +59,20 @@ namespace Servicio
             ModEmp.Puesto = UI.Puesto;
             ModEmp.Login.Usuario = UI.Usuario;
             ModEmp.Login.Password = UI.Password;
+            Bitmap newImage = null;
+            if (UI.Foto != null)
+            {
+                newImage = new Bitmap(320, 240);
+                using (Graphics gr = Graphics.FromImage(newImage))
+                {
+                    gr.SmoothingMode = SmoothingMode.AntiAlias;
+                    gr.InterpolationMode = InterpolationMode.HighQualityBicubic;
+                    gr.PixelOffsetMode = PixelOffsetMode.HighQuality;
+                    gr.DrawImage(UI.Foto, new Rectangle(0, 0, 320, 240));
+                }
+                ModEmp.Foto = ModEmp.ImagenABytes(newImage);
+            }
+
             //Atributos de Value Object "Contacto"
             ModEmp.Contacto.Celular = UI.Celular;
             ModEmp.Contacto.Email = UI.Email;
@@ -76,6 +103,8 @@ namespace Servicio
                 UI.Nacionalidad = BuscaEmpleado.Nacionalidad.IdPais;
                 UI.Puesto = BuscaEmpleado.Puesto;
                 UI.Sexo = BuscaEmpleado.Sexo;
+                if (BuscaEmpleado.Foto != null)
+                    UI.Foto = BuscaEmpleado.BytesAImagen(BuscaEmpleado.Foto);
 
                 // Value Object Login
                 UI.Usuario = BuscaEmpleado.Login.Usuario;

@@ -123,6 +123,23 @@ namespace Repositorio.Conexiones
             Cnn.Close();
         }
 
+        /// <summary>
+        /// Agrega una Foto a una Persona en la Base de Datos
+        /// </summary>
+        /// <param name="Tabla">Tabla a la que se agrega</param>
+        /// <param name="Campo">Campo en el que se agrega</param>
+        /// <param name="Imagen">bytes de la imagen</param>
+        public void AgregarFoto(string Tabla, string Campo, string CampoCondicion, object ValorCondicion, byte[] Imagen)
+        {
+            if (Cnn.State == ConnectionState.Closed)
+                Cnn.Open();
+            Thread.CurrentThread.CurrentCulture = new CultureInfo("en-US");
+            Com = Cnn.CreateCommand();
+            Com.CommandText = " Update " + Tabla + " Set " + Campo + " = @" + Campo + " Where " + CampoCondicion + " = " + ValorCondicion;
+            IDbDataParameter imageParam = Db.crearImagenParametro("@" + Campo, Imagen);
+            Com.Parameters.Add(imageParam);
+            Com.ExecuteNonQuery();
+        }
     }
 }
 

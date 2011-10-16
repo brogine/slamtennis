@@ -452,6 +452,21 @@ namespace Slam
             set { EdadJugador = value; }
         }
 
+        public Image Foto
+        {
+            get
+            {
+                if (PbFoto.Image == null)
+                    return null;
+                else
+                    return PbFoto.Image;
+            }
+            set
+            {
+                PbFoto.Image = value;
+            }
+        }
+
         #endregion
 
         #region Miembros de IListadoPaises
@@ -813,5 +828,15 @@ namespace Slam
             }
         }
 
+        private void BtnFoto_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog Ofd = new OpenFileDialog();
+            Ofd.Title = "Buscar Imagen";
+            Ofd.Filter = "Archivos de Imagen|*.bmp;*.jpg;*.jpeg;*.png;";
+            if (Ofd.ShowDialog() == DialogResult.OK)
+            {
+                PbFoto.Image = Image.FromFile(Ofd.FileName);
+            }
+        }
     }
 }

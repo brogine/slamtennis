@@ -5,6 +5,8 @@ using System.Text;
 using Dominio;
 using Repositorio;
 using Servicio.InterfacesUI;
+using System.Drawing;
+using System.Drawing.Drawing2D;
 
 namespace Servicio
 {
@@ -26,11 +28,23 @@ namespace Servicio
             Ubicacion Ubicacion = new Ubicacion(Ubica.ObtenerLocalidad(UI.Localidad), UI.Domicilio);
             Contacto Contacto = new Contacto(UI.Telefono, UI.Celular, UI.Email);
             Login Login = new Login(UI.Usuario, UI.Password, UI.Dni, true);
-            Arbitro NuevoArb = new Arbitro(UI.Dni, UI.Nombre, UI.Apellido, UI.FechaNac, Nacionalidad, UI.Sexo, Contacto, Ubicacion, UI.Badge, UI.Nivel, UI.Estado);
+            Bitmap newImage = null;
+            if (UI.Foto != null)
+            {
+                newImage = new Bitmap(320, 240);
+                using (Graphics gr = Graphics.FromImage(newImage))
+                {
+                    gr.SmoothingMode = SmoothingMode.AntiAlias;
+                    gr.InterpolationMode = InterpolationMode.HighQualityBicubic;
+                    gr.PixelOffsetMode = PixelOffsetMode.HighQuality;
+                    gr.DrawImage(UI.Foto, new Rectangle(0, 0, 320, 240));
+                }
+            }
+            Arbitro NuevoArb = new Arbitro(UI.Dni, UI.Nombre, UI.Apellido, UI.FechaNac, Nacionalidad, UI.Sexo, Contacto, Ubicacion, UI.Badge, UI.Nivel, UI.Estado, newImage);
             NuevoArb.Login = Login;
             ArbRepo.Agregar(NuevoArb);
-
-
+            GC.Collect();
+            GC.WaitForPendingFinalizers();
         }
 
         public void Modificar(IArbitroUI UI)
@@ -48,6 +62,19 @@ namespace Servicio
             ModArb.Badge = UI.Badge;
             ModArb.Login.Usuario = UI.Usuario;
             ModArb.Login.Password = UI.Password;
+            Bitmap newImage = null;
+            if (UI.Foto != null)
+            {
+                newImage = new Bitmap(320, 240);
+                using (Graphics gr = Graphics.FromImage(newImage))
+                {
+                    gr.SmoothingMode = SmoothingMode.AntiAlias;
+                    gr.InterpolationMode = InterpolationMode.HighQualityBicubic;
+                    gr.PixelOffsetMode = PixelOffsetMode.HighQuality;
+                    gr.DrawImage(UI.Foto, new Rectangle(0, 0, 320, 240));
+                }
+                ModArb.Foto = ModArb.ImagenABytes(newImage);
+            }
             
             //Atributos de Value Object "Contacto"
             ModArb.Contacto.Celular = UI.Celular;
@@ -80,6 +107,8 @@ namespace Servicio
                 UI.Nivel = BuscaArb.Nivel;
                 UI.Badge = BuscaArb.Badge;
                 UI.Sexo = BuscaArb.Sexo;
+                if (BuscaArb.Foto != null)
+                    UI.Foto = BuscaArb.BytesAImagen(BuscaArb.Foto);
 
                 // Value Object Login
                 UI.Usuario = BuscaArb.Login.Usuario;
@@ -90,7 +119,6 @@ namespace Servicio
                 UI.Provincia = BuscaArb.Ubicacion.Localidad.Provincia.IdProvincia;
                 UI.Localidad = BuscaArb.Ubicacion.Localidad.IdLocalidad;
                 UI.Domicilio = BuscaArb.Ubicacion.Domicilio;
-
 
                 //Value Object Contacto
                 UI.Telefono = BuscaArb.Contacto.Telefono;

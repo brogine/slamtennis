@@ -6,6 +6,8 @@ using System.Text;
 using Dominio;
 using Repositorio;
 using System.Data;
+using System.Drawing;
+using System.Drawing.Drawing2D;
 
 namespace Servicio
 {
@@ -33,18 +35,31 @@ namespace Servicio
 
             Login nLogin = new Login(UI.Usuario, UI.Password, UI.Dni, UI.Estado);
 
+            Bitmap newImage = null;
+            if (UI.Foto != null)
+            {
+                newImage = new Bitmap(320, 240);
+                using (Graphics gr = Graphics.FromImage(newImage))
+                {
+                    gr.SmoothingMode = SmoothingMode.AntiAlias;
+                    gr.InterpolationMode = InterpolationMode.HighQualityBicubic;
+                    gr.PixelOffsetMode = PixelOffsetMode.HighQuality;
+                    gr.DrawImage(UI.Foto, new Rectangle(0, 0, 320, 240));
+                }
+            }
+
             if (UI.Tutor != "" && UI.RelacionTutor != "")
             {
                 nJugador = new Jugador(UI.Dni, UI.Nombre, UI.Apellido, UI.FechaNac,
             	    Nacionalidad, UI.Sexo, UI.Tutor, UI.RelacionTutor,
-                    nContacto, nUbicacion, UI.Estado, nLogin);
+                    nContacto, nUbicacion, UI.Estado, nLogin, newImage);
                 if (nJugador.Edad >= 18)
                     throw new ServicioExeption("Error al agregar: El jugador es mayor de edad.");
             }
             else
             {
                 nJugador = new Jugador(UI.Dni, UI.Nombre, UI.Apellido, UI.FechaNac,
-                    Nacionalidad, UI.Sexo, nContacto, nUbicacion, UI.Estado, nLogin);
+                    Nacionalidad, UI.Sexo, nContacto, nUbicacion, UI.Estado, nLogin, newImage);
             }
 
             repoJugadores.Agregar(nJugador);
@@ -63,6 +78,21 @@ namespace Servicio
 			bJugador.Tutor = UI.Tutor;
 			bJugador.Estado = UI.Estado;
 			bJugador.FechaNac = UI.FechaNac;
+
+            Bitmap newImage = null;
+            if (UI.Foto != null)
+            {
+                newImage = new Bitmap(320, 240);
+                using (Graphics gr = Graphics.FromImage(newImage))
+                {
+                    gr.SmoothingMode = SmoothingMode.AntiAlias;
+                    gr.InterpolationMode = InterpolationMode.HighQualityBicubic;
+                    gr.PixelOffsetMode = PixelOffsetMode.HighQuality;
+                    gr.DrawImage(UI.Foto, new Rectangle(0, 0, 320, 240));
+                }
+                bJugador.Foto = bJugador.ImagenABytes(newImage);
+            }
+
 			bJugador.Login = new Login(UI.Usuario, UI.Password, UI.Dni, UI.Estado);
 			IUbicacionRepositorio repoUbicacion = new UbicacionRepositorio();
 			bJugador.Nacionalidad = repoUbicacion.ObtenerPais(UI.Nacionalidad);
@@ -81,23 +111,33 @@ namespace Servicio
                 Jugador bJugador = repoJugadores.Buscar(UI.Dni);
                 UI.Dni = bJugador.Dni;
                 UI.Apellido = bJugador.Apellido;
-                UI.Celular = bJugador.Contacto.Celular;
-                UI.Tutor = bJugador.Tutor;
-                UI.Domicilio = bJugador.Ubicacion.Domicilio;
-                UI.Email = bJugador.Contacto.Email;
                 UI.Estado = bJugador.Estado;
                 UI.FechaNac = bJugador.FechaNac;
                 UI.Edad = bJugador.Edad;
+                UI.Nacionalidad = bJugador.Nacionalidad.IdPais;
+                UI.Nombre = bJugador.Nombre;
+                UI.Sexo = bJugador.Sexo;
+                
+                //Datos de Jugador Menor
+                UI.Tutor = bJugador.Tutor;
+                UI.RelacionTutor = bJugador.RelacionTutor;
+
+                //Value Object Login
+                UI.Usuario = bJugador.Login.Usuario;
+                UI.Password = bJugador.Login.Password;
+
+                //Value Object Ubicacion
                 UI.Pais = bJugador.Ubicacion.Localidad.Provincia.Pais.IdPais;
                 UI.Provincia = bJugador.Ubicacion.Localidad.Provincia.IdProvincia;
                 UI.Localidad = bJugador.Ubicacion.Localidad.IdLocalidad;
-                UI.Nacionalidad = bJugador.Nacionalidad.IdPais;
-                UI.Nombre = bJugador.Nombre;
-                UI.Password = bJugador.Login.Password;
-                UI.RelacionTutor = bJugador.RelacionTutor;
-                UI.Sexo = bJugador.Sexo;
+                UI.Domicilio = bJugador.Ubicacion.Domicilio;
+
+                //Value Object Contacto
                 UI.Telefono = bJugador.Contacto.Telefono;
-                UI.Usuario = bJugador.Login.Usuario;
+                UI.Celular = bJugador.Contacto.Celular;
+                UI.Email = bJugador.Contacto.Email;
+                if(bJugador.Foto != null)
+                    UI.Foto = bJugador.BytesAImagen(bJugador.Foto);
             }
             else
                 throw new ServicioExeption("El Jugador con Dni " + UI.Dni + " No existe");
@@ -148,7 +188,6 @@ namespace Servicio
         }
 
         #endregion
-
 
         #region Miembros de IListadoJugadoresCategoriaServicio
 

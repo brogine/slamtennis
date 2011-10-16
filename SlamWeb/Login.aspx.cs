@@ -195,7 +195,18 @@ namespace SlamWeb
             set;
         }
 
-        #endregion
+        public System.Drawing.Image Foto
+        {
+            get
+            {
+                throw new NotImplementedException();
+            }
+            set
+            {
+                throw new NotImplementedException();
+            }
+        }
 
+        #endregion
     }
 }

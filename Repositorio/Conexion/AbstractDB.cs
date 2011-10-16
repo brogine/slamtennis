@@ -40,6 +40,7 @@ namespace Repositorio.Conexiones
         }
         public abstract IDbConnection crearConexion();
         public abstract IDbCommand crearComando(string sql, IDbConnection conn);
+        public abstract IDbDataParameter crearImagenParametro(string ParameterName, object ParameterValue);
 
         public abstract IDbDataAdapter CrearLector(IDbCommand comando);
         public abstract void Conectar();

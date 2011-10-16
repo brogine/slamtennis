@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.IO;
 using System.Drawing;
+using System.Drawing.Imaging;
 
 
 namespace Dominio
@@ -22,7 +23,7 @@ namespace Dominio
         DateTime fechaNac;
         Pais nacionalidad;
         string sexo;
-        Image foto;
+        byte[] foto;
         #endregion
 
         #region Value Objects
@@ -97,12 +98,25 @@ namespace Dominio
             }
         }
 
-        public Image Foto
+        public byte[] Foto
         {
             get { return foto; }
             set { foto = value; }
         }
         #endregion
+
+        public Image BytesAImagen(byte[] bytes)
+        {
+            MemoryStream ms = new MemoryStream(bytes);
+            return Image.FromStream(ms);
+        }
+
+        public byte[] ImagenABytes(Image imagen)
+        {
+            MemoryStream ms = new MemoryStream();
+            imagen.Save(ms, ImageFormat.Jpeg);
+            return ms.ToArray();
+        }
 
     }
 }
