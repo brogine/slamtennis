@@ -27,6 +27,7 @@ namespace Servicio
         public void Modificar(Servicio.InterfacesUI.ILoginUI ui)
         {
             Login bLogin = loginRepo.Obtener(ui.Usuario);
+            bLogin.Usuario = ui.Usuario;
             bLogin.Password = ui.Password;
             bLogin.Estado = ui.Estado;
             loginRepo.Modificar(bLogin);
