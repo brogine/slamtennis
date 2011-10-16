@@ -30,8 +30,6 @@ namespace Repositorio
                             Conn.AgregarSinId("InscripcionesJugador", "Dni, IdInscripcion", Inscripcion.Equipo.Jugador1.Dni + "," + Inscripcion.IdInscripcion);
                         if (Inscripcion.Equipo.Jugador2 != null && !Existe(Inscripcion.Torneo.IdTorneo, Inscripcion.Equipo.Jugador2.Dni))
                             Conn.AgregarSinId("InscripcionesJugador", "Dni, IdInscripcion", Inscripcion.Equipo.Jugador2.Dni + "," + Inscripcion.IdInscripcion);
-                        
-                     
                         return Inscripcion.IdInscripcion;
                     }
                     else
@@ -83,6 +81,7 @@ namespace Repositorio
                 {
                     String Consulta = " Update InscripcionesJugador Set ";
                     Consulta += " Dni = " + Inscripcion.Equipo.Jugador2.Dni;
+                    Consulta += " Estado = " + (Inscripcion.Estado ? 1 : 0);
                     Consulta += " Where IdInscripcion = " + Inscripcion.IdInscripcion;
                     Consulta += " And Dni = " + Inscripcion.Equipo.Jugador1.Dni;
                     Conn.ActualizarOEliminar(Consulta);
@@ -216,10 +215,11 @@ namespace Repositorio
                 ITorneoRepositorio repoTorneos = new TorneoRepositorio();
                 Torneo bTorneo = Fila.IsNull("IdTorneo") ? null : repoTorneos.Buscar(Convert.ToInt32(Fila["IdTorneo"]));
                 DateTime Fecha = Fila.IsNull("Fecha") ? DateTime.Now : Convert.ToDateTime(Fila["Fecha"]);
+                Boolean Estado = Fila.IsNull("Estado") ? false : Convert.ToBoolean(Fila["Estado"]);
                 IJugadorRepositorio repoJugadores = new JugadorRepositorio();
                 Equipo nEquipo = new Equipo();
                 nEquipo.Jugador1 = Fila.IsNull("Dni") ? null : repoJugadores.Buscar(Convert.ToInt32(Fila["Dni"]));
-                nInscripcion = new Inscripcion(IdInscripcion, bTorneo, Fecha, nEquipo);
+                nInscripcion = new Inscripcion(IdInscripcion, bTorneo, Fecha, nEquipo, Estado);
             }
             return nInscripcion;
         }
