@@ -55,7 +55,7 @@ namespace Servicio
             List<object> ListaUI = new List<object>();
             foreach (Cancha cancha in ListaCanchas)
             {
-                ListaUI.Add(cancha.Id + "," + cancha.Superficie + "," + cancha.TipoCancha + "," + cancha.Luz + "," + cancha.Cantidad);
+                ListaUI.Add(cancha.Id + "," + cancha.Superficie + "," + cancha.TipoCancha + "," + (cancha.Luz?"Si":"No") + "," + cancha.Cantidad);
             }
             UI.ListaCanchas = ListaUI;
         }

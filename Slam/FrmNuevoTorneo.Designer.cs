@@ -84,15 +84,16 @@
             // 
             // DTPInicioTorneo
             // 
-            this.DTPInicioTorneo.Location = new System.Drawing.Point(164, 85);
+            this.DTPInicioTorneo.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.DTPInicioTorneo.Location = new System.Drawing.Point(164, 134);
             this.DTPInicioTorneo.Name = "DTPInicioTorneo";
-            this.DTPInicioTorneo.Size = new System.Drawing.Size(200, 20);
+            this.DTPInicioTorneo.Size = new System.Drawing.Size(83, 20);
             this.DTPInicioTorneo.TabIndex = 2;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(12, 92);
+            this.label2.Location = new System.Drawing.Point(12, 140);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(88, 13);
             this.label2.TabIndex = 3;
@@ -101,7 +102,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(12, 121);
+            this.label3.Location = new System.Drawing.Point(255, 140);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(77, 13);
             this.label3.TabIndex = 4;
@@ -109,16 +110,17 @@
             // 
             // DTPFinTorneo
             // 
-            this.DTPFinTorneo.Location = new System.Drawing.Point(164, 114);
+            this.DTPFinTorneo.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.DTPFinTorneo.Location = new System.Drawing.Point(365, 133);
             this.DTPFinTorneo.Name = "DTPFinTorneo";
-            this.DTPFinTorneo.Size = new System.Drawing.Size(200, 20);
+            this.DTPFinTorneo.Size = new System.Drawing.Size(83, 20);
             this.DTPFinTorneo.TabIndex = 5;
             this.DTPFinTorneo.Validating += new System.ComponentModel.CancelEventHandler(this.DTPFinTorneo_Validating);
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(12, 147);
+            this.label4.Location = new System.Drawing.Point(12, 106);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(114, 13);
             this.label4.TabIndex = 6;
@@ -126,15 +128,16 @@
             // 
             // DTPInicioInscripciones
             // 
-            this.DTPInicioInscripciones.Location = new System.Drawing.Point(164, 140);
+            this.DTPInicioInscripciones.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.DTPInicioInscripciones.Location = new System.Drawing.Point(164, 99);
             this.DTPInicioInscripciones.Name = "DTPInicioInscripciones";
-            this.DTPInicioInscripciones.Size = new System.Drawing.Size(200, 20);
+            this.DTPInicioInscripciones.Size = new System.Drawing.Size(83, 20);
             this.DTPInicioInscripciones.TabIndex = 7;
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(12, 172);
+            this.label5.Location = new System.Drawing.Point(253, 105);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(103, 13);
             this.label5.TabIndex = 8;
@@ -142,9 +145,10 @@
             // 
             // DTPFinInscripciones
             // 
-            this.DTPFinInscripciones.Location = new System.Drawing.Point(164, 166);
+            this.DTPFinInscripciones.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.DTPFinInscripciones.Location = new System.Drawing.Point(365, 99);
             this.DTPFinInscripciones.Name = "DTPFinInscripciones";
-            this.DTPFinInscripciones.Size = new System.Drawing.Size(200, 20);
+            this.DTPFinInscripciones.Size = new System.Drawing.Size(83, 20);
             this.DTPFinInscripciones.TabIndex = 9;
             this.DTPFinInscripciones.Validating += new System.ComponentModel.CancelEventHandler(this.DTPFinInscripciones_Validating);
             // 
@@ -153,7 +157,7 @@
             this.groupBox1.Controls.Add(this.RBMixto);
             this.groupBox1.Controls.Add(this.RBFemenino);
             this.groupBox1.Controls.Add(this.RBMasculino);
-            this.groupBox1.Location = new System.Drawing.Point(15, 192);
+            this.groupBox1.Location = new System.Drawing.Point(15, 169);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(259, 48);
             this.groupBox1.TabIndex = 10;
@@ -198,7 +202,7 @@
             // 
             this.groupBox2.Controls.Add(this.RBDouble);
             this.groupBox2.Controls.Add(this.RBSingle);
-            this.groupBox2.Location = new System.Drawing.Point(283, 192);
+            this.groupBox2.Location = new System.Drawing.Point(308, 169);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(138, 48);
             this.groupBox2.TabIndex = 11;
@@ -267,16 +271,16 @@
             // CboSuperficie
             // 
             this.CboSuperficie.FormattingEnabled = true;
-            this.CboSuperficie.Location = new System.Drawing.Point(75, 273);
+            this.CboSuperficie.Location = new System.Drawing.Point(307, 230);
             this.CboSuperficie.Name = "CboSuperficie";
-            this.CboSuperficie.Size = new System.Drawing.Size(199, 21);
+            this.CboSuperficie.Size = new System.Drawing.Size(134, 21);
             this.CboSuperficie.TabIndex = 16;
             this.CboSuperficie.Validating += new System.ComponentModel.CancelEventHandler(this.CboSuperficie_Validating);
             // 
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(10, 281);
+            this.label8.Location = new System.Drawing.Point(227, 238);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(54, 13);
             this.label8.TabIndex = 17;
@@ -285,7 +289,7 @@
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(12, 306);
+            this.label9.Location = new System.Drawing.Point(12, 271);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(40, 13);
             this.label9.TabIndex = 18;
@@ -293,7 +297,7 @@
             // 
             // BtnAceptar
             // 
-            this.BtnAceptar.Location = new System.Drawing.Point(280, 301);
+            this.BtnAceptar.Location = new System.Drawing.Point(281, 284);
             this.BtnAceptar.Name = "BtnAceptar";
             this.BtnAceptar.Size = new System.Drawing.Size(75, 23);
             this.BtnAceptar.TabIndex = 20;
@@ -303,7 +307,7 @@
             // 
             // BtnSalir
             // 
-            this.BtnSalir.Location = new System.Drawing.Point(370, 301);
+            this.BtnSalir.Location = new System.Drawing.Point(371, 284);
             this.BtnSalir.Name = "BtnSalir";
             this.BtnSalir.Size = new System.Drawing.Size(75, 23);
             this.BtnSalir.TabIndex = 21;
@@ -314,7 +318,7 @@
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(12, 250);
+            this.label11.Location = new System.Drawing.Point(12, 238);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(32, 13);
             this.label11.TabIndex = 23;
@@ -323,7 +327,7 @@
             // ChkInscripcion
             // 
             this.ChkInscripcion.AutoSize = true;
-            this.ChkInscripcion.Location = new System.Drawing.Point(142, 249);
+            this.ChkInscripcion.Location = new System.Drawing.Point(116, 235);
             this.ChkInscripcion.Name = "ChkInscripcion";
             this.ChkInscripcion.Size = new System.Drawing.Size(96, 17);
             this.ChkInscripcion.TabIndex = 25;
@@ -337,7 +341,7 @@
             // LblEstado
             // 
             this.LblEstado.AutoSize = true;
-            this.LblEstado.Location = new System.Drawing.Point(59, 306);
+            this.LblEstado.Location = new System.Drawing.Point(64, 271);
             this.LblEstado.Name = "LblEstado";
             this.LblEstado.Size = new System.Drawing.Size(0, 13);
             this.LblEstado.TabIndex = 26;
@@ -349,7 +353,7 @@
             "8",
             "16",
             "32"});
-            this.CboCupo.Location = new System.Drawing.Point(50, 245);
+            this.CboCupo.Location = new System.Drawing.Point(50, 233);
             this.CboCupo.Name = "CboCupo";
             this.CboCupo.Size = new System.Drawing.Size(45, 21);
             this.CboCupo.TabIndex = 27;
@@ -358,7 +362,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(458, 339);
+            this.ClientSize = new System.Drawing.Size(458, 320);
             this.Controls.Add(this.CboCupo);
             this.Controls.Add(this.LblEstado);
             this.Controls.Add(this.ChkInscripcion);

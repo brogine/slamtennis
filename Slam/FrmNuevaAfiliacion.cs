@@ -53,7 +53,7 @@ namespace Slam
         {
             get
             {
-                return Convert.ToInt32(((DictionaryEntry)CboListaClubes.SelectedItem).Value); ;
+                return Convert.ToInt32(((KeyValuePair<int,string>)CboListaClubes.SelectedItem).Key); ;
             }
             set
             {
@@ -103,13 +103,15 @@ namespace Slam
         {
             set
             {
-                foreach (Object Club in value)
+                Dictionary<int, string> ListaClubes = new Dictionary<int, string>();
+                foreach (Object Torneo in value)
                 {
-                    Object[] DatosClub = Club.ToString().Split(',');
-                    CboListaClubes.Items.Add(new DictionaryEntry(DatosClub[1], DatosClub[0]));
+                    Object[] DatosClub = Torneo.ToString().Split(',');
+                    ListaClubes.Add(Convert.ToInt32(DatosClub[0]), DatosClub[1].ToString());
                 }
-                CboListaClubes.DisplayMember = "Key";
-                CboListaClubes.ValueMember = "Value";
+                CboListaClubes.DataSource = new BindingSource(ListaClubes, null);
+                CboListaClubes.DisplayMember = "Value";
+                CboListaClubes.ValueMember = "Key";
                 CboListaClubes.SelectedIndex = -1;
             }
         }

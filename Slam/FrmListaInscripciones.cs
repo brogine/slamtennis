@@ -103,7 +103,7 @@ namespace Slam
                             DgvListaInscripciones.Rows.Add(datosInscripcion[0], datosInscripcion[2], "No Inscripto",
                                 datosInscripcion[4]);
                     else
-                        DgvListaInscripciones.Rows.Add(datosInscripcion[0], datosInscripcion[2], datosInscripcion[3]);
+                        DgvListaInscripciones.Rows.Add(datosInscripcion[0], datosInscripcion[2], datosInscripcion[4]);
                 }
             }
         }
