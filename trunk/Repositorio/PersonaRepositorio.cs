@@ -102,6 +102,7 @@ namespace Repositorio
             if (repoLogin.Existe(Persona.Dni))
             {
                 Login bLogin = repoLogin.Obtener(Persona.Dni);
+                bLogin.Usuario = Persona.Login.Usuario;
                 bLogin.Password = Persona.Login.Password;
                 bLogin.Estado = Persona.Login.Estado;
                 repoLogin.Modificar(bLogin);
