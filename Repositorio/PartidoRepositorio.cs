@@ -42,7 +42,7 @@ namespace Repositorio
         public void Modificar(Partido Partido)
         {
             IEstadisticaRepositorio EstRepo = new EstadisticaRepositorio();
-            
+            IInscripcionRepositorio InscRepo = new InscripcionRepositorio();
             string FechaFormateada = Partido.Fecha.Year + "/" + Partido.Fecha.Month + "/" + Partido.Fecha.Day;
             String Consulta = " Update Partidos Set ";
             
@@ -70,6 +70,8 @@ namespace Repositorio
                 {
                     Est1Jug1.PG += 1;
                     Est2Jug1.PP += 1;
+                    
+                   
                 }
                 else
                 {

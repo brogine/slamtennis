@@ -25,11 +25,15 @@ namespace Servicio
 
         public void Agregar(IPartidoUI UI)
         {
+            bool Est = UI.Estado;
             Inscripcion Equipo1 = InscRepo.Buscar(UI.IdEquipo1);
             Inscripcion Equipo2 = InscRepo.Buscar(UI.IdEquipo2);
             Torneo Torneo = TornRepo.Buscar(UI.IdTorneo);
-
-            Partido Partido = new Partido(Torneo, Equipo1, Equipo2, UI.Fecha, UI.Resultado, UI.Ronda, UI.Estado);
+            if (UI.IdEquipo2 == 0)
+            {
+                Est = false;
+            }
+            Partido Partido = new Partido(Torneo, Equipo1, Equipo2, UI.Fecha, UI.Resultado, UI.Ronda, Est);
             PartidoRepo.Agregar(Partido);
         }
 
@@ -98,10 +102,12 @@ namespace Servicio
                 else
                 {
                     Objeto += "BYE,";
+
                 }
                 Objeto += Partido.Fecha.ToShortDateString() + ",";
                 Objeto += Partido.Ronda +",";
-                Objeto += Partido.Resultado;
+                Objeto += Partido.Resultado+",";
+                Objeto += Partido.Estado.ToString();
                 ListaObjeto.Add(Objeto);
             }
             UI.ListarPartidos = ListaObjeto;
