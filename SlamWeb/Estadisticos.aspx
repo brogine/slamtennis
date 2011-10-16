@@ -3,15 +3,27 @@
     <style type="text/css">
         .style1
         {
-            color: #000000;
+            color:White;
             font-weight: bold;
             text-align:right;
         }
         .style2
         {
-            text-align: left;
+            text-align:center;
+        }
+        .style4
+        {
+            text-align:left;
+        }
+        .style3
+        {
+            width: 50%;
         }
     </style>
+    <link type="text/css" href="Content/basic.css"rel="Stylesheet" media="screen" />
+    <script type="text/javascript" src="Scripts/jquery.js"></script>
+    <script type="text/javascript" src="Scripts/jquery.simplemodal.js"></script>
+    <script type="text/javascript" src="Scripts/basic.js" ></script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
 <div style="text-align: left; width:500px">
@@ -31,68 +43,84 @@
     Datos Estadisticos</div>
     
     <div style="width:100%">
-    <table width="100%">
-        <tr style="width:40%">
-            <td>
+   
+        <div>
                 Estadisticos de Jugadores
-            </td>
-            <td>
-            </td>
-        </tr>
+        </div>
+    </div>
+    <center>
+    <table width="90%">
         <tr>
-            <td style="text-align: right">
+            <td style="text-align: right" class="style3">
                 Seleccione Club:
             </td>
-            <td>
-                <asp:DropDownList ID="CboClub" runat="server">
+            <td class="style4">
+                <asp:DropDownList ID="CboClub" runat="server"
+                    onselectedindexchanged="CboClub_SelectedIndexChanged">
                 </asp:DropDownList>
             </td>
         </tr>
         <tr>
-            <td style="text-align: right">
+            <td style="text-align: right" class="style3">
                 Seleccione Categoria:
             </td>
-            <td>
-                <asp:DropDownList ID="DropDownList1" runat="server">
+            <td class="style4">
+                <asp:DropDownList ID="CboCategorias" runat="server" AutoPostBack="True" 
+                    onselectedindexchanged="CboCategorias_SelectedIndexChanged">
                 </asp:DropDownList>
             </td>
         </tr>
     </table>
+    </center>
+    <br />
+    
       <table width="100%">  
         <tr style="text-align:center">
             <td>
                 <asp:Panel ID="Panel1" runat="server" Height="200px" ScrollBars="Vertical">
-                    <asp:UpdatePanel ID="UpdatePanel1" runat="server">
-                        <ContentTemplate>
-                            <asp:GridView ID="DgvEstadisticas" runat="server" 
-                                AutoGenerateSelectButton="True">
+                   
+                            <asp:GridView ID="DgvEstadisticas" runat="server" CellPadding="4" 
+                                ForeColor="#333333" GridLines="None">
+                                <RowStyle BackColor="#F7F6F3" ForeColor="#333333" />
+                                <FooterStyle BackColor="#5D7B9D" Font-Bold="True" ForeColor="White" />
+                                <PagerStyle BackColor="#284775" ForeColor="White" HorizontalAlign="Center" />
+                                <SelectedRowStyle BackColor="#E2DED6" Font-Bold="True" ForeColor="#333333" />
+                                <HeaderStyle BackColor="#5D7B9D" Font-Bold="True" ForeColor="White" />
+                                <EditRowStyle BackColor="#999999" />
+                                <AlternatingRowStyle BackColor="White" ForeColor="#284775" />
                             </asp:GridView>
-                        </ContentTemplate>
-                    </asp:UpdatePanel>
+                       
                 </asp:Panel>
             </td>
         </tr>
     </table>
-    <br />
-    <div style="text-align: right">
-            <a href="#MisDatos">Tus datos estadisticos</a>
+      
+            
+      <br />
+    <div id="content" style="text-align: right">
+    <div id="basic-modal" >
+     <asp:Panel ID="PnlDatos" runat="server" Visible="false">
+         <li><a class="DATOS" href="#">Tus datos estadisticos</a></li>
+     </asp:Panel>
     </div>
-    </div>
-    <div id="MisDatos" style="display:none">
-        <div>
-            <h4>Tus Datos Estaditicos</h2>
+    <div id="content-DATOS">
+        <div class="style2">
+            Tus Datos Estaditicos
+            <br />
+            <br />
+            <p></p>
         </div>
         <table width="100%" class="style1">
             <tr style="width:25%">
                 <td style="width:25%" class="style1">
-                    Partidos Jugados
+                    Partidos Jugados:
                 </td>
                 <td style="width:25%" class="style2">
                     
                     <asp:Label ID="LblPJ" runat="server" Text="00"></asp:Label>
                 </td>
                 <td style="width:25%">
-                    Partidos Ganados
+                    Partidos Ganados:
                 </td>
                 <td style="width:25%" class="style2">
                     
@@ -102,7 +130,7 @@
             </tr>
             <tr>
                 <td class="style1">
-                    Partidos Perdidos
+                    Partidos Perdidos:
                 </td>
                 <td class="style2">
                     
@@ -110,7 +138,7 @@
                     
                 </td>
                 <td>
-                    Torneos Jugados
+                    Torneos Jugados:
                 </td>
                 <td class="style2">
                     
@@ -120,7 +148,7 @@
             </tr>
              <tr>
                 <td class="style1">
-                    Torneos Completos
+                    Torneos Completos:
                 </td>
                 <td class="style2">
                     
@@ -128,14 +156,16 @@
                     
                 </td>
                 <td>
-                    Puntos
+                    Puntos:
                 </td>
                 <td class="style2">
                     
-                    <asp:Label ID="LblPUNTOS" runat="server" ForeColor="#000066" Text="00"></asp:Label>
+                    <asp:Label ID="LblPUNTOS" runat="server" ForeColor="#CCCCCC" Text="00"></asp:Label>
                     
                 </td>
             </tr>
         </table>
+        </div>
 </div>
+         
 </asp:Content>

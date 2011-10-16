@@ -138,6 +138,8 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Consultas.aspx" />
+    <Content Include="Content\basic.css" />
+    <Content Include="Content\basic_ie.css" />
     <Content Include="Content\bg1.gif" />
     <Content Include="Content\Consultas.png" />
     <Content Include="Content\Estadisticos.png" />
@@ -148,6 +150,7 @@
     <Content Include="Content\Slam.jpg" />
     <Content Include="Content\Tips.png" />
     <Content Include="Content\Torneos.png" />
+    <Content Include="Content\x.png" />
     <Content Include="Correcto.aspx" />
     <Content Include="Default.aspx" />
     <Content Include="Estadisticos.aspx" />
@@ -155,6 +158,9 @@
     <Content Include="Llaves.aspx" />
     <Content Include="Login.aspx" />
     <Content Include="Mensajes.aspx" />
+    <Content Include="Scripts\basic.js" />
+    <Content Include="Scripts\jquery.js" />
+    <Content Include="Scripts\jquery.simplemodal.js" />
     <Content Include="Site.Master" />
     <Content Include="Torneos.aspx" />
   </ItemGroup>

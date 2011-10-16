@@ -68,13 +68,13 @@ namespace SlamWeb {
         protected global::System.Web.UI.WebControls.DropDownList CboClub;
         
         /// <summary>
-        /// DropDownList1 control.
+        /// CboCategorias control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DropDownList1;
+        protected global::System.Web.UI.WebControls.DropDownList CboCategorias;
         
         /// <summary>
         /// Panel1 control.
@@ -86,15 +86,6 @@ namespace SlamWeb {
         protected global::System.Web.UI.WebControls.Panel Panel1;
         
         /// <summary>
-        /// UpdatePanel1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.UpdatePanel UpdatePanel1;
-        
-        /// <summary>
         /// DgvEstadisticas control.
         /// </summary>
         /// <remarks>
@@ -102,6 +93,15 @@ namespace SlamWeb {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.GridView DgvEstadisticas;
+        
+        /// <summary>
+        /// PnlDatos control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel PnlDatos;
         
         /// <summary>
         /// LblPJ control.
