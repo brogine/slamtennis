@@ -70,11 +70,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>DsLlave.xsd</DependentUpon>
     </Compile>
-    <Compile Include="DsLlave8.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>DsLlave8.xsd</DependentUpon>
-    </Compile>
     <Compile Include="DsRankingCategoria.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -99,12 +94,6 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>RptLlave.rpt</DependentUpon>
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="RptLlave8.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>RptLlave8.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="RptRankingCategoria.cs">
@@ -148,17 +137,6 @@
     <None Include="DsLlave.xss">
       <DependentUpon>DsLlave.xsd</DependentUpon>
     </None>
-    <None Include="DsLlave8.xsc">
-      <DependentUpon>DsLlave8.xsd</DependentUpon>
-    </None>
-    <None Include="DsLlave8.xsd">
-      <SubType>Designer</SubType>
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>DsLlave8.Designer.cs</LastGenOutput>
-    </None>
-    <None Include="DsLlave8.xss">
-      <DependentUpon>DsLlave8.xsd</DependentUpon>
-    </None>
     <None Include="DsRankingCategoria.xsc">
       <DependentUpon>DsRankingCategoria.xsd</DependentUpon>
     </None>
@@ -183,10 +161,6 @@
     <EmbeddedResource Include="RptLlave.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>RptLlave.cs</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Include="RptLlave8.rpt">
-      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
-      <LastGenOutput>RptLlave8.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="RptRankingCategoria.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>

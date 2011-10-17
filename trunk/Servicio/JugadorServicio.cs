@@ -8,6 +8,7 @@ using Repositorio;
 using System.Data;
 using System.Drawing;
 using System.Drawing.Drawing2D;
+using Servicio.InterfacesUI;
 
 namespace Servicio
 {
@@ -23,7 +24,6 @@ namespace Servicio
 
         public void Agregar(Servicio.InterfacesUI.IJugadorUI UI)
         {
-           
             Jugador nJugador;
             Contacto nContacto;
             Ubicacion nUbicacion;
@@ -38,7 +38,7 @@ namespace Servicio
             Bitmap newImage = null;
             if (UI.Foto != null)
             {
-                newImage = new Bitmap(320, 240);
+                newImage = new Bitmap(100, 100);
                 using (Graphics gr = Graphics.FromImage(newImage))
                 {
                     gr.SmoothingMode = SmoothingMode.AntiAlias;
@@ -68,6 +68,18 @@ namespace Servicio
         public bool Existe(int Dni)
         {
             return repoJugadores.Existe(Dni);
+        }
+
+        public bool ExisteCategoria(IJugadorUI UI)
+        {
+            ICategoriaRepositorio repoCategorias = new CategoriaRepositorio();
+            Jugador nJugador = new Jugador();
+            nJugador.FechaNac = UI.FechaNac;
+            Categoria bCategoria = repoCategorias.ObtenerPorEdad(nJugador.Edad);
+            if (bCategoria == null)
+                return false;
+            else
+                return true;
         }
 
         public void Modificar(Servicio.InterfacesUI.IJugadorUI UI)

@@ -14,6 +14,8 @@ namespace Servicio
 
         bool Existe(int Dni);
 
+        bool ExisteCategoria(IJugadorUI UI);
+
         void Buscar(IJugadorUI UI);
 
         int Categoria(int dni);

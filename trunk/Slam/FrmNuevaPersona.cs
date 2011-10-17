@@ -94,7 +94,6 @@ namespace Slam
             	LblPuesto.Visible = false;
             	TxtPuesto.Visible = false;
             }
-            this.Text = "Nueva/o " + Tipo.ToString();
         }
 
         private void BtnGuardar_Click(object sender, EventArgs e)
@@ -131,9 +130,19 @@ namespace Slam
                                 }
                                 break;
                             case TipoPersona.Jugador:
-                                if (GbMenor.Visible)
+                                if (servicioJugadores.ExisteCategoria(this))
                                 {
-                                    if (EpNuevaPersona.GetError(TxtNombreTutor) == "" && EpNuevaPersona.GetError(TxtRelacion) == "")
+                                    if (GbMenor.Visible)
+                                    {
+                                        if (EpNuevaPersona.GetError(TxtNombreTutor) == "" && EpNuevaPersona.GetError(TxtRelacion) == "")
+                                        {
+                                            if (servicioJugadores.Existe(Dni))
+                                                servicioJugadores.Modificar(this);
+                                            else
+                                                servicioJugadores.Agregar(this);
+                                        }
+                                    }
+                                    else
                                     {
                                         if (servicioJugadores.Existe(Dni))
                                             servicioJugadores.Modificar(this);
@@ -143,10 +152,9 @@ namespace Slam
                                 }
                                 else
                                 {
-                                    if (servicioJugadores.Existe(Dni))
-                                        servicioJugadores.Modificar(this);
-                                    else
-                                        servicioJugadores.Agregar(this);
+                                    MessageBox.Show("No existen Categorías en el Sistema para ese Jugador. Los datos no fueron guardados. Agregue una Categoría y vuelva a presionar el botón Guardar.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                                    FrmNuevaCategoria NuevaCategoria = new FrmNuevaCategoria();
+                                    NuevaCategoria.Show();
                                 }
                                 break;
                         }
@@ -323,15 +331,7 @@ namespace Slam
         {
             get
             {
-                if (CboNacionalidad.SelectedIndex > -1)
-                {
-                    return Convert.ToInt32(((KeyValuePair<int, string>)CboPais.SelectedItem).Key);
-                }
-                else
-                {
-                    return 0;
-                }
-
+                return Convert.ToInt32(((KeyValuePair<int, string>)CboPais.SelectedItem).Key);
             }
             set
             {
@@ -485,7 +485,6 @@ namespace Slam
             {
                 if (value.Count > 0)
                 {
-
                     Dictionary<int, string> ListaPais = new Dictionary<int, string>();
                     foreach (Object Pais in value)
                     {
@@ -496,9 +495,11 @@ namespace Slam
                     CboPais.DisplayMember = "Value";
                     CboPais.ValueMember = "Key";
                     CboPais.SelectedIndex = -1;
-
+                    CboNacionalidad.DataSource = new BindingSource(ListaPais, null);
+                    CboNacionalidad.DisplayMember = "Value";
+                    CboNacionalidad.ValueMember = "Key";
+                    CboNacionalidad.SelectedIndex = -1;
                 }
-
             }
         }
 
@@ -557,7 +558,6 @@ namespace Slam
 
 
         #endregion
-
 
         #region Miembros de IArbitroUI
 
