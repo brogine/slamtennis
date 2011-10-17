@@ -27,13 +27,15 @@ namespace Servicio
 
         public void ListarPaises(IListadoPaises ui)
         {
-            Dictionary<int,string> ListaPaises = new Dictionary<int,string>();
-            List<Pais> Lista = UbicaRepo.ListarPaises();
-            foreach (Pais Pais in Lista)
+            
+            List<Pais> ListaTorneo = UbicaRepo.ListarPaises();
+            List<Object> Lista = new List<object>();
+            foreach (Pais Pais in ListaTorneo)
             {
-                ListaPaises.Add(Pais.IdPais, Pais.Nombre);
+                Lista.Add(Pais.IdPais + "," + Pais.Nombre);
             }
-            ui.ListarPaises = ListaPaises;
+
+            ui.ListarPaises = Lista;
         }
 
         #endregion
@@ -48,13 +50,15 @@ namespace Servicio
 
         public void ListarProvincias(IListadoProvincias ui)
         {
-            Dictionary<int, string> ListaProvincias = new Dictionary<int, string>();
-            List<Provincia> Lista = UbicaRepo.ListarProvincias(UbicaRepo.ObtenerPais(ui.Pais));
-            foreach (Provincia Prov in Lista)
+            UbicaRepo.ObtenerPais(ui.Pais);
+            List<Provincia> ListaProvincia = UbicaRepo.ListarProvincias(UbicaRepo.ObtenerPais(ui.Pais));
+            List<Object> Lista = new List<object>();
+            foreach (Provincia Prov in ListaProvincia)
             {
-                ListaProvincias.Add(Prov.IdProvincia, Prov.Nombre);
+                Lista.Add(Prov.IdProvincia + "," + Prov.Nombre);
             }
-            ui.ListarProvincias = ListaProvincias;
+
+            ui.ListarProvincias = Lista;
         }
 
         #endregion
@@ -70,13 +74,15 @@ namespace Servicio
 
         public void ListarLocalidades(IListadoLocalidades ui)
         {
-            Dictionary<int, string> ListaLocalidades = new Dictionary<int, string>();
-            List<Localidad> Lista = UbicaRepo.ListarLocalidades(UbicaRepo.ObetenerProvincia(ui.Provincia));
-            foreach (Localidad Loc in Lista)
+
+            List<Localidad> ListaLocalidades = UbicaRepo.ListarLocalidades(UbicaRepo.ObetenerProvincia(ui.Provincia));
+            List<Object> Lista = new List<object>();
+            foreach (Localidad Loc in ListaLocalidades)
             {
-                ListaLocalidades.Add(Loc.IdLocalidad, Loc.Nombre);
+                Lista.Add(Loc.IdLocalidad + "," + Loc.Nombre);
             }
-            ui.ListarLocalidades = ListaLocalidades;
+
+            ui.ListarLocalidades = Lista;
         }
 
         public string ObtenerUbicacion(int IdLocalidad)

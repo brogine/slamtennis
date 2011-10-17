@@ -101,8 +101,11 @@ namespace Slam
 
         public List<object> ListarClubes
         {
+
             set
             {
+                if (value.Count>0)
+                {
                 Dictionary<int, string> ListaClubes = new Dictionary<int, string>();
                 foreach (Object Torneo in value)
                 {
@@ -114,6 +117,7 @@ namespace Slam
                 CboListaClubes.ValueMember = "Key";
                 CboListaClubes.SelectedIndex = -1;
             }
+        }
         }
 
         private void button1_Click(object sender, EventArgs e)
