@@ -31,7 +31,7 @@ namespace Servicio
             Bitmap newImage = null;
             if (UI.Foto != null)
             {
-                newImage = new Bitmap(320, 240);
+                newImage = new Bitmap(100, 100);
                 using (Graphics gr = Graphics.FromImage(newImage))
                 {
                     gr.SmoothingMode = SmoothingMode.AntiAlias;

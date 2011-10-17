@@ -8,13 +8,14 @@ using System.Data;
 
 namespace Repositorio
 {
-   public class UbicacionRepositorio:IUbicacionRepositorio
+    public class UbicacionRepositorio:IUbicacionRepositorio
     {
-       Conexion Conex;
-       public UbicacionRepositorio()
-       {
+        Conexion Conex;
+        public UbicacionRepositorio()
+        {
            Conex = new Conexion();
-       }
+        }
+
         #region Miembros de IUbicacionRepositorio
 
         public List<Dominio.Pais> ListarPaises()

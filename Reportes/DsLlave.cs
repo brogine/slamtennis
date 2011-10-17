@@ -2,6 +2,9 @@
     
     
     public partial class DsLlave {
+        partial class FinalDataTable
+        {
+        }
     }
 }
 namespace Reportes.DsLlaveTableAdapters
