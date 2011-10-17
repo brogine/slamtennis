@@ -166,40 +166,93 @@ namespace Slam
 
         #endregion
 
-        #region Miembros de IListadoProvincias
 
-        public Dictionary<int, string> ListarProvincias
+        #region Miembros de IListadoPaises
+
+        public List<Object> ListarPaises
         {
-            set 
+            set
             {
                 if (value.Count > 0)
                 {
-                    CboProvincias.DataSource = new BindingSource(value, null);
+
+                    Dictionary<int, string> ListaPais = new Dictionary<int, string>();
+                    foreach (Object Pais in value)
+                    {
+                        Object[] DatosPais = Pais.ToString().Split(',');
+                        ListaPais.Add(Convert.ToInt32(DatosPais[0]), DatosPais[1].ToString());
+                    }
+                    CboPaises.DataSource = new BindingSource(ListaPais, null);
+                    CboPaises.DisplayMember = "Value";
+                    CboPaises.ValueMember = "Key";
+                    CboPaises.SelectedIndex = -1;
+
+                }
+
+            }
+        }
+
+        #endregion
+
+        #region Miembros de IListadoProvincias
+
+        public List<Object> ListarProvincias
+        {
+            set
+            {
+                if (value.Count > 0)
+                {
+
+                    Dictionary<int, string> ListaProvincias = new Dictionary<int, string>();
+                    foreach (Object Provincia in value)
+                    {
+                        Object[] DatosProvincia = Provincia.ToString().Split(',');
+                        ListaProvincias.Add(Convert.ToInt32(DatosProvincia[0]), DatosProvincia[1].ToString());
+                    }
+                    CboProvincias.DataSource = new BindingSource(ListaProvincias, null);
                     CboProvincias.DisplayMember = "Value";
                     CboProvincias.ValueMember = "Key";
                     CboProvincias.SelectedIndex = -1;
+
                 }
             }
         }
 
         public int Pais
         {
-            get { return (int)CboPaises.SelectedValue; }
+            get { return Convert.ToInt32(((KeyValuePair<int, string>)CboPaises.SelectedItem).Key); }
         }
 
         #endregion
 
-        #region Miembros de IListadoPaises
+        #region Miembros de IListadoLocalidades
 
-        public Dictionary<int, string> ListarPaises
+        public List<Object> ListarLocalidades
         {
-            set 
+            set
             {
-                CboPaises.DataSource = new BindingSource(value, null);
-                CboPaises.DisplayMember = "Value";
-                CboPaises.ValueMember = "Key";
-                CboPaises.SelectedIndex = -1;
+
+                if (value.Count > 0)
+                {
+
+                    Dictionary<int, string> ListaLocalidades = new Dictionary<int, string>();
+                    foreach (Object Localidad in value)
+                    {
+                        Object[] DatosLocalidades = Localidad.ToString().Split(',');
+                        ListaLocalidades.Add(Convert.ToInt32(DatosLocalidades[0]), DatosLocalidades[1].ToString());
+                    }
+                    CboLocalidades.DataSource = new BindingSource(ListaLocalidades, null);
+                    CboLocalidades.DisplayMember = "Value";
+                    CboLocalidades.ValueMember = "Key";
+                    CboLocalidades.SelectedIndex = -1;
+
+                }
             }
+        }
+
+        public int Provincia
+        {
+            get { return Convert.ToInt32(((KeyValuePair<int, string>)CboProvincias.SelectedItem).Key); }
         }
 
         #endregion
@@ -223,28 +276,7 @@ namespace Slam
 
         #endregion
 
-        #region Miembros de IListadoLocalidades
 
-        public Dictionary<int, string> ListarLocalidades
-        {
-            set 
-            {
-                if (value.Count > 0)
-                {
-                    CboLocalidades.DataSource = new BindingSource(value, null);
-                    CboLocalidades.DisplayMember = "Value";
-                    CboLocalidades.ValueMember = "Key";
-                    CboLocalidades.SelectedIndex = -1;
-                }
-            }
-        }
-
-        public int Provincia
-        {
-            get { return (int)CboProvincias.SelectedValue; }
-        }
-
-        #endregion
 
         #region Miembros de ISedesUI
 

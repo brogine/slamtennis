@@ -323,7 +323,15 @@ namespace Slam
         {
             get
             {
-                return Convert.ToInt32(((KeyValuePair<int, string>)CboPais.SelectedItem).Key);
+                if (CboNacionalidad.SelectedIndex > -1)
+                {
+                    return Convert.ToInt32(((KeyValuePair<int, string>)CboPais.SelectedItem).Key);
+                }
+                else
+                {
+                    return 0;
+                }
+
             }
             set
             {
@@ -471,18 +479,26 @@ namespace Slam
 
         #region Miembros de IListadoPaises
 
-        public Dictionary<int, string> ListarPaises
+        public List<Object> ListarPaises
         {
-            set 
+            set
             {
-                CboNacionalidad.DataSource = new BindingSource(value, null);
-                CboNacionalidad.DisplayMember = "Value";
-                CboNacionalidad.ValueMember = "Key";
-                CboNacionalidad.SelectedIndex = -1;
-                CboPais.DataSource = new BindingSource(value, null);
-                CboPais.DisplayMember = "Value";
-                CboPais.ValueMember = "Key";
-                CboPais.SelectedIndex = -1;
+                if (value.Count > 0)
+                {
+
+                    Dictionary<int, string> ListaPais = new Dictionary<int, string>();
+                    foreach (Object Pais in value)
+                    {
+                        Object[] DatosPais = Pais.ToString().Split(',');
+                        ListaPais.Add(Convert.ToInt32(DatosPais[0]), DatosPais[1].ToString());
+                    }
+                    CboPais.DataSource = new BindingSource(ListaPais, null);
+                    CboPais.DisplayMember = "Value";
+                    CboPais.ValueMember = "Key";
+                    CboPais.SelectedIndex = -1;
+
+                }
+
             }
         }
 
@@ -490,16 +506,24 @@ namespace Slam
 
         #region Miembros de IListadoProvincias
 
-        public Dictionary<int, string> ListarProvincias
+        public List<Object> ListarProvincias
         {
-            set 
+            set
             {
                 if (value.Count > 0)
                 {
-                    CboProvincia.DataSource = new BindingSource(value, null);
+
+                    Dictionary<int, string> ListaProvincias = new Dictionary<int, string>();
+                    foreach (Object Provincia in value)
+                    {
+                        Object[] DatosProvincia = Provincia.ToString().Split(',');
+                        ListaProvincias.Add(Convert.ToInt32(DatosProvincia[0]), DatosProvincia[1].ToString());
+                    }
+                    CboProvincia.DataSource = new BindingSource(ListaProvincias, null);
                     CboProvincia.DisplayMember = "Value";
                     CboProvincia.ValueMember = "Key";
                     CboProvincia.SelectedIndex = -1;
+
                 }
             }
         }
@@ -508,21 +532,32 @@ namespace Slam
 
         #region Miembros de IListadoLocalidades
 
-        public Dictionary<int, string> ListarLocalidades
+        public List<Object> ListarLocalidades
         {
-            set 
+            set
             {
+
                 if (value.Count > 0)
                 {
-                    CboLocalidades.DataSource = new BindingSource(value, null);
+
+                    Dictionary<int, string> ListaLocalidades = new Dictionary<int, string>();
+                    foreach (Object Localidad in value)
+                    {
+                        Object[] DatosLocalidades = Localidad.ToString().Split(',');
+                        ListaLocalidades.Add(Convert.ToInt32(DatosLocalidades[0]), DatosLocalidades[1].ToString());
+                    }
+                    CboLocalidades.DataSource = new BindingSource(ListaLocalidades, null);
                     CboLocalidades.DisplayMember = "Value";
                     CboLocalidades.ValueMember = "Key";
                     CboLocalidades.SelectedIndex = -1;
+
                 }
             }
         }
 
+
         #endregion
+
 
         #region Miembros de IArbitroUI
 

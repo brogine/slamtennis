@@ -7,7 +7,7 @@ namespace Servicio
 {
     public interface IListadoLocalidades
     {
-        Dictionary<int, string> ListarLocalidades { set; }
+        List<Object> ListarLocalidades { set; }
 
         int Pais { get; }
 

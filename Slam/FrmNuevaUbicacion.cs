@@ -88,14 +88,26 @@ namespace Slam
 
         #region Miembros de IListadoPaises
 
-        public Dictionary<int,string> ListarPaises
+        public List<Object> ListarPaises
         {
             set 
             {
-                CboListaPaises.DataSource = new BindingSource(value, null);
-                CboListaPaises.DisplayMember = "Value";
-                CboListaPaises.ValueMember = "Key";
-                CboListaPaises.SelectedIndex = -1;
+                if (value.Count > 0)
+                {
+
+                    Dictionary<int, string> ListaPais = new Dictionary<int, string>();
+                    foreach (Object Pais in value)
+                    {
+                        Object[] DatosPais = Pais.ToString().Split(',');
+                        ListaPais.Add(Convert.ToInt32(DatosPais[0]), DatosPais[1].ToString());
+                    }
+                    CboListaPaises.DataSource = new BindingSource(ListaPais, null);
+                    CboListaPaises.DisplayMember = "Value";
+                    CboListaPaises.ValueMember = "Key";
+                    CboListaPaises.SelectedIndex = -1;
+
+                }
+
             }
         }
 
@@ -103,46 +115,63 @@ namespace Slam
 
         #region Miembros de IListadoProvincias
 
-        public Dictionary<int, string> ListarProvincias
+        public List<Object> ListarProvincias
         {
-            set 
+            set
             {
                 if (value.Count > 0)
                 {
-                    CboListaProvincias.DataSource = new BindingSource(value, null);
-                    CboListaProvincias.DisplayMember = "Value";
-                    CboListaProvincias.ValueMember = "Key";
-                    CboListaProvincias.SelectedIndex = -1;
+                    
+                Dictionary<int, string> ListaProvincias = new Dictionary<int, string>();
+                foreach (Object Provincia in value)
+                {
+                    Object[] DatosProvincia = Provincia.ToString().Split(',');
+                    ListaProvincias.Add(Convert.ToInt32(DatosProvincia[0]), DatosProvincia[1].ToString());
+                }
+                CboListaProvincias.DataSource = new BindingSource(ListaProvincias, null);
+                CboListaProvincias.DisplayMember = "Value";
+                CboListaProvincias.ValueMember = "Key";
+                CboListaProvincias.SelectedIndex = -1;
+
                 }
             }
         }
 
         public int Pais
         {
-            get { return (int)CboListaPaises.SelectedValue; }
+            get { return Convert.ToInt32(((KeyValuePair<int, string>)CboListaPaises.SelectedItem).Key); }
         }
 
         #endregion
 
         #region Miembros de IListadoLocalidades
 
-        public Dictionary<int, string> ListarLocalidades
+        public List<Object> ListarLocalidades
         {
             set 
             {
-                if (value.Count > 0)
+             
+                    if (value.Count > 0)
                 {
-                    CboListaLocalidades.DataSource = new BindingSource(value, null);
-                    CboListaLocalidades.DisplayMember = "Value";
-                    CboListaLocalidades.ValueMember = "Key";
-                    CboListaLocalidades.SelectedIndex = -1;
+                    
+                Dictionary<int, string> ListaLocalidades = new Dictionary<int, string>();
+                foreach (Object Localidad in value)
+                {
+                    Object[] DatosLocalidades = Localidad.ToString().Split(',');
+                    ListaLocalidades.Add(Convert.ToInt32(DatosLocalidades[0]), DatosLocalidades[1].ToString());
+                }
+                CboListaLocalidades.DataSource = new BindingSource(ListaLocalidades, null);
+                CboListaLocalidades.DisplayMember = "Value";
+                CboListaLocalidades.ValueMember = "Key";
+                CboListaLocalidades.SelectedIndex = -1;
+
                 }
             }
         }
 
         public int Provincia
         {
-            get { return (int)CboListaProvincias.SelectedValue; }
+            get { return Convert.ToInt32(((KeyValuePair<int, string>)CboListaProvincias.SelectedItem).Key); }
         }
 
         #endregion

@@ -117,6 +117,7 @@ namespace Slam
 
         private void DgvListaPartidos_SelectionChanged(object sender, EventArgs e)
         {
+
             if (Convert.ToBoolean(DgvListaPartidos.SelectedRows[0].Cells["Estado"].Value) == false)
             {
                 BtnModificar.Enabled = false;
