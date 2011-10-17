@@ -203,7 +203,13 @@ namespace SlamWeb
             }
             set
             {
-                
+                System.Drawing.Image foto = value;
+                if (foto != null)
+                {
+                    if (!(System.IO.File.Exists(System.AppDomain.CurrentDomain.BaseDirectory + @"\Profiles\" + this.Dni + ".jpg")))
+                        foto.Save(System.AppDomain.CurrentDomain.BaseDirectory + @"\Profiles\" + this.Dni + ".jpg", System.Drawing.Imaging.ImageFormat.Jpeg);
+                    Session["Imagen"] = this.Dni + ".jpg";
+                }
             }
         }
 

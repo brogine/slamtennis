@@ -18,8 +18,11 @@
                 </h1>
             </div>
             <div class="loginDisplay">
-    <img src="Content/Slam.jpg" style="height: 75px; width: 86px" /></div>
-            <div class="clear hideSkiplink">
+            <img src="Content/Slam.jpg" style="height: 75px; width: 86px" /></div>
+            <table width="100%">
+            <tr>
+                <td>
+                <div class="clear hideSkiplink">
                 <asp:Menu ID="NavigationMenu" runat="server" CssClass="menu" 
                     EnableViewState="false" IncludeStyleBlock="false" Orientation="Horizontal" 
                     Height="16px" Font-Size="Medium" ForeColor="White" Width="112px">
@@ -29,6 +32,14 @@
                     </Items>
                 </asp:Menu>
             </div>
+            </td>
+                <td>
+                    <div style="float:right; width:150px">
+                        <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server"/>
+                    </div>
+                </td>
+            </tr>
+            </table>
         </div>
         <div class="main">
             <asp:ContentPlaceHolder ID="MainContent" runat="server"/>

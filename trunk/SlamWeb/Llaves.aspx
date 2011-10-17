@@ -31,3 +31,8 @@
     </center>
     </div>
 </asp:Content>
+<asp:Content ID="Content3" runat="server" contentplaceholderid="ContentPlaceHolder1">
+    <div style="text-align:right">
+    <asp:Image ID="Image2" runat="server" Height="50px" Width="50px" />
+    </div>
+</asp:Content>
