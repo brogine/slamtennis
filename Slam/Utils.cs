@@ -11,6 +11,8 @@
         Single = 0, Doble = 1 
     };
 
+
+
     public enum EstadoTorneo : int { Abierto = 0, Cerrado = 1, Jugando = 2, Finalizado = 3, NoIniciado = 4, Cancelado =5}
 
     public enum TipoSuperficie : int
