@@ -17,6 +17,8 @@ namespace Repositorio
 	public interface IEstadisticaRepositorio
 	{
 		void Agregar(Jugador Jugador, Estadisticas Estadistica);
+
+        void AgregarDoble(Jugador Jugador, Estadisticas Estadistica);
 		
 		void Modificar(Jugador Jugador, Estadisticas Estadistica);
 		

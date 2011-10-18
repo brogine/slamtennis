@@ -20,10 +20,24 @@ namespace Dominio
             this.puntaje = puntos; this.estado = estado; this.tc = tc; this.tj = tj;
         }
 
-        public Estadisticas(int dni, Categoria categoria, int pj, int pp, int pg, int puntos, int tc, int tj, bool estado)
-        {this.dni = dni; this.categoria = categoria; this.pj = pj; this.pp = pp; this.pg = pg;
+        public Estadisticas(int dni, Categoria categoria, int pj, int pp, int pg, int puntos, int tc, int tj, int Pjd, int Ppd, int Pgd, int PuntosDoble, int Tcd, int Tjd, bool estado)
+        {   
+            this.dni = dni; 
+            this.categoria = categoria; 
+            this.pj = pj; this.pp = pp; 
+            this.pg = pg;
             this.puntaje = puntos; this.estado = estado; this.tc = tc; this.tj = tj;
+            this.dni = dni;
+            this.categoria = categoria;
+            this.pjd = Pjd;
+            this.ppd = Ppd;
+            this.pgd = Pgd;
+            this.puntajedoble = PuntosDoble;
+            this.tcd = Tcd;
+            this.tjd = Tjd;
+            this.estado = estado;
         }
+
 
         int dni;
         Categoria categoria;
@@ -33,6 +47,12 @@ namespace Dominio
         int puntaje;
         int tj;
         int tc;
+        int ppd;
+        int pgd;
+        int pjd;
+        int puntajedoble;
+        int tjd;
+        int tcd;
         bool estado;
 
         public int Dni{
@@ -80,6 +100,42 @@ namespace Dominio
         {
             get { return tc; }
             set { tc = value; }
+        }
+
+        public int PuntajeDoble
+        {
+            get { return puntajedoble; }
+            set { puntajedoble = value; }
+        }
+
+        public int PartidosPerdidosDoble
+        {
+            get { return ppd; }
+            set { ppd = value; }
+        }
+
+        public int PartidosGanadosDoble
+        {
+            get { return pgd; }
+            set { pgd = value; }
+        }
+
+        public int PartidosJugadosDoble
+        {
+            get { return pjd; }
+            set { pjd = value; }
+        }
+
+        public int TorneosJugadosDoble
+        {
+            get { return tjd; }
+            set { tjd = value; }
+        }
+
+        public int TorneosCompletadosDoble
+        {
+            get { return tcd; }
+            set { tcd = value; }
         }
 
         public bool Estado
