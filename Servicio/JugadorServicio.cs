@@ -113,7 +113,19 @@ namespace Servicio
 			bJugador.Sexo = UI.Sexo;
 			bJugador.Ubicacion = new Ubicacion(repoUbicacion.ObtenerLocalidad(UI.Localidad), UI.Domicilio);
 			repoJugadores.Modificar(bJugador);
+
+            ICategoriaRepositorio repoCategorias = new CategoriaRepositorio();
+            Categoria bCategoria = repoCategorias.ObtenerPorEdad(bJugador.Edad);
+            IEstadisticaRepositorio repoEstadisticas = new EstadisticaRepositorio();
+            Estadisticas bEstadisticas = repoEstadisticas.Buscar(bJugador.Dni, bCategoria.Id);
+            if (bEstadisticas == null)
+            {
+                bEstadisticas = new Estadisticas(bCategoria, 0,0,0,0,0,0, true);
+                repoEstadisticas.Agregar(bJugador, bEstadisticas);
+            }
+
             GC.Collect();
+            GC.WaitForPendingFinalizers();
         }
         
         public void Buscar(Servicio.InterfacesUI.IJugadorUI UI)
