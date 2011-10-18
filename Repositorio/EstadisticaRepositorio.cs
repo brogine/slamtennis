@@ -134,7 +134,7 @@ namespace Repositorio
                 int PartidosPerdidosDoble = Fila.IsNull("PartidosPerdidosDobles") ? 0 : Convert.ToInt32(Fila["PartidosPerdidosDobles"]);
                 int PartidosGanadosDoble = Fila.IsNull("PartidosGanadosDobles") ? 0 : Convert.ToInt32(Fila["PartidosGanadosDobles"]);
                 int PartidosJugadosDoble = PartidosGanadosDoble + PartidosPerdidosDoble;
-                int PuntosDoble = Fila.IsNull("PuntosDoble") ? 0 : Convert.ToInt32(Fila["PuntosDoble"]);
+                int PuntosDoble = Fila.IsNull("PuntosDobles") ? 0 : Convert.ToInt32(Fila["PuntosDobles"]);
                 int TorneosCompletadosDoble = Fila.IsNull("TorneosCompletadosDobles") ? 0 : Convert.ToInt32(Fila["TorneosCompletadosDobles"]);
                 int TorneosJugadosDoble = Fila.IsNull("TorneosJugadosDobles") ? 0 : Convert.ToInt32(Fila["TorneosJugadosDobles"]);
                 Estadistica = new Estadisticas(Dni, bCategoria, PartidosJugados, PartidosPerdidos, PartidosGanados,
