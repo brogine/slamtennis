@@ -19,6 +19,12 @@ namespace Dominio
         {this.categoria = categoria; this.pj = pj; this.pp = pp; this.pg = pg;
             this.puntaje = puntos; this.estado = estado; this.tc = tc; this.tj = tj;
         }
+        public Estadisticas(int dni, Categoria categoria, int pj, int pp, int pg, int puntos, int tc, int tj, bool estado)
+        {
+            this.dni = dni;
+            this.categoria = categoria; this.pj = pj; this.pp = pp; this.pg = pg;
+            this.puntaje = puntos; this.estado = estado; this.tc = tc; this.tj = tj;
+        }
 
         public Estadisticas(int dni, Categoria categoria, int pj, int pp, int pg, int puntos, int tc, int tj, int Pjd, int Ppd, int Pgd, int PuntosDoble, int Tcd, int Tjd, bool estado)
         {   
