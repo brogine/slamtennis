@@ -65,13 +65,16 @@ namespace Servicio
 		public void Buscar(IEstadisticasUI ui)
 		{
 			Estadisticas bEstadistica = repoEstadisticas.Buscar(ui.Dni, ui.IdCategoria);
-			ui.Estado = bEstadistica.Estado;
-			ui.PartidosGanados = bEstadistica.PG;
-			ui.PartidosPerdidos = bEstadistica.PP;
-			ui.PartidosJugados = bEstadistica.PJ;
-            ui.TorneosCompletados = bEstadistica.TorneosCompletados;
-            ui.TorneosJugados = bEstadistica.TorneosJugados;
-			ui.Puntos = bEstadistica.Puntaje;
+            if (bEstadistica != null)
+            {
+                ui.Estado = bEstadistica.Estado;
+                ui.PartidosGanados = bEstadistica.PG;
+                ui.PartidosPerdidos = bEstadistica.PP;
+                ui.PartidosJugados = bEstadistica.PJ;
+                ui.TorneosCompletados = bEstadistica.TorneosCompletados;
+                ui.TorneosJugados = bEstadistica.TorneosJugados;
+                ui.Puntos = bEstadistica.Puntaje;
+            }
 		}
 		
 		#endregion
