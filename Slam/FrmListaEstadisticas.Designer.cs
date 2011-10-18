@@ -38,13 +38,16 @@
             this.CboClubes = new System.Windows.Forms.ComboBox();
             this.BtnNuevaEstadistica = new System.Windows.Forms.Button();
             this.BtnVerEstadisticas = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
+            this.RBSingle = new System.Windows.Forms.RadioButton();
+            this.RBDoble = new System.Windows.Forms.RadioButton();
             ((System.ComponentModel.ISupportInitialize)(this.DgvEstadisticas)).BeginInit();
             this.SuspendLayout();
             // 
             // CboCategorias
             // 
             this.CboCategorias.FormattingEnabled = true;
-            this.CboCategorias.Location = new System.Drawing.Point(144, 48);
+            this.CboCategorias.Location = new System.Drawing.Point(147, 73);
             this.CboCategorias.Name = "CboCategorias";
             this.CboCategorias.Size = new System.Drawing.Size(163, 21);
             this.CboCategorias.TabIndex = 0;
@@ -54,7 +57,7 @@
             // LblPorCategoria
             // 
             this.LblPorCategoria.AutoSize = true;
-            this.LblPorCategoria.Location = new System.Drawing.Point(12, 51);
+            this.LblPorCategoria.Location = new System.Drawing.Point(12, 76);
             this.LblPorCategoria.Name = "LblPorCategoria";
             this.LblPorCategoria.Size = new System.Drawing.Size(131, 13);
             this.LblPorCategoria.TabIndex = 1;
@@ -76,10 +79,10 @@
             this.DgvEstadisticas.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.DgvEstadisticas.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.DgvEstadisticas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.DgvEstadisticas.Location = new System.Drawing.Point(12, 86);
+            this.DgvEstadisticas.Location = new System.Drawing.Point(15, 100);
             this.DgvEstadisticas.Name = "DgvEstadisticas";
             this.DgvEstadisticas.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.DgvEstadisticas.Size = new System.Drawing.Size(474, 263);
+            this.DgvEstadisticas.Size = new System.Drawing.Size(474, 231);
             this.DgvEstadisticas.TabIndex = 4;
             // 
             // BtnReporte
@@ -132,12 +135,48 @@
             this.BtnVerEstadisticas.UseVisualStyleBackColor = true;
             this.BtnVerEstadisticas.Click += new System.EventHandler(this.BtnVerEstadisticas_Click);
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(12, 49);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(96, 13);
+            this.label1.TabIndex = 8;
+            this.label1.Text = "Seleccione El Tipo";
+            // 
+            // RBSingle
+            // 
+            this.RBSingle.AutoSize = true;
+            this.RBSingle.Location = new System.Drawing.Point(147, 47);
+            this.RBSingle.Name = "RBSingle";
+            this.RBSingle.Size = new System.Drawing.Size(54, 17);
+            this.RBSingle.TabIndex = 9;
+            this.RBSingle.TabStop = true;
+            this.RBSingle.Text = "Single";
+            this.RBSingle.UseVisualStyleBackColor = true;
+            this.RBSingle.CheckedChanged += new System.EventHandler(this.RBSingle_CheckedChanged);
+            // 
+            // RBDoble
+            // 
+            this.RBDoble.AutoSize = true;
+            this.RBDoble.Location = new System.Drawing.Point(238, 47);
+            this.RBDoble.Name = "RBDoble";
+            this.RBDoble.Size = new System.Drawing.Size(53, 17);
+            this.RBDoble.TabIndex = 10;
+            this.RBDoble.TabStop = true;
+            this.RBDoble.Text = "Doble";
+            this.RBDoble.UseVisualStyleBackColor = true;
+            this.RBDoble.CheckedChanged += new System.EventHandler(this.RBDoble_CheckedChanged);
+            // 
             // FrmListaEstadisticas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.BtnSalir;
             this.ClientSize = new System.Drawing.Size(498, 390);
+            this.Controls.Add(this.RBDoble);
+            this.Controls.Add(this.RBSingle);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.BtnVerEstadisticas);
             this.Controls.Add(this.BtnNuevaEstadistica);
             this.Controls.Add(this.DgvEstadisticas);
@@ -168,5 +207,8 @@
         private System.Windows.Forms.ComboBox CboClubes;
         private System.Windows.Forms.Button BtnNuevaEstadistica;
         private System.Windows.Forms.Button BtnVerEstadisticas;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.RadioButton RBSingle;
+        private System.Windows.Forms.RadioButton RBDoble;
     }
 }

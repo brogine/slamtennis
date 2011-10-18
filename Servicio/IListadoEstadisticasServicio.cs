@@ -20,5 +20,11 @@ namespace Servicio
         void ListarPorCategoriaClub(IListadoEstadisticasCategoria ui);
 		
 		void ListarPorDni(IListadoEstadisticasDni ui);
+
+        void ListarPorCategoriaDobles(IListadoEstadisticasCategoria ui);
+
+        void ListarPorCategoriaClubDobles(IListadoEstadisticasCategoria ui);
+
+        void ListarPorDniDobles(IListadoEstadisticasDni ui);
 	}
 }

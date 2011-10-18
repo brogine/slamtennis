@@ -137,5 +137,68 @@ namespace Servicio
 		}
 		
 		#endregion
-	}
+
+
+
+        #region Miembros de IListadoEstadisticasServicio
+
+
+        public void ListarPorCategoriaDobles(IListadoEstadisticasCategoria ui)
+        {
+            List<Estadisticas> ListaEstadisticas = repoEstadisticas.ListarPorCategoria(ui.IdCategoria);
+            IJugadorRepositorio repoJugadores = new JugadorRepositorio();
+            List<Object> ListaUI = new List<object>();
+            int i = 1;
+            foreach (Estadisticas Estadistica in ListaEstadisticas)
+            {
+                Object Objeto = new object();
+                Jugador tempJugador = repoJugadores.Buscar(Estadistica.Dni);
+                Objeto = tempJugador.Dni + ",";
+                Objeto += tempJugador.Apellido + " " + tempJugador.Nombre + ",";
+                Objeto += Estadistica.PartidosJugadosDoble + "," + Estadistica.PartidosGanadosDoble + "," + Estadistica.PartidosPerdidosDoble + ",";
+                Objeto += Estadistica.TorneosJugadosDoble + "," + Estadistica.TorneosCompletadosDoble + ",";
+                Objeto += Estadistica.PuntajeDoble.ToString() + ",";
+                Objeto += i.ToString();
+                ListaUI.Add(Objeto);
+                i++;
+            }
+            ui.ListarEstadisticas = ListaUI;
+        }
+
+        public void ListarPorCategoriaClubDobles(IListadoEstadisticasCategoria ui)
+        {
+            List<Estadisticas> ListaEstadisticas = repoEstadisticas.ListarPorCategoriaClub(ui.IdClub, ui.IdCategoria);
+            IJugadorRepositorio repoJugadores = new JugadorRepositorio();
+            List<Object> ListaUI = new List<object>();
+            foreach (Estadisticas Estadistica in ListaEstadisticas)
+            {
+                Object Objeto = new object();
+                Jugador tempJugador = repoJugadores.Buscar(Estadistica.Dni);
+                Objeto = tempJugador.Dni + ",";
+                Objeto += tempJugador.Apellido + " " + tempJugador.Nombre + ",";
+                Objeto += Estadistica.PartidosJugadosDoble + "," + Estadistica.PartidosGanadosDoble + "," + Estadistica.PartidosPerdidosDoble + ",";
+                Objeto += Estadistica.TorneosJugadosDoble + "," + Estadistica.TorneosCompletadosDoble + ",";
+                Objeto += Estadistica.PuntajeDoble.ToString();
+                ListaUI.Add(Objeto);
+            }
+            ui.ListarEstadisticas = ListaUI;
+        }
+
+        public void ListarPorDniDobles(IListadoEstadisticasDni ui)
+        {
+            List<Estadisticas> ListaEstadisticas = repoEstadisticas.ListarPorDni(ui.DniJugador);
+            List<Object> ListaUI = new List<object>();
+            foreach (Estadisticas Estadistica in ListaEstadisticas)
+            {
+                Object Objeto = new object();
+                Objeto = Estadistica.PartidosJugadosDoble + "," + Estadistica.PartidosGanadosDoble + "," + Estadistica.PartidosGanadosDoble + ",";
+                Objeto += Estadistica.TorneosJugadosDoble + "," + Estadistica.TorneosCompletadosDoble + ",";
+                Objeto += Estadistica.PuntajeDoble.ToString();
+                ListaUI.Add(Objeto);
+            }
+            ui.ListarEstadisticas = ListaUI;
+        }
+
+        #endregion
+    }
 }
