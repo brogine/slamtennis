@@ -155,6 +155,7 @@ namespace Slam
                                     MessageBox.Show("No existen Categorías en el Sistema para ese Jugador. Los datos no fueron guardados. Agregue una Categoría y vuelva a presionar el botón Guardar.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                                     FrmNuevaCategoria NuevaCategoria = new FrmNuevaCategoria();
                                     NuevaCategoria.Show();
+                                    return;
                                 }
                                 break;
                         }
