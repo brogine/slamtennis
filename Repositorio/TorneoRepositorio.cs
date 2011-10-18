@@ -110,6 +110,92 @@ namespace Repositorio
             return Lista;
         }
 
+        public TipoTorneo GetTipoTorneo(int IdTorneo)
+        {
+            string Consulta = " Select Tipo From Torneos Where IdTorneo = " + IdTorneo;
+            DataRow Fila = Conex.Buscar(Consulta);
+            return (TipoTorneo)Convert.ToInt32(Fila["Tipo"]);
+        }
+
+        public List<Torneo> ListarCerrados()
+        {
+            string Sql = "select * from Torneos where Estado = 1";
+            DataTable Tabla = Conex.Listar(Sql);
+            List<Torneo> Lista = new List<Torneo>();
+
+            foreach (DataRow Dr in Tabla.Rows)
+            {
+                Lista.Add(this.Mapear(Dr));
+            }
+            return Lista;
+        }
+
+        public List<Torneo> ListarAbiertos()
+        {
+            string Sql = "select * from Torneos where Estado = 0";
+            DataTable Tabla = Conex.Listar(Sql);
+            List<Torneo> Lista = new List<Torneo>();
+
+            foreach (DataRow Dr in Tabla.Rows)
+            {
+                Lista.Add(this.Mapear(Dr));
+            }
+            return Lista;
+        }
+
+        public void ActualizarTorneos()
+        {
+            DateTime Hoy = DateTime.Today;
+            string HoyFormateado = Hoy.Year + "/" + Hoy.Month + "/" + Hoy.Day;
+            string Sql = "select * from Torneos where Estado <> " + (int)EstadoTorneo.Finalizado + " and Estado <> " + (int)EstadoTorneo.Cancelado;
+            DataTable Tabla = Conex.Listar(Sql);
+            IInscripcionRepositorio InsRepo = new InscripcionRepositorio();
+
+
+            foreach (DataRow Dr in Tabla.Rows)
+            {
+                Torneo Tor = this.Mapear(Dr);
+                int Inscripciones = InsRepo.Listar(Tor.IdTorneo).Count;
+
+                if (Tor.FechaInicioInscripcion < DateTime.Today)
+                {
+                    Tor.Estado = (int)EstadoTorneo.NoIniciado;
+                }
+
+                if (Tor.FechaInicioInscripcion <= DateTime.Today && Tor.FechaFinInscripcion > DateTime.Today && Tor.Cupo > Inscripciones)
+                {
+                    Tor.Estado = (int)EstadoTorneo.Abierto;
+
+                }
+
+                if (Tor.Cupo > Inscripciones)
+                {
+                    if (Tor.FechaFinInscripcion < DateTime.Today && Tor.FechaInicio > DateTime.Today)
+                    {
+                        Tor.Estado = (int)EstadoTorneo.Cerrado;
+                    }
+                }
+                else
+                {
+                    Tor.Estado = (int)EstadoTorneo.Cerrado;
+                }
+
+                if (Tor.FechaInicio <= DateTime.Today && Tor.FechaFin > DateTime.Today)
+                {
+                    Tor.Estado = (int)EstadoTorneo.Jugando;
+                }
+
+                if (Tor.FechaFin < DateTime.Today)
+                {
+                    Tor.Estado = (int)EstadoTorneo.Finalizado;
+                }
+                this.Modificar(Tor);
+
+
+            }
+
+        }
+
         #endregion
 
         #region Miembros de IMapeador<Torneo>
@@ -146,104 +232,5 @@ namespace Repositorio
         }
         #endregion
         
-        #region Miembros de ITorneoRepositorio
-
-        public TipoTorneo GetTipoTorneo(int IdTorneo)
-        {
-            string Consulta = " Select Tipo From Torneos Where IdTorneo = " + IdTorneo;
-            DataRow Fila = Conex.Buscar(Consulta);
-            return (TipoTorneo)Convert.ToInt32(Fila["Tipo"]);
-        }
-
-        #endregion
-
-        #region Miembros de ITorneoRepositorio
-
-
-        public List<Torneo> ListarCerrados()
-        {
-            
-            string Sql = "select * from Torneos where Estado = 1";
-            DataTable Tabla = Conex.Listar(Sql);
-            List<Torneo> Lista = new List<Torneo>();
-
-            foreach (DataRow Dr in Tabla.Rows)
-            {
-                Lista.Add(this.Mapear(Dr));
-            }
-            return Lista;
-        }
-
-        #endregion
-
-        #region Miembros de ITorneoRepositorio
-
-
-        public List<Torneo> ListarAbiertos()
-        {
-            string Sql = "select * from Torneos where Estado = 0";
-            DataTable Tabla = Conex.Listar(Sql);
-            List<Torneo> Lista = new List<Torneo>();
-
-            foreach (DataRow Dr in Tabla.Rows)
-            {
-                Lista.Add(this.Mapear(Dr));
-            }
-            return Lista;
-        }
-
-        public void ActualizarTorneos()
-        {
-            DateTime Hoy = DateTime.Today;
-            string HoyFormateado = Hoy.Year + "/" + Hoy.Month + "/" + Hoy.Day;
-            string Sql = "select * from Torneos where Estado <> "+(int)EstadoTorneo.Finalizado+" and Estado <> "+(int)EstadoTorneo.Cancelado; 
-            DataTable Tabla = Conex.Listar(Sql);
-            IInscripcionRepositorio InsRepo = new InscripcionRepositorio();
-
-            
-            foreach (DataRow Dr in Tabla.Rows)
-            {
-                Torneo Tor = this.Mapear(Dr);
-                int Inscripciones = InsRepo.Listar(Tor.IdTorneo).Count;
-                
-                    if (Tor.FechaInicioInscripcion < DateTime.Today)
-                    {
-                        Tor.Estado = (int)EstadoTorneo.NoIniciado;
-                    }
-
-                    if (Tor.FechaInicioInscripcion <= DateTime.Today && Tor.FechaFinInscripcion > DateTime.Today && Tor.Cupo > Inscripciones)
-                    {
-                        Tor.Estado = (int)EstadoTorneo.Abierto;
-                        
-                    }
-
-                    if (Tor.Cupo > Inscripciones)
-                    {
-                        if (Tor.FechaFinInscripcion < DateTime.Today && Tor.FechaInicio > DateTime.Today)
-                        {
-                            Tor.Estado = (int)EstadoTorneo.Cerrado;
-                        }
-                    }
-                    else
-                    {
-                        Tor.Estado = (int)EstadoTorneo.Cerrado;
-                    }
-
-                    if (Tor.FechaInicio <= DateTime.Today && Tor.FechaFin > DateTime.Today)
-                    {
-                        Tor.Estado = (int)EstadoTorneo.Jugando;
-                    }
-
-                    if (Tor.FechaFin < DateTime.Today)
-                    {
-                        Tor.Estado = (int)EstadoTorneo.Finalizado;
-                    }
-                    this.Modificar(Tor);
-                
-             
-            }
-           
-        }
-        #endregion
     }
 }
