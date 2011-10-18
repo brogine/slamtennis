@@ -31,16 +31,19 @@ namespace Slam
         {
             set 
             {
-                Dictionary<int, string> ListaTorneos = new Dictionary<int, string>();
-                foreach (Object Torneo in value)
+                if (value.Count > 0)
                 {
-                    Object[] DatosTorneo = Torneo.ToString().Split(',');
-                    ListaTorneos.Add(Convert.ToInt32(DatosTorneo[0]), DatosTorneo[2].ToString());
+                    Dictionary<int, string> ListaTorneos = new Dictionary<int, string>();
+                    foreach (Object Torneo in value)
+                    {
+                        Object[] DatosTorneo = Torneo.ToString().Split(',');
+                        ListaTorneos.Add(Convert.ToInt32(DatosTorneo[0]), DatosTorneo[2].ToString());
+                    }
+                    CboListaTorneos.DataSource = new BindingSource(ListaTorneos, null);
+                    CboListaTorneos.DisplayMember = "Value";
+                    CboListaTorneos.ValueMember = "Key";
+                    CboListaTorneos.SelectedIndex = -1;
                 }
-                CboListaTorneos.DataSource = new BindingSource(ListaTorneos, null);
-                CboListaTorneos.DisplayMember = "Value";
-                CboListaTorneos.ValueMember = "Key";
-                CboListaTorneos.SelectedIndex = -1;
             }
         }
 
