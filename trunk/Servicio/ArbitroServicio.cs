@@ -37,7 +37,7 @@ namespace Servicio
                     gr.SmoothingMode = SmoothingMode.AntiAlias;
                     gr.InterpolationMode = InterpolationMode.HighQualityBicubic;
                     gr.PixelOffsetMode = PixelOffsetMode.HighQuality;
-                    gr.DrawImage(UI.Foto, new Rectangle(0, 0, 320, 240));
+                    gr.DrawImage(UI.Foto, new Rectangle(0, 0, 100, 100));
                 }
             }
             Arbitro NuevoArb = new Arbitro(UI.Dni, UI.Nombre, UI.Apellido, UI.FechaNac, Nacionalidad, UI.Sexo, Contacto, Ubicacion, UI.Badge, UI.Nivel, UI.Estado, newImage);

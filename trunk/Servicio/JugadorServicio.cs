@@ -94,13 +94,13 @@ namespace Servicio
             Bitmap newImage = null;
             if (UI.Foto != null)
             {
-                newImage = new Bitmap(320, 240);
+                newImage = new Bitmap(100, 100);
                 using (Graphics gr = Graphics.FromImage(newImage))
                 {
                     gr.SmoothingMode = SmoothingMode.AntiAlias;
                     gr.InterpolationMode = InterpolationMode.HighQualityBicubic;
                     gr.PixelOffsetMode = PixelOffsetMode.HighQuality;
-                    gr.DrawImage(UI.Foto, new Rectangle(0, 0, 320, 240));
+                    gr.DrawImage(UI.Foto, new Rectangle(0, 0, 100, 100));
                 }
                 bJugador.Foto = bJugador.ImagenABytes(newImage);
             }
