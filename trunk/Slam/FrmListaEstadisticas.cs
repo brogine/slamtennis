@@ -31,8 +31,7 @@ namespace Slam
             servicioClubes = (IListadoClubServicio)AppContext.Instance.GetObject(ImplementaClubes);
             servicioClubes.ListarActivos(this);
             servicioCategorias = (IListadoCategoriaServicio)AppContext.Instance.GetObject(ImplementaCategorias);
-            servicioCategorias.ListarActivas(this); 
-            RBSingle.Checked = true;
+            servicioCategorias.ListarActivas(this);
         }
 
         private void BtnSalir_Click(object sender, EventArgs e)
@@ -204,12 +203,18 @@ namespace Slam
 
         private void RBSingle_CheckedChanged(object sender, EventArgs e)
         {
-            servicioEstadisticas.ListarPorCategoriaClub(this);
+            if (CboCategorias.SelectedIndex > -1 && CboClubes.SelectedIndex > -1)
+            {
+                servicioEstadisticas.ListarPorCategoriaClub(this);
+            }
         }
 
         private void RBDoble_CheckedChanged(object sender, EventArgs e)
         {
-            servicioEstadisticas.ListarPorCategoriaClubDobles(this);
+            if (CboCategorias.SelectedIndex > -1 && CboClubes.SelectedIndex > -1)
+            {
+                servicioEstadisticas.ListarPorCategoriaClubDobles(this);
+            }
         }
     }
 }
