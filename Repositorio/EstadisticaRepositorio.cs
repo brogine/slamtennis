@@ -41,11 +41,11 @@ namespace Repositorio
             Consulta += " TorneosJugados = " + Estadistica.TorneosJugados + ",";
             Consulta += " TorneosCompletados = " + Estadistica.TorneosCompletados + ",";
     		Consulta += " Estado = " + (Estadistica.Estado ? 1 : 0);
-            Consulta += " PartidosGanadosDoble = " + Estadistica.PartidosGanadosDoble + ",";
-            Consulta += " PartidosPerdidosDoble = " + Estadistica.PartidosPerdidosDoble + ",";
-            Consulta += " PuntosDoble = " + Estadistica.PuntajeDoble + ",";
-            Consulta += " TorneosJugadosDoble = " + Estadistica.TorneosJugadosDoble + ",";
-            Consulta += " TorneosCompletadosDoble = " + Estadistica.TorneosCompletadosDoble + ",";
+            Consulta += " PartidosGanadosDobles = " + Estadistica.PartidosGanadosDoble + ",";
+            Consulta += " PartidosPerdidosDobles = " + Estadistica.PartidosPerdidosDoble + ",";
+            Consulta += " PuntosDobles = " + Estadistica.PuntajeDoble + ",";
+            Consulta += " TorneosJugadosDobles = " + Estadistica.TorneosJugadosDoble + ",";
+            Consulta += " TorneosCompletadosDobles = " + Estadistica.TorneosCompletadosDoble + ",";
     		Consulta += " Where Dni = " + Jugador.Dni + " And IdCategoria = " + Estadistica.Categoria.Id;
             try
             {
@@ -131,12 +131,12 @@ namespace Repositorio
                 int TorneosCompletados = Fila.IsNull("TorneosCompletados") ? 0 : Convert.ToInt32(Fila["TorneosCompletados"]);
                 int TorneosJugados = Fila.IsNull("TorneosJugados") ? 0 : Convert.ToInt32(Fila["TorneosJugados"]);
                 bool Estado = Fila.IsNull("Estado") ? false : Convert.ToBoolean(Fila["Estado"]);
-                int PartidosPerdidosDoble = Fila.IsNull("PartidosPerdidosDoble") ? 0 : Convert.ToInt32(Fila["PartidosPerdidosDoble"]);
-                int PartidosGanadosDoble = Fila.IsNull("PartidosGanadosDoble") ? 0 : Convert.ToInt32(Fila["PartidosGanadosDoble"]);
+                int PartidosPerdidosDoble = Fila.IsNull("PartidosPerdidosDobles") ? 0 : Convert.ToInt32(Fila["PartidosPerdidosDobles"]);
+                int PartidosGanadosDoble = Fila.IsNull("PartidosGanadosDobles") ? 0 : Convert.ToInt32(Fila["PartidosGanadosDobles"]);
                 int PartidosJugadosDoble = PartidosGanadosDoble + PartidosPerdidosDoble;
                 int PuntosDoble = Fila.IsNull("PuntosDoble") ? 0 : Convert.ToInt32(Fila["PuntosDoble"]);
-                int TorneosCompletadosDoble = Fila.IsNull("TorneosCompletadosDoble") ? 0 : Convert.ToInt32(Fila["TorneosCompletadosDoble"]);
-                int TorneosJugadosDoble = Fila.IsNull("TorneosJugadosDoble") ? 0 : Convert.ToInt32(Fila["TorneosJugadosDoble"]);
+                int TorneosCompletadosDoble = Fila.IsNull("TorneosCompletadosDobles") ? 0 : Convert.ToInt32(Fila["TorneosCompletadosDobles"]);
+                int TorneosJugadosDoble = Fila.IsNull("TorneosJugadosDobles") ? 0 : Convert.ToInt32(Fila["TorneosJugadosDobles"]);
                 Estadistica = new Estadisticas(Dni, bCategoria, PartidosJugados, PartidosPerdidos, PartidosGanados,
                     Puntos,TorneosCompletados, TorneosJugados,PartidosJugadosDoble,PartidosPerdidosDoble,PartidosGanadosDoble,PuntosDoble,TorneosCompletadosDoble,TorneosJugadosDoble, Estado);
             }
@@ -150,7 +150,7 @@ namespace Repositorio
 
         public void AgregarDoble(Jugador Jugador, Estadisticas Estadistica)
         {
-            string Campos = "Dni, PartidosGanadosDoble, PartidosPerdidosDoble, IdCategoria, PuntosDoble, TorneosJugadosDoble, TorneosCompletadosDoble, Estado";
+            string Campos = "Dni, PartidosGanadosDobles, PartidosPerdidosDobles, IdCategoria, PuntosDobles, TorneosJugadosDobles, TorneosCompletadosDobles, Estado";
             string Valores = Jugador.Dni + "," + Estadistica.PartidosGanadosDoble + "," + Estadistica.PartidosPerdidosDoble + ",";
             Valores += Estadistica.Categoria.Id + "," + Estadistica.PuntajeDoble + "," + Estadistica.TorneosJugadosDoble + ",";
             Valores += Estadistica.TorneosCompletadosDoble + "," + (Estadistica.Estado ? 1 : 0);
