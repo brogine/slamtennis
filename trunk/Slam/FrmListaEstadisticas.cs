@@ -31,7 +31,8 @@ namespace Slam
             servicioClubes = (IListadoClubServicio)AppContext.Instance.GetObject(ImplementaClubes);
             servicioClubes.ListarActivos(this);
             servicioCategorias = (IListadoCategoriaServicio)AppContext.Instance.GetObject(ImplementaCategorias);
-            servicioCategorias.ListarActivas(this);
+            servicioCategorias.ListarActivas(this); 
+                 RBSingle.Checked = true;
         }
 
         private void BtnSalir_Click(object sender, EventArgs e)
@@ -46,6 +47,14 @@ namespace Slam
             if (CboClubes.SelectedIndex > -1 && CboCategorias.SelectedIndex > -1)
             {
                 servicioEstadisticas.ListarPorCategoriaClub(this);
+                if (RBSingle.Checked == true)
+                {
+                    servicioEstadisticas.ListarPorCategoriaClub(this);
+                }
+                else
+                {
+                    servicioEstadisticas.ListarPorCategoriaClubDobles(this);
+                }
             }
         }
 
@@ -53,7 +62,14 @@ namespace Slam
         {
             if (CboClubes.SelectedIndex > -1 && CboCategorias.SelectedIndex > -1)
             {
-                servicioEstadisticas.ListarPorCategoriaClub(this);
+                if (RBSingle.Checked == true)
+                {
+                    servicioEstadisticas.ListarPorCategoriaClub(this);
+                }
+                else
+                {
+                    servicioEstadisticas.ListarPorCategoriaClubDobles(this);
+                }
             }
         }
 
@@ -179,5 +195,15 @@ namespace Slam
         }
 
         #endregion
+
+        private void RBSingle_CheckedChanged(object sender, EventArgs e)
+        {
+            servicioEstadisticas.ListarPorCategoriaClub(this);
+        }
+
+        private void RBDoble_CheckedChanged(object sender, EventArgs e)
+        {
+            servicioEstadisticas.ListarPorCategoriaClubDobles(this);
+        }
     }
 }
