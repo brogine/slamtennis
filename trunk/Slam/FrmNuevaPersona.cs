@@ -104,6 +104,7 @@ namespace Slam
                 EpNuevaPersona.GetError(CboProvincia) == "" && EpNuevaPersona.GetError(CboLocalidades) == "" &&
                 EpNuevaPersona.GetError(TxtDomicilio) == "" && EpNuevaPersona.GetError(CboPais) == "")
             {
+                
                 if (EpNuevaPersona.GetError(TxtUsuario) == "" && EpNuevaPersona.GetError(TxtPassword) == "")
                 {
                     Dni = int.Parse(TxtDni.Text);
@@ -165,7 +166,7 @@ namespace Slam
                     }
                     catch (Exception ex)
                     {
-                        MessageBox.Show(ex.Message + " " + ex.StackTrace);
+                        MessageBox.Show(ex.Message);
                     }
                 }
                 else
