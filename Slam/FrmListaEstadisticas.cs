@@ -32,7 +32,7 @@ namespace Slam
             servicioClubes.ListarActivos(this);
             servicioCategorias = (IListadoCategoriaServicio)AppContext.Instance.GetObject(ImplementaCategorias);
             servicioCategorias.ListarActivas(this); 
-                 RBSingle.Checked = true;
+            RBSingle.Checked = true;
         }
 
         private void BtnSalir_Click(object sender, EventArgs e)
@@ -160,16 +160,19 @@ namespace Slam
         {
             set 
             {
-                Dictionary<int, string> ListaClubes = new Dictionary<int, string>();
-                foreach (Object Club in value)
+                if (value.Count > 0)
                 {
-                    Object[] DatosClub = Club.ToString().Split(',');
-                    ListaClubes.Add(Convert.ToInt32(DatosClub[0]), DatosClub[1].ToString());
+                    Dictionary<int, string> ListaClubes = new Dictionary<int, string>();
+                    foreach (Object Club in value)
+                    {
+                        Object[] DatosClub = Club.ToString().Split(',');
+                        ListaClubes.Add(Convert.ToInt32(DatosClub[0]), DatosClub[1].ToString());
+                    }
+                    CboClubes.DataSource = new BindingSource(ListaClubes, null);
+                    CboClubes.DisplayMember = "Value";
+                    CboClubes.ValueMember = "Key";
+                    CboClubes.SelectedIndex = -1;
                 }
-                CboClubes.DataSource = new BindingSource(ListaClubes, null);
-                CboClubes.DisplayMember = "Value";
-                CboClubes.ValueMember = "Key";
-                CboClubes.SelectedIndex = -1;
             }
         }
 
@@ -181,16 +184,19 @@ namespace Slam
         {
             set 
             {
-                Dictionary<int, string> ListaCategorias = new Dictionary<int, string>();
-                foreach (Object Categoria in value)
+                if (value.Count > 0)
                 {
-                    Object[] DatosClub = Categoria.ToString().Split(',');
-                    ListaCategorias.Add(Convert.ToInt32(DatosClub[0]), DatosClub[1].ToString());
+                    Dictionary<int, string> ListaCategorias = new Dictionary<int, string>();
+                    foreach (Object Categoria in value)
+                    {
+                        Object[] DatosClub = Categoria.ToString().Split(',');
+                        ListaCategorias.Add(Convert.ToInt32(DatosClub[0]), DatosClub[1].ToString());
+                    }
+                    CboCategorias.DataSource = new BindingSource(ListaCategorias, null);
+                    CboCategorias.DisplayMember = "Value";
+                    CboCategorias.ValueMember = "Key";
+                    CboCategorias.SelectedIndex = -1;
                 }
-                CboCategorias.DataSource = new BindingSource(ListaCategorias, null);
-                CboCategorias.DisplayMember = "Value";
-                CboCategorias.ValueMember = "Key";
-                CboCategorias.SelectedIndex = -1;
             }
         }
 
