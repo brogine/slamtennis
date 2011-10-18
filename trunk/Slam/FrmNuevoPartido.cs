@@ -190,11 +190,14 @@ namespace Slam
                 {
                     Object[] DatosTorneo = Inscripcion.ToString().Split(',');
 
-                    ListaInscripciones.Add(Convert.ToInt32(DatosTorneo[0]), DatosTorneo[2].ToString()); 
-                        if(DatosTorneo[3].ToString() != string.Empty)
-                        {
-                            ListaInscripciones.Add(Convert.ToInt32(DatosTorneo[0]), "-" + DatosTorneo[3].ToString());
-                        }
+                    if (((TipoTorneo)((int)DatosTorneo[1])) == TipoTorneo.Doble)
+                    {
+                        ListaInscripciones.Add(Convert.ToInt32(DatosTorneo[0]), DatosTorneo[2].ToString() + "-" + DatosTorneo[3].ToString());
+                    }
+                    else
+                    {
+                        ListaInscripciones.Add(Convert.ToInt32(DatosTorneo[0]), DatosTorneo[2].ToString());
+                    }
                 }
                 CboEquipo2.DataSource = new BindingSource(ListaInscripciones, null);
                 CboEquipo2.DisplayMember = "Value";
@@ -213,7 +216,6 @@ namespace Slam
         }
 
         #endregion
-
 
         private void BtnAceptar_Click(object sender, EventArgs e)
         {
