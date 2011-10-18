@@ -40,6 +40,7 @@ namespace Slam
             this.Text = "Modificar Inscripción";
             servicioTorneos = (IListadoTorneoServicio)AppContext.Instance.GetObject(ImplementaTorneos);
             servicioTorneos.ListarTorneosAbiertos(this);
+            CboTorneos.SelectedValue = IdInscripcion;
             servicioInscripciones = (IInscripcionServicio)AppContext.Instance.GetObject(ImplementaInscripciones);
             servicioInscripciones.Buscar(this);
         }
