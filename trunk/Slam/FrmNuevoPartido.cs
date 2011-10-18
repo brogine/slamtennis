@@ -190,7 +190,7 @@ namespace Slam
                 {
                     Object[] DatosTorneo = Inscripcion.ToString().Split(',');
 
-                    if (((TipoTorneo)((int)DatosTorneo[1])) == TipoTorneo.Doble)
+                    if (((TipoTorneo)(Convert.ToInt32(DatosTorneo[1]))) == TipoTorneo.Doble)
                     {
                         ListaInscripciones.Add(Convert.ToInt32(DatosTorneo[0]), DatosTorneo[2].ToString() + "-" + DatosTorneo[3].ToString());
                     }
