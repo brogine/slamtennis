@@ -106,10 +106,16 @@ namespace Slam
 
         private void BtnModificar_Click(object sender, EventArgs e)
         {
-            FrmNuevoPartido ModificaPartido = new FrmNuevoPartido(Convert.ToInt32(DgvListaPartidos.Rows[0].Cells[0].Value));
-            if (ModificaPartido.ShowDialog() == DialogResult.OK)
+            int ronda = 0;
+            if (DgvListaPartidos.RowCount > 0)
             {
-                servicioPartidos.ListarPartidos(this);
+                ronda = (int)DgvListaPartidos["Ronda", DgvListaPartidos.RowCount - 1].Value;
+
+                FrmNuevoPartido ModificaPartido = new FrmNuevoPartido(Convert.ToInt32(DgvListaPartidos.Rows[0].Cells[0].Value), DgvListaPartidos.RowCount,ronda);
+                if (ModificaPartido.ShowDialog() == DialogResult.OK)
+                {
+                    servicioPartidos.ListarPartidos(this);
+                }
             }
         }
 
