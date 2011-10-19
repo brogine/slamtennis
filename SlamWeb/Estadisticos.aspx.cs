@@ -10,7 +10,7 @@ using System.Data;
 
 namespace SlamWeb
 {
-    public partial class Estadisticos : System.Web.UI.Page, IListadoEstadisticasCategoria, IListadoClubes, IListadoCategorias, IEstadisticasUI
+    public partial class Estadisticos : System.Web.UI.Page, IListadoCategorias,IListadoEstadisticasCategoria, IListadoEstadisticasDni, IEstadisticasUI
     {
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -26,8 +26,8 @@ namespace SlamWeb
                 LblSexo.Text = Session["Sexo"].ToString().Trim();
                 Image2.ImageUrl = "~/Profiles/" + Session["Imagen"].ToString().Trim();
                 IListadoEstadisticasServicio servicioEstadisticas = new EstadisticasServicio();
-                IListadoClubServicio servicioClubes = new ClubServicio();
-                servicioClubes.ListarActivos(this);
+                //IListadoClubServicio servicioClubes = new ClubServicio();
+                //servicioClubes.ListarActivos(this);
                 IListadoCategoriaServicio servicioCategorias = new CategoriaServicio();
                 servicioCategorias.ListarActivas(this);
             }
@@ -49,6 +49,7 @@ namespace SlamWeb
                 dt.Columns.Add("TJ");
                 dt.Columns.Add("TC");
                 dt.Columns.Add("Puntos");
+                dt.Columns.Add("Posicion");
                 if (dt.Rows.Count > 0)
                     dt.Rows.Clear();
                 foreach (object estadistica in value)
@@ -127,19 +128,19 @@ namespace SlamWeb
 
         protected void CboClub_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (CboClub.SelectedIndex > -1 && CboCategorias.SelectedIndex > -1)
-            {
-                IListadoEstadisticasServicio servicioEstadisticas = new EstadisticasServicio();
-                servicioEstadisticas.ListarPorCategoriaClub(this);
-            }
+            //if (CboClub.SelectedIndex > -1 && CboCategorias.SelectedIndex > -1)
+            //{
+            //    IListadoEstadisticasServicio servicioEstadisticas = new EstadisticasServicio();
+            //    servicioEstadisticas.ListarPorDni(this);
+            //}
         }
 
         protected void CboCategorias_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (CboClub.SelectedIndex > -1 && CboCategorias.SelectedIndex > -1)
+            if (CboCategorias.SelectedIndex > -1)
             {
                 IListadoEstadisticasServicio servicioEstadisticas = new EstadisticasServicio();
-                servicioEstadisticas.ListarPorCategoriaClub(this);
+                servicioEstadisticas.ListarPorCategoria(this);
             }
         }
 
@@ -223,6 +224,16 @@ namespace SlamWeb
         {
             get;
             set;
+        }
+
+        #endregion
+
+        #region IListadoEstadisticasDni Members
+
+
+        public int DniJugador
+        {
+            get { return Convert.ToInt32(Session["DNI"]); }
         }
 
         #endregion
