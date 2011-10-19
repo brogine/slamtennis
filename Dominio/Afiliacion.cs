@@ -10,20 +10,62 @@ namespace Dominio
     /// </summary>
     public class Afiliacion
     {
+        /// <summary>
+        /// Constructor de Afiliacion vacío
+        /// </summary>
         public Afiliacion()
         { }
+
+        /// <summary>
+        /// Constructor de Afiliación con parámetros
+        /// </summary>
+        /// <param name="club">Club al que pertenece</param>
+        /// <param name="jugador">Jugador que se afilia</param>
+        /// <param name="FechaAlta">Fecha en que se afilia</param>
+        /// <param name="Estado">Estado de la afiliación</param>
         public Afiliacion(Club club, Jugador jugador, DateTime FechaAlta, bool Estado)
         {
-            this.Club = club;
-            this.Jugador = jugador;
-            this.FechaAlta = FechaAlta;
-            this.Estado = Estado;
+            this.club = club;
+            this.jugador = jugador;
+            this.fechaAlta = FechaAlta;
+            this.estado = Estado;
         }
-     public   Club Club { get; set; }
-     public   Jugador Jugador { get; set; }
-     public   DateTime FechaAlta { get; set; }
-     public   DateTime FechaBaja { get; set; }
-     public   bool Estado { get; set; }
+
+        Club club;
+        Jugador jugador;
+        DateTime fechaAlta;
+        DateTime fechaBaja;
+        bool estado;
+
+        public Club Club
+        {
+            get { return club; }
+            set { club = value; }
+        }
+
+        public Jugador Jugador
+        {
+            get { return jugador; }
+            set { jugador = value; }
+        }
+
+        public DateTime FechaAlta
+        {
+            get { return fechaAlta; }
+            set { fechaAlta = value; }
+        }
+
+        public DateTime FechaBaja
+        {
+            get { return fechaBaja; }
+            set { fechaBaja = value; }
+        }
+
+        public bool Estado
+        {
+            get { return estado; }
+            set { estado = value; }
+        }
 
     }
 }
