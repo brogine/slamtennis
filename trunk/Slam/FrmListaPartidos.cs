@@ -97,7 +97,12 @@ namespace Slam
 
         private void BtnAgregarPartido_Click(object sender, EventArgs e)
         {
-            FrmNuevoPartido NuevoPartido = new FrmNuevoPartido();
+            int ronda = 0;
+            if (DgvListaPartidos.RowCount > 0)
+            {
+                ronda = Convert.ToInt32(DgvListaPartidos["Ronda", DgvListaPartidos.RowCount - 1].Value);
+            }
+            FrmNuevoPartido NuevoPartido = new FrmNuevoPartido(DgvListaPartidos.RowCount, ronda);
             if (NuevoPartido.ShowDialog() == DialogResult.OK)
             {
                 servicioPartidos.ListarPartidos(this);

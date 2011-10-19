@@ -18,9 +18,11 @@ namespace Slam
         int idpartido = 0;
         int CountSecuen = 0;
         int UltimaRonda = 0;
-        public FrmNuevoPartido()
+        public FrmNuevoPartido(int count, int ultimaRonda)
         {
             InitializeComponent();
+            CountSecuen = count;
+            UltimaRonda = ultimaRonda;
             this.Text = "Nuevo Partido";
             servicioTorneos = (IListadoTorneoServicio)AppContext.Instance.GetObject(ImplementaTorneos);
             servicioTorneos.ListarTorneosCerrados(this);
