@@ -156,5 +156,16 @@ namespace Servicio
         }
 
         #endregion
+
+        #region ITorneoServicio Members
+
+
+        public void GetFechas(IFechasTorneoUI ui)
+        {
+            TorneoRepo = new TorneoRepositorio();
+            TorneoRepo.Buscar(ui)
+        }
+
+        #endregion
     }
 }

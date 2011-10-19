@@ -86,6 +86,7 @@
     <Compile Include="InterfacesUI\IClubUI.cs" />
     <Compile Include="InterfacesUI\IEmpleadoUI.cs" />
     <Compile Include="InterfacesUI\IEstadisticasUI.cs" />
+    <Compile Include="InterfacesUI\IFechasTorneoUI.cs" />
     <Compile Include="InterfacesUI\IInscripcionUI.cs" />
     <Compile Include="InterfacesUI\IJugadorUI.cs" />
     <Compile Include="InterfacesUI\IlistadoAfiliaciones.cs" />
