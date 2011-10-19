@@ -18,9 +18,7 @@ namespace Slam
         int IdTorneoActual = 0;
         public FrmPopUp(int IdTorneo, string NombreTorneo, string NombreCategoria)
         {
-            
             InitializeComponent();
-
             this.IdTorneoActual = IdTorneo;
             this.LblTorneo.Text = NombreTorneo;
             this.LblCategoria.Text = NombreCategoria;
