@@ -19,10 +19,15 @@ namespace Repositorio
     	#region Miembros de IEstadisticaRepositorio
     	
         public void Agregar(Jugador Jugador, Estadisticas Estadistica) {
-    		string Campos = "Dni, PartidosGanados, PartidosPerdidos, IdCategoria, Puntos, TorneosJugados, TorneosCompletados, Estado";
+            string Campos = "Dni, PartidosGanados, PartidosPerdidos, IdCategoria, Puntos, TorneosJugados, TorneosCompletados, Estado, PartidosGanadosDobles, PartidosPerdidosDobles, PuntosDobles, TorneosJugadosDobles, TorneosCompletadosDobles";
     		string Valores = Jugador.Dni + "," + Estadistica.PG + "," + Estadistica.PP +",";
             Valores += Estadistica.Categoria.Id + "," + Estadistica.Puntaje + "," + Estadistica.TorneosJugados + ",";
-            Valores += Estadistica.TorneosCompletados + "," + (Estadistica.Estado ? 1 : 0);
+            Valores += Estadistica.TorneosCompletados + "," + (Estadistica.Estado ? 1 : 0) + ",";
+            Valores += Estadistica.PartidosGanadosDoble + ",";
+            Valores += Estadistica.PartidosPerdidosDoble + ",";
+            Valores += Estadistica.PuntajeDoble + ",";
+            Valores += Estadistica.TorneosJugadosDoble + ",";
+            Valores += Estadistica.TorneosCompletadosDoble;
             try
             {
                 Conn.AgregarSinId("Jugadores", Campos, Valores);

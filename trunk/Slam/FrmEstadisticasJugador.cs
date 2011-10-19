@@ -271,5 +271,75 @@ namespace Slam
 
         #endregion
 
+
+        #region Miembros de IEstadisticasUI
+
+
+        public int PartidosJugadosDobles
+        {
+            set { TxtPartJugDob.Text = value.ToString(); }
+        }
+
+        public int PartidosGanadosDobles
+        {
+            get
+            {
+                return Convert.ToInt32(TxtPartGanDob.Text);
+            }
+            set
+            {
+                TxtPartGanDob.Text = value.ToString();
+            }
+        }
+
+        public int PartidosPerdidosDobles
+        {
+            get
+            {
+                return Convert.ToInt32(TxtPartPerDob.Text);
+            }
+            set
+            {
+                TxtPartPerDob.Text = value.ToString();
+            }
+        }
+
+        public int TorneosCompletadosDobles
+        {
+            get
+            {
+                return Convert.ToInt32(TxtTornCompDob.Text);
+            }
+            set
+            {
+                TxtTornCompDob.Text = value.ToString();
+            }
+        }
+
+        public int TorneosJugadosDobles
+        {
+            get
+            {
+                return Convert.ToInt32(TxtTorJugDob.Text);
+            }
+            set
+            {
+                TxtTorJugDob.Text = value.ToString();
+            }
+        }
+
+        public int PuntosDobles
+        {
+            get
+            {
+                return Convert.ToInt32(TxtPuntosDob.Text);
+            }
+            set
+            {
+                TxtPuntosDob.Text = value.ToString();
+            }
+        }
+
+        #endregion
     }
 }

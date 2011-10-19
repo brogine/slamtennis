@@ -29,7 +29,19 @@ namespace Servicio.InterfacesUI
         int TorneosCompletados { get; set; }
 
         int TorneosJugados { get; set; }
-		
+
+        int PartidosJugadosDobles { set; }
+
+        int PartidosGanadosDobles { get; set; }
+
+        int PartidosPerdidosDobles { get; set; }
+
+        int TorneosCompletadosDobles { get; set; }
+
+        int TorneosJugadosDobles { get; set; }
+
+        int PuntosDobles { get; set; }
+
 		bool Estado { get; set; }
 	}
 }
