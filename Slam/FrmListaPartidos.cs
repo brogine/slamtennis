@@ -126,7 +126,7 @@ namespace Slam
 
         private void DgvListaPartidos_SelectionChanged(object sender, EventArgs e)
         {
-            if (DgvListaPartidos.SelectedRows != null)
+            if (DgvListaPartidos.Rows.Count > 0)
             {
                 if (Convert.ToBoolean(DgvListaPartidos.SelectedRows[0].Cells["Estado"].Value) == false)
                 {
