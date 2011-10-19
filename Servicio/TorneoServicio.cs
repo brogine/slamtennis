@@ -163,7 +163,14 @@ namespace Servicio
         public void GetFechas(IFechasTorneoUI ui)
         {
             TorneoRepo = new TorneoRepositorio();
-            TorneoRepo.Buscar(ui)
+            Torneo ret = TorneoRepo.Buscar(ui.IdTorneo);
+            ui.Nombre = ret.Nombre;
+            ui.FechaInicio = ret.FechaInicio;
+            ui.FechaFinInscripcion = ret.FechaFinInscripcion;
+            ui.Estado = ret.Estado;
+            ui.FechaFin = ret.FechaFin;
+            ui.FechaInicioInscripcion = ret.FechaInicioInscripcion;
+            
         }
 
         #endregion
