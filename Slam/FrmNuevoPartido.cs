@@ -16,7 +16,8 @@ namespace Slam
     public partial class FrmNuevoPartido : Form, IPartidoUI, IListadoTorneos, IListadoInscripciones,IFechasTorneoUI
     {
         int idpartido = 0;
-
+        int CountSecuen = 0;
+        int UltimaRonda = 0;
         public FrmNuevoPartido()
         {
             InitializeComponent();
@@ -24,13 +25,13 @@ namespace Slam
             servicioTorneos = (IListadoTorneoServicio)AppContext.Instance.GetObject(ImplementaTorneos);
             servicioTorneos.ListarTorneosCerrados(this);
             servicioPartido = (IPartidoServicio)AppContext.Instance.GetObject(ImplemetaPartidos);
-            torneo = (ITorneoServicio)AppContext.Instance.GetObject(ImplementaTorneos);
-            torneo.GetFechas(this);
         }
 
-        public FrmNuevoPartido(int IdPartido)
+        public FrmNuevoPartido(int IdPartido, int count, int ultimaRonda)
         {
             InitializeComponent();
+            CountSecuen = count;
+            UltimaRonda = ultimaRonda;
             this.Text = "Modificar Partido";
             this.IdPartido = IdPartido;
             servicioTorneos = (IListadoTorneoServicio)AppContext.Instance.GetObject(ImplementaTorneos);
@@ -210,6 +211,11 @@ namespace Slam
                 CboEquipo1.DisplayMember = "Value";
                 CboEquipo1.ValueMember = "Key";
                 CboEquipo1.SelectedIndex = -1;
+                if ((ListaInscripciones.Count / 2) == CountSecuen || CountSecuen == 0)
+                {
+                    TxtRonda.Text = Convert.ToString(UltimaRonda + 1);
+                }
+
             }
         }
 
@@ -253,6 +259,10 @@ namespace Slam
             {
                 servicioInscripciones = (IListadoInscripcionServicio)AppContext.Instance.GetObject(ImplementaInscripciones);
                 servicioInscripciones.ListarPorTorneo(this);
+                torneo = (ITorneoServicio)AppContext.Instance.GetObject(ImplementaTorneos);
+                torneo.GetFechas(this);
+                DtpFechaPartido.MinDate = this.FechaInicio;
+                DtpFechaPartido.MaxDate = this.FechaFin;            
             }
         }
         private void BtnSalir_Click(object sender, EventArgs e)

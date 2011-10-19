@@ -125,7 +125,6 @@ namespace Repositorio
                     IInscripcionRepositorio InscRepo = new InscripcionRepositorio();
                     Inscripcion Jugador2 = InscRepo.Buscar(Convert.ToInt32(Dt.Rows[i]["IdInscripcion"]));
                     NuevoPartido.Equipo2 = Jugador2;
-
                 }
             }
             return NuevoPartido;
