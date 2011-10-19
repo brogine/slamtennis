@@ -5,14 +5,14 @@ using System.Text;
 
 namespace Servicio.InterfacesUI
 {
-    public class IFechasTorneoUI
+    public interface IFechasTorneoUI
     {
-        int IdTorneo { get; }
-        string Nombre { set; }
-        DateTime FechaInicio { set; }
-        DateTime FechaFin { set; }
-        DateTime FechaFinInscripcion { set; }
-        DateTime FechaInicioInscripcion { set; }
-        int Estado { set; }
+        int IdTorneo { get; set; }
+        string Nombre { get; set; }
+        DateTime FechaInicio { get; set; }
+        DateTime FechaFin { get; set; }
+        DateTime FechaFinInscripcion { get; set; }
+        DateTime FechaInicioInscripcion { get; set; }
+        int Estado { get; set; }
     }
 }

@@ -13,7 +13,7 @@ using System.Collections;
 
 namespace Slam
 {
-    public partial class FrmNuevoPartido : Form, IPartidoUI, IListadoTorneos, IListadoInscripciones
+    public partial class FrmNuevoPartido : Form, IPartidoUI, IListadoTorneos, IListadoInscripciones,IFechasTorneoUI
     {
         int idpartido = 0;
 
@@ -24,6 +24,8 @@ namespace Slam
             servicioTorneos = (IListadoTorneoServicio)AppContext.Instance.GetObject(ImplementaTorneos);
             servicioTorneos.ListarTorneosCerrados(this);
             servicioPartido = (IPartidoServicio)AppContext.Instance.GetObject(ImplemetaPartidos);
+            torneo = (ITorneoServicio)AppContext.Instance.GetObject(ImplementaTorneos);
+            torneo.GetFechas(this);
         }
 
         public FrmNuevoPartido(int IdPartido)
@@ -36,6 +38,7 @@ namespace Slam
             servicioPartido = (IPartidoServicio)AppContext.Instance.GetObject(ImplemetaPartidos);
             servicioPartido.Buscar(this);
         }
+        ITorneoServicio torneo;
         IListadoTorneoServicio servicioTorneos;
         IPartidoServicio servicioPartido;
         string ImplemetaPartidos = "PartidoServicio";
@@ -324,6 +327,47 @@ namespace Slam
             }
         }
 
-    
+
+
+        #region IFechasTorneoUI Members
+
+
+        public string Nombre
+        {
+            get;
+            set;
+        }
+
+        public DateTime FechaInicio
+        {
+            get;
+            set;
+        }
+
+        public DateTime FechaFin
+        {
+            get;
+            set;
+        }
+
+        public DateTime FechaFinInscripcion
+        {
+            get;
+            set;
+        }
+
+        public DateTime FechaInicioInscripcion
+        {
+            get;
+            set;
+        }
+
+        int IFechasTorneoUI.Estado
+        {
+            get;
+            set;
+        }
+
+        #endregion
     }
 }
