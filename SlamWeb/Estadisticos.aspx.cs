@@ -237,5 +237,75 @@ namespace SlamWeb
         }
 
         #endregion
+
+        #region Miembros de IEstadisticasUI
+
+
+        public int PartidosJugadosDobles
+        {
+            set { throw new NotImplementedException(); }
+        }
+
+        public int PartidosGanadosDobles
+        {
+            get
+            {
+                throw new NotImplementedException();
+            }
+            set
+            {
+                throw new NotImplementedException();
+            }
+        }
+
+        public int PartidosPerdidosDobles
+        {
+            get
+            {
+                throw new NotImplementedException();
+            }
+            set
+            {
+                throw new NotImplementedException();
+            }
+        }
+
+        public int TorneosCompletadosDobles
+        {
+            get
+            {
+                throw new NotImplementedException();
+            }
+            set
+            {
+                throw new NotImplementedException();
+            }
+        }
+
+        public int TorneosJugadosDobles
+        {
+            get
+            {
+                throw new NotImplementedException();
+            }
+            set
+            {
+                throw new NotImplementedException();
+            }
+        }
+
+        public int PuntosDobles
+        {
+            get
+            {
+                throw new NotImplementedException();
+            }
+            set
+            {
+                throw new NotImplementedException();
+            }
+        }
+
+        #endregion
     }
 }

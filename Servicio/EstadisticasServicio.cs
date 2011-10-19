@@ -37,6 +37,12 @@ namespace Servicio
             Estadisticas nEstadistica = new Estadisticas(0, bCategoria, 0, ui.PartidosPerdidos,
 			                                             ui.PartidosGanados, ui.Puntos, ui.TorneosCompletados,
                                                          ui.TorneosJugados, ui.Estado);
+
+            nEstadistica.PuntajeDoble = ui.PuntosDobles;
+            nEstadistica.PartidosGanadosDoble = ui.PartidosGanadosDobles;
+            nEstadistica.PartidosPerdidosDoble = ui.PartidosPerdidosDobles;
+            nEstadistica.TorneosCompletadosDoble = ui.TorneosCompletadosDobles;
+            nEstadistica.TorneosJugadosDoble = ui.TorneosCompletadosDobles;
 			
 			repoEstadisticas.Agregar(bJugador, nEstadistica);
 		}
@@ -50,7 +56,11 @@ namespace Servicio
 			bEstadistica.Estado = ui.Estado;
             bEstadistica.TorneosCompletados = ui.TorneosCompletados;
             bEstadistica.TorneosJugados = ui.TorneosJugados;
-			
+            bEstadistica.TorneosJugadosDoble = ui.TorneosJugadosDobles;
+            bEstadistica.TorneosCompletadosDoble = ui.TorneosCompletadosDobles;
+            bEstadistica.PuntajeDoble = ui.PuntosDobles;
+            bEstadistica.PartidosGanadosDoble = ui.PartidosGanadosDobles;
+            bEstadistica.PartidosPerdidosDoble = ui.PartidosPerdidosDobles;
 			IJugadorRepositorio repoJugadores = new JugadorRepositorio();
 			Jugador bJugador = repoJugadores.Buscar(ui.Dni);
 			
@@ -75,8 +85,15 @@ namespace Servicio
                 ui.TorneosJugados = bEstadistica.TorneosJugados;
                 ui.Puntos = bEstadistica.Puntaje;
             }
+            ui.PartidosGanadosDobles = bEstadistica.PartidosGanadosDoble;
+            ui.PartidosPerdidosDobles = bEstadistica.PartidosPerdidosDoble;
+            ui.PartidosJugadosDobles = bEstadistica.PartidosJugadosDoble;
+            ui.PuntosDobles = bEstadistica.PuntajeDoble;
+            ui.TorneosCompletadosDobles = bEstadistica.TorneosCompletadosDoble;
+            ui.TorneosJugadosDobles = bEstadistica.TorneosJugadosDoble;
 		}
 		
+
 		#endregion
 		
 		#region Miembros de IListadoEstadisticasServicio
