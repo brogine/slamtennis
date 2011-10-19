@@ -126,15 +126,17 @@ namespace Slam
 
         private void DgvListaPartidos_SelectionChanged(object sender, EventArgs e)
         {
-
-            if (Convert.ToBoolean(DgvListaPartidos.SelectedRows[0].Cells["Estado"].Value) == false)
+            if (DgvListaPartidos.SelectedRows != null)
             {
-                BtnModificar.Enabled = false;
+                if (Convert.ToBoolean(DgvListaPartidos.SelectedRows[0].Cells["Estado"].Value) == false)
+                {
+                    BtnModificar.Enabled = false;
 
-            }
-            else
-            {
-                BtnModificar.Enabled = true;
+                }
+                else
+                {
+                    BtnModificar.Enabled = true;
+                }
             }
         }
     }
