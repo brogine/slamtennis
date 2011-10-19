@@ -323,5 +323,7 @@ namespace Slam
                 EPPartidos.SetError(TxtRonda, "");
             }
         }
+
+    
     }
 }
