@@ -280,6 +280,8 @@ namespace Reportes {
             
             private global::System.Data.DataColumn columnPosicion;
             
+            private global::System.Data.DataColumn columnTipo;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             public DatosDataTable() {
                 this.TableName = "Datos";
@@ -374,6 +376,13 @@ namespace Reportes {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public global::System.Data.DataColumn TipoColumn {
+                get {
+                    return this.columnTipo;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -402,7 +411,7 @@ namespace Reportes {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            public DatosRow AddDatosRow(string Dni, string NombreApellido, string PJ, string PG, string PP, string TJ, string TC, string Puntos, string Posicion) {
+            public DatosRow AddDatosRow(string Dni, string NombreApellido, string PJ, string PG, string PP, string TJ, string TC, string Puntos, string Posicion, string Tipo) {
                 DatosRow rowDatosRow = ((DatosRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         Dni,
@@ -413,7 +422,8 @@ namespace Reportes {
                         TJ,
                         TC,
                         Puntos,
-                        Posicion};
+                        Posicion,
+                        Tipo};
                 rowDatosRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowDatosRow);
                 return rowDatosRow;
@@ -442,6 +452,7 @@ namespace Reportes {
                 this.columnTC = base.Columns["TC"];
                 this.columnPuntos = base.Columns["Puntos"];
                 this.columnPosicion = base.Columns["Posicion"];
+                this.columnTipo = base.Columns["Tipo"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -464,6 +475,8 @@ namespace Reportes {
                 base.Columns.Add(this.columnPuntos);
                 this.columnPosicion = new global::System.Data.DataColumn("Posicion", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnPosicion);
+                this.columnTipo = new global::System.Data.DataColumn("Tipo", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnTipo);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -731,6 +744,21 @@ namespace Reportes {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public string Tipo {
+                get {
+                    try {
+                        return ((string)(this[this.tableDatos.TipoColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'Tipo\' de la tabla \'Datos\' es DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableDatos.TipoColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             public bool IsDniNull() {
                 return this.IsNull(this.tableDatos.DniColumn);
             }
@@ -818,6 +846,16 @@ namespace Reportes {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             public void SetPosicionNull() {
                 this[this.tableDatos.PosicionColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public bool IsTipoNull() {
+                return this.IsNull(this.tableDatos.TipoColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public void SetTipoNull() {
+                this[this.tableDatos.TipoColumn] = global::System.Convert.DBNull;
             }
         }
         

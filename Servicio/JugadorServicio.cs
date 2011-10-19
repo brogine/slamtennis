@@ -228,12 +228,17 @@ namespace Servicio
             TablaUI.Columns.Add("TC");
             TablaUI.Columns.Add("Puntos");
             TablaUI.Columns.Add("Posicion");
+            TablaUI.Columns.Add("Tipo");
             int i = 1;
             foreach (Jugador Jugador in ListaJugadores)
             {
-                TablaUI.Rows.Add(Jugador.Dni, Jugador.Nombre + " " + Jugador.Apellido, Jugador.Estadisticas[0].PJ,
+                TablaUI.Rows.Add(Jugador.Dni, Jugador.Apellido + " " + Jugador.Nombre, Jugador.Estadisticas[0].PJ,
                     Jugador.Estadisticas[0].PG, Jugador.Estadisticas[0].PP, Jugador.Estadisticas[0].TorneosJugados,
-                    Jugador.Estadisticas[0].TorneosCompletados, Jugador.Estadisticas[0].Puntaje, i);
+                    Jugador.Estadisticas[0].TorneosCompletados, Jugador.Estadisticas[0].Puntaje, i, "Single");
+                TablaUI.Rows.Add(Jugador.Dni, Jugador.Apellido + " " + Jugador.Nombre, Jugador.Estadisticas[0].PartidosJugadosDoble,
+                    Jugador.Estadisticas[0].PartidosGanadosDoble, Jugador.Estadisticas[0].PartidosPerdidosDoble,
+                    Jugador.Estadisticas[0].TorneosJugadosDoble, Jugador.Estadisticas[0].TorneosCompletadosDoble,
+                    Jugador.Estadisticas[0].PuntajeDoble, i, "Dobles");
                 i++;
             }
             UI.Listar = TablaUI;
