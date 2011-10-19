@@ -45,12 +45,12 @@ namespace Repositorio
     		Consulta += " Puntos = " + Estadistica.Puntaje + ",";
             Consulta += " TorneosJugados = " + Estadistica.TorneosJugados + ",";
             Consulta += " TorneosCompletados = " + Estadistica.TorneosCompletados + ",";
-    		Consulta += " Estado = " + (Estadistica.Estado ? 1 : 0);
+    		Consulta += " Estado = " + (Estadistica.Estado ? 1 : 0) + ",";
             Consulta += " PartidosGanadosDobles = " + Estadistica.PartidosGanadosDoble + ",";
             Consulta += " PartidosPerdidosDobles = " + Estadistica.PartidosPerdidosDoble + ",";
             Consulta += " PuntosDobles = " + Estadistica.PuntajeDoble + ",";
             Consulta += " TorneosJugadosDobles = " + Estadistica.TorneosJugadosDoble + ",";
-            Consulta += " TorneosCompletadosDobles = " + Estadistica.TorneosCompletadosDoble + ",";
+            Consulta += " TorneosCompletadosDobles = " + Estadistica.TorneosCompletadosDoble + " ";
     		Consulta += " Where Dni = " + Jugador.Dni + " And IdCategoria = " + Estadistica.Categoria.Id;
             try
             {
