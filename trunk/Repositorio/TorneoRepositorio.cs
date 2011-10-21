@@ -119,7 +119,7 @@ namespace Repositorio
 
         public List<Torneo> ListarCerrados()
         {
-            string Sql = "select * from Torneos where Estado = 1";
+            string Sql = "select * from Torneos where Estado = 1 and Estado = 2";
             DataTable Tabla = Conex.Listar(Sql);
             List<Torneo> Lista = new List<Torneo>();
 
@@ -157,12 +157,12 @@ namespace Repositorio
                 Torneo Tor = this.Mapear(Dr);
                 int Inscripciones = InsRepo.Listar(Tor.IdTorneo).Count;
 
-                if (Tor.FechaInicioInscripcion < DateTime.Today)
+                if (Tor.FechaInicioInscripcion <= DateTime.Today)
                 {
                     Tor.Estado = (int)EstadoTorneo.NoIniciado;
                 }
 
-                if (Tor.FechaInicioInscripcion <= DateTime.Today && Tor.FechaFinInscripcion > DateTime.Today && Tor.Cupo > Inscripciones)
+                if (Tor.FechaInicioInscripcion <= DateTime.Today && Tor.FechaFinInscripcion >= DateTime.Today && Tor.Cupo > Inscripciones)
                 {
                     Tor.Estado = (int)EstadoTorneo.Abierto;
 
@@ -170,7 +170,7 @@ namespace Repositorio
 
                 if (Tor.Cupo > Inscripciones)
                 {
-                    if (Tor.FechaFinInscripcion < DateTime.Today && Tor.FechaInicio > DateTime.Today)
+                    if (Tor.FechaFinInscripcion <= DateTime.Today && Tor.FechaInicio >= DateTime.Today)
                     {
                         Tor.Estado = (int)EstadoTorneo.Cerrado;
                     }
@@ -180,12 +180,12 @@ namespace Repositorio
                     Tor.Estado = (int)EstadoTorneo.Cerrado;
                 }
 
-                if (Tor.FechaInicio <= DateTime.Today && Tor.FechaFin > DateTime.Today)
+                if (Tor.FechaInicio <= DateTime.Today && Tor.FechaFin >= DateTime.Today)
                 {
                     Tor.Estado = (int)EstadoTorneo.Jugando;
                 }
 
-                if (Tor.FechaFin < DateTime.Today)
+                if (Tor.FechaFin <= DateTime.Today)
                 {
                     Tor.Estado = (int)EstadoTorneo.Finalizado;
                 }
