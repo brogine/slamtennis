@@ -254,7 +254,7 @@ namespace SlamWeb
             }
             set
             {
-                throw new NotImplementedException();
+                Session["PartidosDbl"] = value;
             }
         }
 

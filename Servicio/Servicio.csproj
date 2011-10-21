@@ -75,6 +75,7 @@
     <Compile Include="IListadoPartidoServicio.cs" />
     <Compile Include="IListadoSedesServicio.cs" />
     <Compile Include="IListadoTorneoServicio.cs" />
+    <Compile Include="ILlaveTorneoService.cs" />
     <Compile Include="ILocalidadServicio.cs" />
     <Compile Include="ILoginServicio.cs" />
     <Compile Include="EmpleadoServicio.cs" />
