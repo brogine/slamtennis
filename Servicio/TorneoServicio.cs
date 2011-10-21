@@ -8,13 +8,14 @@ using Repositorio;
 
 namespace Servicio
 {
-    public class TorneoServicio:ITorneoServicio,IListadoTorneoServicio
+    public class TorneoServicio : ITorneoServicio, IListadoTorneoServicio
     {
         ITorneoRepositorio TorneoRepo;
         public TorneoServicio()
         {
             TorneoRepo = new TorneoRepositorio();
         }
+
         #region Miembros de ITorneoServicio
 
         public void Agregar(ITorneoUI UI)
@@ -93,6 +94,11 @@ namespace Servicio
             return (int)TorneoRepo.GetTipoTorneo(IdTorneo);
         }
 
+        public void ActualizarTorneos()
+        {
+            TorneoRepo.ActualizarTorneos();
+        }
+
         #endregion
 
         #region Miembros de IListadoTorneoServicio
@@ -109,11 +115,6 @@ namespace Servicio
             UI.ListaUI = Lista;
         }
 
-        #endregion
-
-        #region Miembros de IListadoTorneoServicio
-
-
         public void ListarTorneosCerrados(IListadoTorneos UI)
         {
             List<Torneo> ListaTorneo = TorneoRepo.ListarCerrados();
@@ -126,11 +127,6 @@ namespace Servicio
             UI.ListaUI = Lista;
         }
 
-        #endregion
-
-        #region Miembros de IListadoTorneoServicio
-
-
         public void ListarTorneosAbiertos(IListadoTorneos UI)
         {
             List<Torneo> ListaTorneo = TorneoRepo.ListarAbiertos();
@@ -141,18 +137,6 @@ namespace Servicio
             }
 
             UI.ListaUI = Lista;
-        }
-
-        #endregion
-
-
-
-        #region Miembros de ITorneoServicio
-
-
-        public void ActualizarTorneos()
-        {
-            TorneoRepo.ActualizarTorneos();
         }
 
         #endregion
