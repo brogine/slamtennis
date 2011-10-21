@@ -75,7 +75,6 @@ namespace Repositorio
                 sql += ",Cupo = " + Torneo.Cupo;
                 sql += ",Estado =" + (int)Torneo.Estado;
             }
-            
             sql += ",Sexo = '" + Torneo.Sexo + "'";
             sql += ",Tipo = " + (int)Torneo.TipoTorneo;
             sql += ",IdClub =" + Torneo.Club.Id;
@@ -147,7 +146,7 @@ namespace Repositorio
         {
             DateTime Hoy = DateTime.Today;
             string HoyFormateado = Hoy.Year + "/" + Hoy.Month + "/" + Hoy.Day;
-            string Sql = "select * from Torneos where Estado <> " + (int)EstadoTorneo.Finalizado + " and Estado <> " + (int)EstadoTorneo.Cancelado;
+            string Sql = "select * from Torneos where Estado <> " + (int)EstadoTorneo.Cancelado;
             DataTable Tabla = Conex.Listar(Sql);
             IInscripcionRepositorio InsRepo = new InscripcionRepositorio();
 
