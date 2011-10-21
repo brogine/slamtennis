@@ -119,7 +119,7 @@ namespace Repositorio
 
         public List<Torneo> ListarCerrados()
         {
-            string Sql = "select * from Torneos where Estado = 1 and Estado = 2";
+            string Sql = "select * from Torneos where Estado = 1 or Estado = 2";
             DataTable Tabla = Conex.Listar(Sql);
             List<Torneo> Lista = new List<Torneo>();
 
