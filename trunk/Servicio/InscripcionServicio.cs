@@ -209,5 +209,44 @@ namespace Servicio
         }
 
         #endregion
+
+        #region Miembros de IListadoInscripcionServicio
+
+
+        public void ListarActivas(Servicio.InterfacesUI.IListadoInscripciones UI)
+        {
+            List<Inscripcion> ListaInscripciones = repoInscripciones.ListarActivas(UI.IdTorneo);
+            List<Object> ListaUI = new List<object>();
+            ITorneoRepositorio repoTorneos = new TorneoRepositorio();
+            TipoTorneo tipoTorneo = repoTorneos.GetTipoTorneo(UI.IdTorneo);
+            foreach (Inscripcion Inscripcion in ListaInscripciones)
+            {
+                if (Inscripcion.Equipo.Jugador2 != null)
+                {
+                    ListaUI.Add(Inscripcion.IdInscripcion + "," + (int)tipoTorneo + "," +
+                        Inscripcion.Equipo.Jugador1.Apellido + " " + Inscripcion.Equipo.Jugador1.Nombre + "," +
+                        Inscripcion.Equipo.Jugador2.Nombre + " " + Inscripcion.Equipo.Jugador2.Apellido + "," +
+                        Inscripcion.Fecha.ToShortDateString());
+                }
+                else
+                {
+                    ListaUI.Add(Inscripcion.IdInscripcion + "," + (int)tipoTorneo + "," +
+                        Inscripcion.Equipo.Jugador1.Apellido + " " + Inscripcion.Equipo.Jugador1.Nombre + "," +
+                        string.Empty + "," +
+                        Inscripcion.Fecha.ToShortDateString());
+                }
+            }
+
+            ITorneoRepositorio TorneoRepo = new TorneoRepositorio();
+            Torneo Torneo = TorneoRepo.Buscar(UI.IdTorneo);
+            if (Torneo.Estado == (int)EstadoTorneo.Cerrado && ListaUI.Count % 2 != 0)
+            {
+
+                ListaUI.Add(0 + "," + (int)tipoTorneo + ",BYE,,,");
+            }
+            UI.ListarPorTorneo = ListaUI;
+        }
+
+        #endregion
     }
 }

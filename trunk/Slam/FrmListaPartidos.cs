@@ -114,9 +114,9 @@ namespace Slam
             int ronda = 0;
             if (DgvListaPartidos.RowCount > 0)
             {
-                ronda = (int)DgvListaPartidos["Ronda", DgvListaPartidos.RowCount - 1].Value;
+                ronda =Convert.ToInt32(DgvListaPartidos["Ronda", DgvListaPartidos.RowCount - 1].Value);
 
-                FrmNuevoPartido ModificaPartido = new FrmNuevoPartido(Convert.ToInt32(DgvListaPartidos.Rows[0].Cells[0].Value), DgvListaPartidos.RowCount,ronda);
+                FrmNuevoPartido ModificaPartido = new FrmNuevoPartido(Convert.ToInt32(DgvListaPartidos.SelectedRows[0].Cells[0].Value), DgvListaPartidos.RowCount,ronda);
                 if (ModificaPartido.ShowDialog() == DialogResult.OK)
                 {
                     servicioPartidos.ListarPartidos(this);
@@ -133,15 +133,15 @@ namespace Slam
         {
             if (DgvListaPartidos.Rows.Count > 0)
             {
-                if (Convert.ToBoolean(DgvListaPartidos.SelectedRows[0].Cells["Estado"].Value) == false)
-                {
-                    BtnModificar.Enabled = false;
+                //if (Convert.ToBoolean(DgvListaPartidos.SelectedRows[0].Cells["Estado"].Value) == false)
+                //{
+                //    BtnModificar.Enabled = false;
 
-                }
-                else
-                {
-                    BtnModificar.Enabled = true;
-                }
+                //}
+                //else
+                //{
+                //    BtnModificar.Enabled = true;
+                //}
             }
         }
     }

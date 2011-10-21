@@ -16,9 +16,13 @@ namespace Repositorio
 
         bool Existe(int IdTorneo, int DniJugador);
 
+        void BajaInscripcion(Inscripcion Inscripcion);
+
         Inscripcion Buscar(int IdInscripcion);
 
         List<Inscripcion> Listar(int IdTorneo);
+
+        List<Inscripcion> ListarActivas(int IdTorneo);
 
         List<Inscripcion> ListarPorPartido(int IdPartido);
 

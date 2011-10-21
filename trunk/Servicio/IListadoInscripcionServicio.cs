@@ -9,6 +9,7 @@ namespace Servicio
     public interface IListadoInscripcionServicio
     {
         void ListarPorTorneo(IListadoInscripciones UI);
+        void ListarActivas(IListadoInscripciones UI);
         void ListarPorPartido(IListadoInscripciones UI);
     }
 }
