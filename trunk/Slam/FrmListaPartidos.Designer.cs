@@ -35,6 +35,7 @@
             this.BtnModificar = new System.Windows.Forms.Button();
             this.BtnSalir = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
+            this.BtnGenerarLlave = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.DgvListaPartidos)).BeginInit();
             this.SuspendLayout();
             // 
@@ -100,11 +101,22 @@
             this.label1.TabIndex = 5;
             this.label1.Text = "Seleccione Un Torneo De La Lista";
             // 
+            // BtnGenerarLlave
+            // 
+            this.BtnGenerarLlave.Location = new System.Drawing.Point(189, 198);
+            this.BtnGenerarLlave.Name = "BtnGenerarLlave";
+            this.BtnGenerarLlave.Size = new System.Drawing.Size(96, 23);
+            this.BtnGenerarLlave.TabIndex = 6;
+            this.BtnGenerarLlave.Text = "Generar Llave";
+            this.BtnGenerarLlave.UseVisualStyleBackColor = true;
+            this.BtnGenerarLlave.Click += new System.EventHandler(this.BtnGenerarLlave_Click);
+            // 
             // FrmListaPartidos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(575, 233);
+            this.Controls.Add(this.BtnGenerarLlave);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.BtnSalir);
             this.Controls.Add(this.BtnModificar);
@@ -132,5 +144,6 @@
         private System.Windows.Forms.Button BtnModificar;
         private System.Windows.Forms.Button BtnSalir;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button BtnGenerarLlave;
     }
 }

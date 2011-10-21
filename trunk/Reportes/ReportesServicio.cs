@@ -17,6 +17,7 @@ namespace Reportes
 
         object ReporteActual = null;
         int idCategoria = 0;
+        int idTorneo = 0;
         public ReportesServicio()
         {
             ReporteActual = new object();
@@ -34,6 +35,7 @@ namespace Reportes
                     servicioJugadores.ListarJugadoresCategoria(this);
                     return ReporteActual;
                 case "Llave":
+                    idTorneo = (int)Sender;
                     RptLlave rptLlave = new RptLlave();
                     ReporteActual = rptLlave;
                     return ReporteActual;

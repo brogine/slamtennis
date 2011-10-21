@@ -10,11 +10,12 @@ using Servicio;
 using Servicio.InterfacesUI;
 using ApplicationContext;
 using System.Collections;
+using Reportes;
 
 
 namespace Slam
 {
-    public partial class FrmListaPartidos : Form,IListadoTorneos,IListadoPartidos
+    public partial class FrmListaPartidos : Form,IListadoTorneos,IListadoPartidos, IListadoInscripciones
     {
         public FrmListaPartidos()
         {
@@ -22,9 +23,13 @@ namespace Slam
         }
 
         string ImplementaTorneos = "TorneoServicio";
-        IListadoTorneoServicio servicioTorneos;
+        string ImplementaInscripciones = "InscripcionServicio";
         string ImplementaPartidos = "PartidoServicio";
+        IListadoTorneoServicio servicioTorneos;
         IListadoPartidoServicio servicioPartidos;
+        IListadoInscripcionServicio servicioInscripciones;
+        
+
         #region Miembros de IListadoTorneos
 
         public List<object> ListaUI
@@ -126,6 +131,8 @@ namespace Slam
 
         private void BtnSalir_Click(object sender, EventArgs e)
         {
+            GC.Collect();
+            GC.WaitForPendingFinalizers();
             this.Close();
         }
 
@@ -144,5 +151,41 @@ namespace Slam
                 //}
             }
         }
+
+        private void BtnGenerarLlave_Click(object sender, EventArgs e)
+        {
+            servicioInscripciones = (IListadoInscripcionServicio)AppContext.Instance.GetObject(ImplementaInscripciones);
+            servicioInscripciones.ListarPorTorneo(this);
+        }
+
+        #region Miembros de IListadoInscripciones
+
+        public List<object> ListarPorTorneo
+        {
+            set 
+            {
+                if ((value.Count / 2) == DgvListaPartidos.RowCount)
+                {
+                    IReportesServicio servicioReportes = new ReportesServicio();
+                    Object ReporteLlave = servicioReportes.CrearInstancia("Llave", IdTorneo);
+                    FrmReportes Reportes = new FrmReportes(ReporteLlave);
+                    Reportes.Show();
+                }
+                else
+                    MessageBox.Show("Faltan crear partidos. ");
+            }
+        }
+
+        public List<object> ListarPorPartido
+        {
+            set { throw new NotImplementedException(); }
+        }
+
+        public int IdPartido
+        {
+            get { throw new NotImplementedException(); }
+        }
+
+        #endregion
     }
 }
