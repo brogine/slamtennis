@@ -5,10 +5,11 @@ using System.Text;
 using Servicio.InterfacesUI;
 using Dominio;
 using Repositorio;
+using System.Data;
 
 namespace Servicio
 {
-    public class TorneoServicio : ITorneoServicio, IListadoTorneoServicio
+    public class TorneoServicio : ITorneoServicio, IListadoTorneoServicio,ILlaveTorneoService
     {
         ITorneoRepositorio TorneoRepo;
         public TorneoServicio()
@@ -155,6 +156,41 @@ namespace Servicio
             ui.FechaFin = ret.FechaFin;
             ui.FechaInicioInscripcion = ret.FechaInicioInscripcion;
             
+        }
+
+        #endregion
+
+        #region ILlaveTorneoService Members
+
+        public System.Data.DataSet GetDatosPartido(int idtorneo)
+        {
+            Torneo torneo = TorneoRepo.Buscar(idtorneo);
+            IPartidoRepositorio partidorepo = new PartidoRepositorio();
+            List<Partido> listado = partidorepo.Listar(idtorneo);
+            DataTable DtTorneo = new DataTable("Datos");
+            DtTorneo.Columns.Add("Categoria");
+            DtTorneo.Columns.Add("Torneo");
+            DtTorneo.Columns.Add("Club");
+            DtTorneo.Columns.Add("FechaInicio");
+            DtTorneo.Columns.Add("FechaFin");
+            //Tabla de Torneos
+            DtTorneo.Rows.Add(torneo.Categoria.Nombre, torneo.Nombre, torneo.Club.Nombre, torneo.FechaInicio, torneo.FechaFin);
+
+            //Tabla Partidos
+
+            DataTable DtPartido = new DataTable("Partido");
+            DtTorneo.Columns.Add("Equipo1");
+            DtTorneo.Columns.Add("Equipo2");
+            DtTorneo.Columns.Add("Resultado");
+            DtTorneo.Columns.Add("Ronda");
+            DtTorneo.Columns.Add("Ganador");
+            DtTorneo.Columns.Add("Fecha");
+            
+            foreach (var item in listado)
+            {
+                //DtPartido.Rows.Add(item.Equipo1,)    
+            }
+            return new DataSet();
         }
 
         #endregion

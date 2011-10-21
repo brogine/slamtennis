@@ -19,6 +19,25 @@
         {
             width: 50%;
         }
+        .style5
+        {
+            color: White;
+            font-weight: bold;
+            text-align: right;
+            width: 25%;
+            height: 18px;
+        }
+        .style6
+        {
+            text-align: center;
+            width: 25%;
+            height: 18px;
+        }
+        .style7
+        {
+            width: 25%;
+            height: 18px;
+        }
     </style>
     <link type="text/css" href="Content/basic.css"rel="Stylesheet" media="screen" />
     <script type="text/javascript" src="Scripts/jquery.js"></script>
@@ -112,17 +131,17 @@
         </div>
         <table width="100%" class="style1">
             <tr style="width:25%">
-                <td style="width:25%" class="style1">
+                <td class="style5">
                     Partidos Jugados:
                 </td>
-                <td style="width:25%" class="style2">
+                <td class="style6">
                     
                     <asp:Label ID="LblPJ" runat="server" Text="00"></asp:Label>
                 </td>
-                <td style="width:25%">
+                <td class="style7">
                     Partidos Ganados:
                 </td>
-                <td style="width:25%" class="style2">
+                <td class="style6">
                     
                     <asp:Label ID="LblPG" runat="server" Text="00"></asp:Label>
                     
