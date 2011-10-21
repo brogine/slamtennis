@@ -15,14 +15,12 @@ namespace Slam
 {
     public partial class FrmNuevoPartido : Form, IPartidoUI, IListadoTorneos, IListadoInscripciones,IFechasTorneoUI
     {
-        int idpartido = 0;
-        int CountSecuen = 0;
-        int UltimaRonda = 0;
+        int idpartido;
         public FrmNuevoPartido(int count, int ultimaRonda)
         {
             InitializeComponent();
-            CountSecuen = count;
-            UltimaRonda = ultimaRonda;
+            //CountSecuen = count;
+            //UltimaRonda = ultimaRonda;
             this.Text = "Nuevo Partido";
             servicioTorneos = (IListadoTorneoServicio)AppContext.Instance.GetObject(ImplementaTorneos);
             servicioTorneos.ListarTorneosCerrados(this);
@@ -32,8 +30,8 @@ namespace Slam
         public FrmNuevoPartido(int IdPartido, int count, int ultimaRonda)
         {
             InitializeComponent();
-            CountSecuen = count;
-            UltimaRonda = ultimaRonda;
+            //CountSecuen = count;
+            //UltimaRonda = ultimaRonda;
             this.Text = "Modificar Partido";
             this.IdPartido = IdPartido;
             servicioTorneos = (IListadoTorneoServicio)AppContext.Instance.GetObject(ImplementaTorneos);
@@ -213,10 +211,10 @@ namespace Slam
                 CboEquipo1.DisplayMember = "Value";
                 CboEquipo1.ValueMember = "Key";
                 CboEquipo1.SelectedIndex = -1;
-                if ((ListaInscripciones.Count / 2) == CountSecuen || CountSecuen == 0)
-                {
-                    TxtRonda.Text = Convert.ToString(UltimaRonda + 1);
-                }
+                //if ((Convert.ToInt32(ListaInscripciones.Count / 2)) == CountSecuen || CountSecuen == 0)
+                //{
+                //    TxtRonda.Text = Convert.ToString(UltimaRonda + 1);
+                //}
 
             }
         }
@@ -260,7 +258,7 @@ namespace Slam
             if (CboListaTorneo.SelectedIndex > -1)
             {
                 servicioInscripciones = (IListadoInscripcionServicio)AppContext.Instance.GetObject(ImplementaInscripciones);
-                servicioInscripciones.ListarPorTorneo(this);
+                servicioInscripciones.ListarActivas(this);
                 torneo = (ITorneoServicio)AppContext.Instance.GetObject(ImplementaTorneos);
                 torneo.GetFechas(this);
                 DtpFechaPartido.MinDate = this.FechaInicio;

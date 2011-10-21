@@ -70,13 +70,16 @@ namespace Repositorio
                 {
                     Est1Jug1.PG += 1;
                     Est2Jug1.PP += 1;
-                    
+                   
+                    InscRepo.BajaInscripcion(Partido.Equipo1);
                    
                 }
                 else
                 {
                     Est1Jug1.PP += 1;
                     Est2Jug1.PG += 1;
+                    
+                    InscRepo.BajaInscripcion(Partido.Equipo2);
                 }
                 EstRepo.Modificar(Partido.Equipo1.Equipo.Jugador1, Est1Jug1);
                 EstRepo.Modificar(Partido.Equipo2.Equipo.Jugador1, Est2Jug1);

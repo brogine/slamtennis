@@ -87,6 +87,7 @@ namespace Repositorio
                     Conn.ActualizarOEliminar(Consulta);
                 }
             }
+
         }
 
         public void Eliminar(int IdInscripcion)
@@ -222,6 +223,49 @@ namespace Repositorio
                 nInscripcion = new Inscripcion(IdInscripcion, bTorneo, Fecha, nEquipo, Estado);
             }
             return nInscripcion;
+        }
+
+        #endregion
+
+        #region Miembros de IInscripcionRepositorio
+
+
+        public List<Inscripcion> ListarActivas(int IdTorneo)
+        {
+            String Consulta = " Select I.*, J.Dni From InscripcionesJugador J Inner Join Inscripciones I ";
+            Consulta += " On J.IdInscripcion = I.IdInscripcion Inner Join Personas P ";
+            Consulta += " On J.Dni = P.Dni Where I.IdTorneo = " + IdTorneo + "and I.Estado = 1";
+            DataTable TablaInscripciones = Conn.Listar(Consulta);
+            List<Inscripcion> ListaInscripciones = new List<Inscripcion>();
+            IJugadorRepositorio repoJugadores = new JugadorRepositorio();
+
+            foreach (DataRow Fila in TablaInscripciones.Rows)
+            {
+                if (!ListaInscripciones.Exists(delegate(Inscripcion I) { return I.IdInscripcion == Convert.ToInt32(Fila["IdInscripcion"]); }))
+                    ListaInscripciones.Add(this.Mapear(Fila));
+                else
+                {
+                    Inscripcion bInscripcion = ListaInscripciones.Find(delegate(Inscripcion I) { return I.IdInscripcion == Convert.ToInt32(Fila["IdInscripcion"]); });
+                    int Indice = ListaInscripciones.FindIndex(delegate(Inscripcion I) { return I.IdInscripcion == Convert.ToInt32(Fila["IdInscripcion"]); });
+                    bInscripcion.Equipo.Jugador2 = Fila.IsNull("Dni") ? null :
+                        repoJugadores.Buscar(Convert.ToInt32(Fila["Dni"]));
+                    ListaInscripciones[Indice] = bInscripcion;
+                }
+            }
+            return ListaInscripciones;
+        }
+
+        #endregion
+
+        #region Miembros de IInscripcionRepositorio
+
+
+        public void BajaInscripcion(Inscripcion Inscripcion)
+        {
+            String Consulta = " Update Inscripciones Set ";
+            Consulta += " Estado = 0";
+            Consulta += " Where IdInscripcion = " + Inscripcion.IdInscripcion;
+            Conn.ActualizarOEliminar(Consulta);
         }
 
         #endregion
