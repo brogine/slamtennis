@@ -12,7 +12,14 @@ namespace Repositorio
         Conexion Conn;
         public LoginRepositorio()
         {
-            Conn = new Conexion();
+            try
+            {
+                Conn = new Conexion();
+            }
+            catch (Exception ex)
+            {
+                throw new RepositorioExeption(ex.Message);
+            }
         }
 
         #region Miembros de ILoginRepositorio

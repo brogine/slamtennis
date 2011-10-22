@@ -20,7 +20,15 @@ namespace Slam
         public FrmLogin()
         {
             InitializeComponent();
-            LoginServicio = (ILoginServicio)AppContext.Instance.GetObject(ImplementaLogin);
+            try
+            {
+                LoginServicio = (ILoginServicio)AppContext.Instance.GetObject(ImplementaLogin);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+                Application.Exit();
+            }
         }
 
         private void BtnCancelar_Click(object sender, EventArgs e)
