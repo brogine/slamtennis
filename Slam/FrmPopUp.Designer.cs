@@ -108,7 +108,6 @@
             this.Text = "Notificación";
             this.TopMost = true;
             this.Load += new System.EventHandler(this.FrmPopUp_Load);
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FrmPopUp_FormClosing);
             this.ResumeLayout(false);
             this.PerformLayout();
 
