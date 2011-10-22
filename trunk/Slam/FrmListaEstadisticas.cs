@@ -9,6 +9,7 @@ using System.Windows.Forms;
 using Servicio.InterfacesUI;
 using Servicio;
 using ApplicationContext;
+using Reportes;
 
 namespace Slam
 {
@@ -17,6 +18,7 @@ namespace Slam
         string ImplementaEstadisticas = "EstadisticasServicio";
         string ImplementaClubes = "ClubServicio";
         string ImplementaCategorias = "CategoriaServicio";
+        string ImplementaReportes = "ReportesServicio";
         IListadoEstadisticasServicio servicioEstadisticas;
         IListadoClubServicio servicioClubes;
         IListadoCategoriaServicio servicioCategorias;
@@ -47,13 +49,9 @@ namespace Slam
             {
                 servicioEstadisticas.ListarPorCategoriaClub(this);
                 if (RBSingle.Checked == true)
-                {
                     servicioEstadisticas.ListarPorCategoriaClub(this);
-                }
                 else
-                {
                     servicioEstadisticas.ListarPorCategoriaClubDobles(this);
-                }
             }
         }
 
@@ -62,13 +60,9 @@ namespace Slam
             if (CboClubes.SelectedIndex > -1 && CboCategorias.SelectedIndex > -1)
             {
                 if (RBSingle.Checked == true)
-                {
                     servicioEstadisticas.ListarPorCategoriaClub(this);
-                }
                 else
-                {
                     servicioEstadisticas.ListarPorCategoriaClubDobles(this);
-                }
             }
         }
 
@@ -131,9 +125,7 @@ namespace Slam
                     servicioEstadisticas.ListarPorCategoriaClub(this);
             }
             else
-            {
-                MessageBox.Show("Debe Seleccionar Un Jugador De La Lista");
-            }
+                MessageBox.Show("Debe Seleccionar Un Jugador De La Lista", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         private void BtnVerEstadisticas_Click(object sender, EventArgs e)
@@ -148,9 +140,7 @@ namespace Slam
                     servicioEstadisticas.ListarPorCategoriaClub(this);
             }
             else
-            {
-                MessageBox.Show("Debe Seleccionar Un Jugador De La Lista");
-            }
+                MessageBox.Show("Debe Seleccionar Un Jugador De La Lista", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         #region Miembros de IListadoClubes
@@ -204,17 +194,29 @@ namespace Slam
         private void RBSingle_CheckedChanged(object sender, EventArgs e)
         {
             if (CboCategorias.SelectedIndex > -1 && CboClubes.SelectedIndex > -1)
-            {
                 servicioEstadisticas.ListarPorCategoriaClub(this);
-            }
         }
 
         private void RBDoble_CheckedChanged(object sender, EventArgs e)
         {
             if (CboCategorias.SelectedIndex > -1 && CboClubes.SelectedIndex > -1)
-            {
                 servicioEstadisticas.ListarPorCategoriaClubDobles(this);
+        }
+
+        private void BtnReporte_Click(object sender, EventArgs e)
+        {
+            if (CboCategorias.SelectedIndex > -1)
+            {
+                IReportesServicio servicioReportes = (IReportesServicio)AppContext.Instance.GetObject(ImplementaReportes);
+                Object ReporteEstadisticas = servicioReportes.CrearInstancia(ListadoReportes.Ranking.ToString(),
+                    ((KeyValuePair<int, string>)CboCategorias.SelectedItem).Key);
+                servicioReportes.Parametros("Categoria", ((KeyValuePair<int, string>)CboCategorias.SelectedItem).Value);
+                FrmReportes reportes = new FrmReportes(ReporteEstadisticas);
+                reportes.Show();
+                reportes.BringToFront();
             }
+            else
+                MessageBox.Show("Debe elegir una categoría del desplegable para continuar.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
     }
 }

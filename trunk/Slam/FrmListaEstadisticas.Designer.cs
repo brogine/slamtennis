@@ -93,6 +93,7 @@
             this.BtnReporte.TabIndex = 5;
             this.BtnReporte.Text = "Generar Reporte";
             this.BtnReporte.UseVisualStyleBackColor = true;
+            this.BtnReporte.Click += new System.EventHandler(this.BtnReporte_Click);
             // 
             // BtnSalir
             // 

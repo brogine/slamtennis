@@ -7,24 +7,25 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using Reportes;
+using ApplicationContext;
 
 namespace Slam
 {
     public partial class FrmReportes : Form
     {
+        string ImplementaReportes = "ReportesServicio";
         IReportesServicio servicioReportes;
         public FrmReportes()
         {
             InitializeComponent();
-            servicioReportes = new ReportesServicio();
+            servicioReportes = (IReportesServicio)AppContext.Instance.GetObject(ImplementaReportes);
         }
 
         public FrmReportes(Object Reporte)
         {
             InitializeComponent();
-            servicioReportes = new ReportesServicio();
+            servicioReportes = (IReportesServicio)AppContext.Instance.GetObject(ImplementaReportes);
             RptViewer.ReportSource = Reporte;
-            RptViewer.RefreshReport();
         }
 
         private void FrmReportes_Load(object sender, EventArgs e)
