@@ -12,7 +12,14 @@ namespace Servicio
         ILoginRepositorio loginRepo;
         public LoginServicio()
         {
-            loginRepo = new LoginRepositorio();
+            try
+            {
+                loginRepo = new LoginRepositorio();
+            }
+            catch (Exception ex)
+            {
+                throw new ServicioExeption(ex.Message);
+            }
         }
         #region Miembros de ILoginServicio
 
