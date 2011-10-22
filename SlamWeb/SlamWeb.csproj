@@ -141,15 +141,49 @@
     <Content Include="Content\basic.css" />
     <Content Include="Content\basic_ie.css" />
     <Content Include="Content\bg1.gif" />
+    <Content Include="Content\calendar.gif" />
     <Content Include="Content\Consultas.png" />
     <Content Include="Content\Estadisticos.png" />
+    <Content Include="Content\export.gif" />
+    <Content Include="Content\exportd.gif" />
+    <Content Include="Content\export_over.gif" />
+    <Content Include="Content\First.gif" />
+    <Content Include="Content\Firstd.gif" />
+    <Content Include="Content\first_over.gif" />
+    <Content Include="Content\gotopage.gif" />
+    <Content Include="Content\gotopage_over.gif" />
+    <Content Include="Content\grouptree.gif" />
+    <Content Include="Content\grouptreed.gif" />
+    <Content Include="Content\grouptreepressed.gif" />
+    <Content Include="Content\grouptree_over.gif" />
     <Content Include="Content\HistorialCategoria.png" />
     <Content Include="Content\Home.png" />
+    <Content Include="Content\Last.gif" />
+    <Content Include="Content\Lastd.gif" />
+    <Content Include="Content\last_over.gif" />
     <Content Include="Content\Laves.png" />
     <Content Include="Content\Mensajes.png" />
+    <Content Include="Content\Next.gif" />
+    <Content Include="Content\Nextd.gif" />
+    <Content Include="Content\next_over.gif" />
+    <Content Include="Content\Prev.gif" />
+    <Content Include="Content\Prevd.gif" />
+    <Content Include="Content\prev_over.gif" />
+    <Content Include="Content\print.gif" />
+    <Content Include="Content\printd.gif" />
+    <Content Include="Content\print_over.gif" />
+    <Content Include="Content\Refresh.gif" />
+    <Content Include="Content\refreshd.gif" />
+    <Content Include="Content\refresh_over.gif" />
+    <Content Include="Content\Search.gif" />
+    <Content Include="Content\searchd.gif" />
+    <Content Include="Content\search_over.gif" />
     <Content Include="Content\Slam.jpg" />
     <Content Include="Content\Tips.png" />
     <Content Include="Content\Torneos.png" />
+    <Content Include="Content\up.gif" />
+    <Content Include="Content\upd.gif" />
+    <Content Include="Content\up_over.gif" />
     <Content Include="Content\x.png" />
     <Content Include="Correcto.aspx" />
     <Content Include="Default.aspx" />
@@ -165,6 +199,10 @@
     <Content Include="Torneos.aspx" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Reportes\Reportes.csproj">
+      <Project>{D706359D-54A9-4388-A89E-410C5ED8A715}</Project>
+      <Name>Reportes</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Servicio\Servicio.csproj">
       <Project>{2F2D0BB4-3527-426C-B8CD-0C40D1250853}</Project>
       <Name>Servicio</Name>
@@ -172,6 +210,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="aspnet_client\" />
     <Folder Include="Profiles\" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />

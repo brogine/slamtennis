@@ -59,15 +59,6 @@ namespace SlamWeb {
         protected global::System.Web.UI.WebControls.Image Image1;
         
         /// <summary>
-        /// CboClub control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList CboClub;
-        
-        /// <summary>
         /// CboCategorias control.
         /// </summary>
         /// <remarks>
@@ -75,6 +66,15 @@ namespace SlamWeb {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList CboCategorias;
+        
+        /// <summary>
+        /// CboTipo control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList CboTipo;
         
         /// <summary>
         /// Panel1 control.
@@ -156,6 +156,60 @@ namespace SlamWeb {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label LblPUNTOS;
+        
+        /// <summary>
+        /// LblPJ2 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label LblPJ2;
+        
+        /// <summary>
+        /// LblPG2 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label LblPG2;
+        
+        /// <summary>
+        /// LblPP2 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label LblPP2;
+        
+        /// <summary>
+        /// LblTJ2 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label LblTJ2;
+        
+        /// <summary>
+        /// LblTC2 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label LblTC2;
+        
+        /// <summary>
+        /// LblPD2 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label LblPD2;
         
         /// <summary>
         /// Image2 control.

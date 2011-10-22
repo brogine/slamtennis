@@ -15,7 +15,9 @@ namespace Servicio
 	/// </summary>
 	public interface IListadoEstadisticasServicio
 	{
-		void ListarPorCategoria(IListadoEstadisticasCategoria ui);
+        void ListarPorCategoriaActiva(IListadoEstadisticasCategoria ui);
+
+        void ListarPorCategoria(IListadoEstadisticasCategoria ui);
 
         void ListarPorCategoriaClub(IListadoEstadisticasCategoria ui);
 		

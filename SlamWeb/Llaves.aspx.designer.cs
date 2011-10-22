@@ -59,13 +59,22 @@ namespace SlamWeb {
         protected global::System.Web.UI.WebControls.Image Image1;
         
         /// <summary>
-        /// CrystalReportViewer1 control.
+        /// CboTorneos control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::CrystalDecisions.Web.CrystalReportViewer CrystalReportViewer1;
+        protected global::System.Web.UI.WebControls.DropDownList CboTorneos;
+        
+        /// <summary>
+        /// ReportViewerLlave control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::CrystalDecisions.Web.CrystalReportViewer ReportViewerLlave;
         
         /// <summary>
         /// CrystalReportSource1 control.

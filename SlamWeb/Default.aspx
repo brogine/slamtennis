@@ -22,6 +22,7 @@
     <asp:Label ID="LblEmail" runat="server" Text="---"></asp:Label>
 <br />
 </div>
+<center>
 <table width="80%" style="height:100%">
     <tr>
         <td class="style1">
@@ -63,6 +64,7 @@
             Mensajes al administrador</td>
     </tr>
     </table>
+ </center>
 </div>
 </asp:Content>
 

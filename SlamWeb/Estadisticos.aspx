@@ -71,21 +71,22 @@
     <table width="90%">
         <tr>
             <td style="text-align: right" class="style3">
-                Seleccione Club:
+                Seleccione Categoria:
             </td>
             <td class="style4">
-                <asp:DropDownList ID="CboClub" runat="server"
-                    onselectedindexchanged="CboClub_SelectedIndexChanged">
+                <asp:DropDownList ID="CboCategorias" runat="server" AutoPostBack="True" >
                 </asp:DropDownList>
             </td>
         </tr>
         <tr>
             <td style="text-align: right" class="style3">
-                Seleccione Categoria:
-            </td>
+                Seleccione Tipo:</td>
             <td class="style4">
-                <asp:DropDownList ID="CboCategorias" runat="server" AutoPostBack="True" 
+                <asp:DropDownList ID="CboTipo" runat="server" AutoPostBack="True" 
                     onselectedindexchanged="CboCategorias_SelectedIndexChanged">
+                    <asp:ListItem Selected="True">Seleccione</asp:ListItem>
+                    <asp:ListItem>Single</asp:ListItem>
+                    <asp:ListItem>Doble</asp:ListItem>
                 </asp:DropDownList>
             </td>
         </tr>
@@ -96,6 +97,7 @@
       <table width="100%">  
         <tr style="text-align:center">
             <td>
+            <center>
                 <asp:Panel ID="Panel1" runat="server" Height="200px" ScrollBars="Vertical">
                    
                             <asp:GridView ID="DgvEstadisticas" runat="server" CellPadding="4" 
@@ -110,6 +112,7 @@
                             </asp:GridView>
                        
                 </asp:Panel>
+            </center>
             </td>
         </tr>
     </table>
@@ -127,7 +130,7 @@
             Tus Datos Estaditicos
             <br />
             <br />
-            <p></p>
+            <p>Datos Single</p>
         </div>
         <table width="100%" class="style1">
             <tr style="width:25%">
@@ -165,7 +168,7 @@
                     
                 </td>
             </tr>
-             <tr>
+            <tr>
                 <td class="style1">
                     Torneos Completos:
                 </td>
@@ -180,6 +183,62 @@
                 <td class="style2">
                     
                     <asp:Label ID="LblPUNTOS" runat="server" ForeColor="#CCCCCC" Text="00"></asp:Label>
+                    
+                </td>
+            </tr>
+        </table>
+       <p>Datos Doble</p>
+       <table width="100%" class="style1">     
+            <tr style="width:25%">
+                <td class="style5">
+                    Partidos Jugados:
+                </td>
+                <td class="style6">
+                    
+                    <asp:Label ID="LblPJ2" runat="server" Text="00"></asp:Label>
+                </td>
+                <td class="style7">
+                    Partidos Ganados:
+                </td>
+                <td class="style6">
+                    
+                    <asp:Label ID="LblPG2" runat="server" Text="00"></asp:Label>
+                    
+                </td>
+            </tr>
+            <tr>
+                <td class="style1">
+                    Partidos Perdidos:
+                </td>
+                <td class="style2">
+                    
+                    <asp:Label ID="LblPP2" runat="server" Text="00"></asp:Label>
+                    
+                </td>
+                <td>
+                    Torneos Jugados:
+                </td>
+                <td class="style2">
+                    
+                    <asp:Label ID="LblTJ2" runat="server" Text="00"></asp:Label>
+                    
+                </td>
+            </tr>
+            <tr>
+                <td class="style1">
+                    Torneos Completos:
+                </td>
+                <td class="style2">
+                    
+                    <asp:Label ID="LblTC2" runat="server" Text="00"></asp:Label>
+                    
+                </td>
+                <td>
+                    Puntos:
+                </td>
+                <td class="style2">
+                    
+                    <asp:Label ID="LblPD2" runat="server" ForeColor="#CCCCCC" Text="00"></asp:Label>
                     
                 </td>
             </tr>

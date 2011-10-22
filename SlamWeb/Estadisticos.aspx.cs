@@ -26,8 +26,6 @@ namespace SlamWeb
                 LblSexo.Text = Session["Sexo"].ToString().Trim();
                 Image2.ImageUrl = "~/Profiles/" + Session["Imagen"].ToString().Trim();
                 IListadoEstadisticasServicio servicioEstadisticas = new EstadisticasServicio();
-                //IListadoClubServicio servicioClubes = new ClubServicio();
-                //servicioClubes.ListarActivos(this);
                 IListadoCategoriaServicio servicioCategorias = new CategoriaServicio();
                 servicioCategorias.ListarActivas(this);
             }
@@ -52,53 +50,43 @@ namespace SlamWeb
                 dt.Columns.Add("Posicion");
                 if (dt.Rows.Count > 0)
                     dt.Rows.Clear();
+                bool existe = false;
                 foreach (object estadistica in value)
                 {
                     object[] estadisticas = estadistica.ToString().Split(',');
+                    if (Convert.ToInt32(estadisticas[0]) == Convert.ToInt32(Session["Dni"]))
+                    {
+                        existe = true;
+                    }
                     dt.Rows.Add(estadisticas);
                 }
                 DgvEstadisticas.DataSource = dt;
                 DgvEstadisticas.DataBind();
-                PnlDatos.Visible = true;
-                IEstadisticasServicio servicioEstadisticas = new EstadisticasServicio();
-                if (IdCategoria > 0 && Dni > 0)
+
+                if (existe != false)
                 {
-                    servicioEstadisticas.Buscar(this);
+                    PnlDatos.Visible = true;
+                    IEstadisticasServicio servicioEstadisticas = new EstadisticasServicio();
+                    if (IdCategoria > 0 && Dni > 0)
+                    {
+                        servicioEstadisticas.Buscar(this);
+                    }
+                }
+                else
+                {
+                    PnlDatos.Visible = false;
                 }
             }
         }
 
         public int IdClub
         {
-            get { return Convert.ToInt32(CboClub.SelectedValue); }
+            get { return 0; }
         }
 
         public int IdCategoria
         {
             get { return Convert.ToInt32(CboCategorias.SelectedValue); }
-        }
-
-        #endregion
-
-        #region IListadoClubes Members
-
-        public List<object> ListarClubes
-        {
-            set
-            {
-                Dictionary<int, string> ListaClubes = new Dictionary<int, string>();
-                ListaClubes.Add(0, "Seleccione");
-                foreach (Object Club in value)
-                {
-                    Object[] DatosClub = Club.ToString().Split(',');
-                    ListaClubes.Add(Convert.ToInt32(DatosClub[0]), DatosClub[1].ToString());
-                }
-                CboClub.DataSource = ListaClubes;
-                CboClub.DataTextField = "Value";
-                CboClub.DataValueField = "Key";
-                CboClub.DataBind();
-                CboClub.SelectedIndex = -1;
-            }
         }
 
         #endregion
@@ -125,22 +113,21 @@ namespace SlamWeb
         }
 
         #endregion
-
-        protected void CboClub_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            //if (CboClub.SelectedIndex > -1 && CboCategorias.SelectedIndex > -1)
-            //{
-            //    IListadoEstadisticasServicio servicioEstadisticas = new EstadisticasServicio();
-            //    servicioEstadisticas.ListarPorDni(this);
-            //}
-        }
-
+      
         protected void CboCategorias_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (CboCategorias.SelectedIndex > -1)
+            if (CboCategorias.SelectedIndex > 0 && CboTipo.SelectedIndex > 0)
             {
-                IListadoEstadisticasServicio servicioEstadisticas = new EstadisticasServicio();
-                servicioEstadisticas.ListarPorCategoria(this);
+                if (CboTipo.Text == "Single")
+                {
+                    IListadoEstadisticasServicio servicioEstadisticas = new EstadisticasServicio();
+                    servicioEstadisticas.ListarPorCategoria(this);
+                }
+                else
+                {
+                    IListadoEstadisticasServicio servicioEstadisticas = new EstadisticasServicio();
+                    servicioEstadisticas.ListarPorCategoriaDobles(this);
+                }
             }
         }
 
@@ -243,7 +230,7 @@ namespace SlamWeb
 
         public int PartidosJugadosDobles
         {
-            set { throw new NotImplementedException(); }
+            set { LblPJ2.Text = value.ToString(); }
         }
 
         public int PartidosGanadosDobles
@@ -254,7 +241,7 @@ namespace SlamWeb
             }
             set
             {
-                Session["PartidosDbl"] = value;
+                LblPG2.Text = value.ToString();
             }
         }
 
@@ -266,7 +253,7 @@ namespace SlamWeb
             }
             set
             {
-                throw new NotImplementedException();
+                LblPP2.Text = value.ToString();
             }
         }
 
@@ -278,7 +265,7 @@ namespace SlamWeb
             }
             set
             {
-                throw new NotImplementedException();
+                LblTC2.Text = value.ToString();
             }
         }
 
@@ -290,7 +277,7 @@ namespace SlamWeb
             }
             set
             {
-                throw new NotImplementedException();
+                LblTJ2.Text = value.ToString();
             }
         }
 
@@ -302,7 +289,7 @@ namespace SlamWeb
             }
             set
             {
-                throw new NotImplementedException();
+                this.LblPD2.Text = value.ToString();
             }
         }
 
