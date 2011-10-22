@@ -19,11 +19,26 @@
         <br />
     Llaves</div>
     
-    <div style="height:1130px; width:100%">
+    <div style="height:1230px; width:100%">
     <center>
-        <CR:CrystalReportViewer ID="CrystalReportViewer1" runat="server" 
+        <div>
+            Seleccione Torneo:<asp:DropDownList ID="CboTorneos" runat="server" 
+                AutoPostBack="True" onselectedindexchanged="CboTorneos_SelectedIndexChanged">
+            </asp:DropDownList>
+        </div>
+    </center>
+    <br />
+    <br />
+    <center>
+        <CR:CrystalReportViewer ID="ReportViewerLlave" runat="server" 
             AutoDataBind="True" Height="1130px" ReportSourceID="CrystalReportSource1" 
-            Width="875px" />
+            Width="875px" Visible="False" EnableDatabaseLogonPrompt="False" 
+            EnableParameterPrompt="False" HasCrystalLogo="False" 
+            ReuseParameterValuesOnRefresh="True" HasDrillUpButton="False" 
+            HasGotoPageButton="False" HasSearchButton="False" HasViewList="False" 
+            
+            ToolbarImagesFolderUrl="/Slam/Content/" 
+            DisplayGroupTree="False" />
         <CR:CrystalReportSource ID="CrystalReportSource1" runat="server">
             <Report FileName="C:\Users\Maxi\Documents\Visual Studio 2008\Projects\Slam\Reportes\RptLlave.rpt">
             </Report>

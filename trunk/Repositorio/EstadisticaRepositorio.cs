@@ -90,7 +90,7 @@ namespace Repositorio
     		return ListaEstadisticas;
     	}
     	
-    	public List<Estadisticas> ListarPorCategoria(int IdCategoria){
+    	public List<Estadisticas> ListarPorCategoriaActiva(int IdCategoria){
             string Consulta = " Select * From Jugadores Where IdCategoria = " + IdCategoria + " and estado = 1 Order By Puntos ";
     		List<Estadisticas> ListaEstadisticas = new List<Estadisticas>();
     		DataTable Tabla = Conn.Listar(Consulta);
@@ -101,6 +101,20 @@ namespace Repositorio
     		}
     		return ListaEstadisticas;
     	}
+
+        public List<Estadisticas> ListarPorCategoria(int IdCategoria)
+        {
+            string Consulta = " Select * From Jugadores Where IdCategoria = " + IdCategoria + " Order By Puntos ";
+            List<Estadisticas> ListaEstadisticas = new List<Estadisticas>();
+            DataTable Tabla = Conn.Listar(Consulta);
+            int i = 1;
+            foreach (DataRow Fila in Tabla.Rows)
+            {
+                ListaEstadisticas.Add(this.Mapear(Fila));
+                i++;
+            }
+            return ListaEstadisticas;
+        }
 
         public List<Estadisticas> ListarPorCategoriaClub(int IdClub, int IdCategoria)
         { 

@@ -84,13 +84,14 @@ namespace Servicio
                 ui.TorneosCompletados = bEstadistica.TorneosCompletados;
                 ui.TorneosJugados = bEstadistica.TorneosJugados;
                 ui.Puntos = bEstadistica.Puntaje;
+                ui.PartidosGanadosDobles = bEstadistica.PartidosGanadosDoble;
+                ui.PartidosPerdidosDobles = bEstadistica.PartidosPerdidosDoble;
+                ui.PartidosJugadosDobles = bEstadistica.PartidosJugadosDoble;
+                ui.PuntosDobles = bEstadistica.PuntajeDoble;
+                ui.TorneosCompletadosDobles = bEstadistica.TorneosCompletadosDoble;
+                ui.TorneosJugadosDobles = bEstadistica.TorneosJugadosDoble;
             }
-            ui.PartidosGanadosDobles = bEstadistica.PartidosGanadosDoble;
-            ui.PartidosPerdidosDobles = bEstadistica.PartidosPerdidosDoble;
-            ui.PartidosJugadosDobles = bEstadistica.PartidosJugadosDoble;
-            ui.PuntosDobles = bEstadistica.PuntajeDoble;
-            ui.TorneosCompletadosDobles = bEstadistica.TorneosCompletadosDoble;
-            ui.TorneosJugadosDobles = bEstadistica.TorneosJugadosDoble;
+            
 		}
 		
 
@@ -103,9 +104,9 @@ namespace Servicio
 		/// (Principalmente para reportes)
 		/// </summary>
 		/// <param name="ui"></param>
-		public void ListarPorCategoria(IListadoEstadisticasCategoria ui)
+		public void ListarPorCategoriaActiva(IListadoEstadisticasCategoria ui)
 		{
-			List<Estadisticas> ListaEstadisticas = repoEstadisticas.ListarPorCategoria(ui.IdCategoria);
+			List<Estadisticas> ListaEstadisticas = repoEstadisticas.ListarPorCategoriaActiva(ui.IdCategoria);
 			IJugadorRepositorio repoJugadores = new JugadorRepositorio();
 			List<Object> ListaUI = new List<object>();
             int i = 1;
@@ -123,6 +124,30 @@ namespace Servicio
 			}
 			ui.ListarEstadisticas = ListaUI;
 		}
+
+        public void ListarPorCategoria(IListadoEstadisticasCategoria ui)
+        {
+            List<Estadisticas> ListaEstadisticas = repoEstadisticas.ListarPorCategoria(ui.IdCategoria);
+            IJugadorRepositorio repoJugadores = new JugadorRepositorio();
+            List<Object> ListaUI = new List<object>();
+            int i = 1;
+            foreach (Estadisticas Estadistica in ListaEstadisticas)
+            {
+                Object Objeto = new object();
+                Jugador tempJugador = repoJugadores.Buscar(Estadistica.Dni);
+                Objeto = tempJugador.Dni + ",";
+                Objeto += tempJugador.Apellido + " " + tempJugador.Nombre + ",";
+                Objeto += Estadistica.PJ + "," + Estadistica.PG + "," + Estadistica.PP + ",";
+                Objeto += Estadistica.TorneosJugados + "," + Estadistica.TorneosCompletados + ",";
+                Objeto += Estadistica.Puntaje.ToString() + ",";
+                Objeto += i.ToString();
+                ListaUI.Add(Objeto);
+                i++;
+            }
+            ui.ListarEstadisticas = ListaUI;
+        }
+
+   
 
         public void ListarPorCategoriaClub(IListadoEstadisticasCategoria ui)
         {
