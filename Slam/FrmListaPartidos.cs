@@ -22,6 +22,7 @@ namespace Slam
             InitializeComponent();
         }
 
+        string ImplementaReportes = "ReportesServicio";
         string ImplementaTorneos = "TorneoServicio";
         string ImplementaInscripciones = "InscripcionServicio";
         string ImplementaPartidos = "PartidoServicio";
@@ -166,7 +167,7 @@ namespace Slam
             {
                 if ((value.Count / 2) <= DgvListaPartidos.RowCount)
                 {
-                    IReportesServicio servicioReportes = new ReportesServicio();
+                    IReportesServicio servicioReportes = (IReportesServicio)AppContext.Instance.GetObject(ImplementaReportes);
                     Object ReporteLlave = servicioReportes.CrearInstancia("Llave", IdTorneo);
                     FrmReportes Reportes = new FrmReportes(ReporteLlave);
                     Reportes.Show();

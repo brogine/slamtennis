@@ -17,6 +17,7 @@ namespace Slam
     {
         string ImplementaTorneos = "TorneoServicio";
         string ImplementaInscripciones = "InscripcionServicio";
+        string ImplementaReportes = "ReportesServicio";
         IListadoTorneoServicio servicioTorneos;
         IInscripcionServicio servicioInscripciones;
         ITorneoServicio servicioTorneoTipo;
@@ -100,7 +101,7 @@ namespace Slam
                     }
                     if (crearReporte)
                     {
-                        IReportesServicio servicioReportes = new ReportesServicio();
+                        IReportesServicio servicioReportes = (IReportesServicio)AppContext.Instance.GetObject(ImplementaReportes);
                         object ReportedeInscripcion = servicioReportes.CrearInstancia("CuponInscripcion", IdInscripcionActual);
                         FrmReportes frmReportes = new FrmReportes(ReportedeInscripcion);
                         frmReportes.MdiParent = this.MdiParent;
