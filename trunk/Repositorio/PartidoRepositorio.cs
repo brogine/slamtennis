@@ -23,7 +23,7 @@ namespace Repositorio
             string FechaFormateada = Partido.Fecha.Year + "/" + Partido.Fecha.Month + "/" + Partido.Fecha.Day;
             int IdTorneo = Partido.Torneo.IdTorneo;
             string Resultado = Partido.Resultado;
-            int Ronda = Partido.Ronda;
+            string Ronda = Partido.Ronda;
             bool Estado = Partido.Estado;
             int Equipo1 = Partido.Equipo1.IdInscripcion;
             int IdPartido = Conn.Agregar("Partidos", "IdTorneo,Resultado,Fecha,Ronda,Estado", IdTorneo + ",'" + Resultado + "','" + FechaFormateada + "','" + Ronda + "'," + (Estado ? 1 : 0));
@@ -173,7 +173,7 @@ namespace Repositorio
                 
                 DateTime Fecha = Fila.IsNull("Fecha") ? DateTime.Now : Convert.ToDateTime(Fila["Fecha"]);
                 string Resultado = Fila.IsNull("Resultado") ? string.Empty : Fila["Resultado"].ToString();
-                string Ronda = Fila.IsNull("Ronda") ? string.Empty : Convert.ToInt32(Fila["Ronda"]);
+                string Ronda = Fila.IsNull("Ronda") ? string.Empty : Fila["Ronda"].ToString();
                 bool Estado = Fila.IsNull("Estado") ? false : Convert.ToBoolean(Fila["Estado"]);
                 nPartido = new Partido();
                 nPartido.IdPartido = IdPartido;
