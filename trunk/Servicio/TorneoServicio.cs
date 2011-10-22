@@ -164,6 +164,7 @@ namespace Servicio
 
         public System.Data.DataSet GetDatosPartido(int idtorneo)
         {
+            DataSet Ds = new DataSet();
             Torneo torneo = TorneoRepo.Buscar(idtorneo);
             IPartidoRepositorio partidorepo = new PartidoRepositorio();
             List<Partido> listado = partidorepo.Listar(idtorneo);
@@ -174,23 +175,84 @@ namespace Servicio
             DtTorneo.Columns.Add("FechaInicio");
             DtTorneo.Columns.Add("FechaFin");
             //Tabla de Torneos
-            DtTorneo.Rows.Add(torneo.Categoria.Nombre, torneo.Nombre, torneo.Club.Nombre, torneo.FechaInicio, torneo.FechaFin);
+            DtTorneo.Rows.Add(torneo.Categoria.Nombre, torneo.Nombre, torneo.Club.Nombre,
+                torneo.FechaInicio.ToShortDateString(), torneo.FechaFin.ToShortDateString());
+            Ds.Tables.Add(DtTorneo);
 
             //Tabla Partidos
 
             DataTable DtPartido = new DataTable("Partido");
-            DtTorneo.Columns.Add("Equipo1");
-            DtTorneo.Columns.Add("Equipo2");
-            DtTorneo.Columns.Add("Resultado");
-            DtTorneo.Columns.Add("Ronda");
-            DtTorneo.Columns.Add("Ganador");
-            DtTorneo.Columns.Add("Fecha");
+            DtPartido.Columns.Add("Equipo1");
+            DtPartido.Columns.Add("Equipo2");
+            DtPartido.Columns.Add("Resultado");
+            DtPartido.Columns.Add("Ronda");
+            DtPartido.Columns.Add("Ganador");
+            DtPartido.Columns.Add("Fecha");
             
             foreach (var item in listado)
             {
-                //DtPartido.Rows.Add(item.Equipo1,)    
+                string campos = item.Resultado.Replace("/", "");
+                campos = campos.Replace("-", "");
+                campos = campos.Trim();
+                int Ganador = 0;
+                string EquipoGanador = "";
+                if (campos != "")
+                    Ganador = item.CalcularGanador(item.Resultado);
+
+                if (torneo.TipoTorneo == TipoTorneo.Doble)
+                {
+                    if (Ganador == 1)
+                    {
+                        EquipoGanador = item.Equipo1.Equipo.Jugador1.Apellido + " " + item.Equipo1.Equipo.Jugador1.Nombre + " - " +
+                            item.Equipo1.Equipo.Jugador2.Apellido + " " + item.Equipo1.Equipo.Jugador2.Nombre;
+                    }
+                    else if (Ganador == 2)
+                    {
+                        EquipoGanador = item.Equipo2.Equipo.Jugador1.Apellido + " " + item.Equipo2.Equipo.Jugador1.Nombre + " - " +
+                            item.Equipo2.Equipo.Jugador2.Apellido + " " + item.Equipo2.Equipo.Jugador2.Nombre;
+                    }
+                    if (item.Equipo2 != null)
+                    {
+                        DtPartido.Rows.Add(item.Equipo1.Equipo.Jugador1.Apellido + " " + item.Equipo1.Equipo.Jugador1.Nombre,
+                            item.Equipo1.Equipo.Jugador2.Apellido + " " + item.Equipo1.Equipo.Jugador2.Nombre,
+                            item.Equipo2.Equipo.Jugador1.Apellido + " " + item.Equipo2.Equipo.Jugador1.Nombre,
+                            item.Equipo2.Equipo.Jugador2.Apellido + " " + item.Equipo2.Equipo.Jugador2.Nombre,
+                            (campos == "" ? campos : item.Resultado), item.Ronda, EquipoGanador, item.Fecha.ToShortDateString());
+                    }
+                    else
+                    {
+                        DtPartido.Rows.Add(item.Equipo1.Equipo.Jugador1.Apellido + " " + item.Equipo1.Equipo.Jugador1.Nombre,
+                            item.Equipo1.Equipo.Jugador2.Apellido + " " + item.Equipo1.Equipo.Jugador2.Nombre,
+                            "BYE", " ",
+                            (campos == "" ? campos : item.Resultado), item.Ronda, EquipoGanador, item.Fecha.ToShortDateString());
+                    }
+                }
+                else
+                {
+                    if (Ganador == 1)
+                    {
+                        EquipoGanador = item.Equipo1.Equipo.Jugador1.Apellido + " " + item.Equipo1.Equipo.Jugador1.Nombre;
+                    }
+                    else if(Ganador == 2)
+                    {
+                        EquipoGanador = item.Equipo2.Equipo.Jugador1.Apellido + " " + item.Equipo2.Equipo.Jugador1.Nombre;
+                    }
+                    if (item.Equipo2 != null)
+                    {
+                        DtPartido.Rows.Add(item.Equipo1.Equipo.Jugador1.Apellido + " " + item.Equipo1.Equipo.Jugador1.Nombre,
+                            item.Equipo2.Equipo.Jugador1.Apellido + " " + item.Equipo2.Equipo.Jugador1.Nombre,
+                            (campos == "" ? campos : item.Resultado), item.Ronda, EquipoGanador, item.Fecha.ToShortDateString());
+                    }
+                    else
+                    {
+                        DtPartido.Rows.Add(item.Equipo1.Equipo.Jugador1.Apellido + " " + item.Equipo1.Equipo.Jugador1.Nombre,
+                            "BYE", (campos == "" ? campos : item.Resultado), item.Ronda, EquipoGanador, item.Fecha.ToShortDateString());
+                    }
+                }
             }
-            return new DataSet();
+            Ds.Tables.Add(DtPartido);
+
+            return Ds;
         }
 
         #endregion

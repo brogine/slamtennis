@@ -164,7 +164,7 @@ namespace Slam
         {
             set 
             {
-                if ((value.Count / 2) == DgvListaPartidos.RowCount)
+                if ((value.Count / 2) <= DgvListaPartidos.RowCount)
                 {
                     IReportesServicio servicioReportes = new ReportesServicio();
                     Object ReporteLlave = servicioReportes.CrearInstancia("Llave", IdTorneo);
