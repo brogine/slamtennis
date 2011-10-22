@@ -10,7 +10,7 @@ namespace Servicio.InterfacesUI
         int IdPartido { get; set; }
         int IdEquipo1 { get; set; }
         int IdEquipo2 { get; set; }
-        int Ronda { get; set; }
+        string Ronda { get; set; }
         int IdTorneo { get; set;}
         string Resultado { get; set; }
         DateTime Fecha { get; set; }

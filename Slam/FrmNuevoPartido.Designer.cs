@@ -194,7 +194,7 @@
             // 
             this.TxtRonda.Location = new System.Drawing.Point(358, 110);
             this.TxtRonda.Name = "TxtRonda";
-            this.TxtRonda.Size = new System.Drawing.Size(50, 20);
+            this.TxtRonda.Size = new System.Drawing.Size(103, 20);
             this.TxtRonda.TabIndex = 11;
             this.TxtRonda.Validating += new System.ComponentModel.CancelEventHandler(this.TxtRonda_Validating);
             // 

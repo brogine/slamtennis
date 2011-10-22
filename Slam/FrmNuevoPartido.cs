@@ -93,15 +93,16 @@ namespace Slam
             }
         }
 
-        public int Ronda
+        public string Ronda
         {
             get
             {
-                return Convert.ToInt32(TxtRonda.Text);
+                return TxtRonda.Text;
             }
             set
             {
                 TxtRonda.Text = value.ToString();
+               
             }
         }
 
@@ -189,6 +190,22 @@ namespace Slam
         {
             set
             {
+                if(value.Count>4 && value.Count <=8)
+                {
+                TxtRonda.Text="Cuartos";
+                }
+                if (value.Count <= 4 && value.Count < 2)
+                {
+                    TxtRonda.Text = "Semi Final";
+                }
+                if (value.Count == 2)
+                {
+                    TxtRonda.Text = "Final";
+                }
+                else
+                {
+                    TxtRonda.Text = "";
+                }
                 Dictionary<int, string> ListaInscripciones = new Dictionary<int, string>();
                 foreach (Object Inscripcion in value)
                 {
@@ -262,7 +279,8 @@ namespace Slam
                 torneo = (ITorneoServicio)AppContext.Instance.GetObject(ImplementaTorneos);
                 torneo.GetFechas(this);
                 DtpFechaPartido.MinDate = this.FechaInicio;
-                DtpFechaPartido.MaxDate = this.FechaFin;            
+                DtpFechaPartido.MaxDate = this.FechaFin;
+
             }
         }
         private void BtnSalir_Click(object sender, EventArgs e)
@@ -303,13 +321,16 @@ namespace Slam
             {
                 EPPartidos.SetError(CboEquipo2, "");
             }
-            if (Convert.ToInt32(((KeyValuePair<int,string>)CboEquipo2.SelectedItem).Key) == Convert.ToInt32(((KeyValuePair<int,string>)CboEquipo1.SelectedItem).Key))
+            if (CboEquipo1.SelectedItem != null)
             {
-                EPPartidos.SetError(CboEquipo2, "Los Equipos No Pueden Ser Iguales");
-            }
-            else
-            {
-                EPPartidos.SetError(CboEquipo2, "");
+                if (Convert.ToInt32(((KeyValuePair<int, string>)CboEquipo2.SelectedItem).Key) == Convert.ToInt32(((KeyValuePair<int, string>)CboEquipo1.SelectedItem).Key))
+                {
+                    EPPartidos.SetError(CboEquipo2, "Los Equipos No Pueden Ser Iguales");
+                }
+                else
+                {
+                    EPPartidos.SetError(CboEquipo2, "");
+                }
             }
 
 
