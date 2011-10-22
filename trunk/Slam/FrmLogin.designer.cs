@@ -67,6 +67,7 @@
             this.LblOlvidoPassword.TabIndex = 12;
             this.LblOlvidoPassword.TabStop = true;
             this.LblOlvidoPassword.Text = "¿Olvidó su constraseña?";
+            this.LblOlvidoPassword.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.LblOlvidoPassword_LinkClicked);
             // 
             // LblPassword
             // 
