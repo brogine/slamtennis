@@ -24,7 +24,7 @@ namespace Dominio
         /// <param name="arbitros">arbitros que arbitran</param>
         /// <param name="estado">estado del partido</param>
         public Partido(int idPartido, Torneo torneo, Inscripcion Equipo1,Inscripcion Equipo2, DateTime fecha, string resultado,
-            int ronda,bool estado)
+            string ronda,bool estado)
         {
             this.idPartido = idPartido; this.torneo = torneo; this.equipo1 = Equipo1; this.equipo2 = Equipo2; ; this.fecha = fecha;
             this.resultado = resultado; this.ronda = ronda; this.estado = estado;
@@ -41,7 +41,7 @@ namespace Dominio
         /// <param name="arbitros">arbitros que arbitran</param>
         /// <param name="estado">estado del partido</param>
         public Partido(Torneo torneo, Inscripcion Equipo1, Inscripcion Equipo2, DateTime fecha, string resultado,
-            int ronda, bool estado)
+            string ronda, bool estado)
         {
             this.torneo = torneo; this.equipo1 = Equipo1; this.equipo2 = Equipo2; ; this.fecha = fecha;
             this.resultado = resultado; this.ronda = ronda; this.estado = estado;
@@ -53,7 +53,7 @@ namespace Dominio
         Inscripcion equipo2;
         DateTime fecha;
         string resultado;
-        int ronda;
+        string ronda;
         bool estado;
 
         public int IdPartido
@@ -90,7 +90,7 @@ namespace Dominio
             set { resultado = value; }
         }
 
-        public int Ronda
+        public string Ronda
         {
             get { return ronda; }
             set { ronda = value; }

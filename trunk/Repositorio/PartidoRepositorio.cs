@@ -26,7 +26,7 @@ namespace Repositorio
             int Ronda = Partido.Ronda;
             bool Estado = Partido.Estado;
             int Equipo1 = Partido.Equipo1.IdInscripcion;
-            int IdPartido = Conn.Agregar("Partidos", "IdTorneo,Resultado,Fecha,Ronda,Estado", IdTorneo + ",'" + Resultado + "','" + FechaFormateada + "'," + Ronda + "," + (Estado ? 1 : 0));
+            int IdPartido = Conn.Agregar("Partidos", "IdTorneo,Resultado,Fecha,Ronda,Estado", IdTorneo + ",'" + Resultado + "','" + FechaFormateada + "','" + Ronda + "'," + (Estado ? 1 : 0));
             if (Partido.Equipo2 != null)
             {
                 int Equipo2 = Partido.Equipo2.IdInscripcion;
@@ -47,7 +47,7 @@ namespace Repositorio
             String Consulta = " Update Partidos Set ";
             
             Consulta += " Fecha = '" + FechaFormateada + "', ";
-            Consulta += "Ronda =" + Partido.Ronda+",";
+            Consulta += "Ronda ='" + Partido.Ronda+"',";
             Consulta += " Estado = " + (Partido.Estado ? 1 : 0);
             Consulta += " Where IdPartido = " + Partido.IdPartido;
             Conn.ActualizarOEliminar(Consulta);
@@ -173,7 +173,7 @@ namespace Repositorio
                 
                 DateTime Fecha = Fila.IsNull("Fecha") ? DateTime.Now : Convert.ToDateTime(Fila["Fecha"]);
                 string Resultado = Fila.IsNull("Resultado") ? string.Empty : Fila["Resultado"].ToString();
-                int Ronda = Fila.IsNull("Ronda") ? 0 : Convert.ToInt32(Fila["Ronda"]);
+                string Ronda = Fila.IsNull("Ronda") ? string.Empty : Convert.ToInt32(Fila["Ronda"]);
                 bool Estado = Fila.IsNull("Estado") ? false : Convert.ToBoolean(Fila["Estado"]);
                 nPartido = new Partido();
                 nPartido.IdPartido = IdPartido;
