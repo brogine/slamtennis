@@ -17,11 +17,6 @@ namespace Slam
 {
     public partial class FrmListaPartidos : Form,IListadoTorneos,IListadoPartidos, IListadoInscripciones
     {
-        public FrmListaPartidos()
-        {
-            InitializeComponent();
-        }
-
         string ImplementaReportes = "ReportesServicio";
         string ImplementaTorneos = "TorneoServicio";
         string ImplementaInscripciones = "InscripcionServicio";
@@ -29,7 +24,18 @@ namespace Slam
         IListadoTorneoServicio servicioTorneos;
         IListadoPartidoServicio servicioPartidos;
         IListadoInscripcionServicio servicioInscripciones;
-        
+        int IdTorneoActual = 0;
+
+        public FrmListaPartidos()
+        {
+            InitializeComponent();
+        }
+
+        public FrmListaPartidos(int IdTorneo)
+        {
+            InitializeComponent();
+            this.IdTorneoActual = IdTorneo;
+        }
 
         #region Miembros de IListadoTorneos
 
@@ -93,11 +99,18 @@ namespace Slam
         {
             servicioTorneos = (IListadoTorneoServicio)AppContext.Instance.GetObject(ImplementaTorneos);
             servicioTorneos.ListarTorneosCerrados(this);
+            if (IdTorneoActual > 0)
+            {
+                CboListaTorneos.SelectedValue = IdTorneoActual;
+                servicioPartidos = (IListadoPartidoServicio)AppContext.Instance.GetObject(ImplementaPartidos);
+                servicioPartidos.ListarPartidos(this);
+            }
         }
 
         private void CboListaTorneos_SelectionChangeCommitted(object sender, EventArgs e)
         {
-            servicioPartidos = (IListadoPartidoServicio)AppContext.Instance.GetObject(ImplementaPartidos);
+            if(servicioPartidos == null)
+                servicioPartidos = (IListadoPartidoServicio)AppContext.Instance.GetObject(ImplementaPartidos);
             servicioPartidos.ListarPartidos(this);
         }
 
