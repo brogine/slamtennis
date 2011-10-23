@@ -206,7 +206,7 @@ namespace Repositorio
             {
                 IClubRepositorio RepoClub = new ClubRepositorio();
                 ICategoriaRepositorio CateRepo = new CategoriaRepositorio();
-
+                IPuntosRepositorio PuntosRepo = new PuntosRepositorio();
                 int IdClub = Fila.IsNull("IdClub") ? 0 : Convert.ToInt32(Fila["IdClub"]);
                 Club Club = RepoClub.Buscar(IdClub);
 
@@ -226,7 +226,13 @@ namespace Repositorio
                 TipoSuperficie Superficie = Fila.IsNull("Superficie") ? 0 :(TipoSuperficie) Convert.ToInt32(Fila["Superficie"]);
                 int Estado = Fila.IsNull("Estado") ? 0 : Convert.ToInt32(Fila["Estado"]);
                 Torneo = new Torneo(IdTorneo, Nombre, FecInicio, FecFin, FecIniInsc, FecFinInsc, Cupo, Sexo, Tipo, Club, Categoria, TipoInscripcion, Superficie, Estado);
+                
+                if (PuntosRepo.ListarPuntos(IdTorneo) != null)
+                {
+                    Torneo.ListaPuntos = PuntosRepo.ListarPuntos(Torneo.IdTorneo);
+                }
             }
+            
             return Torneo;
         }
         #endregion

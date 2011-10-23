@@ -63,6 +63,7 @@ namespace Dominio
         bool tipoinscripcion;
         TipoSuperficie superficie;
         int estado;
+        List<Puntos> listapuntos;
 
         public int IdTorneo
         {
@@ -134,6 +135,11 @@ namespace Dominio
         {
             get { return estado; }
             set { estado = value; }
+        }
+        public List<Puntos> ListaPuntos
+        {
+            get { return listapuntos; }
+            set { listapuntos = value; }
         }
     }
 

@@ -16,7 +16,7 @@ namespace Slam
     public partial class FrmNuevoPartido : Form, IPartidoUI, IListadoTorneos, IListadoInscripciones,IFechasTorneoUI
     {
         int idpartido;
-        public FrmNuevoPartido(int count, int ultimaRonda)
+        public FrmNuevoPartido()
         {
             InitializeComponent();
             //CountSecuen = count;
@@ -27,7 +27,7 @@ namespace Slam
             servicioPartido = (IPartidoServicio)AppContext.Instance.GetObject(ImplemetaPartidos);
         }
 
-        public FrmNuevoPartido(int IdPartido, int count, int ultimaRonda)
+        public FrmNuevoPartido(int IdPartido)
         {
             InitializeComponent();
             //CountSecuen = count;
@@ -194,7 +194,7 @@ namespace Slam
                 {
                 TxtRonda.Text="Cuartos";
                 }
-                if (value.Count <= 4 && value.Count < 2)
+                if (value.Count <= 4 && value.Count > 2)
                 {
                     TxtRonda.Text = "Semi Final";
                 }
@@ -202,10 +202,7 @@ namespace Slam
                 {
                     TxtRonda.Text = "Final";
                 }
-                else
-                {
-                    TxtRonda.Text = "";
-                }
+
                 Dictionary<int, string> ListaInscripciones = new Dictionary<int, string>();
                 foreach (Object Inscripcion in value)
                 {
