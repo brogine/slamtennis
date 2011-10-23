@@ -89,10 +89,10 @@ namespace Slam
                         break;
                 }
             }
-            if (Tipo != TipoPersona.Empleado)
+            if (Tipo == TipoPersona.Empleado)
             {
-            	LblPuesto.Visible = false;
-            	TxtPuesto.Visible = false;
+            	LblPuesto.Visible = true;
+                TxtPuesto.Visible = true;
             }
         }
 
