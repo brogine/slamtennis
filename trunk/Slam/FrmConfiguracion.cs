@@ -75,11 +75,13 @@ namespace Slam
 
         private void BtnProbar_Click(object sender, EventArgs e)
         {
-            DbProviderFactory Dpf = DbProviderFactories.GetFactory(ListaNodos[CboConexiones.SelectedIndex].Attributes["Proveedor"].Value);
-            IDbConnection Conn = Dpf.CreateConnection();
-            Conn.ConnectionString = ListaNodos[CboConexiones.SelectedIndex].Attributes["ConnectionString"].Value;
+            IDbConnection Conn = null;
             try
             {
+            DbProviderFactory Dpf = DbProviderFactories.GetFactory(ListaNodos[CboConexiones.SelectedIndex].Attributes["Proveedor"].Value);
+            Conn = Dpf.CreateConnection();
+            Conn.ConnectionString = ListaNodos[CboConexiones.SelectedIndex].Attributes["ConnectionString"].Value;
+         
                 Conn.Open();
                 MessageBox.Show("Conexión con la base de datos establecida con éxito", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
             }
@@ -89,7 +91,10 @@ namespace Slam
             }
             finally
             {
-                Conn.Close();
+                if (Conn != null)
+                {
+                    Conn.Close();
+                }
             }
         }
 
