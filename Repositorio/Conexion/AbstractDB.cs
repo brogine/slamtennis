@@ -26,6 +26,8 @@ namespace Repositorio.Conexiones
             
             XmlNodeList ListaNodos = doc.GetElementsByTagName("config");
             XmlNode nodo = doc.GetElementsByTagName("config").Item(0);
+            if (!Convert.ToBoolean(nodo.Attributes["Default"].Value))
+                nodo = doc.GetElementsByTagName("config").Item(1);
             string nombre = nodo.Attributes["nombre"].Value;
             string cnnStr = nodo.Attributes["ConnectionString"].Value;
             string proveedor = nodo.Attributes["Proveedor"].Value;

@@ -27,6 +27,7 @@ namespace Slam
         FrmListaInscripciones Inscripciones;
         FrmListaPartidos Partidos;
         FrmReportes Reportes;
+        FrmConfiguracion Configuracion;
         string ImplementaTorneos = "TorneoServicio";
         IListadoTorneoServicio servicioTorneos;
         public FrmPrincipal(Form _Padre)
@@ -238,6 +239,18 @@ namespace Slam
             //notifyIcon1.ShowBalloonTip(3000);
 
 
+        }
+
+        private void tlsmiConfiguracion_Click(object sender, EventArgs e)
+        {
+            if (Configuracion == null || Configuracion.IsDisposed)
+            {
+                Configuracion = new FrmConfiguracion();
+                Configuracion.MdiParent = this;
+                Configuracion.Show();
+            }
+            else
+                Configuracion.BringToFront();
         }
 
     }
