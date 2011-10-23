@@ -84,6 +84,7 @@
             this.Controls.Add(this.SpReportes);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FrmReportes";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Reportes";
             this.Load += new System.EventHandler(this.FrmReportes_Load);
             this.SpReportes.Panel1.ResumeLayout(false);

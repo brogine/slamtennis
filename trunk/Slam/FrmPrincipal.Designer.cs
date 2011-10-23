@@ -52,6 +52,7 @@
             this.TsmiReportes = new System.Windows.Forms.ToolStripMenuItem();
             this.notifyIcon1 = new System.Windows.Forms.NotifyIcon(this.components);
             this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.tlsmiConfiguracion = new System.Windows.Forms.ToolStripMenuItem();
             this.MsPrincipal.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -62,7 +63,8 @@
             this.TsmiGestion,
             this.TsmiClubes,
             this.TsmiEventos,
-            this.TsmiReportes});
+            this.TsmiReportes,
+            this.tlsmiConfiguracion});
             this.MsPrincipal.Location = new System.Drawing.Point(0, 0);
             this.MsPrincipal.MdiWindowListItem = this.TsmiArchivo;
             this.MsPrincipal.Name = "MsPrincipal";
@@ -76,20 +78,20 @@
             this.TlsmiCerrarSesion,
             this.TlsmiSalir});
             this.TsmiArchivo.Name = "TsmiArchivo";
-            this.TsmiArchivo.Size = new System.Drawing.Size(60, 20);
+            this.TsmiArchivo.Size = new System.Drawing.Size(55, 20);
             this.TsmiArchivo.Text = "Archivo";
             // 
             // TlsmiCerrarSesion
             // 
             this.TlsmiCerrarSesion.Name = "TlsmiCerrarSesion";
-            this.TlsmiCerrarSesion.Size = new System.Drawing.Size(143, 22);
+            this.TlsmiCerrarSesion.Size = new System.Drawing.Size(139, 22);
             this.TlsmiCerrarSesion.Text = "Cerrar Sesión";
             this.TlsmiCerrarSesion.Click += new System.EventHandler(this.TlsmiCerrarSesion_Click);
             // 
             // TlsmiSalir
             // 
             this.TlsmiSalir.Name = "TlsmiSalir";
-            this.TlsmiSalir.Size = new System.Drawing.Size(143, 22);
+            this.TlsmiSalir.Size = new System.Drawing.Size(139, 22);
             this.TlsmiSalir.Text = "Salir";
             this.TlsmiSalir.Click += new System.EventHandler(this.TlsmiSalir_Click);
             // 
@@ -101,7 +103,7 @@
             this.TlsmiEmpleados,
             this.TlsmiCategorias});
             this.TsmiGestion.Name = "TsmiGestion";
-            this.TsmiGestion.Size = new System.Drawing.Size(59, 20);
+            this.TsmiGestion.Size = new System.Drawing.Size(55, 20);
             this.TsmiGestion.Text = "Gestión";
             // 
             // TlsmiJugadores
@@ -110,41 +112,41 @@
             this.TlsmiAdministrarJugadores,
             this.TlsmiEstadisticasJugador});
             this.TlsmiJugadores.Name = "TlsmiJugadores";
-            this.TlsmiJugadores.Size = new System.Drawing.Size(132, 22);
+            this.TlsmiJugadores.Size = new System.Drawing.Size(126, 22);
             this.TlsmiJugadores.Text = "Jugadores";
             // 
             // TlsmiAdministrarJugadores
             // 
             this.TlsmiAdministrarJugadores.Name = "TlsmiAdministrarJugadores";
-            this.TlsmiAdministrarJugadores.Size = new System.Drawing.Size(136, 22);
+            this.TlsmiAdministrarJugadores.Size = new System.Drawing.Size(130, 22);
             this.TlsmiAdministrarJugadores.Text = "Administrar";
             this.TlsmiAdministrarJugadores.Click += new System.EventHandler(this.TlsmiAdministrarJugadores_Click);
             // 
             // TlsmiEstadisticasJugador
             // 
             this.TlsmiEstadisticasJugador.Name = "TlsmiEstadisticasJugador";
-            this.TlsmiEstadisticasJugador.Size = new System.Drawing.Size(136, 22);
+            this.TlsmiEstadisticasJugador.Size = new System.Drawing.Size(130, 22);
             this.TlsmiEstadisticasJugador.Text = "Estadisticas";
             this.TlsmiEstadisticasJugador.Click += new System.EventHandler(this.TlsmiEstadisticasJugador_Click);
             // 
             // TlsmiArbitros
             // 
             this.TlsmiArbitros.Name = "TlsmiArbitros";
-            this.TlsmiArbitros.Size = new System.Drawing.Size(132, 22);
+            this.TlsmiArbitros.Size = new System.Drawing.Size(126, 22);
             this.TlsmiArbitros.Text = "Arbitros";
             this.TlsmiArbitros.Click += new System.EventHandler(this.TlsmiArbitros_Click);
             // 
             // TlsmiEmpleados
             // 
             this.TlsmiEmpleados.Name = "TlsmiEmpleados";
-            this.TlsmiEmpleados.Size = new System.Drawing.Size(132, 22);
+            this.TlsmiEmpleados.Size = new System.Drawing.Size(126, 22);
             this.TlsmiEmpleados.Text = "Empleados";
             this.TlsmiEmpleados.Click += new System.EventHandler(this.TlsmiEmpleadosClick);
             // 
             // TlsmiCategorias
             // 
             this.TlsmiCategorias.Name = "TlsmiCategorias";
-            this.TlsmiCategorias.Size = new System.Drawing.Size(132, 22);
+            this.TlsmiCategorias.Size = new System.Drawing.Size(126, 22);
             this.TlsmiCategorias.Text = "Categorias";
             this.TlsmiCategorias.Click += new System.EventHandler(this.TlsmiCategorias_Click);
             // 
@@ -154,20 +156,20 @@
             this.TlsmiAdministrarClubes,
             this.TlsmiSedes});
             this.TsmiClubes.Name = "TsmiClubes";
-            this.TsmiClubes.Size = new System.Drawing.Size(55, 20);
+            this.TsmiClubes.Size = new System.Drawing.Size(51, 20);
             this.TsmiClubes.Text = "Clubes";
             // 
             // TlsmiAdministrarClubes
             // 
             this.TlsmiAdministrarClubes.Name = "TlsmiAdministrarClubes";
-            this.TlsmiAdministrarClubes.Size = new System.Drawing.Size(136, 22);
+            this.TlsmiAdministrarClubes.Size = new System.Drawing.Size(128, 22);
             this.TlsmiAdministrarClubes.Text = "Administrar";
             this.TlsmiAdministrarClubes.Click += new System.EventHandler(this.TlsmiAdministrarClubes_Click);
             // 
             // TlsmiSedes
             // 
             this.TlsmiSedes.Name = "TlsmiSedes";
-            this.TlsmiSedes.Size = new System.Drawing.Size(136, 22);
+            this.TlsmiSedes.Size = new System.Drawing.Size(128, 22);
             this.TlsmiSedes.Text = "Sedes";
             this.TlsmiSedes.Click += new System.EventHandler(this.TlsmiSedes_Click);
             // 
@@ -177,7 +179,7 @@
             this.TSMITorneos,
             this.TSMIInscripciones});
             this.TsmiEventos.Name = "TsmiEventos";
-            this.TsmiEventos.Size = new System.Drawing.Size(60, 20);
+            this.TsmiEventos.Size = new System.Drawing.Size(58, 20);
             this.TsmiEventos.Text = "Eventos";
             // 
             // TSMITorneos
@@ -186,35 +188,35 @@
             this.administrarToolStripMenuItem,
             this.partidosToolStripMenuItem});
             this.TSMITorneos.Name = "TSMITorneos";
-            this.TSMITorneos.Size = new System.Drawing.Size(143, 22);
+            this.TSMITorneos.Size = new System.Drawing.Size(136, 22);
             this.TSMITorneos.Text = "Torneos";
             this.TSMITorneos.Click += new System.EventHandler(this.TSMITorneos_Click);
             // 
             // administrarToolStripMenuItem
             // 
             this.administrarToolStripMenuItem.Name = "administrarToolStripMenuItem";
-            this.administrarToolStripMenuItem.Size = new System.Drawing.Size(136, 22);
+            this.administrarToolStripMenuItem.Size = new System.Drawing.Size(128, 22);
             this.administrarToolStripMenuItem.Text = "Administrar";
             this.administrarToolStripMenuItem.Click += new System.EventHandler(this.administrarToolStripMenuItem_Click);
             // 
             // partidosToolStripMenuItem
             // 
             this.partidosToolStripMenuItem.Name = "partidosToolStripMenuItem";
-            this.partidosToolStripMenuItem.Size = new System.Drawing.Size(136, 22);
+            this.partidosToolStripMenuItem.Size = new System.Drawing.Size(128, 22);
             this.partidosToolStripMenuItem.Text = "Partidos";
             this.partidosToolStripMenuItem.Click += new System.EventHandler(this.partidosToolStripMenuItem_Click);
             // 
             // TSMIInscripciones
             // 
             this.TSMIInscripciones.Name = "TSMIInscripciones";
-            this.TSMIInscripciones.Size = new System.Drawing.Size(143, 22);
+            this.TSMIInscripciones.Size = new System.Drawing.Size(136, 22);
             this.TSMIInscripciones.Text = "Inscripciones";
             this.TSMIInscripciones.Click += new System.EventHandler(this.TSMIInscripciones_Click);
             // 
             // TsmiReportes
             // 
             this.TsmiReportes.Name = "TsmiReportes";
-            this.TsmiReportes.Size = new System.Drawing.Size(65, 20);
+            this.TsmiReportes.Size = new System.Drawing.Size(63, 20);
             this.TsmiReportes.Text = "Reportes";
             this.TsmiReportes.Click += new System.EventHandler(this.TsmiReportes_Click);
             // 
@@ -230,6 +232,13 @@
             // 
             this.timer1.Interval = 60000;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            // 
+            // tlsmiConfiguracion
+            // 
+            this.tlsmiConfiguracion.Name = "tlsmiConfiguracion";
+            this.tlsmiConfiguracion.Size = new System.Drawing.Size(85, 20);
+            this.tlsmiConfiguracion.Text = "Configuración";
+            this.tlsmiConfiguracion.Click += new System.EventHandler(this.tlsmiConfiguracion_Click);
             // 
             // FrmPrincipal
             // 
@@ -277,5 +286,6 @@
         private System.Windows.Forms.ToolStripMenuItem partidosToolStripMenuItem;
         private System.Windows.Forms.NotifyIcon notifyIcon1;
         private System.Windows.Forms.Timer timer1;
+        private System.Windows.Forms.ToolStripMenuItem tlsmiConfiguracion;
     }
 }
