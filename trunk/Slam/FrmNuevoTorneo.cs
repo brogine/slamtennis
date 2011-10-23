@@ -437,5 +437,11 @@ namespace Slam
                 EPTorneos.SetError(CboSuperficie, "");
             }
         }
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            FrmPuntosTorneo Puntos = new FrmPuntosTorneo();
+            Puntos.ShowDialog();
+        }
     }
 }

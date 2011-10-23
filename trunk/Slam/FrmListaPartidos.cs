@@ -116,12 +116,7 @@ namespace Slam
 
         private void BtnAgregarPartido_Click(object sender, EventArgs e)
         {
-            int ronda = 0;
-            if (DgvListaPartidos.RowCount > 0)
-            {
-                ronda = Convert.ToInt32(DgvListaPartidos["Ronda", DgvListaPartidos.RowCount - 1].Value);
-            }
-            FrmNuevoPartido NuevoPartido = new FrmNuevoPartido(DgvListaPartidos.RowCount, ronda);
+            FrmNuevoPartido NuevoPartido = new FrmNuevoPartido();
             if (NuevoPartido.ShowDialog() == DialogResult.OK)
             {
                 servicioPartidos.ListarPartidos(this);
@@ -130,12 +125,12 @@ namespace Slam
 
         private void BtnModificar_Click(object sender, EventArgs e)
         {
-            int ronda = 0;
+
             if (DgvListaPartidos.RowCount > 0)
             {
-                ronda =Convert.ToInt32(DgvListaPartidos["Ronda", DgvListaPartidos.RowCount - 1].Value);
 
-                FrmNuevoPartido ModificaPartido = new FrmNuevoPartido(Convert.ToInt32(DgvListaPartidos.SelectedRows[0].Cells[0].Value), DgvListaPartidos.RowCount,ronda);
+
+                FrmNuevoPartido ModificaPartido = new FrmNuevoPartido(Convert.ToInt32(DgvListaPartidos.SelectedRows[0].Cells[0].Value));
                 if (ModificaPartido.ShowDialog() == DialogResult.OK)
                 {
                     servicioPartidos.ListarPartidos(this);

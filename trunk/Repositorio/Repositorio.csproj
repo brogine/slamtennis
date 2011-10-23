@@ -75,6 +75,7 @@
     <Compile Include="IMapeador.cs" />
     <Compile Include="InscripcionRepositorio.cs" />
     <Compile Include="IPartidoRepositorio.cs" />
+    <Compile Include="IPuntosRepositorio.cs" />
     <Compile Include="ISedesRepositorio.cs" />
     <Compile Include="ITorneoRepositorio.cs" />
     <Compile Include="IUbicacionRepositorio.cs" />
@@ -83,6 +84,7 @@
     <Compile Include="PartidoRepositorio.cs" />
     <Compile Include="PersonaRepositorio.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="PuntosRepositorio.cs" />
     <Compile Include="RepositorioExeption.cs" />
     <Compile Include="SedesRepositorio.cs" />
     <Compile Include="TorneoRepositorio.cs" />
