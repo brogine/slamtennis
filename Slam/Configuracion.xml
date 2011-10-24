@@ -9,4 +9,4 @@
           Proveedor="MySql.Data.MySqlClient"
           ConnectionString="Server=localhost;Database=SlamDB;Uid=root;Pwd=;"
           Default="False"></config>
-</configuraciones>
+</configuraciones> 
