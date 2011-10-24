@@ -32,13 +32,9 @@
     <table width="100%">
         <tr>
             <td style="width:35%" class="style1">
-                Dirigida a:
-            </td>
+                &nbsp;</td>
             <td class="style2">
-                <asp:TextBox ID="TextBox1" runat="server" Width="227px"></asp:TextBox>
-                <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" 
-                    ControlToValidate="TextBox1" ErrorMessage="Complete el remitente !"></asp:RequiredFieldValidator>
-            </td>
+                &nbsp;</td>
         </tr>
         <tr>
             <td class="style1">

@@ -89,13 +89,6 @@
     <Compile Include="Estadisticos.aspx.designer.cs">
       <DependentUpon>Estadisticos.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Historicos.aspx.cs">
-      <DependentUpon>Historicos.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Historicos.aspx.designer.cs">
-      <DependentUpon>Historicos.aspx</DependentUpon>
-    </Compile>
     <Compile Include="Llaves.aspx.cs">
       <DependentUpon>Llaves.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -118,6 +111,13 @@
       <DependentUpon>Mensajes.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Sesion.aspx.cs">
+      <DependentUpon>Sesion.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Sesion.aspx.designer.cs">
+      <DependentUpon>Sesion.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Site.Master.cs">
       <DependentUpon>Site.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -142,6 +142,7 @@
     <Content Include="Content\basic_ie.css" />
     <Content Include="Content\bg1.gif" />
     <Content Include="Content\calendar.gif" />
+    <Content Include="Content\CerrarSession.png" />
     <Content Include="Content\Consultas.png" />
     <Content Include="Content\Estadisticos.png" />
     <Content Include="Content\export.gif" />
@@ -178,6 +179,7 @@
     <Content Include="Content\Search.gif" />
     <Content Include="Content\searchd.gif" />
     <Content Include="Content\search_over.gif" />
+    <Content Include="Content\SesionCerrada.png" />
     <Content Include="Content\Slam.jpg" />
     <Content Include="Content\Tips.png" />
     <Content Include="Content\Torneos.png" />
@@ -188,13 +190,13 @@
     <Content Include="Correcto.aspx" />
     <Content Include="Default.aspx" />
     <Content Include="Estadisticos.aspx" />
-    <Content Include="Historicos.aspx" />
     <Content Include="Llaves.aspx" />
     <Content Include="Login.aspx" />
     <Content Include="Mensajes.aspx" />
     <Content Include="Scripts\basic.js" />
     <Content Include="Scripts\jquery.js" />
     <Content Include="Scripts\jquery.simplemodal.js" />
+    <Content Include="Sesion.aspx" />
     <Content Include="Site.Master" />
     <Content Include="Torneos.aspx" />
   </ItemGroup>

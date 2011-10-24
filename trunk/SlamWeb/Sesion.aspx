@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Correcto.aspx.cs" Inherits="SlamWeb.Correcto" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Sesion.aspx.cs" Inherits="SlamWeb.Sesion" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
@@ -19,7 +19,7 @@
 	        };
 	    };
 	    function Redirigir()        {   
-            location.href = '../../Default.aspx';
+            location.href = '../../Login.aspx';
 
         };
 
@@ -31,19 +31,17 @@
     }
 
 </script>
-    <div style="height:300px">
-    <br />
+
+    <div>
+        <br />
+    </div>
+    <div style="height:300px">
     <br />
     <br />
     <center>
-            <p>Cambios Guardados correctamente....
-            <img alt="" src="Content/Tips.png" style="height: 43px; width: 52px" />
-            </p>
+        <img alt="" src="Content/SesionCerrada.png" style="height: 43px; width: 52px" />
+        <p>Sesión cerrada correctamente.</p>
     </center>
     </div>
-    <div>
-        <asp:Label ID="Label1" runat="server" Font-Bold="False" Font-Italic="False" 
-            Font-Size="Small" ForeColor="#0000CC" style="text-align: left" 
-            Text="Agurde unos segundos y sera redirigido al inicio...."></asp:Label>
-    </div>    
+  
     </asp:Content>

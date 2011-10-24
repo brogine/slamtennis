@@ -52,5 +52,10 @@ namespace SlamWeb
             Response.Redirect("Mensajes.aspx");
         }
 
+        protected void Cerrar_Click(object sender, ImageClickEventArgs e)
+        {
+            Response.Redirect("Sesion.aspx");
+        }
+
     }
 }

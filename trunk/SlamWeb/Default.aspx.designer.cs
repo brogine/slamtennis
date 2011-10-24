@@ -59,15 +59,6 @@ namespace SlamWeb {
         protected global::System.Web.UI.WebControls.ImageButton Estadisticos;
         
         /// <summary>
-        /// Historicos control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.ImageButton Historicos;
-        
-        /// <summary>
         /// Consultas control.
         /// </summary>
         /// <remarks>
@@ -75,6 +66,15 @@ namespace SlamWeb {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.ImageButton Consultas;
+        
+        /// <summary>
+        /// Llaves control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ImageButton Llaves;
         
         /// <summary>
         /// Torneos control.
@@ -86,13 +86,13 @@ namespace SlamWeb {
         protected global::System.Web.UI.WebControls.ImageButton Torneos;
         
         /// <summary>
-        /// Llaves control.
+        /// Cerrar control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ImageButton Llaves;
+        protected global::System.Web.UI.WebControls.ImageButton Cerrar;
         
         /// <summary>
         /// Mensajes control.
