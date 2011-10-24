@@ -8,6 +8,9 @@ $('#content-DATOS').modal();
 	});
 });
 
+function MostrarInscripcion() {
+    $('#content-DATOS').modal();
+}
 //jQuery(function($) {
 //$('#basic-modal .BASICO').click(function(e) {
 //    $('#content-BASICO').modal();

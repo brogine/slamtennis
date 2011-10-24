@@ -32,19 +32,18 @@
             <br />
             Datos estadisticos</td>
         <td class="style1">
-            <asp:ImageButton ID="Historicos" runat="server" Height="128px" 
-                Width="128px" ImageUrl="~/Content/HistorialCategoria.png" 
-                onclick="Historicos_Click" />
-            <br />
-            Datos historicos</td>
-    </tr>
-    <tr>
-        <td class="style1">
             <asp:ImageButton ID="Consultas" runat="server" Height="128px" 
                 Width="128px" ImageUrl="~/Content/Consultas.png" 
                 onclick="Consultas_Click" />
             <br />
             Consultas generales</td>
+    </tr>
+    <tr>
+       <td class="style1">
+            <asp:ImageButton ID="Llaves" runat="server" Height="128px" 
+                Width="128px" ImageUrl="~/Content/Laves.png" onclick="Llaves_Click" />
+            <br />
+            Llaves de Torneos</td>
         <td class="style1">
             <asp:ImageButton ID="Torneos" runat="server" Height="128px" 
                 Width="128px" ImageUrl="~/Content/Torneos.png" onclick="Torneos_Click" />
@@ -52,11 +51,12 @@
             Torneos</td>
     </tr>
      <tr>
-        <td class="style1">
-            <asp:ImageButton ID="Llaves" runat="server" Height="128px" 
-                Width="128px" ImageUrl="~/Content/Laves.png" onclick="Llaves_Click" />
+        <td>
+            <asp:ImageButton ID="Cerrar" runat="server" Height="128px" 
+                Width="128px" ImageUrl="~/Content/CerrarSession.png" 
+                onclick="Cerrar_Click" />
             <br />
-            Llaves de Torneos</td>
+            Cerrar Sesión</td>
         <td class="style1">
             <asp:ImageButton ID="Mensajes" runat="server" Height="128px" 
                 Width="128px" ImageUrl="~/Content/Mensajes.png" onclick="Mensajes_Click" />
