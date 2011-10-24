@@ -180,7 +180,6 @@ namespace Servicio
             Ds.Tables.Add(DtTorneo);
 
             //Tabla Partidos
-
             DataTable DtPartido = new DataTable("Partido");
             DtPartido.Columns.Add("Equipo1");
             DtPartido.Columns.Add("Equipo2");
@@ -199,6 +198,7 @@ namespace Servicio
                 if (campos != "")
                     Ganador = item.CalcularGanador(item.Resultado);
 
+                DtPartido.BeginLoadData();
                 if (torneo.TipoTorneo == TipoTorneo.Doble)
                 {
                     if (Ganador == 1)
@@ -249,7 +249,11 @@ namespace Servicio
                             "BYE", (campos == "" ? campos : item.Resultado), item.Ronda, EquipoGanador, item.Fecha.ToShortDateString());
                     }
                 }
+                DtPartido.EndLoadData();
             }
+
+            DtPartido.DefaultView.Sort = "Ronda ASC";
+
             Ds.Tables.Add(DtPartido);
 
             return Ds;
