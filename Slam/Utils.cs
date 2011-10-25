@@ -19,4 +19,9 @@
     {
         Ladrillo = 0, Cesped = 1, Dura = 2, Sintetica = 3
     }
+
+    public enum Rondas: int
+    { 
+        Primera_Ronda = 0, Segunda_Ronda = 1, Cuartos_Final = 2, Semi_Final = 3, Final = 4 
+    }
 }

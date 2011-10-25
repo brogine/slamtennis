@@ -44,8 +44,8 @@
             this.BtnSalir = new System.Windows.Forms.Button();
             this.ChkEstado = new System.Windows.Forms.CheckBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.TxtRonda = new System.Windows.Forms.TextBox();
             this.EPPartidos = new System.Windows.Forms.ErrorProvider(this.components);
+            this.CboRonda = new System.Windows.Forms.ComboBox();
             this.GrpEquipo1.SuspendLayout();
             this.GrpEquipo2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.EPPartidos)).BeginInit();
@@ -190,24 +190,24 @@
             this.label1.TabIndex = 10;
             this.label1.Text = "Ronda";
             // 
-            // TxtRonda
-            // 
-            this.TxtRonda.Location = new System.Drawing.Point(358, 110);
-            this.TxtRonda.Name = "TxtRonda";
-            this.TxtRonda.Size = new System.Drawing.Size(103, 20);
-            this.TxtRonda.TabIndex = 11;
-            this.TxtRonda.Validating += new System.ComponentModel.CancelEventHandler(this.TxtRonda_Validating);
-            // 
             // EPPartidos
             // 
             this.EPPartidos.ContainerControl = this;
+            // 
+            // CboRonda
+            // 
+            this.CboRonda.FormattingEnabled = true;
+            this.CboRonda.Location = new System.Drawing.Point(358, 109);
+            this.CboRonda.Name = "CboRonda";
+            this.CboRonda.Size = new System.Drawing.Size(138, 21);
+            this.CboRonda.TabIndex = 11;
             // 
             // FrmNuevoPartido
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(591, 177);
-            this.Controls.Add(this.TxtRonda);
+            this.Controls.Add(this.CboRonda);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.ChkEstado);
             this.Controls.Add(this.BtnSalir);
@@ -249,7 +249,7 @@
         private System.Windows.Forms.Button BtnSalir;
         private System.Windows.Forms.CheckBox ChkEstado;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox TxtRonda;
         private System.Windows.Forms.ErrorProvider EPPartidos;
+        private System.Windows.Forms.ComboBox CboRonda;
     }
 }
