@@ -6,17 +6,20 @@ using CrystalDecisions.CrystalReports.Engine;
 using Servicio;
 using Servicio.InterfacesUI;
 using System.Data;
+using Dominio;
 
 namespace Reportes
 {
     public enum ListadoReportes { Ranking, Llave, Carnet }
 
-    public class ReportesServicio : IReportesServicio, IListadoJugadoresCategoria
+    public class ReportesServicio : IReportesServicio, IListadoJugadoresCategoria, ICarnetUI
     {
         #region Miembros de IReportesServicio
 
         object ReporteActual = null;
         int idCategoria = 0;
+        int dniCarnet = 0;
+        Tipo tipoPersona;
         public ReportesServicio()
         {
             ReporteActual = new object();
@@ -46,6 +49,14 @@ namespace Reportes
                     rptCuponInscripcion.SetDataSource(servicioInscripciones.BuscarPorId((int)Sender));
                     ReporteActual = rptCuponInscripcion;
                     return ReporteActual;
+                case "Carnet":
+                    RptCarnet rptCarnet = new RptCarnet();
+                    ICarnetServicio servicioCarnet = new CarnetServicio();
+                    this.dniCarnet = Convert.ToInt32(Sender.ToString().Split(',')[0]);
+                    this.tipoPersona = (Tipo)Enum.Parse(typeof(Tipo), (Sender.ToString().Split(',')[1]));
+                    ReporteActual = rptCarnet;
+                    servicioCarnet.BuscarDatos(this);
+                    return ReporteActual;
                 default:
                     return null;
             }
@@ -73,5 +84,26 @@ namespace Reportes
 
         #endregion
 
+        #region Miembros de ICarnetUI
+
+        public DataTable TablaDatos
+        {
+            set 
+            {
+                ((ReportClass)ReporteActual).SetDataSource(value);
+            }
+        }
+
+        public int DniCarnet
+        {
+            get { return dniCarnet; }
+        }
+
+        public Dominio.Tipo TipoPersona
+        {
+            get { return tipoPersona; }
+        }
+
+        #endregion
     }
 }

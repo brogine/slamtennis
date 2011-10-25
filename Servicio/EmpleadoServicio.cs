@@ -20,7 +20,6 @@ namespace Servicio
         
         #region Miembros de IEmpleadoServicio
 
-
         public void Agregar(IEmpleadoUI UI)
         {
             IUbicacionRepositorio Ubica = new UbicacionRepositorio();
@@ -146,6 +145,6 @@ namespace Servicio
         }
 
         #endregion
-        
+
     }
 }

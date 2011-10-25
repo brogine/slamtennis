@@ -49,6 +49,7 @@
     <Compile Include="AfiliacionServicio.cs" />
     <Compile Include="ArbitroServicio.cs" />
     <Compile Include="CanchasServicio.cs" />
+    <Compile Include="CarnetServicio.cs" />
     <Compile Include="CategoriaServicio.cs" />
     <Compile Include="ClubServicio.cs" />
     <Compile Include="IAfiliacionServicio.cs" />
@@ -83,6 +84,8 @@
     <Compile Include="InterfacesUI\IAfiliacionUI.cs" />
     <Compile Include="InterfacesUI\IArbitroUI.cs" />
     <Compile Include="InterfacesUI\ICanchasUI.cs" />
+    <Compile Include="ICarnetServicio.cs" />
+    <Compile Include="InterfacesUI\ICarnetUI.cs" />
     <Compile Include="InterfacesUI\ICategoriaUI.cs" />
     <Compile Include="InterfacesUI\IClubUI.cs" />
     <Compile Include="InterfacesUI\IEmpleadoUI.cs" />

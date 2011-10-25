@@ -121,7 +121,8 @@ namespace Repositorio
             string Consulta = " Select J.*";
             Consulta +=" from Jugadores J inner join Afiliaciones A ";
             Consulta += " on A.Dni = J.Dni inner join Categorias C ";
-            Consulta += " on J.IdCategoria = C.IdCategoria where j.IdCategoria =" + IdCategoria + " and a.IdClub= "+IdClub;
+            Consulta += " on J.IdCategoria = C.IdCategoria where j.IdCategoria =" + IdCategoria + " and a.IdClub= " + IdClub;
+            Consulta += " ORDER BY J.Puntos, J.PuntosDobles ";
             List<Estadisticas> ListaEstadisticas = new List<Estadisticas>();
             DataTable Tabla = Conn.Listar(Consulta);
             foreach (DataRow Fila in Tabla.Rows)

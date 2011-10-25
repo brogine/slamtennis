@@ -11,6 +11,7 @@ using Servicio;
 using Servicio.InterfacesUI;
 using System.Collections;
 using System.IO;
+using Reportes;
 
 namespace Slam
 {
@@ -21,6 +22,7 @@ namespace Slam
         string ImplementaEmpleados = "EmpleadoServicio";
         string ImplementaArbitros = "ArbitroServicio";
         string ImplementaUbicacion = "UbicacionServicio";
+        string ImplementaReportes = "ReportesServicio";
         IJugadorServicio servicioJugadores;
         IEmpleadoServicio servicioEmpleados;
         IArbitroServicio servicioArbitros;
@@ -161,7 +163,14 @@ namespace Slam
                                 break;
                         }
                         this.DialogResult = DialogResult.OK;
-                        MessageBox.Show("Carga realizada con éxito.");
+                        if (MessageBox.Show("Carga realizada con éxito. ¿Desea imprimir el carnet de usuario?", "Éxito", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                        {
+                            IReportesServicio servicioReportes = (IReportesServicio)AppContext.Instance.GetObject(ImplementaReportes);
+                            object ReporteCarnet = servicioReportes.CrearInstancia("Carnet", TxtDni.Text + "," + Tipo.ToString());
+                            FrmReportes frmReportes = new FrmReportes(ReporteCarnet);
+                            frmReportes.MdiParent = this.MdiParent;
+                            frmReportes.Show();
+                        }
                         this.Close();
                     }
                     catch (Exception ex)
