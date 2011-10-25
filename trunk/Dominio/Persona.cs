@@ -11,7 +11,7 @@ namespace Dominio
 {
     public enum Tipo
     {
-        Afiliado, Empleado, Arbitro
+        Jugador, Empleado, Arbitro
     }
 
     public abstract class Persona

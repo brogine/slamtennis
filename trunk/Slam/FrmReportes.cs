@@ -54,6 +54,16 @@ namespace Slam
                         RptViewer.ReportSource = reporteActual;
                     }
                     break;
+                case "Carnet":
+                    FrmReporteCarnet frmReporteCarnet = new FrmReporteCarnet();
+                    if (frmReporteCarnet.ShowDialog() == DialogResult.OK)
+                    {
+                        int Dni = frmReporteCarnet.Dni;
+                        TipoPersona Tipo = frmReporteCarnet.Tipo;
+                        object reporteActual = servicioReportes.CrearInstancia(e.Node.Text, Dni + "," + Tipo.ToString());
+                        RptViewer.ReportSource = reporteActual;
+                    }
+                    break;
             }
             this.WindowState = FormWindowState.Maximized;
         }
