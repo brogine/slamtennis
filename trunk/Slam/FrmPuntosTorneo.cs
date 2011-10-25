@@ -195,7 +195,7 @@ namespace Slam
             this.TxtSegunaRonda.Text = "0";
             this.TxtSemiFinal.Text = "0";
             this.TxtCampeon.Text = "0";
-            CboListaTorneos.SelectedIndex = -1;
+          
         }
 
         #region Miembros de IPuntosUI

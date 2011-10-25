@@ -97,11 +97,11 @@ namespace Slam
         {
             get
             {
-                return TxtRonda.Text;
+                return CboRonda.SelectedValue.ToString();
             }
             set
             {
-                TxtRonda.Text = value.ToString();
+                CboRonda.SelectedItem = value;
                
             }
         }
@@ -192,15 +192,15 @@ namespace Slam
             {
                 if(value.Count>4 && value.Count <=8)
                 {
-                TxtRonda.Text="Cuartos";
+                    CboRonda.SelectedItem = Rondas.Cuartos_Final;
                 }
                 if (value.Count <= 4 && value.Count > 2)
                 {
-                    TxtRonda.Text = "Semi Final";
+                    CboRonda.SelectedItem = Rondas.Semi_Final;
                 }
                 if (value.Count == 2)
                 {
-                    TxtRonda.Text = "Final";
+                    CboRonda.SelectedItem = Rondas.Final;
                 }
 
                 Dictionary<int, string> ListaInscripciones = new Dictionary<int, string>();
@@ -244,7 +244,7 @@ namespace Slam
         {
             try
             {
-                if (EPPartidos.GetError(CboListaTorneo) != "" && EPPartidos.GetError(CboEquipo1) != "" && EPPartidos.GetError(CboEquipo2) != "" && EPPartidos.GetError(TxtRonda) != "")
+                if (EPPartidos.GetError(CboListaTorneo) != "" && EPPartidos.GetError(CboEquipo1) != "" && EPPartidos.GetError(CboEquipo2) != "")
                 {
                     MessageBox.Show("Complete Todos Los Campos Antes De Continuar");
                 }
@@ -271,6 +271,7 @@ namespace Slam
         {
             if (CboListaTorneo.SelectedIndex > -1)
             {
+                CboRonda.DataSource = Enum.GetValues(typeof(Rondas));
                 servicioInscripciones = (IListadoInscripcionServicio)AppContext.Instance.GetObject(ImplementaInscripciones);
                 servicioInscripciones.ListarActivas(this);
                 torneo = (ITorneoServicio)AppContext.Instance.GetObject(ImplementaTorneos);
@@ -333,27 +334,7 @@ namespace Slam
 
 
         }
-        private void TxtRonda_Validating(object sender, CancelEventArgs e)
-        {
-            int ronda = 0;
-            if (TxtRonda.Text == "")
-            {
-                EPPartidos.SetError(TxtRonda, "Debe Escribir A Que Ronda Pertenece El Partido");
-            }
-            else
-            {
-                EPPartidos.SetError(TxtRonda, "");
-            }
 
-            if (!int.TryParse(TxtRonda.Text, out ronda))
-            {
-                EPPartidos.SetError(TxtRonda, "La Ronda Debe Ser Un Valor Numerico");
-            }
-            else
-            {
-                EPPartidos.SetError(TxtRonda, "");
-            }
-        }
 
 
 

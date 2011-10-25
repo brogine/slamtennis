@@ -6,11 +6,17 @@ using Repositorio.Conexiones;
 using Dominio;
 using System.Data;
 
+
 namespace Repositorio
 {
     public class PartidoRepositorio : IPartidoRepositorio, IMapeador<Partido>
     {
+        public enum Rondas : int
+        {
+            Primera_Ronda = 0, Segunda_Ronda = 1, Cuartos_Final = 2, Semi_Final = 3, Final = 4
+        }
         Conexion Conn;
+
         public PartidoRepositorio()
         {
             Conn = new Conexion();
@@ -68,17 +74,41 @@ namespace Repositorio
 
                 if (Partido.CalcularGanador(Partido.Resultado) == 1)
                 {
+                    
                     Est1Jug1.PG += 1;
                     Est2Jug1.PP += 1;
-                   
+                    AsignarPuntos(Est2Jug1, Partido);
+                    
+                    if (InscRepo.ListarActivas(Partido.Torneo.IdTorneo).Count == 2)
+                    {
+                        for (int i = 0; i < 6; i++)
+                        {
+                            if (Partido.Torneo.ListaPuntos[i].Ronda == "Campeon")
+                            {
+                                Est1Jug1.Puntaje = Partido.Torneo.ListaPuntos[i].CantidadPuntos;
+                            }
+                        }
+                    }
                     InscRepo.BajaInscripcion(Partido.Equipo2);
+                    
                    
                 }
                 else
                 {
                     Est1Jug1.PP += 1;
                     Est2Jug1.PG += 1;
-                    
+                    AsignarPuntos(Est1Jug1, Partido);
+                    if (InscRepo.ListarActivas(Partido.Torneo.IdTorneo).Count == 2)
+                    {
+                        for (int i = 0; i < 6; i++)
+                        {
+                            if (Partido.Torneo.ListaPuntos[i].Ronda == "Campeon")
+                            {
+                                Est2Jug1.Puntaje = Partido.Torneo.ListaPuntos[i].CantidadPuntos;
+                            }
+                        }
+                        
+                    }
                     InscRepo.BajaInscripcion(Partido.Equipo1);
                 }
                 EstRepo.Modificar(Partido.Equipo1.Equipo.Jugador1, Est1Jug1);
@@ -98,11 +128,13 @@ namespace Repositorio
                     {
                         Est1Jug2.PG += 1;
                         Est2Jug2.PP += 1;
+                        
                     }
                     else
                     {
                         Est1Jug2.PP += 1;
                         Est2Jug2.PG += 1;
+                        
                     }
                     EstRepo.Modificar(Partido.Equipo1.Equipo.Jugador2, Est1Jug2);
                     EstRepo.Modificar(Partido.Equipo2.Equipo.Jugador2, Est2Jug2);
@@ -192,5 +224,62 @@ namespace Repositorio
             }
 
         #endregion
+
+        private void AsignarPuntos(Estadisticas Estadistica, Partido Partido)
+        {
+            if (Partido.Ronda == Rondas.Primera_Ronda.ToString())
+            {
+                for (int i = 0; i < 6; i++)
+                {
+                    if (Partido.Torneo.ListaPuntos[i].Ronda == "R1")
+                    {
+                        Estadistica.Puntaje = Partido.Torneo.ListaPuntos[i].CantidadPuntos;
+                    }
+                }
+            }
+            if (Partido.Ronda == Rondas.Segunda_Ronda.ToString())
+            {
+                for (int i = 0; i < 6; i++)
+                {
+                    if (Partido.Torneo.ListaPuntos[i].Ronda == "R2")
+                    {
+                        Estadistica.Puntaje = Partido.Torneo.ListaPuntos[i].CantidadPuntos;
+                    }
+                }
+            }
+            
+            if (Partido.Ronda == Rondas.Cuartos_Final.ToString())
+            {
+                for (int i = 0; i < 6; i++)
+                {
+                    if (Partido.Torneo.ListaPuntos[i].Ronda == "CF")
+                    {
+                        Estadistica.Puntaje = Partido.Torneo.ListaPuntos[i].CantidadPuntos;
+                    }
+                }
+            }
+            if (Partido.Ronda == Rondas.Semi_Final.ToString())
+            {
+                for (int i = 0; i < 6; i++)
+                {
+                    if (Partido.Torneo.ListaPuntos[i].Ronda == "SF")
+                    {
+                        Estadistica.Puntaje = Partido.Torneo.ListaPuntos[i].CantidadPuntos;
+                    }
+                }
+            }
+            if (Partido.Ronda == Rondas.Final.ToString())
+            {
+                for (int i = 0; i < 6; i++)
+                {
+                    if (Partido.Torneo.ListaPuntos[i].Ronda == "F")
+                    {
+                        Estadistica.Puntaje = Partido.Torneo.ListaPuntos[i].CantidadPuntos;
+                    }
+                }
+            }
+           
+        
+        }
         }
     }
