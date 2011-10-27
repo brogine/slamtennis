@@ -19,6 +19,12 @@
         	border-width:1px;        	
         }
     </style>
+    <script language="javascript" type="text/javascript">
+        function Inscripciones() {
+            MostrarInscripcion();
+                    
+        }
+    </script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
 <div style="text-align: left; width:500px">
@@ -82,13 +88,16 @@
                             </th>
                         </tr>
                        <% if (Session["Torneos"] != null)
-                          {%>
+                          {
+                              int j = 1;
+                              %>
+                           
                        <% foreach (object item in (System.Collections.Generic.List<Object>)Session["Torneos"])
                           { %>
                         <%      object[] DatosTorneo = item.ToString().Split(','); %>
                         <tr>
                             <td>
-                                <a onclick="javascript:MostrarInscripcion()" href="#" >No</a>
+                                <a id='Link<% Response.Write(j);%>' href="javascript:__doPostBack('<% Response.Write(j);%>','')" >No</a>
                             </td>
                             <td>
                                  <% Response.Write(DatosTorneo[1].ToString()); %>
@@ -121,6 +130,7 @@
                                  <%  Response.Write(((Dominio.EstadoTorneo)Convert.ToInt32(DatosTorneo[12])).ToString()); %>
                             </td>
                         </tr>
+                        <% j += 1; %>
                         <%} %>
                         <%} %>
                    </table>      
@@ -133,6 +143,56 @@
     </div>
     <div id="content-DATOS">
         <p>Formulario de Inscripcion</p>
+        <table width="100%">
+            <tr>
+                <td style="width:50%">
+                    Torneo al que se va inscribir:
+                </td>
+                <td>
+                    <asp:TextBox ID="TxtTorneo" runat="server" Enabled="False"></asp:TextBox>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    DNI Jugador 1:
+                </td>
+                <td>
+                    <asp:TextBox ID="TxtDNI1" runat="server" Enabled="False"></asp:TextBox>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    DNI Jugador 2:
+                </td>
+                <td>
+                    <asp:TextBox ID="TxtDNI2" runat="server"></asp:TextBox>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Nro. de Inscripción:
+                </td>
+                <td>
+                    <asp:Label ID="LblInscripcion" runat="server" Text="---"></asp:Label>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Fecha de Inscripción:
+                </td>
+                <td>
+                    <asp:Label ID="LblFecha" runat="server" Text="---"></asp:Label>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Estado:
+                </td>
+                <td>
+                    <asp:CheckBox ID="CheckBox1" runat="server" Text="Activo ?" />
+                </td>
+            </tr>
+        </table>
     </div>
 
 </asp:Content>
