@@ -41,5 +41,16 @@ namespace SlamWeb
         }
 
         #endregion
+
+        protected void LinkButton1_Click(object sender, EventArgs e)
+        {
+            int index = Convert.ToInt32(((LinkButton)sender).ID);
+            object item = (Session["Torneos"] as List<object>)[index];
+            string[] array = item.ToString().Split(',');
+            TxtDNI1.Text = Session["DNI"].ToString();
+            TxtTorneo.Text = array[2].ToString();
+            LblFecha.Text = DateTime.Now.ToShortDateString();
+            Response.Write("<script>alert('Puto'); </script>");
+        }
     }
 }
