@@ -37,17 +37,28 @@ namespace Slam
 
         private void FrmEstadisticasJugador_Load(object sender, EventArgs e)
         {
-            servicioCategorias = (IListadoCategoriaServicio)AppContext.Instance.GetObject(ImplementaCategorias);
-            servicioCategorias.ListarActivas(this);
-            servicioEstadisticas = (IEstadisticasServicio)AppContext.Instance.GetObject(ImplementaEstadisticas);
-            if (IdCategoriaActual > 0 && DniJugador > 0)
+            try
             {
-                CboCategorias.SelectedValue = IdCategoriaActual;
-                servicioEstadisticas.Buscar(this);
-                this.Text = "Modificar Estadisticas del Jugador";
+                servicioCategorias = (IListadoCategoriaServicio)AppContext.Instance.GetObject(ImplementaCategorias);
+                servicioCategorias.ListarActivas(this);
+                servicioEstadisticas = (IEstadisticasServicio)AppContext.Instance.GetObject(ImplementaEstadisticas);
+
+
+                if (IdCategoriaActual > 0 && DniJugador > 0)
+                {
+                    CboCategorias.SelectedValue = IdCategoriaActual;
+
+                    servicioEstadisticas.Buscar(this);
+
+                    this.Text = "Modificar Estadisticas del Jugador";
+                }
+                else
+                    this.Text = "Nueva Estadistica del Jugador";
             }
-            else
-                this.Text = "Nueva Estadistica del Jugador";
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         #region Validaciones

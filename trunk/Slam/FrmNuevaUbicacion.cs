@@ -27,55 +27,97 @@ namespace Slam
 
         private void FrmNuevaUbicacion_Load(object sender, EventArgs e)
         {
-            PaisServicio = (IPaisServicio)AppContext.Instance.GetObject(ImplementaUbicacion);
-            PaisServicio.ListarPaises(this);
-            ProvinciaServicio = (IProvinciaServicio)AppContext.Instance.GetObject(ImplementaUbicacion);
-            LocalidadServicio = (ILocalidadServicio)AppContext.Instance.GetObject(ImplementaUbicacion);
+            try
+            {
+                PaisServicio = (IPaisServicio)AppContext.Instance.GetObject(ImplementaUbicacion);
+                PaisServicio.ListarPaises(this);
+                ProvinciaServicio = (IProvinciaServicio)AppContext.Instance.GetObject(ImplementaUbicacion);
+                LocalidadServicio = (ILocalidadServicio)AppContext.Instance.GetObject(ImplementaUbicacion);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void CboListaPaises_SelectionChangeCommitted(object sender, EventArgs e)
         {
-            if(CboListaPaises.SelectedIndex > -1)
-                ProvinciaServicio.ListarProvincias(this);
+            try
+            {
+                if (CboListaPaises.SelectedIndex > -1)
+                    ProvinciaServicio.ListarProvincias(this);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void CboListaProvincias_SelectionChangeCommitted(object sender, EventArgs e)
         {
-            if(CboListaPaises.SelectedIndex > -1 && CboListaProvincias.SelectedIndex > -1)
-                LocalidadServicio.ListarLocalidades(this);
+            try
+            {
+                if (CboListaPaises.SelectedIndex > -1 && CboListaProvincias.SelectedIndex > -1)
+                    LocalidadServicio.ListarLocalidades(this);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void BtnAgregarPais_Click(object sender, EventArgs e)
         {
-            if (CboListaPaises.Text != "")
+            try
             {
-                PaisServicio.AgregarPais(this);
-                PaisServicio.ListarPaises(this);
+                if (CboListaPaises.Text != "")
+                {
+                    PaisServicio.AgregarPais(this);
+                    PaisServicio.ListarPaises(this);
+                }
+                else
+                    MessageBox.Show("El nombre del Pais no puede estar en blanco.");
             }
-            else
-                MessageBox.Show("El nombre del Pais no puede estar en blanco.");
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void BtnAgregarProvincia_Click(object sender, EventArgs e)
         {
-            if (CboListaProvincias.Text != "")
+            try
             {
-                ProvinciaServicio.AgregarProvincia(this, this);
-                ProvinciaServicio.ListarProvincias(this);
+                if (CboListaProvincias.Text != "")
+                {
+                    ProvinciaServicio.AgregarProvincia(this, this);
+                    ProvinciaServicio.ListarProvincias(this);
+                }
+                else
+                    MessageBox.Show("El nombre de la Provincia no puede estar en blanco.");
             }
-            else
-                MessageBox.Show("El nombre de la Provincia no puede estar en blanco.");
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void BtnAgregarLocalidad_Click(object sender, EventArgs e)
         {
-            if (CboListaLocalidades.Text != "")
+            try
             {
-                LocalidadServicio.AgregarLocalidad(this, this);
-                LocalidadServicio.ListarLocalidades(this);
+                if (CboListaLocalidades.Text != "")
+                {
+                    LocalidadServicio.AgregarLocalidad(this, this);
+                    LocalidadServicio.ListarLocalidades(this);
+                }
+                else
+                    MessageBox.Show("El nombre de la Localidad no puede estar en blanco.");
             }
-            else
-                MessageBox.Show("El nombre de la Localidad no puede estar en blanco.");
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void BtnCerrar_Click(object sender, EventArgs e)

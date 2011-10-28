@@ -48,8 +48,14 @@ namespace Slam
 
         private void FrmNuevaInscripcion_Load(object sender, EventArgs e)
         {
-            
-            servicioTorneoTipo = (ITorneoServicio)AppContext.Instance.GetObject(ImplementaTorneos);
+            try
+            {
+                servicioTorneoTipo = (ITorneoServicio)AppContext.Instance.GetObject(ImplementaTorneos);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         #region Miembros de IListadoTorneos
@@ -222,16 +228,23 @@ namespace Slam
 
         private void CboTorneos_SelectionChangeCommitted(object sender, EventArgs e)
         {
-            TipoTorneo tipoTorneo = (TipoTorneo)servicioTorneoTipo.GetTipoTorneo((int)CboTorneos.SelectedValue);
-            if (tipoTorneo == TipoTorneo.Single)
+            try
             {
-                TxtDniJugador2.Enabled = false;
-                TxtNroInscripcion.Enabled = false;
+                TipoTorneo tipoTorneo = (TipoTorneo)servicioTorneoTipo.GetTipoTorneo((int)CboTorneos.SelectedValue);
+                if (tipoTorneo == TipoTorneo.Single)
+                {
+                    TxtDniJugador2.Enabled = false;
+                    TxtNroInscripcion.Enabled = false;
+                }
+                else
+                {
+                    TxtDniJugador2.Enabled = true;
+                    TxtNroInscripcion.Enabled = true;
+                }
             }
-            else
+            catch (Exception ex)
             {
-                TxtDniJugador2.Enabled = true;
-                TxtNroInscripcion.Enabled = true;
+                MessageBox.Show(ex.Message);
             }
         }
 

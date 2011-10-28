@@ -23,33 +23,54 @@ namespace Slam
 
         private void FrmListaClubes_Load(object sender, EventArgs e)
         {
-            ClubServicio = (IListadoClubServicio)AppContext.Instance.GetObject(ImplementaClubes);
-            ClubServicio.Listar(this);
+            try
+            {
+                ClubServicio = (IListadoClubServicio)AppContext.Instance.GetObject(ImplementaClubes);
+                ClubServicio.Listar(this);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void BtnNuevo_Click(object sender, EventArgs e)
         {
-            FrmNuevoClub NuevoClub = new FrmNuevoClub();
-            if(NuevoClub.ShowDialog() == DialogResult.OK)
-            	ClubServicio.Listar(this);
+            try
+            {
+                FrmNuevoClub NuevoClub = new FrmNuevoClub();
+                if (NuevoClub.ShowDialog() == DialogResult.OK)
+                    ClubServicio.Listar(this);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void BtnModificar_Click(object sender, EventArgs e)
         {
-            if (DgvClubes.SelectedRows.Count == 1)
+            try
             {
-                FrmNuevoClub ModificarClub = new FrmNuevoClub(
-                    Convert.ToInt32(DgvClubes.SelectedRows[0].Cells[0].Value));
-
-                if (ModificarClub.ShowDialog() == DialogResult.OK)
+                if (DgvClubes.SelectedRows.Count == 1)
                 {
-                    ClubServicio.Listar(this);
+                    FrmNuevoClub ModificarClub = new FrmNuevoClub(
+                        Convert.ToInt32(DgvClubes.SelectedRows[0].Cells[0].Value));
+
+                    if (ModificarClub.ShowDialog() == DialogResult.OK)
+                    {
+                        ClubServicio.Listar(this);
+                    }
                 }
+                else
+                    MessageBox.Show("Seleccione un Club de la grilla para modificar.");
             }
-            else
-                MessageBox.Show("Seleccione un Club de la grilla para modificar.");
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
-            
+    
 
         #region Miembros de IListadoClubes
 

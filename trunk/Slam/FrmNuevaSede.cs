@@ -38,20 +38,27 @@ namespace Slam
 
         private void FrmNuevaSede_Load(object sender, EventArgs e)
         {
-            servicioPaises = (IPaisServicio)AppContext.Instance.GetObject(ImplementaUbicacion);
-            servicioProvincias = (IProvinciaServicio)AppContext.Instance.GetObject(ImplementaUbicacion);
-            servicioLocalidades = (ILocalidadServicio)AppContext.Instance.GetObject(ImplementaUbicacion);
-            servicioClubes = (IListadoClubServicio)AppContext.Instance.GetObject(ImplementaClubes);
-            servicioSedes = (ISedesServicio)AppContext.Instance.GetObject(ImplementaSedes);
-            servicioClubes.ListarActivos(this);
-            servicioPaises.ListarPaises(this);
-            if (IdSedeModificar > 0)
+            try
             {
-                this.Text = "Modificar Sede";
-                servicioSedes.Buscar(this);
+                servicioPaises = (IPaisServicio)AppContext.Instance.GetObject(ImplementaUbicacion);
+                servicioProvincias = (IProvinciaServicio)AppContext.Instance.GetObject(ImplementaUbicacion);
+                servicioLocalidades = (ILocalidadServicio)AppContext.Instance.GetObject(ImplementaUbicacion);
+                servicioClubes = (IListadoClubServicio)AppContext.Instance.GetObject(ImplementaClubes);
+                servicioSedes = (ISedesServicio)AppContext.Instance.GetObject(ImplementaSedes);
+                servicioClubes.ListarActivos(this);
+                servicioPaises.ListarPaises(this);
+                if (IdSedeModificar > 0)
+                {
+                    this.Text = "Modificar Sede";
+                    servicioSedes.Buscar(this);
+                }
+                else
+                    this.Text = "Nueva Sede";
             }
-            else
-                this.Text = "Nueva Sede";
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void BtnCancelar_Click(object sender, EventArgs e)
@@ -63,25 +70,32 @@ namespace Slam
 
         private void BtnGuardar_Click(object sender, EventArgs e)
         {
-            if (EpSedes.GetError(CboClubes) == "" && EpSedes.GetError(TxtDireccion) == "" && EpSedes.GetError(CboProvincias) == ""
-                && EpSedes.GetError(CboLocalidades) == "" && EpSedes.GetError(CboPaises) == "" && EpSedes.GetError(TxtEmail) == ""
-                && EpSedes.GetError(TxtCelular) == "" && EpSedes.GetError(TxtTelefono) == "")
+            try
             {
-                try
+                if (EpSedes.GetError(CboClubes) == "" && EpSedes.GetError(TxtDireccion) == "" && EpSedes.GetError(CboProvincias) == ""
+                    && EpSedes.GetError(CboLocalidades) == "" && EpSedes.GetError(CboPaises) == "" && EpSedes.GetError(TxtEmail) == ""
+                    && EpSedes.GetError(TxtCelular) == "" && EpSedes.GetError(TxtTelefono) == "")
                 {
-                    if (IdSedeModificar > 0)
-                        servicioSedes.Modificar(this);
-                    else
-                        servicioSedes.Agregar(this);
-                    MessageBox.Show("Acción Realizada con éxito.");
-                    this.DialogResult = DialogResult.OK;
-                    this.Close();
+                    try
+                    {
+                        if (IdSedeModificar > 0)
+                            servicioSedes.Modificar(this);
+                        else
+                            servicioSedes.Agregar(this);
+                        MessageBox.Show("Acción Realizada con éxito.");
+                        this.DialogResult = DialogResult.OK;
+                        this.Close();
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Error: " + ex.Message);
+                        this.DialogResult = DialogResult.Abort;
+                    }
                 }
-                catch (Exception ex)
-                {
-                    MessageBox.Show("Error: " + ex.Message);
-                    this.DialogResult = DialogResult.Abort;
-                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
             }
         }
 
@@ -367,12 +381,27 @@ namespace Slam
 
         private void CboPaises_SelectionChangeCommitted(object sender, EventArgs e)
         {
-            servicioProvincias.ListarProvincias(this);
+            try
+
+            {
+                servicioProvincias.ListarProvincias(this);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void CboProvincias_SelectionChangeCommitted(object sender, EventArgs e)
         {
-            servicioLocalidades.ListarLocalidades(this);
+            try
+            {
+                servicioLocalidades.ListarLocalidades(this);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void CboClubes_KeyPress(object sender, KeyPressEventArgs e)
@@ -397,15 +426,22 @@ namespace Slam
 
         private void button1_Click(object sender, EventArgs e)
         {
-            FrmNuevaUbicacion NuevaUbicacion = new FrmNuevaUbicacion();
-            if (NuevaUbicacion.ShowDialog() == DialogResult.OK)
+            try
             {
-                servicioPaises.ListarPaises(this);
-                servicioProvincias.ListarProvincias(this);
-                servicioLocalidades.ListarLocalidades(this);
-                CboPaises.SelectedIndex = -1;
-                CboProvincias.SelectedIndex = -1;
-                CboLocalidades.SelectedIndex = -1;
+                FrmNuevaUbicacion NuevaUbicacion = new FrmNuevaUbicacion();
+                if (NuevaUbicacion.ShowDialog() == DialogResult.OK)
+                {
+                    servicioPaises.ListarPaises(this);
+                    servicioProvincias.ListarProvincias(this);
+                    servicioLocalidades.ListarLocalidades(this);
+                    CboPaises.SelectedIndex = -1;
+                    CboProvincias.SelectedIndex = -1;
+                    CboLocalidades.SelectedIndex = -1;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
             }
 
         }

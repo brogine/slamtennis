@@ -25,15 +25,29 @@ namespace Slam
 
         private void FrmListaArbitros_Load(object sender, EventArgs e)
         {
-            servicioArbitros = (IListadoArbitrosServicio)AppContext.Instance.GetObject(ImplementaArbitros);
-            servicioArbitros.ListarArbitros(this);
+            try
+            {
+                servicioArbitros = (IListadoArbitrosServicio)AppContext.Instance.GetObject(ImplementaArbitros);
+                servicioArbitros.ListarArbitros(this);
+            }
+            catch (Exception Ex)
+            {
+                MessageBox.Show(Ex.Message);
+            }
         }
 
         private void BtnNuevo_Click(object sender, EventArgs e)
         {
             FrmNuevaPersona nuevoArbitro = new FrmNuevaPersona(TipoPersona.Arbitro);
             if (nuevoArbitro.ShowDialog() == DialogResult.OK)
-                servicioArbitros.ListarArbitros(this);
+                try
+                {
+                    servicioArbitros.ListarArbitros(this);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
         }
 
         private void BtnModificar_Click(object sender, EventArgs e)
@@ -43,7 +57,14 @@ namespace Slam
                 FrmNuevaPersona modificarJugador = new FrmNuevaPersona(TipoPersona.Arbitro,
                     Convert.ToInt32(DgvArbitrosClub.SelectedRows[0].Cells["Dni"].Value));
                 if (modificarJugador.ShowDialog() == DialogResult.OK)
-                    servicioArbitros.ListarArbitros(this);
+                    try
+                    {
+                        servicioArbitros.ListarArbitros(this);
+                    }
+                    catch(Exception ex)
+                    {
+                        MessageBox.Show(ex.Message);
+                    }
             }
             else
                 MessageBox.Show("Elija un Arbitro de la grilla para Modificar", "Ayuda", MessageBoxButtons.OK, MessageBoxIcon.Information);

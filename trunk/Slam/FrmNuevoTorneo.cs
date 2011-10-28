@@ -38,16 +38,22 @@ namespace Slam
         private void FrmNuevoTorneo_Load(object sender, EventArgs e)
         {
 
-           
-            CboSuperficie.DataSource = Enum.GetValues(typeof(TipoSuperficie));
-            ClubServicio = (IListadoClubServicio)AppContext.Instance.GetObject(ImplementaClubes);
-            ClubServicio.ListarActivos(this);
-            servicioCategorias = (IListadoCategoriaServicio)AppContext.Instance.GetObject(ImplementaCategorias);
-            servicioCategorias.ListarActivas(this);
-            TorneoServicio = (ITorneoServicio)AppContext.Instance.GetObject(ImplementaTorneo);
-            if (idtorneo > -1)
+            try
             {
-                TorneoServicio.Buscar(this);
+                CboSuperficie.DataSource = Enum.GetValues(typeof(TipoSuperficie));
+                ClubServicio = (IListadoClubServicio)AppContext.Instance.GetObject(ImplementaClubes);
+                ClubServicio.ListarActivos(this);
+                servicioCategorias = (IListadoCategoriaServicio)AppContext.Instance.GetObject(ImplementaCategorias);
+                servicioCategorias.ListarActivas(this);
+                TorneoServicio = (ITorneoServicio)AppContext.Instance.GetObject(ImplementaTorneo);
+                if (idtorneo > -1)
+                {
+                    TorneoServicio.Buscar(this);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
             }
            
         }

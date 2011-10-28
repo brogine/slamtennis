@@ -3,7 +3,7 @@
 
   <config nombre="SqlServer"
           Proveedor="System.Data.SqlClient"
-          ConnectionString="Server=NICO-DESk;Database=SlamDB;Integrated Security =SSPI;"
+          ConnectionString="Server=localhost;Database=SlamDB;Integrated Security =SSPI;"
           Default="True"></config>
   <config nombre="MySQL"
           Proveedor="MySql.Data.MySqlClient"

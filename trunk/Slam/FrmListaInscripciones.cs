@@ -27,10 +27,17 @@ namespace Slam
 
         private void FrmListaInscripciones_Load(object sender, EventArgs e)
         {
-            servicioListadoInscripciones = (IListadoInscripcionServicio)AppContext.Instance.GetObject(ImplementaInscripciones);
-            servicioInscripciones = (IInscripcionServicio)AppContext.Instance.GetObject(ImplementaInscripciones);
-            servicioTorneos = (IListadoTorneoServicio)AppContext.Instance.GetObject(ImplementaTorneos);
-            servicioTorneos.ListarTorneos(this);
+            try
+            {
+                servicioListadoInscripciones = (IListadoInscripcionServicio)AppContext.Instance.GetObject(ImplementaInscripciones);
+                servicioInscripciones = (IInscripcionServicio)AppContext.Instance.GetObject(ImplementaInscripciones);
+                servicioTorneos = (IListadoTorneoServicio)AppContext.Instance.GetObject(ImplementaTorneos);
+                servicioTorneos.ListarTorneos(this);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void BtnSalir_Click(object sender, EventArgs e)
@@ -42,28 +49,49 @@ namespace Slam
 
         private void CboTorneos_SelectionChangeCommitted(object sender, EventArgs e)
         {
-            servicioListadoInscripciones.ListarPorTorneo(this);
+            try
+            {
+                servicioListadoInscripciones.ListarPorTorneo(this);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void BtnAgregar_Click(object sender, EventArgs e)
         {
-            FrmNuevaInscripcion nuevaInscripcion = new FrmNuevaInscripcion();
-            if (nuevaInscripcion.ShowDialog() == DialogResult.OK)
-                if(CboTorneos.SelectedIndex > -1)
-                    servicioListadoInscripciones.ListarPorTorneo(this);
+            try
+            {
+                FrmNuevaInscripcion nuevaInscripcion = new FrmNuevaInscripcion();
+                if (nuevaInscripcion.ShowDialog() == DialogResult.OK)
+                    if (CboTorneos.SelectedIndex > -1)
+                        servicioListadoInscripciones.ListarPorTorneo(this);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void BtnModificar_Click(object sender, EventArgs e)
         {
-            if (DgvListaInscripciones.SelectedRows.Count == 1)
+            try
             {
-                FrmNuevaInscripcion modificarInscripcion = new FrmNuevaInscripcion
-                    (Convert.ToInt32(DgvListaInscripciones.SelectedRows[0].Cells["Id"].Value));
-                if (modificarInscripcion.ShowDialog() == DialogResult.OK)
-                    servicioListadoInscripciones.ListarPorTorneo(this);
+                if (DgvListaInscripciones.SelectedRows.Count == 1)
+                {
+                    FrmNuevaInscripcion modificarInscripcion = new FrmNuevaInscripcion
+                        (Convert.ToInt32(DgvListaInscripciones.SelectedRows[0].Cells["Id"].Value));
+                    if (modificarInscripcion.ShowDialog() == DialogResult.OK)
+                        servicioListadoInscripciones.ListarPorTorneo(this);
+                }
+                else
+                    MessageBox.Show("Seleccione una Inscripción para modificarla.");
             }
-            else
-                MessageBox.Show("Seleccione una Inscripción para modificarla.");
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         #region Miembros de IListadoInscripciones

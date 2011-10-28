@@ -23,9 +23,16 @@ namespace Slam
 
         private void FrmListaTorneos_Load(object sender, EventArgs e)
         {
-            TorneoServicio = (IListadoTorneoServicio)AppContext.Instance.GetObject(ImplementaTorneos);
-            TorneoServicio.ActualizarTorneos();
-            TorneoServicio.ListarTorneos(this);
+            try
+            {
+                TorneoServicio = (IListadoTorneoServicio)AppContext.Instance.GetObject(ImplementaTorneos);
+                TorneoServicio.ActualizarTorneos();
+                TorneoServicio.ListarTorneos(this);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
   

@@ -29,11 +29,18 @@ namespace Slam
 
         private void FrmListaEstadisticas_Load(object sender, EventArgs e)
         {
-            servicioEstadisticas = (IListadoEstadisticasServicio)AppContext.Instance.GetObject(ImplementaEstadisticas);
-            servicioClubes = (IListadoClubServicio)AppContext.Instance.GetObject(ImplementaClubes);
-            servicioClubes.ListarActivos(this);
-            servicioCategorias = (IListadoCategoriaServicio)AppContext.Instance.GetObject(ImplementaCategorias);
-            servicioCategorias.ListarActivas(this);
+            try
+            {
+                servicioEstadisticas = (IListadoEstadisticasServicio)AppContext.Instance.GetObject(ImplementaEstadisticas);
+                servicioClubes = (IListadoClubServicio)AppContext.Instance.GetObject(ImplementaClubes);
+                servicioClubes.ListarActivos(this);
+                servicioCategorias = (IListadoCategoriaServicio)AppContext.Instance.GetObject(ImplementaCategorias);
+                servicioCategorias.ListarActivas(this);
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void BtnSalir_Click(object sender, EventArgs e)
@@ -45,24 +52,38 @@ namespace Slam
 
         private void CboClubes_SelectionChangeCommitted(object sender, EventArgs e)
         {
-            if (CboClubes.SelectedIndex > -1 && CboCategorias.SelectedIndex > -1)
+            try
             {
-                servicioEstadisticas.ListarPorCategoriaClub(this);
-                if (RBSingle.Checked == true)
+                if (CboClubes.SelectedIndex > -1 && CboCategorias.SelectedIndex > -1)
+                {
                     servicioEstadisticas.ListarPorCategoriaClub(this);
-                else
-                    servicioEstadisticas.ListarPorCategoriaClubDobles(this);
+                    if (RBSingle.Checked == true)
+                        servicioEstadisticas.ListarPorCategoriaClub(this);
+                    else
+                        servicioEstadisticas.ListarPorCategoriaClubDobles(this);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
             }
         }
 
         private void CboCategorias_SelectionChangeCommitted(object sender, EventArgs e)
         {
-            if (CboClubes.SelectedIndex > -1 && CboCategorias.SelectedIndex > -1)
+            try
             {
-                if (RBSingle.Checked == true)
-                    servicioEstadisticas.ListarPorCategoriaClub(this);
-                else
-                    servicioEstadisticas.ListarPorCategoriaClubDobles(this);
+                if (CboClubes.SelectedIndex > -1 && CboCategorias.SelectedIndex > -1)
+                {
+                    if (RBSingle.Checked == true)
+                        servicioEstadisticas.ListarPorCategoriaClub(this);
+                    else
+                        servicioEstadisticas.ListarPorCategoriaClubDobles(this);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
             }
         }
 
@@ -116,31 +137,45 @@ namespace Slam
 
         private void BtnNuevaEstadistica_Click(object sender, EventArgs e)
         {
-            if (DgvEstadisticas.SelectedRows.Count == 1)
+            try
             {
-                FrmEstadisticasJugador nuevaEstadistica = new FrmEstadisticasJugador(
-                    Convert.ToInt32(DgvEstadisticas.SelectedRows[0].Cells["Dni"].Value),
-                    DgvEstadisticas.SelectedRows[0].Cells["NombreApellido"].Value.ToString());
-                if (nuevaEstadistica.ShowDialog() == DialogResult.OK)
-                    servicioEstadisticas.ListarPorCategoriaClub(this);
+                if (DgvEstadisticas.SelectedRows.Count == 1)
+                {
+                    FrmEstadisticasJugador nuevaEstadistica = new FrmEstadisticasJugador(
+                        Convert.ToInt32(DgvEstadisticas.SelectedRows[0].Cells["Dni"].Value),
+                        DgvEstadisticas.SelectedRows[0].Cells["NombreApellido"].Value.ToString());
+                    if (nuevaEstadistica.ShowDialog() == DialogResult.OK)
+                        servicioEstadisticas.ListarPorCategoriaClub(this);
+                }
+                else
+                    MessageBox.Show("Debe Seleccionar Un Jugador De La Lista", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
-            else
-                MessageBox.Show("Debe Seleccionar Un Jugador De La Lista", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void BtnVerEstadisticas_Click(object sender, EventArgs e)
         {
-            if (DgvEstadisticas.SelectedRows.Count == 1)
+            try
             {
-                FrmEstadisticasJugador modificarEstadistica = new FrmEstadisticasJugador(
-                    Convert.ToInt32(DgvEstadisticas.SelectedRows[0].Cells["Dni"].Value),
-                    (int)CboCategorias.SelectedValue,
-                    DgvEstadisticas.SelectedRows[0].Cells["NombreApellido"].Value.ToString());
-                if (modificarEstadistica.ShowDialog() == DialogResult.OK)
-                    servicioEstadisticas.ListarPorCategoriaClub(this);
+                if (DgvEstadisticas.SelectedRows.Count == 1)
+                {
+                    FrmEstadisticasJugador modificarEstadistica = new FrmEstadisticasJugador(
+                        Convert.ToInt32(DgvEstadisticas.SelectedRows[0].Cells["Dni"].Value),
+                        (int)CboCategorias.SelectedValue,
+                        DgvEstadisticas.SelectedRows[0].Cells["NombreApellido"].Value.ToString());
+                    if (modificarEstadistica.ShowDialog() == DialogResult.OK)
+                        servicioEstadisticas.ListarPorCategoriaClub(this);
+                }
+                else
+                    MessageBox.Show("Debe Seleccionar Un Jugador De La Lista", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
-            else
-                MessageBox.Show("Debe Seleccionar Un Jugador De La Lista", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         #region Miembros de IListadoClubes
