@@ -96,6 +96,7 @@
             this.Controls.Add(this.DgvJugadoresClub);
             this.Name = "FrmMensajes";
             this.Text = "FrmMensajes";
+            this.Load += new System.EventHandler(this.FrmMensajes_Load);
             ((System.ComponentModel.ISupportInitialize)(this.DgvJugadoresClub)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

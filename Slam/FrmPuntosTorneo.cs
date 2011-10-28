@@ -108,12 +108,18 @@ namespace Slam
 
         private void FrmPuntosTorneo_Load(object sender, EventArgs e)
         {
-            Blanquear();
-          CboListaTorneos.SelectedIndex = -1;
-          PuntosServicio =  (IPuntosServicio)AppContext.Instance.GetObject(ImplementaPuntos);
-          TorneoServicio = (IListadoTorneoServicio)AppContext.Instance.GetObject(ImplementaTorneos);
-          TorneoServicio.ListarTorneos(this);
-
+            try
+            {
+                Blanquear();
+                CboListaTorneos.SelectedIndex = -1;
+                PuntosServicio = (IPuntosServicio)AppContext.Instance.GetObject(ImplementaPuntos);
+                TorneoServicio = (IListadoTorneoServicio)AppContext.Instance.GetObject(ImplementaTorneos);
+                TorneoServicio.ListarTorneos(this);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
 
         }
 
@@ -143,20 +149,27 @@ namespace Slam
 
         private void CboListaTorneos_SelectionChangeCommitted(object sender, EventArgs e)
         {
-            if (PuntosServicio.Existe(this))
+            try
             {
-                PuntosServicio.Buscar(this);
+                if (PuntosServicio.Existe(this))
+                {
+                    PuntosServicio.Buscar(this);
+                }
+                else
+                {
+                    Blanquear();
+                }
             }
-            else
+            catch (Exception ex)
             {
-                Blanquear();
+                MessageBox.Show(ex.Message);
             }
   
         }
 
         private void BtnAceptar_Click(object sender, EventArgs e)
         {
-
+            
             if (PuntosServicio.Existe(this))
             {
                 try

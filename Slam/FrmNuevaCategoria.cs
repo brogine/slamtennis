@@ -127,13 +127,20 @@ namespace Slam
 
         private void FrmNuevaCategoria_Load(object sender, EventArgs e)
         {
-            ServicioCategoria = (ICategoriaServicio)AppContext.Instance.GetObject(ImplementaCategorias);
-            if (idCat == 0)
-                this.Text = "Agregar Una Nueva Categoria";
-            else
+            try
             {
-                this.Text = "Modificar Categoria";
-                ServicioCategoria.Buscar(this);
+                ServicioCategoria = (ICategoriaServicio)AppContext.Instance.GetObject(ImplementaCategorias);
+                if (idCat == 0)
+                    this.Text = "Agregar Una Nueva Categoria";
+                else
+                {
+                    this.Text = "Modificar Categoria";
+                    ServicioCategoria.Buscar(this);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
             }
         }
 

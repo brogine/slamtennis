@@ -32,27 +32,48 @@ namespace Slam
 
         private void FrmListaSedes_Load(object sender, EventArgs e)
         {
-            servicioClubes.ListarActivos(this);
-            servicioSedes.ListarSedes(this);
+            try
+            {
+                servicioClubes.ListarActivos(this);
+                servicioSedes.ListarSedes(this);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void BtnNueva_Click(object sender, EventArgs e)
         {
-            FrmNuevaSede nuevaSede = new FrmNuevaSede();
-            if(nuevaSede.ShowDialog() == DialogResult.OK)
-                servicioSedes.ListarSedes(this);
+            try
+            {
+                FrmNuevaSede nuevaSede = new FrmNuevaSede();
+                if (nuevaSede.ShowDialog() == DialogResult.OK)
+                    servicioSedes.ListarSedes(this);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void BtnModificar_Click(object sender, EventArgs e)
         {
-            if (DgvSedes.SelectedRows.Count == 1)
+            try
             {
-                FrmNuevaSede modificarSede = new FrmNuevaSede(Convert.ToInt32(DgvSedes.SelectedRows[0].Cells["Id"].Value));
-                if (modificarSede.ShowDialog() == DialogResult.OK)
-                    servicioSedes.ListarSedes(this);
+                if (DgvSedes.SelectedRows.Count == 1)
+                {
+                    FrmNuevaSede modificarSede = new FrmNuevaSede(Convert.ToInt32(DgvSedes.SelectedRows[0].Cells["Id"].Value));
+                    if (modificarSede.ShowDialog() == DialogResult.OK)
+                        servicioSedes.ListarSedes(this);
+                }
+                else
+                    MessageBox.Show("Seleccione una Sede de la grilla para continuar.");
             }
-            else
-                MessageBox.Show("Seleccione una Sede de la grilla para continuar.");
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         #region Miembros de IListadoClubes
@@ -110,9 +131,17 @@ namespace Slam
 
         #endregion
 
+
         private void CboClubes_SelectionChangeCommitted(object sender, EventArgs e)
         {
-            servicioSedes.ListarSedes(this);
+            try
+            {
+                servicioSedes.ListarSedes(this);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void CboClubes_KeyPress(object sender, KeyPressEventArgs e)
@@ -122,18 +151,32 @@ namespace Slam
 
         private void BtnNuevaCancha_Click(object sender, EventArgs e)
         {
-            FrmCanchas nuevaCancha = new FrmCanchas(this.IdClub);
-            if (nuevaCancha.ShowDialog() == DialogResult.OK)
-                servicioCanchas.Listar(this);
+            try
+            {
+                FrmCanchas nuevaCancha = new FrmCanchas(this.IdClub);
+                if (nuevaCancha.ShowDialog() == DialogResult.OK)
+                    servicioCanchas.Listar(this);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void BtnModificarCancha_Click(object sender, EventArgs e)
         {
-            if (DgvCanchas.SelectedRows.Count == 1)
+            try
             {
-                FrmCanchas nuevaCancha = new FrmCanchas(this.IdClub,Convert.ToInt32(DgvCanchas.SelectedRows[0].Cells["Id"].Value));
-                if (nuevaCancha.ShowDialog() == DialogResult.OK)
-                    servicioCanchas.Listar(this);
+                if (DgvCanchas.SelectedRows.Count == 1)
+                {
+                    FrmCanchas nuevaCancha = new FrmCanchas(this.IdClub, Convert.ToInt32(DgvCanchas.SelectedRows[0].Cells["Id"].Value));
+                    if (nuevaCancha.ShowDialog() == DialogResult.OK)
+                        servicioCanchas.Listar(this);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
             }
         }
 
@@ -170,9 +213,16 @@ namespace Slam
 
         private void DgvSedes_SelectionChanged(object sender, EventArgs e)
         {
-            if (DgvSedes.SelectedRows.Count == 1)
+            try
             {
-                servicioCanchas.Listar(this);
+                if (DgvSedes.SelectedRows.Count == 1)
+                {
+                    servicioCanchas.Listar(this);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
             }
         }
     }

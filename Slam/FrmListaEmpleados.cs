@@ -30,42 +30,72 @@ namespace Slam
 		
 		void FrmListaEmpleadosLoad(object sender, EventArgs e)
 		{
-			servicioEmpleados = (IListadoEmpleadoServicio)AppContext.Instance.GetObject(ImplementaEmpleados);
-			servicioEmpleados.ListarEmpleados(this);
+            try
+            {
+                servicioEmpleados = (IListadoEmpleadoServicio)AppContext.Instance.GetObject(ImplementaEmpleados);
+                servicioEmpleados.ListarEmpleados(this);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
 		}
-		
-		void BtnNuevoClick(object sender, EventArgs e)
-		{
-			FrmNuevaPersona nuevoEmpleado = new FrmNuevaPersona(TipoPersona.Empleado);
-			if(nuevoEmpleado.ShowDialog() == DialogResult.OK)
-				servicioEmpleados.ListarEmpleados(this);
-		}
+
+        void BtnNuevoClick(object sender, EventArgs e)
+        {
+            try
+            {
+                FrmNuevaPersona nuevoEmpleado = new FrmNuevaPersona(TipoPersona.Empleado);
+                if (nuevoEmpleado.ShowDialog() == DialogResult.OK)
+                    servicioEmpleados.ListarEmpleados(this);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
 		
 		void BtnModificarClick(object sender, EventArgs e)
 		{
-			if(DgvEmpleados.SelectedRows.Count == 1)
-			{
-				int dni = Convert.ToInt32(DgvEmpleados.SelectedRows[0].Cells["Dni"].Value);
-				FrmNuevaPersona modificarEmpleado = new FrmNuevaPersona(TipoPersona.Empleado,
-				                dni);
-				if(modificarEmpleado.ShowDialog() == DialogResult.OK)
-					servicioEmpleados.ListarEmpleados(this);
-			}
+            try
+            {
+                if (DgvEmpleados.SelectedRows.Count == 1)
+                {
+                    int dni = Convert.ToInt32(DgvEmpleados.SelectedRows[0].Cells["Dni"].Value);
+                    FrmNuevaPersona modificarEmpleado = new FrmNuevaPersona(TipoPersona.Empleado,
+                                    dni);
+                    if (modificarEmpleado.ShowDialog() == DialogResult.OK)
+                        servicioEmpleados.ListarEmpleados(this);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
 		}
 		
 		public List<object> ListaEmpleados {
-			set {
-				if(DgvEmpleados.ColumnCount > 0)
-					DgvEmpleados.Columns.Clear();
-				DgvEmpleados.Columns.Add("Dni", "Dni");
-				DgvEmpleados.Columns.Add("ApellidoNombre", "Apellido y Nombre");
-				DgvEmpleados.Columns.Add("Puesto", "Puesto");
-				if(DgvEmpleados.RowCount > 0)
-					DgvEmpleados.Rows.Clear();
-				foreach (object empleado in value) {
-					object[] datos = empleado.ToString().Split(',');
-					DgvEmpleados.Rows.Add(datos);
-				}
+			
+            set {
+                try
+                {
+                    if (DgvEmpleados.ColumnCount > 0)
+                        DgvEmpleados.Columns.Clear();
+                    DgvEmpleados.Columns.Add("Dni", "Dni");
+                    DgvEmpleados.Columns.Add("ApellidoNombre", "Apellido y Nombre");
+                    DgvEmpleados.Columns.Add("Puesto", "Puesto");
+                    if (DgvEmpleados.RowCount > 0)
+                        DgvEmpleados.Rows.Clear();
+                    foreach (object empleado in value)
+                    {
+                        object[] datos = empleado.ToString().Split(',');
+                        DgvEmpleados.Rows.Add(datos);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
 			}
 		}
 	}

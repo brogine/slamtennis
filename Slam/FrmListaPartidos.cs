@@ -97,44 +97,71 @@ namespace Slam
 
         private void FrmListaPartidos_Load(object sender, EventArgs e)
         {
-            servicioTorneos = (IListadoTorneoServicio)AppContext.Instance.GetObject(ImplementaTorneos);
-            servicioTorneos.ListarTorneosCerrados(this);
-            if (IdTorneoActual > 0)
+            try
             {
-                CboListaTorneos.SelectedValue = IdTorneoActual;
-                servicioPartidos = (IListadoPartidoServicio)AppContext.Instance.GetObject(ImplementaPartidos);
-                servicioPartidos.ListarPartidos(this);
+                servicioTorneos = (IListadoTorneoServicio)AppContext.Instance.GetObject(ImplementaTorneos);
+                servicioTorneos.ListarTorneosCerrados(this);
+                if (IdTorneoActual > 0)
+                {
+                    CboListaTorneos.SelectedValue = IdTorneoActual;
+                    servicioPartidos = (IListadoPartidoServicio)AppContext.Instance.GetObject(ImplementaPartidos);
+                    servicioPartidos.ListarPartidos(this);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
             }
         }
 
         private void CboListaTorneos_SelectionChangeCommitted(object sender, EventArgs e)
         {
-            if(servicioPartidos == null)
-                servicioPartidos = (IListadoPartidoServicio)AppContext.Instance.GetObject(ImplementaPartidos);
-            servicioPartidos.ListarPartidos(this);
+            try
+            {
+                if (servicioPartidos == null)
+                    servicioPartidos = (IListadoPartidoServicio)AppContext.Instance.GetObject(ImplementaPartidos);
+                servicioPartidos.ListarPartidos(this);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void BtnAgregarPartido_Click(object sender, EventArgs e)
         {
-            FrmNuevoPartido NuevoPartido = new FrmNuevoPartido();
-            if (NuevoPartido.ShowDialog() == DialogResult.OK)
+            try
             {
-                servicioPartidos.ListarPartidos(this);
+                FrmNuevoPartido NuevoPartido = new FrmNuevoPartido();
+                if (NuevoPartido.ShowDialog() == DialogResult.OK)
+                {
+                    servicioPartidos.ListarPartidos(this);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
             }
         }
 
         private void BtnModificar_Click(object sender, EventArgs e)
         {
-
-            if (DgvListaPartidos.RowCount > 0)
+            try
             {
-
-
-                FrmNuevoPartido ModificaPartido = new FrmNuevoPartido(Convert.ToInt32(DgvListaPartidos.SelectedRows[0].Cells[0].Value));
-                if (ModificaPartido.ShowDialog() == DialogResult.OK)
+                if (DgvListaPartidos.RowCount > 0)
                 {
-                    servicioPartidos.ListarPartidos(this);
+
+
+                    FrmNuevoPartido ModificaPartido = new FrmNuevoPartido(Convert.ToInt32(DgvListaPartidos.SelectedRows[0].Cells[0].Value));
+                    if (ModificaPartido.ShowDialog() == DialogResult.OK)
+                    {
+                        servicioPartidos.ListarPartidos(this);
+                    }
                 }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
             }
         }
 
@@ -147,24 +174,38 @@ namespace Slam
 
         private void DgvListaPartidos_SelectionChanged(object sender, EventArgs e)
         {
-            if (DgvListaPartidos.Rows.Count > 0)
+            try
             {
-                //if (Convert.ToBoolean(DgvListaPartidos.SelectedRows[0].Cells["Estado"].Value) == false)
-                //{
-                //    BtnModificar.Enabled = false;
+                if (DgvListaPartidos.Rows.Count > 0)
+                {
+                    //if (Convert.ToBoolean(DgvListaPartidos.SelectedRows[0].Cells["Estado"].Value) == false)
+                    //{
+                    //    BtnModificar.Enabled = false;
 
-                //}
-                //else
-                //{
-                //    BtnModificar.Enabled = true;
-                //}
+                    //}
+                    //else
+                    //{
+                    //    BtnModificar.Enabled = true;
+                    //}
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
             }
         }
 
         private void BtnGenerarLlave_Click(object sender, EventArgs e)
         {
-            servicioInscripciones = (IListadoInscripcionServicio)AppContext.Instance.GetObject(ImplementaInscripciones);
-            servicioInscripciones.ListarPorTorneo(this);
+            try
+            {
+                servicioInscripciones = (IListadoInscripcionServicio)AppContext.Instance.GetObject(ImplementaInscripciones);
+                servicioInscripciones.ListarPorTorneo(this);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         #region Miembros de IListadoInscripciones

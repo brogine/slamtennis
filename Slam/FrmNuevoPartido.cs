@@ -269,16 +269,23 @@ namespace Slam
         }
         private void CboListaTorneo_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (CboListaTorneo.SelectedIndex > -1)
+            try
             {
-                CboRonda.DataSource = Enum.GetValues(typeof(Rondas));
-                servicioInscripciones = (IListadoInscripcionServicio)AppContext.Instance.GetObject(ImplementaInscripciones);
-                servicioInscripciones.ListarActivas(this);
-                torneo = (ITorneoServicio)AppContext.Instance.GetObject(ImplementaTorneos);
-                torneo.GetFechas(this);
-                DtpFechaPartido.MinDate = this.FechaInicio;
-                DtpFechaPartido.MaxDate = this.FechaFin;
+                if (CboListaTorneo.SelectedIndex > -1)
+                {
+                    CboRonda.DataSource = Enum.GetValues(typeof(Rondas));
+                    servicioInscripciones = (IListadoInscripcionServicio)AppContext.Instance.GetObject(ImplementaInscripciones);
+                    servicioInscripciones.ListarActivas(this);
+                    torneo = (ITorneoServicio)AppContext.Instance.GetObject(ImplementaTorneos);
+                    torneo.GetFechas(this);
+                    DtpFechaPartido.MinDate = this.FechaInicio;
+                    DtpFechaPartido.MaxDate = this.FechaFin;
 
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
             }
         }
         private void BtnSalir_Click(object sender, EventArgs e)
@@ -288,6 +295,7 @@ namespace Slam
         }
         private void CboListaTorneo_Validating(object sender, CancelEventArgs e)
         {
+
             if (CboListaTorneo.SelectedIndex < 0)
             {
                 EPPartidos.SetError(CboListaTorneo, "Debe Seleccionar Un Torneo De La Lista");

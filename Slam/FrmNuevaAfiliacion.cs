@@ -41,10 +41,17 @@ namespace Slam
         }
         private void FrmNuevaAfiliacion_Load(object sender, EventArgs e)
         {
-             AfilServ = (IAfiliacionServicio)AppContext.Instance.GetObject(ImplementaAfiliacion);
-             ServicioJugador = (IJugadorServicio)AppContext.Instance.GetObject(ImplementaJugador);
-             if (CboListaClubes.SelectedIndex > -1 && TxtDni.Text != "")
-                 AfilServ.Buscar(this);
+            try
+            {
+                AfilServ = (IAfiliacionServicio)AppContext.Instance.GetObject(ImplementaAfiliacion);
+                ServicioJugador = (IJugadorServicio)AppContext.Instance.GetObject(ImplementaJugador);
+                if (CboListaClubes.SelectedIndex > -1 && TxtDni.Text != "")
+                    AfilServ.Buscar(this);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         #region Miembros de IAfiliacionUI
@@ -90,11 +97,18 @@ namespace Slam
 
         private void BtnNuevoJugador_Click(object sender, EventArgs e)
         {
-             FrmNuevaPersona NuevoJugador = new FrmNuevaPersona(TipoPersona.Jugador);
-             if (NuevoJugador.ShowDialog() == DialogResult.OK)
-             {
-                 TxtDni.Text = NuevoJugador.Dni.ToString();
-             }
+            try
+            {
+                FrmNuevaPersona NuevoJugador = new FrmNuevaPersona(TipoPersona.Jugador);
+                if (NuevoJugador.ShowDialog() == DialogResult.OK)
+                {
+                    TxtDni.Text = NuevoJugador.Dni.ToString();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         #region Miembros de IListadoClubes
@@ -149,23 +163,30 @@ namespace Slam
 
         private void BtnComprobar_Click(object sender, EventArgs e)
         {
-            if (TxtDni.Text == "")
+            try
             {
-                LblExiste.ForeColor = Color.Red;
-                LblExiste.Text = "El Dni No Puede Estar En Blanco";
-            }
-            else
-            {
-                if (ServicioJugador.Existe(int.Parse(TxtDni.Text)))
+                if (TxtDni.Text == "")
                 {
-                    LblExiste.ForeColor = Color.Green;
-                    LblExiste.Text = "El Jugador Existe En La Base De Datos";
+                    LblExiste.ForeColor = Color.Red;
+                    LblExiste.Text = "El Dni No Puede Estar En Blanco";
                 }
                 else
                 {
-                    LblExiste.ForeColor = Color.Red;
-                    LblExiste.Text = "El Jugador NO Existe En La Base De Datos";
+                    if (ServicioJugador.Existe(int.Parse(TxtDni.Text)))
+                    {
+                        LblExiste.ForeColor = Color.Green;
+                        LblExiste.Text = "El Jugador Existe En La Base De Datos";
+                    }
+                    else
+                    {
+                        LblExiste.ForeColor = Color.Red;
+                        LblExiste.Text = "El Jugador NO Existe En La Base De Datos";
+                    }
                 }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
             }
         }
 

@@ -15,5 +15,10 @@ namespace Slam
         {
             InitializeComponent();
         }
+
+        private void FrmMensajes_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

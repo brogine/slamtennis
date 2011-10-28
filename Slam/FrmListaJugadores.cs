@@ -28,38 +28,66 @@ namespace Slam
 
         private void FrmListaJugadores_Load(object sender, EventArgs e)
         {
-            servicioJugadores = (IListadoJugadoresServicio)AppContext.Instance.GetObject(ImplementaJugadores);
-        	servicioClubes = (IListadoClubServicio)AppContext.Instance.GetObject(ImplementaClubes);
-            servicioClubes.ListarActivos(this);
+            try
+            {
+                servicioJugadores = (IListadoJugadoresServicio)AppContext.Instance.GetObject(ImplementaJugadores);
+                servicioClubes = (IListadoClubServicio)AppContext.Instance.GetObject(ImplementaClubes);
+                servicioClubes.ListarActivos(this);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void BtnNuevo_Click(object sender, EventArgs e)
         {
-            FrmNuevaAfiliacion nuevoJugador = new FrmNuevaAfiliacion();
-            if(nuevoJugador.ShowDialog() == DialogResult.OK)
+            try
             {
-                if(CboClubes.SelectedIndex > -1)
-                    servicioJugadores.ListarJugadores(this);
+                FrmNuevaAfiliacion nuevoJugador = new FrmNuevaAfiliacion();
+                if (nuevoJugador.ShowDialog() == DialogResult.OK)
+                {
+                    if (CboClubes.SelectedIndex > -1)
+                        servicioJugadores.ListarJugadores(this);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
             }
         }
 
         private void BtnModificar_Click(object sender, EventArgs e)
         {
-            if (DgvJugadoresClub.SelectedRows.Count == 1)
+            try
             {
-                FrmNuevaPersona modificarJugador = new FrmNuevaPersona(TipoPersona.Jugador, 
-                    Convert.ToInt32(DgvJugadoresClub.SelectedRows[0].Cells["Dni"].Value));
-                modificarJugador.Show();
+                if (DgvJugadoresClub.SelectedRows.Count == 1)
+                {
+                    FrmNuevaPersona modificarJugador = new FrmNuevaPersona(TipoPersona.Jugador,
+                        Convert.ToInt32(DgvJugadoresClub.SelectedRows[0].Cells["Dni"].Value));
+                    modificarJugador.Show();
+                }
+                else
+                    MessageBox.Show("Elija un Jugador de la grilla para Modificar", "Ayuda", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
-            else
-                MessageBox.Show("Elija un Jugador de la grilla para Modificar", "Ayuda", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void CmbClubes_SelectionChangeCommitted(object sender, EventArgs e)
         {
-            if (CboClubes.SelectedIndex > -1)
+            try
             {
-                servicioJugadores.ListarJugadores(this);
+                if (CboClubes.SelectedIndex > -1)
+                {
+                    servicioJugadores.ListarJugadores(this);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
             }
         }
 

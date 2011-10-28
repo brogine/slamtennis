@@ -23,8 +23,15 @@ namespace Slam
 
         private void FrmListaCategorias_Load(object sender, EventArgs e)
         {
-            ServicioCategoria = (IListadoCategoriaServicio)AppContext.Instance.GetObject(ImplementaCategorias);
-            ServicioCategoria.Listar(this);
+            try
+            {
+                ServicioCategoria = (IListadoCategoriaServicio)AppContext.Instance.GetObject(ImplementaCategorias);
+                ServicioCategoria.Listar(this);
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         #region Miembros de IListadoCategorias
@@ -66,22 +73,36 @@ namespace Slam
 
         private void BtnAgregar_Click(object sender, EventArgs e)
         {
-            FrmNuevaCategoria NuevaCat = new FrmNuevaCategoria();
-            if (NuevaCat.ShowDialog() == DialogResult.OK)
-                ServicioCategoria.Listar(this);
+            try
+            {
+                FrmNuevaCategoria NuevaCat = new FrmNuevaCategoria();
+                if (NuevaCat.ShowDialog() == DialogResult.OK)
+                    ServicioCategoria.Listar(this);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void BtnModificar_Click(object sender, EventArgs e)
         {
-            if (DgvListaCategorias.SelectedRows.Count == 1)
+            try
             {
-                FrmNuevaCategoria ModificarCat = new FrmNuevaCategoria(Convert.ToInt32(DgvListaCategorias.SelectedRows[0].Cells["Id"].Value));
-                if(ModificarCat.ShowDialog() == DialogResult.OK)
-                    ServicioCategoria.Listar(this);
+                if (DgvListaCategorias.SelectedRows.Count == 1)
+                {
+                    FrmNuevaCategoria ModificarCat = new FrmNuevaCategoria(Convert.ToInt32(DgvListaCategorias.SelectedRows[0].Cells["Id"].Value));
+                    if (ModificarCat.ShowDialog() == DialogResult.OK)
+                        ServicioCategoria.Listar(this);
+                }
+                else
+                {
+                    MessageBox.Show("Debe Seleccionar Una Categoria De La Lista Para Poder Modificarla");
+                }
             }
-            else
-            { 
-                MessageBox.Show("Debe Seleccionar Una Categoria De La Lista Para Poder Modificarla");
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
             }
         }
     }

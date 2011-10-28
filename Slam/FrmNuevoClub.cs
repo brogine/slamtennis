@@ -30,34 +30,48 @@ namespace Slam
 
         private void FrmNuevoClub_Load(object sender, EventArgs e)
         {
-            ClubServicio = (IClubServicio)AppContext.Instance.GetObject(ImplementaClubes);
-            if (idClub == -1)
+            try
             {
-                ChkEstado.Checked = true;
-                ChkEstado.Enabled = false;
-                this.Text = "Nuevo Club";
+                ClubServicio = (IClubServicio)AppContext.Instance.GetObject(ImplementaClubes);
+                if (idClub == -1)
+                {
+                    ChkEstado.Checked = true;
+                    ChkEstado.Enabled = false;
+                    this.Text = "Nuevo Club";
+                }
+                else
+                {
+                    this.Text = "Modificar Club";
+                    ClubServicio.Buscar(this);
+                }
             }
-            else
+            catch (Exception ex)
             {
-                this.Text = "Modificar Club";
-                ClubServicio.Buscar(this);
+                MessageBox.Show(ex.Message);
             }
         }
 
         private void BtnGuardar_Click(object sender, EventArgs e)
         {
-            if (EpClubes.GetError(TxtNombrePresidente) == "" && EpClubes.GetError(TxtNombreClub) == "")
+            try
             {
-                if (ClubServicio.Existe(this.idClub))
+                if (EpClubes.GetError(TxtNombrePresidente) == "" && EpClubes.GetError(TxtNombreClub) == "")
                 {
-                    ClubServicio.Modificar(this);
+                    if (ClubServicio.Existe(this.idClub))
+                    {
+                        ClubServicio.Modificar(this);
+                    }
+                    else
+                    {
+                        ClubServicio.Agregar(this);
+                    }
+                    this.DialogResult = DialogResult.OK;
+                    this.Close();
                 }
-                else
-                {
-                    ClubServicio.Agregar(this);
-                }
-                this.DialogResult = DialogResult.OK;
-                this.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
             }
         }
 
