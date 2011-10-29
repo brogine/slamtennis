@@ -188,6 +188,14 @@ namespace Slam
         {
             set
             {
+                if (value.Count > 8 && value.Count < 32)
+                {
+                    CboRonda.SelectedItem = Rondas.Primera_Ronda;
+                }
+                if (value.Count > 8 && value.Count <= 16)
+                {
+                    CboRonda.SelectedItem = Rondas.Segunda_Ronda;
+                }
                 if(value.Count>4 && value.Count <=8)
                 {
                     CboRonda.SelectedItem = Rondas.Cuartos_Final;
@@ -200,6 +208,7 @@ namespace Slam
                 {
                     CboRonda.SelectedItem = Rondas.Final;
                 }
+
 
                 Dictionary<int, string> ListaInscripciones = new Dictionary<int, string>();
                 foreach (Object Inscripcion in value)

@@ -93,6 +93,7 @@ namespace Repositorio
         public void Eliminar(int IdInscripcion)
         {   IInscripcionRepositorio InscRepo = new InscripcionRepositorio();
             Inscripcion Insc = InscRepo.Buscar(IdInscripcion);
+            
             String Consulta = " Delete From Inscripciones Where IdInscripcion = " + IdInscripcion;
             Conn.ActualizarOEliminar(Consulta);
             Consulta = " Delete From InscripcionesJugador Where IdInscripcion = " + IdInscripcion;
