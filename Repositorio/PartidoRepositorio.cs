@@ -165,6 +165,7 @@ namespace Repositorio
                             }
 
                         }
+                        InscRepo.BajaInscripcion(Partido.Equipo2);
 
                     }
                     else
@@ -186,7 +187,9 @@ namespace Repositorio
                             }
 
                         }
-                        
+                        //Dar De Baja Equipos Perdedores
+                        InscRepo.BajaInscripcion(Partido.Equipo1);
+
                     }
                     EstRepo.Modificar(Partido.Equipo1.Equipo.Jugador1, Equipo1Jugador1);
                     EstRepo.Modificar(Partido.Equipo1.Equipo.Jugador2, Equipo1Jugador2);
