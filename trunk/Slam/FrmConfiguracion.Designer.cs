@@ -69,7 +69,7 @@
             this.BtnGuardar.Location = new System.Drawing.Point(105, 210);
             this.BtnGuardar.Name = "BtnGuardar";
             this.BtnGuardar.Size = new System.Drawing.Size(75, 23);
-            this.BtnGuardar.TabIndex = 2;
+            this.BtnGuardar.TabIndex = 7;
             this.BtnGuardar.Text = "Guardar";
             this.BtnGuardar.UseVisualStyleBackColor = true;
             this.BtnGuardar.Click += new System.EventHandler(this.BtnGuardar_Click);
@@ -79,7 +79,7 @@
             this.BtnCancelar.Location = new System.Drawing.Point(188, 210);
             this.BtnCancelar.Name = "BtnCancelar";
             this.BtnCancelar.Size = new System.Drawing.Size(75, 23);
-            this.BtnCancelar.TabIndex = 3;
+            this.BtnCancelar.TabIndex = 8;
             this.BtnCancelar.Text = "Cancelar";
             this.BtnCancelar.UseVisualStyleBackColor = true;
             this.BtnCancelar.Click += new System.EventHandler(this.BtnCancelar_Click);
@@ -89,7 +89,7 @@
             this.TxtUsuario.Location = new System.Drawing.Point(131, 88);
             this.TxtUsuario.Name = "TxtUsuario";
             this.TxtUsuario.Size = new System.Drawing.Size(132, 20);
-            this.TxtUsuario.TabIndex = 4;
+            this.TxtUsuario.TabIndex = 2;
             // 
             // TxtPassword
             // 
@@ -97,7 +97,7 @@
             this.TxtPassword.Name = "TxtPassword";
             this.TxtPassword.PasswordChar = '*';
             this.TxtPassword.Size = new System.Drawing.Size(132, 20);
-            this.TxtPassword.TabIndex = 4;
+            this.TxtPassword.TabIndex = 3;
             // 
             // LblUsuario
             // 
@@ -123,7 +123,7 @@
             this.ChkIntegratedSecurity.Location = new System.Drawing.Point(131, 140);
             this.ChkIntegratedSecurity.Name = "ChkIntegratedSecurity";
             this.ChkIntegratedSecurity.Size = new System.Drawing.Size(147, 17);
-            this.ChkIntegratedSecurity.TabIndex = 5;
+            this.ChkIntegratedSecurity.TabIndex = 4;
             this.ChkIntegratedSecurity.Text = "Usar Seguridad Integrada";
             this.ChkIntegratedSecurity.UseVisualStyleBackColor = true;
             this.ChkIntegratedSecurity.CheckedChanged += new System.EventHandler(this.ChkIntegratedSecurity_CheckedChanged);
@@ -133,7 +133,7 @@
             this.TxtServidor.Location = new System.Drawing.Point(131, 62);
             this.TxtServidor.Name = "TxtServidor";
             this.TxtServidor.Size = new System.Drawing.Size(132, 20);
-            this.TxtServidor.TabIndex = 4;
+            this.TxtServidor.TabIndex = 1;
             // 
             // LblServidor
             // 
@@ -149,7 +149,7 @@
             this.BtnProbar.Location = new System.Drawing.Point(68, 181);
             this.BtnProbar.Name = "BtnProbar";
             this.BtnProbar.Size = new System.Drawing.Size(112, 23);
-            this.BtnProbar.TabIndex = 6;
+            this.BtnProbar.TabIndex = 5;
             this.BtnProbar.Text = "Probar Conexión";
             this.BtnProbar.UseVisualStyleBackColor = true;
             this.BtnProbar.Click += new System.EventHandler(this.BtnProbar_Click);
@@ -169,7 +169,7 @@
             this.BtnEstablecer.Location = new System.Drawing.Point(186, 181);
             this.BtnEstablecer.Name = "BtnEstablecer";
             this.BtnEstablecer.Size = new System.Drawing.Size(112, 23);
-            this.BtnEstablecer.TabIndex = 8;
+            this.BtnEstablecer.TabIndex = 6;
             this.BtnEstablecer.Text = "Usar ésta conexión";
             this.BtnEstablecer.UseVisualStyleBackColor = true;
             this.BtnEstablecer.Click += new System.EventHandler(this.BtnEstablecer_Click);

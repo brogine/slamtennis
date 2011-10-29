@@ -63,6 +63,7 @@
             this.LblPais = new System.Windows.Forms.Label();
             this.LblProvincia = new System.Windows.Forms.Label();
             this.GbDatosPersonales = new System.Windows.Forms.GroupBox();
+            this.BtnFoto = new System.Windows.Forms.Button();
             this.PbFoto = new System.Windows.Forms.PictureBox();
             this.ChkEstado = new System.Windows.Forms.CheckBox();
             this.TxtPuesto = new System.Windows.Forms.TextBox();
@@ -93,7 +94,6 @@
             this.TxtUsuario = new System.Windows.Forms.TextBox();
             this.LblUsuario = new System.Windows.Forms.Label();
             this.EpNuevaPersona = new System.Windows.Forms.ErrorProvider(this.components);
-            this.BtnFoto = new System.Windows.Forms.Button();
             this.TcPersonas.SuspendLayout();
             this.TpDatosPersonales.SuspendLayout();
             this.GbDatosArbitro.SuspendLayout();
@@ -197,7 +197,7 @@
             this.BtnCancelar.Location = new System.Drawing.Point(643, 322);
             this.BtnCancelar.Name = "BtnCancelar";
             this.BtnCancelar.Size = new System.Drawing.Size(96, 35);
-            this.BtnCancelar.TabIndex = 27;
+            this.BtnCancelar.TabIndex = 19;
             this.BtnCancelar.Text = "Cancelar";
             this.BtnCancelar.UseVisualStyleBackColor = true;
             this.BtnCancelar.Click += new System.EventHandler(this.BtnCancelarClick);
@@ -207,7 +207,7 @@
             this.BtnGuardar.Location = new System.Drawing.Point(536, 322);
             this.BtnGuardar.Name = "BtnGuardar";
             this.BtnGuardar.Size = new System.Drawing.Size(96, 35);
-            this.BtnGuardar.TabIndex = 26;
+            this.BtnGuardar.TabIndex = 18;
             this.BtnGuardar.Text = "Guardar";
             this.BtnGuardar.UseVisualStyleBackColor = true;
             this.BtnGuardar.Click += new System.EventHandler(this.BtnGuardar_Click);
@@ -279,7 +279,7 @@
             this.TxtEmail.Location = new System.Drawing.Point(84, 76);
             this.TxtEmail.Name = "TxtEmail";
             this.TxtEmail.Size = new System.Drawing.Size(154, 20);
-            this.TxtEmail.TabIndex = 18;
+            this.TxtEmail.TabIndex = 17;
             // 
             // LblEmail
             // 
@@ -295,7 +295,7 @@
             this.TxtCelular.Location = new System.Drawing.Point(84, 47);
             this.TxtCelular.Name = "TxtCelular";
             this.TxtCelular.Size = new System.Drawing.Size(154, 20);
-            this.TxtCelular.TabIndex = 17;
+            this.TxtCelular.TabIndex = 16;
             // 
             // LblCelular
             // 
@@ -311,7 +311,7 @@
             this.TxtTelefono.Location = new System.Drawing.Point(84, 19);
             this.TxtTelefono.Name = "TxtTelefono";
             this.TxtTelefono.Size = new System.Drawing.Size(154, 20);
-            this.TxtTelefono.TabIndex = 16;
+            this.TxtTelefono.TabIndex = 15;
             // 
             // LblTelefono
             // 
@@ -347,7 +347,7 @@
             this.CboPais.Location = new System.Drawing.Point(84, 14);
             this.CboPais.Name = "CboPais";
             this.CboPais.Size = new System.Drawing.Size(154, 21);
-            this.CboPais.TabIndex = 16;
+            this.CboPais.TabIndex = 10;
             this.CboPais.Validating += new System.ComponentModel.CancelEventHandler(this.CboPais_Validating);
             this.CboPais.SelectedIndexChanged += new System.EventHandler(this.CboPais_SelectedIndexChanged);
             this.CboPais.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.CboPais_KeyPress);
@@ -357,7 +357,7 @@
             this.BtnAgregarLocalidad.Location = new System.Drawing.Point(119, 132);
             this.BtnAgregarLocalidad.Name = "BtnAgregarLocalidad";
             this.BtnAgregarLocalidad.Size = new System.Drawing.Size(119, 23);
-            this.BtnAgregarLocalidad.TabIndex = 15;
+            this.BtnAgregarLocalidad.TabIndex = 14;
             this.BtnAgregarLocalidad.Text = "Nueva Localidad";
             this.BtnAgregarLocalidad.UseVisualStyleBackColor = true;
             this.BtnAgregarLocalidad.Click += new System.EventHandler(this.BtnAgregarLocalidad_Click);
@@ -368,7 +368,7 @@
             this.CboLocalidades.Location = new System.Drawing.Point(84, 70);
             this.CboLocalidades.Name = "CboLocalidades";
             this.CboLocalidades.Size = new System.Drawing.Size(154, 21);
-            this.CboLocalidades.TabIndex = 13;
+            this.CboLocalidades.TabIndex = 12;
             this.CboLocalidades.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.CboLocalidades_KeyPress);
             // 
             // TxtDomicilio
@@ -376,7 +376,7 @@
             this.TxtDomicilio.Location = new System.Drawing.Point(84, 100);
             this.TxtDomicilio.Name = "TxtDomicilio";
             this.TxtDomicilio.Size = new System.Drawing.Size(154, 20);
-            this.TxtDomicilio.TabIndex = 14;
+            this.TxtDomicilio.TabIndex = 13;
             // 
             // LblDomicilio
             // 
@@ -393,7 +393,7 @@
             this.CboProvincia.Location = new System.Drawing.Point(84, 41);
             this.CboProvincia.Name = "CboProvincia";
             this.CboProvincia.Size = new System.Drawing.Size(154, 21);
-            this.CboProvincia.TabIndex = 12;
+            this.CboProvincia.TabIndex = 11;
             this.CboProvincia.SelectedIndexChanged += new System.EventHandler(this.CboProvincia_SelectedIndexChanged);
             this.CboProvincia.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.CboProvincia_KeyPress);
             // 
@@ -452,6 +452,16 @@
             this.GbDatosPersonales.Text = "Datos Personales";
             this.GbDatosPersonales.Validating += new System.ComponentModel.CancelEventHandler(this.GbDatosPersonales_Validating);
             // 
+            // BtnFoto
+            // 
+            this.BtnFoto.Location = new System.Drawing.Point(365, 188);
+            this.BtnFoto.Name = "BtnFoto";
+            this.BtnFoto.Size = new System.Drawing.Size(75, 23);
+            this.BtnFoto.TabIndex = 9;
+            this.BtnFoto.Text = "Buscar Foto";
+            this.BtnFoto.UseVisualStyleBackColor = true;
+            this.BtnFoto.Click += new System.EventHandler(this.BtnFoto_Click);
+            // 
             // PbFoto
             // 
             this.PbFoto.Location = new System.Drawing.Point(324, 23);
@@ -467,7 +477,7 @@
             this.ChkEstado.Location = new System.Drawing.Point(250, 219);
             this.ChkEstado.Name = "ChkEstado";
             this.ChkEstado.Size = new System.Drawing.Size(59, 17);
-            this.ChkEstado.TabIndex = 18;
+            this.ChkEstado.TabIndex = 8;
             this.ChkEstado.Text = "Estado";
             this.ChkEstado.UseVisualStyleBackColor = true;
             // 
@@ -476,7 +486,7 @@
             this.TxtPuesto.Location = new System.Drawing.Point(112, 217);
             this.TxtPuesto.Name = "TxtPuesto";
             this.TxtPuesto.Size = new System.Drawing.Size(100, 20);
-            this.TxtPuesto.TabIndex = 17;
+            this.TxtPuesto.TabIndex = 7;
             this.TxtPuesto.Visible = false;
             // 
             // LblPuesto
@@ -495,7 +505,7 @@
             this.RbFemenino.Location = new System.Drawing.Point(195, 193);
             this.RbFemenino.Name = "RbFemenino";
             this.RbFemenino.Size = new System.Drawing.Size(71, 17);
-            this.RbFemenino.TabIndex = 8;
+            this.RbFemenino.TabIndex = 6;
             this.RbFemenino.TabStop = true;
             this.RbFemenino.Text = "Femenino";
             this.RbFemenino.UseVisualStyleBackColor = true;
@@ -506,7 +516,7 @@
             this.RbMasculino.Location = new System.Drawing.Point(112, 193);
             this.RbMasculino.Name = "RbMasculino";
             this.RbMasculino.Size = new System.Drawing.Size(73, 17);
-            this.RbMasculino.TabIndex = 7;
+            this.RbMasculino.TabIndex = 5;
             this.RbMasculino.TabStop = true;
             this.RbMasculino.Text = "Masculino";
             this.RbMasculino.UseVisualStyleBackColor = true;
@@ -526,7 +536,7 @@
             this.CboNacionalidad.Location = new System.Drawing.Point(112, 157);
             this.CboNacionalidad.Name = "CboNacionalidad";
             this.CboNacionalidad.Size = new System.Drawing.Size(154, 21);
-            this.CboNacionalidad.TabIndex = 5;
+            this.CboNacionalidad.TabIndex = 4;
             this.CboNacionalidad.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.CboNacionalidad_KeyPress);
             // 
             // DtpFechaNac
@@ -536,7 +546,7 @@
             this.DtpFechaNac.Location = new System.Drawing.Point(112, 120);
             this.DtpFechaNac.Name = "DtpFechaNac";
             this.DtpFechaNac.Size = new System.Drawing.Size(107, 20);
-            this.DtpFechaNac.TabIndex = 4;
+            this.DtpFechaNac.TabIndex = 3;
             this.DtpFechaNac.ValueChanged += new System.EventHandler(this.DtpFechaNac_ValueChanged);
             // 
             // LblNacionalidad
@@ -562,7 +572,7 @@
             this.TxtApellido.Location = new System.Drawing.Point(112, 86);
             this.TxtApellido.Name = "TxtApellido";
             this.TxtApellido.Size = new System.Drawing.Size(187, 20);
-            this.TxtApellido.TabIndex = 3;
+            this.TxtApellido.TabIndex = 2;
             // 
             // LblApellido
             // 
@@ -578,7 +588,7 @@
             this.TxtNombre.Location = new System.Drawing.Point(112, 55);
             this.TxtNombre.Name = "TxtNombre";
             this.TxtNombre.Size = new System.Drawing.Size(187, 20);
-            this.TxtNombre.TabIndex = 2;
+            this.TxtNombre.TabIndex = 1;
             // 
             // LblNombre
             // 
@@ -595,7 +605,7 @@
             this.TxtDni.Mask = "00.000.000";
             this.TxtDni.Name = "TxtDni";
             this.TxtDni.Size = new System.Drawing.Size(100, 20);
-            this.TxtDni.TabIndex = 1;
+            this.TxtDni.TabIndex = 0;
             this.TxtDni.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.TxtDni.TextMaskFormat = System.Windows.Forms.MaskFormat.ExcludePromptAndLiterals;
             this.TxtDni.Leave += new System.EventHandler(this.TxtDni_Leave);
@@ -627,7 +637,7 @@
             this.BtnCambiarPassword.Location = new System.Drawing.Point(271, 177);
             this.BtnCambiarPassword.Name = "BtnCambiarPassword";
             this.BtnCambiarPassword.Size = new System.Drawing.Size(114, 23);
-            this.BtnCambiarPassword.TabIndex = 25;
+            this.BtnCambiarPassword.TabIndex = 2;
             this.BtnCambiarPassword.Text = "Cambiar Password";
             this.BtnCambiarPassword.UseVisualStyleBackColor = true;
             this.BtnCambiarPassword.Click += new System.EventHandler(this.BtnCambiarPassword_Click);
@@ -651,7 +661,7 @@
             this.TxtPasswordNuevo.Location = new System.Drawing.Point(98, 48);
             this.TxtPasswordNuevo.Name = "TxtPasswordNuevo";
             this.TxtPasswordNuevo.Size = new System.Drawing.Size(154, 20);
-            this.TxtPasswordNuevo.TabIndex = 20;
+            this.TxtPasswordNuevo.TabIndex = 4;
             // 
             // LblPasswordNuevo
             // 
@@ -667,7 +677,7 @@
             this.TxtPasswordViejo.Location = new System.Drawing.Point(98, 19);
             this.TxtPasswordViejo.Name = "TxtPasswordViejo";
             this.TxtPasswordViejo.Size = new System.Drawing.Size(154, 20);
-            this.TxtPasswordViejo.TabIndex = 19;
+            this.TxtPasswordViejo.TabIndex = 3;
             // 
             // LblPasswordViejo
             // 
@@ -697,7 +707,7 @@
             this.TxtPassword.Location = new System.Drawing.Point(98, 48);
             this.TxtPassword.Name = "TxtPassword";
             this.TxtPassword.Size = new System.Drawing.Size(154, 20);
-            this.TxtPassword.TabIndex = 20;
+            this.TxtPassword.TabIndex = 1;
             // 
             // LblPassword
             // 
@@ -713,7 +723,7 @@
             this.TxtUsuario.Location = new System.Drawing.Point(98, 19);
             this.TxtUsuario.Name = "TxtUsuario";
             this.TxtUsuario.Size = new System.Drawing.Size(154, 20);
-            this.TxtUsuario.TabIndex = 19;
+            this.TxtUsuario.TabIndex = 0;
             // 
             // LblUsuario
             // 
@@ -727,16 +737,6 @@
             // EpNuevaPersona
             // 
             this.EpNuevaPersona.ContainerControl = this;
-            // 
-            // BtnFoto
-            // 
-            this.BtnFoto.Location = new System.Drawing.Point(365, 188);
-            this.BtnFoto.Name = "BtnFoto";
-            this.BtnFoto.Size = new System.Drawing.Size(75, 23);
-            this.BtnFoto.TabIndex = 20;
-            this.BtnFoto.Text = "Buscar Foto";
-            this.BtnFoto.UseVisualStyleBackColor = true;
-            this.BtnFoto.Click += new System.EventHandler(this.BtnFoto_Click);
             // 
             // FrmNuevaPersona
             // 

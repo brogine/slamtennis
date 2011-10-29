@@ -52,7 +52,7 @@
             this.BtnCerrar.Location = new System.Drawing.Point(252, 195);
             this.BtnCerrar.Name = "BtnCerrar";
             this.BtnCerrar.Size = new System.Drawing.Size(75, 23);
-            this.BtnCerrar.TabIndex = 5;
+            this.BtnCerrar.TabIndex = 6;
             this.BtnCerrar.Text = "Cerrar";
             this.BtnCerrar.UseVisualStyleBackColor = true;
             this.BtnCerrar.Click += new System.EventHandler(this.BtnCerrar_Click);
@@ -74,14 +74,14 @@
             this.CboListaLocalidades.Location = new System.Drawing.Point(6, 21);
             this.CboListaLocalidades.Name = "CboListaLocalidades";
             this.CboListaLocalidades.Size = new System.Drawing.Size(175, 21);
-            this.CboListaLocalidades.TabIndex = 1;
+            this.CboListaLocalidades.TabIndex = 4;
             // 
             // BtnAgregarLocalidad
             // 
             this.BtnAgregarLocalidad.Location = new System.Drawing.Point(187, 19);
             this.BtnAgregarLocalidad.Name = "BtnAgregarLocalidad";
             this.BtnAgregarLocalidad.Size = new System.Drawing.Size(122, 23);
-            this.BtnAgregarLocalidad.TabIndex = 0;
+            this.BtnAgregarLocalidad.TabIndex = 5;
             this.BtnAgregarLocalidad.Text = "Agregar Localidad";
             this.BtnAgregarLocalidad.UseVisualStyleBackColor = true;
             this.BtnAgregarLocalidad.Click += new System.EventHandler(this.BtnAgregarLocalidad_Click);
@@ -102,7 +102,7 @@
             this.BtnAgregarProvincia.Location = new System.Drawing.Point(187, 17);
             this.BtnAgregarProvincia.Name = "BtnAgregarProvincia";
             this.BtnAgregarProvincia.Size = new System.Drawing.Size(122, 23);
-            this.BtnAgregarProvincia.TabIndex = 1;
+            this.BtnAgregarProvincia.TabIndex = 3;
             this.BtnAgregarProvincia.Text = "Agregar Provincia";
             this.BtnAgregarProvincia.UseVisualStyleBackColor = true;
             this.BtnAgregarProvincia.Click += new System.EventHandler(this.BtnAgregarProvincia_Click);
@@ -113,7 +113,7 @@
             this.CboListaProvincias.Location = new System.Drawing.Point(6, 19);
             this.CboListaProvincias.Name = "CboListaProvincias";
             this.CboListaProvincias.Size = new System.Drawing.Size(175, 21);
-            this.CboListaProvincias.TabIndex = 0;
+            this.CboListaProvincias.TabIndex = 2;
             this.CboListaProvincias.SelectionChangeCommitted += new System.EventHandler(this.CboListaProvincias_SelectionChangeCommitted);
             // 
             // GbPaises

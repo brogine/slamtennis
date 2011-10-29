@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmNuevoTorneo));
             this.label1 = new System.Windows.Forms.Label();
             this.TxtNombre = new System.Windows.Forms.TextBox();
             this.DTPInicioTorneo = new System.Windows.Forms.DateTimePicker();
@@ -80,7 +81,7 @@
             this.TxtNombre.Location = new System.Drawing.Point(164, 5);
             this.TxtNombre.Name = "TxtNombre";
             this.TxtNombre.Size = new System.Drawing.Size(187, 20);
-            this.TxtNombre.TabIndex = 1;
+            this.TxtNombre.TabIndex = 0;
             this.TxtNombre.Validating += new System.ComponentModel.CancelEventHandler(this.TxtNombre_Validating);
             // 
             // DTPInicioTorneo
@@ -89,7 +90,7 @@
             this.DTPInicioTorneo.Location = new System.Drawing.Point(164, 134);
             this.DTPInicioTorneo.Name = "DTPInicioTorneo";
             this.DTPInicioTorneo.Size = new System.Drawing.Size(83, 20);
-            this.DTPInicioTorneo.TabIndex = 2;
+            this.DTPInicioTorneo.TabIndex = 5;
             // 
             // label2
             // 
@@ -115,7 +116,7 @@
             this.DTPFinTorneo.Location = new System.Drawing.Point(365, 133);
             this.DTPFinTorneo.Name = "DTPFinTorneo";
             this.DTPFinTorneo.Size = new System.Drawing.Size(83, 20);
-            this.DTPFinTorneo.TabIndex = 5;
+            this.DTPFinTorneo.TabIndex = 6;
             this.DTPFinTorneo.Validating += new System.ComponentModel.CancelEventHandler(this.DTPFinTorneo_Validating);
             // 
             // label4
@@ -133,7 +134,7 @@
             this.DTPInicioInscripciones.Location = new System.Drawing.Point(164, 99);
             this.DTPInicioInscripciones.Name = "DTPInicioInscripciones";
             this.DTPInicioInscripciones.Size = new System.Drawing.Size(83, 20);
-            this.DTPInicioInscripciones.TabIndex = 7;
+            this.DTPInicioInscripciones.TabIndex = 3;
             // 
             // label5
             // 
@@ -150,7 +151,7 @@
             this.DTPFinInscripciones.Location = new System.Drawing.Point(365, 99);
             this.DTPFinInscripciones.Name = "DTPFinInscripciones";
             this.DTPFinInscripciones.Size = new System.Drawing.Size(83, 20);
-            this.DTPFinInscripciones.TabIndex = 9;
+            this.DTPFinInscripciones.TabIndex = 4;
             this.DTPFinInscripciones.Validating += new System.ComponentModel.CancelEventHandler(this.DTPFinInscripciones_Validating);
             // 
             // groupBox1
@@ -172,7 +173,7 @@
             this.RBMixto.Location = new System.Drawing.Point(202, 16);
             this.RBMixto.Name = "RBMixto";
             this.RBMixto.Size = new System.Drawing.Size(50, 17);
-            this.RBMixto.TabIndex = 2;
+            this.RBMixto.TabIndex = 9;
             this.RBMixto.TabStop = true;
             this.RBMixto.Text = "Mixto";
             this.RBMixto.UseVisualStyleBackColor = true;
@@ -183,7 +184,7 @@
             this.RBFemenino.Location = new System.Drawing.Point(110, 16);
             this.RBFemenino.Name = "RBFemenino";
             this.RBFemenino.Size = new System.Drawing.Size(71, 17);
-            this.RBFemenino.TabIndex = 1;
+            this.RBFemenino.TabIndex = 8;
             this.RBFemenino.TabStop = true;
             this.RBFemenino.Text = "Femenino";
             this.RBFemenino.UseVisualStyleBackColor = true;
@@ -194,7 +195,7 @@
             this.RBMasculino.Location = new System.Drawing.Point(12, 16);
             this.RBMasculino.Name = "RBMasculino";
             this.RBMasculino.Size = new System.Drawing.Size(73, 17);
-            this.RBMasculino.TabIndex = 0;
+            this.RBMasculino.TabIndex = 7;
             this.RBMasculino.TabStop = true;
             this.RBMasculino.Text = "Masculino";
             this.RBMasculino.UseVisualStyleBackColor = true;
@@ -217,7 +218,7 @@
             this.RBDouble.Location = new System.Drawing.Point(74, 16);
             this.RBDouble.Name = "RBDouble";
             this.RBDouble.Size = new System.Drawing.Size(59, 17);
-            this.RBDouble.TabIndex = 1;
+            this.RBDouble.TabIndex = 11;
             this.RBDouble.TabStop = true;
             this.RBDouble.Text = "Double";
             this.RBDouble.UseVisualStyleBackColor = true;
@@ -228,7 +229,7 @@
             this.RBSingle.Location = new System.Drawing.Point(14, 16);
             this.RBSingle.Name = "RBSingle";
             this.RBSingle.Size = new System.Drawing.Size(54, 17);
-            this.RBSingle.TabIndex = 0;
+            this.RBSingle.TabIndex = 10;
             this.RBSingle.TabStop = true;
             this.RBSingle.Text = "Single";
             this.RBSingle.UseVisualStyleBackColor = true;
@@ -248,7 +249,7 @@
             this.CboClub.Location = new System.Drawing.Point(164, 31);
             this.CboClub.Name = "CboClub";
             this.CboClub.Size = new System.Drawing.Size(187, 21);
-            this.CboClub.TabIndex = 13;
+            this.CboClub.TabIndex = 1;
             this.CboClub.Validating += new System.ComponentModel.CancelEventHandler(this.CboClub_Validating);
             // 
             // CboCategoria
@@ -257,7 +258,7 @@
             this.CboCategoria.Location = new System.Drawing.Point(164, 58);
             this.CboCategoria.Name = "CboCategoria";
             this.CboCategoria.Size = new System.Drawing.Size(187, 21);
-            this.CboCategoria.TabIndex = 14;
+            this.CboCategoria.TabIndex = 2;
             this.CboCategoria.Validating += new System.ComponentModel.CancelEventHandler(this.CboCategoria_Validating);
             // 
             // label7
@@ -275,7 +276,7 @@
             this.CboSuperficie.Location = new System.Drawing.Point(307, 230);
             this.CboSuperficie.Name = "CboSuperficie";
             this.CboSuperficie.Size = new System.Drawing.Size(134, 21);
-            this.CboSuperficie.TabIndex = 16;
+            this.CboSuperficie.TabIndex = 14;
             this.CboSuperficie.Validating += new System.ComponentModel.CancelEventHandler(this.CboSuperficie_Validating);
             // 
             // label8
@@ -301,7 +302,7 @@
             this.BtnAceptar.Location = new System.Drawing.Point(281, 284);
             this.BtnAceptar.Name = "BtnAceptar";
             this.BtnAceptar.Size = new System.Drawing.Size(75, 23);
-            this.BtnAceptar.TabIndex = 20;
+            this.BtnAceptar.TabIndex = 16;
             this.BtnAceptar.Text = "Aceptar";
             this.BtnAceptar.UseVisualStyleBackColor = true;
             this.BtnAceptar.Click += new System.EventHandler(this.button1_Click);
@@ -311,7 +312,7 @@
             this.BtnSalir.Location = new System.Drawing.Point(371, 284);
             this.BtnSalir.Name = "BtnSalir";
             this.BtnSalir.Size = new System.Drawing.Size(75, 23);
-            this.BtnSalir.TabIndex = 21;
+            this.BtnSalir.TabIndex = 17;
             this.BtnSalir.Text = "Salir";
             this.BtnSalir.UseVisualStyleBackColor = true;
             this.BtnSalir.Click += new System.EventHandler(this.BtnSalir_Click);
@@ -331,7 +332,7 @@
             this.ChkInscripcion.Location = new System.Drawing.Point(116, 235);
             this.ChkInscripcion.Name = "ChkInscripcion";
             this.ChkInscripcion.Size = new System.Drawing.Size(96, 17);
-            this.ChkInscripcion.TabIndex = 25;
+            this.ChkInscripcion.TabIndex = 13;
             this.ChkInscripcion.Text = "Torneo Abierto";
             this.ChkInscripcion.UseVisualStyleBackColor = true;
             // 
@@ -357,14 +358,14 @@
             this.CboCupo.Location = new System.Drawing.Point(50, 233);
             this.CboCupo.Name = "CboCupo";
             this.CboCupo.Size = new System.Drawing.Size(45, 21);
-            this.CboCupo.TabIndex = 27;
+            this.CboCupo.TabIndex = 12;
             // 
             // button1
             // 
             this.button1.Location = new System.Drawing.Point(164, 284);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(110, 23);
-            this.button1.TabIndex = 28;
+            this.button1.TabIndex = 15;
             this.button1.Text = "Puntos Del Torneo";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click_1);
@@ -400,8 +401,9 @@
             this.Controls.Add(this.DTPInicioTorneo);
             this.Controls.Add(this.TxtNombre);
             this.Controls.Add(this.label1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FrmNuevoTorneo";
-            this.Text = "FrmNuevoTorneo";
+            this.Text = "Nuevo Torneo";
             this.Load += new System.EventHandler(this.FrmNuevoTorneo_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();

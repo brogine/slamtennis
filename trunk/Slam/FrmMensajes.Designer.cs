@@ -41,7 +41,7 @@
             this.BtnSalir.Location = new System.Drawing.Point(519, 306);
             this.BtnSalir.Name = "BtnSalir";
             this.BtnSalir.Size = new System.Drawing.Size(75, 23);
-            this.BtnSalir.TabIndex = 11;
+            this.BtnSalir.TabIndex = 3;
             this.BtnSalir.Text = "Salir";
             this.BtnSalir.UseVisualStyleBackColor = true;
             // 
@@ -50,7 +50,7 @@
             this.BtnCambiaEstado.Location = new System.Drawing.Point(138, 309);
             this.BtnCambiaEstado.Name = "BtnCambiaEstado";
             this.BtnCambiaEstado.Size = new System.Drawing.Size(75, 23);
-            this.BtnCambiaEstado.TabIndex = 10;
+            this.BtnCambiaEstado.TabIndex = 2;
             this.BtnCambiaEstado.Text = "Eliminar";
             this.BtnCambiaEstado.UseVisualStyleBackColor = true;
             // 
@@ -68,7 +68,7 @@
             this.BtnModificar.Location = new System.Drawing.Point(15, 309);
             this.BtnModificar.Name = "BtnModificar";
             this.BtnModificar.Size = new System.Drawing.Size(117, 23);
-            this.BtnModificar.TabIndex = 8;
+            this.BtnModificar.TabIndex = 1;
             this.BtnModificar.Text = "Ver Detalle";
             this.BtnModificar.UseVisualStyleBackColor = true;
             // 
@@ -82,7 +82,7 @@
             this.DgvJugadoresClub.Name = "DgvJugadoresClub";
             this.DgvJugadoresClub.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.DgvJugadoresClub.Size = new System.Drawing.Size(582, 262);
-            this.DgvJugadoresClub.TabIndex = 7;
+            this.DgvJugadoresClub.TabIndex = 0;
             // 
             // FrmMensajes
             // 

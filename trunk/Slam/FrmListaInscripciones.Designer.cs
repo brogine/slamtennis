@@ -49,7 +49,7 @@
             this.DgvListaInscripciones.Name = "DgvListaInscripciones";
             this.DgvListaInscripciones.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.DgvListaInscripciones.Size = new System.Drawing.Size(525, 281);
-            this.DgvListaInscripciones.TabIndex = 0;
+            this.DgvListaInscripciones.TabIndex = 1;
             // 
             // CboTorneos
             // 
@@ -57,7 +57,7 @@
             this.CboTorneos.Location = new System.Drawing.Point(110, 12);
             this.CboTorneos.Name = "CboTorneos";
             this.CboTorneos.Size = new System.Drawing.Size(220, 21);
-            this.CboTorneos.TabIndex = 1;
+            this.CboTorneos.TabIndex = 0;
             this.CboTorneos.SelectionChangeCommitted += new System.EventHandler(this.CboTorneos_SelectionChangeCommitted);
             this.CboTorneos.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.CboTorneos_KeyPress);
             // 
@@ -75,7 +75,7 @@
             this.BtnAgregar.Location = new System.Drawing.Point(12, 332);
             this.BtnAgregar.Name = "BtnAgregar";
             this.BtnAgregar.Size = new System.Drawing.Size(75, 23);
-            this.BtnAgregar.TabIndex = 4;
+            this.BtnAgregar.TabIndex = 2;
             this.BtnAgregar.Text = "Nueva";
             this.BtnAgregar.UseVisualStyleBackColor = true;
             this.BtnAgregar.Click += new System.EventHandler(this.BtnAgregar_Click);
@@ -85,7 +85,7 @@
             this.BtnModificar.Location = new System.Drawing.Point(93, 332);
             this.BtnModificar.Name = "BtnModificar";
             this.BtnModificar.Size = new System.Drawing.Size(75, 23);
-            this.BtnModificar.TabIndex = 4;
+            this.BtnModificar.TabIndex = 3;
             this.BtnModificar.Text = "Modificar";
             this.BtnModificar.UseVisualStyleBackColor = true;
             this.BtnModificar.Click += new System.EventHandler(this.BtnModificar_Click);
@@ -96,7 +96,7 @@
             this.BtnSalir.Location = new System.Drawing.Point(462, 332);
             this.BtnSalir.Name = "BtnSalir";
             this.BtnSalir.Size = new System.Drawing.Size(75, 23);
-            this.BtnSalir.TabIndex = 4;
+            this.BtnSalir.TabIndex = 5;
             this.BtnSalir.Text = "Salir";
             this.BtnSalir.UseVisualStyleBackColor = true;
             this.BtnSalir.Click += new System.EventHandler(this.BtnSalir_Click);
@@ -106,7 +106,7 @@
             this.BtnEliminar.Location = new System.Drawing.Point(174, 332);
             this.BtnEliminar.Name = "BtnEliminar";
             this.BtnEliminar.Size = new System.Drawing.Size(75, 23);
-            this.BtnEliminar.TabIndex = 5;
+            this.BtnEliminar.TabIndex = 4;
             this.BtnEliminar.Text = "Eliminar";
             this.BtnEliminar.UseVisualStyleBackColor = true;
             this.BtnEliminar.Click += new System.EventHandler(this.BtnEliminar_Click);

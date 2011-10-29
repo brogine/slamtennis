@@ -45,7 +45,7 @@
             this.BtnAceptar.Location = new System.Drawing.Point(67, 134);
             this.BtnAceptar.Name = "BtnAceptar";
             this.BtnAceptar.Size = new System.Drawing.Size(75, 23);
-            this.BtnAceptar.TabIndex = 0;
+            this.BtnAceptar.TabIndex = 2;
             this.BtnAceptar.Text = "Aceptar";
             this.BtnAceptar.UseVisualStyleBackColor = true;
             this.BtnAceptar.Click += new System.EventHandler(this.BtnAceptar_Click);
@@ -56,7 +56,7 @@
             this.BtnCancelar.Location = new System.Drawing.Point(148, 134);
             this.BtnCancelar.Name = "BtnCancelar";
             this.BtnCancelar.Size = new System.Drawing.Size(75, 23);
-            this.BtnCancelar.TabIndex = 1;
+            this.BtnCancelar.TabIndex = 3;
             this.BtnCancelar.Text = "Cancelar";
             this.BtnCancelar.UseVisualStyleBackColor = true;
             this.BtnCancelar.Click += new System.EventHandler(this.BtnCancelar_Click);
@@ -67,7 +67,7 @@
             this.CboTipo.Location = new System.Drawing.Point(103, 32);
             this.CboTipo.Name = "CboTipo";
             this.CboTipo.Size = new System.Drawing.Size(121, 21);
-            this.CboTipo.TabIndex = 2;
+            this.CboTipo.TabIndex = 1;
             this.CboTipo.Validating += new System.ComponentModel.CancelEventHandler(this.CboTipo_Validating);
             this.CboTipo.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.CboTipo_KeyPress);
             // 
