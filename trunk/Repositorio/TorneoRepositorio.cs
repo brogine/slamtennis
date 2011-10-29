@@ -10,8 +10,8 @@ namespace Repositorio
 {
     public class TorneoRepositorio : ITorneoRepositorio, IMapeador<Torneo>
     {
-
         Conexion Conex;
+
         #region Miembros de ITorneoRepositorio
 
         public TorneoRepositorio()

@@ -12,18 +12,19 @@ using ApplicationContext;
 using System.Collections;
 using Reportes;
 
-
 namespace Slam
 {
-    public partial class FrmListaPartidos : Form,IListadoTorneos,IListadoPartidos, IListadoInscripciones
+    public partial class FrmListaPartidos : Form, IListadoTorneos, IListadoPartidos, IListadoInscripciones, IPuntosUI
     {
         string ImplementaReportes = "ReportesServicio";
         string ImplementaTorneos = "TorneoServicio";
         string ImplementaInscripciones = "InscripcionServicio";
         string ImplementaPartidos = "PartidoServicio";
+        string ImplementaPuntos = "PuntosServicio";
         IListadoTorneoServicio servicioTorneos;
         IListadoPartidoServicio servicioPartidos;
         IListadoInscripcionServicio servicioInscripciones;
+        IPuntosServicio servicioPuntos;
         int IdTorneoActual = 0;
 
         public FrmListaPartidos()
@@ -100,6 +101,7 @@ namespace Slam
             try
             {
                 servicioTorneos = (IListadoTorneoServicio)AppContext.Instance.GetObject(ImplementaTorneos);
+                servicioPuntos = (IPuntosServicio)AppContext.Instance.GetObject(ImplementaPuntos);
                 servicioTorneos.ListarTorneosCerrados(this);
                 if (IdTorneoActual > 0)
                 {
@@ -118,9 +120,17 @@ namespace Slam
         {
             try
             {
-                if (servicioPartidos == null)
-                    servicioPartidos = (IListadoPartidoServicio)AppContext.Instance.GetObject(ImplementaPartidos);
-                servicioPartidos.ListarPartidos(this);
+                if (servicioPuntos.Existe(this))
+                {
+                    if (servicioPartidos == null)
+                        servicioPartidos = (IListadoPartidoServicio)AppContext.Instance.GetObject(ImplementaPartidos);
+                    servicioPartidos.ListarPartidos(this);
+                }
+                else
+                {
+                    MessageBox.Show("El Torneo elegido no tiene puntos asignados.");
+                    FrmPuntosTorneo frmPuntos = new FrmPuntosTorneo(
+                }
             }
             catch (Exception ex)
             {
@@ -229,6 +239,95 @@ namespace Slam
         public int IdPartido
         {
             get { throw new NotImplementedException(); }
+        }
+
+        #endregion
+
+        #region Miembros de IPuntosUI
+
+
+        public int PrimeraRonda
+        {
+            get
+            {
+                throw new NotImplementedException();
+            }
+            set
+            {
+                throw new NotImplementedException();
+            }
+        }
+
+        public int SegundaRonda
+        {
+            get
+            {
+                throw new NotImplementedException();
+            }
+            set
+            {
+                throw new NotImplementedException();
+            }
+        }
+
+        public int CuartosFinal
+        {
+            get
+            {
+                throw new NotImplementedException();
+            }
+            set
+            {
+                throw new NotImplementedException();
+            }
+        }
+
+        public int SemiFinal
+        {
+            get
+            {
+                throw new NotImplementedException();
+            }
+            set
+            {
+                throw new NotImplementedException();
+            }
+        }
+
+        public int Final
+        {
+            get
+            {
+                throw new NotImplementedException();
+            }
+            set
+            {
+                throw new NotImplementedException();
+            }
+        }
+
+        public int Cupo
+        {
+            get
+            {
+                throw new NotImplementedException();
+            }
+            set
+            {
+                throw new NotImplementedException();
+            }
+        }
+
+        public int Campeon
+        {
+            get
+            {
+                throw new NotImplementedException();
+            }
+            set
+            {
+                throw new NotImplementedException();
+            }
         }
 
         #endregion
