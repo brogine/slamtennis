@@ -152,7 +152,7 @@ namespace Repositorio
                         Equipo1Jugador2.PartidosGanadosDoble++;
                         Equipo2Jugador1.PartidosPerdidosDoble++;
                         Equipo2Jugador2.PartidosPerdidosDoble++;
-                        AsignarPuntosDobles(Equipo1Jugador1, Equipo1Jugador2, Partido);
+                        AsignarPuntosDobles(Equipo2Jugador1, Equipo2Jugador2, Partido);
                         if (InscRepo.ListarActivas(Partido.Torneo.IdTorneo).Count == 2)
                         {
                             for (int i = 0; i < 6; i++)
@@ -174,15 +174,17 @@ namespace Repositorio
                         Equipo2Jugador2.PartidosGanadosDoble++;
                         Equipo1Jugador1.PartidosPerdidosDoble++;
                         Equipo1Jugador2.PartidosPerdidosDoble++;
-                        AsignarPuntosDobles(Equipo2Jugador1, Equipo2Jugador2, Partido);
+                        AsignarPuntosDobles(Equipo1Jugador1, Equipo1Jugador2, Partido);
                         if (InscRepo.ListarActivas(Partido.Torneo.IdTorneo).Count == 2)
                         {
                             for (int i = 0; i < 6; i++)
                             {
                                 if (Partido.Torneo.ListaPuntos[i].Ronda == "Campeon")
                                 {
+
                                     Equipo2Jugador1.PuntajeDoble = Partido.Torneo.ListaPuntos[i].CantidadPuntos;
                                     Equipo2Jugador2.PuntajeDoble = Partido.Torneo.ListaPuntos[i].CantidadPuntos;
+                                    
                                 }
                             }
 
