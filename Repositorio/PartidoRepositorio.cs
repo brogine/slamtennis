@@ -72,11 +72,13 @@ namespace Repositorio
                          {
                              return e.Categoria.Id == Partido.Torneo.Categoria.Id;
                          });
-                    Estadisticas Est2Jug1 = Partido.Equipo2.Equipo.Jugador1.Estadisticas.Find(delegate(Estadisticas e)
-                    {
-                        return e.Categoria.Id == Partido.Torneo.Categoria.Id;
-                    });
 
+              
+                        Estadisticas Est2Jug1 = Partido.Equipo2.Equipo.Jugador1.Estadisticas.Find(delegate(Estadisticas e)
+                        {
+                            return e.Categoria.Id == Partido.Torneo.Categoria.Id;
+                        });
+ 
                     //Si El Ganador Del Partido Es El Equipo 1
                     if (Partido.CalcularGanador(Partido.Resultado) == 1)
                     {
