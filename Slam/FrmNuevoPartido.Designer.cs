@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmNuevoPartido));
             this.LblTorneo = new System.Windows.Forms.Label();
             this.CboListaTorneo = new System.Windows.Forms.ComboBox();
             this.GrpEquipo1 = new System.Windows.Forms.GroupBox();
@@ -221,8 +222,10 @@
             this.Controls.Add(this.GrpEquipo1);
             this.Controls.Add(this.CboListaTorneo);
             this.Controls.Add(this.LblTorneo);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FrmNuevoPartido";
-            this.Text = "FrmNuevoPartido";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "Nuevo Partido";
             this.Load += new System.EventHandler(this.FrmNuevoPartido_Load);
             this.GrpEquipo1.ResumeLayout(false);
             this.GrpEquipo2.ResumeLayout(false);

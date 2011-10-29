@@ -15,30 +15,7 @@ namespace Slam
 {
     public partial class FrmNuevoPartido : Form, IPartidoUI, IListadoTorneos, IListadoInscripciones,IFechasTorneoUI
     {
-        int idpartido;
-        public FrmNuevoPartido()
-        {
-            InitializeComponent();
-            //CountSecuen = count;
-            //UltimaRonda = ultimaRonda;
-            this.Text = "Nuevo Partido";
-            servicioTorneos = (IListadoTorneoServicio)AppContext.Instance.GetObject(ImplementaTorneos);
-            servicioTorneos.ListarTorneosCerrados(this);
-            servicioPartido = (IPartidoServicio)AppContext.Instance.GetObject(ImplemetaPartidos);
-        }
-
-        public FrmNuevoPartido(int IdPartido)
-        {
-            InitializeComponent();
-            //CountSecuen = count;
-            //UltimaRonda = ultimaRonda;
-            this.Text = "Modificar Partido";
-            this.IdPartido = IdPartido;
-            servicioTorneos = (IListadoTorneoServicio)AppContext.Instance.GetObject(ImplementaTorneos);
-            servicioTorneos.ListarTorneosCerrados(this);
-            servicioPartido = (IPartidoServicio)AppContext.Instance.GetObject(ImplemetaPartidos);
-            servicioPartido.Buscar(this);
-        }
+        int idpartido = 0;
         ITorneoServicio torneo;
         IListadoTorneoServicio servicioTorneos;
         IPartidoServicio servicioPartido;
@@ -46,6 +23,29 @@ namespace Slam
         string ImplementaTorneos = "TorneoServicio";
         IListadoInscripcionServicio servicioInscripciones;
         string ImplementaInscripciones = "InscripcionServicio";
+
+        public FrmNuevoPartido()
+        {
+            InitializeComponent();
+            this.Text = "Nuevo Partido";
+            servicioTorneos = (IListadoTorneoServicio)AppContext.Instance.GetObject(ImplementaTorneos);
+            servicioTorneos.ListarTorneosCerrados(this);
+            servicioPartido = (IPartidoServicio)AppContext.Instance.GetObject(ImplemetaPartidos);
+            TxtResultado.Enabled = false;
+            ChkEstado.Checked = true;
+            ChkEstado.Enabled = false;
+        }
+
+        public FrmNuevoPartido(int IdPartido)
+        {
+            InitializeComponent();
+            this.Text = "Modificar Partido";
+            this.idpartido = IdPartido;
+            servicioTorneos = (IListadoTorneoServicio)AppContext.Instance.GetObject(ImplementaTorneos);
+            servicioTorneos.ListarTorneosCerrados(this);
+            servicioPartido = (IPartidoServicio)AppContext.Instance.GetObject(ImplemetaPartidos);
+            servicioPartido.Buscar(this);
+        }
 
         #region Miembros de IPartidoUI
 
@@ -172,8 +172,6 @@ namespace Slam
                 CboListaTorneo.DisplayMember = "Value";
                 CboListaTorneo.ValueMember = "Key";
                 CboListaTorneo.SelectedIndex = -1;
-
-
             }
         }
 
@@ -267,6 +265,7 @@ namespace Slam
                 MessageBox.Show(ex.Message);
             }
         }
+
         private void CboListaTorneo_SelectedIndexChanged(object sender, EventArgs e)
         {
             try
@@ -288,66 +287,49 @@ namespace Slam
                 MessageBox.Show(ex.Message);
             }
         }
+
         private void BtnSalir_Click(object sender, EventArgs e)
         {
             this.DialogResult = DialogResult.OK;
             this.Close();
         }
+
         private void CboListaTorneo_Validating(object sender, CancelEventArgs e)
         {
-
             if (CboListaTorneo.SelectedIndex < 0)
-            {
                 EPPartidos.SetError(CboListaTorneo, "Debe Seleccionar Un Torneo De La Lista");
-            }
             else
-            {
                 EPPartidos.SetError(CboListaTorneo, "");
-            }
         }
+
         private void CboEquipo1_Validating(object sender, CancelEventArgs e)
         {
             if (CboEquipo1.SelectedIndex < 0)
-            {
                 EPPartidos.SetError(CboEquipo1, "Debe Seleccionar Un Equipo De La Lista");
-            }
             else
-            {
                 EPPartidos.SetError(CboEquipo1, "");
-            }
 
         }
+
         private void CboEquipo2_Validating(object sender, CancelEventArgs e)
         {
             if (CboEquipo2.SelectedIndex < 0)
-            {
                 EPPartidos.SetError(CboEquipo2, "Debe Seleccionar Un Equipo De La Lista");
-            }
             else
-            {
                 EPPartidos.SetError(CboEquipo2, "");
-            }
             if (CboEquipo1.SelectedItem != null)
             {
                 if (Convert.ToInt32(((KeyValuePair<int, string>)CboEquipo2.SelectedItem).Key) == Convert.ToInt32(((KeyValuePair<int, string>)CboEquipo1.SelectedItem).Key))
-                {
                     EPPartidos.SetError(CboEquipo2, "Los Equipos No Pueden Ser Iguales");
-                }
                 else
-                {
                     EPPartidos.SetError(CboEquipo2, "");
-                }
             }
 
 
 
         }
 
-
-
-
         #region IFechasTorneoUI Members
-
 
         public string Nombre
         {
@@ -386,5 +368,6 @@ namespace Slam
         }
 
         #endregion
+
     }
 }
