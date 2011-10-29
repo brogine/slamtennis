@@ -18,11 +18,17 @@ namespace Slam
         IPuntosServicio PuntosServicio;
         string ImplementaTorneos = "TorneoServicio";
         IListadoTorneoServicio TorneoServicio;
-       
+        int IdTorneoActual = 0;
         int cupo;
         public FrmPuntosTorneo()
         {
             InitializeComponent();
+        }
+
+        public FrmPuntosTorneo(int idTorneo)
+        {
+            InitializeComponent();
+            this.IdTorneoActual = idTorneo;
         }
 
         #region Miembros de IPuntosUI
@@ -140,8 +146,10 @@ namespace Slam
                 CboListaTorneos.DataSource = new BindingSource(ListaTorneos, null);
                 CboListaTorneos.DisplayMember = "Value";
                 CboListaTorneos.ValueMember = "Key";
-                CboListaTorneos.SelectedIndex = -1;
-                
+                if (IdTorneoActual > 0)
+                    CboListaTorneos.SelectedValue = IdTorneoActual;
+                else
+                    CboListaTorneos.SelectedIndex = -1;
             }
         }
 
@@ -212,7 +220,6 @@ namespace Slam
         }
 
         #region Miembros de IPuntosUI
-
 
         public int Cupo
         {

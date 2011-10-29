@@ -76,9 +76,7 @@ namespace Servicio
             UI.Nombre = Torneo.Nombre;
             UI.Cupo = Torneo.Cupo;
             UI.IdClub = Torneo.Club.Id;
-            UI.IdCategoria = Torneo.Categoria.Id;
-            
-            
+            UI.IdCategoria = Torneo.Categoria.Id;            
             UI.FechaFinInscripcion = Torneo.FechaFinInscripcion;
             UI.FechaInicio = Torneo.FechaInicio;
             UI.FechaInicioInscripcion = Torneo.FechaInicioInscripcion;
