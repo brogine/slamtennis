@@ -320,5 +320,26 @@ namespace Slam
         }
 
         #endregion
+
+
+
+        private void DgvListaPartidos_RowEnter(object sender, DataGridViewCellEventArgs e)
+        {
+            if (DgvListaPartidos.SelectedRows.Count > 0)
+            {
+                if (DgvListaPartidos.SelectedRows[0].Cells["Equipo2"].Value.ToString() == "BYE")
+                {
+                    BtnModificar.Enabled = false;
+                }
+                else
+                {
+                    BtnModificar.Enabled = true;
+                }
+            }
+        }
+
+
+
+
     }
 }
