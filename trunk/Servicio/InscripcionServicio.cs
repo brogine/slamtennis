@@ -67,6 +67,11 @@ namespace Servicio
                 throw new ServicioExeption("El Jugador con Dni = " + UI.DniJugador1 + " ya está Inscripto a ese torneo.");
         }
 
+        public int UltimaInscripcion()
+        {
+            return repoInscripciones.UltimaInscripcion();
+        }
+
         public void Modificar(Servicio.InterfacesUI.IInscripcionUI UI)
         {
             Inscripcion bInscripcion = repoInscripciones.Buscar(UI.IdInscripcion);

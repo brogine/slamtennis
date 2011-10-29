@@ -65,6 +65,18 @@ namespace Repositorio
                 throw new RepositorioExeption("El Torneo al que desea inscribirse se encuentra cerrado para inscripción.");
         }
 
+        public int UltimaInscripcion()
+        {
+            string query = "select max(IdInscripcion) from Inscripciones";
+            int retorno = 0;
+            DataRow fila = Conn.Buscar(query);
+            if (fila != null || fila.IsNull(0) == false)
+            {
+                retorno = Convert.ToInt32(fila[0]);
+            }
+            return retorno;
+        }
+
         public void Modificar(Inscripcion Inscripcion)
         {
             //Verifica si en la inscripcion hay un solo jugador y si el torneo es de dobles, agregue al segundo jugador

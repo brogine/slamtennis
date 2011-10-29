@@ -10,6 +10,8 @@ namespace Servicio
     {
         int Agregar(IInscripcionUI UI);
 
+        int UltimaInscripcion();
+
         void Modificar(IInscripcionUI UI);
 
         void Eliminar(int IdInscripcion);

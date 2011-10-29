@@ -10,6 +10,8 @@ namespace Repositorio
     {
         int Agregar(Inscripcion Inscripcion);
 
+        int UltimaInscripcion();
+
         void Modificar(Inscripcion Inscripcion);
 
         void Eliminar(int IdInscripcion);

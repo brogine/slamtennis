@@ -1,4 +1,4 @@
-ï»¿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Torneos.aspx.cs" Inherits="SlamWeb.Torneos" %>
+<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Torneos.aspx.cs" Inherits="SlamWeb.Torneos" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server">
     <link type="text/css" href="Content/basic.css"rel="Stylesheet" media="screen" />
     <script type="text/javascript" src="Scripts/jquery.js"></script>
@@ -20,14 +20,23 @@
         }
     </style>
     <script language="javascript" type="text/javascript">
-        function Inscripciones() {
-            MostrarInscripcion();
-                    
+        function Inscripciones(idtorneo,torneo,tipo) {
+            document.getElementById("ctl00_MainContent_TxtTorneo").value = torneo;
+            
+            document.getElementById("ctl00_MainContent_LinkButton1").href = "javascript:__doPostBack('" + idtorneo + "','')";
+            if (tipo == "Doble") {
+                document.getElementById("Jugador2").style.display = '';
+            }
+            else {
+                document.getElementById("Jugador2").style.display = 'none';
+            }
+            MostrarInscripcion();                    
         }
     </script>
+    
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
-<div style="text-align: left; width:500px">
+    <div style="text-align: left; width:500px">
     <b>Usuario:</b>
     <asp:Label ID="LblUsuario" runat="server" Text="---"></asp:Label>
 &nbsp;<b>Nombre:</b>
@@ -89,7 +98,7 @@
                         </tr>
                        <% if (Session["Torneos"] != null)
                           {
-                              int j = 1;
+                              int j = 0;
                               %>
                            
                        <% foreach (object item in (System.Collections.Generic.List<Object>)Session["Torneos"])
@@ -97,7 +106,16 @@
                         <%      object[] DatosTorneo = item.ToString().Split(','); %>
                         <tr>
                             <td>
-                                <a id='Link<% Response.Write(j);%>' href="javascript:__doPostBack('<% Response.Write(j);%>','')" >No</a>
+                                <% Servicio.IInscripcionServicio incripcion = new Servicio.InscripcionServicio(); %>
+                                <% if (incripcion.Existe(Convert.ToInt32(DatosTorneo[0]), Convert.ToInt32(Session["DNI"])))
+                                   {  %>
+                                <% Response.Write("Si");
+                                     
+                                   }  %>
+                                <% else
+                                    { %>   
+                                <a onclick="javascript:Inscripciones('<% Response.Write(DatosTorneo[0].ToString()); %>','<% Response.Write(DatosTorneo[2].ToString()); %>','<% Response.Write(DatosTorneo[10].ToString()); %>')" href="#" >No</a>
+                                <%} %>
                             </td>
                             <td>
                                  <% Response.Write(DatosTorneo[1].ToString()); %>
@@ -144,8 +162,16 @@
     <div id="content-DATOS">
         <p>Formulario de Inscripcion</p>
         <table width="100%">
+            <tr style="display:none">
+                <td style="width:50%; text-align: right;">
+                    ID Torneo:
+                </td>
+                <td>
+                    <asp:TextBox ID="TxtIDTorneo"  runat="server" Enabled="False"></asp:TextBox>
+            </td>
+            </tr>
             <tr>
-                <td style="width:50%">
+                <td style="width:50%; text-align: right;">
                     Torneo al que se va inscribir:
                 </td>
                 <td>
@@ -153,32 +179,32 @@
                 </td>
             </tr>
             <tr>
-                <td>
+                <td style="width:50%; text-align: right;">
                     DNI Jugador 1:
                 </td>
                 <td>
                     <asp:TextBox ID="TxtDNI1" runat="server" Enabled="False"></asp:TextBox>
                 </td>
             </tr>
-            <tr>
-                <td>
+            <tr id="Jugador2">
+                <td style="width:50%; text-align: right;">
                     DNI Jugador 2:
                 </td>
                 <td>
-                    <asp:TextBox ID="TxtDNI2" runat="server"></asp:TextBox>
+                    <asp:TextBox ID="TxtDNI2" Enabled="true" runat="server"></asp:TextBox>
                 </td>
             </tr>
             <tr>
-                <td>
-                    Nro. de InscripciÃ³n:
+                <td style="width:50%; text-align: right;">
+                    Nro. de Inscripción:
                 </td>
                 <td>
                     <asp:Label ID="LblInscripcion" runat="server" Text="---"></asp:Label>
                 </td>
             </tr>
             <tr>
-                <td>
-                    Fecha de InscripciÃ³n:
+                <td style="width:50%; text-align: right;">
+                    Fecha de Inscripción:
                 </td>
                 <td>
                     <asp:Label ID="LblFecha" runat="server" Text="---"></asp:Label>
@@ -186,18 +212,24 @@
             </tr>
             <tr>
                 <td>
-                    Estado:
+                    <br />
                 </td>
                 <td>
-                    <asp:CheckBox ID="CheckBox1" runat="server" Text="Activo ?" />
+                </td>
+            </tr>
+            <tr>
+                <td>                    
+                </td>
+                <td>                    
+                    <asp:LinkButton ID="LinkButton1" runat="server" onclick="LinkButton1_Click" >Inscribirse</asp:LinkButton>   
                 </td>
             </tr>
         </table>
-    </div>
-
+    </div>           
 </asp:Content>
 <asp:Content ID="Content3" runat="server" contentplaceholderid="ContentPlaceHolder1">
     <div style="text-align:right">
     <asp:Image ID="Image2" runat="server" Height="50px" Width="50px" />
     </div>
+    
 </asp:Content>
