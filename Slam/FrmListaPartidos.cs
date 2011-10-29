@@ -129,7 +129,15 @@ namespace Slam
                 else
                 {
                     MessageBox.Show("El Torneo elegido no tiene puntos asignados.");
-                    FrmPuntosTorneo frmPuntos = new FrmPuntosTorneo(
+                    FrmPuntosTorneo frmPuntos =
+                        new FrmPuntosTorneo(
+                            Convert.ToInt32(((KeyValuePair<int, string>)CboListaTorneos.SelectedItem).Key));
+                    if (frmPuntos.ShowDialog() == DialogResult.OK)
+                    {
+                        if (servicioPartidos == null)
+                            servicioPartidos = (IListadoPartidoServicio)AppContext.Instance.GetObject(ImplementaPartidos);
+                        servicioPartidos.ListarPartidos(this);
+                    }
                 }
             }
             catch (Exception ex)
