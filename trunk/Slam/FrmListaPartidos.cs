@@ -178,15 +178,10 @@ namespace Slam
             {
                 if (DgvListaPartidos.Rows.Count > 0)
                 {
-                    //if (Convert.ToBoolean(DgvListaPartidos.SelectedRows[0].Cells["Estado"].Value) == false)
-                    //{
-                    //    BtnModificar.Enabled = false;
-
-                    //}
-                    //else
-                    //{
-                    //    BtnModificar.Enabled = true;
-                    //}
+                    if (Convert.ToBoolean(DgvListaPartidos.SelectedRows[0].Cells["Estado"].Value) == false)
+                        BtnModificar.Enabled = false;
+                    else
+                        BtnModificar.Enabled = true;
                 }
             }
             catch (Exception ex)

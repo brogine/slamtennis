@@ -190,13 +190,9 @@ namespace Servicio
             
             foreach (var item in listado)
             {
-                string campos = item.Resultado.Replace("/", "");
-                campos = campos.Replace("-", "");
-                campos = campos.Trim();
                 int Ganador = 0;
                 string EquipoGanador = "";
-                if (campos != "")
-                    Ganador = item.CalcularGanador(item.Resultado);
+                Ganador = item.CalcularGanador(item.Resultado);
 
                 DtPartido.BeginLoadData();
                 if (torneo.TipoTorneo == TipoTorneo.Doble)
@@ -213,18 +209,18 @@ namespace Servicio
                     }
                     if (item.Equipo2 != null)
                     {
-                        DtPartido.Rows.Add(item.Equipo1.Equipo.Jugador1.Apellido + " " + item.Equipo1.Equipo.Jugador1.Nombre,
+                        DtPartido.Rows.Add(item.Equipo1.Equipo.Jugador1.Apellido + " " + item.Equipo1.Equipo.Jugador1.Nombre + " - " +
                             item.Equipo1.Equipo.Jugador2.Apellido + " " + item.Equipo1.Equipo.Jugador2.Nombre,
-                            item.Equipo2.Equipo.Jugador1.Apellido + " " + item.Equipo2.Equipo.Jugador1.Nombre,
+                            item.Equipo2.Equipo.Jugador1.Apellido + " " + item.Equipo2.Equipo.Jugador1.Nombre + " - " +
                             item.Equipo2.Equipo.Jugador2.Apellido + " " + item.Equipo2.Equipo.Jugador2.Nombre,
-                            (campos == "" ? campos : item.Resultado), item.Ronda, EquipoGanador, item.Fecha.ToShortDateString());
+                            item.Resultado, item.Ronda, EquipoGanador, item.Fecha.ToShortDateString());
                     }
                     else
                     {
                         DtPartido.Rows.Add(item.Equipo1.Equipo.Jugador1.Apellido + " " + item.Equipo1.Equipo.Jugador1.Nombre,
                             item.Equipo1.Equipo.Jugador2.Apellido + " " + item.Equipo1.Equipo.Jugador2.Nombre,
                             "BYE", " ",
-                            (campos == "" ? campos : item.Resultado), item.Ronda, EquipoGanador, item.Fecha.ToShortDateString());
+                            item.Resultado, item.Ronda, EquipoGanador, item.Fecha.ToShortDateString());
                     }
                 }
                 else
@@ -241,21 +237,18 @@ namespace Servicio
                     {
                         DtPartido.Rows.Add(item.Equipo1.Equipo.Jugador1.Apellido + " " + item.Equipo1.Equipo.Jugador1.Nombre,
                             item.Equipo2.Equipo.Jugador1.Apellido + " " + item.Equipo2.Equipo.Jugador1.Nombre,
-                            (campos == "" ? campos : item.Resultado), item.Ronda, EquipoGanador, item.Fecha.ToShortDateString());
+                            item.Resultado, item.Ronda, EquipoGanador, item.Fecha.ToShortDateString());
                     }
                     else
                     {
                         DtPartido.Rows.Add(item.Equipo1.Equipo.Jugador1.Apellido + " " + item.Equipo1.Equipo.Jugador1.Nombre,
-                            "BYE", (campos == "" ? campos : item.Resultado), item.Ronda, EquipoGanador, item.Fecha.ToShortDateString());
+                            "BYE", item.Resultado, item.Ronda, EquipoGanador, item.Fecha.ToShortDateString());
                     }
                 }
                 DtPartido.EndLoadData();
             }
 
-            DtPartido.DefaultView.Sort = "Ronda ASC";
-
             Ds.Tables.Add(DtPartido);
-
             return Ds;
         }
 
