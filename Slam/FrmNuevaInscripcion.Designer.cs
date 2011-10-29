@@ -77,7 +77,7 @@
             this.TxtDniJugador2.Mask = "00.000.000";
             this.TxtDniJugador2.Name = "TxtDniJugador2";
             this.TxtDniJugador2.Size = new System.Drawing.Size(99, 20);
-            this.TxtDniJugador2.TabIndex = 1;
+            this.TxtDniJugador2.TabIndex = 2;
             this.TxtDniJugador2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.TxtDniJugador2.TextMaskFormat = System.Windows.Forms.MaskFormat.ExcludePromptAndLiterals;
             this.TxtDniJugador2.Validating += new System.ComponentModel.CancelEventHandler(this.TxtDniJugador2_Validating);
@@ -91,7 +91,7 @@
             this.DtpFecha.Location = new System.Drawing.Point(176, 117);
             this.DtpFecha.Name = "DtpFecha";
             this.DtpFecha.Size = new System.Drawing.Size(98, 20);
-            this.DtpFecha.TabIndex = 2;
+            this.DtpFecha.TabIndex = 4;
             // 
             // ChkEstado
             // 
@@ -99,7 +99,7 @@
             this.ChkEstado.Location = new System.Drawing.Point(176, 144);
             this.ChkEstado.Name = "ChkEstado";
             this.ChkEstado.Size = new System.Drawing.Size(59, 17);
-            this.ChkEstado.TabIndex = 3;
+            this.ChkEstado.TabIndex = 5;
             this.ChkEstado.Text = "Estado";
             this.ChkEstado.UseVisualStyleBackColor = true;
             // 
@@ -144,7 +144,7 @@
             this.BtnAgregar.Location = new System.Drawing.Point(82, 167);
             this.BtnAgregar.Name = "BtnAgregar";
             this.BtnAgregar.Size = new System.Drawing.Size(75, 23);
-            this.BtnAgregar.TabIndex = 5;
+            this.BtnAgregar.TabIndex = 6;
             this.BtnAgregar.Text = "Agregar";
             this.BtnAgregar.UseVisualStyleBackColor = true;
             this.BtnAgregar.Click += new System.EventHandler(this.BtnAgregar_Click);
@@ -155,7 +155,7 @@
             this.BtnCancelar.Location = new System.Drawing.Point(199, 167);
             this.BtnCancelar.Name = "BtnCancelar";
             this.BtnCancelar.Size = new System.Drawing.Size(75, 23);
-            this.BtnCancelar.TabIndex = 5;
+            this.BtnCancelar.TabIndex = 7;
             this.BtnCancelar.Text = "Cancelar";
             this.BtnCancelar.UseVisualStyleBackColor = true;
             this.BtnCancelar.Click += new System.EventHandler(this.BtnCancelar_Click);
@@ -165,7 +165,7 @@
             this.TxtNroInscripcion.Location = new System.Drawing.Point(176, 91);
             this.TxtNroInscripcion.Name = "TxtNroInscripcion";
             this.TxtNroInscripcion.Size = new System.Drawing.Size(59, 20);
-            this.TxtNroInscripcion.TabIndex = 23;
+            this.TxtNroInscripcion.TabIndex = 3;
             // 
             // lblNroInscripcion
             // 

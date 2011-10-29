@@ -124,7 +124,7 @@
             this.ChkEstado.Location = new System.Drawing.Point(23, 183);
             this.ChkEstado.Name = "ChkEstado";
             this.ChkEstado.Size = new System.Drawing.Size(59, 17);
-            this.ChkEstado.TabIndex = 6;
+            this.ChkEstado.TabIndex = 13;
             this.ChkEstado.Text = "Estado";
             this.ChkEstado.UseVisualStyleBackColor = true;
             // 
@@ -133,7 +133,7 @@
             this.BtnGuardar.Location = new System.Drawing.Point(493, 178);
             this.BtnGuardar.Name = "BtnGuardar";
             this.BtnGuardar.Size = new System.Drawing.Size(75, 23);
-            this.BtnGuardar.TabIndex = 7;
+            this.BtnGuardar.TabIndex = 11;
             this.BtnGuardar.Text = "Guardar";
             this.BtnGuardar.UseVisualStyleBackColor = true;
             this.BtnGuardar.Click += new System.EventHandler(this.BtnGuardar_Click);
@@ -144,7 +144,7 @@
             this.BtnCancelar.Location = new System.Drawing.Point(575, 177);
             this.BtnCancelar.Name = "BtnCancelar";
             this.BtnCancelar.Size = new System.Drawing.Size(75, 23);
-            this.BtnCancelar.TabIndex = 8;
+            this.BtnCancelar.TabIndex = 12;
             this.BtnCancelar.Text = "Cancelar";
             this.BtnCancelar.UseVisualStyleBackColor = true;
             this.BtnCancelar.Click += new System.EventHandler(this.BtnCancelar_Click);
@@ -280,7 +280,7 @@
             this.TxtPartPerDob.Location = new System.Drawing.Point(267, 20);
             this.TxtPartPerDob.Name = "TxtPartPerDob";
             this.TxtPartPerDob.Size = new System.Drawing.Size(41, 20);
-            this.TxtPartPerDob.TabIndex = 2;
+            this.TxtPartPerDob.TabIndex = 7;
             this.TxtPartPerDob.Validating += new System.ComponentModel.CancelEventHandler(this.TxtPP_Validating);
             // 
             // label1
@@ -324,7 +324,7 @@
             this.TxtTornCompDob.Location = new System.Drawing.Point(267, 49);
             this.TxtTornCompDob.Name = "TxtTornCompDob";
             this.TxtTornCompDob.Size = new System.Drawing.Size(41, 20);
-            this.TxtTornCompDob.TabIndex = 4;
+            this.TxtTornCompDob.TabIndex = 9;
             this.TxtTornCompDob.Validating += new System.ComponentModel.CancelEventHandler(this.TxtTC_Validating);
             // 
             // label5
@@ -359,7 +359,7 @@
             this.TxtPartGanDob.Location = new System.Drawing.Point(103, 24);
             this.TxtPartGanDob.Name = "TxtPartGanDob";
             this.TxtPartGanDob.Size = new System.Drawing.Size(41, 20);
-            this.TxtPartGanDob.TabIndex = 1;
+            this.TxtPartGanDob.TabIndex = 6;
             this.TxtPartGanDob.Validating += new System.ComponentModel.CancelEventHandler(this.TxtPG_Validating);
             // 
             // TxtTorJugDob
@@ -367,7 +367,7 @@
             this.TxtTorJugDob.Location = new System.Drawing.Point(103, 50);
             this.TxtTorJugDob.Name = "TxtTorJugDob";
             this.TxtTorJugDob.Size = new System.Drawing.Size(41, 20);
-            this.TxtTorJugDob.TabIndex = 3;
+            this.TxtTorJugDob.TabIndex = 8;
             this.TxtTorJugDob.Validating += new System.ComponentModel.CancelEventHandler(this.TxtTJ_Validating);
             // 
             // TxtPuntosDob
@@ -375,7 +375,7 @@
             this.TxtPuntosDob.Location = new System.Drawing.Point(103, 76);
             this.TxtPuntosDob.Name = "TxtPuntosDob";
             this.TxtPuntosDob.Size = new System.Drawing.Size(41, 20);
-            this.TxtPuntosDob.TabIndex = 5;
+            this.TxtPuntosDob.TabIndex = 10;
             this.TxtPuntosDob.Validating += new System.ComponentModel.CancelEventHandler(this.TxtPuntos_Validating);
             // 
             // FrmEstadisticasJugador

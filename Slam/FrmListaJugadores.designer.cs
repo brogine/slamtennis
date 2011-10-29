@@ -49,14 +49,14 @@
             this.DgvJugadoresClub.Name = "DgvJugadoresClub";
             this.DgvJugadoresClub.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.DgvJugadoresClub.Size = new System.Drawing.Size(582, 262);
-            this.DgvJugadoresClub.TabIndex = 0;
+            this.DgvJugadoresClub.TabIndex = 1;
             // 
             // BtnNuevo
             // 
             this.BtnNuevo.Location = new System.Drawing.Point(66, 309);
             this.BtnNuevo.Name = "BtnNuevo";
             this.BtnNuevo.Size = new System.Drawing.Size(105, 23);
-            this.BtnNuevo.TabIndex = 1;
+            this.BtnNuevo.TabIndex = 2;
             this.BtnNuevo.Text = "Nueva Afiliacion";
             this.BtnNuevo.UseVisualStyleBackColor = true;
             this.BtnNuevo.Click += new System.EventHandler(this.BtnNuevo_Click);
@@ -66,7 +66,7 @@
             this.BtnModificar.Location = new System.Drawing.Point(186, 309);
             this.BtnModificar.Name = "BtnModificar";
             this.BtnModificar.Size = new System.Drawing.Size(117, 23);
-            this.BtnModificar.TabIndex = 2;
+            this.BtnModificar.TabIndex = 3;
             this.BtnModificar.Text = "Modificar Jugador";
             this.BtnModificar.UseVisualStyleBackColor = true;
             this.BtnModificar.Click += new System.EventHandler(this.BtnModificar_Click);
@@ -78,6 +78,7 @@
             this.CboClubes.Name = "CboClubes";
             this.CboClubes.Size = new System.Drawing.Size(164, 21);
             this.CboClubes.TabIndex = 3;
+            this.CboClubes.Text = "0";
             this.CboClubes.SelectionChangeCommitted += new System.EventHandler(this.CmbClubes_SelectionChangeCommitted);
             this.CboClubes.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.CboClubes_KeyPress);
             // 
@@ -95,7 +96,7 @@
             this.BtnCambiaEstado.Location = new System.Drawing.Point(323, 309);
             this.BtnCambiaEstado.Name = "BtnCambiaEstado";
             this.BtnCambiaEstado.Size = new System.Drawing.Size(75, 23);
-            this.BtnCambiaEstado.TabIndex = 5;
+            this.BtnCambiaEstado.TabIndex = 4;
             this.BtnCambiaEstado.Text = "Dar De Baja";
             this.BtnCambiaEstado.UseVisualStyleBackColor = true;
             this.BtnCambiaEstado.Click += new System.EventHandler(this.BtnCambiaEstado_Click);
@@ -105,7 +106,7 @@
             this.BtnSalir.Location = new System.Drawing.Point(519, 309);
             this.BtnSalir.Name = "BtnSalir";
             this.BtnSalir.Size = new System.Drawing.Size(75, 23);
-            this.BtnSalir.TabIndex = 6;
+            this.BtnSalir.TabIndex = 5;
             this.BtnSalir.Text = "Salir";
             this.BtnSalir.UseVisualStyleBackColor = true;
             this.BtnSalir.Click += new System.EventHandler(this.BtnSalir_Click);

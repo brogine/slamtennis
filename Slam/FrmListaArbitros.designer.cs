@@ -40,7 +40,7 @@
             this.BtnModificar.Location = new System.Drawing.Point(342, 307);
             this.BtnModificar.Name = "BtnModificar";
             this.BtnModificar.Size = new System.Drawing.Size(75, 23);
-            this.BtnModificar.TabIndex = 7;
+            this.BtnModificar.TabIndex = 2;
             this.BtnModificar.Text = "Modificar";
             this.BtnModificar.UseVisualStyleBackColor = true;
             this.BtnModificar.Click += new System.EventHandler(this.BtnModificar_Click);
@@ -50,7 +50,7 @@
             this.BtnNuevo.Location = new System.Drawing.Point(199, 307);
             this.BtnNuevo.Name = "BtnNuevo";
             this.BtnNuevo.Size = new System.Drawing.Size(75, 23);
-            this.BtnNuevo.TabIndex = 6;
+            this.BtnNuevo.TabIndex = 1;
             this.BtnNuevo.Text = "Nuevo";
             this.BtnNuevo.UseVisualStyleBackColor = true;
             this.BtnNuevo.Click += new System.EventHandler(this.BtnNuevo_Click);
@@ -65,7 +65,7 @@
             this.DgvArbitrosClub.Name = "DgvArbitrosClub";
             this.DgvArbitrosClub.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.DgvArbitrosClub.Size = new System.Drawing.Size(582, 289);
-            this.DgvArbitrosClub.TabIndex = 5;
+            this.DgvArbitrosClub.TabIndex = 0;
             // 
             // FrmListaArbitros
             // 

@@ -54,7 +54,7 @@
             this.TxtNombre.Location = new System.Drawing.Point(142, 6);
             this.TxtNombre.Name = "TxtNombre";
             this.TxtNombre.Size = new System.Drawing.Size(155, 20);
-            this.TxtNombre.TabIndex = 1;
+            this.TxtNombre.TabIndex = 0;
             // 
             // label2
             // 
@@ -70,7 +70,7 @@
             this.TxtEdadMin.Location = new System.Drawing.Point(142, 32);
             this.TxtEdadMin.Name = "TxtEdadMin";
             this.TxtEdadMin.Size = new System.Drawing.Size(40, 20);
-            this.TxtEdadMin.TabIndex = 3;
+            this.TxtEdadMin.TabIndex = 1;
             // 
             // label3
             // 
@@ -86,7 +86,7 @@
             this.TxtEdadMax.Location = new System.Drawing.Point(142, 64);
             this.TxtEdadMax.Name = "TxtEdadMax";
             this.TxtEdadMax.Size = new System.Drawing.Size(40, 20);
-            this.TxtEdadMax.TabIndex = 5;
+            this.TxtEdadMax.TabIndex = 2;
             // 
             // ChkEstado
             // 
@@ -94,7 +94,7 @@
             this.ChkEstado.Location = new System.Drawing.Point(15, 99);
             this.ChkEstado.Name = "ChkEstado";
             this.ChkEstado.Size = new System.Drawing.Size(59, 17);
-            this.ChkEstado.TabIndex = 6;
+            this.ChkEstado.TabIndex = 3;
             this.ChkEstado.Text = "Estado";
             this.ChkEstado.UseVisualStyleBackColor = true;
             // 
@@ -103,7 +103,7 @@
             this.BtnGuardar.Location = new System.Drawing.Point(175, 93);
             this.BtnGuardar.Name = "BtnGuardar";
             this.BtnGuardar.Size = new System.Drawing.Size(75, 23);
-            this.BtnGuardar.TabIndex = 7;
+            this.BtnGuardar.TabIndex = 4;
             this.BtnGuardar.Text = "Guardar";
             this.BtnGuardar.UseVisualStyleBackColor = true;
             this.BtnGuardar.Click += new System.EventHandler(this.BtnGuardar_Click);
@@ -113,7 +113,7 @@
             this.BtnSalir.Location = new System.Drawing.Point(261, 93);
             this.BtnSalir.Name = "BtnSalir";
             this.BtnSalir.Size = new System.Drawing.Size(75, 23);
-            this.BtnSalir.TabIndex = 8;
+            this.BtnSalir.TabIndex = 5;
             this.BtnSalir.Text = "Salir";
             this.BtnSalir.UseVisualStyleBackColor = true;
             this.BtnSalir.Click += new System.EventHandler(this.BtnSalir_Click);

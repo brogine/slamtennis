@@ -46,7 +46,7 @@
             this.BtnModificar.Location = new System.Drawing.Point(116, 267);
             this.BtnModificar.Name = "BtnModificar";
             this.BtnModificar.Size = new System.Drawing.Size(94, 23);
-            this.BtnModificar.TabIndex = 5;
+            this.BtnModificar.TabIndex = 3;
             this.BtnModificar.Text = "Modificar Sede";
             this.BtnModificar.UseVisualStyleBackColor = true;
             this.BtnModificar.Click += new System.EventHandler(this.BtnModificar_Click);
@@ -56,7 +56,7 @@
             this.BtnNueva.Location = new System.Drawing.Point(16, 267);
             this.BtnNueva.Name = "BtnNueva";
             this.BtnNueva.Size = new System.Drawing.Size(94, 23);
-            this.BtnNueva.TabIndex = 4;
+            this.BtnNueva.TabIndex = 2;
             this.BtnNueva.Text = "Nueva Sede";
             this.BtnNueva.UseVisualStyleBackColor = true;
             this.BtnNueva.Click += new System.EventHandler(this.BtnNueva_Click);
@@ -76,7 +76,7 @@
             this.DgvSedes.ReadOnly = true;
             this.DgvSedes.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.DgvSedes.Size = new System.Drawing.Size(418, 213);
-            this.DgvSedes.TabIndex = 3;
+            this.DgvSedes.TabIndex = 1;
             this.DgvSedes.SelectionChanged += new System.EventHandler(this.DgvSedes_SelectionChanged);
             // 
             // LblFiltrarClub
@@ -94,7 +94,7 @@
             this.CboClubes.Location = new System.Drawing.Point(199, 12);
             this.CboClubes.Name = "CboClubes";
             this.CboClubes.Size = new System.Drawing.Size(121, 21);
-            this.CboClubes.TabIndex = 7;
+            this.CboClubes.TabIndex = 0;
             this.CboClubes.SelectionChangeCommitted += new System.EventHandler(this.CboClubes_SelectionChangeCommitted);
             this.CboClubes.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.CboClubes_KeyPress);
             // 
@@ -108,7 +108,7 @@
             this.DgvCanchas.Name = "DgvCanchas";
             this.DgvCanchas.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.DgvCanchas.Size = new System.Drawing.Size(418, 207);
-            this.DgvCanchas.TabIndex = 8;
+            this.DgvCanchas.TabIndex = 6;
             // 
             // BtnNuevaCancha
             // 

@@ -54,7 +54,7 @@
             this.TxtNombreClub.Location = new System.Drawing.Point(162, 17);
             this.TxtNombreClub.Name = "TxtNombreClub";
             this.TxtNombreClub.Size = new System.Drawing.Size(219, 20);
-            this.TxtNombreClub.TabIndex = 1;
+            this.TxtNombreClub.TabIndex = 0;
             this.TxtNombreClub.Validating += new System.ComponentModel.CancelEventHandler(this.TxtNombreClub_Validating);
             // 
             // label2
@@ -71,7 +71,7 @@
             this.TxtNombrePresidente.Location = new System.Drawing.Point(184, 43);
             this.TxtNombrePresidente.Name = "TxtNombrePresidente";
             this.TxtNombrePresidente.Size = new System.Drawing.Size(197, 20);
-            this.TxtNombrePresidente.TabIndex = 5;
+            this.TxtNombrePresidente.TabIndex = 1;
             this.TxtNombrePresidente.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.TxtNombrePresidente.Validating += new System.ComponentModel.CancelEventHandler(this.TxtNombrePresidente_Validating);
             // 
@@ -81,7 +81,7 @@
             this.ChkEstado.Location = new System.Drawing.Point(15, 101);
             this.ChkEstado.Name = "ChkEstado";
             this.ChkEstado.Size = new System.Drawing.Size(80, 17);
-            this.ChkEstado.TabIndex = 6;
+            this.ChkEstado.TabIndex = 2;
             this.ChkEstado.Text = "Club Activo";
             this.ChkEstado.UseVisualStyleBackColor = true;
             // 
@@ -90,7 +90,7 @@
             this.BtnGuardar.Location = new System.Drawing.Point(306, 97);
             this.BtnGuardar.Name = "BtnGuardar";
             this.BtnGuardar.Size = new System.Drawing.Size(75, 23);
-            this.BtnGuardar.TabIndex = 7;
+            this.BtnGuardar.TabIndex = 3;
             this.BtnGuardar.Text = "Guardar";
             this.BtnGuardar.UseVisualStyleBackColor = true;
             this.BtnGuardar.Click += new System.EventHandler(this.BtnGuardar_Click);

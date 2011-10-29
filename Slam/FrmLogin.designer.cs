@@ -64,7 +64,7 @@
             this.LblOlvidoPassword.Location = new System.Drawing.Point(123, 157);
             this.LblOlvidoPassword.Name = "LblOlvidoPassword";
             this.LblOlvidoPassword.Size = new System.Drawing.Size(124, 13);
-            this.LblOlvidoPassword.TabIndex = 12;
+            this.LblOlvidoPassword.TabIndex = 4;
             this.LblOlvidoPassword.TabStop = true;
             this.LblOlvidoPassword.Text = "¿Olvidó su constraseña?";
             this.LblOlvidoPassword.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.LblOlvidoPassword_LinkClicked);
@@ -93,7 +93,7 @@
             this.BtnCancelar.Location = new System.Drawing.Point(193, 122);
             this.BtnCancelar.Name = "BtnCancelar";
             this.BtnCancelar.Size = new System.Drawing.Size(75, 23);
-            this.BtnCancelar.TabIndex = 9;
+            this.BtnCancelar.TabIndex = 3;
             this.BtnCancelar.Text = "&Cancelar";
             this.BtnCancelar.UseVisualStyleBackColor = true;
             this.BtnCancelar.Click += new System.EventHandler(this.BtnCancelar_Click);
@@ -103,7 +103,7 @@
             this.BtnAceptar.Location = new System.Drawing.Point(96, 122);
             this.BtnAceptar.Name = "BtnAceptar";
             this.BtnAceptar.Size = new System.Drawing.Size(75, 23);
-            this.BtnAceptar.TabIndex = 8;
+            this.BtnAceptar.TabIndex = 2;
             this.BtnAceptar.Text = "&Aceptar";
             this.BtnAceptar.UseVisualStyleBackColor = true;
             this.BtnAceptar.Click += new System.EventHandler(this.BtnAceptar_Click);

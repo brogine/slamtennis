@@ -50,7 +50,7 @@
             this.CboCategorias.Location = new System.Drawing.Point(147, 73);
             this.CboCategorias.Name = "CboCategorias";
             this.CboCategorias.Size = new System.Drawing.Size(163, 21);
-            this.CboCategorias.TabIndex = 0;
+            this.CboCategorias.TabIndex = 3;
             this.CboCategorias.SelectionChangeCommitted += new System.EventHandler(this.CboCategorias_SelectionChangeCommitted);
             this.CboCategorias.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.CboCategorias_KeyPress);
             // 
@@ -131,7 +131,7 @@
             this.BtnVerEstadisticas.Location = new System.Drawing.Point(252, 355);
             this.BtnVerEstadisticas.Name = "BtnVerEstadisticas";
             this.BtnVerEstadisticas.Size = new System.Drawing.Size(160, 23);
-            this.BtnVerEstadisticas.TabIndex = 7;
+            this.BtnVerEstadisticas.TabIndex = 8;
             this.BtnVerEstadisticas.Text = "Ver Estadísticas Personales";
             this.BtnVerEstadisticas.UseVisualStyleBackColor = true;
             this.BtnVerEstadisticas.Click += new System.EventHandler(this.BtnVerEstadisticas_Click);
@@ -151,7 +151,7 @@
             this.RBSingle.Location = new System.Drawing.Point(147, 47);
             this.RBSingle.Name = "RBSingle";
             this.RBSingle.Size = new System.Drawing.Size(54, 17);
-            this.RBSingle.TabIndex = 9;
+            this.RBSingle.TabIndex = 1;
             this.RBSingle.TabStop = true;
             this.RBSingle.Text = "Single";
             this.RBSingle.UseVisualStyleBackColor = true;
@@ -163,7 +163,7 @@
             this.RBDoble.Location = new System.Drawing.Point(238, 47);
             this.RBDoble.Name = "RBDoble";
             this.RBDoble.Size = new System.Drawing.Size(53, 17);
-            this.RBDoble.TabIndex = 10;
+            this.RBDoble.TabIndex = 2;
             this.RBDoble.TabStop = true;
             this.RBDoble.Text = "Doble";
             this.RBDoble.UseVisualStyleBackColor = true;

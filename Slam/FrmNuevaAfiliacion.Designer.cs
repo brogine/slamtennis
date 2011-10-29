@@ -70,7 +70,7 @@
             this.TxtDni.Mask = "00.000.000";
             this.TxtDni.Name = "TxtDni";
             this.TxtDni.Size = new System.Drawing.Size(140, 20);
-            this.TxtDni.TabIndex = 2;
+            this.TxtDni.TabIndex = 1;
             this.TxtDni.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.TxtDni.TextMaskFormat = System.Windows.Forms.MaskFormat.ExcludePromptAndLiterals;
             this.TxtDni.Validating += new System.ComponentModel.CancelEventHandler(this.TxtDni_Validating);
@@ -122,7 +122,7 @@
             this.BtnComprobar.Location = new System.Drawing.Point(242, 50);
             this.BtnComprobar.Name = "BtnComprobar";
             this.BtnComprobar.Size = new System.Drawing.Size(75, 23);
-            this.BtnComprobar.TabIndex = 9;
+            this.BtnComprobar.TabIndex = 2;
             this.BtnComprobar.Text = "Comprobar";
             this.BtnComprobar.UseVisualStyleBackColor = true;
             this.BtnComprobar.Click += new System.EventHandler(this.BtnComprobar_Click);
@@ -140,7 +140,7 @@
             this.BtnNuevoJugador.Location = new System.Drawing.Point(15, 150);
             this.BtnNuevoJugador.Name = "BtnNuevoJugador";
             this.BtnNuevoJugador.Size = new System.Drawing.Size(101, 23);
-            this.BtnNuevoJugador.TabIndex = 7;
+            this.BtnNuevoJugador.TabIndex = 3;
             this.BtnNuevoJugador.Text = "Nuevo Jugador";
             this.BtnNuevoJugador.UseVisualStyleBackColor = true;
             this.BtnNuevoJugador.Click += new System.EventHandler(this.BtnNuevoJugador_Click);

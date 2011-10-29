@@ -66,7 +66,7 @@
             this.CboListaTorneo.Location = new System.Drawing.Point(189, 16);
             this.CboListaTorneo.Name = "CboListaTorneo";
             this.CboListaTorneo.Size = new System.Drawing.Size(219, 21);
-            this.CboListaTorneo.TabIndex = 1;
+            this.CboListaTorneo.TabIndex = 0;
             this.CboListaTorneo.Validating += new System.ComponentModel.CancelEventHandler(this.CboListaTorneo_Validating);
             this.CboListaTorneo.SelectedIndexChanged += new System.EventHandler(this.CboListaTorneo_SelectedIndexChanged);
             // 
@@ -86,7 +86,7 @@
             this.CboEquipo1.Location = new System.Drawing.Point(6, 19);
             this.CboEquipo1.Name = "CboEquipo1";
             this.CboEquipo1.Size = new System.Drawing.Size(237, 21);
-            this.CboEquipo1.TabIndex = 0;
+            this.CboEquipo1.TabIndex = 1;
             this.CboEquipo1.Validating += new System.ComponentModel.CancelEventHandler(this.CboEquipo1_Validating);
             // 
             // LblVs
@@ -114,7 +114,7 @@
             this.CboEquipo2.Location = new System.Drawing.Point(6, 19);
             this.CboEquipo2.Name = "CboEquipo2";
             this.CboEquipo2.Size = new System.Drawing.Size(270, 21);
-            this.CboEquipo2.TabIndex = 0;
+            this.CboEquipo2.TabIndex = 2;
             this.CboEquipo2.Validating += new System.ComponentModel.CancelEventHandler(this.CboEquipo2_Validating);
             // 
             // DtpFechaPartido
@@ -122,7 +122,7 @@
             this.DtpFechaPartido.Location = new System.Drawing.Point(107, 111);
             this.DtpFechaPartido.Name = "DtpFechaPartido";
             this.DtpFechaPartido.Size = new System.Drawing.Size(200, 20);
-            this.DtpFechaPartido.TabIndex = 4;
+            this.DtpFechaPartido.TabIndex = 3;
             // 
             // LblFecha
             // 
@@ -148,7 +148,7 @@
             this.TxtResultado.Mask = "0-0/0-0/00-00";
             this.TxtResultado.Name = "TxtResultado";
             this.TxtResultado.Size = new System.Drawing.Size(100, 20);
-            this.TxtResultado.TabIndex = 7;
+            this.TxtResultado.TabIndex = 6;
             this.TxtResultado.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // BtnAceptar
@@ -156,7 +156,7 @@
             this.BtnAceptar.Location = new System.Drawing.Point(421, 144);
             this.BtnAceptar.Name = "BtnAceptar";
             this.BtnAceptar.Size = new System.Drawing.Size(75, 23);
-            this.BtnAceptar.TabIndex = 8;
+            this.BtnAceptar.TabIndex = 7;
             this.BtnAceptar.Text = "Aceptar";
             this.BtnAceptar.UseVisualStyleBackColor = true;
             this.BtnAceptar.Click += new System.EventHandler(this.BtnAceptar_Click);
@@ -166,7 +166,7 @@
             this.BtnSalir.Location = new System.Drawing.Point(504, 144);
             this.BtnSalir.Name = "BtnSalir";
             this.BtnSalir.Size = new System.Drawing.Size(75, 23);
-            this.BtnSalir.TabIndex = 9;
+            this.BtnSalir.TabIndex = 8;
             this.BtnSalir.Text = "Salir";
             this.BtnSalir.UseVisualStyleBackColor = true;
             this.BtnSalir.Click += new System.EventHandler(this.BtnSalir_Click);
@@ -177,7 +177,7 @@
             this.ChkEstado.Location = new System.Drawing.Point(12, 150);
             this.ChkEstado.Name = "ChkEstado";
             this.ChkEstado.Size = new System.Drawing.Size(56, 17);
-            this.ChkEstado.TabIndex = 1;
+            this.ChkEstado.TabIndex = 5;
             this.ChkEstado.Text = "Activo";
             this.ChkEstado.UseVisualStyleBackColor = true;
             // 
@@ -200,7 +200,7 @@
             this.CboRonda.Location = new System.Drawing.Point(358, 109);
             this.CboRonda.Name = "CboRonda";
             this.CboRonda.Size = new System.Drawing.Size(138, 21);
-            this.CboRonda.TabIndex = 11;
+            this.CboRonda.TabIndex = 4;
             // 
             // FrmNuevoPartido
             // 

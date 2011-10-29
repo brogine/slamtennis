@@ -87,7 +87,7 @@
             this.BtnSalir.Location = new System.Drawing.Point(488, 198);
             this.BtnSalir.Name = "BtnSalir";
             this.BtnSalir.Size = new System.Drawing.Size(75, 23);
-            this.BtnSalir.TabIndex = 4;
+            this.BtnSalir.TabIndex = 5;
             this.BtnSalir.Text = "Salir";
             this.BtnSalir.UseVisualStyleBackColor = true;
             this.BtnSalir.Click += new System.EventHandler(this.BtnSalir_Click);
@@ -106,7 +106,7 @@
             this.BtnGenerarLlave.Location = new System.Drawing.Point(189, 198);
             this.BtnGenerarLlave.Name = "BtnGenerarLlave";
             this.BtnGenerarLlave.Size = new System.Drawing.Size(96, 23);
-            this.BtnGenerarLlave.TabIndex = 6;
+            this.BtnGenerarLlave.TabIndex = 4;
             this.BtnGenerarLlave.Text = "Generar Llave";
             this.BtnGenerarLlave.UseVisualStyleBackColor = true;
             this.BtnGenerarLlave.Click += new System.EventHandler(this.BtnGenerarLlave_Click);

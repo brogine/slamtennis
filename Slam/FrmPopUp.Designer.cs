@@ -84,7 +84,7 @@
             this.BtnCompletar.Location = new System.Drawing.Point(82, 101);
             this.BtnCompletar.Name = "BtnCompletar";
             this.BtnCompletar.Size = new System.Drawing.Size(75, 23);
-            this.BtnCompletar.TabIndex = 3;
+            this.BtnCompletar.TabIndex = 0;
             this.BtnCompletar.Text = "Completar";
             this.BtnCompletar.UseVisualStyleBackColor = false;
             this.BtnCompletar.Click += new System.EventHandler(this.BtnCompletar_Click);
