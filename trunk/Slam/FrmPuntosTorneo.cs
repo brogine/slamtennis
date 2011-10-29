@@ -20,6 +20,7 @@ namespace Slam
         IListadoTorneoServicio TorneoServicio;
         int IdTorneoActual = 0;
         int cupo;
+
         public FrmPuntosTorneo()
         {
             InitializeComponent();
@@ -121,6 +122,7 @@ namespace Slam
                 PuntosServicio = (IPuntosServicio)AppContext.Instance.GetObject(ImplementaPuntos);
                 TorneoServicio = (IListadoTorneoServicio)AppContext.Instance.GetObject(ImplementaTorneos);
                 TorneoServicio.ListarTorneos(this);
+                this.DialogResult = DialogResult.Cancel;
             }
             catch (Exception ex)
             {
@@ -177,34 +179,26 @@ namespace Slam
 
         private void BtnAceptar_Click(object sender, EventArgs e)
         {
-            
-            if (PuntosServicio.Existe(this))
+            try
             {
-                try
+                if (PuntosServicio.Existe(this))
                 {
                     PuntosServicio.Modificar(this);
                     Blanquear();
-                    
                     MessageBox.Show("Puntos Agregados Con Exito");
                 }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.Message);
-                }
-                
-            }
-            else
-            {
-                try
+                else
                 {
                     PuntosServicio.Agregar(this);
                     Blanquear();
                     MessageBox.Show("Puntos Modificados Con Exito");
                 }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.Message);
-                }
+                this.DialogResult = DialogResult.OK;
+                this.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
             }
         }
 

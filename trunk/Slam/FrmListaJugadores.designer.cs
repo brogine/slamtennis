@@ -78,7 +78,6 @@
             this.CboClubes.Name = "CboClubes";
             this.CboClubes.Size = new System.Drawing.Size(164, 21);
             this.CboClubes.TabIndex = 3;
-            this.CboClubes.Text = "0";
             this.CboClubes.SelectionChangeCommitted += new System.EventHandler(this.CmbClubes_SelectionChangeCommitted);
             this.CboClubes.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.CboClubes_KeyPress);
             // 
