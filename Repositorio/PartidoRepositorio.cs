@@ -159,8 +159,8 @@ namespace Repositorio
                             {
                                 if (Partido.Torneo.ListaPuntos[i].Ronda == "Campeon")
                                 {
-                                    Equipo1Jugador1.PuntajeDoble = Partido.Torneo.ListaPuntos[i].CantidadPuntos;
-                                    Equipo1Jugador2.PuntajeDoble = Partido.Torneo.ListaPuntos[i].CantidadPuntos;
+                                    Equipo1Jugador1.PuntajeDoble += Partido.Torneo.ListaPuntos[i].CantidadPuntos;
+                                    Equipo1Jugador2.PuntajeDoble += Partido.Torneo.ListaPuntos[i].CantidadPuntos;
                                 }
                             }
 
@@ -182,8 +182,8 @@ namespace Repositorio
                                 if (Partido.Torneo.ListaPuntos[i].Ronda == "Campeon")
                                 {
 
-                                    Equipo2Jugador1.PuntajeDoble = Partido.Torneo.ListaPuntos[i].CantidadPuntos;
-                                    Equipo2Jugador2.PuntajeDoble = Partido.Torneo.ListaPuntos[i].CantidadPuntos;
+                                    Equipo2Jugador1.PuntajeDoble += Partido.Torneo.ListaPuntos[i].CantidadPuntos;
+                                    Equipo2Jugador2.PuntajeDoble += Partido.Torneo.ListaPuntos[i].CantidadPuntos;
                                     
                                 }
                             }
