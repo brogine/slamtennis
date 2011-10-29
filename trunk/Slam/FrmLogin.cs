@@ -24,7 +24,7 @@ namespace Slam
             {
                 LoginServicio = (ILoginServicio)AppContext.Instance.GetObject(ImplementaLogin);
             }
-            catch (Exception ex)
+            catch (SystemException ex)
             {
                 MessageBox.Show(ex.Message);
                 Application.Exit();

@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Servicio
 {
-    class ServicioExeption : SystemException
+    public class ServicioExeption : SystemException
     {
         public ServicioExeption() { }
         
