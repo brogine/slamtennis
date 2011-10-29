@@ -189,25 +189,6 @@ namespace Slam
             GC.WaitForPendingFinalizers();
             this.Close();
         }
-
-        private void DgvListaPartidos_SelectionChanged(object sender, EventArgs e)
-        {
-            try
-            {
-                if (DgvListaPartidos.Rows.Count > 0)
-                {
-                    if (Convert.ToBoolean(DgvListaPartidos.SelectedRows[0].Cells["Estado"].Value) == false)
-                        BtnModificar.Enabled = false;
-                    else
-                        BtnModificar.Enabled = true;
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-        }
-
         private void BtnGenerarLlave_Click(object sender, EventArgs e)
         {
             try
