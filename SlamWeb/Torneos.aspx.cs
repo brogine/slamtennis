@@ -6,6 +6,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using Servicio.InterfacesUI;
 using Servicio;
+using Reportes;
 
 namespace SlamWeb
 {
@@ -34,26 +35,49 @@ namespace SlamWeb
             }
             else
             {
-                if (EsNumero(Request.Params[0].ToString()))
+                string parametro1 = Request.Params[0].ToString();
+                int index = parametro1.IndexOf("=");
+                string parametro2 = parametro1.Substring(0, index);
+                switch (parametro2)
                 {
-                    int index = Convert.ToInt32(Request.Params[0]);
-                    TxtIDTorneo.Text = index.ToString();
-                    try
-                    {
-                        int IdInscripcionActual = Convert.ToInt32(LblInscripcion.Text);
-                        IInscripcionServicio servicioInscripciones = new InscripcionServicio();
-                        IdInscripcionActual = servicioInscripciones.Agregar(this);
-                        GC.Collect();
-                        GC.WaitForPendingFinalizers();
-                        ClientScriptManager manager = Page.ClientScript;
-                        manager.RegisterStartupScript(this.GetType(), "Alerta", "<script language='javascript' type='text/javascript'>confirm('Inscripcion agregada correctamente, ¿ Desea imprimir el comprobante ?');</script>");
-                    }
-                    catch(Exception ex)
-                    {
-                        ClientScriptManager manager = Page.ClientScript;
-                        manager.RegisterStartupScript(this.GetType(), "Alerta", "<script type='text/javascript'>window.alert('Error " + ex.Message + "');</script>");
-                    }
+                    case "Torneo":
+                        int valor = Convert.ToInt32(parametro1.Substring(index + 1, parametro1.Length - index));
+                        TxtIDTorneo.Text = valor.ToString();
+                        try
+                        {
+                            int IdInscripcionActual = Convert.ToInt32(LblInscripcion.Text);
+                            IInscripcionServicio servicioInscripciones = new InscripcionServicio();
+                            IdInscripcionActual = servicioInscripciones.Agregar(this);
+                            GC.Collect();
+                            GC.WaitForPendingFinalizers();
+                            ClientScriptManager manager = Page.ClientScript;
+                            manager.RegisterStartupScript(this.GetType(), "Alerta", "<script language='javascript' type='text/javascript'>ImprimirReporte();</script>");
+
+                        }
+                        catch (Exception ex)
+                        {
+                            ClientScriptManager manager = Page.ClientScript;
+                            manager.RegisterStartupScript(this.GetType(), "Alerta", "<script type='text/javascript'>window.alert('Error " + ex.Message + "');</script>");
+                        }
+                        break;
+                    case "Imprimir":
+                        bool imprime = Convert.ToBoolean(parametro1.Substring(index + 1, parametro1.Length - index));
+                        if (imprime)
+                        {
+                            Session["NroIncripcion"] = Convert.ToInt32(LblInscripcion.Text);
+                            ClientScriptManager manager = Page.ClientScript;
+                            manager.RegisterStartupScript(this.GetType(), "Alerta", "<script type='text/javascript'>openpopup();</script>");
+                        }
+                        break;
+                    case "Borrar":
+                        string[] borra = parametro1.Substring(index + 1, parametro1.Length - index).Split(',');
+                        if (Convert.ToBoolean(borra[0]))
+                        {
+                            int idtorneo = Convert.ToInt32(borra[1]);
+                        }
+                        break;
                 }
+
             }
         }
 
@@ -70,6 +94,20 @@ namespace SlamWeb
             }
 
         }
+        private bool EsLogico(string cadena)
+        {
+            try
+            {
+                bool resp = Convert.ToBoolean(cadena);
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+
+        }
+
 
         #region IListadoTorneos Members
 

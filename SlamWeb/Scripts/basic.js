@@ -11,6 +11,10 @@ $('#content-DATOS').modal();
 function MostrarInscripcion() {
     $('#content-DATOS').modal();
 }
+
+function MostrarBorrarInscripcion() {
+    $('#BorrarIncrip').modal();
+}
 //jQuery(function($) {
 //$('#basic-modal .BASICO').click(function(e) {
 //    $('#content-BASICO').modal();
