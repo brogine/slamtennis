@@ -77,7 +77,7 @@ namespace Slam
         {
             get
             {
-                if (CboEquipo2.SelectedItem == "BYE")
+                if (CboEquipo2.SelectedItem.ToString() == "BYE")
                 {
                     return 0;
 
@@ -232,10 +232,7 @@ namespace Slam
                 CboEquipo1.DisplayMember = "Value";
                 CboEquipo1.ValueMember = "Key";
                 CboEquipo1.SelectedIndex = -1;
-                //if ((Convert.ToInt32(ListaInscripciones.Count / 2)) == CountSecuen || CountSecuen == 0)
-                //{
-                //    TxtRonda.Text = Convert.ToString(UltimaRonda + 1);
-                //}
+
 
             }
         }
