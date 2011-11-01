@@ -75,6 +75,13 @@
     <Compile Include="Correcto.aspx.designer.cs">
       <DependentUpon>Correcto.aspx</DependentUpon>
     </Compile>
+    <Compile Include="CuponIncripcion.aspx.cs">
+      <DependentUpon>CuponIncripcion.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CuponIncripcion.aspx.designer.cs">
+      <DependentUpon>CuponIncripcion.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -144,6 +151,7 @@
     <Content Include="Content\calendar.gif" />
     <Content Include="Content\CerrarSession.png" />
     <Content Include="Content\Consultas.png" />
+    <Content Include="Content\Crystal_Clear_app_error.png" />
     <Content Include="Content\Estadisticos.png" />
     <Content Include="Content\export.gif" />
     <Content Include="Content\exportd.gif" />
@@ -188,6 +196,7 @@
     <Content Include="Content\up_over.gif" />
     <Content Include="Content\x.png" />
     <Content Include="Correcto.aspx" />
+    <Content Include="CuponIncripcion.aspx" />
     <Content Include="Default.aspx" />
     <Content Include="Estadisticos.aspx" />
     <Content Include="Llaves.aspx" />

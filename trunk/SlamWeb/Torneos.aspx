@@ -21,17 +21,37 @@
     </style>
     <script language="javascript" type="text/javascript">
         function Inscripciones(idtorneo,torneo,tipo) {
-            document.getElementById("ctl00_MainContent_TxtTorneo").value = torneo;
-            
-            document.getElementById("ctl00_MainContent_LinkButton1").href = "javascript:__doPostBack('" + idtorneo + "','')";
+            document.getElementById("ctl00_MainContent_TxtTorneo").value = torneo;            
+            document.getElementById("ctl00_MainContent_LinkButton1").href = "javascript:__doPostBack('Torneo=" + idtorneo + "','')";
             if (tipo == "Doble") {
                 document.getElementById("Jugador2").style.display = '';
             }
             else {
                 document.getElementById("Jugador2").style.display = 'none';
             }
-            MostrarInscripcion();                    
+            MostrarInscripcion();
         }
+
+        function BorrarInscripcion(idtorneo, torneo) {
+
+            document.getElementById("ctl00_MainContent_LinkSi").href = "javascript:__doPostBack('Borrar=true," + idtorneo + "','')";
+            document.getElementById("ctl00_MainContent_LinkNo").href = "javascript:__doPostBack('Borrar=false,0','')";
+            MostrarBorrarInscripcion();
+        }
+
+        function ImprimirReporte() {
+            var resp = confirm('Inscripcion agregada correctamente, ¿ Desea generar el comprobante ?');
+            if (resp = true) {
+                window.location = "javascript:__doPostBack('Imprimir=true','')";
+            }
+            else {
+                window.location = "javascript:__doPostBack('Imprimir=false','')";
+            }
+        }
+
+        function openpopup() {
+            window.open('../../CuponIncripcion.aspx', '', 'location=no, menubar=no, scrollbars=no, status=no, toolbar=no, resizable=no, height=420, width=800');
+        }
     </script>
     
 </asp:Content>
@@ -109,8 +129,10 @@
                                 <% Servicio.IInscripcionServicio incripcion = new Servicio.InscripcionServicio(); %>
                                 <% if (incripcion.Existe(Convert.ToInt32(DatosTorneo[0]), Convert.ToInt32(Session["DNI"])))
                                    {  %>
-                                <% Response.Write("Si");
-                                     
+                                    <% Response.Write("Si");%>
+                                    <br />
+                                    <a onclick="javascript:BorrarInscripcion('<% Response.Write(DatosTorneo[0].ToString()); %>','<% Response.Write(DatosTorneo[2].ToString()); %>')" href="#" >Borrar ?</a>
+                                    <%                                      
                                    }  %>
                                 <% else
                                     { %>   
@@ -225,7 +247,31 @@
                 </td>
             </tr>
         </table>
-    </div>           
+    </div>    
+    
+     <div id="BorrarIncrip">
+        <p>Bajas de Inscripciones</p>
+        <br />
+        <div style="text-align:center">
+            <img  src="Content/Crystal_Clear_app_error.png" width="50px" height="50px" />
+            &nbsp;&nbsp;
+            <asp:Label ID="Label1" runat="server" Font-Size="Medium" ForeColor="White" 
+                Text="¿ Esta seguro de dar de baja la insripcion al torneo ?"></asp:Label>
+            
+         </div>
+         <div style="height:50px" ></div>
+         <div style="width:48%; float:left; text-align:right">
+            <asp:LinkButton ID="LinkSi" runat="server" Font-Size="Medium">Si</asp:LinkButton>
+         </div>
+         <div style="width:48%; float:right; text-align:left">
+            <asp:LinkButton ID="LinkNo" runat="server" Font-Size="Medium">No</asp:LinkButton>
+         </div>
+         
+    </div>   
+    
+    <div>
+        
+    </div>       
 </asp:Content>
 <asp:Content ID="Content3" runat="server" contentplaceholderid="ContentPlaceHolder1">
     <div style="text-align:right">
