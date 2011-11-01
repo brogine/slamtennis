@@ -91,6 +91,11 @@ namespace Servicio
             repoInscripciones.Eliminar(IdInscripcion);
         }
 
+        public void Eliminar(int dni,int idtorneo)
+        {
+            repoInscripciones.Eliminar(dni, idtorneo);
+        }
+
         public bool Existe(int IdTorneo, int DniJugador)
         {
             return repoInscripciones.Existe(IdTorneo, DniJugador);

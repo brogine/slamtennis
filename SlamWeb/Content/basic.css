@@ -1,5 +1,7 @@
 
-#content-DATOS {display:;}
+#content-DATOS {display:none;}
+#BorrarIncrip {display:none;}
+#Mensaje {display:none;}
 
 /* Overlay */
 #simplemodal-overlay {background-color:#E0E1E2;}

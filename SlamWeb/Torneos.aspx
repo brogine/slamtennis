@@ -41,7 +41,7 @@
 
         function ImprimirReporte() {
             var resp = confirm('Inscripcion agregada correctamente, ¿ Desea generar el comprobante ?');
-            if (resp = true) {
+            if (resp == true) {
                 window.location = "javascript:__doPostBack('Imprimir=true','')";
             }
             else {
@@ -51,6 +51,9 @@
 
         function openpopup() {
             window.open('../../CuponIncripcion.aspx', '', 'location=no, menubar=no, scrollbars=no, status=no, toolbar=no, resizable=no, height=420, width=800');
+        }
+        function Mensaje() {
+            MostrarMensaje();
         }
     </script>
     
@@ -261,13 +264,27 @@
          </div>
          <div style="height:50px" ></div>
          <div style="width:48%; float:left; text-align:right">
-            <asp:LinkButton ID="LinkSi" runat="server" Font-Size="Medium">Si</asp:LinkButton>
+            <asp:LinkButton ID="LinkSi" runat="server" Font-Size="Large" 
+                 Font-Names="Calibri">Si</asp:LinkButton>
          </div>
          <div style="width:48%; float:right; text-align:left">
-            <asp:LinkButton ID="LinkNo" runat="server" Font-Size="Medium">No</asp:LinkButton>
+            <asp:LinkButton ID="LinkNo" runat="server" Font-Size="Large" 
+                 Font-Names="Calibri">No</asp:LinkButton>
          </div>
          
     </div>   
+    
+     <div id="Mensaje" style="height:200px;width:500px">
+        <p>Bajas de Inscripciones</p>
+        <div style="height:50px" ></div>
+        <div style="text-align:center">
+            <img  src="Content/Tips.png"/>
+            &nbsp;&nbsp;
+            <asp:Label ID="Label2" runat="server" Font-Size="Medium" ForeColor="White" 
+                Text="Se ha borrado la inscripcion con exito..."></asp:Label>
+            
+         </div>
+      </div>   
     
     <div>
         
