@@ -15,6 +15,20 @@ function MostrarInscripcion() {
 function MostrarBorrarInscripcion() {
     $('#BorrarIncrip').modal();
 }
+
+function MostrarMensaje() {
+    $('#Mensaje').modal({
+        opacity: 80,
+        overlayCss: { backgroundColor: "#fff" },
+        minHeight: 200,
+        minWidth: 500
+    });
+    setTimeout("CerrarMensajes();", 3000);
+}
+
+function CerrarMensajes() {
+    $.modal.close();
+}
 //jQuery(function($) {
 //$('#basic-modal .BASICO').click(function(e) {
 //    $('#content-BASICO').modal();

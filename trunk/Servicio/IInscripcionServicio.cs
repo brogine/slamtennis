@@ -16,6 +16,8 @@ namespace Servicio
 
         void Eliminar(int IdInscripcion);
 
+        void Eliminar(int dni, int idtorneo);
+
         bool Existe(int IdTorneo, int DniJugador);
 
         bool ValidarInscripcion(int IdTorneo, int DniJugador);

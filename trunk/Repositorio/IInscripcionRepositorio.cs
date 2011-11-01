@@ -16,11 +16,15 @@ namespace Repositorio
 
         void Eliminar(int IdInscripcion);
 
+        void Eliminar(int dni, int idtorneo);
+
         bool Existe(int IdTorneo, int DniJugador);
 
         void BajaInscripcion(Inscripcion Inscripcion);
 
         Inscripcion Buscar(int IdInscripcion);
+
+        Inscripcion Buscar(int Dni, int IdTorneo);
 
         List<Inscripcion> Listar(int IdTorneo);
 

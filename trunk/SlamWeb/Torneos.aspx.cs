@@ -41,7 +41,7 @@ namespace SlamWeb
                 switch (parametro2)
                 {
                     case "Torneo":
-                        int valor = Convert.ToInt32(parametro1.Substring(index + 1, parametro1.Length - index));
+                        int valor = Convert.ToInt32(parametro1.Substring((index + 1), parametro1.Length - (index + 1)));
                         TxtIDTorneo.Text = valor.ToString();
                         try
                         {
@@ -61,7 +61,7 @@ namespace SlamWeb
                         }
                         break;
                     case "Imprimir":
-                        bool imprime = Convert.ToBoolean(parametro1.Substring(index + 1, parametro1.Length - index));
+                        bool imprime = Convert.ToBoolean(parametro1.Substring((index + 1), parametro1.Length - (index + 1)));
                         if (imprime)
                         {
                             Session["NroIncripcion"] = Convert.ToInt32(LblInscripcion.Text);
@@ -70,44 +70,22 @@ namespace SlamWeb
                         }
                         break;
                     case "Borrar":
-                        string[] borra = parametro1.Substring(index + 1, parametro1.Length - index).Split(',');
+                        string[] borra = parametro1.Substring((index + 1), parametro1.Length - (index + 1)).Split(',');
                         if (Convert.ToBoolean(borra[0]))
                         {
                             int idtorneo = Convert.ToInt32(borra[1]);
+                            Servicio.IInscripcionServicio servicioInscripciones = new Servicio.InscripcionServicio();
+                            servicioInscripciones.Eliminar(Convert.ToInt32(Session["DNI"]), idtorneo);
+                            System.Threading.Thread.Sleep(3000);
+                            ClientScriptManager manager = Page.ClientScript;
+                            manager.RegisterStartupScript(this.GetType(), "Alerta", "<script type='text/javascript'>Mensaje();</script>");
+                         
                         }
                         break;
                 }
 
             }
         }
-
-        private bool EsNumero(string cadena)
-        {
-            try
-            {
-                int resp = Convert.ToInt32(cadena);
-                return true;
-            }
-            catch 
-            {
-                return false;
-            }
-
-        }
-        private bool EsLogico(string cadena)
-        {
-            try
-            {
-                bool resp = Convert.ToBoolean(cadena);
-                return true;
-            }
-            catch
-            {
-                return false;
-            }
-
-        }
-
 
         #region IListadoTorneos Members
 
@@ -121,11 +99,6 @@ namespace SlamWeb
 
         #endregion
 
-        protected void BtnInscribirse_Click(object sender, EventArgs e)
-        {
-           
-        }
-        
         #region IInscripcionUI Members
 
         public int IdInscripcion
@@ -196,19 +169,9 @@ namespace SlamWeb
 
         protected void LinkButton1_Click(object sender, EventArgs e)
         {
-            try
-            {
-               
 
-                int IdInscripcionActual = Convert.ToInt32(LblInscripcion.Text);
-                IInscripcionServicio servicioInscripciones = new InscripcionServicio();
-                IdInscripcionActual = servicioInscripciones.Agregar(this);
-                GC.Collect();
-                GC.WaitForPendingFinalizers();
-                Response.Write("<script language='javascript' type='text/javascript'>confirm('Inscripcion agregada correctamente, ¿ Desea imprimir el comprobante ?');</script>");
-            }
-            catch
-            {}
         }
+
+     
     }
 }

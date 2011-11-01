@@ -119,6 +119,24 @@ namespace Repositorio
             }
         }
 
+        public void Eliminar(int dni, int idtorneo)
+        {
+            IInscripcionRepositorio InscRepo = new InscripcionRepositorio();
+            Inscripcion Insc = InscRepo.Buscar(dni, idtorneo);
+
+            String Consulta = " Delete From Inscripciones Where IdInscripcion = " + Insc.IdInscripcion;
+            Conn.ActualizarOEliminar(Consulta);
+            Consulta = " Delete From InscripcionesJugador Where IdInscripcion = " + Insc.IdInscripcion;
+            Conn.ActualizarOEliminar(Consulta);
+
+            if (Insc.Torneo.FechaFinInscripcion <= DateTime.Today && Insc.Torneo.Estado == (int)EstadoTorneo.Cerrado)
+            {
+                Insc.Torneo.Estado = (int)EstadoTorneo.Abierto;
+                ITorneoRepositorio TorneoRepo = new TorneoRepositorio();
+                TorneoRepo.Modificar(Insc.Torneo);
+            }
+        }
+
         /// <summary>
         /// Verfica si Existe una Inscripción en un Torneo para un Jugador Específico
         /// </summary>
@@ -145,6 +163,31 @@ namespace Repositorio
         {
             String Consulta = " Select * From InscripcionesJugador J Inner Join Inscripciones I ";
             Consulta += " On J.IdInscripcion = I.IdInscripcion Where J.IdInscripcion = " + IdInscripcion;
+            DataTable Tabla = Conn.Listar(Consulta);
+            Inscripcion bInscripcion = null;
+            if (Tabla.Rows.Count == 1)
+                bInscripcion = this.Mapear(Tabla.Rows[0]);
+            else
+            {
+                for (int i = 0; i < Tabla.Rows.Count; i++)
+                {
+                    if (i == 0)
+                        bInscripcion = this.Mapear(Tabla.Rows[i]);
+                    else
+                    {
+                        IJugadorRepositorio repoJugadores = new JugadorRepositorio();
+                        bInscripcion.Equipo.Jugador2 = Tabla.Rows[1].IsNull("Dni") ? null :
+                            repoJugadores.Buscar(Convert.ToInt32(Tabla.Rows[1]["Dni"]));
+                    }
+                }
+            }
+            return bInscripcion;
+        }
+
+        public Inscripcion Buscar(int Dni,int IdTorneo)
+        {
+            String Consulta = " Select * From InscripcionesJugador J Inner Join Inscripciones I ";
+            Consulta += " On J.IdInscripcion = I.IdInscripcion Where J.Dni = " + Dni + " and i.IdTorneo = " + IdTorneo;
             DataTable Tabla = Conn.Listar(Consulta);
             Inscripcion bInscripcion = null;
             if (Tabla.Rows.Count == 1)
