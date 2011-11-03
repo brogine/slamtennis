@@ -36,7 +36,7 @@
                 Width="128px" ImageUrl="~/Content/Consultas.png" 
                 onclick="Consultas_Click" />
             <br />
-            Consultas generales</td>
+            Mis Datos</td>
     </tr>
     <tr>
        <td class="style1">
