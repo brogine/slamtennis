@@ -84,8 +84,7 @@ namespace SlamWeb
             }
             set
             {
-                //int index = value;
-                //LblNaciona.Text = ((List<object>)Session["ListadoPais"]).ToString().Split(',')[index].ToString();            
+                //((List<object>)Session["ListadoPais"]).ToString().Split(',').Where(c=> c[0] == value).First()[][index].ToString();            
             }
         }
 
