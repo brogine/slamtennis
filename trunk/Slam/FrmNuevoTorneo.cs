@@ -44,7 +44,9 @@ namespace Slam
                 ClubServicio = (IListadoClubServicio)AppContext.Instance.GetObject(ImplementaClubes);
                 ClubServicio.ListarActivos(this);
                 servicioCategorias = (IListadoCategoriaServicio)AppContext.Instance.GetObject(ImplementaCategorias);
+                
                 servicioCategorias.ListarActivas(this);
+
                 TorneoServicio = (ITorneoServicio)AppContext.Instance.GetObject(ImplementaTorneo);
                 if (idtorneo > -1)
                 {
