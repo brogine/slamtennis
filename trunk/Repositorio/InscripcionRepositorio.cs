@@ -290,7 +290,7 @@ namespace Repositorio
         {
             String Consulta = " Select I.*, J.Dni From InscripcionesJugador J Inner Join Inscripciones I ";
             Consulta += " On J.IdInscripcion = I.IdInscripcion Inner Join Personas P ";
-            Consulta += " On J.Dni = P.Dni Where I.IdTorneo = " + IdTorneo + "and I.Estado = 1";
+            Consulta += " On J.Dni = P.Dni Where I.IdTorneo = " + IdTorneo + " and I.Estado = 1";
             DataTable TablaInscripciones = Conn.Listar(Consulta);
             List<Inscripcion> ListaInscripciones = new List<Inscripcion>();
             IJugadorRepositorio repoJugadores = new JugadorRepositorio();

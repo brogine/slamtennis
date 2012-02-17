@@ -19,7 +19,8 @@ namespace Repositorio
     	#region Miembros de IEstadisticaRepositorio
     	
         public void Agregar(Jugador Jugador, Estadisticas Estadistica) {
-            string Campos = "Dni, PartidosGanados, PartidosPerdidos, IdCategoria, Puntos, TorneosJugados, TorneosCompletados, Estado, PartidosGanadosDobles, PartidosPerdidosDobles, PuntosDobles, TorneosJugadosDobles, TorneosCompletadosDobles";
+            string Campos = "Dni, PartidosGanados, PartidosPerdidos, IdCategoria, Puntos, ";
+            Campos += " TorneosJugados, TorneosCompletados, Estado, PartidosGanadosDobles, PartidosPerdidosDobles, PuntosDobles, TorneosJugadosDobles, TorneosCompletadosDobles";
     		string Valores = Jugador.Dni + "," + Estadistica.PG + "," + Estadistica.PP +",";
             Valores += Estadistica.Categoria.Id + "," + Estadistica.Puntaje + "," + Estadistica.TorneosJugados + ",";
             Valores += Estadistica.TorneosCompletados + "," + (Estadistica.Estado ? 1 : 0) + ",";

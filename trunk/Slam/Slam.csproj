@@ -108,6 +108,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App.Context.cs" />
+    <Compile Include="Consola.cs" />
     <Compile Include="FrmCanchas.cs">
       <SubType>Form</SubType>
     </Compile>
