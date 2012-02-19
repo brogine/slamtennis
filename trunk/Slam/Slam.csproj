@@ -3,7 +3,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProductVersion>9.0.30729</ProductVersion>
+    <ProductVersion>9.0.21022</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{5940F210-F182-4F0B-B75A-C308A0D47473}</ProjectGuid>
     <OutputType>WinExe</OutputType>
@@ -270,6 +270,12 @@
     <Compile Include="FrmReporteCarnet.Designer.cs">
       <DependentUpon>FrmReporteCarnet.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmReporteLlave.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmReporteLlave.Designer.cs">
+      <DependentUpon>FrmReporteLlave.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmReporteRanking.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -390,6 +396,11 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FrmReporteCarnet.resx">
       <DependentUpon>FrmReporteCarnet.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmReporteLlave.resx">
+      <DependentUpon>FrmReporteLlave.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmReporteRanking.resx">
       <DependentUpon>FrmReporteRanking.cs</DependentUpon>
