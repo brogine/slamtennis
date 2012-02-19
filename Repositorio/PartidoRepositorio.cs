@@ -96,6 +96,9 @@ namespace Repositorio
                                 if (Partido.Torneo.ListaPuntos[i].Ronda == "Campeon")
                                 {
                                     Est1Jug1.Puntaje = Partido.Torneo.ListaPuntos[i].CantidadPuntos;
+                                    Partido.Torneo.Estado = (int)EstadoTorneo.Finalizado;
+                                    TorneoRepositorio TorRep = new TorneoRepositorio();
+                                    TorRep.Modificar(Partido.Torneo);
                                 }
                             }
                         }
@@ -118,6 +121,9 @@ namespace Repositorio
                                 if (Partido.Torneo.ListaPuntos[i].Ronda == "Campeon")
                                 {
                                     Est2Jug1.Puntaje = Partido.Torneo.ListaPuntos[i].CantidadPuntos;
+                                    Partido.Torneo.Estado = (int)EstadoTorneo.Finalizado;
+                                    TorneoRepositorio TorRep = new TorneoRepositorio();
+                                    TorRep.Modificar(Partido.Torneo);
                                 }
                             }
 
@@ -171,6 +177,9 @@ namespace Repositorio
                                     Equipo1Jugador2.TorneosJugadosDoble++;
                                     Equipo1Jugador1.TorneosCompletadosDoble++;
                                     Equipo1Jugador2.TorneosCompletadosDoble++;
+                                    Partido.Torneo.Estado = (int)EstadoTorneo.Finalizado;
+                                    TorneoRepositorio TorRep = new TorneoRepositorio();
+                                    TorRep.Modificar(Partido.Torneo);
                                 }
                             }
 
@@ -203,7 +212,9 @@ namespace Repositorio
                                     Equipo2Jugador2.TorneosJugadosDoble++;
                                     Equipo2Jugador1.TorneosCompletadosDoble++;
                                     Equipo2Jugador2.TorneosCompletadosDoble++;
-                                    
+                                    Partido.Torneo.Estado = (int)EstadoTorneo.Finalizado;
+                                    TorneoRepositorio TorRep= new TorneoRepositorio();
+                                    TorRep.Modificar(Partido.Torneo);
                                 }
                             }
 
@@ -216,6 +227,7 @@ namespace Repositorio
                     EstRepo.Modificar(Partido.Equipo1.Equipo.Jugador2, Equipo1Jugador2);
                     EstRepo.Modificar(Partido.Equipo2.Equipo.Jugador1, Equipo2Jugador1);
                     EstRepo.Modificar(Partido.Equipo2.Equipo.Jugador2, Equipo2Jugador2);
+                    
                 }
 
 

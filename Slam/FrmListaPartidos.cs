@@ -84,6 +84,7 @@ namespace Slam
                 foreach (Object Jugador in value)
                 {
                     object[] Datos = Jugador.ToString().Split(',');
+                    Datos[4] = Enum.GetName(typeof(Rondas), Convert.ToInt32(Datos[4]));
                     DgvListaPartidos.Rows.Add(Datos);
                 }
             }

@@ -8,10 +8,13 @@ using Servicio.InterfacesUI;
 
 namespace Servicio
 {
+    public enum Rondas: int
+    { 
+        Primera_Ronda = 0, Segunda_Ronda = 1, Cuartos_Final = 2, Semi_Final = 3, Final = 4 
+    }
    public class PartidoServicio:IPartidoServicio,IListadoPartidoServicio
     {
-       
-        IInscripcionRepositorio InscRepo;
+               IInscripcionRepositorio InscRepo;
             ITorneoRepositorio TornRepo;
             IPartidoRepositorio PartidoRepo;
 
@@ -57,7 +60,8 @@ namespace Servicio
             UI.IdEquipo2 = Partido.Equipo2.IdInscripcion;
             UI.Fecha = Partido.Fecha;
             UI.Resultado = Partido.Resultado;
-            UI.Ronda = Partido.Ronda;
+            Rondas ronda = (Rondas)Enum.Parse(typeof(Rondas), Partido.Ronda);
+            UI.Ronda = Convert.ToString((int)ronda);
         }
 
         public bool Existe(int IdPartido)
@@ -104,6 +108,7 @@ namespace Servicio
                     Objeto += "BYE,";
 
                 }
+                
                 Objeto += Partido.Fecha.ToShortDateString() + ",";
                 Objeto += Partido.Ronda +",";
                 Objeto += Partido.Resultado+",";
