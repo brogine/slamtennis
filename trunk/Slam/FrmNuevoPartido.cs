@@ -45,6 +45,10 @@ namespace Slam
             servicioTorneos.ListarTorneosCerrados(this);
             servicioPartido = (IPartidoServicio)AppContext.Instance.GetObject(ImplemetaPartidos);
             servicioPartido.Buscar(this);
+            
+            CboEquipo1.Enabled = false;
+            CboEquipo2.Enabled = false;
+            CboListaTorneo.Enabled = false;
         }
 
         #region Miembros de IPartidoUI
@@ -101,8 +105,7 @@ namespace Slam
             }
             set
             {
-                CboRonda.SelectedItem = value;
-               
+                CboRonda.SelectedValue = int.Parse(value);            
             }
         }
 
@@ -192,23 +195,23 @@ namespace Slam
                 {
                     if (value.Count > 8 && value.Count < 32)
                     {
-                        CboRonda.SelectedItem = Rondas.Primera_Ronda;
+                        CboRonda.SelectedValue = (int)Rondas.Primera_Ronda;
                     }
                     if (value.Count > 8 && value.Count <= 16)
                     {
-                        CboRonda.SelectedItem = Rondas.Segunda_Ronda;
+                        CboRonda.SelectedValue = (int)Rondas.Segunda_Ronda;
                     }
                     if (value.Count > 4 && value.Count <= 8)
                     {
-                        CboRonda.SelectedItem = Rondas.Cuartos_Final;
+                        CboRonda.SelectedValue = (int)Rondas.Cuartos_Final;
                     }
                     if (value.Count <= 4 && value.Count > 2)
                     {
-                        CboRonda.SelectedItem = Rondas.Semi_Final;
+                        CboRonda.SelectedValue = (int)Rondas.Semi_Final;
                     }
                     if (value.Count == 2)
                     {
-                        CboRonda.SelectedItem = Rondas.Final;
+                        CboRonda.SelectedValue = (int)Rondas.Final;
                     }
                 }
 
@@ -250,22 +253,28 @@ namespace Slam
         {
             try
             {
-                if (EPPartidos.GetError(CboListaTorneo) != "" && EPPartidos.GetError(CboEquipo1) != "" && EPPartidos.GetError(CboEquipo2) != "")
+                if (CboEquipo1.SelectedIndex == CboEquipo2.SelectedIndex)
                 {
-                    MessageBox.Show("Complete Todos Los Campos Antes De Continuar");
+                    MessageBox.Show("No Puede Seleccionar El Mismo Equipo En Ambas Listas");
+                    return;
                 }
-                else
-                {
-                    if (servicioPartido.Existe(this.IdPartido))
+                    if (EPPartidos.GetError(CboListaTorneo) != "" && EPPartidos.GetError(CboEquipo1) != "" && EPPartidos.GetError(CboEquipo2) != "")
                     {
-                        servicioPartido.Modificar(this);
+                        MessageBox.Show("Complete Todos Los Campos Antes De Continuar");
                     }
                     else
                     {
-                        servicioPartido.Agregar(this);
-                    }
-                    this.DialogResult = DialogResult.OK;
-                }
+                        if (servicioPartido.Existe(this.IdPartido))
+                        {
+                            servicioPartido.Modificar(this);
+                        }
+                        else
+                        {
+                            servicioPartido.Agregar(this);
+                        }
+                        this.DialogResult = DialogResult.OK;
+                    }   
+                
             }
 
             catch (Exception ex)
@@ -280,7 +289,14 @@ namespace Slam
             {
                 if (CboListaTorneo.SelectedIndex > -1)
                 {
-                    CboRonda.DataSource = Enum.GetValues(typeof(Rondas));
+                    List<DictionaryEntry> ListaRondas = new List<DictionaryEntry>();
+                    foreach(Rondas rondas in Enum.GetValues(typeof(Rondas)))
+                    {
+                        ListaRondas.Add(new DictionaryEntry((int)rondas, rondas));
+                    }
+                    CboRonda.DataSource = ListaRondas;
+                    CboRonda.DisplayMember = "Value";
+                    CboRonda.ValueMember = "Key";
                     servicioInscripciones = (IListadoInscripcionServicio)AppContext.Instance.GetObject(ImplementaInscripciones);
                     servicioInscripciones.ListarActivas(this);
                     torneo = (ITorneoServicio)AppContext.Instance.GetObject(ImplementaTorneos);
@@ -376,6 +392,11 @@ namespace Slam
         }
 
         #endregion
+
+        private void CboRonda_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
 
     }
 }

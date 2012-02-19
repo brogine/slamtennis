@@ -202,6 +202,7 @@
             this.CboRonda.Name = "CboRonda";
             this.CboRonda.Size = new System.Drawing.Size(138, 21);
             this.CboRonda.TabIndex = 4;
+            this.CboRonda.SelectedIndexChanged += new System.EventHandler(this.CboRonda_SelectedIndexChanged);
             // 
             // FrmNuevoPartido
             // 

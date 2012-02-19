@@ -37,9 +37,9 @@ namespace Repositorio
                         if (!Existe(Inscripcion.Torneo.IdTorneo, Inscripcion.Equipo.Jugador1.Dni))
                         {
                             string FechaFormateada = Inscripcion.Fecha.Year + "/" + Inscripcion.Fecha.Month + "/" + Inscripcion.Fecha.Day;
-                            String Campos = " IdTorneo, Fecha ";
+                            String Campos = " IdTorneo, Fecha, Estado";
                             String Valores = Inscripcion.Torneo.IdTorneo + ",'";
-                            Valores += FechaFormateada + "'";
+                            Valores += FechaFormateada + "',1";
                             int IdInscripcion = Conn.Agregar("Inscripciones", Campos, Valores);
                             Conn.AgregarSinId("InscripcionesJugador", "Dni, IdInscripcion", Inscripcion.Equipo.Jugador1.Dni + "," + IdInscripcion);
                             if (Inscripcion.Equipo.Jugador2 != null)
