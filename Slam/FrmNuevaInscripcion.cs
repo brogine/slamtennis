@@ -78,6 +78,13 @@ namespace Slam
                     CboTorneos.ValueMember = "Key";
                     CboTorneos.SelectedIndex = -1;
                 }
+                else
+                {
+                    MessageBox.Show("No existen Torneos en el Sistema. Agregue una Torneo para poder continuar.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    FrmNuevoTorneo NuevoTorneo = new FrmNuevoTorneo();
+                    if (NuevoTorneo.ShowDialog() != DialogResult.Retry)
+                        this.servicioTorneos.ListarTorneosAbiertos(this);
+                }
             }
         }
 
