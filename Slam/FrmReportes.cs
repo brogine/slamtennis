@@ -64,6 +64,8 @@ namespace Slam
                         RptViewer.ReportSource = reporteActual;
                     }
                     break;
+                case "Llave":
+                    break;
             }
             this.WindowState = FormWindowState.Maximized;
         }

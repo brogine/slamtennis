@@ -120,7 +120,19 @@ namespace Servicio
             List<Object> Lista = new List<object>();
             foreach (Torneo Torneo in ListaTorneo)
             {
-                Lista.Add(Torneo.IdTorneo + "," + Torneo.Club.Nombre + "," + Torneo.Nombre + "," + Torneo.Categoria.Nombre + "," + Torneo.Sexo + "," + Torneo.Cupo + "," + Torneo.FechaInicio.ToShortDateString() + "," + Torneo.FechaFin.ToShortDateString() + "," + Torneo.FechaInicioInscripcion.ToShortDateString() + "," + Torneo.FechaFinInscripcion.ToShortDateString() + "," + Torneo.TipoTorneo.ToString() + "," + (Torneo.TipoInscripcion == true ? "Abierto" : "Cerrado") + "," + Torneo.Estado);
+                Lista.Add(  Torneo.IdTorneo + "," + 
+                            Torneo.Club.Nombre + "," + 
+                            Torneo.Nombre + "," + 
+                            Torneo.Categoria.Nombre + "," + 
+                            Torneo.Sexo + "," + 
+                            Torneo.Cupo + "," + 
+                            Torneo.FechaInicio.ToShortDateString() + "," + 
+                            Torneo.FechaFin.ToShortDateString() + "," + 
+                            Torneo.FechaInicioInscripcion.ToShortDateString() + "," + 
+                            Torneo.FechaFinInscripcion.ToShortDateString() + "," + 
+                            Torneo.TipoTorneo.ToString() + "," + 
+                            (Torneo.TipoInscripcion == true ? "Abierto" : "Cerrado") + "," + 
+                            Torneo.Estado);
             }
 
             UI.ListaUI = Lista;
