@@ -37,7 +37,6 @@ namespace Slam
 
         private void FrmNuevoTorneo_Load(object sender, EventArgs e)
         {
-
             try
             {
                 CboSuperficie.DataSource = Enum.GetValues(typeof(TipoSuperficie));
@@ -57,7 +56,6 @@ namespace Slam
             {
                 MessageBox.Show(ex.Message);
             }
-           
         }
 
         #region Miembros de ITorneoUI
@@ -301,10 +299,20 @@ namespace Slam
                     Object[] DatosClub = Categoria.ToString().Split(',');
                     ListaCategorias.Add(Convert.ToInt32(DatosClub[0]), DatosClub[1].ToString());
                 }
-                CboCategoria.DataSource = new BindingSource(ListaCategorias, null);
-                CboCategoria.DisplayMember = "Value";
-                CboCategoria.ValueMember = "Key";
-                CboCategoria.SelectedIndex = -1;
+                if (value.Count > 0)
+                {
+                    CboCategoria.DataSource = new BindingSource(ListaCategorias, null);
+                    CboCategoria.DisplayMember = "Value";
+                    CboCategoria.ValueMember = "Key";
+                    CboCategoria.SelectedIndex = -1;
+                }
+                else
+                {
+                    MessageBox.Show("No existen Categorías en el Sistema. Para crear un Torneo debe haber al menos una Categoría. Agregue una Categoría para continuar.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    FrmNuevaCategoria NuevaCategoria = new FrmNuevaCategoria();
+                    if(NuevaCategoria.ShowDialog() != DialogResult.Retry)
+                        this.servicioCategorias.ListarActivas(this);
+                }
             }
         }
 
