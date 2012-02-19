@@ -272,16 +272,26 @@ namespace Slam
         {
             set 
             {
-                Dictionary<int, string> ListaClubes = new Dictionary<int, string>();
-                foreach (Object Club in value)
+                if (value.Count > 0)
                 {
-                    Object[] DatosClub = Club.ToString().Split(',');
-                    ListaClubes.Add(Convert.ToInt32(DatosClub[0]), DatosClub[1].ToString());
+                    Dictionary<int, string> ListaClubes = new Dictionary<int, string>();
+                    foreach (Object Club in value)
+                    {
+                        Object[] DatosClub = Club.ToString().Split(',');
+                        ListaClubes.Add(Convert.ToInt32(DatosClub[0]), DatosClub[1].ToString());
+                    }
+                    CboClub.DataSource = new BindingSource(ListaClubes, null);
+                    CboClub.DisplayMember = "Value";
+                    CboClub.ValueMember = "Key";
+                    CboClub.SelectedIndex = -1;
                 }
-                CboClub.DataSource = new BindingSource(ListaClubes, null);
-                CboClub.DisplayMember = "Value";
-                CboClub.ValueMember = "Key";
-                CboClub.SelectedIndex = -1;
+                else
+                {
+                    MessageBox.Show("No existen Clubes en el Sistema. Para crear un Torneo debe haber al menos una Club. Agregue una Club para continuar.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    FrmNuevoClub NuevoClub = new FrmNuevoClub();
+                    if (NuevoClub.ShowDialog() != DialogResult.Retry)
+                        this.ClubServicio.ListarActivos(this);
+                }
             }
         }
 
