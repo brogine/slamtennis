@@ -1,8 +1,10 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Correcto.aspx.cs" Inherits="SlamWeb.Correcto" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" MasterPageFile="~/Site.Master" CodeBehind="Redirect.aspx.cs" Inherits="SlamWeb.Redirect" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
 <script type="text/javascript" language="javascript">
+
+
     function Redirigir() {
         location.href = '../../Default.aspx';
     }
@@ -17,8 +19,8 @@
     <br />
     <br />
     <center>
-            <p>Cambios Guardados correctamente....
-            <img alt="" src="Content/Tips.png" style="height: 43px; width: 52px" />
+            <p>No se encontraron torneos cargados...&nbsp;
+            <img alt="" src="Content/Alert_32x32-32.png" />
             </p>
     </center>
     </div>
@@ -28,3 +30,4 @@
             Text="Agurde unos segundos y sera redirigido al inicio...."></asp:Label>
     </div>    
     </asp:Content>
+

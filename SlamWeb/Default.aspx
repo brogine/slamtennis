@@ -16,10 +16,13 @@
     <asp:Label ID="LblUsuario" runat="server" Text="---"></asp:Label>
 &nbsp;<b>Nombre:</b>
     <asp:Label ID="LblNombre" runat="server" Text="---"></asp:Label>
-&nbsp;<b>Sexo:</b>
-    <asp:Label ID="LblSexo" runat="server" Text="---"></asp:Label>
-&nbsp;<b>Email:</b>
-    <asp:Label ID="LblEmail" runat="server" Text="---"></asp:Label>
+    <div style="display:none">
+        &nbsp;<b>Sexo:</b>
+            <asp:Label ID="LblSexo" runat="server" Text="---"></asp:Label>
+        &nbsp;<b>Email:</b>
+            <asp:Label ID="LblEmail" runat="server" Text="---"></asp:Label>
+    </div>
+    <br />
 <br />
 </div>
 <center>

@@ -60,6 +60,10 @@ namespace SlamWeb
                     CboTorneos.SelectedIndex = -1;
 
                 }
+                else 
+                {
+                    Response.Redirect("Redirect.aspx");
+                }
             }
         }
 

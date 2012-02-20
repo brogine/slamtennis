@@ -72,7 +72,10 @@ namespace Repositorio
             DataRow fila = Conn.Buscar(query);
             if (fila != null || fila.IsNull(0) == false)
             {
-                retorno = Convert.ToInt32(fila[0]);
+                if (!string.IsNullOrEmpty(fila[0].ToString()))
+                {
+                    retorno = Convert.ToInt32(fila[0]);
+                }
             }
             return retorno;
         }
