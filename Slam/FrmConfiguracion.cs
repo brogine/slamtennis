@@ -142,6 +142,7 @@ namespace Slam
                 ConnString = "Server=" + TxtServidor.Text + ";Database=SlamDB;Uid=" + TxtUsuario.Text + ";Pwd=" + TxtPassword.Text + ";";
             ListaNodos[CboConexiones.SelectedIndex].Attributes["ConnectionString"].Value = ConnString;
             doc.Save(dir);
+            this.Close();
         }
 
         private void BtnEstablecer_Click(object sender, EventArgs e)

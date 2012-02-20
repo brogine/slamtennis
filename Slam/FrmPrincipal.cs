@@ -253,5 +253,17 @@ namespace Slam
                 Configuracion.BringToFront();
         }
 
+        private void acercaDeToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FrmAcerca Acercade = new FrmAcerca();
+            Acercade.MdiParent = this;
+            Acercade.Show();
+        }
+
+        private void manualHTMLToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            System.Diagnostics.Process.Start("IExplore.exe", "www.google.com"); 
+        }
+
     }
 }

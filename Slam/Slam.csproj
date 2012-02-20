@@ -3,7 +3,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProductVersion>9.0.21022</ProductVersion>
+    <ProductVersion>9.0.30729</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{5940F210-F182-4F0B-B75A-C308A0D47473}</ProjectGuid>
     <OutputType>WinExe</OutputType>
@@ -108,6 +108,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App.Context.cs" />
+    <Compile Include="FrmAcerca.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmAcerca.Designer.cs">
+      <DependentUpon>FrmAcerca.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmCanchas.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -290,6 +296,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="FrmAcerca.resx">
+      <DependentUpon>FrmAcerca.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FrmCanchas.resx">
       <DependentUpon>FrmCanchas.cs</DependentUpon>
       <SubType>Designer</SubType>
