@@ -43,6 +43,7 @@ namespace Slam
                     elemento = Nodo.Attributes["nombre"].Value;
             }
             CboConexiones.SelectedItem = elemento;
+            BtnEstablecer.Enabled = false;
         }
 
         private void ChkIntegratedSecurity_CheckedChanged(object sender, EventArgs e)
@@ -78,15 +79,17 @@ namespace Slam
             IDbConnection Conn = null;
             try
             {
-            DbProviderFactory Dpf = DbProviderFactories.GetFactory(ListaNodos[CboConexiones.SelectedIndex].Attributes["Proveedor"].Value);
-            Conn = Dpf.CreateConnection();
-            Conn.ConnectionString = ListaNodos[CboConexiones.SelectedIndex].Attributes["ConnectionString"].Value;
+                DbProviderFactory Dpf = DbProviderFactories.GetFactory(ListaNodos[CboConexiones.SelectedIndex].Attributes["Proveedor"].Value);
+                Conn = Dpf.CreateConnection();
+                Conn.ConnectionString = ListaNodos[CboConexiones.SelectedIndex].Attributes["ConnectionString"].Value;
          
                 Conn.Open();
+                BtnEstablecer.Enabled = true;
                 MessageBox.Show("Conexión con la base de datos establecida con éxito", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
             }
             catch (Exception ex)
             {
+                BtnEstablecer.Enabled = false;
                 MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             finally
@@ -100,6 +103,7 @@ namespace Slam
 
         private void CboConexiones_SelectedIndexChanged(object sender, EventArgs e)
         {
+            BtnEstablecer.Enabled = false;
             if (CboConexiones.SelectedItem.ToString() == "MySQL")
                 ChkIntegratedSecurity.Enabled = false;
             else
