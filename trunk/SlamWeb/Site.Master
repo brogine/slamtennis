@@ -7,31 +7,37 @@
         <link rel="Stylesheet" type="text/css" href="Content/Estilos.css" />
     <asp:ContentPlaceHolder ID="HeadContent" runat="server">
     </asp:ContentPlaceHolder>
+    <style type="text/css">
+        .Titulo
+        {
+            font-family: Cambria;
+            font-size: 40px;
+            margin-left:30px;
+            margin-top: 30px;
+            font-weight: 700;
+            color: #FFFFFF;
+        }
+    </style>
 </head>
 <body>
     <form id="Form1" runat="server">
     <div class="page">
         <div class="header">
             <div class="title">
-                <h1>
-                    slam tennis
-                </h1>
+                <span class="Titulo">Slam Tennis</span>
             </div>
             <div class="loginDisplay">
-            <img src="Content/Slam.jpg" style="height: 75px; width: 86px" /></div>
+            <img src="Content/Slam2.jpg" style="height: 75px; width: 86px" /></div>
+    
             <table width="100%">
             <tr>
                 <td>
                 <div class="clear hideSkiplink">
-                <asp:Menu ID="NavigationMenu" runat="server" CssClass="menu" 
-                    EnableViewState="false" IncludeStyleBlock="false" Orientation="Horizontal" 
-                    Height="16px" Font-Size="Medium" ForeColor="White" Width="112px">
-                
-                    <Items>
-                        <asp:MenuItem NavigateUrl="~/Default.aspx" ImageUrl="~/Content/Home.png"/>
-                    </Items>
-                </asp:Menu>
-            </div>
+                    <asp:ImageButton ID="ImageButton1" runat="server" 
+                        ImageUrl="http://bibliodigital.uag.mx/imagenes/ico/inicio.png" Height="60px" 
+                        onclick="ImageButton1_Click" />
+                </div>
+                    
             </td>
                 <td>
                     <div style="float:right; width:150px">

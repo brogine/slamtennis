@@ -7,16 +7,11 @@ using System.Web.UI.WebControls;
 
 namespace SlamWeb
 {
-    public partial class Site : System.Web.UI.MasterPage
+    public partial class Redirect : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
 
-        }
-
-        protected void ImageButton1_Click(object sender, ImageClickEventArgs e)
-        {
-            Response.Redirect("Default.aspx");
         }
     }
 }

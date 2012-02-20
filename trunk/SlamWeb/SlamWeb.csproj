@@ -118,6 +118,13 @@
       <DependentUpon>Mensajes.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Redirect.aspx.cs">
+      <DependentUpon>Redirect.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Redirect.aspx.designer.cs">
+      <DependentUpon>Redirect.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Sesion.aspx.cs">
       <DependentUpon>Sesion.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -145,6 +152,7 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Consultas.aspx" />
+    <Content Include="Content\Alert_32x32-32.png" />
     <Content Include="Content\basic.css" />
     <Content Include="Content\basic_ie.css" />
     <Content Include="Content\bg1.gif" />
@@ -189,6 +197,7 @@
     <Content Include="Content\search_over.gif" />
     <Content Include="Content\SesionCerrada.png" />
     <Content Include="Content\Slam.jpg" />
+    <Content Include="Content\Slam2.jpg" />
     <Content Include="Content\Tips.png" />
     <Content Include="Content\Torneos.png" />
     <Content Include="Content\up.gif" />
@@ -202,6 +211,7 @@
     <Content Include="Llaves.aspx" />
     <Content Include="Login.aspx" />
     <Content Include="Mensajes.aspx" />
+    <Content Include="Redirect.aspx" />
     <Content Include="Scripts\basic.js" />
     <Content Include="Scripts\jquery.js" />
     <Content Include="Scripts\jquery.simplemodal.js" />

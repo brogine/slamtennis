@@ -12,7 +12,7 @@
         	border-bottom-width:1px;
         	border-bottom-color:Black;
         }
-        td
+        .fila
         {
         	border-color:Black;
         	border-style:solid;
@@ -64,10 +64,12 @@
     <asp:Label ID="LblUsuario" runat="server" Text="---"></asp:Label>
 &nbsp;<b>Nombre:</b>
     <asp:Label ID="LblNombre" runat="server" Text="---"></asp:Label>
+    <div style="display:none">
 &nbsp;<b>Sexo:</b>
     <asp:Label ID="LblSexo" runat="server" Text="---"></asp:Label>
 &nbsp;<b>Email:</b>
-    <asp:Label ID="LblEmail" runat="server" Text="---"></asp:Label>
+    <asp:Label ID="LblEmail" runat="server" Text="---"></asp:Label></div>
+    <br />
     </div>
     <div style="width:150px; float:right; text-align: center;">
     <asp:Image ID="Image1" runat="server" Height="50px" 
@@ -128,7 +130,7 @@
                           { %>
                         <%      object[] DatosTorneo = item.ToString().Split(','); %>
                         <tr>
-                            <td>
+                            <td class="fila">
                                 <% Servicio.IInscripcionServicio incripcion = new Servicio.InscripcionServicio(); %>
                                 <% if (incripcion.Existe(Convert.ToInt32(DatosTorneo[0]), Convert.ToInt32(Session["DNI"])))
                                    {  %>
@@ -142,34 +144,34 @@
                                 <a onclick="javascript:Inscripciones('<% Response.Write(DatosTorneo[0].ToString()); %>','<% Response.Write(DatosTorneo[2].ToString()); %>','<% Response.Write(DatosTorneo[10].ToString()); %>')" href="#" >No</a>
                                 <%} %>
                             </td>
-                            <td>
+                            <td class="fila">
                                  <% Response.Write(DatosTorneo[1].ToString()); %>
                             </td>
-                            <td>
+                            <td class="fila">
                                  <%  Response.Write(DatosTorneo[2].ToString()); %>
                             </td>
-                            <td>
+                            <td class="fila">
                                  <%  Response.Write(DatosTorneo[4].ToString()); %>
                             </td>
-                            <td>
+                            <td class="fila">
                                  <%  Response.Write(DatosTorneo[5].ToString()); %>
                             </td>
-                            <td>
+                            <td class="fila">
                                  <%  Response.Write(DatosTorneo[6].ToString()); %>
-                            </td>
-                            <td>
+                            </td >
+                            <td class="fila">
                                  <%  Response.Write(DatosTorneo[7].ToString()); %>
                             </td>
-                            <td>
+                            <td class="fila">
                                  <%  Response.Write(DatosTorneo[8].ToString()); %>
                             </td>
-                               <td>
+                               <td class="fila">
                                  <%  Response.Write(DatosTorneo[9].ToString()); %>
                             </td>
-                            <td>
+                            <td class="fila">
                                  <%  Response.Write(DatosTorneo[10].ToString()); %>
                             </td>
-                            <td>
+                            <td class="fila">
                                  <%  Response.Write(((Dominio.EstadoTorneo)Convert.ToInt32(DatosTorneo[12])).ToString()); %>
                             </td>
                         </tr>

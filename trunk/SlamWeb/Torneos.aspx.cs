@@ -36,6 +36,10 @@ namespace SlamWeb
             else
             {
                 string parametro1 = Request.Params[0].ToString();
+                if (parametro1 == string.Empty)
+                {
+                    return;
+                }
                 int index = parametro1.IndexOf("=");
                 string parametro2 = parametro1.Substring(0, index);
                 switch (parametro2)
@@ -92,8 +96,15 @@ namespace SlamWeb
         public List<object> ListaUI
         {
             set 
-            { 
-                Session["Torneos"] = value; 
+            {
+                if (value.Count != 0)
+                {
+                    Session["Torneos"] = value;
+                }
+                else
+                {
+                    Response.Redirect("Redirect.aspx");
+                }
             }
         }
 
