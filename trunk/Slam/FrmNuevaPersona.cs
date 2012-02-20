@@ -181,13 +181,11 @@ namespace Slam
                 else
                 {
                     MessageBox.Show("Complete los datos de Login porfavor.");
-                    TcPersonas.SelectedTab = TpLogin;
                 }
             }
             else
             {
                 MessageBox.Show("Complete todos los campos de Datos Personales porfavor.");
-                TcPersonas.SelectedTab = TpDatosPersonales;
             }
         }
 
@@ -505,11 +503,11 @@ namespace Slam
                     CboPais.DataSource = new BindingSource(ListaPais, null);
                     CboPais.DisplayMember = "Value";
                     CboPais.ValueMember = "Key";
-                    CboPais.SelectedIndex = -1;
+                    CboPais.SelectedIndex = 0;
                     CboNacionalidad.DataSource = new BindingSource(ListaPais, null);
                     CboNacionalidad.DisplayMember = "Value";
                     CboNacionalidad.ValueMember = "Key";
-                    CboNacionalidad.SelectedIndex = -1;
+                    CboNacionalidad.SelectedIndex = 0;
                 }
             }
         }
@@ -534,7 +532,7 @@ namespace Slam
                     CboProvincia.DataSource = new BindingSource(ListaProvincias, null);
                     CboProvincia.DisplayMember = "Value";
                     CboProvincia.ValueMember = "Key";
-                    CboProvincia.SelectedIndex = -1;
+                    CboProvincia.SelectedIndex = 0;
 
                 }
             }
@@ -561,7 +559,7 @@ namespace Slam
                     CboLocalidades.DataSource = new BindingSource(ListaLocalidades, null);
                     CboLocalidades.DisplayMember = "Value";
                     CboLocalidades.ValueMember = "Key";
-                    CboLocalidades.SelectedIndex = -1;
+                    CboLocalidades.SelectedIndex = 0;
 
                 }
             }
@@ -657,6 +655,18 @@ namespace Slam
             }
         }
 
+        private void GbDatosLogin_Validating(object sender, CancelEventArgs e)
+        {
+            if (TxtUsuario.Text == "")
+                EpNuevaPersona.SetError(TxtUsuario, "El campo no puede estar en blanco.");
+            else
+                EpNuevaPersona.SetError(TxtUsuario, "");
+            if (TxtPassword.Text == "")
+                EpNuevaPersona.SetError(TxtPassword, "El campo no puede estar en blanco.");
+            else
+                EpNuevaPersona.SetError(TxtPassword, "");
+        }
+
         private void GbDatosArbitro_Validating(object sender, CancelEventArgs e)
         {
             if (Tipo == TipoPersona.Arbitro)
@@ -692,18 +702,6 @@ namespace Slam
                 EpNuevaPersona.SetError(TxtDomicilio, "El campo no puede estar en blanco.");
             else
                 EpNuevaPersona.SetError(TxtDomicilio, "");
-        }
-
-        private void GbDatosLogin_Validating(object sender, CancelEventArgs e)
-        {
-            if (TxtUsuario.Text == "")
-                EpNuevaPersona.SetError(TxtUsuario, "El campo no puede estar en blanco.");
-            else
-                EpNuevaPersona.SetError(TxtUsuario, "");
-            if (TxtPassword.Text == "")
-                EpNuevaPersona.SetError(TxtPassword, "El campo no puede estar en blanco.");
-            else
-                EpNuevaPersona.SetError(TxtPassword, "");
         }
 
         private void GbMenor_Validating(object sender, CancelEventArgs e)
@@ -754,37 +752,6 @@ namespace Slam
 
         #endregion
 
-        private void BtnCambiarPassword_Click(object sender, EventArgs e)
-        {
-            if (!GbCambiarPassword.Visible)
-                GbCambiarPassword.Visible = true;
-            else
-            {
-                if (Password == TxtPasswordViejo.Text)
-                {
-                    TxtPassword.Text = TxtPasswordNuevo.Text;
-                    switch (Tipo)
-                    {
-                        case TipoPersona.Arbitro:
-                            servicioArbitros.Modificar(this);
-                            break;
-                        case TipoPersona.Empleado:
-                            servicioEmpleados.Modificar(this);
-                            break;
-                        case TipoPersona.Jugador:
-                            servicioJugadores.Modificar(this);
-                            break;
-                    }
-                    MessageBox.Show("Password cambiado con éxito");
-                    TxtPasswordViejo.Text = "";
-                    TxtPasswordNuevo.Text = "";
-                    GbCambiarPassword.Visible = false;
-                }
-                else
-                    MessageBox.Show("Los Password no concuerdan.");
-            }
-        }
-
         private void TxtDni_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (e.KeyChar == 13)
@@ -811,8 +778,6 @@ namespace Slam
             this.TxtEmail.Text = "";
             this.TxtNombre.Text = "";
             this.TxtPassword.Text = "";
-            this.TxtPasswordNuevo.Text = "";
-            this.TxtPasswordViejo.Text = "";
             this.TxtPuesto.Text = "";
             this.TxtTelefono.Text = "";
             this.TxtUsuario.Text = "";
@@ -884,5 +849,6 @@ namespace Slam
                 PbFoto.Image = Image.FromFile(Ofd.FileName);
             }
         }
+
     }
 }

@@ -9,6 +9,8 @@ using System.Windows.Forms;
 using Servicio;
 using ApplicationContext;
 using Servicio.InterfacesUI;
+using Spring.Context;
+using Spring.Context.Support;
 
 namespace Slam
 {
