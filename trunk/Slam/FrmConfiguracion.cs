@@ -142,6 +142,8 @@ namespace Slam
                 ConnString = "Server=" + TxtServidor.Text + ";Database=SlamDB;Uid=" + TxtUsuario.Text + ";Pwd=" + TxtPassword.Text + ";";
             ListaNodos[CboConexiones.SelectedIndex].Attributes["ConnectionString"].Value = ConnString;
             doc.Save(dir);
+            GC.Collect();
+            GC.WaitForPendingFinalizers();
             this.Close();
         }
 
@@ -156,6 +158,9 @@ namespace Slam
             BtnEstablecer.Enabled = false;
             LblConexionActual.Visible = true;
             doc.Save(dir);
+            GC.Collect();
+            GC.WaitForPendingFinalizers();
+            this.Close();
         }
 
     }

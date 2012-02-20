@@ -39,8 +39,12 @@
             this.TxtPassword = new System.Windows.Forms.TextBox();
             this.TxtUsuario = new System.Windows.Forms.TextBox();
             this.EpLogin = new System.Windows.Forms.ErrorProvider(this.components);
+            this.gbPrimerInicio = new System.Windows.Forms.GroupBox();
+            this.BtnCrearCuenta = new System.Windows.Forms.Button();
+            this.txtBienvenido = new System.Windows.Forms.TextBox();
             this.gbLogin.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.EpLogin)).BeginInit();
+            this.gbPrimerInicio.SuspendLayout();
             this.SuspendLayout();
             // 
             // gbLogin
@@ -131,14 +135,46 @@
             // 
             this.EpLogin.ContainerControl = this;
             // 
+            // gbPrimerInicio
+            // 
+            this.gbPrimerInicio.Controls.Add(this.BtnCrearCuenta);
+            this.gbPrimerInicio.Controls.Add(this.txtBienvenido);
+            this.gbPrimerInicio.Location = new System.Drawing.Point(12, 12);
+            this.gbPrimerInicio.Name = "gbPrimerInicio";
+            this.gbPrimerInicio.Size = new System.Drawing.Size(359, 180);
+            this.gbPrimerInicio.TabIndex = 2;
+            this.gbPrimerInicio.TabStop = false;
+            this.gbPrimerInicio.Visible = false;
+            // 
+            // BtnCrearCuenta
+            // 
+            this.BtnCrearCuenta.Location = new System.Drawing.Point(128, 151);
+            this.BtnCrearCuenta.Name = "BtnCrearCuenta";
+            this.BtnCrearCuenta.Size = new System.Drawing.Size(106, 23);
+            this.BtnCrearCuenta.TabIndex = 1;
+            this.BtnCrearCuenta.Text = "Crear Cuenta";
+            this.BtnCrearCuenta.UseVisualStyleBackColor = true;
+            this.BtnCrearCuenta.Click += new System.EventHandler(this.BtnCrearCuenta_Click);
+            // 
+            // txtBienvenido
+            // 
+            this.txtBienvenido.Location = new System.Drawing.Point(49, 14);
+            this.txtBienvenido.Multiline = true;
+            this.txtBienvenido.Name = "txtBienvenido";
+            this.txtBienvenido.ReadOnly = true;
+            this.txtBienvenido.Size = new System.Drawing.Size(263, 131);
+            this.txtBienvenido.TabIndex = 10;
+            this.txtBienvenido.Text = resources.GetString("txtBienvenido.Text");
+            // 
             // FrmLogin
             // 
             this.AcceptButton = this.BtnAceptar;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.BtnCancelar;
-            this.ClientSize = new System.Drawing.Size(386, 208);
+            this.ClientSize = new System.Drawing.Size(385, 208);
             this.Controls.Add(this.gbLogin);
+            this.Controls.Add(this.gbPrimerInicio);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.Name = "FrmLogin";
@@ -147,6 +183,8 @@
             this.gbLogin.ResumeLayout(false);
             this.gbLogin.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.EpLogin)).EndInit();
+            this.gbPrimerInicio.ResumeLayout(false);
+            this.gbPrimerInicio.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -162,5 +200,8 @@
         private System.Windows.Forms.TextBox TxtPassword;
         private System.Windows.Forms.TextBox TxtUsuario;
         private System.Windows.Forms.ErrorProvider EpLogin;
+        private System.Windows.Forms.GroupBox gbPrimerInicio;
+        private System.Windows.Forms.TextBox txtBienvenido;
+        private System.Windows.Forms.Button BtnCrearCuenta;
     }
 }

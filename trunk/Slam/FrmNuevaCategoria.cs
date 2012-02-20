@@ -20,6 +20,7 @@ namespace Slam
         public FrmNuevaCategoria()
         {
             InitializeComponent();
+            this.ChkEstado.Checked = true;
         }
 
         public FrmNuevaCategoria(int IdCat)

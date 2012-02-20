@@ -21,6 +21,7 @@ namespace Servicio
                 throw new ServicioExeption(ex.Message);
             }
         }
+
         #region Miembros de ILoginServicio
 
         public void Agregar(Servicio.InterfacesUI.ILoginUI ui)
@@ -57,6 +58,15 @@ namespace Servicio
                 else
                     return 0;
             }
+        }
+
+        public bool PrimerInicio()
+        {
+            IEmpleadoRepositorio repoEmpleados = new EmpleadoRepositorio();
+            if (repoEmpleados.getCantidad() > 0)
+                return false;
+            else
+                return true;
         }
 
         #endregion
