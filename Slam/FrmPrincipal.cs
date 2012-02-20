@@ -90,6 +90,7 @@ namespace Slam
 
         private void FrmPrincipal_FormClosing(object sender, FormClosingEventArgs e)
         {
+            this.notifyIcon1.Icon = null;
         	if (CerrarPadre) {
         		Padre.Close();
         	}
