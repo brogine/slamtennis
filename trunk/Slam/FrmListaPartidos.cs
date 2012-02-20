@@ -151,6 +151,11 @@ namespace Slam
         {
             try
             {
+                if (CboListaTorneos.SelectedIndex < 0)
+                {
+                    MessageBox.Show("Debe Seleccionar Un Torneo De La Lista");
+                    return;
+                }
                 FrmNuevoPartido NuevoPartido = new FrmNuevoPartido();
                 if (NuevoPartido.ShowDialog() == DialogResult.OK)
                 {
@@ -194,6 +199,11 @@ namespace Slam
         {
             try
             {
+                if (CboListaTorneos.SelectedIndex < 0)
+                {
+                    MessageBox.Show("Debe Seleccionar Un Torneo De La Lista");
+                    return;
+                }
                 servicioInscripciones = (IListadoInscripcionServicio)AppContext.Instance.GetObject(ImplementaInscripciones);
                 servicioInscripciones.ListarPorTorneo(this);
             }
