@@ -104,6 +104,13 @@ namespace Repositorio
             return ListaEmpleados;
         }
 
+        public int getCantidad()
+        {
+            string Consulta = " Select Count(*) From Empleados ";
+            DataRow Fila = Conn.Buscar(Consulta);
+            return Convert.ToInt32(Fila[0]);
+        }
+
         #endregion
 
         #region Miembros de IMapeador<Empleado>
@@ -129,5 +136,6 @@ namespace Repositorio
         }
 
         #endregion
+
     }
 }

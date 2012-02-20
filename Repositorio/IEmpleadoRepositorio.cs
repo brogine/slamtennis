@@ -17,5 +17,7 @@ namespace Repositorio
         bool Existe(int Dni);
 
         List<Empleado> Listar();
+
+        int getCantidad();
     }
 }

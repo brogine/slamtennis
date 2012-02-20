@@ -27,6 +27,7 @@ namespace Slam
              InitializeComponent();
              servicioClubes = (IListadoClubServicio)AppContext.Instance.GetObject(ImplementaClubes);
              servicioClubes.ListarActivos(this);
+             this.ChkEstado.Checked = true;
         }
 
         public FrmNuevaAfiliacion(int IdClub, int DniJugador)
@@ -39,6 +40,7 @@ namespace Slam
              this.CboListaClubes.Enabled = false;
              this.TxtDni.Enabled = false;
         }
+
         private void FrmNuevaAfiliacion_Load(object sender, EventArgs e)
         {
             try
@@ -118,20 +120,27 @@ namespace Slam
 
             set
             {
-                if (value.Count>0)
+                if (value.Count > 0)
                 {
-                Dictionary<int, string> ListaClubes = new Dictionary<int, string>();
-                foreach (Object Torneo in value)
-                {
-                    Object[] DatosClub = Torneo.ToString().Split(',');
-                    ListaClubes.Add(Convert.ToInt32(DatosClub[0]), DatosClub[1].ToString());
+                    Dictionary<int, string> ListaClubes = new Dictionary<int, string>();
+                    foreach (Object Torneo in value)
+                    {
+                        Object[] DatosClub = Torneo.ToString().Split(',');
+                        ListaClubes.Add(Convert.ToInt32(DatosClub[0]), DatosClub[1].ToString());
+                    }
+                    CboListaClubes.DataSource = new BindingSource(ListaClubes, null);
+                    CboListaClubes.DisplayMember = "Value";
+                    CboListaClubes.ValueMember = "Key";
+                    CboListaClubes.SelectedIndex = -1;
                 }
-                CboListaClubes.DataSource = new BindingSource(ListaClubes, null);
-                CboListaClubes.DisplayMember = "Value";
-                CboListaClubes.ValueMember = "Key";
-                CboListaClubes.SelectedIndex = -1;
+                else
+                {
+                    MessageBox.Show("No existen Clubes Activos en el Sistema. Para crear una Afiliación debe haber al menos un Club. Agregue uno para continuar.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    FrmNuevoClub NuevoClub = new FrmNuevoClub();
+                    if (NuevoClub.ShowDialog() != DialogResult.Retry)
+                        this.servicioClubes.ListarActivos(this);
+                }
             }
-        }
         }
 
         private void button1_Click(object sender, EventArgs e)

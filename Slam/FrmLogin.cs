@@ -25,6 +25,16 @@ namespace Slam
             try
             {
                 LoginServicio = (ILoginServicio)AppContext.Instance.GetObject(ImplementaLogin);
+                if (LoginServicio.PrimerInicio())
+                {
+                    gbLogin.Visible = false;
+                    gbPrimerInicio.Visible = true;
+                }
+                else
+                {
+                    gbLogin.Visible = true;
+                    gbPrimerInicio.Visible = false;
+                }
             }
             catch (SystemException ex)
             {
@@ -117,6 +127,12 @@ namespace Slam
                 //LoginServicio.OlvidoPassword(TxtUsuario.Text);
             else
                 MessageBox.Show("Ponga su nombre de usuario en la caja de texto para continuar.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+
+        private void BtnCrearCuenta_Click(object sender, EventArgs e)
+        {
+            FrmNuevaPersona NuevaPersona = new FrmNuevaPersona(TipoPersona.Empleado);
+            NuevaPersona.Show();
         }
     }
 }
