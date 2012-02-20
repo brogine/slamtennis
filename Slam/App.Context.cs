@@ -40,19 +40,12 @@ namespace ApplicationContext
         {
             get
             {
-                try
+                if (_AppContext == null)
                 {
-                    if (_AppContext == null)
-                    {
-                        _AppContext = new AppContext();
-                    }
+                    _AppContext = new AppContext();
+                }
 
-                    return _AppContext;
-                }
-                catch (Exception ex)
-                {
-                    throw new Exception(ex.Message);
-                }
+                return _AppContext;
             }
         }
 
@@ -63,14 +56,7 @@ namespace ApplicationContext
         /// <returns>A instance of the object, in other case an exception</returns>
         public object GetObject(string objectName)
         {
-            try
-            {
-                return this._SpringContext.GetObject(objectName);
-            }
-            catch(Exception ex)
-            {
-                throw new Exception(ex.Message);
-            }
+            return this._SpringContext.GetObject(objectName);
         }
 
 

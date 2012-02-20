@@ -146,7 +146,7 @@ namespace Slam
                     CboListaPaises.DataSource = new BindingSource(ListaPais, null);
                     CboListaPaises.DisplayMember = "Value";
                     CboListaPaises.ValueMember = "Key";
-                    CboListaPaises.SelectedIndex = -1;
+                    CboListaPaises.SelectedIndex = 0;
 
                 }
 
@@ -173,7 +173,7 @@ namespace Slam
                 CboListaProvincias.DataSource = new BindingSource(ListaProvincias, null);
                 CboListaProvincias.DisplayMember = "Value";
                 CboListaProvincias.ValueMember = "Key";
-                CboListaProvincias.SelectedIndex = -1;
+                CboListaProvincias.SelectedIndex = 0;
 
                 }
             }
@@ -192,21 +192,18 @@ namespace Slam
         {
             set 
             {
-             
-                    if (value.Count > 0)
+                if (value.Count > 0)
                 {
-                    
-                Dictionary<int, string> ListaLocalidades = new Dictionary<int, string>();
-                foreach (Object Localidad in value)
-                {
-                    Object[] DatosLocalidades = Localidad.ToString().Split(',');
-                    ListaLocalidades.Add(Convert.ToInt32(DatosLocalidades[0]), DatosLocalidades[1].ToString());
-                }
-                CboListaLocalidades.DataSource = new BindingSource(ListaLocalidades, null);
-                CboListaLocalidades.DisplayMember = "Value";
-                CboListaLocalidades.ValueMember = "Key";
-                CboListaLocalidades.SelectedIndex = -1;
-
+                    Dictionary<int, string> ListaLocalidades = new Dictionary<int, string>();
+                    foreach (Object Localidad in value)
+                    {
+                        Object[] DatosLocalidades = Localidad.ToString().Split(',');
+                        ListaLocalidades.Add(Convert.ToInt32(DatosLocalidades[0]), DatosLocalidades[1].ToString());
+                    }
+                    CboListaLocalidades.DataSource = new BindingSource(ListaLocalidades, null);
+                    CboListaLocalidades.DisplayMember = "Value";
+                    CboListaLocalidades.ValueMember = "Key";
+                    CboListaLocalidades.SelectedIndex = 0;
                 }
             }
         }

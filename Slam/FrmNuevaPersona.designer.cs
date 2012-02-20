@@ -81,19 +81,12 @@
             this.LblNombre = new System.Windows.Forms.Label();
             this.TxtDni = new System.Windows.Forms.MaskedTextBox();
             this.LblDni = new System.Windows.Forms.Label();
-            this.TpLogin = new System.Windows.Forms.TabPage();
-            this.BtnCambiarPassword = new System.Windows.Forms.Button();
-            this.GbCambiarPassword = new System.Windows.Forms.GroupBox();
-            this.TxtPasswordNuevo = new System.Windows.Forms.TextBox();
-            this.LblPasswordNuevo = new System.Windows.Forms.Label();
-            this.TxtPasswordViejo = new System.Windows.Forms.TextBox();
-            this.LblPasswordViejo = new System.Windows.Forms.Label();
+            this.EpNuevaPersona = new System.Windows.Forms.ErrorProvider(this.components);
             this.GbDatosLogin = new System.Windows.Forms.GroupBox();
             this.TxtPassword = new System.Windows.Forms.TextBox();
             this.LblPassword = new System.Windows.Forms.Label();
             this.TxtUsuario = new System.Windows.Forms.TextBox();
             this.LblUsuario = new System.Windows.Forms.Label();
-            this.EpNuevaPersona = new System.Windows.Forms.ErrorProvider(this.components);
             this.TcPersonas.SuspendLayout();
             this.TpDatosPersonales.SuspendLayout();
             this.GbDatosArbitro.SuspendLayout();
@@ -102,24 +95,22 @@
             this.GbDireccion.SuspendLayout();
             this.GbDatosPersonales.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PbFoto)).BeginInit();
-            this.TpLogin.SuspendLayout();
-            this.GbCambiarPassword.SuspendLayout();
-            this.GbDatosLogin.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.EpNuevaPersona)).BeginInit();
+            this.GbDatosLogin.SuspendLayout();
             this.SuspendLayout();
             // 
             // TcPersonas
             // 
             this.TcPersonas.Controls.Add(this.TpDatosPersonales);
-            this.TcPersonas.Controls.Add(this.TpLogin);
             this.TcPersonas.Location = new System.Drawing.Point(12, 12);
             this.TcPersonas.Name = "TcPersonas";
             this.TcPersonas.SelectedIndex = 0;
-            this.TcPersonas.Size = new System.Drawing.Size(794, 404);
+            this.TcPersonas.Size = new System.Drawing.Size(832, 404);
             this.TcPersonas.TabIndex = 0;
             // 
             // TpDatosPersonales
             // 
+            this.TpDatosPersonales.Controls.Add(this.GbDatosLogin);
             this.TpDatosPersonales.Controls.Add(this.LblDetalle);
             this.TpDatosPersonales.Controls.Add(this.GbDatosArbitro);
             this.TpDatosPersonales.Controls.Add(this.BtnCancelar);
@@ -131,7 +122,7 @@
             this.TpDatosPersonales.Location = new System.Drawing.Point(4, 22);
             this.TpDatosPersonales.Name = "TpDatosPersonales";
             this.TpDatosPersonales.Padding = new System.Windows.Forms.Padding(3);
-            this.TpDatosPersonales.Size = new System.Drawing.Size(786, 378);
+            this.TpDatosPersonales.Size = new System.Drawing.Size(824, 378);
             this.TpDatosPersonales.TabIndex = 0;
             this.TpDatosPersonales.Text = "Datos Personales";
             this.TpDatosPersonales.UseVisualStyleBackColor = true;
@@ -139,7 +130,7 @@
             // LblDetalle
             // 
             this.LblDetalle.AutoSize = true;
-            this.LblDetalle.Location = new System.Drawing.Point(551, 298);
+            this.LblDetalle.Location = new System.Drawing.Point(595, 298);
             this.LblDetalle.Name = "LblDetalle";
             this.LblDetalle.Size = new System.Drawing.Size(168, 13);
             this.LblDetalle.TabIndex = 29;
@@ -151,7 +142,7 @@
             this.GbDatosArbitro.Controls.Add(this.LblNivel);
             this.GbDatosArbitro.Controls.Add(this.TxtBadge);
             this.GbDatosArbitro.Controls.Add(this.TxtNivel);
-            this.GbDatosArbitro.Location = new System.Drawing.Point(94, 265);
+            this.GbDatosArbitro.Location = new System.Drawing.Point(6, 265);
             this.GbDatosArbitro.Name = "GbDatosArbitro";
             this.GbDatosArbitro.Size = new System.Drawing.Size(336, 108);
             this.GbDatosArbitro.TabIndex = 28;
@@ -194,7 +185,7 @@
             // 
             // BtnCancelar
             // 
-            this.BtnCancelar.Location = new System.Drawing.Point(643, 322);
+            this.BtnCancelar.Location = new System.Drawing.Point(687, 322);
             this.BtnCancelar.Name = "BtnCancelar";
             this.BtnCancelar.Size = new System.Drawing.Size(96, 35);
             this.BtnCancelar.TabIndex = 19;
@@ -204,7 +195,7 @@
             // 
             // BtnGuardar
             // 
-            this.BtnGuardar.Location = new System.Drawing.Point(536, 322);
+            this.BtnGuardar.Location = new System.Drawing.Point(580, 322);
             this.BtnGuardar.Name = "BtnGuardar";
             this.BtnGuardar.Size = new System.Drawing.Size(96, 35);
             this.BtnGuardar.TabIndex = 18;
@@ -218,7 +209,7 @@
             this.GbMenor.Controls.Add(this.LblRelacionMenor);
             this.GbMenor.Controls.Add(this.TxtNombreTutor);
             this.GbMenor.Controls.Add(this.LblNombreTutor);
-            this.GbMenor.Location = new System.Drawing.Point(94, 265);
+            this.GbMenor.Location = new System.Drawing.Point(6, 265);
             this.GbMenor.Name = "GbMenor";
             this.GbMenor.Size = new System.Drawing.Size(336, 108);
             this.GbMenor.TabIndex = 25;
@@ -267,7 +258,7 @@
             this.GbContacto.Controls.Add(this.LblCelular);
             this.GbContacto.Controls.Add(this.TxtTelefono);
             this.GbContacto.Controls.Add(this.LblTelefono);
-            this.GbContacto.Location = new System.Drawing.Point(507, 177);
+            this.GbContacto.Location = new System.Drawing.Point(545, 177);
             this.GbContacto.Name = "GbContacto";
             this.GbContacto.Size = new System.Drawing.Size(273, 107);
             this.GbContacto.TabIndex = 24;
@@ -333,7 +324,7 @@
             this.GbDireccion.Controls.Add(this.LblLocalidad);
             this.GbDireccion.Controls.Add(this.LblPais);
             this.GbDireccion.Controls.Add(this.LblProvincia);
-            this.GbDireccion.Location = new System.Drawing.Point(507, 6);
+            this.GbDireccion.Location = new System.Drawing.Point(545, 6);
             this.GbDireccion.Name = "GbDireccion";
             this.GbDireccion.Size = new System.Drawing.Size(273, 165);
             this.GbDireccion.TabIndex = 23;
@@ -446,7 +437,7 @@
             this.GbDatosPersonales.Controls.Add(this.LblDni);
             this.GbDatosPersonales.Location = new System.Drawing.Point(6, 6);
             this.GbDatosPersonales.Name = "GbDatosPersonales";
-            this.GbDatosPersonales.Size = new System.Drawing.Size(495, 253);
+            this.GbDatosPersonales.Size = new System.Drawing.Size(533, 253);
             this.GbDatosPersonales.TabIndex = 22;
             this.GbDatosPersonales.TabStop = false;
             this.GbDatosPersonales.Text = "Datos Personales";
@@ -454,7 +445,7 @@
             // 
             // BtnFoto
             // 
-            this.BtnFoto.Location = new System.Drawing.Point(365, 188);
+            this.BtnFoto.Location = new System.Drawing.Point(387, 188);
             this.BtnFoto.Name = "BtnFoto";
             this.BtnFoto.Size = new System.Drawing.Size(75, 23);
             this.BtnFoto.TabIndex = 9;
@@ -464,7 +455,7 @@
             // 
             // PbFoto
             // 
-            this.PbFoto.Location = new System.Drawing.Point(324, 23);
+            this.PbFoto.Location = new System.Drawing.Point(347, 23);
             this.PbFoto.Name = "PbFoto";
             this.PbFoto.Size = new System.Drawing.Size(156, 155);
             this.PbFoto.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -620,73 +611,9 @@
             this.LblDni.TabIndex = 0;
             this.LblDni.Text = "DNI: *";
             // 
-            // TpLogin
+            // EpNuevaPersona
             // 
-            this.TpLogin.Controls.Add(this.BtnCambiarPassword);
-            this.TpLogin.Controls.Add(this.GbCambiarPassword);
-            this.TpLogin.Controls.Add(this.GbDatosLogin);
-            this.TpLogin.Location = new System.Drawing.Point(4, 22);
-            this.TpLogin.Name = "TpLogin";
-            this.TpLogin.Size = new System.Drawing.Size(786, 378);
-            this.TpLogin.TabIndex = 2;
-            this.TpLogin.Text = "Datos de Login";
-            this.TpLogin.UseVisualStyleBackColor = true;
-            // 
-            // BtnCambiarPassword
-            // 
-            this.BtnCambiarPassword.Location = new System.Drawing.Point(271, 177);
-            this.BtnCambiarPassword.Name = "BtnCambiarPassword";
-            this.BtnCambiarPassword.Size = new System.Drawing.Size(114, 23);
-            this.BtnCambiarPassword.TabIndex = 2;
-            this.BtnCambiarPassword.Text = "Cambiar Password";
-            this.BtnCambiarPassword.UseVisualStyleBackColor = true;
-            this.BtnCambiarPassword.Click += new System.EventHandler(this.BtnCambiarPassword_Click);
-            // 
-            // GbCambiarPassword
-            // 
-            this.GbCambiarPassword.Controls.Add(this.TxtPasswordNuevo);
-            this.GbCambiarPassword.Controls.Add(this.LblPasswordNuevo);
-            this.GbCambiarPassword.Controls.Add(this.TxtPasswordViejo);
-            this.GbCambiarPassword.Controls.Add(this.LblPasswordViejo);
-            this.GbCambiarPassword.Location = new System.Drawing.Point(164, 215);
-            this.GbCambiarPassword.Name = "GbCambiarPassword";
-            this.GbCambiarPassword.Size = new System.Drawing.Size(302, 79);
-            this.GbCambiarPassword.TabIndex = 24;
-            this.GbCambiarPassword.TabStop = false;
-            this.GbCambiarPassword.Text = "Cambiar Password";
-            this.GbCambiarPassword.Visible = false;
-            // 
-            // TxtPasswordNuevo
-            // 
-            this.TxtPasswordNuevo.Location = new System.Drawing.Point(98, 48);
-            this.TxtPasswordNuevo.Name = "TxtPasswordNuevo";
-            this.TxtPasswordNuevo.Size = new System.Drawing.Size(154, 20);
-            this.TxtPasswordNuevo.TabIndex = 4;
-            // 
-            // LblPasswordNuevo
-            // 
-            this.LblPasswordNuevo.AutoSize = true;
-            this.LblPasswordNuevo.Location = new System.Drawing.Point(3, 51);
-            this.LblPasswordNuevo.Name = "LblPasswordNuevo";
-            this.LblPasswordNuevo.Size = new System.Drawing.Size(89, 13);
-            this.LblPasswordNuevo.TabIndex = 20;
-            this.LblPasswordNuevo.Text = "Password nuevo:";
-            // 
-            // TxtPasswordViejo
-            // 
-            this.TxtPasswordViejo.Location = new System.Drawing.Point(98, 19);
-            this.TxtPasswordViejo.Name = "TxtPasswordViejo";
-            this.TxtPasswordViejo.Size = new System.Drawing.Size(154, 20);
-            this.TxtPasswordViejo.TabIndex = 3;
-            // 
-            // LblPasswordViejo
-            // 
-            this.LblPasswordViejo.AutoSize = true;
-            this.LblPasswordViejo.Location = new System.Drawing.Point(11, 22);
-            this.LblPasswordViejo.Name = "LblPasswordViejo";
-            this.LblPasswordViejo.Size = new System.Drawing.Size(81, 13);
-            this.LblPasswordViejo.TabIndex = 19;
-            this.LblPasswordViejo.Text = "Password viejo:";
+            this.EpNuevaPersona.ContainerControl = this;
             // 
             // GbDatosLogin
             // 
@@ -694,25 +621,25 @@
             this.GbDatosLogin.Controls.Add(this.LblPassword);
             this.GbDatosLogin.Controls.Add(this.TxtUsuario);
             this.GbDatosLogin.Controls.Add(this.LblUsuario);
-            this.GbDatosLogin.Location = new System.Drawing.Point(164, 79);
+            this.GbDatosLogin.Location = new System.Drawing.Point(353, 265);
             this.GbDatosLogin.Name = "GbDatosLogin";
-            this.GbDatosLogin.Size = new System.Drawing.Size(302, 79);
-            this.GbDatosLogin.TabIndex = 23;
+            this.GbDatosLogin.Size = new System.Drawing.Size(186, 107);
+            this.GbDatosLogin.TabIndex = 30;
             this.GbDatosLogin.TabStop = false;
             this.GbDatosLogin.Text = "Datos de Login";
             this.GbDatosLogin.Validating += new System.ComponentModel.CancelEventHandler(this.GbDatosLogin_Validating);
             // 
             // TxtPassword
             // 
-            this.TxtPassword.Location = new System.Drawing.Point(98, 48);
+            this.TxtPassword.Location = new System.Drawing.Point(6, 81);
             this.TxtPassword.Name = "TxtPassword";
-            this.TxtPassword.Size = new System.Drawing.Size(154, 20);
+            this.TxtPassword.Size = new System.Drawing.Size(174, 20);
             this.TxtPassword.TabIndex = 1;
             // 
             // LblPassword
             // 
             this.LblPassword.AutoSize = true;
-            this.LblPassword.Location = new System.Drawing.Point(36, 51);
+            this.LblPassword.Location = new System.Drawing.Point(57, 61);
             this.LblPassword.Name = "LblPassword";
             this.LblPassword.Size = new System.Drawing.Size(63, 13);
             this.LblPassword.TabIndex = 20;
@@ -720,29 +647,25 @@
             // 
             // TxtUsuario
             // 
-            this.TxtUsuario.Location = new System.Drawing.Point(98, 19);
+            this.TxtUsuario.Location = new System.Drawing.Point(6, 36);
             this.TxtUsuario.Name = "TxtUsuario";
-            this.TxtUsuario.Size = new System.Drawing.Size(154, 20);
+            this.TxtUsuario.Size = new System.Drawing.Size(174, 20);
             this.TxtUsuario.TabIndex = 0;
             // 
             // LblUsuario
             // 
             this.LblUsuario.AutoSize = true;
-            this.LblUsuario.Location = new System.Drawing.Point(46, 22);
+            this.LblUsuario.Location = new System.Drawing.Point(62, 20);
             this.LblUsuario.Name = "LblUsuario";
             this.LblUsuario.Size = new System.Drawing.Size(53, 13);
             this.LblUsuario.TabIndex = 19;
             this.LblUsuario.Text = "Usuario: *";
             // 
-            // EpNuevaPersona
-            // 
-            this.EpNuevaPersona.ContainerControl = this;
-            // 
             // FrmNuevaPersona
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(818, 422);
+            this.ClientSize = new System.Drawing.Size(849, 422);
             this.Controls.Add(this.TcPersonas);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FrmNuevaPersona";
@@ -762,12 +685,9 @@
             this.GbDatosPersonales.ResumeLayout(false);
             this.GbDatosPersonales.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PbFoto)).EndInit();
-            this.TpLogin.ResumeLayout(false);
-            this.GbCambiarPassword.ResumeLayout(false);
-            this.GbCambiarPassword.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.EpNuevaPersona)).EndInit();
             this.GbDatosLogin.ResumeLayout(false);
             this.GbDatosLogin.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.EpNuevaPersona)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -812,20 +732,8 @@
         private System.Windows.Forms.Label LblNombre;
         private System.Windows.Forms.MaskedTextBox TxtDni;
         private System.Windows.Forms.Label LblDni;
-        private System.Windows.Forms.TabPage TpLogin;
         private System.Windows.Forms.Button BtnCancelar;
         private System.Windows.Forms.Button BtnGuardar;
-        private System.Windows.Forms.GroupBox GbDatosLogin;
-        private System.Windows.Forms.TextBox TxtPassword;
-        private System.Windows.Forms.Label LblPassword;
-        private System.Windows.Forms.TextBox TxtUsuario;
-        private System.Windows.Forms.Label LblUsuario;
-        private System.Windows.Forms.GroupBox GbCambiarPassword;
-        private System.Windows.Forms.TextBox TxtPasswordNuevo;
-        private System.Windows.Forms.Label LblPasswordNuevo;
-        private System.Windows.Forms.TextBox TxtPasswordViejo;
-        private System.Windows.Forms.Label LblPasswordViejo;
-        private System.Windows.Forms.Button BtnCambiarPassword;
         private System.Windows.Forms.CheckBox ChkEstado;
         private System.Windows.Forms.GroupBox GbDatosArbitro;
         private System.Windows.Forms.TextBox TxtNivel;
@@ -838,5 +746,10 @@
         private System.Windows.Forms.Label LblPais;
         private System.Windows.Forms.PictureBox PbFoto;
         private System.Windows.Forms.Button BtnFoto;
+        private System.Windows.Forms.GroupBox GbDatosLogin;
+        private System.Windows.Forms.TextBox TxtPassword;
+        private System.Windows.Forms.Label LblPassword;
+        private System.Windows.Forms.TextBox TxtUsuario;
+        private System.Windows.Forms.Label LblUsuario;
     }
 }
