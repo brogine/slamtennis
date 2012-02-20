@@ -19,16 +19,14 @@ namespace Repositorio
         {
             Conex = new Conexion();
             Cons = new Consola();
-            Cons.InvocarConsola();
-            Console.WriteLine("Creando Repositorio De Afiliacion");
+
 
         }
         #region Miembros de IAfiliacionRepositorio
 
         public void Agregar(Afiliacion Afiliacion)
         {
-            Cons.InvocarConsola();
-            Console.WriteLine("Agregar De Repositorio De Afiliacion");
+
             string FechaFormateada = Afiliacion.FechaAlta.Year + "/" + Afiliacion.FechaAlta.Month + "/" + Afiliacion.FechaAlta.Day;
             Conex.AgregarSinId("Afiliaciones", "Dni,IdClub,FechaAlta,Estado", Afiliacion.Jugador.Dni + "," + Afiliacion.Club.Id + ",'" + FechaFormateada + "'," + 1);
         }
