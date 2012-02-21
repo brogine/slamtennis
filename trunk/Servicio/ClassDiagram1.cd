@@ -116,7 +116,7 @@
     <Position X="9.25" Y="1.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>ServicioException.cs</FileName>
+      <FileName>ServicioExeption.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Servicio.TorneoServicio" Collapsed="true" BaseTypeListCollapsed="true">
@@ -208,7 +208,7 @@
   <Interface Name="Servicio.IJugadorServicio" Collapsed="true">
     <Position X="4" Y="4.25" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAQAAAAAAAgCAAAAgAAAAAAAAAIAAAAAAEAAAA=</HashCode>
+      <HashCode>gAAAAAAQAAAAAAAACAAAAgAAAAAAAAAIAAAAAAEAAAA=</HashCode>
       <FileName>IJugadorServicio.cs</FileName>
     </TypeIdentifier>
   </Interface>
@@ -307,7 +307,7 @@
     <Position X="12.75" Y="6.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAA=</HashCode>
-      <FileName>ILlaveTorneoService.cs</FileName>
+      <FileName>ILlaveTorneoServicio.cs</FileName>
     </TypeIdentifier>
   </Interface>
   <Interface Name="Servicio.ILocalidadServicio" Collapsed="true">
