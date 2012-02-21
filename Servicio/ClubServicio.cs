@@ -26,7 +26,7 @@ namespace Servicio
                 ClubRepo.Agregar(nClub);
             }
             catch (Exception ex) {
-                throw new ServicioExeption(ex.Message, ex);
+                throw new ServicioException(ex.Message, ex);
             }
         }
 
@@ -40,7 +40,7 @@ namespace Servicio
                 mClub.Presidente = UI.NombrePresidente;
         		ClubRepo.Modificar(mClub);
             } catch (Exception ex) {
-            	throw new ServicioExeption(ex.Message, ex);
+            	throw new ServicioException(ex.Message, ex);
             }
         }
 
@@ -52,7 +52,7 @@ namespace Servicio
 	            UI.NombreClub = bClub.Nombre;
                 UI.NombrePresidente = bClub.Presidente;
         	} catch (Exception ex) {
-            	throw new ServicioExeption(ex.Message, ex);
+            	throw new ServicioException(ex.Message, ex);
             }
         }
         public bool Existe(int IdClub)

@@ -26,7 +26,7 @@ namespace SlamWeb
                 LblSexo.Text = Session["Sexo"].ToString().Trim();
                 Image2.ImageUrl = "~/Profiles/" + Session["Imagen"].ToString().Trim();
                 IListadoTorneoServicio servicioTorneos = new TorneoServicio();
-                servicioTorneos.ListarTorneosCerrados(this);
+                servicioTorneos.ListarCerrados(this);
             }
             else
             {

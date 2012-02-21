@@ -10,12 +10,17 @@ namespace Servicio
 {
     public class AfiliacionServicio : IAfiliacionServicio, IListadoAfiliacionServicio
     {
+        IAfiliacionRepositorio AfilRepo;
+
+        public AfiliacionServicio()
+        {
+            AfilRepo = new AfiliacionRepositorio();
+        }
 
         #region Miembros de IAfiliacionServicio
 
         public void Agregar(Servicio.InterfacesUI.IAfiliacionUI UI)
         {
-            IAfiliacionRepositorio AfilRepo = new AfiliacionRepositorio();
             IJugadorRepositorio JugaRepo = new JugadorRepositorio();
             IClubRepositorio ClubRepo = new ClubRepositorio();
 
@@ -23,13 +28,10 @@ namespace Servicio
             Jugador JugaAfil = JugaRepo.Buscar(UI.Dni);
             Afiliacion NuevaAfil = new Afiliacion(ClubAfil, JugaAfil, DateTime.Today, UI.Estado);
             AfilRepo.Agregar(NuevaAfil);
-          
-            
         }
 
         public void Modificar(Servicio.InterfacesUI.IAfiliacionUI UI)
         {
-            IAfiliacionRepositorio AfilRepo = new AfiliacionRepositorio();
             Afiliacion ModAfil = AfilRepo.Buscar(UI.Dni, UI.IdClub);
             ModAfil.FechaBaja = DateTime.Today;
             ModAfil.Estado = UI.Estado;
@@ -38,16 +40,13 @@ namespace Servicio
 
         public void Buscar(Servicio.InterfacesUI.IAfiliacionUI UI)
         {
-            IAfiliacionRepositorio AfilRepo = new AfiliacionRepositorio();
             Afiliacion Afiliacion = AfilRepo.Buscar(UI.Dni, UI.IdClub);
             UI.Estado = Afiliacion.Estado;
         }
 
         public bool Existe(IAfiliacionUI UI)
         {
-            IAfiliacionRepositorio AfilRepo = new AfiliacionRepositorio();
             return AfilRepo.Existe(UI.Dni, UI.IdClub);
-
         }
 
         #endregion
@@ -56,7 +55,6 @@ namespace Servicio
 
         public void Listar(Servicio.InterfacesUI.IlistadoAfiliaciones UI)
         {
-            IAfiliacionRepositorio AfilRepo = new AfiliacionRepositorio();
             IClubRepositorio ClubRepo = new ClubRepositorio();
 
             List<Afiliacion> ListaAfili = AfilRepo.Listar(ClubRepo.Buscar(UI.IdClub));

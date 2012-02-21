@@ -33,7 +33,7 @@ namespace Slam
             try
             {
                 servicioEmpleados = (IListadoEmpleadoServicio)AppContext.Instance.GetObject(ImplementaEmpleados);
-                servicioEmpleados.ListarEmpleados(this);
+                servicioEmpleados.Listar(this);
             }
             catch (Exception ex)
             {
@@ -47,7 +47,7 @@ namespace Slam
             {
                 FrmNuevaPersona nuevoEmpleado = new FrmNuevaPersona(TipoPersona.Empleado);
                 if (nuevoEmpleado.ShowDialog() == DialogResult.OK)
-                    servicioEmpleados.ListarEmpleados(this);
+                    servicioEmpleados.Listar(this);
             }
             catch (Exception ex)
             {
@@ -65,7 +65,7 @@ namespace Slam
                     FrmNuevaPersona modificarEmpleado = new FrmNuevaPersona(TipoPersona.Empleado,
                                     dni);
                     if (modificarEmpleado.ShowDialog() == DialogResult.OK)
-                        servicioEmpleados.ListarEmpleados(this);
+                        servicioEmpleados.Listar(this);
                 }
             }
             catch (Exception ex)

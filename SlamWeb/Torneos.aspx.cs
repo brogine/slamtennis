@@ -26,8 +26,8 @@ namespace SlamWeb
                 LblSexo.Text = Session["Sexo"].ToString().Trim();
                 Image2.ImageUrl = "~/Profiles/" + Session["Imagen"].ToString().Trim();
                 IListadoTorneoServicio TorneoServicio = new TorneoServicio();
-                TorneoServicio.ActualizarTorneos();
-                TorneoServicio.ListarTorneos(this);
+                TorneoServicio.Actualizar();
+                TorneoServicio.Listar(this);
                 TxtDNI1.Text = Session["DNI"].ToString().Trim();
                 LblFecha.Text = DateTime.Now.ToShortDateString();
                 IInscripcionServicio incripservice = new InscripcionServicio();

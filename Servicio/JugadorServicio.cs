@@ -54,7 +54,7 @@ namespace Servicio
             	    Nacionalidad, UI.Sexo, UI.Tutor, UI.RelacionTutor,
                     nContacto, nUbicacion, UI.Estado, nLogin, newImage);
                 if (nJugador.Edad >= 18)
-                    throw new ServicioExeption("Error al agregar: El jugador es mayor de edad.");
+                    throw new ServicioException("Error al agregar: El jugador es mayor de edad.");
             }
             else
             {
@@ -164,10 +164,10 @@ namespace Servicio
                     UI.Foto = bJugador.BytesAImagen(bJugador.Foto);
             }
             else
-                throw new ServicioExeption("El Jugador con Dni " + UI.Dni + " No existe");
+                throw new ServicioException("El Jugador con Dni " + UI.Dni + " No existe");
 		}
 
-        public int Categoria(int dni)
+        public int PerteneceACategoria(int dni)
         {
             int retorno = 0;
             if (this.Existe(dni))
@@ -175,7 +175,7 @@ namespace Servicio
                 Categoria catjugador = repoJugadores.BuscarCategoria(dni);
                 if (catjugador == null)
                 {
-                    throw new ServicioExeption("El Jugador no tiene asociada ninguna categoria.");
+                    throw new ServicioException("El Jugador no tiene asociada ninguna categoria.");
                 }
                 else
                 {
@@ -184,7 +184,7 @@ namespace Servicio
             }
             else
             {
-                throw new ServicioExeption("El Jugador con Dni " + dni + " No existe");
+                throw new ServicioException("El Jugador con Dni " + dni + " No existe");
             }
             return retorno;
         }
@@ -193,7 +193,7 @@ namespace Servicio
 
         #region Miembros de IListadoJugadoresServicio
 
-        public void ListarJugadores(IListadoJugadores UI)
+        public void Listar(IListadoJugadores UI)
         {
             List<Jugador> ListaJuga= repoJugadores.Listar(UI.IdClub);
             List<object> ListaUI = new List<object>();
@@ -215,7 +215,7 @@ namespace Servicio
 
         #region Miembros de IListadoJugadoresCategoriaServicio
 
-        public void ListarJugadoresCategoria(Servicio.InterfacesUI.IListadoJugadoresCategoria UI)
+        public void ListarPorCategoria(Servicio.InterfacesUI.IListadoJugadoresCategoria UI)
         {
             List<Jugador> ListaJugadores = repoJugadores.ListarPorCategoria(UI.IdCategoria);
             DataTable TablaUI = new DataTable("Datos");

@@ -5,16 +5,16 @@ using System.Text;
 
 namespace Servicio
 {
-    public class ServicioExeption : SystemException
+    public class ServicioException : SystemException
     {
-        public ServicioExeption() { }
+        public ServicioException() { }
         
-        public ServicioExeption(string Mensaje):base(Mensaje)
+        public ServicioException(string Mensaje):base(Mensaje)
         {
             throw new Exception(Mensaje);
         }
 
-        public ServicioExeption(string Mensaje, Exception Causa)
+        public ServicioException(string Mensaje, Exception Causa)
             : base(Mensaje, Causa)
         {
             throw new Exception(Mensaje, Causa);

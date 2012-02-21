@@ -37,7 +37,7 @@ namespace Reportes
                     servicioJugadores.ListarJugadoresCategoria(this);
                     return ReporteActual;
                 case "Llave":
-                    ILlaveTorneoService servicioLlave = new TorneoServicio();
+                    ILlaveTorneoServicio servicioLlave = new TorneoServicio();
                     DataSet Ds = servicioLlave.GetDatosPartido((int)Sender);
                     RptLlave rptLlave = new RptLlave();
                     rptLlave.SetDataSource(Ds);

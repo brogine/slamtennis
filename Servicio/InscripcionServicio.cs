@@ -43,7 +43,7 @@ namespace Servicio
                         if (!repoInscripciones.Existe(UI.IdTorneo, UI.DniJugador2))
                             nEquipo.Jugador2 = repoJugadores.Buscar(UI.DniJugador2);
                         else
-                            throw new ServicioExeption("El Jugador con Dni " + UI.DniJugador2 + " ya está Inscripto a ese torneo.");
+                            throw new ServicioException("El Jugador con Dni " + UI.DniJugador2 + " ya está Inscripto a ese torneo.");
                         foreach (Estadisticas Estadistica in nEquipo.Jugador2.Estadisticas)
                         {
                             if (Estadistica.Categoria.Id == bTorneo.Categoria.Id)
@@ -54,17 +54,17 @@ namespace Servicio
                         }
                     }
                     if (!CategoriaCorrecta)
-                        throw new ServicioExeption("La Categoría de uno o más Jugadores a Inscribirse, no corresponde con la del Torneo."); 
+                        throw new ServicioException("La Categoría de uno o más Jugadores a Inscribirse, no corresponde con la del Torneo."); 
                     Inscripcion nInscripcion = new Inscripcion(bTorneo, UI.Fecha, nEquipo);
                     return repoInscripciones.Agregar(nInscripcion);
                 }
                 catch (Exception ex)
                 {
-                    throw new ServicioExeption(ex.Message);
+                    throw new ServicioException(ex.Message);
                 }
             }
             else
-                throw new ServicioExeption("El Jugador con Dni = " + UI.DniJugador1 + " ya está Inscripto a ese torneo.");
+                throw new ServicioException("El Jugador con Dni = " + UI.DniJugador1 + " ya está Inscripto a ese torneo.");
         }
 
         public int UltimaInscripcion()

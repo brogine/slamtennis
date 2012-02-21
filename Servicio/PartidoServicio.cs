@@ -74,7 +74,7 @@ namespace Servicio
 
         #region Miembros de IListadoPartidoServicio
 
-        public void ListarPartidos(IListadoPartidos UI)
+        public void Listar(IListadoPartidos UI)
         {
 
             List<Partido> Lista = PartidoRepo.Listar(UI.IdTorneo);

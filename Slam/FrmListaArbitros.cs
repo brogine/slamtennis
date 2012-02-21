@@ -28,7 +28,7 @@ namespace Slam
             try
             {
                 servicioArbitros = (IListadoArbitrosServicio)AppContext.Instance.GetObject(ImplementaArbitros);
-                servicioArbitros.ListarArbitros(this);
+                servicioArbitros.Listar(this);
             }
             catch (Exception Ex)
             {
@@ -42,7 +42,7 @@ namespace Slam
             if (nuevoArbitro.ShowDialog() == DialogResult.OK)
                 try
                 {
-                    servicioArbitros.ListarArbitros(this);
+                    servicioArbitros.Listar(this);
                 }
                 catch (Exception ex)
                 {
@@ -59,7 +59,7 @@ namespace Slam
                 if (modificarJugador.ShowDialog() == DialogResult.OK)
                     try
                     {
-                        servicioArbitros.ListarArbitros(this);
+                        servicioArbitros.Listar(this);
                     }
                     catch(Exception ex)
                     {
