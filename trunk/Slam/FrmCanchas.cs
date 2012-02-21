@@ -43,7 +43,7 @@ namespace Slam
         {
             servicioCanchas = (ICanchasServicio)AppContext.Instance.GetObject(ImplementaCanchas);
             servicioSedes = (IListadoSedesServicio)AppContext.Instance.GetObject(ImplementaSedes);
-            servicioSedes.ListarSedes(this);
+            servicioSedes.Listar(this);
             if (IdCanchaActual > 0)
                 servicioCanchas.Buscar(this);
         }

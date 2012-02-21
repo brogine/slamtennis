@@ -1,0 +1,615 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1" GroupingSetting="Access">
+  <Class Name="Servicio.AfiliacionServicio" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="0.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAQAEAAAAAACAAAAgAAAAAAQAAAAAAAAAEAAAA=</HashCode>
+      <FileName>AfiliacionServicio.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Servicio.ArbitroServicio" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="2.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAQAEAAAAAACAAAAgAgAAAAAAAAAAAAAAEAAAA=</HashCode>
+      <FileName>ArbitroServicio.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Servicio.CanchasServicio" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="4" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAQAEAAAAAACAAAAgAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>CanchasServicio.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Servicio.CarnetServicio" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="5.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEA=</HashCode>
+      <FileName>CarnetServicio.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Servicio.CategoriaServicio" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="7.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAQAEAQAAAACAAAAgAAAEAAAAAAAAAAAAEAAAA=</HashCode>
+      <FileName>CategoriaServicio.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Servicio.ClubServicio" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="9.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAQAEAAAAAACAAAAgAAAEAAAAAAAAAAAAEAAAE=</HashCode>
+      <FileName>ClubServicio.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Servicio.EmpleadoServicio" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="11" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAQAEAAAAAACAAAAgAAAAAAAAAAAAAAAgEAAAA=</HashCode>
+      <FileName>EmpleadoServicio.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Servicio.EstadisticasServicio" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="12.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ABAAAAAQgCACAAAACAAAAgAAAAAAAAAAAAAAAGkEAAA=</HashCode>
+      <FileName>EstadisticasServicio.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Servicio.InscripcionServicio" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="14.5" Y="1.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAgAAQAAQACBAACAAAAgAAAEEAAAAQAAAAAAEAAIA=</HashCode>
+      <FileName>InscripcionServicio.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Servicio.JugadorServicio" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="0.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>gAAAAAAQAEABAAAACAAAAgAAAAAAAAAIAAAAAEEAAAA=</HashCode>
+      <FileName>JugadorServicio.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Servicio.LoginServicio" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="2.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAQAAAAAgAACAAAACAACAAAAQAAAAAAAAAAAAA=</HashCode>
+      <FileName>LoginServicio.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Servicio.PartidoServicio" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="4" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAQAEAAAAAACAAAAgAAAAAAYAAAAAAAAAUAAAA=</HashCode>
+      <FileName>PartidoServicio.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Servicio.PuntosServicio" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="5.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAQAAAAAAAACAAAAgAAAAAAAAAAAAAAAAEAAAA=</HashCode>
+      <FileName>PuntosServicio.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Servicio.SedesServicio" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="7.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAQAEAAAAAACAAAAgAAAAAAAAAAAAAAAAAEAAA=</HashCode>
+      <FileName>SedesServicio.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.113" Collapsed="true" />
+  </Class>
+  <Class Name="Servicio.ServicioException" Collapsed="true">
+    <Position X="9.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ServicioException.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Servicio.TorneoServicio" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="11" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAQAEAhAAAAGAAAAgAAAAAAGAAICAAAAAEAAAA=</HashCode>
+      <FileName>TorneoServicio.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Servicio.UbicacionServicio" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="12.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAIAAAAAAAAACAAgAIAAACAAQAAABAAAAAEAAAAA=</HashCode>
+      <FileName>UbicacionServicio.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.1" />
+  </Class>
+  <Interface Name="Servicio.IAfiliacionServicio" Collapsed="true">
+    <Position X="0.5" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAQAAAAAAAACAAAAgAAAAAAAAAAAAAAAAEAAAA=</HashCode>
+      <FileName>IAfiliacionServicio.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Servicio.IArbitroServicio" Collapsed="true">
+    <Position X="4" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAQAAAAAAAACAAAAgAAAAAAAAAAAAAAAAEAAAA=</HashCode>
+      <FileName>IArbitroServicio.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Servicio.ICanchasServicio" Collapsed="true">
+    <Position X="7.5" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAQAAAAAAAACAAAAgAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ICanchasServicio.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Servicio.ICarnetServicio" Collapsed="true">
+    <Position X="11" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEA=</HashCode>
+      <FileName>ICarnetServicio.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Servicio.ICategoriaServicio" Collapsed="true">
+    <Position X="14.5" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAQAAAAAAAACAAAAgAAAAAAAAAAAAAAAAEAAAA=</HashCode>
+      <FileName>ICategoriaServicio.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Servicio.IClubServicio" Collapsed="true">
+    <Position X="2.25" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAQAAAAAAAACAAAAgAAAAAAAAAAAAAAAAEAAAA=</HashCode>
+      <FileName>IClubServicio.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Servicio.IEmpleadoServicio" Collapsed="true">
+    <Position X="5.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAQAAAAAAAACAAAAgAAAAAAAAAAAAAAAAEAAAA=</HashCode>
+      <FileName>IEmpleadoServicio.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Servicio.IEstadisticasServicio" Collapsed="true">
+    <Position X="9.25" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAQAAAAAAAACAAAAgAAAAAAAAAAAAAAAAEAAAA=</HashCode>
+      <FileName>IEstadisticasServicio.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Servicio.IInscripcionReporteServicio" Collapsed="true">
+    <Position X="14.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIA=</HashCode>
+      <FileName>IInscripcionReporteServicio.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Servicio.IInscripcionServicio" Collapsed="true">
+    <Position X="0.5" Y="4.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAQAAQACAAACAAAAgAAAAAAAAAQAAAAAAEAAAA=</HashCode>
+      <FileName>IInscripcionServicio.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Servicio.IJugadorServicio" Collapsed="true">
+    <Position X="4" Y="4.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAQAAAAAAAgCAAAAgAAAAAAAAAIAAAAAAEAAAA=</HashCode>
+      <FileName>IJugadorServicio.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Servicio.IListadoAfiliacionServicio" Collapsed="true">
+    <Position X="9.25" Y="4.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>IListadoAfiliacionServicio.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Servicio.IListadoArbitrosServicio" Collapsed="true">
+    <Position X="12.75" Y="4.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>IListadoArbitrosServicio.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Servicio.IListadoCanchasServicio" Collapsed="true">
+    <Position X="0.5" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>IListadoCanchasServicio.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Servicio.IListadoCategoriaServicio" Collapsed="true">
+    <Position X="4" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAEAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>IListadoCategoriaServicio.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Servicio.IListadoClubServicio" Collapsed="true">
+    <Position X="7.5" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAEAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>IListadoClubServicio.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Servicio.IListadoEmpleadoServicio" Collapsed="true">
+    <Position X="11" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>IListadoEmpleadoServicio.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Servicio.IListadoEstadisticasServicio" Collapsed="true">
+    <Position X="0.5" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ABAAAAAAgAACAAAAAAAAAAAAAAAAAAAAAAAAAGgEAAA=</HashCode>
+      <FileName>IListadoEstadisticasServicio.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Servicio.IListadoInscripcionServicio" Collapsed="true">
+    <Position X="4" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAgAAAAAAAAAAAAAAAAAAAAEEAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>IListadoInscripcionServicio.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Servicio.IListadoJugadoresCategoriaServicio" Collapsed="true">
+    <Position X="9.25" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAA=</HashCode>
+      <FileName>IListadoJugadoresCategoriaServicio.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Servicio.IListadoJugadoresServicio" Collapsed="true">
+    <Position X="11" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>IListadoJugadoresServicio.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Servicio.IListadoPartidoServicio" Collapsed="true">
+    <Position X="2.25" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>IListadoPartidoServicio.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Servicio.IListadoSedesServicio" Collapsed="true">
+    <Position X="7.5" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>IListadoSedesServicio.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Servicio.IListadoTorneoServicio" Collapsed="true">
+    <Position X="11" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAEAgAAAAEAAAAAAAAAAAAAAIAAAAAAAAAAA=</HashCode>
+      <FileName>IListadoTorneoServicio.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Servicio.ILlaveTorneoServicio" Collapsed="true">
+    <Position X="12.75" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ILlaveTorneoService.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Servicio.ILocalidadServicio" Collapsed="true">
+    <Position X="14.5" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAIAAAAAAAAACAAAAIAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ILocalidadServicio.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Servicio.ILoginServicio" Collapsed="true">
+    <Position X="0.5" Y="7.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAQAAAAAAAACAAAACAACAAAAQAAAAAAAAAAAAA=</HashCode>
+      <FileName>ILoginServicio.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Servicio.IListadoJugadores" Collapsed="true">
+    <Position X="5.75" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAEAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>InterfacesUI\IListadoJugadores.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Servicio.IListadoLocalidades" Collapsed="true">
+    <Position X="12.75" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAQAAAAAAAAAIAAACAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>InterfacesUI\IListadoLocalidades.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Servicio.IListadoPaises" Collapsed="true">
+    <Position X="14.5" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>InterfacesUI\IListadoPaises.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Servicio.IListadoProvincias" Collapsed="true">
+    <Position X="4" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAA=</HashCode>
+      <FileName>InterfacesUI\IListadoProvincias.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Servicio.IPaisServicio" Collapsed="true">
+    <Position X="4" Y="7.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAgAAAAAAAAAAAABAAAAAAAAAAA=</HashCode>
+      <FileName>IPaisServicio.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Servicio.IPartidoServicio" Collapsed="true">
+    <Position X="5.75" Y="7.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAQAAAAAAAACAAAAgAAAAAAAAAAAAAAAAEAAAA=</HashCode>
+      <FileName>IPartidoServicio.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Servicio.IProvinciaServicio" Collapsed="true">
+    <Position X="9.25" Y="7.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAEAAAAA=</HashCode>
+      <FileName>IProvinciaServicio.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Servicio.IPuntosServicio" Collapsed="true">
+    <Position X="11" Y="7.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAQAAAAAAAACAAAAgAAAAAAAAAAAAAAAAEAAAA=</HashCode>
+      <FileName>IPuntosServicio.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Servicio.ISedesServicio" Collapsed="true">
+    <Position X="14.5" Y="7.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAQAAAAAAAACAAAAgAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ISedesServicio.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Servicio.ITorneoServicio" Collapsed="true">
+    <Position X="2.25" Y="8" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAQAAABAAAACAAAAgAAAAAAAAAACAAAAAEAAAA=</HashCode>
+      <FileName>ITorneoServicio.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Servicio.InterfacesUI.IAfiliacionUI" Collapsed="true">
+    <Position X="2.25" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAEAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAg=</HashCode>
+      <FileName>InterfacesUI\IAfiliacionUI.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Servicio.InterfacesUI.IArbitroUI" Collapsed="true">
+    <Position X="5.75" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAEAAAAABCQAAAAMkAAAgCAACAAAAAACAAAUQggAAgg=</HashCode>
+      <FileName>InterfacesUI\IArbitroUI.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Servicio.InterfacesUI.ICanchasUI" Collapsed="true">
+    <Position X="9.25" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>gAAAEAEAAAAAAAAAACAAQAAAAAAAACAAAAAAAAAAAAA=</HashCode>
+      <FileName>InterfacesUI\ICanchasUI.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Servicio.InterfacesUI.ICarnetUI" Collapsed="true">
+    <Position X="12.75" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAgAAAAQAAEAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>InterfacesUI\ICarnetUI.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Servicio.InterfacesUI.ICategoriaUI" Collapsed="true">
+    <Position X="0.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAEAAAAAAAAAAQAgAAAAAAAAAAAAAAAAAAAABg=</HashCode>
+      <FileName>InterfacesUI\ICategoriaUI.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Servicio.InterfacesUI.IClubUI" Collapsed="true">
+    <Position X="4" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ABAAAAAIAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAg=</HashCode>
+      <FileName>InterfacesUI\IClubUI.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Servicio.InterfacesUI.IEmpleadoUI" Collapsed="true">
+    <Position X="7.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAEAAAAAACQAAAAE0AAAgCAACAAAAAACAAAUQggAAgg=</HashCode>
+      <FileName>InterfacesUI\IEmpleadoUI.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Servicio.InterfacesUI.IEstadisticasUI" Collapsed="true">
+    <Position X="11" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>iAEAAAACABAAABAAAQQAAAAAAAQIQAAAACAQAAAAgAg=</HashCode>
+      <FileName>InterfacesUI\IEstadisticasUI.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Servicio.InterfacesUI.IFechasTorneoUI" Collapsed="true">
+    <Position X="12.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAgAAgAAABgAAAAAAAAAAAAIgAAg=</HashCode>
+      <FileName>InterfacesUI\IFechasTorneoUI.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Servicio.InterfacesUI.IInscripcionUI" Collapsed="true">
+    <Position X="2.25" Y="4.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAgACAAAAgAEAAAAAAAAABAAAAAAAAAAAAAEAAAA=</HashCode>
+      <FileName>InterfacesUI\IInscripcionUI.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Servicio.InterfacesUI.IJugadorUI" Collapsed="true">
+    <Position X="5.75" Y="4.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAEAAAAAACQAAAAEkAAAiCAACAEAAgACAAAUQggAAgg=</HashCode>
+      <FileName>InterfacesUI\IJugadorUI.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Servicio.InterfacesUI.IlistadoAfiliaciones" Collapsed="true">
+    <Position X="7.5" Y="4.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAMAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>InterfacesUI\IlistadoAfiliaciones.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Servicio.InterfacesUI.IListadoArbitros" Collapsed="true">
+    <Position X="11" Y="4.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>InterfacesUI\IListadoArbitros.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Servicio.InterfacesUI.IListadoCanchas" Collapsed="true">
+    <Position X="14.5" Y="4.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAEAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>InterfacesUI\IListadoCanchas.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Servicio.InterfacesUI.IListadoCategorias" Collapsed="true">
+    <Position X="2.25" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>InterfacesUI\IListadoCategorias.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Servicio.InterfacesUI.IListadoClubes" Collapsed="true">
+    <Position X="5.75" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAA=</HashCode>
+      <FileName>InterfacesUI\IListadoClubes.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Servicio.InterfacesUI.IListadoEmpleados" Collapsed="true">
+    <Position X="9.25" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>InterfacesUI\IListadoEmpleados.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Servicio.InterfacesUI.IListadoEstadisticasCategoria" Collapsed="true">
+    <Position X="12.75" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAEAQQAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>InterfacesUI\IListadoEstadisticasCategoria.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Servicio.InterfacesUI.IListadoEstadisticasDni" Collapsed="true">
+    <Position X="14.5" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAQAAAAAAQAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>InterfacesUI\IListadoEstadisticasDni.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Servicio.InterfacesUI.IListadoInscripciones" Collapsed="true">
+    <Position X="2.25" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAgAAAAAAAAAAAAAAAAAAABAEAAgAAAAAAAAAAAAA=</HashCode>
+      <FileName>InterfacesUI\IListadoInscripciones.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Servicio.InterfacesUI.IListadoJugadoresCategoria" Collapsed="true">
+    <Position X="7.5" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAEAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>InterfacesUI\IListadoJugadoresCategoria.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Servicio.InterfacesUI.IListadoPartidos" Collapsed="true">
+    <Position X="0.5" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>InterfacesUI\IListadoPartidos.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Servicio.InterfacesUI.IListadoSedes" Collapsed="true">
+    <Position X="5.75" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAEAAAAAAA=</HashCode>
+      <FileName>InterfacesUI\IListadoSedes.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Servicio.InterfacesUI.IListadoTorneos" Collapsed="true">
+    <Position X="9.25" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>InterfacesUI\IListadoTorneos.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Servicio.InterfacesUI.ILoginUI" Collapsed="true">
+    <Position X="2.25" Y="7.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAEAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAEAAAAAAg=</HashCode>
+      <FileName>InterfacesUI\ILoginUI.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Servicio.InterfacesUI.IPartidoUI" Collapsed="true">
+    <Position X="7.5" Y="7.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AABAAAAAAAAAAAEAAAAAAAAABAAAEgAAAAAAAAAIAAg=</HashCode>
+      <FileName>InterfacesUI\IPartidoUI.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Servicio.InterfacesUI.IPuntosUI" Collapsed="true">
+    <Position X="12.75" Y="7.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CAAAAJAAEEAAAAABAAAAAAAABAAAAAAAAAAAAAAAIAA=</HashCode>
+      <FileName>InterfacesUI\IPuntosUI.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Servicio.InterfacesUI.ISedesUI" Collapsed="true">
+    <Position X="0.5" Y="8" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACAAAAAAECAAQAAAAACAAAAAAAAAAggAAAA=</HashCode>
+      <FileName>InterfacesUI\ISedesUI.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Servicio.InterfacesUI.ITorneoUI" Collapsed="true">
+    <Position X="4" Y="8" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAEIAAAAAAAAAAkgQAgAAABgAAAAAAAAAAAAIgQAw=</HashCode>
+      <FileName>InterfacesUI\ITorneoUI.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Servicio.InterfacesUI.IUbicacionUI" Collapsed="true">
+    <Position X="5.75" Y="8" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAQAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAgAAAAA=</HashCode>
+      <FileName>InterfacesUI\IUbicacionUI.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Enum Name="Servicio.Rondas" Collapsed="true">
+    <Position X="0.5" Y="9" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAEIAACIAAAAAAAAAAABAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>PartidoServicio.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

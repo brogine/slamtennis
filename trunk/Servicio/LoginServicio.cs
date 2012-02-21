@@ -18,7 +18,7 @@ namespace Servicio
             }
             catch (Exception ex)
             {
-                throw new ServicioExeption(ex.Message);
+                throw new ServicioException(ex.Message);
             }
         }
 
@@ -29,7 +29,7 @@ namespace Servicio
             if (!loginRepo.Existe(ui.Usuario))
                 loginRepo.Agregar(new Dominio.Login(ui.Usuario, ui.Password, ui.Dni, ui.Estado));
             else
-                throw new ServicioExeption("El usuario ingresado ya existe.");
+                throw new ServicioException("El usuario ingresado ya existe.");
         }
 
         public void Modificar(Servicio.InterfacesUI.ILoginUI ui)

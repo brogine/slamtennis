@@ -9,7 +9,7 @@ using System.Data;
 
 namespace Servicio
 {
-    public class TorneoServicio : ITorneoServicio, IListadoTorneoServicio,ILlaveTorneoService
+    public class TorneoServicio : ITorneoServicio, IListadoTorneoServicio,ILlaveTorneoServicio
     {
         ITorneoRepositorio TorneoRepo;
         public TorneoServicio()
@@ -93,7 +93,7 @@ namespace Servicio
             return (int)TorneoRepo.GetTipoTorneo(IdTorneo);
         }
 
-        public void ActualizarTorneos()
+        public void Actualizar()
         {
             TorneoRepo.ActualizarTorneos();
         }
@@ -102,7 +102,7 @@ namespace Servicio
 
         #region Miembros de IListadoTorneoServicio
 
-        public void ListarTorneos(IListadoTorneos UI)
+        public void Listar(IListadoTorneos UI)
         {
             List<Torneo> ListaTorneo = TorneoRepo.Listar();
             List<Object> Lista = new List<object>();
@@ -114,7 +114,7 @@ namespace Servicio
             UI.ListaUI = Lista;
         }
 
-        public void ListarTorneosCerrados(IListadoTorneos UI)
+        public void ListarCerrados(IListadoTorneos UI)
         {
             List<Torneo> ListaTorneo = TorneoRepo.ListarCerrados();
             List<Object> Lista = new List<object>();
@@ -138,7 +138,7 @@ namespace Servicio
             UI.ListaUI = Lista;
         }
 
-        public void ListarTorneosAbiertos(IListadoTorneos UI)
+        public void ListarAbiertos(IListadoTorneos UI)
         {
             List<Torneo> ListaTorneo = TorneoRepo.ListarAbiertos();
             List<Object> Lista = new List<object>();

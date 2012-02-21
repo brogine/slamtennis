@@ -122,14 +122,14 @@ namespace Servicio
                 UI.Celular = BuscaEmpleado.Contacto.Celular;
             }
             else
-                throw new ServicioExeption("El Empleado con Dni " + UI.Dni + " No Existe");
+                throw new ServicioException("El Empleado con Dni " + UI.Dni + " No Existe");
         }
 
         #endregion
 
         #region Miembros de IListadoEmpleadoServicio
 
-        public void ListarEmpleados(IListadoEmpleados UI)
+        public void Listar(IListadoEmpleados UI)
         {
             List<Object> ListaUI = new List<object>();
             List<Empleado> ListaEmp = EmpleadoRepo.Listar();

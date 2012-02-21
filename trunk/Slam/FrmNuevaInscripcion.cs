@@ -29,7 +29,7 @@ namespace Slam
             InitializeComponent();
             this.Text = "Nueva Inscripción";
             servicioTorneos = (IListadoTorneoServicio)AppContext.Instance.GetObject(ImplementaTorneos);
-            servicioTorneos.ListarTorneosAbiertos(this);
+            servicioTorneos.ListarAbiertos(this);
             servicioInscripciones = (IInscripcionServicio)AppContext.Instance.GetObject(ImplementaInscripciones);
             ChkEstado.Checked = true;
         }
@@ -40,7 +40,7 @@ namespace Slam
             IdInscripcionActual = IdInscripcion;
             this.Text = "Modificar Inscripción";
             servicioTorneos = (IListadoTorneoServicio)AppContext.Instance.GetObject(ImplementaTorneos);
-            servicioTorneos.ListarTorneosAbiertos(this);
+            servicioTorneos.ListarAbiertos(this);
             CboTorneos.SelectedValue = IdInscripcion;
             servicioInscripciones = (IInscripcionServicio)AppContext.Instance.GetObject(ImplementaInscripciones);
             servicioInscripciones.Buscar(this);
@@ -83,7 +83,7 @@ namespace Slam
                     MessageBox.Show("No existen Torneos en el Sistema. Agregue una Torneo para poder continuar.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     FrmNuevoTorneo NuevoTorneo = new FrmNuevoTorneo();
                     if (NuevoTorneo.ShowDialog() != DialogResult.Retry)
-                        this.servicioTorneos.ListarTorneosAbiertos(this);
+                        this.servicioTorneos.ListarAbiertos(this);
                 }
             }
         }

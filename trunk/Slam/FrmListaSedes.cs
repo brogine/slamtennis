@@ -35,7 +35,7 @@ namespace Slam
             try
             {
                 servicioClubes.ListarActivos(this);
-                servicioSedes.ListarSedes(this);
+                servicioSedes.Listar(this);
             }
             catch (Exception ex)
             {
@@ -49,7 +49,7 @@ namespace Slam
             {
                 FrmNuevaSede nuevaSede = new FrmNuevaSede();
                 if (nuevaSede.ShowDialog() == DialogResult.OK)
-                    servicioSedes.ListarSedes(this);
+                    servicioSedes.Listar(this);
             }
             catch (Exception ex)
             {
@@ -65,7 +65,7 @@ namespace Slam
                 {
                     FrmNuevaSede modificarSede = new FrmNuevaSede(Convert.ToInt32(DgvSedes.SelectedRows[0].Cells["Id"].Value));
                     if (modificarSede.ShowDialog() == DialogResult.OK)
-                        servicioSedes.ListarSedes(this);
+                        servicioSedes.Listar(this);
                 }
                 else
                     MessageBox.Show("Seleccione una Sede de la grilla para continuar.");
@@ -136,7 +136,7 @@ namespace Slam
         {
             try
             {
-                servicioSedes.ListarSedes(this);
+                servicioSedes.Listar(this);
             }
             catch (Exception ex)
             {

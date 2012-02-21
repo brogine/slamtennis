@@ -103,12 +103,12 @@ namespace Slam
             {
                 servicioTorneos = (IListadoTorneoServicio)AppContext.Instance.GetObject(ImplementaTorneos);
                 servicioPuntos = (IPuntosServicio)AppContext.Instance.GetObject(ImplementaPuntos);
-                servicioTorneos.ListarTorneosCerrados(this);
+                servicioTorneos.ListarCerrados(this);
                 if (IdTorneoActual > 0)
                 {
                     CboListaTorneos.SelectedValue = IdTorneoActual;
                     servicioPartidos = (IListadoPartidoServicio)AppContext.Instance.GetObject(ImplementaPartidos);
-                    servicioPartidos.ListarPartidos(this);
+                    servicioPartidos.Listar(this);
                 }
             }
             catch (Exception ex)
@@ -125,7 +125,7 @@ namespace Slam
                 {
                     if (servicioPartidos == null)
                         servicioPartidos = (IListadoPartidoServicio)AppContext.Instance.GetObject(ImplementaPartidos);
-                    servicioPartidos.ListarPartidos(this);
+                    servicioPartidos.Listar(this);
                 }
                 else
                 {
@@ -137,7 +137,7 @@ namespace Slam
                     {
                         if (servicioPartidos == null)
                             servicioPartidos = (IListadoPartidoServicio)AppContext.Instance.GetObject(ImplementaPartidos);
-                        servicioPartidos.ListarPartidos(this);
+                        servicioPartidos.Listar(this);
                     }
                 }
             }
@@ -159,7 +159,7 @@ namespace Slam
                 FrmNuevoPartido NuevoPartido = new FrmNuevoPartido();
                 if (NuevoPartido.ShowDialog() == DialogResult.OK)
                 {
-                    servicioPartidos.ListarPartidos(this);
+                    servicioPartidos.Listar(this);
                 }
             }
             catch (Exception ex)
@@ -179,7 +179,7 @@ namespace Slam
                     FrmNuevoPartido ModificaPartido = new FrmNuevoPartido(Convert.ToInt32(DgvListaPartidos.SelectedRows[0].Cells[0].Value));
                     if (ModificaPartido.ShowDialog() == DialogResult.OK)
                     {
-                        servicioPartidos.ListarPartidos(this);
+                        servicioPartidos.Listar(this);
                     }
                 }
             }

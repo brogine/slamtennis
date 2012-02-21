@@ -26,8 +26,8 @@ namespace Slam
             try
             {
                 TorneoServicio = (IListadoTorneoServicio)AppContext.Instance.GetObject(ImplementaTorneos);
-                TorneoServicio.ActualizarTorneos();
-                TorneoServicio.ListarTorneos(this);
+                TorneoServicio.Actualizar();
+                TorneoServicio.Listar(this);
             }
             catch (Exception ex)
             {
@@ -78,8 +78,8 @@ namespace Slam
             NuevoTorneo.ShowDialog();
             if (NuevoTorneo.DialogResult == DialogResult.OK)
             {
-                TorneoServicio.ActualizarTorneos();
-                TorneoServicio.ListarTorneos(this);
+                TorneoServicio.Actualizar();
+                TorneoServicio.Listar(this);
             }
         }
 
@@ -91,8 +91,8 @@ namespace Slam
                 
                 if (ModificaTorneo.ShowDialog() == DialogResult.OK)
                     {
-                    TorneoServicio.ActualizarTorneos();
-                    TorneoServicio.ListarTorneos(this);
+                    TorneoServicio.Actualizar();
+                    TorneoServicio.Listar(this);
                     }
             }
              else

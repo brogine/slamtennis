@@ -6,7 +6,7 @@ using System.Data;
 
 namespace Servicio
 {
-    public interface ILlaveTorneoService
+    public interface ILlaveTorneoServicio
     {
         DataSet GetDatosPartido(int idtorneo);
     }

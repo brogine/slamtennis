@@ -48,7 +48,7 @@ namespace Slam
                 if (nuevoJugador.ShowDialog() == DialogResult.OK)
                 {
                     if (CboClubes.SelectedIndex > -1)
-                        servicioJugadores.ListarJugadores(this);
+                        servicioJugadores.Listar(this);
                 }
             }
             catch (Exception ex)
@@ -82,7 +82,7 @@ namespace Slam
             {
                 if (CboClubes.SelectedIndex > -1)
                 {
-                    servicioJugadores.ListarJugadores(this);
+                    servicioJugadores.Listar(this);
                 }
             }
             catch (Exception ex)
@@ -150,7 +150,7 @@ namespace Slam
             {
                 FrmNuevaAfiliacion ModificaAfiliacion = new FrmNuevaAfiliacion(Convert.ToInt32(((DictionaryEntry)CboClubes.SelectedItem).Value), Convert.ToInt32(this.DgvJugadoresClub.SelectedRows[0].Cells["Dni"].Value));
                 if (ModificaAfiliacion.ShowDialog() == DialogResult.OK)
-                    servicioJugadores.ListarJugadores(this);
+                    servicioJugadores.Listar(this);
             }
             else
             {

@@ -126,14 +126,14 @@ namespace Servicio
                 UI.Celular = BuscaArb.Contacto.Celular;
             }
             else
-                throw new ServicioExeption("El Arbitro con Dni " + UI.Dni + " No Existe.");
+                throw new ServicioException("El Arbitro con Dni " + UI.Dni + " No Existe.");
         }
 
         #endregion
 
         #region Miembros de IListadoArbitrosServicio
 
-        public void ListarArbitros(IListadoArbitros UI)
+        public void Listar(IListadoArbitros UI)
         {
             List<Object> ListaUI = new List<object>();
             List<Arbitro> ListaArb = ArbRepo.Listar();

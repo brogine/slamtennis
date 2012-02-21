@@ -35,8 +35,8 @@ namespace Slam
             InitializeComponent();
             this.Padre = _Padre;
             servicioTorneos = (IListadoTorneoServicio)AppContext.Instance.GetObject(ImplementaTorneos);
-            servicioTorneos.ActualizarTorneos();
-            servicioTorneos.ListarTorneosCerrados(this);
+            servicioTorneos.Actualizar();
+            servicioTorneos.ListarCerrados(this);
             timer1.Enabled = true;
         }
 

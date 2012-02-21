@@ -121,7 +121,7 @@ namespace Slam
                 CboListaTorneos.SelectedIndex = -1;
                 PuntosServicio = (IPuntosServicio)AppContext.Instance.GetObject(ImplementaPuntos);
                 TorneoServicio = (IListadoTorneoServicio)AppContext.Instance.GetObject(ImplementaTorneos);
-                TorneoServicio.ListarTorneos(this);
+                TorneoServicio.Listar(this);
                 this.DialogResult = DialogResult.Cancel;
             }
             catch (Exception ex)

@@ -68,7 +68,7 @@ namespace Servicio
 
         #region Miembros de IListadoSedesServicio
 
-        public void ListarSedes(Servicio.InterfacesUI.IListadoSedes UI)
+        public void Listar(Servicio.InterfacesUI.IListadoSedes UI)
         {
             List<Sede> ListaSedes = repoSedes.Listar(UI.IdClub);
             List<Object> ListaUI = new List<object> ();

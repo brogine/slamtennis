@@ -32,7 +32,7 @@ namespace Slam
         {
             DtpDesde.Value = DateTime.Today.AddDays(-60);
             TorneosServicio = (IListadoTorneoServicio)AppContext.Instance.GetObject(ImplementaTorneos);
-            TorneosServicio.ListarTorneos(this);
+            TorneosServicio.Listar(this);
             this.ActualizarView();
         }
 

@@ -29,7 +29,7 @@ namespace Slam
             InitializeComponent();
             this.Text = "Nuevo Partido";
             servicioTorneos = (IListadoTorneoServicio)AppContext.Instance.GetObject(ImplementaTorneos);
-            servicioTorneos.ListarTorneosCerrados(this);
+            servicioTorneos.ListarCerrados(this);
             servicioPartido = (IPartidoServicio)AppContext.Instance.GetObject(ImplemetaPartidos);
             TxtResultado.Enabled = false;
             ChkEstado.Checked = true;
@@ -42,7 +42,7 @@ namespace Slam
             this.Text = "Modificar Partido";
             this.idpartido = IdPartido;
             servicioTorneos = (IListadoTorneoServicio)AppContext.Instance.GetObject(ImplementaTorneos);
-            servicioTorneos.ListarTorneosCerrados(this);
+            servicioTorneos.ListarCerrados(this);
             servicioPartido = (IPartidoServicio)AppContext.Instance.GetObject(ImplemetaPartidos);
             servicioPartido.Buscar(this);
             
