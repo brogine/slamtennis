@@ -60,7 +60,6 @@
     <Compile Include="Conexion\ConexionException.cs" />
     <Compile Include="Conexion\MySqlDB.cs" />
     <Compile Include="Conexion\SqlServerDB.cs" />
-    <Compile Include="Consola.cs" />
     <Compile Include="EmpleadoRepositorio.cs" />
     <Compile Include="EstadisticaRepositorio.cs" />
     <Compile Include="IAfiliacionRepositorio.cs" />

@@ -1,0 +1,285 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Repositorio.AfiliacionRepositorio" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="7.5" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAEAQAEAAAAAACAAAAoAAAAAAAAAgAAAAAAEAAAA=</HashCode>
+      <FileName>AfiliacionRepositorio.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Repositorio.ArbitroRepositorio" Collapsed="true">
+    <Position X="0.5" Y="3.75" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAEAQAEAAAAAACAAAAgAAAAAAAAAgAAAAAAEAAAA=</HashCode>
+      <FileName>ArbitroRepositorio.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Repositorio.CanchasRepositorio" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="9.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAEAQAEAAAAAACAAABgAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>CanchasRepositorio.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Repositorio.CategoriaRepositorio" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="11.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAEAQAEAAAAAASAAAAkAAAEQAAAAAAAAAAAEAAAA=</HashCode>
+      <FileName>CategoriaRepositorio.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Repositorio.ClubRepositorio" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="13" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAEAQAEAAAAAACAAABgAAAEAAAAAAAAAAAAEAAAA=</HashCode>
+      <FileName>ClubRepositorio.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Repositorio.ConexionException" Collapsed="true">
+    <Position X="9.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Conexion\ConexionException.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Repositorio.EmpleadoRepositorio" Collapsed="true">
+    <Position X="0.5" Y="5.25" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAEAQAEAAAAAACAAABgAAAAAAAAEAAAAAAAEAAAA=</HashCode>
+      <FileName>EmpleadoRepositorio.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Repositorio.EstadisticaRepositorio" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="13" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAEAQgAAAAAAACAAABgAAAAAAAAAAAAAAAGkABAA=</HashCode>
+      <FileName>EstadisticaRepositorio.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Repositorio.InscripcionRepositorio" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="7.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAEAQAEQACAAACAAABgAAAEEABAAAAAAAAAEAAAA=</HashCode>
+      <FileName>InscripcionRepositorio.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Repositorio.JugadorRepositorio" Collapsed="true">
+    <Position X="0.5" Y="2.75" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAEAQAGAAAAAACAAABgAAAABAAAAAAAAAAEEAAAA=</HashCode>
+      <FileName>JugadorRepositorio.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Repositorio.LoginRepositorio" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="9.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAEAQAAAAAEAACAAABAAAAAAAAAAAAAAAAAEAAAA=</HashCode>
+      <FileName>LoginRepositorio.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Repositorio.PartidoRepositorio" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="11.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAgEAQAEAAAAAACAAABgAAAAAAAAAAAAAAAAEBAAA=</HashCode>
+      <FileName>PartidoRepositorio.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Repositorio.PersonaRepositorio" Collapsed="true">
+    <Position X="0.5" Y="1" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAQAAAAAAAACAAABAAAAABAAAAAAAAAAAEAAAA=</HashCode>
+      <FileName>PersonaRepositorio.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Repositorio.PuntosRepositorio" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="13" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAEAQAAAAAAAACAAAAgAAEAAAAAAgAAAAAAAAAAA=</HashCode>
+      <FileName>PuntosRepositorio.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Repositorio.RepositorioExeption" Collapsed="true">
+    <Position X="7.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>RepositorioExeption.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Repositorio.SedesRepositorio" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="9.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAEAQAEAAAAAACAAABgAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>SedesRepositorio.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Repositorio.TorneoRepositorio" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="11.25" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAEAQAEAgAAAAGAAAAgAAAAgAAAAgCAAAAAEAAAA=</HashCode>
+      <FileName>TorneoRepositorio.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Repositorio.UbicacionRepositorio" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="13" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAIQAAAAAAAAGAAgAKAAACAAAAAAhACAAAMAAAAA=</HashCode>
+      <FileName>UbicacionRepositorio.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Repositorio.Conexiones.AbstractDB" Collapsed="true">
+    <Position X="0.75" Y="7.5" Width="3.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAEgCAAAAAAQCABFAACQAAAAAAAAAAAAA=</HashCode>
+      <FileName>Conexion\AbstractDB.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Repositorio.Conexiones.Conexion" Collapsed="true">
+    <Position X="1.5" Y="7.75" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>CAAAAAAQAEAIAAABEAAAAgAAAAFAAAAAQAAAAAAAAAA=</HashCode>
+      <FileName>Conexion\Conexion.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Repositorio.Conexiones.MySqlDB" Collapsed="true">
+    <Position X="0.5" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAgAAAAAAAQCAAHQACAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Conexion\MySqlDB.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Repositorio.Conexiones.SqlServerDB" Collapsed="true">
+    <Position X="3.75" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAgAAAAAAAQCAAHQACAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Conexion\SqlServerDB.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Interface Name="Repositorio.IAfiliacionRepositorio" Collapsed="true">
+    <Position X="7.75" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAQAEAAAAAACAAAAgAAAAAAAAAAAAAAAAEAAAA=</HashCode>
+      <FileName>IAfiliacionRepositorio.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Repositorio.IArbitroRepositorio" Collapsed="true">
+    <Position X="3.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAQAEAAAAAACAAAAgAAAAAAAAAAAAAAAAEAAAA=</HashCode>
+      <FileName>IArbitroRepositorio.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Repositorio.ICanchasRepositorio" Collapsed="true">
+    <Position X="11.25" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAQAEAAAAAACAAAAgAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ICanchasRepositorio.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Repositorio.ICategoriaRepositorio" Collapsed="true">
+    <Position X="13" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAQAEAAAAAASAAAAgAAAEAAAAAAAAAAAAEAAAA=</HashCode>
+      <FileName>ICategoriaRepositorio.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Repositorio.IClubRepositorio" Collapsed="true">
+    <Position X="7.75" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAQAEAAAAAACAAAAgAAAEAAAAAAAAAAAAEAAAA=</HashCode>
+      <FileName>IClubRepositorio.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Repositorio.IEmpleadoRepositorio" Collapsed="true">
+    <Position X="0.5" Y="4.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAQAEAAAAAACAAAAgAAAAAAAAEAAAAAAAEAAAA=</HashCode>
+      <FileName>IEmpleadoRepositorio.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Repositorio.IEstadisticaRepositorio" Collapsed="true">
+    <Position X="11.25" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAQgAAAAAAACAAAAgAAAAAAAAAAAAAAAGkABAA=</HashCode>
+      <FileName>IEstadisticaRepositorio.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Repositorio.IInscripcionRepositorio" Collapsed="true">
+    <Position X="13" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAQAEQACAAACAAAAgAAAEEABAAAAAAAAAEAAAA=</HashCode>
+      <FileName>IInscripcionRepositorio.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Repositorio.IJugadorRepositorio" Collapsed="true">
+    <Position X="0.5" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAQAEAAAAAACAAAAgAAAABAAAAAAAAAAEEAAAA=</HashCode>
+      <FileName>IJugadorRepositorio.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Repositorio.ILoginRepositorio" Collapsed="true">
+    <Position X="14.75" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAQAAAAAEAACAAAAAAAAAAAAAAAAAAAAAEAAAA=</HashCode>
+      <FileName>ILoginRepositorio.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Repositorio.IMapeador&lt;T&gt;" Collapsed="true">
+    <Position X="0.5" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>IMapeador.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Repositorio.IPartidoRepositorio" Collapsed="true">
+    <Position X="13" Y="6.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAQAEAAAAAACAAAAgAAAAAAAAAAAAAAAAEAAAA=</HashCode>
+      <FileName>IPartidoRepositorio.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Repositorio.IPuntosRepositorio" Collapsed="true">
+    <Position X="7.75" Y="7" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAQAAAAAAAACAAAAAAAEAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>IPuntosRepositorio.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Repositorio.ISedesRepositorio" Collapsed="true">
+    <Position X="9.5" Y="7" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAQAEAAAAAACAAAAgAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ISedesRepositorio.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Repositorio.ITorneoRepositorio" Collapsed="true">
+    <Position X="11.25" Y="7" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAQAEAgAAAAGAAAAgAAAAgAAAAACAAAAAEAAAA=</HashCode>
+      <FileName>ITorneoRepositorio.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Repositorio.IUbicacionRepositorio" Collapsed="true">
+    <Position X="13" Y="7" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAIAAAAAAAAAGAAgAIAAACAAAAAABACAAAEAAAAA=</HashCode>
+      <FileName>IUbicacionRepositorio.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
