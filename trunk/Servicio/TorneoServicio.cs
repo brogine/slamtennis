@@ -1,11 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using Servicio.InterfacesUI;
+using System.Data;
 using Dominio;
 using Repositorio;
-using System.Data;
+using Servicio.InterfacesUI;
 
 namespace Servicio
 {
