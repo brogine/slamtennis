@@ -14,11 +14,11 @@ namespace Repositorio
     public class AfiliacionRepositorio:IAfiliacionRepositorio,IMapeador<Afiliacion>
     {
         Conexion Conex;
-        Consola Cons;
+       
        public AfiliacionRepositorio()
         {
             Conex = new Conexion();
-            Cons = new Consola();
+          
 
 
         }

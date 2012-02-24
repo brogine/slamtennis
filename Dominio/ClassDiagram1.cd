@@ -1,0 +1,193 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Dominio.Afiliacion" Collapsed="true">
+    <Position X="3.5" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQAACAAAAQAAAAEAAAAAAAAAAIAAAACAAIAAAAGAAAg=</HashCode>
+      <FileName>Afiliacion.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Dominio.Arbitro" Collapsed="true">
+    <Position X="0.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAABAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAg=</HashCode>
+      <FileName>Arbitro.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Dominio.Cancha" Collapsed="true">
+    <Position X="3.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>gQACEIEAAAAAIAAAACAAAAAgAAAAAAAAAAAAAAAAAhA=</HashCode>
+      <FileName>Cancha.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Dominio.Categoria" Collapsed="true">
+    <Position X="5" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACCAAAAAAAAACAAAAAgAAAAAAAAQAEAAEABAAAAgg=</HashCode>
+      <FileName>Categoria.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Dominio.Club" Collapsed="true">
+    <Position X="1" Y="5.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AABCCAAAAAAAAACAAAAAgAAAAAAAAAAAAAAAAAAAQgg=</HashCode>
+      <FileName>Club.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Dominio.Contacto" Collapsed="true">
+    <Position X="0.5" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CAAAAAAAACAAAAAgAAAAAAAAAAAAAAAAAAAAAggAAAI=</HashCode>
+      <FileName>Contacto.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Dominio.DominioException">
+    <Position X="10.75" Y="2" Width="3" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>DominioException.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Dominio.Empleado" Collapsed="true">
+    <Position X="5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAACAAAAABAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAg=</HashCode>
+      <FileName>Empleado.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Dominio.Equipo" Collapsed="true">
+    <Position X="3" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAgAAAAAAAAAAAAEAAAABAAAAAAAAAAAAAAAAAAIAAA=</HashCode>
+      <FileName>Equipo.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Dominio.Estadisticas" Collapsed="true">
+    <Position X="4.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CAECiggDCAIAAACgAAIAMAEAAEAIAAAAAQAQQAAAgAg=</HashCode>
+      <FileName>Estadisticas.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Dominio.Inscripcion" Collapsed="true">
+    <Position X="3.5" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAACAACAQAABgEAAAQAAAAAAAAAAAAgAAAAIAAAAAg=</HashCode>
+      <FileName>Inscripcion.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Dominio.Jugador">
+    <Position X="2.5" Y="1.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAQCAAAEAAAAAAIAAAACQAAAAEAAAAAAAAAAAAAAAg=</HashCode>
+      <FileName>Jugador.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Dominio.Localidad" Collapsed="true">
+    <Position X="2.25" Y="4.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAgAAACACAAAAAAAAAAAAAAAg=</HashCode>
+      <FileName>Localidad.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Dominio.Login" Collapsed="true">
+    <Position X="0.75" Y="2.75" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAEACIABAAAAAAAAAAAAAAAAAAAAAAQCAAAEAgAAAAg=</HashCode>
+      <FileName>Login.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Dominio.Pais" Collapsed="true">
+    <Position X="0.75" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAACAAAAAAAgAAAAAAAAAAAAAAAAAAAAAg=</HashCode>
+      <FileName>Pais.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Dominio.Partido">
+    <Position X="8.5" Y="1.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAhACACQAQAABAEAAAQAAAAAAAAAAgAAAJoAAAAIQAg=</HashCode>
+      <FileName>Partido.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Dominio.Persona" Collapsed="true">
+    <Position X="2.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QAECAAABAASAAACEgAAAgKAAAQAgAhAAAAAQQEAAEEA=</HashCode>
+      <FileName>Persona.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Dominio.Provincia" Collapsed="true">
+    <Position X="2" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAQAAAAAAAAAgAAAAAAIAAAAAAAAAAAAAAg=</HashCode>
+      <FileName>Provincia.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Dominio.Puntos" Collapsed="true">
+    <Position X="4" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AABAAAAAAAAAAAAAAAAEAAAABAAAAAgAAAAIAAAAQAA=</HashCode>
+      <FileName>Puntos.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Dominio.Sede" Collapsed="true">
+    <Position X="1" Y="6.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QAACAAAAAAAAAAAAgAAAAIBAAAAAQAAAAIAAAECAAgA=</HashCode>
+      <FileName>Sede.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Dominio.Torneo" Collapsed="true">
+    <Position X="0.75" Y="7.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>gEABHIAAgACAAJCgggAEoAAABgAAQEAAAIAAAAKgQBg=</HashCode>
+      <FileName>Torneo.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Dominio.Ubicacion" Collapsed="true">
+    <Position X="3.25" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAQAAAAEAAAAAAAAAAAAAAAAAAAAAAAAgA=</HashCode>
+      <FileName>Ubicacion.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Enum Name="Dominio.TipoCancha" Collapsed="true">
+    <Position X="0.75" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAA=</HashCode>
+      <FileName>Cancha.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="Dominio.TipoSuperficie" Collapsed="true">
+    <Position X="2" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAACAAAAQAAAAAAAAAAIAAAACA=</HashCode>
+      <FileName>Cancha.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="Dominio.Tipo" Collapsed="true">
+    <Position X="2" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAABAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAEAAAA=</HashCode>
+      <FileName>Persona.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="Dominio.TipoTorneo" Collapsed="true">
+    <Position X="3.25" Y="6" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAEAAAAAAAAAAACAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Torneo.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="Dominio.EstadoTorneo" Collapsed="true">
+    <Position X="2" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAABAIAACAAAAAAAAAAAAAAAAAAIABAAgAA=</HashCode>
+      <FileName>Torneo.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
