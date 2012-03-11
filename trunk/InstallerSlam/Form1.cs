@@ -10,6 +10,7 @@ using System.Data.Common;
 using System.IO;
 using System.Management;
 using System.Diagnostics;
+using Microsoft.Win32;
 
 
 namespace InstallerSlam
@@ -21,6 +22,8 @@ namespace InstallerSlam
             InitializeComponent();
             Application.EnableVisualStyles();
         }
+
+        string discoSlam = "";
 
         private void FrmCrearBase_Load(object sender, EventArgs e)
         {
@@ -42,9 +45,15 @@ namespace InstallerSlam
 
             if (!cdslam)
             {
-                MessageBox.Show("Falta insetar el cd de instalacion de Slam Tenis");
+                MessageBox.Show("Falta insetar el cd de instalacion de Slam Tenis", "Slam Tenis", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            }
+            else
+            {
+                discoSlam = Unidad;
             }
 
+
+            //DisplayInstalledApplications2();
 
 
             //int count = 0;
@@ -71,6 +80,38 @@ namespace InstallerSlam
             //}
         }
 
+        bool AplicacionInstalada(string Nombre)
+        {
+            string registryKey = @"SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall";
+            bool MSSql = false;
+            
+            using (Microsoft.Win32.RegistryKey key = Registry.LocalMachine.OpenSubKey(registryKey))
+            {
+                var query = from a in key.GetSubKeyNames()
+                            let r = key.OpenSubKey(a)
+                            select new
+                            {
+                                Application = r.GetValue("DisplayName")
+                            };
+
+                foreach (var item in query)
+                {
+                    if (item.Application != null)
+                    {
+                        //if (item.Application.ToString() == "Microsoft SQL Server 2005")
+                        //{
+                        //    MSSql = true;
+                        //}
+                        if (item.Application.ToString() == Nombre)
+                        {
+                            MSSql = true;
+                        }
+                    }
+                }
+            }
+            return MSSql;
+        }
+
         void timer1_Tick(object sender, EventArgs e)
         {
             
@@ -79,8 +120,9 @@ namespace InstallerSlam
 
         private void BtnSql_Click(object sender, EventArgs e)
         {
-            groupBox1.Visible = false;
-            groupBox2.Visible = true;
+            //groupBox1.Visible = false;
+            //groupBox2.Visible = true;
+            PnlSqlServer.Visible = true;
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -150,6 +192,98 @@ namespace InstallerSlam
                 Process.Start(ubicacion + "Slam.exe");
             }
             this.Close();
+        }
+
+        private void CheckSWindAut_CheckedChanged(object sender, EventArgs e)
+        {
+            if (CheckSWindAut.Checked)
+            {
+                PnlWindowsAut.Visible = false;
+            }
+            else
+            {
+                PnlWindowsAut.Visible = true;
+            }
+        }
+
+        private void BtnContinuarMS_Click(object sender, EventArgs e)
+        {
+            IDbConnection Conn = null;
+            Application.DoEvents();
+            try
+            {
+                DbProviderFactory Dpf = DbProviderFactories.GetFactory("System.Data.SqlClient");
+                Conn = Dpf.CreateConnection();
+                if (CheckSWindAut.Checked)
+                {
+                    Conn.ConnectionString = "Server=" + TxtMsServidor.Text + ";Database=master;Integrated Security =SSPI;";
+                }
+                else
+                {
+                    Conn.ConnectionString = "Data Source=" + TxtMsServidor.Text + ";Initial Catalog=master;User ID=" + TxtMsUsuario.Text + ";Password=" + TxtMsClave.Text + ";Max Pool Size=1000;Connect Timeout=80";
+                }
+                Conn.Open();
+                IDbCommand Com = Conn.CreateCommand();
+
+                string script = string.Empty;
+
+                //Crear la base de datos
+
+                script += " USE master";
+                script += " ";
+                script += " if exists(select * from sysdatabases where name= 'SlamDB')";
+                script += " BEGIN";
+                script += "      drop database SlamDB";
+                script += " END";
+                script += " DECLARE @device_directory NVARCHAR(520),@comando varchar(500)";
+                script += " set @device_directory = ''";
+                script += " set @comando = ''";
+                script += " SELECT @device_directory = SUBSTRING(filename, 1, CHARINDEX(N'master.mdf', LOWER(filename)) - 1)";
+                script += " FROM master.dbo.sysaltfiles WHERE dbid = 1 AND fileid = 1";
+                script += " set @comando = N'CREATE DATABASE [SlamDB] ON PRIMARY (NAME = N' + char(39) + 'SlamDB' + char(39) + ', FILENAME = N' + char(39) + @device_directory + N'SlamDB.mdf' + char(39) + ') LOG ON (NAME = N' + char(39) + 'SlamDB_log' + char(39) + ',  FILENAME = N' + char(39) + '' + @device_directory + N'SlamDB.ldf' + char(39) + ')'";
+                script += " Execute(@comando)";
+                script += " ";
+
+                //script += " USE [SlamDB]";
+                //script += " ";
+                //script += " SET ANSI_NULLS ON";
+                //script += " ";
+                //script += " SET QUOTED_IDENTIFIER ON";
+                //script += " ";
+
+                Com.CommandText = script;
+                Com.ExecuteNonQuery();
+                GC.Collect();
+                GC.SuppressFinalize(Conn);
+
+                //Restaurar la base
+
+                script = string.Empty;
+
+                System.IO.StreamReader stream = new System.IO.StreamReader(discoSlam + @"Base de Datos\SQL SERVER\SlamDB.sql");
+                script = stream.ReadToEnd();
+                stream.Close();
+
+                Com.CommandText = script;
+                Com.ExecuteNonQuery();
+                GC.Collect();
+                GC.SuppressFinalize(Conn);
+
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+            finally
+            {
+                if (Conn != null)
+                {
+                    Conn.Close();
+                }
+                this.Close();
+            }
+            groupBox1.Visible = false;
+            groupBox2.Visible = true;
         }
 
 
