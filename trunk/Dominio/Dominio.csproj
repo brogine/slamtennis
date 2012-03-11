@@ -51,8 +51,11 @@
     <Compile Include="Cancha.cs" />
     <Compile Include="Categoria.cs" />
     <Compile Include="Club.cs" />
+    <Compile Include="ConfEmail.cs" />
     <Compile Include="Contacto.cs" />
+    <Compile Include="CuentaEmail.cs" />
     <Compile Include="DominioException.cs" />
+    <Compile Include="Email.cs" />
     <Compile Include="Empleado.cs" />
     <Compile Include="Equipo.cs" />
     <Compile Include="Estadisticas.cs" />
@@ -60,6 +63,7 @@
     <Compile Include="Jugador.cs" />
     <Compile Include="Localidad.cs" />
     <Compile Include="Login.cs" />
+    <Compile Include="MailingException.cs" />
     <Compile Include="Pais.cs" />
     <Compile Include="Partido.cs" />
     <Compile Include="Persona.cs" />
@@ -67,6 +71,7 @@
     <Compile Include="Provincia.cs" />
     <Compile Include="Puntos.cs" />
     <Compile Include="Sede.cs" />
+    <Compile Include="ServidorSMTP.cs" />
     <Compile Include="Torneo.cs" />
     <Compile Include="Ubicacion.cs" />
   </ItemGroup>
