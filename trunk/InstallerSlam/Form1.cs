@@ -52,32 +52,6 @@ namespace InstallerSlam
                 discoSlam = Unidad;
             }
 
-
-            //DisplayInstalledApplications2();
-
-
-            //int count = 0;
-            //string[] sss = Environment.GetLogicalDrives();
-
-            //foreach (string item in sss)
-            //{
-            //    DirectoryInfo currentDir = new DirectoryInfo(item);
-            //    string path = string.Format("win32_logicaldisk.deviceid=\"{0}\"", currentDir.Root.Name.Replace("\\", ""));
-            //    ManagementObject disk = new ManagementObject(path);
-            //    disk.Get();
-            //    string nombre = disk.GetText(TextFormat.CimDtd20);
-                
-            //}
-
-            //string path = string.Empty;  //= string.Format("win32_logicaldisk.deviceid=\"{0}\"", currentDir.Root.Name.Replace("\\", ""));
-            //ManagementObject disk = new ManagementObject(path);
-            //disk.Get();
-            //foreach (PropertyData property in disk.Properties)
-            //{
-            //    string name = property.Name.PadRight(25);
-            //    string value = (property.Value ?? string.Empty).ToString().PadRight(25);
-            //    Console.WriteLine("Nombre: {0} Valor: {1}", name, value);
-            //}
         }
 
         bool AplicacionInstalada(string Nombre)
@@ -120,9 +94,106 @@ namespace InstallerSlam
 
         private void BtnSql_Click(object sender, EventArgs e)
         {
-            //groupBox1.Visible = false;
-            //groupBox2.Visible = true;
-            PnlSqlServer.Visible = true;
+            if (AplicacionInstalada("Microsoft SQL Server 2005"))
+            {
+                PnlSqlServer.Visible = true;
+            }
+            else 
+            {
+                Process.Start(discoSlam + @"Base de Datos\SQL SERVER\sqlexpr32.exe");
+
+                bool running = true;
+                while (running != false)
+                {
+                    running = Running("sqlexpr32");
+                    Application.DoEvents();
+                    if (running)
+                    {
+                        System.Threading.Thread.Sleep(5000);
+                    }
+                }
+
+                String ConnString = "";
+                if (this.CheckSWindAut.Checked)
+                    ConnString = "Server=" + this.TxtServidor.Text + ";Database=SlamDB;Integrated Security =SSPI;";
+                else
+                    ConnString = "Server=" + TxtMsServidor.Text + ";Database=SlamDB;Uid=" + this.TxtMsUsuario.Text + ";Pwd=" + this.TxtMsClave.Text + ";";
+
+                //ListaNodos[CboConexiones.SelectedIndex].Attributes["ConnectionString"].Value = ConnString;
+                //doc.Save(dir);
+                GC.Collect();
+                GC.WaitForPendingFinalizers();
+                this.Close();
+                IDbConnection Conn = null;
+                Application.DoEvents();
+                try
+                {
+                    DbProviderFactory Dpf = DbProviderFactories.GetFactory("System.Data.SqlClient");
+                    Conn = Dpf.CreateConnection();
+                    if (CheckSWindAut.Checked)
+                    {
+                        Conn.ConnectionString = "Server=(Local)\\SQLEXPRESS;Database=master;Integrated Security =SSPI;";
+                    }
+                    else
+                    {
+                        Conn.ConnectionString = "Data Source=(Local)\\SQLEXPRESS;Initial Catalog=master;Integrated Security =SSPI;Max Pool Size=1000;Connect Timeout=80";
+                    }
+                    Conn.Open();
+                    IDbCommand Com = Conn.CreateCommand();
+
+                    string script = string.Empty;
+
+                    //Crear la base de datos
+
+                    script += " USE master";
+                    script += " ";
+                    script += " if exists(select * from sysdatabases where name= 'SlamDB')";
+                    script += " BEGIN";
+                    script += "      drop database SlamDB";
+                    script += " END";
+                    script += " DECLARE @device_directory NVARCHAR(520),@comando varchar(500)";
+                    script += " set @device_directory = ''";
+                    script += " set @comando = ''";
+                    script += " SELECT @device_directory = SUBSTRING(filename, 1, CHARINDEX(N'master.mdf', LOWER(filename)) - 1)";
+                    script += " FROM master.dbo.sysaltfiles WHERE dbid = 1 AND fileid = 1";
+                    script += " set @comando = N'CREATE DATABASE [SlamDB] ON PRIMARY (NAME = N' + char(39) + 'SlamDB' + char(39) + ', FILENAME = N' + char(39) + @device_directory + N'SlamDB.mdf' + char(39) + ') LOG ON (NAME = N' + char(39) + 'SlamDB_log' + char(39) + ',  FILENAME = N' + char(39) + '' + @device_directory + N'SlamDB.ldf' + char(39) + ')'";
+                    script += " Execute(@comando)";
+                    script += " ";
+
+                    Com.CommandText = script;
+                    Com.ExecuteNonQuery();
+                    GC.Collect();
+                    GC.SuppressFinalize(Conn);
+
+                    //Restaurar la base
+
+                    script = string.Empty;
+
+                    System.IO.StreamReader stream = new System.IO.StreamReader(discoSlam + @"Base de Datos\SQL SERVER\SlamDB.sql");
+                    script = stream.ReadToEnd();
+                    stream.Close();
+
+                    Com.CommandText = script;
+                    Com.ExecuteNonQuery();
+                    GC.Collect();
+                    GC.SuppressFinalize(Conn);
+
+                }
+                catch (Exception ex)
+                {
+                    throw new Exception(ex.Message);
+                }
+                finally
+                {
+                    if (Conn != null)
+                    {
+                        Conn.Close();
+                    }
+                    //this.Close();
+                }
+                groupBox1.Visible = false;
+                groupBox2.Visible = true;
+            }
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -196,7 +267,6 @@ namespace InstallerSlam
             GC.WaitForFullGCComplete();
             return running;
         }
-
 
         private void CheckAut_CheckedChanged(object sender, EventArgs e)
         {
@@ -323,157 +393,108 @@ namespace InstallerSlam
             groupBox4.Visible = true;
         }
 
+        private void BtnContinuarMy_Click(object sender, EventArgs e)
+        {
+            IDbConnection Conn = null;
+            try
+            {
+                DbProviderFactory Dpf = DbProviderFactories.GetFactory("MySql.Data.MySqlClient");
+                Conn = Dpf.CreateConnection();
+                Conn.ConnectionString = "Server=" + TxtServidorMy.Text + ";Database=mysql;Uid=" + TxtUsuarioMY.Text + ";Pwd=" + TxtClaveMy.Text +";";
+                Conn.Open();
+                IDbCommand Com = Conn.CreateCommand();
 
-        //private void button1_Click(object sender, EventArgs e)
-        //{
-        //    IDbConnection Conn = null;
-        //    try
-        //    {
-        //        DbProviderFactory Dpf = DbProviderFactories.GetFactory("System.Data.SqlClient");
-        //        Conn = Dpf.CreateConnection();
-        //        Conn.ConnectionString = "Server=(Local)\\SQLEXPRESS;Database=master;Integrated Security =SSPI;";
-        //        Conn.Open();
-        //        IDbCommand Com = Conn.CreateCommand();
+                string script = string.Empty;
+                System.IO.StreamReader stream = new System.IO.StreamReader(discoSlam + @"Base de Datos\MySQL\MySqlSlamDb.sql");
+                script = stream.ReadToEnd();
+                stream.Close();
 
-        //        string script = string.Empty;
+                Com.CommandText = script;
+                Com.ExecuteNonQuery();
+                GC.Collect();
+                GC.SuppressFinalize(Conn);
 
-        //        //Crear la base de datos
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+            finally
+            {
+                if (Conn != null)
+                {
+                    Conn.Close();
+                }
+                this.Close();
+            }
+            groupBox1.Visible = false;
+            groupBox2.Visible = true;
+        }
 
-        //        script += " USE master";
-        //        script += " ";
-        //        script += " if exists(select * from sysdatabases where name= 'SlamDB')";
-        //        script += " BEGIN";
-        //        script += "      drop database SlamDB";
-        //        script += " END";
-        //        script += " DECLARE @device_directory NVARCHAR(520),@comando varchar(500)";
-        //        script += " set @device_directory = ''";
-        //        script += " set @comando = ''";
-        //        script += " SELECT @device_directory = SUBSTRING(filename, 1, CHARINDEX(N'master.mdf', LOWER(filename)) - 1)";
-        //        script += " FROM master.dbo.sysaltfiles WHERE dbid = 1 AND fileid = 1";
-        //        script += " set @comando = N'CREATE DATABASE [SlamDB] ON PRIMARY (NAME = N' + char(39) + 'SlamDB' + char(39) + ', FILENAME = N' + char(39) + @device_directory + N'SlamDB.mdf' + char(39) + ') LOG ON (NAME = N' + char(39) + 'SlamDB_log' + char(39) + ',  FILENAME = N' + char(39) + '' + @device_directory + N'SlamDB.ldf' + char(39) + ')'";
-        //        script += " Execute(@comando)";
-        //        script += " ";
-        //        //script += " USE [SlamDB]";
-        //        //script += " ";
-        //        //script += " SET ANSI_NULLS ON";
-        //        //script += " ";
-        //        //script += " SET QUOTED_IDENTIFIER ON";
-        //        //script += " ";
+        private void BtnMySQl_Click(object sender, EventArgs e)
+        {
+            if (AplicacionInstalada("MySQL Server 5.0"))
+            {
+                this.PnlMySQL.Visible = true;
+            }
+            else
+            {
+                Process.Start(discoSlam + @"Base de Datos\MySQL\MySQL-Setup.exe");
 
-        //        Com.CommandText = script;
-        //        Com.ExecuteNonQuery();
-        //        GC.Collect();
-        //        GC.SuppressFinalize(Conn);
+                bool running = true;
+                while (running != false)
+                {
+                    running = Running("MySQL-Setup");
+                    Application.DoEvents();
+                    if (running)
+                    {
+                        System.Threading.Thread.Sleep(5000);
+                    }
+                }
 
-        //        //Restaurar la base
+                IDbConnection Conn = null;
+                try
+                {
+                    DbProviderFactory Dpf = DbProviderFactories.GetFactory("MySql.Data.MySqlClient");
+                    Conn = Dpf.CreateConnection();
+                    Conn.ConnectionString = "Server=localhost;Database=mysql;Uid=root;Pwd=;";
+                    Conn.Open();
+                    IDbCommand Com = Conn.CreateCommand();
 
-        //        script = string.Empty;
-        //        string ubicacion = System.AppDomain.CurrentDomain.BaseDirectory;
+                    string script = string.Empty;
+                   
+                    System.IO.StreamReader stream = new System.IO.StreamReader(discoSlam + @"Base de Datos\MySQL\MySqlSlamDb.sql");
+                    script = stream.ReadToEnd();
+                    stream.Close();
 
-        //        System.IO.StreamReader stream = new System.IO.StreamReader(ubicacion + "SlamDb.sql");
-        //        script = stream.ReadToEnd();
-        //        stream.Close();
+                    Com.CommandText = script;
+                    Com.ExecuteNonQuery();
+                    GC.Collect();
+                    GC.SuppressFinalize(Conn);
 
-        //        //script += "RESTORE DATABASE ";
-        //        //script += " SlamDB ";
-        //        //script += " FROM ";
-        //        //script += " DISK='" + ubicacion + "SlamDB.bak' ";
-        //        //script += " WITH REPLACE";
+                }
+                catch (Exception ex)
+                {
+                    throw new Exception(ex.Message);
+                }
+                finally
+                {
+                    if (Conn != null)
+                    {
+                        Conn.Close();
+                    }
+                }
+                groupBox1.Visible = false;
+                groupBox2.Visible = true;
+            }
+        }
 
-        //        Com.CommandText = script;
-        //        Com.ExecuteNonQuery();
-        //        GC.Collect();
-        //        GC.SuppressFinalize(Conn);
 
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        throw new Exception(ex.Message);
-        //    }
-        //    finally
-        //    {
-        //        if (Conn != null)
-        //        {
-        //            Conn.Close();
-        //        }
-        //        this.Close();
-        //    }
-        //}
+      
 
         //private void BtnMySQl_Click(object sender, EventArgs e)
         //{
-        //    IDbConnection Conn = null;
-        //    try
-        //    {
-        //        DbProviderFactory Dpf = DbProviderFactories.GetFactory("MySql.Data.MySqlClient");
-        //        Conn = Dpf.CreateConnection();
-        //        Conn.ConnectionString = "Server=localhost;Database=SlamDB;Uid=root;Pwd=;";
-        //        Conn.Open();
-        //        IDbCommand Com = Conn.CreateCommand();
-
-        //        string script = string.Empty;
-
-        //        ////Crear la base de datos
-
-        //        //script += " USE master";
-        //        //script += " ";
-        //        //script += " if exists(select * from sysdatabases where name= 'SlamDB')";
-        //        //script += " BEGIN";
-        //        //script += "      drop database SlamDB";
-        //        //script += " END";
-        //        //script += " DECLARE @device_directory NVARCHAR(520),@comando varchar(500)";
-        //        //script += " set @device_directory = ''";
-        //        //script += " set @comando = ''";
-        //        //script += " SELECT @device_directory = SUBSTRING(filename, 1, CHARINDEX(N'master.mdf', LOWER(filename)) - 1)";
-        //        //script += " FROM master.dbo.sysaltfiles WHERE dbid = 1 AND fileid = 1";
-        //        //script += " set @comando = N'CREATE DATABASE [SlamDB] ON PRIMARY (NAME = N' + char(39) + 'SlamDB' + char(39) + ', FILENAME = N' + char(39) + @device_directory + N'SlamDB.mdf' + char(39) + ') LOG ON (NAME = N' + char(39) + 'SlamDB_log' + char(39) + ',  FILENAME = N' + char(39) + '' + @device_directory + N'SlamDB.ldf' + char(39) + ')'";
-        //        //script += " Execute(@comando)";
-        //        //script += " ";
-        //        ////script += " USE [SlamDB]";
-        //        ////script += " ";
-        //        ////script += " SET ANSI_NULLS ON";
-        //        ////script += " ";
-        //        ////script += " SET QUOTED_IDENTIFIER ON";
-        //        ////script += " ";
-
-        //        //Com.CommandText = script;
-        //        //Com.ExecuteNonQuery();
-        //        //GC.Collect();
-        //        //GC.SuppressFinalize(Conn);
-
-        //        ////Restaurar la base
-
-        //        script = string.Empty;
-        //        string ubicacion = System.AppDomain.CurrentDomain.BaseDirectory;
-
-        //        System.IO.StreamReader stream = new System.IO.StreamReader(ubicacion + "MySqlSlamDb.sql");
-        //        script = stream.ReadToEnd();
-        //        stream.Close();
-
-        //        //script += "RESTORE DATABASE ";
-        //        //script += " SlamDB ";
-        //        //script += " FROM ";
-        //        //script += " DISK='" + ubicacion + "SlamDB.bak' ";
-        //        //script += " WITH REPLACE";
-
-        //        Com.CommandText = script;
-        //        Com.ExecuteNonQuery();
-        //        GC.Collect();
-        //        GC.SuppressFinalize(Conn);
-
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        throw new Exception(ex.Message);
-        //    }
-        //    finally
-        //    {
-        //        if (Conn != null)
-        //        {
-        //            Conn.Close();
-        //        }
-        //        this.Close();
-        //    }
+        //    
         //}
 
         //private void BtnSql_MouseDown(object sender, MouseEventArgs e)
