@@ -23,7 +23,7 @@ namespace InstallerSlam
             Application.EnableVisualStyles();
         }
 
-        string discoSlam = "";
+        string discoSlam = "I:\\";
 
         private void FrmCrearBase_Load(object sender, EventArgs e)
         {
@@ -127,6 +127,17 @@ namespace InstallerSlam
 
         private void button1_Click(object sender, EventArgs e)
         {
+            Process.Start(discoSlam + @"Web Setup\setup.exe");
+            //bool running = true;
+            //while (running != false)
+            //{
+            //    running = Running("msiexec");
+            //    Application.DoEvents();
+            //    if (running)
+            //    {
+            System.Threading.Thread.Sleep(5000);
+            //    }                
+            //}
             groupBox2.Visible = false;
             groupBox4.Visible = true;
         }
@@ -164,6 +175,26 @@ namespace InstallerSlam
         void FinalizarWizard()
         {
             PnlAjax.Visible = false;
+        }
+
+        bool Running(string app)
+        {
+            bool running = false;
+            foreach (var item in Process.GetProcesses())
+            {
+                if (item.ProcessName == app)
+                {
+                    running = true;
+                    break;
+                }
+                else
+                {
+                    running = false;
+                }
+            }
+            GC.Collect();
+            GC.WaitForFullGCComplete();
+            return running;
         }
 
 
@@ -280,10 +311,16 @@ namespace InstallerSlam
                 {
                     Conn.Close();
                 }
-                this.Close();
+                //this.Close();
             }
             groupBox1.Visible = false;
             groupBox2.Visible = true;
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            groupBox2.Visible = false;
+            groupBox4.Visible = true;
         }
 
 
