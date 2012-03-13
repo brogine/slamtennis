@@ -113,6 +113,10 @@
       <Project>{31C1D97C-0D78-423A-91C6-9C31BDCE3AA4}</Project>
       <Name>Dominio</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Repositorio\Repositorio.csproj">
+      <Project>{09F46F6B-190C-46CD-8D8E-4BB117CDD988}</Project>
+      <Name>Repositorio</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

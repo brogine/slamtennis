@@ -48,6 +48,7 @@
             this.BtnSql = new System.Windows.Forms.Button();
             this.LblInfo = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.button3 = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
@@ -72,7 +73,14 @@
             this.label10 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.PnlAjax = new System.Windows.Forms.Panel();
-            this.button3 = new System.Windows.Forms.Button();
+            this.PnlMySQL = new System.Windows.Forms.Panel();
+            this.BtnContinuarMy = new System.Windows.Forms.Button();
+            this.TxtUsuarioMY = new System.Windows.Forms.TextBox();
+            this.TxtClaveMy = new System.Windows.Forms.TextBox();
+            this.label14 = new System.Windows.Forms.Label();
+            this.label15 = new System.Windows.Forms.Label();
+            this.TxtServidorMy = new System.Windows.Forms.TextBox();
+            this.label16 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.PnlSqlServer.SuspendLayout();
             this.PnlWindowsAut.SuspendLayout();
@@ -82,6 +90,7 @@
             this.PnlConf.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.PnlAjax.SuspendLayout();
+            this.PnlMySQL.SuspendLayout();
             this.SuspendLayout();
             // 
             // label1
@@ -99,6 +108,7 @@
             // groupBox1
             // 
             this.groupBox1.BackColor = System.Drawing.Color.Transparent;
+            this.groupBox1.Controls.Add(this.PnlMySQL);
             this.groupBox1.Controls.Add(this.PnlSqlServer);
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.BtnMySQl);
@@ -233,7 +243,7 @@
             this.BtnMySQl.Size = new System.Drawing.Size(114, 83);
             this.BtnMySQl.TabIndex = 1;
             this.BtnMySQl.UseVisualStyleBackColor = true;
-            this.BtnMySQl.Click += new System.EventHandler(this.BtnSql_Click);
+            this.BtnMySQl.Click += new System.EventHandler(this.BtnMySQl_Click);
             // 
             // BtnSql
             // 
@@ -274,6 +284,18 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Aplicacion web";
             this.groupBox2.Visible = false;
+            // 
+            // button3
+            // 
+            this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button3.Font = new System.Drawing.Font("Cambria", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button3.Location = new System.Drawing.Point(345, 186);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(93, 40);
+            this.button3.TabIndex = 8;
+            this.button3.Text = "Omitir";
+            this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // label3
             // 
@@ -557,17 +579,83 @@
             this.PnlAjax.TabIndex = 9;
             this.PnlAjax.Visible = false;
             // 
-            // button3
+            // PnlMySQL
             // 
-            this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button3.Font = new System.Drawing.Font("Cambria", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button3.Location = new System.Drawing.Point(345, 186);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(93, 40);
-            this.button3.TabIndex = 8;
-            this.button3.Text = "Omitir";
-            this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
+            this.PnlMySQL.Controls.Add(this.TxtUsuarioMY);
+            this.PnlMySQL.Controls.Add(this.TxtClaveMy);
+            this.PnlMySQL.Controls.Add(this.BtnContinuarMy);
+            this.PnlMySQL.Controls.Add(this.label14);
+            this.PnlMySQL.Controls.Add(this.label15);
+            this.PnlMySQL.Controls.Add(this.TxtServidorMy);
+            this.PnlMySQL.Controls.Add(this.label16);
+            this.PnlMySQL.Location = new System.Drawing.Point(29, 64);
+            this.PnlMySQL.Name = "PnlMySQL";
+            this.PnlMySQL.Size = new System.Drawing.Size(394, 152);
+            this.PnlMySQL.TabIndex = 4;
+            this.PnlMySQL.Visible = false;
+            // 
+            // BtnContinuarMy
+            // 
+            this.BtnContinuarMy.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BtnContinuarMy.Font = new System.Drawing.Font("Cambria", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BtnContinuarMy.Location = new System.Drawing.Point(298, 98);
+            this.BtnContinuarMy.Name = "BtnContinuarMy";
+            this.BtnContinuarMy.Size = new System.Drawing.Size(93, 40);
+            this.BtnContinuarMy.TabIndex = 8;
+            this.BtnContinuarMy.Text = "Continuar";
+            this.BtnContinuarMy.UseVisualStyleBackColor = true;
+            this.BtnContinuarMy.Click += new System.EventHandler(this.BtnContinuarMy_Click);
+            // 
+            // TxtUsuarioMY
+            // 
+            this.TxtUsuarioMY.Location = new System.Drawing.Point(120, 48);
+            this.TxtUsuarioMY.Name = "TxtUsuarioMY";
+            this.TxtUsuarioMY.Size = new System.Drawing.Size(146, 23);
+            this.TxtUsuarioMY.TabIndex = 4;
+            this.TxtUsuarioMY.Text = "root";
+            // 
+            // TxtClaveMy
+            // 
+            this.TxtClaveMy.Location = new System.Drawing.Point(120, 79);
+            this.TxtClaveMy.Name = "TxtClaveMy";
+            this.TxtClaveMy.Size = new System.Drawing.Size(146, 23);
+            this.TxtClaveMy.TabIndex = 6;
+            this.TxtClaveMy.UseSystemPasswordChar = true;
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Location = new System.Drawing.Point(58, 51);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(53, 15);
+            this.label14.TabIndex = 3;
+            this.label14.Text = "Usuario:";
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Location = new System.Drawing.Point(71, 83);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(40, 15);
+            this.label15.TabIndex = 5;
+            this.label15.Text = "Clave:";
+            // 
+            // TxtServidorMy
+            // 
+            this.TxtServidorMy.Location = new System.Drawing.Point(120, 14);
+            this.TxtServidorMy.Name = "TxtServidorMy";
+            this.TxtServidorMy.Size = new System.Drawing.Size(146, 23);
+            this.TxtServidorMy.TabIndex = 1;
+            this.TxtServidorMy.Text = "localhost";
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Location = new System.Drawing.Point(58, 17);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(57, 15);
+            this.label16.TabIndex = 0;
+            this.label16.Text = "Servidor:";
             // 
             // Form1
             // 
@@ -577,8 +665,8 @@
             this.BackgroundImage = global::InstallerSlam.Properties.Resources.B_cesped1;
             this.ClientSize = new System.Drawing.Size(554, 439);
             this.ControlBox = false;
-            this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
+            this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.PnlAjax);
             this.Controls.Add(this.groupBox4);
@@ -609,6 +697,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.PnlAjax.ResumeLayout(false);
             this.PnlAjax.PerformLayout();
+            this.PnlMySQL.ResumeLayout(false);
+            this.PnlMySQL.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -659,5 +749,13 @@
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Button BtnContinuarMS;
         private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Panel PnlMySQL;
+        private System.Windows.Forms.TextBox TxtUsuarioMY;
+        private System.Windows.Forms.TextBox TxtClaveMy;
+        private System.Windows.Forms.Button BtnContinuarMy;
+        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.TextBox TxtServidorMy;
+        private System.Windows.Forms.Label label16;
     }
 }
