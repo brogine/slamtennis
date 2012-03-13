@@ -34,7 +34,7 @@ namespace Reportes
                     RptRankingCategoria rptRankingCategoria = new RptRankingCategoria();
                     this.IdCategoria = (int)Sender;
                     ReporteActual = rptRankingCategoria;
-                    servicioJugadores.ListarJugadoresCategoria(this);
+                    servicioJugadores.ListarPorCategoria(this);
                     return ReporteActual;
                 case "Llave":
                     ILlaveTorneoServicio servicioLlave = new TorneoServicio();
