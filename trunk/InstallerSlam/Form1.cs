@@ -11,6 +11,7 @@ using System.IO;
 using System.Management;
 using System.Diagnostics;
 using Microsoft.Win32;
+using System.Xml;
 
 
 namespace InstallerSlam
@@ -112,37 +113,26 @@ namespace InstallerSlam
                         System.Threading.Thread.Sleep(5000);
                     }
                 }
-
-                String ConnString = "";
-                if (this.CheckSWindAut.Checked)
-                    ConnString = "Server=" + this.TxtServidor.Text + ";Database=SlamDB;Integrated Security =SSPI;";
-                else
-                    ConnString = "Server=" + TxtMsServidor.Text + ";Database=SlamDB;Uid=" + this.TxtMsUsuario.Text + ";Pwd=" + this.TxtMsClave.Text + ";";
-
-                //ListaNodos[CboConexiones.SelectedIndex].Attributes["ConnectionString"].Value = ConnString;
-                //doc.Save(dir);
-                GC.Collect();
-                GC.WaitForPendingFinalizers();
-                this.Close();
-                IDbConnection Conn = null;
-                Application.DoEvents();
+                
+                XmlNodeList ListaNodos;
+                XmlDocument doc = new XmlDocument();
+                string dir = System.AppDomain.CurrentDomain.BaseDirectory + "\\Configuracion.xml";
                 try
                 {
-                    DbProviderFactory Dpf = DbProviderFactories.GetFactory("System.Data.SqlClient");
-                    Conn = Dpf.CreateConnection();
-                    if (CheckSWindAut.Checked)
-                    {
-                        Conn.ConnectionString = "Server=(Local)\\SQLEXPRESS;Database=master;Integrated Security =SSPI;";
-                    }
-                    else
-                    {
-                        Conn.ConnectionString = "Data Source=(Local)\\SQLEXPRESS;Initial Catalog=master;Integrated Security =SSPI;Max Pool Size=1000;Connect Timeout=80";
-                    }
-                    Conn.Open();
-                    IDbCommand Com = Conn.CreateCommand();
+                    doc.Load(dir);
+                }
+                catch (Exception)
+                {
+                    throw new Exception("El archivo de Configuración no se encuentra.");
+                }
 
+                ListaNodos = doc.GetElementsByTagName("config");
+
+                try{
+                    string cadena = string.Empty;
+                    cadena = "Server=(Local)\\SQLEXPRESS;Database=master;Integrated Security =SSPI;";
+                    
                     string script = string.Empty;
-
                     //Crear la base de datos
 
                     script += " USE master";
@@ -160,10 +150,16 @@ namespace InstallerSlam
                     script += " Execute(@comando)";
                     script += " ";
 
-                    Com.CommandText = script;
-                    Com.ExecuteNonQuery();
+
+                    ListaNodos[0].Attributes["ConnectionString"].Value = cadena;
+                    ListaNodos[0].Attributes["Default"].Value = "True";
+                    ListaNodos[1].Attributes["Default"].Value = "False";
+                    doc.Save(dir);
+
+                    Repositorio.Conexiones.Conexion cnn = new Repositorio.Conexiones.Conexion();
+                    cnn.ActualizarOEliminar(script);
                     GC.Collect();
-                    GC.SuppressFinalize(Conn);
+                    GC.SuppressFinalize(cnn);
 
                     //Restaurar la base
 
@@ -173,23 +169,19 @@ namespace InstallerSlam
                     script = stream.ReadToEnd();
                     stream.Close();
 
-                    Com.CommandText = script;
-                    Com.ExecuteNonQuery();
+                    cnn.ActualizarOEliminar(script);
                     GC.Collect();
-                    GC.SuppressFinalize(Conn);
+                    GC.SuppressFinalize(cnn);
 
+                    doc.Load(dir);
+                    ListaNodos[0].Attributes["ConnectionString"].Value = cadena.Replace("master", "SlamDb");
+                    ListaNodos[0].Attributes["Default"].Value = "True";
+                    ListaNodos[1].Attributes["Default"].Value = "False";
+                    doc.Save(dir);
                 }
                 catch (Exception ex)
                 {
                     throw new Exception(ex.Message);
-                }
-                finally
-                {
-                    if (Conn != null)
-                    {
-                        Conn.Close();
-                    }
-                    //this.Close();
                 }
                 groupBox1.Visible = false;
                 groupBox2.Visible = true;
@@ -215,6 +207,11 @@ namespace InstallerSlam
 
         private void button2_Click(object sender, EventArgs e)
         {
+            if (TxtEmail.Text == string.Empty || TxtNombre.Text == string.Empty || TxtClave.Text == string.Empty)
+            {
+                MessageBox.Show("Por Favor complete todos los campos...", "Configuracion de email", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                return;
+            }
             groupBox4.Visible = false;
             PnlAjax.Visible = true;
             System.Threading.Thread.Sleep(4000);
@@ -309,25 +306,30 @@ namespace InstallerSlam
 
         private void BtnContinuarMS_Click(object sender, EventArgs e)
         {
-            IDbConnection Conn = null;
-            Application.DoEvents();
+            XmlNodeList ListaNodos;
+            XmlDocument doc = new XmlDocument();
+            string dir = System.AppDomain.CurrentDomain.BaseDirectory + "\\Configuracion.xml";
             try
             {
-                DbProviderFactory Dpf = DbProviderFactories.GetFactory("System.Data.SqlClient");
-                Conn = Dpf.CreateConnection();
-                if (CheckSWindAut.Checked)
-                {
-                    Conn.ConnectionString = "Server=" + TxtMsServidor.Text + ";Database=master;Integrated Security =SSPI;";
-                }
+                doc.Load(dir);
+            }
+            catch (Exception)
+            {
+                throw new Exception("El archivo de Configuración no se encuentra.");
+            }
+
+            ListaNodos = doc.GetElementsByTagName("config");
+
+            try
+            {
+                string cadena = string.Empty;
+              
+                if (this.CheckSWindAut.Checked)
+                    cadena = "Server=" + this.TxtMsServidor.Text + ";Database=master;Integrated Security =SSPI;";
                 else
-                {
-                    Conn.ConnectionString = "Data Source=" + TxtMsServidor.Text + ";Initial Catalog=master;User ID=" + TxtMsUsuario.Text + ";Password=" + TxtMsClave.Text + ";Max Pool Size=1000;Connect Timeout=80";
-                }
-                Conn.Open();
-                IDbCommand Com = Conn.CreateCommand();
+                    cadena = "Server=" + TxtMsServidor.Text + ";Database=master;Uid=" + this.TxtMsUsuario.Text + ";Pwd=" + this.TxtMsClave.Text + ";";
 
                 string script = string.Empty;
-
                 //Crear la base de datos
 
                 script += " USE master";
@@ -345,17 +347,15 @@ namespace InstallerSlam
                 script += " Execute(@comando)";
                 script += " ";
 
-                //script += " USE [SlamDB]";
-                //script += " ";
-                //script += " SET ANSI_NULLS ON";
-                //script += " ";
-                //script += " SET QUOTED_IDENTIFIER ON";
-                //script += " ";
+                ListaNodos[0].Attributes["ConnectionString"].Value = cadena;
+                ListaNodos[0].Attributes["Default"].Value = "True";
+                ListaNodos[1].Attributes["Default"].Value = "False";
+                doc.Save(dir);
 
-                Com.CommandText = script;
-                Com.ExecuteNonQuery();
+                Repositorio.Conexiones.Conexion cnn = new Repositorio.Conexiones.Conexion();
+                cnn.ActualizarOEliminar(script);
                 GC.Collect();
-                GC.SuppressFinalize(Conn);
+                GC.SuppressFinalize(cnn);
 
                 //Restaurar la base
 
@@ -365,23 +365,20 @@ namespace InstallerSlam
                 script = stream.ReadToEnd();
                 stream.Close();
 
-                Com.CommandText = script;
-                Com.ExecuteNonQuery();
+                cnn.ActualizarOEliminar(script);
                 GC.Collect();
-                GC.SuppressFinalize(Conn);
+                GC.SuppressFinalize(cnn);
+
+                doc.Load(dir);
+                ListaNodos[0].Attributes["ConnectionString"].Value = cadena.Replace("master", "SlamDb");
+                ListaNodos[0].Attributes["Default"].Value = "True";
+                ListaNodos[1].Attributes["Default"].Value = "False";
+                doc.Save(dir);
 
             }
             catch (Exception ex)
             {
                 throw new Exception(ex.Message);
-            }
-            finally
-            {
-                if (Conn != null)
-                {
-                    Conn.Close();
-                }
-                //this.Close();
             }
             groupBox1.Visible = false;
             groupBox2.Visible = true;
@@ -395,37 +392,49 @@ namespace InstallerSlam
 
         private void BtnContinuarMy_Click(object sender, EventArgs e)
         {
-            IDbConnection Conn = null;
+            XmlNodeList ListaNodos;
+            XmlDocument doc = new XmlDocument();
+            string dir = System.AppDomain.CurrentDomain.BaseDirectory + "\\Configuracion.xml";
             try
             {
-                DbProviderFactory Dpf = DbProviderFactories.GetFactory("MySql.Data.MySqlClient");
-                Conn = Dpf.CreateConnection();
-                Conn.ConnectionString = "Server=" + TxtServidorMy.Text + ";Database=mysql;Uid=" + TxtUsuarioMY.Text + ";Pwd=" + TxtClaveMy.Text +";";
-                Conn.Open();
-                IDbCommand Com = Conn.CreateCommand();
+                doc.Load(dir);
+            }
+            catch (Exception)
+            {
+                throw new Exception("El archivo de Configuración no se encuentra.");
+            }
 
+            ListaNodos = doc.GetElementsByTagName("config");
+
+            try
+            {
+                string cadena = string.Empty;
+                cadena = "Server=" + TxtServidorMy.Text + ";Database=mysql;Uid=" + TxtUsuarioMY.Text + ";Pwd=" + TxtClaveMy.Text +";";
                 string script = string.Empty;
                 System.IO.StreamReader stream = new System.IO.StreamReader(discoSlam + @"Base de Datos\MySQL\MySqlSlamDb.sql");
                 script = stream.ReadToEnd();
                 stream.Close();
 
-                Com.CommandText = script;
-                Com.ExecuteNonQuery();
+                ListaNodos[0].Attributes["Default"].Value = "False";
+                ListaNodos[1].Attributes["ConnectionString"].Value = cadena;
+                ListaNodos[1].Attributes["Default"].Value = "True";
+                doc.Save(dir);
+
+                Repositorio.Conexiones.Conexion cnn = new Repositorio.Conexiones.Conexion();
+                cnn.ActualizarOEliminar(script);
                 GC.Collect();
-                GC.SuppressFinalize(Conn);
+                GC.SuppressFinalize(cnn);
+
+                doc.Load(dir);
+                ListaNodos[0].Attributes["Default"].Value = "False";
+                ListaNodos[1].Attributes["ConnectionString"].Value = cadena.Replace("mysql", "SlamDb");
+                ListaNodos[1].Attributes["Default"].Value = "True";
+                doc.Save(dir);
 
             }
             catch (Exception ex)
             {
                 throw new Exception(ex.Message);
-            }
-            finally
-            {
-                if (Conn != null)
-                {
-                    Conn.Close();
-                }
-                this.Close();
             }
             groupBox1.Visible = false;
             groupBox2.Visible = true;
@@ -452,37 +461,50 @@ namespace InstallerSlam
                     }
                 }
 
-                IDbConnection Conn = null;
+                XmlNodeList ListaNodos;
+                XmlDocument doc = new XmlDocument();
+                string dir = System.AppDomain.CurrentDomain.BaseDirectory + "\\Configuracion.xml";
                 try
                 {
-                    DbProviderFactory Dpf = DbProviderFactories.GetFactory("MySql.Data.MySqlClient");
-                    Conn = Dpf.CreateConnection();
-                    Conn.ConnectionString = "Server=localhost;Database=mysql;Uid=root;Pwd=;";
-                    Conn.Open();
-                    IDbCommand Com = Conn.CreateCommand();
+                    doc.Load(dir);
+                }
+                catch (Exception)
+                {
+                    throw new Exception("El archivo de Configuración no se encuentra.");
+                }
 
+                ListaNodos = doc.GetElementsByTagName("config");
+
+                try
+                {
+                    string cadena = string.Empty;
+                    cadena = "Server=Localhost;Database=mysql;Uid=root;Pwd=;";
                     string script = string.Empty;
-                   
                     System.IO.StreamReader stream = new System.IO.StreamReader(discoSlam + @"Base de Datos\MySQL\MySqlSlamDb.sql");
                     script = stream.ReadToEnd();
                     stream.Close();
 
-                    Com.CommandText = script;
-                    Com.ExecuteNonQuery();
+
+                    ListaNodos[0].Attributes["Default"].Value = "False";
+                    ListaNodos[1].Attributes["ConnectionString"].Value = cadena;
+                    ListaNodos[1].Attributes["Default"].Value = "True";
+                    doc.Save(dir);
+
+                    Repositorio.Conexiones.Conexion cnn = new Repositorio.Conexiones.Conexion();
+                    cnn.ActualizarOEliminar(script);
                     GC.Collect();
-                    GC.SuppressFinalize(Conn);
+                    GC.SuppressFinalize(cnn);
+
+                    doc.Load(dir);
+                    ListaNodos[0].Attributes["Default"].Value = "False";
+                    ListaNodos[1].Attributes["ConnectionString"].Value = cadena.Replace("mysql", "SlamDb");
+                    ListaNodos[1].Attributes["Default"].Value = "True";
+                    doc.Save(dir);
 
                 }
                 catch (Exception ex)
                 {
                     throw new Exception(ex.Message);
-                }
-                finally
-                {
-                    if (Conn != null)
-                    {
-                        Conn.Close();
-                    }
                 }
                 groupBox1.Visible = false;
                 groupBox2.Visible = true;
