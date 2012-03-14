@@ -24,7 +24,7 @@ namespace InstallerSlam
             Application.EnableVisualStyles();
         }
 
-        string discoSlam = "I:\\";
+        string discoSlam = string.Empty;
 
         private void FrmCrearBase_Load(object sender, EventArgs e)
         {
@@ -47,6 +47,7 @@ namespace InstallerSlam
             if (!cdslam)
             {
                 MessageBox.Show("Falta insetar el cd de instalacion de Slam Tenis", "Slam Tenis", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                this.Close();
             }
             else
             {
@@ -213,7 +214,6 @@ namespace InstallerSlam
                 return;
             }
             groupBox4.Visible = false;
-            PnlAjax.Visible = true;
             System.Threading.Thread.Sleep(4000);
             groupBox3.Visible = true;
             System.Threading.Thread hilo = new System.Threading.Thread(GuardarConf);
@@ -238,11 +238,6 @@ namespace InstallerSlam
             mail.Mensaje = " Este es un email de prueba...";
             mail.Prioridad = Dominio.PrioridadEmail.Normal;
             mail.Enviar();
-        }
-
-        void FinalizarWizard()
-        {
-            PnlAjax.Visible = false;
         }
 
         bool Running(string app)
