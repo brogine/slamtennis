@@ -28,7 +28,7 @@ namespace Repositorio
         /// <param name="Persona">Objeto a guardar</param>
         protected void Agregar(Persona Persona)
         {
-            string FechaFormateada = Persona.FechaNac.Year+"/"+Persona.FechaNac.Month+"/"+Persona.FechaNac.Day;
+            string FechaFormateada = Persona.FechaNac.ToString("yyyyMMdd");
             string Campos = " Dni, Nombre, Apellido, FechaNacimiento, Nacionalidad, Sexo, ";
             Campos += "Telefono, Celular, Email, Localidad, Domicilio ";
             string Valores = Persona.Dni + ",'" + Persona.Nombre + "','" + Persona.Apellido + "','";
@@ -39,6 +39,13 @@ namespace Repositorio
 
             try
             {
+                ILoginRepositorio repoLogin = new LoginRepositorio();
+                if (!repoLogin.Existe(Persona.Dni))
+                {
+                    Login nLogin = new Login(Persona.Login.Usuario, Persona.Login.Password, Persona.Dni, Persona.Login.Estado);
+
+                    repoLogin.Agregar(nLogin);
+                }
                 Conn.AgregarSinId("Personas", Campos, Valores);
                 if (Persona.Foto != null)
                     Conn.AgregarFoto("Personas", "Foto", "Dni", Persona.Dni, Persona.Foto);
@@ -48,13 +55,7 @@ namespace Repositorio
                 throw new RepositorioExeption("No se pudieron agregar los datos personales.", ex);
             }
 
-            ILoginRepositorio repoLogin = new LoginRepositorio();
-            if (!repoLogin.Existe(Persona.Dni))
-            {
-                Login nLogin = new Login(Persona.Login.Usuario, Persona.Login.Password, Persona.Dni, Persona.Login.Estado);
-                
-                repoLogin.Agregar(nLogin);
-            }
+            
         }
 
         public virtual bool Existe(int Dni)
