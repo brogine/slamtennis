@@ -132,7 +132,13 @@ namespace Slam
         private void BtnCrearCuenta_Click(object sender, EventArgs e)
         {
             FrmNuevaPersona NuevaPersona = new FrmNuevaPersona(TipoPersona.Empleado);
-            NuevaPersona.Show();
+            if (NuevaPersona.ShowDialog() == DialogResult.OK)
+            {
+                FrmPrincipal Principal = new FrmPrincipal(this);
+                Principal.Show();
+                this.Hide();
+            }
+            
         }
     }
 }
