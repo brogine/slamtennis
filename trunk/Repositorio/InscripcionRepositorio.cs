@@ -36,7 +36,7 @@ namespace Repositorio
                     {
                         if (!Existe(Inscripcion.Torneo.IdTorneo, Inscripcion.Equipo.Jugador1.Dni))
                         {
-                            string FechaFormateada = Inscripcion.Fecha.Year + "/" + Inscripcion.Fecha.Month + "/" + Inscripcion.Fecha.Day;
+                            string FechaFormateada = Inscripcion.Fecha.ToString("yyyyMMdd");
                             String Campos = " IdTorneo, Fecha, Estado";
                             String Valores = Inscripcion.Torneo.IdTorneo + ",'";
                             Valores += FechaFormateada + "',1";
