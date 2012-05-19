@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" ?>
+<configuracion>
+  <Cuenta nombre="hotmail"
+          Servidor="smtp.live.com"
+          Puerto="25"
+          RequiereAutenticacion="true">
+  </Cuenta>
+  <Cuenta nombre="yahoo"
+          Servidor="smtp.mail.yahoo.com"
+          Puerto="25"
+          RequiereAutenticacion="true">
+  </Cuenta>
+  <Cuenta nombre="gmail"
+          Servidor="smtp.gmail.com"
+          Puerto="25"
+          RequiereAutenticacion="true">
+  </Cuenta>  
+</configuracion>

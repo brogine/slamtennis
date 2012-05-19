@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" ?>
+<configuracion>
+  <Cuenta nombre=""
+          Email=""
+          Clave=""
+          Servidor=""
+          Puerto=""
+          RequiereAutenticacion="">
+  </Cuenta>
+</configuracion>
