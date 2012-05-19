@@ -21,10 +21,10 @@ namespace Repositorio
         
         public void Agregar(Torneo Torneo)
         {
-            string FechaFormateadaInicio = Torneo.FechaInicio.Year + "/" + Torneo.FechaInicio.Month + "/" + Torneo.FechaInicio.Day;
-            string FechaFormateadaFin = Torneo.FechaFin.Year + "/" + Torneo.FechaFin.Month + "/" + Torneo.FechaFin.Day;
-            string FechaFormateadaInicioInscrip = Torneo.FechaInicioInscripcion.Year + "/" + Torneo.FechaInicioInscripcion.Month + "/" + Torneo.FechaInicioInscripcion.Day;
-            string FechaFormateadaFinInscrip = Torneo.FechaFinInscripcion.Year + "/" + Torneo.FechaFinInscripcion.Month + "/" + Torneo.FechaFinInscripcion.Day;
+            string FechaFormateadaInicio = Torneo.FechaInicio.ToString("yyyyMMdd");
+            string FechaFormateadaFin = Torneo.FechaFin.ToString("yyyyMMdd");
+            string FechaFormateadaInicioInscrip = Torneo.FechaInicioInscripcion.ToString("yyyyMMdd");
+            string FechaFormateadaFinInscrip = Torneo.FechaFinInscripcion.ToString("yyyyMMdd");
 
             string valores = "'" + Torneo.Nombre + "','" + FechaFormateadaInicio + "','" + FechaFormateadaFin + "','" + FechaFormateadaInicioInscrip + "','" + FechaFormateadaFinInscrip + "',";
             valores += Torneo.Cupo + ",'" + Torneo.Sexo + "'," +(int) Torneo.TipoTorneo + "," + Torneo.Club.Id + "," + Torneo.Categoria.Id + "," +(Torneo.TipoInscripcion?1 :0)+ ",";

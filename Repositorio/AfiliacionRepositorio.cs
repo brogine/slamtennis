@@ -27,13 +27,13 @@ namespace Repositorio
         public void Agregar(Afiliacion Afiliacion)
         {
 
-            string FechaFormateada = Afiliacion.FechaAlta.Year + "/" + Afiliacion.FechaAlta.Month + "/" + Afiliacion.FechaAlta.Day;
+            string FechaFormateada = Afiliacion.FechaAlta.ToString("yyyyMMdd");
             Conex.AgregarSinId("Afiliaciones", "Dni,IdClub,FechaAlta,Estado", Afiliacion.Jugador.Dni + "," + Afiliacion.Club.Id + ",'" + FechaFormateada + "'," + 1);
         }
 
         public void Modificar(Afiliacion Afiliacion)
         {
-            string FechaFormateada = Afiliacion.FechaBaja.Year + "/" + Afiliacion.FechaBaja.Month + "/" + Afiliacion.FechaBaja.Day;
+            string FechaFormateada = Afiliacion.FechaBaja.ToString("yyyyMMdd");
             string Sql = "Update Afiliaciones Set ";
             Sql += " FechaBaja = '" + FechaFormateada + "',";
             Sql += " Estado = " + (Afiliacion.Estado ? 1 : 0);

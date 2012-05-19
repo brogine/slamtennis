@@ -26,7 +26,7 @@ namespace Repositorio
 
         public int Agregar(Partido Partido)
         {
-            string FechaFormateada = Partido.Fecha.Year + "/" + Partido.Fecha.Month + "/" + Partido.Fecha.Day;
+            string FechaFormateada = Partido.Fecha.ToString("yyyyMMdd");
             int IdTorneo = Partido.Torneo.IdTorneo;
             string Resultado = Partido.Resultado;
             string Ronda = Partido.Ronda;
@@ -49,7 +49,7 @@ namespace Repositorio
         {
             IEstadisticaRepositorio EstRepo = new EstadisticaRepositorio();
             IInscripcionRepositorio InscRepo = new InscripcionRepositorio();
-            string FechaFormateada = Partido.Fecha.Year + "/" + Partido.Fecha.Month + "/" + Partido.Fecha.Day;
+            string FechaFormateada = Partido.Fecha.ToString("yyyyMMdd");
             String Consulta = " Update Partidos Set ";
             
             Consulta += " Fecha = '" + FechaFormateada + "', ";
