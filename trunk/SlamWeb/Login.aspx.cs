@@ -48,6 +48,7 @@ namespace SlamWeb
                 IJugadorServicio jugador = new JugadorServicio();
                 jugador.Buscar(this);
                 Session["Logeado"] = true;
+                Session["Imagen"] = "22222222.jpg";
                 Response.Redirect("Default.aspx");
             }
         }
@@ -208,8 +209,12 @@ namespace SlamWeb
                 {
                     if (!(System.IO.File.Exists(System.AppDomain.CurrentDomain.BaseDirectory + @"\Profiles\" + this.Dni + ".jpg")))
                         System.IO.File.Delete(System.AppDomain.CurrentDomain.BaseDirectory + @"\Profiles\" + this.Dni + ".jpg");
-                        foto.Save(System.AppDomain.CurrentDomain.BaseDirectory + @"\Profiles\" + this.Dni + ".jpg", System.Drawing.Imaging.ImageFormat.Jpeg);
+                    foto.Save(System.AppDomain.CurrentDomain.BaseDirectory + @"\Profiles\" + this.Dni + ".jpg", System.Drawing.Imaging.ImageFormat.Jpeg);
                     Session["Imagen"] = this.Dni + ".jpg";
+                }
+                else
+                {
+                    Session["Imagen"] = "22222222.jpg";
                 }
             }
         }
