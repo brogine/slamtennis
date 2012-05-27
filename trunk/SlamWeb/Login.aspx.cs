@@ -48,7 +48,7 @@ namespace SlamWeb
                 IJugadorServicio jugador = new JugadorServicio();
                 jugador.Buscar(this);
                 Session["Logeado"] = true;
-                Session["Imagen"] = "22222222.jpg";
+                //Session["Imagen"] = "22222222.jpg";
                 Response.Redirect("Default.aspx");
             }
         }

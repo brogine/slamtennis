@@ -89,7 +89,6 @@ namespace Servicio
         {
             Localidad bLocalidad = UbicaRepo.ObtenerLocalidad(IdLocalidad);
             return bLocalidad.Provincia.Pais.IdPais + "," + bLocalidad.Provincia.IdProvincia;
-
         }
 
         #endregion
