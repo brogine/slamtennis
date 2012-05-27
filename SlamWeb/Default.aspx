@@ -73,7 +73,8 @@
 
 <asp:Content ID="Content3" runat="server" contentplaceholderid="ContentPlaceHolder1">
     <div style="text-align:right">
-    <asp:Image ID="Image1" runat="server" Height="50px" Width="50px" />
+    <asp:Image ID="Image1" runat="server" Height="50px" Width="50px" 
+            ImageAlign="Baseline" />
     </div>
 </asp:Content>
 

@@ -46,7 +46,8 @@
             <td class="style2">
                 <asp:TextBox ID="TextBox2" runat="server" Width="227px"></asp:TextBox>
                 <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" 
-                    ControlToValidate="TextBox2" ErrorMessage="Ingrese el asunto !"></asp:RequiredFieldValidator>
+                    ControlToValidate="TextBox2" ErrorMessage="Ingrese el asunto !" 
+                    EnableClientScript="False"></asp:RequiredFieldValidator>
             </td>
         </tr>
         <tr>
@@ -57,7 +58,8 @@
                 <asp:TextBox ID="TextBox3" runat="server" Height="184px" TextMode="MultiLine" 
                     Width="340px"></asp:TextBox>
                 <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" 
-                    ControlToValidate="TextBox3" ErrorMessage="Ingrese un mensaje!"></asp:RequiredFieldValidator>
+                    ControlToValidate="TextBox3" ErrorMessage="Ingrese un mensaje!" 
+                    EnableClientScript="False"></asp:RequiredFieldValidator>
             </td>
         </tr>
         <tr>

@@ -20,10 +20,14 @@ namespace SlamWeb
             LblDNI.Text = Session["DNI"].ToString();
             LblSexo.Text = Session["Sexo"].ToString().Trim();
             Image2.ImageUrl = "~/Profiles/" + Session["Imagen"].ToString().Trim();
+            
             IPaisServicio servicioPaises = new UbicacionServicio();
             servicioPaises.ListarPaises(this);
+            //IProvinciaServicio servicioProv = new UbicacionServicio();
+            //servicioProv.ListarProvincias(this);
             IJugadorServicio jugador = new JugadorServicio();
             jugador.Buscar(this);
+           
         }
 
         #region IJugadorUI Members
@@ -72,7 +76,7 @@ namespace SlamWeb
             }
             set
             {
-                LblFechaNac.Text = value.ToString();
+                LblFechaNac.Text = value.ToString("dd/MM/yyyy");
             }
         }
 
@@ -84,7 +88,15 @@ namespace SlamWeb
             }
             set
             {
-                //((List<object>)Session["ListadoPais"]).ToString().Split(',').Where(c=> c[0] == value).First()[][index].ToString();            
+                foreach (var item in (List<object>)Session["ListadoPais"])
+                {
+                    string[] pais = item.ToString().Split(',');
+                    if (pais[0] == value.ToString())
+                    {
+                        LblNaciona.Text = pais[1];
+                        break;
+                    }
+                }
             }
         }
 
@@ -152,11 +164,11 @@ namespace SlamWeb
         {
             get
             {
-                return LblCelular.Text;
+                return LblEmail.Text;
             }
             set
             {
-                LblCelular.Text = value;
+                LblEmail.Text = value;
             }
         }
 
@@ -174,14 +186,48 @@ namespace SlamWeb
 
         public int Provincia
         {
-            get;
-            set;
+            get
+            {
+                return Convert.ToInt32(Session["IdProvincia"]);
+            }
+            set
+            {
+                Session["IdProvincia"] = value;
+            }
         }
 
         public int Localidad
         {
-            get;
-            set;
+            get
+            {
+                return 0;
+            }
+            set
+            {
+
+                ILocalidadServicio servicioLocalidades = new UbicacionServicio();
+                IProvinciaServicio servicioProvincias = new UbicacionServicio();
+                string[] ids = servicioLocalidades.ObtenerUbicacion(value).Split(',');
+                foreach (string elemento in (List<object>)Session["ListadoPais"])
+                {
+                    string[] item = elemento.Split(',');
+                    if (item[0] == ids[0])
+                    {
+                        servicioProvincias.ListarProvincias(this);
+                        break;
+                    }
+                }
+
+                foreach (string elemento in (List<object>)Session["ListadoProvincia"])
+                {
+                    string[] item = elemento.Split(',');
+                    if (item[0] == ids[1])
+                    {
+                        LblProvincia.Text = item[1];
+                        break;
+                    }
+                }                
+            }
         }
 
         public string Domicilio

@@ -105,7 +105,7 @@ namespace Repositorio
 
         public List<Estadisticas> ListarPorCategoria(int IdCategoria)
         {
-            string Consulta = " Select * From Jugadores Where IdCategoria = " + IdCategoria + " Order By Puntos ";
+            string Consulta = " Select * From Jugadores Where IdCategoria = " + IdCategoria + " Order By Puntos desc";
             List<Estadisticas> ListaEstadisticas = new List<Estadisticas>();
             DataTable Tabla = Conn.Listar(Consulta);
             int i = 1;
