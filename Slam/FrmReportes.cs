@@ -41,31 +41,45 @@ namespace Slam
 
         private void TvReportes_NodeMouseClick(object sender, TreeNodeMouseClickEventArgs e)
         {
-            switch (e.Node.Text)
+            try
             {
-                case "Ranking":
-                    FrmReporteRanking frmReporteRanking = new FrmReporteRanking();
-                    if (frmReporteRanking.ShowDialog() == DialogResult.OK)
-                    {
-                        int IdCategoria = frmReporteRanking.IdCategoria;
-                        string Categoria = frmReporteRanking.Categoria;
-                        object reporteActual = servicioReportes.CrearInstancia(e.Node.Text, IdCategoria);
-                        servicioReportes.Parametros("Categoria", Categoria);
-                        RptViewer.ReportSource = reporteActual;
-                    }
-                    break;
-                case "Carnet":
-                    FrmReporteCarnet frmReporteCarnet = new FrmReporteCarnet();
-                    if (frmReporteCarnet.ShowDialog() == DialogResult.OK)
-                    {
-                        int Dni = frmReporteCarnet.Dni;
-                        TipoPersona Tipo = frmReporteCarnet.Tipo;
-                        object reporteActual = servicioReportes.CrearInstancia(e.Node.Text, Dni + "," + Tipo.ToString());
-                        RptViewer.ReportSource = reporteActual;
-                    }
-                    break;
-                case "Llave":
-                    break;
+                switch (e.Node.Text)
+                {
+                    case "Ranking":
+                        FrmReporteRanking frmReporteRanking = new FrmReporteRanking();
+                        if (frmReporteRanking.ShowDialog() == DialogResult.OK)
+                        {
+                            int IdCategoria = frmReporteRanking.IdCategoria;
+                            string Categoria = frmReporteRanking.Categoria;
+                            object reporteActual = servicioReportes.CrearInstancia(e.Node.Text, IdCategoria);
+                            servicioReportes.Parametros("Categoria", Categoria);
+                            RptViewer.ReportSource = reporteActual;
+                        }
+                        break;
+                    case "Carnet":
+                        FrmReporteCarnet frmReporteCarnet = new FrmReporteCarnet();
+                        if (frmReporteCarnet.ShowDialog() == DialogResult.OK)
+                        {
+                            int Dni = frmReporteCarnet.Dni;
+                            TipoPersona Tipo = frmReporteCarnet.Tipo;
+                            object reporteActual = servicioReportes.CrearInstancia(e.Node.Text, Dni + "," + Tipo.ToString());
+                            if (reporteActual == null)
+                            {
+                                MessageBox.Show("El Dni de la persona no existe, Verifique", "Reportes", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                            }
+                            else
+                            {
+                                RptViewer.ReportSource = reporteActual;
+                            }
+                        }
+                        break;
+                    case "Llave":
+                        break;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Reportes", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
             this.WindowState = FormWindowState.Maximized;
         }

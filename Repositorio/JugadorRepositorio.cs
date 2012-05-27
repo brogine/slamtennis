@@ -60,8 +60,10 @@ namespace Repositorio
                        
             IEstadisticaRepositorio repoEstadisticas = new EstadisticaRepositorio();
             Jugador bJugador = this.Mapear(Conn.Buscar(Consulta));
-            
-            bJugador.Estadisticas = repoEstadisticas.ListarPorDni(Dni);
+            if (bJugador != null)
+            {
+                bJugador.Estadisticas = repoEstadisticas.ListarPorDni(Dni);
+            }
             return bJugador;
         }
 

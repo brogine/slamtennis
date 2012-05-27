@@ -141,7 +141,7 @@ namespace Servicio
                 UI.Nacionalidad = bJugador.Nacionalidad.IdPais;
                 UI.Nombre = bJugador.Nombre;
                 UI.Sexo = bJugador.Sexo;
-                
+                UI.Estado = bJugador.Estado;
                 //Datos de Jugador Menor
                 UI.Tutor = bJugador.Tutor;
                 UI.RelacionTutor = bJugador.RelacionTutor;

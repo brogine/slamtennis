@@ -56,6 +56,7 @@ namespace Servicio
             ModEmp.Nombre = UI.Nombre;
             ModEmp.Sexo = UI.Sexo;
             ModEmp.Puesto = UI.Puesto;
+            ModEmp.Estado = UI.Estado;
             ModEmp.Login.Usuario = UI.Usuario;
             ModEmp.Login.Password = UI.Password;
             Bitmap newImage = null;
@@ -102,6 +103,7 @@ namespace Servicio
                 UI.Nacionalidad = BuscaEmpleado.Nacionalidad.IdPais;
                 UI.Puesto = BuscaEmpleado.Puesto;
                 UI.Sexo = BuscaEmpleado.Sexo;
+                UI.Estado = BuscaEmpleado.Estado;
                 if (BuscaEmpleado.Foto != null)
                     UI.Foto = BuscaEmpleado.BytesAImagen(BuscaEmpleado.Foto);
 

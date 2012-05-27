@@ -60,6 +60,7 @@ namespace Servicio
             ModArb.Sexo = UI.Sexo;
             ModArb.Nivel = UI.Nivel;
             ModArb.Badge = UI.Badge;
+            ModArb.Estado = UI.Estado;
             ModArb.Login.Usuario = UI.Usuario;
             ModArb.Login.Password = UI.Password;
             Bitmap newImage = null;
@@ -107,6 +108,7 @@ namespace Servicio
                 UI.Nivel = BuscaArb.Nivel;
                 UI.Badge = BuscaArb.Badge;
                 UI.Sexo = BuscaArb.Sexo;
+                UI.Estado = BuscaArb.Estado;
                 if (BuscaArb.Foto != null)
                     UI.Foto = BuscaArb.BytesAImagen(BuscaArb.Foto);
 

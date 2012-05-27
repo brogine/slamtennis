@@ -45,6 +45,7 @@ namespace Slam
             InitializeComponent();
             Tipo = _Tipo;
             Dni = _Dni;
+            this.TxtDni.Enabled = false;
             this.Text = "Modificar " + _Tipo.ToString();
         }
 
@@ -598,7 +599,12 @@ namespace Slam
         {
             get
             {
-                return int.Parse(TxtNivel.Text);
+                int nivel = 0;
+                if (TxtNivel.Text != string.Empty)
+                {
+                    nivel = int.Parse(TxtNivel.Text);
+                }
+                return nivel;
             }
             set
             {
@@ -825,7 +831,7 @@ namespace Slam
             }
             catch (Exception)
             {
-                Blanquear();
+                //Blanquear();
             }
         }
 
