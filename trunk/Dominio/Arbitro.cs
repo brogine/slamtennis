@@ -17,7 +17,7 @@ namespace Dominio
             Pais nacionalidad, string sexo, Contacto contacto, Ubicacion ubicacion, string badge, int nivel, bool estado, Image foto)
         {
             this.Dni = dni; this.Nombre = nombre; this.Apellido = apellido;
-            this.FechaNac = FechaNac; this.Nacionalidad = nacionalidad;
+            this.FechaNac = fechaNac; this.Nacionalidad = nacionalidad;
             this.Sexo = sexo; this.Contacto = contacto; this.Ubicacion = ubicacion;
             this.Badge = badge;
             this.Nivel = nivel;

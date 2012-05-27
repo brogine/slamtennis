@@ -90,7 +90,14 @@ namespace Reportes
         {
             set 
             {
-                ((ReportClass)ReporteActual).SetDataSource(value);
+                if (value.Rows.Count != 0)
+                {
+                    ((ReportClass)ReporteActual).SetDataSource(value);
+                }
+                else
+                {
+                    ReporteActual = null;
+                }
             }
         }
 

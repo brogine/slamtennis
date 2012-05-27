@@ -30,6 +30,11 @@ namespace Servicio
                 case Dominio.Tipo.Jugador:
                     IJugadorRepositorio repoJugadores = new JugadorRepositorio();
                     Jugador bJugador = repoJugadores.Buscar(UI.DniCarnet);
+                    if (bJugador == null)
+                    {
+                        UI.TablaDatos = TablaDatos;
+                        return;
+                    }
                     TablaDatos.Rows.Add(bJugador.Foto, bJugador.Nombre, bJugador.Apellido, bJugador.Dni,
                         bJugador.Estadisticas[0].Categoria.Nombre, "", "", "", "Jugador");
                     UI.TablaDatos = TablaDatos;
@@ -37,6 +42,11 @@ namespace Servicio
                 case Tipo.Arbitro:
                     IArbitroRepositorio repoArbitros = new ArbitroRepositorio();
                     Arbitro bArbitro = repoArbitros.Buscar(UI.DniCarnet);
+                    if (bArbitro == null)
+                    {
+                        UI.TablaDatos = TablaDatos;
+                        return;
+                    }
                     TablaDatos.Rows.Add(bArbitro.Foto, bArbitro.Nombre, bArbitro.Apellido, bArbitro.Dni,
                         "", "", "", bArbitro.Badge, Tipo.Arbitro.ToString());
                     UI.TablaDatos = TablaDatos;
@@ -44,6 +54,11 @@ namespace Servicio
                 case Tipo.Empleado:
                     IEmpleadoRepositorio repoEmpleados = new EmpleadoRepositorio();
                     Empleado bEmpleado = repoEmpleados.Buscar(UI.DniCarnet);
+                    if (bEmpleado == null)
+                    {
+                        UI.TablaDatos = TablaDatos;
+                        return;
+                    }
                     TablaDatos.Rows.Add(bEmpleado.Foto, bEmpleado.Apellido, bEmpleado.Nombre, bEmpleado.Dni,
                         "", "", bEmpleado.Puesto, "", Tipo.Empleado.ToString());
                     UI.TablaDatos = TablaDatos;
