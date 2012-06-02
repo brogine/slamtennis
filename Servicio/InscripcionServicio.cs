@@ -38,6 +38,8 @@ namespace Servicio
                             break;
                         }
                     }
+                    if (!CategoriaCorrecta)
+                        throw new ServicioException("La Categoría del primer Jugador a Inscribirse no corresponde con la del Torneo."); 
                     if (UI.DniJugador2 > 0)
                     {
                         if (!repoInscripciones.Existe(UI.IdTorneo, UI.DniJugador2))
@@ -54,7 +56,7 @@ namespace Servicio
                         }
                     }
                     if (!CategoriaCorrecta)
-                        throw new ServicioException("La Categoría de uno o más Jugadores a Inscribirse, no corresponde con la del Torneo."); 
+                        throw new ServicioException("La Categoría del segundo Jugador a Inscribirse no corresponde con la del Torneo."); 
                     Inscripcion nInscripcion = new Inscripcion(bTorneo, UI.Fecha, nEquipo);
                     return repoInscripciones.Agregar(nInscripcion);
                 }
