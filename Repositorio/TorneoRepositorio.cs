@@ -48,10 +48,10 @@ namespace Repositorio
 
         public void Modificar(Torneo Torneo)
         {
-            string FechaFormateadaInicio = Torneo.FechaInicio.Year + "/" + Torneo.FechaInicio.Month + "/" + Torneo.FechaInicio.Day;
-            string FechaFormateadaFin = Torneo.FechaFin.Year + "/" + Torneo.FechaFin.Month + "/" + Torneo.FechaFin.Day;
-            string FechaFormateadaInicioInscrip = Torneo.FechaInicioInscripcion.Year + "/" + Torneo.FechaInicioInscripcion.Month + "/" + Torneo.FechaInicioInscripcion.Day;
-            string FechaFormateadaFinInscrip = Torneo.FechaFinInscripcion.Year + "/" + Torneo.FechaFinInscripcion.Month + "/" + Torneo.FechaFinInscripcion.Day;
+            string FechaFormateadaInicio = Torneo.FechaInicio.ToString("yyyyMMdd");
+            string FechaFormateadaFin = Torneo.FechaFin.ToString("yyyyMMdd");
+            string FechaFormateadaInicioInscrip = Torneo.FechaInicioInscripcion.ToString("yyyyMMdd");
+            string FechaFormateadaFinInscrip = Torneo.FechaFinInscripcion.ToString("yyyyMMdd");
 
             string sql = "update Torneos set ";
             sql += "Nombre = '" + Torneo.Nombre + "'";
@@ -131,7 +131,7 @@ namespace Repositorio
         public void ActualizarTorneos()
         {
             DateTime Hoy = DateTime.Today;
-            string HoyFormateado = Hoy.Year + "/" + Hoy.Month + "/" + Hoy.Day;
+            string HoyFormateado = Hoy.ToString("yyyyMMdd");
             string Sql = "select * from Torneos where Estado <> " + (int)EstadoTorneo.Cancelado + " And Estado <> " + (int)EstadoTorneo.Finalizado;
             DataTable Tabla = Conex.Listar(Sql);
             IInscripcionRepositorio InsRepo = new InscripcionRepositorio();
