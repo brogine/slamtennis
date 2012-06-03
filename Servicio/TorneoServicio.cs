@@ -76,18 +76,18 @@ namespace Servicio
             string email = string.Empty;
             foreach (Jugador item in listado)
             {
-                if (Torneo.Sexo == item.Sexo)
+                if (Torneo.Sexo == item.Sexo || Torneo.Sexo == "Mixto")
                 {
                     if (item.Contacto.Email != string.Empty)
                     {
-                        email += item.Contacto.Email + ";";
+                        email += item.Contacto.Email + ",";
                     }
                 }
             }
 
             Email enviaremail = new Email();
             enviaremail.Asunto = "Apertura de Torneo";
-            enviaremail.EmailDestino = email;
+            enviaremail.EmailDestino = email.Substring(0, email.Length - 1);
             enviaremail.Prioridad = PrioridadEmail.Normal;
             enviaremail.Remitente = Torneo.Club.Nombre;
             enviaremail.IsHtml = true;
@@ -97,6 +97,8 @@ namespace Servicio
             html = html.Replace("##CLUB##", Torneo.Club.Nombre);
             html = html.Replace("##CATEGORIA##", Torneo.Categoria.Nombre);
             html = html.Replace("##TIPO##", Torneo.TipoTorneo.ToString());
+            html = html.Replace("##SEXO##", Torneo.Sexo);
+            html = html.Replace("##CUPO##", Torneo.Cupo.ToString());
             html = html.Replace("##SUPERFICIE##", Torneo.Superficie.ToString());
             html = html.Replace("##INSCRIPCION##", Torneo.FechaInicioInscripcion.ToShortDateString() + " - " + Torneo.FechaFinInscripcion.ToShortDateString());
             html = html.Replace("##FECHATORNEO##", Torneo.FechaInicio.ToShortDateString() + " - " + Torneo.FechaFin.ToShortDateString());
