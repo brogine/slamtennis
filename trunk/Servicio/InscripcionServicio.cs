@@ -29,6 +29,32 @@ namespace Servicio
                     Torneo bTorneo = repoTorneos.Buscar(UI.IdTorneo);
                     Equipo nEquipo = new Equipo();
                     nEquipo.Jugador1 = repoJugadores.Buscar(UI.DniJugador1);
+                    bool dobleInscripcion = (UI.DniJugador2 > 0) ? true : false;
+                    if (dobleInscripcion)
+                    {
+                        if (!repoInscripciones.Existe(UI.IdTorneo, UI.DniJugador2))
+                            nEquipo.Jugador2 = repoJugadores.Buscar(UI.DniJugador2);
+                        else
+                            throw new ServicioException("El Jugador con Dni " + UI.DniJugador2 + " ya está Inscripto a ese torneo.");
+                    }
+
+                    #region Validación por Tipo de Torneo
+
+                    // Si el tipo de Inscripción es cerrado (False)
+                    // Sólo puede inscribirse gente del mismo club organizador.
+                    if (!bTorneo.TipoInscripcion)
+                    {
+                        IAfiliacionRepositorio afilRepo = new AfiliacionRepositorio();
+                        if (!afilRepo.Existe(nEquipo.Jugador1.Dni, bTorneo.Club.Id))
+                            throw new ServicioException("El Jugador 1 está tratando de Inscribirse a un Torneo cerrado que no pertenece a su Club.");
+                        if(dobleInscripcion && !afilRepo.Existe(nEquipo.Jugador2.Dni, bTorneo.Club.Id))
+                            throw new ServicioException("El Jugador 2 está tratando de Inscribirse a un Torneo cerrado que no pertenece a su Club.");
+                    }
+
+                    #endregion
+
+                    #region Validación por Categoría
+
                     bool CategoriaCorrecta = false;
                     foreach (Estadisticas Estadistica in nEquipo.Jugador1.Estadisticas)
                     {
@@ -39,13 +65,9 @@ namespace Servicio
                         }
                     }
                     if (!CategoriaCorrecta)
-                        throw new ServicioException("La Categoría del primer Jugador a Inscribirse no corresponde con la del Torneo."); 
-                    if (UI.DniJugador2 > 0)
+                        throw new ServicioException("La Categoría del primer Jugador a Inscribirse no corresponde con la del Torneo. Se cancela la operación.");
+                    if (dobleInscripcion)
                     {
-                        if (!repoInscripciones.Existe(UI.IdTorneo, UI.DniJugador2))
-                            nEquipo.Jugador2 = repoJugadores.Buscar(UI.DniJugador2);
-                        else
-                            throw new ServicioException("El Jugador con Dni " + UI.DniJugador2 + " ya está Inscripto a ese torneo.");
                         foreach (Estadisticas Estadistica in nEquipo.Jugador2.Estadisticas)
                         {
                             if (Estadistica.Categoria.Id == bTorneo.Categoria.Id)
@@ -56,7 +78,22 @@ namespace Servicio
                         }
                     }
                     if (!CategoriaCorrecta)
-                        throw new ServicioException("La Categoría del segundo Jugador a Inscribirse no corresponde con la del Torneo."); 
+                        throw new ServicioException("La Categoría del segundo Jugador a Inscribirse no corresponde con la del Torneo. Se cancela la operación.");
+
+                    #endregion
+
+                    #region Validación por Sexo
+
+                    if (bTorneo.Sexo != "Mixto")
+                    {
+                        if (bTorneo.Sexo != nEquipo.Jugador1.Sexo)
+                            throw new ServicioException("El sexo del Jugador 1 no corresponde con el del Torneo.");
+                        if(UI.DniJugador2 > 0 && bTorneo.Sexo != nEquipo.Jugador2.Sexo)
+                            throw new ServicioException("El sexo del Jugador 2 no corresponde con el del Torneo.");
+                    }
+
+                    #endregion
+
                     Inscripcion nInscripcion = new Inscripcion(bTorneo, UI.Fecha, nEquipo);
                     return repoInscripciones.Agregar(nInscripcion);
                 }

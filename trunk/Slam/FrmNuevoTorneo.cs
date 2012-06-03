@@ -149,32 +149,20 @@ namespace Slam
             get
             {
                 if (RBMasculino.Checked)
-                {
                     return "Masculino";
-                }
                 else if (RBFemenino.Checked)
-                {
                     return "Femenino";
-                }
                 else
-                {
                     return "Mixto";
-                }
             }
             set
             {
                 if (value == "Masculino")
-                {
-                    RBMasculino.Checked=true;
-                }
+                    RBMasculino.Checked = true;
                 else if (value == "Femenino")
-                {
                     RBFemenino.Checked = true;
-                }
                 else
-                {
                     RBMixto.Checked = true;
-                }
             }
         }
 
@@ -183,24 +171,16 @@ namespace Slam
             get
             {
                 if (RBSingle.Checked)
-                {
                     return 0;
-                }
                 else
-                {
                     return 1;
-                }
             }
             set
             {
                 if (value == 0)
-                {
                     RBSingle.Checked = true;
-                }
                 else
-                {
                     RBDouble.Checked = true;
-                }
             }
         }
 
@@ -330,26 +310,20 @@ namespace Slam
 
         private void button1_Click(object sender, EventArgs e)
         {
-            
             try
             {
                 if (EPTorneos.GetError(TxtNombre) != "" && EPTorneos.GetError(CboClub) != "" && EPTorneos.GetError(CboCategoria) != "" &&
                     EPTorneos.GetError(DTPFinInscripciones) != "" && EPTorneos.GetError(DTPInicioInscripciones) != "" && EPTorneos.GetError(DTPFinTorneo) != "" &&
                     EPTorneos.GetError(DTPInicioTorneo) != "" && EPTorneos.GetError(groupBox1) != "" && EPTorneos.GetError(groupBox2) != "" &&
                     EPTorneos.GetError(CboSuperficie) != "")
-                {
                     MessageBox.Show("Complete Todos Los Campos Antes de Continuar");
-                }
                 else
                 {
                     if (TorneoServicio.Existe(IdTorneo))
-                    {
                         TorneoServicio.Modificar(this);
-                    }
                     else
-                    {
                         TorneoServicio.Agregar(this);
-                    }
+
                     this.DialogResult = DialogResult.OK;
                     MessageBox.Show("Operacion Realizada Con Exito");
                     this.Dispose();
@@ -369,99 +343,66 @@ namespace Slam
         private void TxtNombre_Validating(object sender, CancelEventArgs e)
         {
             if (TxtNombre.Text == string.Empty)
-            {
                 EPTorneos.SetError(TxtNombre, "El Nombre No Puede Estar en Blanco");
-            }
             else
-            {
                 EPTorneos.SetError(TxtNombre, "");
-            }
         }
 
         private void CboClub_Validating(object sender, CancelEventArgs e)
         {
             if (CboClub.SelectedIndex < 0)
-            {
                 EPTorneos.SetError(CboClub, "Debe Seleccionar Un Club De La Lista");
-            }
             else
-            {
                 EPTorneos.SetError(CboClub, "");
-            }
 
         }
         private void CboCategoria_Validating(object sender, CancelEventArgs e)
         {
             if (CboCategoria.SelectedIndex < 0)
-            {
                 EPTorneos.SetError(CboCategoria, "Debe Seleccionar Una Categoria De La Lista");
-            }
             else
-            {
                 EPTorneos.SetError(CboCategoria, "");
-            }
         }
 
         private void DTPFinTorneo_Validating(object sender, CancelEventArgs e)
         {
             if (DTPFinTorneo.Value < DTPInicioTorneo.Value)
-            {
                 EPTorneos.SetError(DTPFinTorneo, "La Fecha De Fin De Torneo No Puede Ser Menor Que La De Inicio");
-            }
             else
-            {
                 EPTorneos.SetError(DTPFinTorneo, "");
-            }
         }
 
         private void DTPFinInscripciones_Validating(object sender, CancelEventArgs e)
         {
             if (DTPFinInscripciones.Value < DTPInicioInscripciones.Value)
-            {
                 EPTorneos.SetError(DTPFinInscripciones, "La Fecha De Fin De Inscripciones No Puede Ser Menor Que La De Inicio");
-            }
             else
-            {
                 EPTorneos.SetError(DTPFinInscripciones, "");
-            }
-            
         }
 
         private void groupBox1_Validating(object sender, CancelEventArgs e)
         {
-            if (RBMasculino.Checked == false && RBFemenino.Checked == false && RBMixto.Checked == false)
-            {
+            if (!RBMasculino.Checked && !RBFemenino.Checked && !RBMixto.Checked)
                 EPTorneos.SetError(groupBox1, "Debe Seleccionar El Sexo");
-            }
             else
-            {
                 EPTorneos.SetError(groupBox1, "");
-            }
         }
 
         private void groupBox2_Validating(object sender, CancelEventArgs e)
         {
-            if (RBDouble.Checked == false && RBSingle.Checked == false)
-            {
+            if (!RBDouble.Checked && !RBSingle.Checked)
                 EPTorneos.SetError(groupBox2, "Debe Seleccionar Un Tipo De Torneo");
-            }
             else
-            {
                 EPTorneos.SetError(groupBox2, "");
-            }
         }
 
 
         private void CboSuperficie_Validating(object sender, CancelEventArgs e)
         {
             if (CboSuperficie.SelectedIndex < 0)
-            {
                 EPTorneos.SetError(CboSuperficie, "Seleccione Un Tipo De Superficie");
-            }
             else
-            {
                 EPTorneos.SetError(CboSuperficie, "");
-            }
         }
 
         private void button1_Click_1(object sender, EventArgs e)
