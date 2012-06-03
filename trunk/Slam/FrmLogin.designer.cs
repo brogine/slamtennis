@@ -56,7 +56,7 @@
             this.gbLogin.Controls.Add(this.BtnAceptar);
             this.gbLogin.Controls.Add(this.TxtPassword);
             this.gbLogin.Controls.Add(this.TxtUsuario);
-            this.gbLogin.Location = new System.Drawing.Point(12, 12);
+            this.gbLogin.Location = new System.Drawing.Point(12, 11);
             this.gbLogin.Name = "gbLogin";
             this.gbLogin.Size = new System.Drawing.Size(359, 180);
             this.gbLogin.TabIndex = 1;
