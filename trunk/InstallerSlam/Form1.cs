@@ -96,7 +96,7 @@ namespace InstallerSlam
 
         private void BtnSql_Click(object sender, EventArgs e)
         {
-            if (AplicacionInstalada("Microsoft SQL Server 2005"))
+            if (AplicacionInstalada("Microsoft SQL Server 2005") || AplicacionInstalada("Microsoft SQL Server 2008") || AplicacionInstalada("Microsoft SQL Server 2008 R2"))
             {
                 PnlSqlServer.Visible = true;
             }
