@@ -62,6 +62,7 @@
             this.LblEstado = new System.Windows.Forms.Label();
             this.CboCupo = new System.Windows.Forms.ComboBox();
             this.btnPtosTorneo = new System.Windows.Forms.Button();
+            this.CheckEmail = new System.Windows.Forms.CheckBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.EPTorneos)).BeginInit();
@@ -299,7 +300,7 @@
             // 
             // BtnAceptar
             // 
-            this.BtnAceptar.Location = new System.Drawing.Point(281, 284);
+            this.BtnAceptar.Location = new System.Drawing.Point(281, 307);
             this.BtnAceptar.Name = "BtnAceptar";
             this.BtnAceptar.Size = new System.Drawing.Size(75, 23);
             this.BtnAceptar.TabIndex = 16;
@@ -309,7 +310,7 @@
             // 
             // BtnSalir
             // 
-            this.BtnSalir.Location = new System.Drawing.Point(371, 284);
+            this.BtnSalir.Location = new System.Drawing.Point(371, 307);
             this.BtnSalir.Name = "BtnSalir";
             this.BtnSalir.Size = new System.Drawing.Size(75, 23);
             this.BtnSalir.TabIndex = 17;
@@ -362,7 +363,7 @@
             // 
             // btnPtosTorneo
             // 
-            this.btnPtosTorneo.Location = new System.Drawing.Point(164, 284);
+            this.btnPtosTorneo.Location = new System.Drawing.Point(164, 307);
             this.btnPtosTorneo.Name = "btnPtosTorneo";
             this.btnPtosTorneo.Size = new System.Drawing.Size(110, 23);
             this.btnPtosTorneo.TabIndex = 15;
@@ -370,11 +371,26 @@
             this.btnPtosTorneo.UseVisualStyleBackColor = true;
             this.btnPtosTorneo.Click += new System.EventHandler(this.btnPtosTorneo_Click);
             // 
+            // CheckEmail
+            // 
+            this.CheckEmail.AutoSize = true;
+            this.CheckEmail.Checked = true;
+            this.CheckEmail.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.CheckEmail.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CheckEmail.ForeColor = System.Drawing.Color.Blue;
+            this.CheckEmail.Location = new System.Drawing.Point(12, 313);
+            this.CheckEmail.Name = "CheckEmail";
+            this.CheckEmail.Size = new System.Drawing.Size(88, 18);
+            this.CheckEmail.TabIndex = 27;
+            this.CheckEmail.Text = "Enviar Email";
+            this.CheckEmail.UseVisualStyleBackColor = true;
+            // 
             // FrmNuevoTorneo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(458, 320);
+            this.ClientSize = new System.Drawing.Size(458, 341);
+            this.Controls.Add(this.CheckEmail);
             this.Controls.Add(this.btnPtosTorneo);
             this.Controls.Add(this.CboCupo);
             this.Controls.Add(this.LblEstado);
@@ -449,5 +465,6 @@
         private System.Windows.Forms.Label LblEstado;
         private System.Windows.Forms.ComboBox CboCupo;
         private System.Windows.Forms.Button btnPtosTorneo;
+        private System.Windows.Forms.CheckBox CheckEmail;
     }
 }
