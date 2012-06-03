@@ -1,15 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
 using System.Windows.Forms;
-using Servicio.InterfacesUI;
-using Servicio;
-using System.Collections;
 using ApplicationContext;
+using Servicio;
+using Servicio.InterfacesUI;
 
 namespace Slam
 {
@@ -27,7 +23,7 @@ namespace Slam
              InitializeComponent();
              servicioClubes = (IListadoClubServicio)AppContext.Instance.GetObject(ImplementaClubes);
              servicioClubes.ListarActivos(this);
-             this.ChkEstado.Checked = true;
+             ChkEstado.Checked = true;
         }
 
         public FrmNuevaAfiliacion(int IdClub, int DniJugador)
@@ -117,7 +113,6 @@ namespace Slam
 
         public List<object> ListarClubes
         {
-
             set
             {
                 if (value.Count > 0)
@@ -142,31 +137,6 @@ namespace Slam
                 }
             }
         }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            if (EpAfiliacion.GetError(TxtDni) == "" && EpAfiliacion.GetError(CboListaClubes) == "")
-            {
-                if (AfilServ.Existe(this))
-                {
-                    AfilServ.Modificar(this);
-                    this.DialogResult = DialogResult.OK;
-                    this.Close();
-                }
-                else
-                {
-                    AfilServ.Agregar(this);
-                    this.DialogResult = DialogResult.OK;
-                    this.Close();
-                }
-            }
-            else
-            {
-                MessageBox.Show("Complete Todos Los Campos Antes De Continuar");
-            }
-        }
-           
-        
 
         #endregion
 
@@ -217,27 +187,41 @@ namespace Slam
             if (TxtDni.Text == "")
                 EpAfiliacion.SetError(TxtDni, "Este campo no puede estar en blanco.");
             else
-            {
                 EpAfiliacion.SetError(TxtDni, "");
-            }
-                if (LblExiste.Text == "")
-                    EpAfiliacion.SetError(TxtDni, "Presione Botón Comprobar para validar existencia del jugador");
+            if (LblExiste.Text == "")
+                EpAfiliacion.SetError(TxtDni, "Presione Botón Comprobar para validar existencia del jugador");
+            else
+                EpAfiliacion.SetError(TxtDni,"");
+            if (LblExiste.BackColor == Color.Red)
+                EpAfiliacion.SetError(TxtDni, "El Jugador no Existe. No puede continuar.");
+            else
+                EpAfiliacion.SetError(TxtDni, "");
+        }
+
+        private void BtnAceptar_Click(object sender, EventArgs e)
+        {
+            if (EpAfiliacion.GetError(TxtDni) == "" && EpAfiliacion.GetError(CboListaClubes) == "")
+            {
+                if (AfilServ.Existe(this))
+                {
+                    AfilServ.Modificar(this);
+                    this.DialogResult = DialogResult.OK;
+                    this.Close();
+                }
                 else
                 {
-                    EpAfiliacion.SetError(TxtDni,"");
-                }
-
-                    if (LblExiste.BackColor == Color.Red)
-                    {
-                        EpAfiliacion.SetError(TxtDni, "El Jugador no Existe. No puede continuar.");
-                    }
-                    else
-                    {
-                        EpAfiliacion.SetError(TxtDni, "");
-                    }
+                    AfilServ.Agregar(this);
+                    this.DialogResult = DialogResult.OK;
+                    this.Close();
                 }
             }
+            else
+            {
+                MessageBox.Show("Complete Todos Los Campos Antes De Continuar");
+            }
         }
-    
+    }
+}
+
 
 

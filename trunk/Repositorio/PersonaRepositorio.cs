@@ -1,12 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+using System.Data;
 using Dominio;
 using Repositorio.Conexiones;
-using System.Data;
-using System.IO;
-using System.Drawing;
 
 namespace Repositorio
 {
@@ -54,8 +49,6 @@ namespace Repositorio
             {
                 throw new RepositorioExeption("No se pudieron agregar los datos personales.", ex);
             }
-
-            
         }
 
         public virtual bool Existe(int Dni)

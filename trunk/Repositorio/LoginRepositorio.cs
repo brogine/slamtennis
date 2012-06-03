@@ -51,9 +51,9 @@ namespace Repositorio
             }
         }
 
-        public Dominio.Login Obtener(string Usuario)
+        public Login Obtener(string Usuario)
         {
-            string sql = " Select * From Login Where Usuario = '" + Usuario + "'";
+            string sql = " Select * From Login Where Usuario =  '" + Usuario + "'";
             return this.Mapear(Conn.Buscar(sql));
         }
 

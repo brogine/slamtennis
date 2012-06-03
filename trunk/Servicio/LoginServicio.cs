@@ -12,14 +12,7 @@ namespace Servicio
         ILoginRepositorio loginRepo;
         public LoginServicio()
         {
-            try
-            {
-                loginRepo = new LoginRepositorio();
-            }
-            catch (Exception ex)
-            {
-                throw new ServicioException(ex.Message);
-            }
+            loginRepo = new LoginRepositorio();
         }
 
         #region Miembros de ILoginServicio
@@ -43,7 +36,15 @@ namespace Servicio
 
         public void OlvidoPassword(string usuario)
         {
-            throw new NotImplementedException();
+            Login bLogin = loginRepo.Obtener(usuario);
+            if(bLogin.Estado)
+            {
+                //TODO: Get User Email
+                Email email = new Email();
+                email.Asunto = "Olvido Password - Slam Tennis";
+                email.Remitente = "no-reply@slamtennis.com";
+                //email.EmailDestino
+            }
         }
 
         public int Validar(Servicio.InterfacesUI.ILoginUI ui)
