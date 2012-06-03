@@ -68,6 +68,43 @@ namespace Servicio
             TorneoRepo.Modificar(Torneo);
         }
 
+        public void EnviarEmailTorneo(int IdTorneo)
+        {
+            Torneo Torneo = TorneoRepo.Buscar(IdTorneo);
+            IJugadorRepositorio jugadorrepo = new JugadorRepositorio();
+            List<Jugador> listado = jugadorrepo.Listar(Torneo.Club.Id);
+            string email = string.Empty;
+            foreach (Jugador item in listado)
+            {
+                if (Torneo.Sexo == item.Sexo)
+                {
+                    if (item.Contacto.Email != string.Empty)
+                    {
+                        email += item.Contacto.Email + ";";
+                    }
+                }
+            }
+
+            Email enviaremail = new Email();
+            enviaremail.Asunto = "Apertura de Torneo";
+            enviaremail.EmailDestino = email;
+            enviaremail.Prioridad = PrioridadEmail.Normal;
+            enviaremail.Remitente = Torneo.Club.Nombre;
+            enviaremail.IsHtml = true;
+            System.IO.StreamReader sr = new System.IO.StreamReader("Torneo.html");
+            string html = sr.ReadToEnd();
+            html = html.Replace("##TORNEO##", Torneo.Nombre);
+            html = html.Replace("##CLUB##", Torneo.Club.Nombre);
+            html = html.Replace("##CATEGORIA##", Torneo.Categoria.Nombre);
+            html = html.Replace("##TIPO##", Torneo.TipoTorneo.ToString());
+            html = html.Replace("##SUPERFICIE##", Torneo.Superficie.ToString());
+            html = html.Replace("##INSCRIPCION##", Torneo.FechaInicioInscripcion.ToShortDateString() + " - " + Torneo.FechaFinInscripcion.ToShortDateString());
+            html = html.Replace("##FECHATORNEO##", Torneo.FechaInicio.ToShortDateString() + " - " + Torneo.FechaFin.ToShortDateString());
+            enviaremail.Mensaje = html;
+            enviaremail.Enviar();
+
+        }
+
         public void Buscar(ITorneoUI UI)
         {
             Torneo Torneo = TorneoRepo.Buscar(UI.IdTorneo);

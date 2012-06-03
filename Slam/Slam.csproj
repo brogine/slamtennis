@@ -470,6 +470,7 @@
     <Content Include="CuentaEmail.xml" />
     <Content Include="CuentasSMTP.xml" />
     <Content Include="icon.ico" />
+    <Content Include="Torneo.html" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include="Microsoft.Net.Client.3.5">

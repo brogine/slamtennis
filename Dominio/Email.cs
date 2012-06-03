@@ -53,6 +53,7 @@ namespace Dominio
         public string EmailDestino { get; set; }
         public string Asunto { get; set; }
         public string Mensaje { get; set; }
+        public bool IsHtml { get; set; }
         private CuentaEmail CuentaEmail { get; set; }
         public PrioridadEmail Prioridad { get; set; }
 
@@ -63,6 +64,7 @@ namespace Dominio
             msg.From = new MailAddress(this.CuentaEmail.Correo,this.Remitente);
             msg.Subject = this.Asunto;
             msg.Body = this.Mensaje;
+            msg.IsBodyHtml = this.IsHtml;
 
             SmtpClient clienteSmtp = new SmtpClient(this.CuentaEmail.SMTP.Host, this.CuentaEmail.SMTP.Puerto);
             clienteSmtp.Credentials = new NetworkCredential(this.CuentaEmail.Correo, this.CuentaEmail.Clave);

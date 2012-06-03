@@ -20,6 +20,9 @@ namespace Slam
         IListadoClubServicio ClubServicio;
         IListadoCategoriaServicio servicioCategorias;
         ITorneoServicio TorneoServicio;
+        delegate void DelegateEnviarEmail();
+        event DelegateEnviarEmail BeginEnviarEmail;
+
         string ImplementaTorneo = "TorneoServicio";
 
         public FrmNuevoTorneo(int IdTorneo)
@@ -32,6 +35,7 @@ namespace Slam
         public FrmNuevoTorneo()
         {
             InitializeComponent();
+            btnPtosTorneo.Visible = false;
             this.Text = "Nuevo Torneo";
         }
 
@@ -320,9 +324,16 @@ namespace Slam
                 else
                 {
                     if (TorneoServicio.Existe(IdTorneo))
-                        TorneoServicio.Modificar(this);
+                    { TorneoServicio.Modificar(this); }
                     else
+                    { 
                         this.idtorneo = TorneoServicio.Agregar(this);
+                        if (CheckEmail.Checked)
+                        {
+                            System.Threading.Thread hilo = new System.Threading.Thread(EnvialAlerta);
+                            hilo.Start();                            
+                        }
+                    }
 
                     if (MessageBox.Show("Torneo Agregado con éxito. ¿Desea agregar los puntos que otorga el mismo ahora? Puede en cualquier momento realizarlo.", "Información", MessageBoxButtons.OKCancel) == DialogResult.OK)
                     {
@@ -339,7 +350,19 @@ namespace Slam
                 MessageBox.Show(ex.Message);
             }
         }
-        
+
+        void EnvialAlerta()
+        {
+            try
+            {
+                TorneoServicio.EnviarEmailTorneo(this.idtorneo);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
         private void BtnSalir_Click(object sender, EventArgs e)
         {
             this.Close();

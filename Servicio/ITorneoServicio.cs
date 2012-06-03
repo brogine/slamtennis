@@ -12,6 +12,8 @@ namespace Servicio
 
         void GetFechas(IFechasTorneoUI ui);
 
+        void EnviarEmailTorneo(int IdTorneo);
+
         int GetTipoTorneo(int IdTorneo);
 
         bool Existe(int IdTorneo);
