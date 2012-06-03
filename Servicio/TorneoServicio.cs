@@ -17,7 +17,7 @@ namespace Servicio
 
         #region Miembros de ITorneoServicio
 
-        public void Agregar(ITorneoUI UI)
+        public int Agregar(ITorneoUI UI)
         {
             IClubRepositorio ClubRepo = new ClubRepositorio();
             ICategoriaRepositorio CatRepo = new CategoriaRepositorio();
@@ -37,7 +37,7 @@ namespace Servicio
             int Estado = UI.Estado;
 
             Torneo NuevoTorneo = new Torneo(Nombre, FechaInicio, FechaFin, FechaInicioInscripcion, FechaFinInscripcion, Cupo, Sexo, Tipo, Club, Categoria, TipoInscripcion, Superficie, Estado);
-            TorneoRepo.Agregar(NuevoTorneo);
+            return TorneoRepo.Agregar(NuevoTorneo);
         }
 
         public bool Existe(int IdTorneo)

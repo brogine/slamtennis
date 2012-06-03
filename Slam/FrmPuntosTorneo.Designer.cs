@@ -76,7 +76,7 @@
             // 
             // TxtPrimeraRonda
             // 
-            this.TxtPrimeraRonda.Location = new System.Drawing.Point(123, 39);
+            this.TxtPrimeraRonda.Location = new System.Drawing.Point(138, 39);
             this.TxtPrimeraRonda.Name = "TxtPrimeraRonda";
             this.TxtPrimeraRonda.Size = new System.Drawing.Size(72, 20);
             this.TxtPrimeraRonda.TabIndex = 1;
@@ -92,7 +92,7 @@
             // 
             // TxtSegunaRonda
             // 
-            this.TxtSegunaRonda.Location = new System.Drawing.Point(123, 63);
+            this.TxtSegunaRonda.Location = new System.Drawing.Point(138, 63);
             this.TxtSegunaRonda.Name = "TxtSegunaRonda";
             this.TxtSegunaRonda.Size = new System.Drawing.Size(72, 20);
             this.TxtSegunaRonda.TabIndex = 2;
@@ -108,7 +108,7 @@
             // 
             // TxtCampeon
             // 
-            this.TxtCampeon.Location = new System.Drawing.Point(123, 188);
+            this.TxtCampeon.Location = new System.Drawing.Point(138, 188);
             this.TxtCampeon.Name = "TxtCampeon";
             this.TxtCampeon.Size = new System.Drawing.Size(72, 20);
             this.TxtCampeon.TabIndex = 6;
@@ -124,7 +124,7 @@
             // 
             // TxtCuartosFinal
             // 
-            this.TxtCuartosFinal.Location = new System.Drawing.Point(123, 92);
+            this.TxtCuartosFinal.Location = new System.Drawing.Point(138, 92);
             this.TxtCuartosFinal.Name = "TxtCuartosFinal";
             this.TxtCuartosFinal.Size = new System.Drawing.Size(72, 20);
             this.TxtCuartosFinal.TabIndex = 3;
@@ -140,14 +140,14 @@
             // 
             // TxtSemiFinal
             // 
-            this.TxtSemiFinal.Location = new System.Drawing.Point(123, 121);
+            this.TxtSemiFinal.Location = new System.Drawing.Point(138, 121);
             this.TxtSemiFinal.Name = "TxtSemiFinal";
             this.TxtSemiFinal.Size = new System.Drawing.Size(72, 20);
             this.TxtSemiFinal.TabIndex = 4;
             // 
             // TxtFinal
             // 
-            this.TxtFinal.Location = new System.Drawing.Point(123, 147);
+            this.TxtFinal.Location = new System.Drawing.Point(138, 147);
             this.TxtFinal.Name = "TxtFinal";
             this.TxtFinal.Size = new System.Drawing.Size(72, 20);
             this.TxtFinal.TabIndex = 5;
