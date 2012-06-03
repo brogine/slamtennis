@@ -6,27 +6,21 @@ using Dominio;
 using Repositorio.Conexiones;
 using System.Data;
 
-
-
-
 namespace Repositorio
 {
     public class AfiliacionRepositorio:IAfiliacionRepositorio,IMapeador<Afiliacion>
     {
         Conexion Conex;
        
-       public AfiliacionRepositorio()
+        public AfiliacionRepositorio()
         {
             Conex = new Conexion();
-          
-
-
         }
+
         #region Miembros de IAfiliacionRepositorio
 
         public void Agregar(Afiliacion Afiliacion)
         {
-
             string FechaFormateada = Afiliacion.FechaAlta.ToString("yyyyMMdd");
             Conex.AgregarSinId("Afiliaciones", "Dni,IdClub,FechaAlta,Estado", Afiliacion.Jugador.Dni + "," + Afiliacion.Club.Id + ",'" + FechaFormateada + "'," + 1);
         }

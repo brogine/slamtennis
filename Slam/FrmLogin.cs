@@ -123,8 +123,7 @@ namespace Slam
         private void LblOlvidoPassword_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             if (TxtUsuario.Text != "")
-                Application.DoEvents();
-                //LoginServicio.OlvidoPassword(TxtUsuario.Text);
+                LoginServicio.OlvidoPassword(TxtUsuario.Text);
             else
                 MessageBox.Show("Ponga su nombre de usuario en la caja de texto para continuar.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
