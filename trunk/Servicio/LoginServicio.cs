@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using Repositorio;
 using Dominio;
+using Servicio.InterfacesUI;
 
 namespace Servicio
 {
@@ -47,7 +48,12 @@ namespace Servicio
             }
         }
 
-        public int Validar(Servicio.InterfacesUI.ILoginUI ui)
+        /// <summary>
+        /// Valida los datos ingresados del usuario
+        /// </summary>
+        /// <param name="ui">Parametros</param>
+        /// <returns>Dni en caso de éxito, 0 en caso de que no exista</returns>
+        public int Validar(ILoginUI ui)
         {
             if (!loginRepo.Existe(ui.Usuario))
                 return 0;
