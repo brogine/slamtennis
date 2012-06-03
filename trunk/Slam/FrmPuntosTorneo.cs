@@ -137,13 +137,11 @@ namespace Slam
         {
             set
             {
-                
                 Dictionary<int, string> ListaTorneos = new Dictionary<int, string>();
                 foreach (Object Torneo in value)
                 {
                     Object[] DatosTorneo = Torneo.ToString().Split(',');
                     ListaTorneos.Add(Convert.ToInt32(DatosTorneo[0]), DatosTorneo[2].ToString());
-                
                 }
                 CboListaTorneos.DataSource = new BindingSource(ListaTorneos, null);
                 CboListaTorneos.DisplayMember = "Value";
@@ -162,13 +160,9 @@ namespace Slam
             try
             {
                 if (PuntosServicio.Existe(this))
-                {
                     PuntosServicio.Buscar(this);
-                }
                 else
-                {
                     Blanquear();
-                }
             }
             catch (Exception ex)
             {
@@ -210,7 +204,6 @@ namespace Slam
             this.TxtSegunaRonda.Text = "0";
             this.TxtSemiFinal.Text = "0";
             this.TxtCampeon.Text = "0";
-          
         }
 
         #region Miembros de IPuntosUI

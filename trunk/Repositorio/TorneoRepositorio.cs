@@ -19,7 +19,7 @@ namespace Repositorio
             Conex = new Conexion();
         }
         
-        public void Agregar(Torneo Torneo)
+        public int Agregar(Torneo Torneo)
         {
             string FechaFormateadaInicio = Torneo.FechaInicio.ToString("yyyyMMdd");
             string FechaFormateadaFin = Torneo.FechaFin.ToString("yyyyMMdd");
@@ -30,7 +30,7 @@ namespace Repositorio
             valores += Torneo.Cupo + ",'" + Torneo.Sexo + "'," +(int) Torneo.TipoTorneo + "," + Torneo.Club.Id + "," + Torneo.Categoria.Id + "," +(Torneo.TipoInscripcion?1 :0)+ ",";
             valores += (int)Torneo.Superficie + "," +(int) Torneo.Estado;
 
-            Conex.Agregar("Torneos", "Nombre,FecInicio,FecFin,FecInicInsc,FecFinInsc,Cupo,Sexo,Tipo,IdClub,IdCategoria,TipoInscripcion,Superficie,Estado", valores);
+            return Conex.Agregar("Torneos", "Nombre,FecInicio,FecFin,FecInicInsc,FecFinInsc,Cupo,Sexo,Tipo,IdClub,IdCategoria,TipoInscripcion,Superficie,Estado", valores);
         }
 
       

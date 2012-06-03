@@ -8,7 +8,7 @@ namespace Repositorio
 {
    public interface ITorneoRepositorio
     {
-       void Agregar(Torneo Torneo);
+       int Agregar(Torneo Torneo);
 
        void Modificar(Torneo Torneo);
 

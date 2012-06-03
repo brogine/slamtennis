@@ -1,14 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using Servicio.InterfacesUI;
+﻿using Servicio.InterfacesUI;
 
 namespace Servicio
 {
     public interface ITorneoServicio
     {
-        void Agregar(ITorneoUI UI);
+        int Agregar(ITorneoUI UI);
 
         void Modificar(ITorneoUI UI);
 
@@ -19,9 +15,6 @@ namespace Servicio
         int GetTipoTorneo(int IdTorneo);
 
         bool Existe(int IdTorneo);
-
-
-
 
     }
 }

@@ -322,10 +322,15 @@ namespace Slam
                     if (TorneoServicio.Existe(IdTorneo))
                         TorneoServicio.Modificar(this);
                     else
-                        TorneoServicio.Agregar(this);
+                        this.idtorneo = TorneoServicio.Agregar(this);
+
+                    if (MessageBox.Show("Torneo Agregado con éxito. ¿Desea agregar los puntos que otorga el mismo ahora? Puede en cualquier momento realizarlo.", "Información", MessageBoxButtons.OKCancel) == DialogResult.OK)
+                    {
+                        FrmPuntosTorneo Puntos = new FrmPuntosTorneo(this.idtorneo);
+                        Puntos.Show();
+                    }
 
                     this.DialogResult = DialogResult.OK;
-                    MessageBox.Show("Operacion Realizada Con Exito");
                     this.Dispose();
                 }
             }
@@ -396,7 +401,6 @@ namespace Slam
                 EPTorneos.SetError(groupBox2, "");
         }
 
-
         private void CboSuperficie_Validating(object sender, CancelEventArgs e)
         {
             if (CboSuperficie.SelectedIndex < 0)
@@ -405,9 +409,9 @@ namespace Slam
                 EPTorneos.SetError(CboSuperficie, "");
         }
 
-        private void button1_Click_1(object sender, EventArgs e)
+        private void btnPtosTorneo_Click(object sender, EventArgs e)
         {
-            FrmPuntosTorneo Puntos = new FrmPuntosTorneo();
+            FrmPuntosTorneo Puntos = new FrmPuntosTorneo(this.idtorneo);
             Puntos.Show();
         }
     }

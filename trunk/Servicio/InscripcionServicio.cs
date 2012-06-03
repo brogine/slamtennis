@@ -1,10 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using Repositorio;
-using Dominio;
 using System.Data;
+using Dominio;
+using Repositorio;
 
 namespace Servicio
 {
