@@ -128,7 +128,11 @@
                            
                        <% foreach (object item in (System.Collections.Generic.List<Object>)Session["Torneos"])
                           { %>
-                        <%      object[] DatosTorneo = item.ToString().Split(','); %>
+                        <%      object[] DatosTorneo = item.ToString().Split(',');
+                                if (DatosTorneo[11] == "Cerrado" || DatosTorneo[11] == "Abierto")
+                                {
+                                    if (DateTime.Now >= Convert.ToDateTime(DatosTorneo[8]) && DateTime.Now <= Convert.ToDateTime(DatosTorneo[9]))
+                                    {%>
                         <tr>
                             <td class="fila">
                                 <% Servicio.IInscripcionServicio incripcion = new Servicio.InscripcionServicio(); %>
@@ -138,9 +142,9 @@
                                     <br />
                                     <a onclick="javascript:BorrarInscripcion('<% Response.Write(DatosTorneo[0].ToString()); %>','<% Response.Write(DatosTorneo[2].ToString()); %>')" href="#" >Borrar ?</a>
                                     <%                                      
-                                   }  %>
+                            }  %>
                                 <% else
-                                    { %>   
+                            { %>   
                                 <a onclick="javascript:Inscripciones('<% Response.Write(DatosTorneo[0].ToString()); %>','<% Response.Write(DatosTorneo[2].ToString()); %>','<% Response.Write(DatosTorneo[10].ToString()); %>')" href="#" >No</a>
                                 <%} %>
                             </td>
@@ -175,7 +179,8 @@
                                  <%  Response.Write(((Dominio.EstadoTorneo)Convert.ToInt32(DatosTorneo[12])).ToString()); %>
                             </td>
                         </tr>
-                        <% j += 1; %>
+                        <%}
+                                } j += 1; %>
                         <%} %>
                         <%} %>
                    </table>      

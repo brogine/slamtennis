@@ -311,6 +311,7 @@
             // 
             this.BtnMySQl.BackgroundImage = global::InstallerSlam.Properties.Resources.mysql;
             this.BtnMySQl.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.BtnMySQl.Enabled = false;
             this.BtnMySQl.Location = new System.Drawing.Point(252, 81);
             this.BtnMySQl.Name = "BtnMySQl";
             this.BtnMySQl.Size = new System.Drawing.Size(114, 83);

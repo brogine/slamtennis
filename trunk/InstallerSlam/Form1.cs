@@ -12,6 +12,7 @@ using System.Management;
 using System.Diagnostics;
 using Microsoft.Win32;
 using System.Xml;
+using System.Runtime.InteropServices;
 
 
 namespace InstallerSlam
@@ -24,7 +25,7 @@ namespace InstallerSlam
             Application.EnableVisualStyles();
         }
 
-        string discoSlam = string.Empty;
+        string discoSlam = @"E:\Slam Tenis\"; //string.Empty;
 
         private void FrmCrearBase_Load(object sender, EventArgs e)
         {
@@ -34,15 +35,15 @@ namespace InstallerSlam
             string hdd = string.Empty;
             bool cdslam = false;
             string Unidad = string.Empty;
-            foreach (ManagementObject partion in partions)
-            {
-                hdd = Convert.ToString(partion["VolumeName"]);
-                if (hdd == "Slam Tenis")
-                {
-                    Unidad = Convert.ToString(partion["DeviceID"]);
-                    cdslam = true;
-                }
-            }
+            //foreach (ManagementObject partion in partions)
+            //{
+            //    hdd = Convert.ToString(partion["VolumeName"]);
+            //    if (hdd == "Slam Tenis")
+            //    {
+            //        Unidad = Convert.ToString(partion["DeviceID"]);
+            //        cdslam = true;
+            //    }
+            //}
 
             if (!cdslam)
             {
@@ -102,8 +103,17 @@ namespace InstallerSlam
             }
             else 
             {
-                Process.Start(discoSlam + @"Base de Datos\SQL SERVER\sqlexpr32.exe");
+                if (Marshal.SizeOf(typeof(IntPtr)) == 8)
+                {
+                    Process.Start(discoSlam + @"Base de Datos\SQL SERVER\SQLEXPR_x64_ENU.exe");
+                }
+                else
+                {
+                    Process.Start(discoSlam + @"Base de Datos\SQL SERVER\SQLEXPR32_x86_ENU.exe");
+                }
 
+                    //Process.Start(discoSlam + @"Base de Datos\SQL SERVER\sqlexpr32.exe");
+                
                 bool running = true;
                 while (running != false)
                 {

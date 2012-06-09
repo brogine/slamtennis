@@ -70,6 +70,18 @@ namespace Servicio
             return repoJugadores.Existe(Dni);
         }
 
+        public void EnviarMensaje(string jugador, string mensaje)
+        {
+            Email email = new Email();
+            email.Asunto = "Mensaje desde la web";
+            email.EmailDestino = string.Empty;
+            email.Mensaje = mensaje;
+            email.Prioridad = PrioridadEmail.Alta;
+            email.Remitente = jugador;
+            email.IsHtml = false;
+            email.Enviar();
+        }
+
         public bool ExisteCategoria(IJugadorUI UI)
         {
             ICategoriaRepositorio repoCategorias = new CategoriaRepositorio();
