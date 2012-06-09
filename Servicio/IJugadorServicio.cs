@@ -18,6 +18,8 @@ namespace Servicio
 
         void Buscar(IJugadorUI UI);
 
+        void EnviarMensaje(string jugador, string mensaje);
+
         int PerteneceACategoria(int dni);
     }
 }

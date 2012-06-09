@@ -60,6 +60,10 @@ namespace Dominio
         public void Enviar()
         {
             MailMessage msg = new MailMessage();
+            if (EmailDestino == string.Empty)
+            {
+                EmailDestino = this.CuentaEmail.Correo;
+            }
             msg.To.Add(this.EmailDestino);
             msg.From = new MailAddress(this.CuentaEmail.Correo,this.Remitente);
             msg.Subject = this.Asunto;

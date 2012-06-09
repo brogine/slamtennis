@@ -24,7 +24,12 @@ namespace SlamWeb
 
         protected void Button1_Click(object sender, EventArgs e)
         {
-            
+            //try
+            //{
+                Servicio.IJugadorServicio jugadorSvr = new Servicio.JugadorServicio();
+                jugadorSvr.EnviarMensaje(Session["Nombre"].ToString().Trim(), TextBox3.Text);
+            //}
+            //catch { }
             Response.Redirect("Correcto.aspx");
         }
     }

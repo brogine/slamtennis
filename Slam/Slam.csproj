@@ -467,10 +467,16 @@
     <Content Include="Configuracion.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="CuentaEmail.xml" />
-    <Content Include="CuentasSMTP.xml" />
+    <Content Include="CuentaEmail.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="CuentasSMTP.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="icon.ico" />
-    <Content Include="Torneo.html" />
+    <Content Include="Torneo.html">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
