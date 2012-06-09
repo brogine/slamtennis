@@ -47,7 +47,7 @@ namespace InstallerSlam
             if (!cdslam)
             {
                 MessageBox.Show("Falta insetar el cd de instalacion de Slam Tenis", "Slam Tenis", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                this.Close();
+                //this.Close();
             }
             else
             {
