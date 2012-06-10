@@ -129,7 +129,7 @@
                        <% foreach (object item in (System.Collections.Generic.List<Object>)Session["Torneos"])
                           { %>
                         <%      object[] DatosTorneo = item.ToString().Split(',');
-                                if (DatosTorneo[11] == "Cerrado" || DatosTorneo[11] == "Abierto")
+                                if (DatosTorneo[11].ToString().Trim() == "Cerrado" || DatosTorneo[11].ToString().Trim() == "Abierto")
                                 {
                                     if (DateTime.Now >= Convert.ToDateTime(DatosTorneo[8]) && DateTime.Now <= Convert.ToDateTime(DatosTorneo[9]))
                                     {%>
@@ -146,6 +146,22 @@
                                 <% else
                             { %>   
                                 <a onclick="javascript:Inscripciones('<% Response.Write(DatosTorneo[0].ToString()); %>','<% Response.Write(DatosTorneo[2].ToString()); %>','<% Response.Write(DatosTorneo[10].ToString()); %>')" href="#" >No</a>
+                                <%}
+                                    }
+                                    else
+                                    {
+                                    %> 
+                                    <td class="fila">
+                                         ----
+                                    </td>
+                                <%}
+                                }
+                                else
+                                {
+                                    %> 
+                                    <td class="fila">
+                                         ----
+                                    </td>
                                 <%} %>
                             </td>
                             <td class="fila">
@@ -179,8 +195,7 @@
                                  <%  Response.Write(((Dominio.EstadoTorneo)Convert.ToInt32(DatosTorneo[12])).ToString()); %>
                             </td>
                         </tr>
-                        <%}
-                                } j += 1; %>
+                        <% j += 1; %>
                         <%} %>
                         <%} %>
                    </table>      

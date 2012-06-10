@@ -468,7 +468,6 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="CuentaEmail.xml">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="CuentasSMTP.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
