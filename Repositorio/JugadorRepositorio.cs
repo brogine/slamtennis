@@ -38,7 +38,7 @@ namespace Repositorio
 
         public override bool Existe(int Dni)
         {
-            string Consulta = " Select Count(*) From Jugadores Where Dni = " + Dni;
+            string Consulta = " Select Count(*) From Personas Where Dni = " + Dni;
             DataRow Fila = Conn.Buscar(Consulta);
             int cantidad = Convert.ToInt32(Fila[0]);
             if (cantidad == 0)
@@ -54,8 +54,9 @@ namespace Repositorio
 
         public Jugador Buscar(int Dni)
         {
-            string Consulta = " Select * From Personas P inner join ";
+            string Consulta = " Select * From Jugadores P inner join ";
             Consulta += " Login L on P.Dni = L.Dni ";
+            Consulta += " inner join Personas Per on Per.Dni = P.Dni ";
             Consulta += " Where P.Dni = " + Dni;
                        
             IEstadisticaRepositorio repoEstadisticas = new EstadisticaRepositorio();
