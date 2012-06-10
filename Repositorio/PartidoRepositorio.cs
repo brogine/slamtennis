@@ -85,7 +85,8 @@ namespace Repositorio
                         //Sumo Partidos Perdidos Y Ganados
                         
                         Est1Jug1.PG += 1;
-                        Est2Jug1.PP += 1;                                               
+                        Est2Jug1.PP += 1;
+                        Est2Jug1.TorneosJugados += 1;                       
                         //Asignacion De Puntos Por Ronda
                         AsignarPuntos(Est2Jug1, Partido);
                         //Asignacion De Puntos Campeon
@@ -96,7 +97,8 @@ namespace Repositorio
                                 if (Partido.Torneo.ListaPuntos[i].Ronda == "Campeon")
                                 {
                                     Est1Jug1.Puntaje += Partido.Torneo.ListaPuntos[i].CantidadPuntos;
-
+                                    Est1Jug1.TorneosJugados += 1;
+                                    Est1Jug1.TorneosCompletados += 1;
                                     Partido.Torneo.Estado = (int)EstadoTorneo.Finalizado;
                                     TorneoRepositorio TorRep = new TorneoRepositorio();
                                     TorRep.Modificar(Partido.Torneo);
@@ -113,6 +115,7 @@ namespace Repositorio
                     {
                         Est1Jug1.PP += 1;
                         Est2Jug1.PG += 1;
+                        Est1Jug1.TorneosJugados += 1;
                         AsignarPuntos(Est1Jug1, Partido);
                         //Asigancion De Puntos Campeon
                         if (InscRepo.ListarActivas(Partido.Torneo.IdTorneo).Count == 2)
@@ -121,7 +124,9 @@ namespace Repositorio
                             {
                                 if (Partido.Torneo.ListaPuntos[i].Ronda == "Campeon")
                                 {
-                                    Est2Jug1.Puntaje = Partido.Torneo.ListaPuntos[i].CantidadPuntos;
+                                    Est2Jug1.TorneosJugados += 1;
+                                    Est2Jug1.TorneosCompletados += 1;
+                                    Est2Jug1.Puntaje += Partido.Torneo.ListaPuntos[i].CantidadPuntos;
                                     Partido.Torneo.Estado = (int)EstadoTorneo.Finalizado;
                                     TorneoRepositorio TorRep = new TorneoRepositorio();
                                     TorRep.Modificar(Partido.Torneo);
@@ -154,7 +159,7 @@ namespace Repositorio
                     {
                         return e.Categoria.Id == Partido.Torneo.Categoria.Id;
                     }); 
-
+                    //Calculo El Equipo Ganador
                     if (Partido.CalcularGanador(Partido.Resultado) == 1)
                     {
                         Equipo1Jugador1.PartidosGanadosDoble++;
@@ -163,8 +168,6 @@ namespace Repositorio
                         Equipo2Jugador2.PartidosPerdidosDoble++;
                         Equipo2Jugador1.TorneosJugadosDoble++;
                         Equipo2Jugador2.TorneosJugadosDoble++;
-                        Equipo2Jugador1.TorneosCompletadosDoble++;
-                        Equipo2Jugador2.TorneosCompletadosDoble++;
                         AsignarPuntosDobles(Equipo2Jugador1, Equipo2Jugador2, Partido);
                         if (InscRepo.ListarActivas(Partido.Torneo.IdTorneo).Count == 2)
                         {
@@ -195,8 +198,6 @@ namespace Repositorio
                         Equipo2Jugador2.PartidosGanadosDoble++;
                         Equipo1Jugador1.PartidosPerdidosDoble++;
                         Equipo1Jugador2.PartidosPerdidosDoble++;
-                        Equipo1Jugador1.TorneosCompletadosDoble++;
-                        Equipo1Jugador2.TorneosCompletadosDoble++;
                         Equipo1Jugador1.TorneosJugadosDoble++;
                         Equipo1Jugador2.TorneosJugadosDoble++;
                         AsignarPuntosDobles(Equipo1Jugador1, Equipo1Jugador2, Partido);
