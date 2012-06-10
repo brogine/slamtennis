@@ -59,6 +59,7 @@
             this.CboTorneos.Size = new System.Drawing.Size(220, 21);
             this.CboTorneos.TabIndex = 0;
             this.CboTorneos.SelectionChangeCommitted += new System.EventHandler(this.CboTorneos_SelectionChangeCommitted);
+            this.CboTorneos.SelectedIndexChanged += new System.EventHandler(this.CboTorneos_SelectedIndexChanged);
             this.CboTorneos.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.CboTorneos_KeyPress);
             // 
             // LblListaTorneos

@@ -85,7 +85,7 @@ namespace Repositorio
                         //Sumo Partidos Perdidos Y Ganados
                         
                         Est1Jug1.PG += 1;
-                        Est2Jug1.PP += 1;
+                        Est2Jug1.PP += 1;                                               
                         //Asignacion De Puntos Por Ronda
                         AsignarPuntos(Est2Jug1, Partido);
                         //Asignacion De Puntos Campeon
@@ -95,7 +95,8 @@ namespace Repositorio
                             {
                                 if (Partido.Torneo.ListaPuntos[i].Ronda == "Campeon")
                                 {
-                                    Est1Jug1.Puntaje = Partido.Torneo.ListaPuntos[i].CantidadPuntos;
+                                    Est1Jug1.Puntaje += Partido.Torneo.ListaPuntos[i].CantidadPuntos;
+
                                     Partido.Torneo.Estado = (int)EstadoTorneo.Finalizado;
                                     TorneoRepositorio TorRep = new TorneoRepositorio();
                                     TorRep.Modificar(Partido.Torneo);
@@ -317,7 +318,7 @@ namespace Repositorio
 
         private void AsignarPuntos(Estadisticas Estadistica, Partido Partido)
         {
-            if (Partido.Ronda == Rondas.Primera_Ronda.ToString())
+            if (Convert.ToInt32(Partido.Ronda) == (int)Rondas.Primera_Ronda)
             {
                 for (int i = 0; i < 6; i++)
                 {
@@ -327,7 +328,7 @@ namespace Repositorio
                     }
                 }
             }
-            if (Partido.Ronda == Rondas.Segunda_Ronda.ToString())
+            if (Convert.ToInt32(Partido.Ronda) == (int)Rondas.Segunda_Ronda)
             {
                 for (int i = 0; i < 6; i++)
                 {
@@ -338,7 +339,7 @@ namespace Repositorio
                 }
             }
             
-            if (Partido.Ronda == Rondas.Cuartos_Final.ToString())
+            if (Convert.ToInt32(Partido.Ronda) == (int)Rondas.Cuartos_Final)
             {
                 for (int i = 0; i < 6; i++)
                 {
@@ -348,7 +349,7 @@ namespace Repositorio
                     }
                 }
             }
-            if (Partido.Ronda == Rondas.Semi_Final.ToString())
+            if (Convert.ToInt32(Partido.Ronda) == (int)Rondas.Semi_Final)
             {
                 for (int i = 0; i < 6; i++)
                 {
@@ -358,7 +359,7 @@ namespace Repositorio
                     }
                 }
             }
-            if (Partido.Ronda == Rondas.Final.ToString())
+            if (Convert.ToInt32(Partido.Ronda) == (int)Rondas.Final)
             {
                 for (int i = 0; i < 6; i++)
                 {

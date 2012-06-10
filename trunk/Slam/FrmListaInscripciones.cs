@@ -27,12 +27,25 @@ namespace Slam
 
         private void FrmListaInscripciones_Load(object sender, EventArgs e)
         {
+            if (CboTorneos.SelectedIndex > -1)
+            {
+                BtnAgregar.Enabled = true;
+                BtnEliminar.Enabled = true;
+                BtnModificar.Enabled = true;
+            }
+            else
+            {
+                BtnAgregar.Enabled = false;
+                BtnModificar.Enabled = false;
+                BtnEliminar.Enabled = false;
+            }
             try
             {
                 servicioListadoInscripciones = (IListadoInscripcionServicio)AppContext.Instance.GetObject(ImplementaInscripciones);
                 servicioInscripciones = (IInscripcionServicio)AppContext.Instance.GetObject(ImplementaInscripciones);
                 servicioTorneos = (IListadoTorneoServicio)AppContext.Instance.GetObject(ImplementaTorneos);
                 servicioTorneos.Listar(this);
+                
             }
             catch (Exception ex)
             {
@@ -192,6 +205,23 @@ namespace Slam
             }
             else
                 MessageBox.Show("Debe elegir una Inscripción para eliminarla.");
+        }
+
+        private void CboTorneos_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (CboTorneos.SelectedIndex > -1)
+            {
+                BtnAgregar.Enabled = true;
+                BtnEliminar.Enabled = true;
+                BtnModificar.Enabled = true;
+            }
+            else
+            {
+                BtnAgregar.Enabled = false;
+                BtnEliminar.Enabled = false;
+                BtnModificar.Enabled = false;
+            
+            }
         }
     }
 }
