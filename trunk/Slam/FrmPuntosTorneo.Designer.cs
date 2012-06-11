@@ -54,7 +54,8 @@
             this.CboListaTorneos.Name = "CboListaTorneos";
             this.CboListaTorneos.Size = new System.Drawing.Size(121, 21);
             this.CboListaTorneos.TabIndex = 0;
-            this.CboListaTorneos.SelectionChangeCommitted += new System.EventHandler(this.CboListaTorneos_SelectionChangeCommitted);
+            this.CboListaTorneos.SelectedIndexChanged += new System.EventHandler(this.CboListaTorneos_SelectedIndexChanged);
+            this.CboListaTorneos.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.CboListaTorneos_KeyPress);
             // 
             // label1
             // 

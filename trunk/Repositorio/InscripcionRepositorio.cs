@@ -288,7 +288,6 @@ namespace Repositorio
 
         #region Miembros de IInscripcionRepositorio
 
-
         public List<Inscripcion> ListarActivas(int IdTorneo)
         {
             String Consulta = " Select I.*, J.Dni From InscripcionesJugador J Inner Join Inscripciones I ";

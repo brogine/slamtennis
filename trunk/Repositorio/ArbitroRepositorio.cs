@@ -17,6 +17,7 @@ namespace Repositorio
         {
             Conex = new Conexion();
         }
+
         #region Miembros de IArbitroRepositorio
 
         public void Agregar(Dominio.Arbitro Arbitro)
@@ -46,12 +47,12 @@ namespace Repositorio
             string Consulta = " Update Arbitros set ";
             Consulta += " Nivel =" + Arbitro.Nivel + ",";
             Consulta += " Badge ='" + Arbitro.Badge + "',";
-            Consulta += " Estado ='" + Arbitro.Estado + "'";
+            Consulta += " Estado = " + (Arbitro.Estado ? 1 : 0);
             Consulta += " where Dni = " + Arbitro.Dni;
             Conex.ActualizarOEliminar(Consulta);
         }
 
-        public Dominio.Arbitro Buscar(int Dni)
+        public Arbitro Buscar(int Dni)
         {
             if (base.Existe(Dni))
             {

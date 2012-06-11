@@ -74,6 +74,7 @@
             // TxtDni
             // 
             this.TxtDni.Location = new System.Drawing.Point(103, 73);
+            this.TxtDni.Mask = "00.000.000";
             this.TxtDni.Name = "TxtDni";
             this.TxtDni.Size = new System.Drawing.Size(120, 20);
             this.TxtDni.TabIndex = 3;

@@ -202,7 +202,6 @@
             this.CboRonda.Name = "CboRonda";
             this.CboRonda.Size = new System.Drawing.Size(138, 21);
             this.CboRonda.TabIndex = 4;
-            this.CboRonda.SelectedIndexChanged += new System.EventHandler(this.CboRonda_SelectedIndexChanged);
             // 
             // FrmNuevoPartido
             // 
@@ -227,7 +226,6 @@
             this.Name = "FrmNuevoPartido";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Nuevo Partido";
-            this.Load += new System.EventHandler(this.FrmNuevoPartido_Load);
             this.GrpEquipo1.ResumeLayout(false);
             this.GrpEquipo2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.EPPartidos)).EndInit();

@@ -49,6 +49,8 @@ namespace Slam
             CboEquipo1.Enabled = false;
             CboEquipo2.Enabled = false;
             CboListaTorneo.Enabled = false;
+            IInscripcionServicio servicioInscripciones = (IInscripcionServicio)AppContext.Instance.GetObject("InscripcionServicio");
+            servicioInscripciones.DarDeAltaPorPartido(IdPartido);
         }
 
         #region Miembros de IPartidoUI
@@ -180,11 +182,6 @@ namespace Slam
 
         #endregion
 
-        private void FrmNuevoPartido_Load(object sender, EventArgs e)
-        {
-
-        }
-
         #region Miembros de IListadoInscripciones
 
         public List<object> ListarPorTorneo
@@ -237,8 +234,6 @@ namespace Slam
                 CboEquipo1.DisplayMember = "Value";
                 CboEquipo1.ValueMember = "Key";
                 CboEquipo1.SelectedIndex = -1;
-
-
             }
         }
 
@@ -254,29 +249,21 @@ namespace Slam
             try
             {
                 if (CboEquipo1.SelectedIndex == CboEquipo2.SelectedIndex)
+                    MessageBox.Show("No Puede Seleccionar El Mismo Equipo En Ambas istas");
+                else
                 {
-                    MessageBox.Show("No Puede Seleccionar El Mismo Equipo En Ambas Listas");
-                    return;
-                }
                     if (EPPartidos.GetError(CboListaTorneo) != "" && EPPartidos.GetError(CboEquipo1) != "" && EPPartidos.GetError(CboEquipo2) != "")
-                    {
                         MessageBox.Show("Complete Todos Los Campos Antes De Continuar");
-                    }
                     else
                     {
                         if (servicioPartido.Existe(this.IdPartido))
-                        {
                             servicioPartido.Modificar(this);
-                        }
                         else
-                        {
                             servicioPartido.Agregar(this);
-                        }
                         this.DialogResult = DialogResult.OK;
-                    }   
-                
+                    }
+                }
             }
-
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
@@ -348,9 +335,6 @@ namespace Slam
                 else
                     EPPartidos.SetError(CboEquipo2, "");
             }
-
-
-
         }
 
         #region IFechasTorneoUI Members
@@ -392,11 +376,6 @@ namespace Slam
         }
 
         #endregion
-
-        private void CboRonda_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
 
     }
 }

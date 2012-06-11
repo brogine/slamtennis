@@ -50,6 +50,8 @@ namespace Repositorio
         public void Modificar(Jugador Jugador)
         {
             base.Modificar(Jugador);
+            string Consulta = " Update Jugadores Set Estado = " + (Jugador.Estado ? 1 : 0) + " Where Dni = " + Jugador.Dni;
+            Conn.ActualizarOEliminar(Consulta);
         }
 
         public Jugador Buscar(int Dni)
@@ -86,7 +88,7 @@ namespace Repositorio
             Consulta += " ON A.IdClub = C.IdClub ";
             Consulta += " INNER JOIN Login L ";
             Consulta += " ON A.Dni = L.Dni ";
-            Consulta += " where a.IdClub= " + IdClub;
+            Consulta += " where a.IdClub = " + IdClub + " And a.Estado = 1";
         	List<Jugador> ListaJugadores = new List<Jugador>();
         	IEstadisticaRepositorio repoEstadisticas = new EstadisticaRepositorio();
         	DataTable Tabla = Conn.Listar(Consulta);
@@ -103,6 +105,7 @@ namespace Repositorio
             string Consulta = " Select * From Jugadores J Inner Join Personas P ";
             Consulta += " On J.Dni = P.Dni Inner Join Login L ";
             Consulta += " On J.Dni = L.Dni Where IdCategoria = " + IdCategoria;
+            Consulta += " Order By Puntos Desc, PartidosGanados Desc ";
             List<Jugador> ListaJugadores = new List<Jugador>();
             IEstadisticaRepositorio repoEstadisticas = new EstadisticaRepositorio();
             DataTable Tabla = Conn.Listar(Consulta);
