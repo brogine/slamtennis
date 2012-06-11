@@ -67,7 +67,7 @@ namespace Repositorio
 
         public int UltimaInscripcion()
         {
-            string query = "select max(IdInscripcion) from Inscripciones";
+            string query = "select IDENT_CURRENT('Inscripciones')";
             int retorno = 0;
             DataRow fila = Conn.Buscar(query);
             if (fila != null || fila.IsNull(0) == false)
