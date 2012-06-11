@@ -12,7 +12,22 @@ namespace SlamWeb
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            //if (this.IsPostBack)
+            //{
+            //    ILoginServicio LoginServicio = new LoginServicio();
+            //    this.Dni = LoginServicio.Validar(this);
+            //    if (this.Dni == 0)
+            //    {
+            //        Login1.FailureText = "Su Nombre de usuario o clave no es valido, Verifique...";
+            //    }
+            //    else
+            //    {
+            //        IJugadorServicio jugador = new JugadorServicio();
+            //        jugador.Buscar(this);
+            //        Session["Logeado"] = true;
+            //        Response.Redirect("Default.aspx");
+            //    }
+            //}
         }
 
         #region ILoginUI Members
@@ -48,7 +63,6 @@ namespace SlamWeb
                 IJugadorServicio jugador = new JugadorServicio();
                 jugador.Buscar(this);
                 Session["Logeado"] = true;
-                //Session["Imagen"] = "22222222.jpg";
                 Response.Redirect("Default.aspx");
             }
         }
@@ -214,7 +228,7 @@ namespace SlamWeb
                 }
                 else
                 {
-                    Session["Imagen"] = "22222222.jpg";
+                    Session["Imagen"] = string.Empty;
                 }
             }
         }

@@ -19,8 +19,14 @@ namespace SlamWeb
             LblEmail.Text = Session["Email"].ToString().Trim();
             LblDNI.Text = Session["DNI"].ToString();
             LblSexo.Text = Session["Sexo"].ToString().Trim();
-            Image2.ImageUrl = "~/Profiles/" + Session["Imagen"].ToString().Trim();
-            
+            if (Session["Imagen"] != null)
+            {
+                Image1.ImageUrl = "~/Profiles/" + Session["Imagen"].ToString().Trim();
+            }
+            else
+            {
+                Image1.ImageUrl = "~/Content/Alert_32x32-32.png";
+            }
             IPaisServicio servicioPaises = new UbicacionServicio();
             servicioPaises.ListarPaises(this);
             //IProvinciaServicio servicioProv = new UbicacionServicio();
