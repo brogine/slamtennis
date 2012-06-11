@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Data;
 using Dominio;
 using Repositorio;
+using Servicio.InterfacesUI;
 
 namespace Servicio
 {
@@ -16,7 +17,7 @@ namespace Servicio
 
         #region Miembros de IInscripcionServicio
 
-        public int Agregar(Servicio.InterfacesUI.IInscripcionUI UI)
+        public int Agregar(IInscripcionUI UI)
         {
             if (!repoInscripciones.Existe(UI.IdTorneo, UI.DniJugador1))
             {
@@ -26,15 +27,28 @@ namespace Servicio
                 {
                     Torneo bTorneo = repoTorneos.Buscar(UI.IdTorneo);
                     Equipo nEquipo = new Equipo();
-                    nEquipo.Jugador1 = repoJugadores.Buscar(UI.DniJugador1);
+
+                    #region Validacion de Integridad de Jugadores
+
+                    if (repoJugadores.Existe(UI.DniJugador1))
+                        nEquipo.Jugador1 = repoJugadores.Buscar(UI.DniJugador1);
+                    else
+                        throw new ServicioException("El Jugador con Dni " + UI.DniJugador1 + " no existe.");
                     bool dobleInscripcion = (UI.DniJugador2 > 0) ? true : false;
                     if (dobleInscripcion)
                     {
+                        if(repoJugadores.Existe(UI.DniJugador2))
+                        {
                         if (!repoInscripciones.Existe(UI.IdTorneo, UI.DniJugador2))
                             nEquipo.Jugador2 = repoJugadores.Buscar(UI.DniJugador2);
                         else
                             throw new ServicioException("El Jugador con Dni " + UI.DniJugador2 + " ya está Inscripto a ese torneo.");
+                    
+                        }
+                        else
+                            throw new ServicioException("El Jugador con Dni " + UI.DniJugador2 + " no existe.");
                     }
+                    #endregion
 
                     #region Validación por Tipo de Torneo
 
@@ -158,7 +172,7 @@ namespace Servicio
                 return false;
         }
 
-        public void Buscar(Servicio.InterfacesUI.IInscripcionUI UI)
+        public void Buscar(IInscripcionUI UI)
         {
             Inscripcion bInscripcion = repoInscripciones.Buscar(UI.IdInscripcion);
             UI.DniJugador1 = bInscripcion.Equipo.Jugador1.Dni;
@@ -259,7 +273,6 @@ namespace Servicio
 
         #region Miembros de IListadoInscripcionServicio
 
-
         public void ListarActivas(Servicio.InterfacesUI.IListadoInscripciones UI)
         {
             List<Inscripcion> ListaInscripciones = repoInscripciones.ListarActivas(UI.IdTorneo);
@@ -292,6 +305,16 @@ namespace Servicio
                 ListaUI.Add(0 + "," + (int)tipoTorneo + ",BYE,,,");
             }
             UI.ListarPorTorneo = ListaUI;
+        }
+
+        public void DarDeAltaPorPartido(int IdPartido)
+        {
+            List<Inscripcion> Lista = repoInscripciones.ListarPorPartido(IdPartido);
+            foreach (Inscripcion insc in Lista)
+            {
+                insc.Estado = true;
+                repoInscripciones.Modificar(insc);
+            }
         }
 
         #endregion

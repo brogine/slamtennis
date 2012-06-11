@@ -155,22 +155,6 @@ namespace Slam
 
         #endregion
 
-        private void CboListaTorneos_SelectionChangeCommitted(object sender, EventArgs e)
-        {
-            try
-            {
-                if (PuntosServicio.Existe(this))
-                    PuntosServicio.Buscar(this);
-                else
-                    Blanquear();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-  
-        }
-
         private void BtnAceptar_Click(object sender, EventArgs e)
         {
             try
@@ -226,5 +210,26 @@ namespace Slam
         {
             this.Close();
         }
+
+        private void CboListaTorneos_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                if (PuntosServicio.Existe(this))
+                    PuntosServicio.Buscar(this);
+                else
+                    Blanquear();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void CboListaTorneos_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = true;
+        }
+
     }
 }

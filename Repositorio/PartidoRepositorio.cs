@@ -51,7 +51,6 @@ namespace Repositorio
             IInscripcionRepositorio InscRepo = new InscripcionRepositorio();
             string FechaFormateada = Partido.Fecha.ToString("yyyyMMdd");
             String Consulta = " Update Partidos Set ";
-            
             Consulta += " Fecha = '" + FechaFormateada + "', ";
             Consulta += "Ronda ='" + Partido.Ronda+"',";
             Consulta += " Estado = " + (Partido.Estado ? 1 : 0);
@@ -105,10 +104,9 @@ namespace Repositorio
                                 }
                             }
                         }
-                        //Baja Del Equipo Perdedor
-                        InscRepo.BajaInscripcion(Partido.Equipo2);
-
-
+                        //Alta al equipo Ganador
+                        Partido.Equipo1.Estado = true;
+                        InscRepo.Modificar(Partido.Equipo1);
                     }
                     //Si El Ganador Del Partido Es El Equipo 2
                     else
@@ -134,8 +132,9 @@ namespace Repositorio
                             }
 
                         }
-                        //Doy De Baja Al Equipo Perdedor
-                        InscRepo.BajaInscripcion(Partido.Equipo1);
+                        //Doy de alta al equipo Ganador
+                        Partido.Equipo2.Estado = true;
+                        InscRepo.Modificar(Partido.Equipo2);
                     }
                     EstRepo.Modificar(Partido.Equipo1.Equipo.Jugador1, Est1Jug1);
                     EstRepo.Modificar(Partido.Equipo2.Equipo.Jugador1, Est2Jug1);
@@ -188,9 +187,8 @@ namespace Repositorio
                             }
 
                         }
-
-                        InscRepo.BajaInscripcion(Partido.Equipo2);
-
+                        Partido.Equipo1.Estado = true;
+                        InscRepo.Modificar(Partido.Equipo1);
                     }
                     else
                     {
@@ -221,18 +219,15 @@ namespace Repositorio
                             }
 
                         }
-                        //Dar De Baja Equipos Perdedores
-                        InscRepo.BajaInscripcion(Partido.Equipo1);
-
+                        //Damos de alta a los Ganadores
+                        Partido.Equipo2.Estado = true;
+                        InscRepo.Modificar(Partido.Equipo2);
                     }
                     EstRepo.Modificar(Partido.Equipo1.Equipo.Jugador1, Equipo1Jugador1);
                     EstRepo.Modificar(Partido.Equipo1.Equipo.Jugador2, Equipo1Jugador2);
                     EstRepo.Modificar(Partido.Equipo2.Equipo.Jugador1, Equipo2Jugador1);
                     EstRepo.Modificar(Partido.Equipo2.Equipo.Jugador2, Equipo2Jugador2);
-                    
                 }
-
-
             }
         }
 

@@ -23,5 +23,7 @@ namespace Servicio
         bool ValidarInscripcion(int IdTorneo, int DniJugador);
 
         void Buscar(IInscripcionUI UI);
+
+        void DarDeAltaPorPartido(int IdPartido);
     }
 }

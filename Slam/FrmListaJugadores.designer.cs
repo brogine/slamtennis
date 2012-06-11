@@ -92,11 +92,11 @@
             // 
             // BtnCambiaEstado
             // 
-            this.BtnCambiaEstado.Location = new System.Drawing.Point(323, 309);
+            this.BtnCambiaEstado.Location = new System.Drawing.Point(320, 309);
             this.BtnCambiaEstado.Name = "BtnCambiaEstado";
-            this.BtnCambiaEstado.Size = new System.Drawing.Size(75, 23);
+            this.BtnCambiaEstado.Size = new System.Drawing.Size(112, 23);
             this.BtnCambiaEstado.TabIndex = 4;
-            this.BtnCambiaEstado.Text = "Dar De Baja";
+            this.BtnCambiaEstado.Text = "Modificar Afiliación";
             this.BtnCambiaEstado.UseVisualStyleBackColor = true;
             this.BtnCambiaEstado.Click += new System.EventHandler(this.BtnCambiaEstado_Click);
             // 

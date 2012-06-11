@@ -44,7 +44,7 @@ namespace Slam
                 servicioListadoInscripciones = (IListadoInscripcionServicio)AppContext.Instance.GetObject(ImplementaInscripciones);
                 servicioInscripciones = (IInscripcionServicio)AppContext.Instance.GetObject(ImplementaInscripciones);
                 servicioTorneos = (IListadoTorneoServicio)AppContext.Instance.GetObject(ImplementaTorneos);
-                servicioTorneos.Listar(this);
+                servicioTorneos.ListarAbiertos(this);
                 
             }
             catch (Exception ex)

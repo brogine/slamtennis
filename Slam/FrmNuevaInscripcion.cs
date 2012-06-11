@@ -80,10 +80,13 @@ namespace Slam
                 }
                 else
                 {
-                    MessageBox.Show("No existen Torneos en el Sistema. Agregue una Torneo para poder continuar.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    FrmNuevoTorneo NuevoTorneo = new FrmNuevoTorneo();
-                    if (NuevoTorneo.ShowDialog() != DialogResult.Retry)
-                        this.servicioTorneos.ListarAbiertos(this);
+                    if (MessageBox.Show("No existen Torneos en el Sistema. ¿Desea agregar un Torneo nuevo?",
+                        "Advertencia", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning) == DialogResult.OK)
+                    {
+                        FrmNuevoTorneo NuevoTorneo = new FrmNuevoTorneo();
+                        if (NuevoTorneo.ShowDialog() != DialogResult.Retry)
+                            this.servicioTorneos.ListarAbiertos(this);
+                    }
                 }
             }
         }
