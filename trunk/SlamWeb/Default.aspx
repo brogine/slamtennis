@@ -54,7 +54,7 @@
             Torneos</td>
     </tr>
      <tr>
-        <td>
+        <td class="style1">
             <asp:ImageButton ID="Cerrar" runat="server" Height="128px" 
                 Width="128px" ImageUrl="~/Content/CerrarSession.png" 
                 onclick="Cerrar_Click" />

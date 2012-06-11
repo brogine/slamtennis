@@ -25,30 +25,31 @@ namespace InstallerSlam
             Application.EnableVisualStyles();
         }
 
-        string discoSlam = @"E:\Slam Tenis\"; //string.Empty;
+        string discoSlam = string.Empty; //@"E:\Slam Tenis\"; //string.Empty;
 
         private void FrmCrearBase_Load(object sender, EventArgs e)
         {
+            this.Activate();
             ManagementClass partionsClass = new ManagementClass("Win32_LogicalDisk");
             ManagementObjectCollection partions = partionsClass.GetInstances();
 
             string hdd = string.Empty;
             bool cdslam = false;
             string Unidad = string.Empty;
-            //foreach (ManagementObject partion in partions)
-            //{
-            //    hdd = Convert.ToString(partion["VolumeName"]);
-            //    if (hdd == "Slam Tenis")
-            //    {
-            //        Unidad = Convert.ToString(partion["DeviceID"]);
-            //        cdslam = true;
-            //    }
-            //}
+            foreach (ManagementObject partion in partions)
+            {
+                hdd = Convert.ToString(partion["VolumeName"]);
+                if (hdd == "Slam Tenis")
+                {
+                    Unidad = Convert.ToString(partion["DeviceID"]);
+                    cdslam = true;
+                }
+            }
 
             if (!cdslam)
             {
                 MessageBox.Show("Falta insetar el cd de instalacion de Slam Tenis", "Slam Tenis", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                //this.Close();
+                this.Close();
             }
             else
             {
@@ -87,12 +88,6 @@ namespace InstallerSlam
                 }
             }
             return MSSql;
-        }
-
-        void timer1_Tick(object sender, EventArgs e)
-        {
-            
-
         }
 
         private void BtnSql_Click(object sender, EventArgs e)
@@ -201,19 +196,75 @@ namespace InstallerSlam
 
         private void button1_Click(object sender, EventArgs e)
         {
-            Process.Start(discoSlam + @"Web Setup\setup.exe");
-            //bool running = true;
-            //while (running != false)
-            //{
-            //    running = Running("msiexec");
-            //    Application.DoEvents();
-            //    if (running)
-            //    {
-            System.Threading.Thread.Sleep(5000);
-            //    }                
-            //}
-            groupBox2.Visible = false;
-            groupBox4.Visible = true;
+            if (System.IO.Directory.Exists(@"C:\inetpub\wwwroot\"))
+            {
+                System.IO.DirectoryInfo direc = new DirectoryInfo(discoSlam + @"Web Slam\");
+                if (System.IO.Directory.Exists(@"C:\inetpub\wwwroot\SlamWeb\"))
+                {
+                    System.IO.Directory.Delete(@"C:\inetpub\wwwroot\SlamWeb\");
+                    System.IO.Directory.CreateDirectory(@"C:\inetpub\wwwroot\SlamWeb\");
+                }
+                else
+                {
+                    System.IO.Directory.CreateDirectory(@"C:\inetpub\wwwroot\SlamWeb\");
+                }
+
+                DirectoryCopy(discoSlam + @"Web Slam\", @"C:\inetpub\wwwroot\SlamWeb\", true);
+                groupBox2.Visible = false;
+                groupBox4.Visible = true;
+            }
+            else
+            {
+                MessageBox.Show("No se encuentre instalado Internet Information Services (IIS) o no es una version compatible, verifique...", "Slam Tenis", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            }
+        }
+
+        private void DirectoryCopy(
+        string sourceDirName, string destDirName, bool copySubDirs)
+        {
+            DirectoryInfo dir = new DirectoryInfo(sourceDirName);
+            DirectoryInfo[] dirs = dir.GetDirectories();
+
+            // If the source directory does not exist, throw an exception.
+            if (!dir.Exists)
+            {
+                throw new DirectoryNotFoundException(
+                    "Source directory does not exist or could not be found: "
+                    + sourceDirName);
+            }
+
+            // If the destination directory does not exist, create it.
+            if (!Directory.Exists(destDirName))
+            {
+                Directory.CreateDirectory(destDirName);
+            }
+
+
+            // Get the file contents of the directory to copy.
+            FileInfo[] files = dir.GetFiles();
+
+            foreach (FileInfo file in files)
+            {
+                // Create the path to the new copy of the file.
+                string temppath = Path.Combine(destDirName, file.Name);
+
+                // Copy the file.
+                file.CopyTo(temppath, false);
+            }
+
+            // If copySubDirs is true, copy the subdirectories.
+            if (copySubDirs)
+            {
+
+                foreach (DirectoryInfo subdir in dirs)
+                {
+                    // Create the subdirectory.
+                    string temppath = Path.Combine(destDirName, subdir.Name);
+
+                    // Copy the subdirectories.
+                    DirectoryCopy(subdir.FullName, temppath, copySubDirs);
+                }
+            }
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -232,22 +283,32 @@ namespace InstallerSlam
 
         void GuardarConf()
         {
-            Dominio.ConfEmail email = new Dominio.ConfEmail();
+            try
+            {
+                Dominio.ConfEmail email = new Dominio.ConfEmail();
 
-            if (CheckAut.Checked)
-            {
-                email.GuardarCuenta(TxtNombre.Text, TxtEmail.Text, TxtClave.Text);
+                if (CheckAut.Checked)
+                {
+                    email.GuardarCuenta(TxtNombre.Text, TxtEmail.Text, TxtClave.Text);
+                }
+                else
+                {
+                    email.GuardarCuenta(TxtNombre.Text, TxtEmail.Text, TxtClave.Text);
+                }
+                Dominio.Email mail = new Dominio.Email();
+                mail.Asunto = "Prueba de configuracion";
+                mail.EmailDestino = TxtEmail.Text;
+                mail.Mensaje = " Este es un email de prueba...";
+                mail.Prioridad = Dominio.PrioridadEmail.Normal;
+                mail.Enviar();
+                string targetDirectory = System.AppDomain.CurrentDomain.BaseDirectory;
+                System.IO.File.Copy(targetDirectory + "Configuracion.xml", @"C:\inetpub\wwwroot\SlamWeb\Configuracion.xml", true);
+                System.IO.File.Copy(targetDirectory + "CuentaEmail.xml", @"C:\inetpub\wwwroot\SlamWeb\CuentaEmail.xml", true);
+                System.IO.File.Copy(targetDirectory + "CuentasSMTP.xml", @"C:\inetpub\wwwroot\SlamWeb\CuentasSMTP.xml", true);
             }
-            else
-            {
-                email.GuardarCuenta(TxtNombre.Text, TxtEmail.Text, TxtClave.Text);
-            }
-            Dominio.Email mail = new Dominio.Email();
-            mail.Asunto = "Prueba de configuracion";
-            mail.EmailDestino = TxtEmail.Text;
-            mail.Mensaje = " Este es un email de prueba...";
-            mail.Prioridad = Dominio.PrioridadEmail.Normal;
-            mail.Enviar();
+            catch
+            {}
+                
         }
 
         bool Running(string app)
@@ -280,11 +341,6 @@ namespace InstallerSlam
             {
                 PnlConf.Visible = false;
             }
-        }
-
-        private void pictureBox1_Click(object sender, EventArgs e)
-        {
-
         }
 
         private void BtnSalir_Click(object sender, EventArgs e)
@@ -515,31 +571,7 @@ namespace InstallerSlam
                 groupBox2.Visible = true;
             }
         }
-
-
-      
-
-        //private void BtnMySQl_Click(object sender, EventArgs e)
-        //{
-        //    
-        //}
-
-        //private void BtnSql_MouseDown(object sender, MouseEventArgs e)
-        //{
-        //    this.LblInfo.Text = "Escalabilidad, estabilidad y seguridad.\r\nSoporta procedimientos almacenados.\r\nPer" +
-        //       "mite trabajar en modo cliente-servidor, donde la información y datos se alojan e" +
-        //       "n el servidor.\r\n";
-        //    LblInfo.Visible = true;
-        //}
-
-        //private void BtnMySQl_MouseDown(object sender, MouseEventArgs e)
-        //{
-        //    this.LblInfo.Text = "Proporciona sistemas de almacenamiento transaccionales y no transaccionales.\r\n" +
-        //    "Usa tablas en disco B-tree (MyISAM) muy rápidas con compresión de índice.\r\n" +
-        //    "Relativamente sencillo de añadir otro sistema de almacenamiento.\r\n" +
-        //    "Un sistema de reserva de memoria muy rápido basado en threads.\r\n";               
-        //    LblInfo.Visible = true;
-        //}
+        
     }
 }
 

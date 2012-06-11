@@ -26,6 +26,7 @@ namespace SlamWeb
             else
             {
                 Image1.ImageUrl = "~/Content/Alert_32x32-32.png";
+                Session["Imagen"] = "~/Content/Alert_32x32-32.png";
             }
         }
 
