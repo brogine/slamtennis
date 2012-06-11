@@ -53,6 +53,8 @@ namespace SlamWeb
                             int IdInscripcionActual = Convert.ToInt32(LblInscripcion.Text);
                             IInscripcionServicio servicioInscripciones = new InscripcionServicio();
                             IdInscripcionActual = servicioInscripciones.Agregar(this);
+                            Session["NroIncripcion"] = IdInscripcionActual;
+                            LblInscripcion.Text = Convert.ToString(IdInscripcionActual);
                             GC.Collect();
                             GC.WaitForPendingFinalizers();
                             ClientScriptManager manager = Page.ClientScript;
@@ -73,6 +75,7 @@ namespace SlamWeb
                             ClientScriptManager manager = Page.ClientScript;
                             manager.RegisterStartupScript(this.GetType(), "Alerta", "<script type='text/javascript'>openpopup();</script>");
                         }
+                        LblInscripcion.Text = (Convert.ToInt32(LblInscripcion.Text) + 1).ToString(); 
                         break;
                     case "Borrar":
                         string[] borra = parametro1.Substring((index + 1), parametro1.Length - (index + 1)).Split(',');
