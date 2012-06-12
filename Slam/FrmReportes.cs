@@ -51,7 +51,9 @@ namespace Slam
                         {
                             int IdCategoria = frmReporteRanking.IdCategoria;
                             string Categoria = frmReporteRanking.Categoria;
-                            object reporteActual = servicioReportes.CrearInstancia(e.Node.Text, IdCategoria);
+                            object reporteActual = 
+                                servicioReportes.CrearInstancia((ListadoReportes)Enum.Parse(typeof(ListadoReportes), e.Node.Text)
+                                                                ,IdCategoria);
                             servicioReportes.Parametros("Categoria", Categoria);
                             RptViewer.ReportSource = reporteActual;
                         }
@@ -62,7 +64,7 @@ namespace Slam
                         {
                             int Dni = frmReporteCarnet.Dni;
                             TipoPersona Tipo = frmReporteCarnet.Tipo;
-                            object reporteActual = servicioReportes.CrearInstancia(e.Node.Text, Dni + "," + Tipo.ToString());
+                            object reporteActual = servicioReportes.CrearInstancia((ListadoReportes)Enum.Parse(typeof(ListadoReportes), e.Node.Text), Dni + "," + Tipo.ToString());
                             if (reporteActual == null)
                             {
                                 MessageBox.Show("El Dni de la persona no existe, Verifique", "Reportes", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);

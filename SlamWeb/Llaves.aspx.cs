@@ -81,7 +81,7 @@ namespace SlamWeb
             if (CboTorneos.SelectedIndex != 0)
             {
                 IReportesServicio servicioReportes = new ReportesServicio();
-                Object ReporteLlave = servicioReportes.CrearInstancia("Llave", Convert.ToInt32(CboTorneos.SelectedValue));
+                Object ReporteLlave = servicioReportes.CrearInstancia(ListadoReportes.Llave, Convert.ToInt32(CboTorneos.SelectedValue));
                 if (ReporteLlave != null)
                 {
                     Session["ReporteLlave"] = ReporteLlave;

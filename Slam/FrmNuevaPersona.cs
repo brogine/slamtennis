@@ -167,7 +167,7 @@ namespace Slam
                         if (MessageBox.Show("Carga realizada con éxito. ¿Desea imprimir el carnet de usuario?", "Éxito", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                         {
                             IReportesServicio servicioReportes = (IReportesServicio)AppContext.Instance.GetObject(ImplementaReportes);
-                            object ReporteCarnet = servicioReportes.CrearInstancia("Carnet", TxtDni.Text + "," + Tipo.ToString());
+                            object ReporteCarnet = servicioReportes.CrearInstancia(ListadoReportes.Carnet, TxtDni.Text + "," + Tipo.ToString());
                             FrmReportes frmReportes = new FrmReportes(ReporteCarnet);
                             frmReportes.MdiParent = this.MdiParent;
                             frmReportes.Show();

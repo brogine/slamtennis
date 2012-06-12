@@ -18,7 +18,7 @@ namespace SlamWeb
             }
             int inscripcion = Convert.ToInt32(Session["NroIncripcion"]);
             IReportesServicio servicioReportes = new ReportesServicio();
-            object ReportedeInscripcion = servicioReportes.CrearInstancia("CuponInscripcion", inscripcion);
+            object ReportedeInscripcion = servicioReportes.CrearInstancia(ListadoReportes.CuponInscripcion, inscripcion);
             ReportViewerInscrip.ReportSource = ReportedeInscripcion;
             ReportViewerInscrip.RefreshReport();
         }

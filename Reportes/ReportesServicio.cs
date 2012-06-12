@@ -10,7 +10,7 @@ using Dominio;
 
 namespace Reportes
 {
-    public enum ListadoReportes { Ranking, Llave, Carnet }
+    public enum ListadoReportes { Ranking, Llave, Carnet, CuponInscripcion }
 
     public class ReportesServicio : IReportesServicio, IListadoJugadoresCategoria, ICarnetUI
     {
@@ -25,31 +25,31 @@ namespace Reportes
             ReporteActual = new object();
         }
 
-        public object CrearInstancia(string NombreReporte, object Sender)
+        public object CrearInstancia(ListadoReportes NombreReporte, object Sender)
         {
             switch (NombreReporte)
             {
-                case "Ranking":
+                case ListadoReportes.Ranking:
                     IListadoJugadoresCategoriaServicio servicioJugadores = new JugadorServicio();
                     RptRankingCategoria rptRankingCategoria = new RptRankingCategoria();
                     this.IdCategoria = (int)Sender;
                     ReporteActual = rptRankingCategoria;
                     servicioJugadores.ListarPorCategoria(this);
                     return ReporteActual;
-                case "Llave":
+                case ListadoReportes.Llave:
                     ILlaveTorneoServicio servicioLlave = new TorneoServicio();
                     DataSet Ds = servicioLlave.GetDatosPartido((int)Sender);
                     RptLlave rptLlave = new RptLlave();
                     rptLlave.SetDataSource(Ds);
                     ReporteActual = rptLlave;
                     return ReporteActual;
-                case "CuponInscripcion":
+                case ListadoReportes.CuponInscripcion:
                     RptCuponInscripcion rptCuponInscripcion = new RptCuponInscripcion();
                     IInscripcionReporteServicio servicioInscripciones = new InscripcionServicio();
                     rptCuponInscripcion.SetDataSource(servicioInscripciones.BuscarPorId((int)Sender));
                     ReporteActual = rptCuponInscripcion;
                     return ReporteActual;
-                case "Carnet":
+                case ListadoReportes.Carnet:
                     RptCarnet rptCarnet = new RptCarnet();
                     ICarnetServicio servicioCarnet = new CarnetServicio();
                     this.dniCarnet = Convert.ToInt32(Sender.ToString().Split(',')[0]);
