@@ -222,7 +222,7 @@ namespace Slam
                 if ((value.Count / 2) <= DgvListaPartidos.RowCount)
                 {
                     IReportesServicio servicioReportes = (IReportesServicio)AppContext.Instance.GetObject(ImplementaReportes);
-                    Object ReporteLlave = servicioReportes.CrearInstancia("Llave", IdTorneo);
+                    Object ReporteLlave = servicioReportes.CrearInstancia(ListadoReportes.Llave, IdTorneo);
                     FrmReportes Reportes = new FrmReportes(ReporteLlave);
                     Reportes.Show();
                 }

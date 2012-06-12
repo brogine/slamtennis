@@ -243,7 +243,7 @@ namespace Slam
             if (CboCategorias.SelectedIndex > -1)
             {
                 IReportesServicio servicioReportes = (IReportesServicio)AppContext.Instance.GetObject(ImplementaReportes);
-                Object ReporteEstadisticas = servicioReportes.CrearInstancia(ListadoReportes.Ranking.ToString(),
+                Object ReporteEstadisticas = servicioReportes.CrearInstancia(ListadoReportes.Ranking,
                     ((KeyValuePair<int, string>)CboCategorias.SelectedItem).Key);
                 servicioReportes.Parametros("Categoria", ((KeyValuePair<int, string>)CboCategorias.SelectedItem).Value);
                 FrmReportes reportes = new FrmReportes(ReporteEstadisticas);

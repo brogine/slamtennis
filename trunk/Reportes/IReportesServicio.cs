@@ -7,7 +7,7 @@ namespace Reportes
 {
     public interface IReportesServicio
     {
-        object CrearInstancia(string NombreReporte, object Sender);
+        object CrearInstancia(ListadoReportes NombreReporte, object Sender);
 
         void Parametros(string NombresParametro, object ValorParametro);
     }

@@ -118,7 +118,7 @@ namespace Slam
                     if (crearReporte)
                     {
                         IReportesServicio servicioReportes = (IReportesServicio)AppContext.Instance.GetObject(ImplementaReportes);
-                        object ReportedeInscripcion = servicioReportes.CrearInstancia("CuponInscripcion", IdInscripcionActual);
+                        object ReportedeInscripcion = servicioReportes.CrearInstancia(ListadoReportes.CuponInscripcion, IdInscripcionActual);
                         FrmReportes frmReportes = new FrmReportes(ReportedeInscripcion);
                         frmReportes.MdiParent = this.MdiParent;
                         frmReportes.Show();
