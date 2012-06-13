@@ -228,6 +228,7 @@
             this.tlsmiConfiguracion.Name = "tlsmiConfiguracion";
             this.tlsmiConfiguracion.Size = new System.Drawing.Size(95, 20);
             this.tlsmiConfiguracion.Text = "Configuración";
+            this.tlsmiConfiguracion.Visible = false;
             this.tlsmiConfiguracion.Click += new System.EventHandler(this.tlsmiConfiguracion_Click);
             // 
             // ayudaToolStripMenuItem
@@ -242,14 +243,14 @@
             // manualHTMLToolStripMenuItem
             // 
             this.manualHTMLToolStripMenuItem.Name = "manualHTMLToolStripMenuItem";
-            this.manualHTMLToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.manualHTMLToolStripMenuItem.Size = new System.Drawing.Size(150, 22);
             this.manualHTMLToolStripMenuItem.Text = "Manual HTML";
             this.manualHTMLToolStripMenuItem.Click += new System.EventHandler(this.manualHTMLToolStripMenuItem_Click);
             // 
             // acercaDeToolStripMenuItem
             // 
             this.acercaDeToolStripMenuItem.Name = "acercaDeToolStripMenuItem";
-            this.acercaDeToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.acercaDeToolStripMenuItem.Size = new System.Drawing.Size(150, 22);
             this.acercaDeToolStripMenuItem.Text = "Acerca de...";
             this.acercaDeToolStripMenuItem.Click += new System.EventHandler(this.acercaDeToolStripMenuItem_Click);
             // 
