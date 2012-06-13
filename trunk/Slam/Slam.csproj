@@ -435,6 +435,7 @@
       <DesignTime>True</DesignTime>
     </Compile>
     <None Include="App.config" />
+    <None Include="Manual del Usuario SLAM_archivos\themedata.thmx" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -473,6 +474,79 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="icon.ico" />
+    <Content Include="Manual del Usuario SLAM.htm">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Manual del Usuario SLAM_archivos\colorschememapping.xml" />
+    <Content Include="Manual del Usuario SLAM_archivos\filelist.xml" />
+    <Content Include="Manual del Usuario SLAM_archivos\header.htm" />
+    <Content Include="Manual del Usuario SLAM_archivos\image001.png" />
+    <Content Include="Manual del Usuario SLAM_archivos\image002.jpg" />
+    <Content Include="Manual del Usuario SLAM_archivos\image003.jpg" />
+    <Content Include="Manual del Usuario SLAM_archivos\image004.jpg" />
+    <Content Include="Manual del Usuario SLAM_archivos\image005.jpg" />
+    <Content Include="Manual del Usuario SLAM_archivos\image006.png" />
+    <Content Include="Manual del Usuario SLAM_archivos\image007.png" />
+    <Content Include="Manual del Usuario SLAM_archivos\image008.jpg" />
+    <Content Include="Manual del Usuario SLAM_archivos\image009.jpg" />
+    <Content Include="Manual del Usuario SLAM_archivos\image010.png" />
+    <Content Include="Manual del Usuario SLAM_archivos\image011.png" />
+    <Content Include="Manual del Usuario SLAM_archivos\image012.png" />
+    <Content Include="Manual del Usuario SLAM_archivos\image013.jpg" />
+    <Content Include="Manual del Usuario SLAM_archivos\image014.png" />
+    <Content Include="Manual del Usuario SLAM_archivos\image015.jpg" />
+    <Content Include="Manual del Usuario SLAM_archivos\image016.png" />
+    <Content Include="Manual del Usuario SLAM_archivos\image017.jpg" />
+    <Content Include="Manual del Usuario SLAM_archivos\image018.jpg" />
+    <Content Include="Manual del Usuario SLAM_archivos\image019.jpg" />
+    <Content Include="Manual del Usuario SLAM_archivos\image020.jpg" />
+    <Content Include="Manual del Usuario SLAM_archivos\image021.jpg" />
+    <Content Include="Manual del Usuario SLAM_archivos\image022.png" />
+    <Content Include="Manual del Usuario SLAM_archivos\image023.jpg" />
+    <Content Include="Manual del Usuario SLAM_archivos\image024.jpg" />
+    <Content Include="Manual del Usuario SLAM_archivos\image025.jpg" />
+    <Content Include="Manual del Usuario SLAM_archivos\image026.jpg" />
+    <Content Include="Manual del Usuario SLAM_archivos\image027.jpg" />
+    <Content Include="Manual del Usuario SLAM_archivos\image028.jpg" />
+    <Content Include="Manual del Usuario SLAM_archivos\image029.jpg" />
+    <Content Include="Manual del Usuario SLAM_archivos\image030.png" />
+    <Content Include="Manual del Usuario SLAM_archivos\image031.jpg" />
+    <Content Include="Manual del Usuario SLAM_archivos\image032.png" />
+    <Content Include="Manual del Usuario SLAM_archivos\image033.png" />
+    <Content Include="Manual del Usuario SLAM_archivos\image034.png" />
+    <Content Include="Manual del Usuario SLAM_archivos\image035.png" />
+    <Content Include="Manual del Usuario SLAM_archivos\image036.jpg" />
+    <Content Include="Manual del Usuario SLAM_archivos\image037.png" />
+    <Content Include="Manual del Usuario SLAM_archivos\image038.jpg" />
+    <Content Include="Manual del Usuario SLAM_archivos\image039.jpg" />
+    <Content Include="Manual del Usuario SLAM_archivos\image040.jpg" />
+    <Content Include="Manual del Usuario SLAM_archivos\image041.png" />
+    <Content Include="Manual del Usuario SLAM_archivos\image042.png" />
+    <Content Include="Manual del Usuario SLAM_archivos\image043.png" />
+    <Content Include="Manual del Usuario SLAM_archivos\image044.png" />
+    <Content Include="Manual del Usuario SLAM_archivos\image045.png" />
+    <Content Include="Manual del Usuario SLAM_archivos\image046.jpg" />
+    <Content Include="Manual del Usuario SLAM_archivos\image047.jpg" />
+    <Content Include="Manual del Usuario SLAM_archivos\image048.png" />
+    <Content Include="Manual del Usuario SLAM_archivos\image049.png" />
+    <Content Include="Manual del Usuario SLAM_archivos\image050.png" />
+    <Content Include="Manual del Usuario SLAM_archivos\image051.png" />
+    <Content Include="Manual del Usuario SLAM_archivos\image052.png" />
+    <Content Include="Manual del Usuario SLAM_archivos\image053.png" />
+    <Content Include="Manual del Usuario SLAM_archivos\image054.png" />
+    <Content Include="Manual del Usuario SLAM_archivos\image055.png" />
+    <Content Include="Manual del Usuario SLAM_archivos\image056.png" />
+    <Content Include="Manual del Usuario SLAM_archivos\image057.png" />
+    <Content Include="Manual del Usuario SLAM_archivos\image058.png" />
+    <Content Include="Manual del Usuario SLAM_archivos\image059.png" />
+    <Content Include="Manual del Usuario SLAM_archivos\image060.png" />
+    <Content Include="Manual del Usuario SLAM_archivos\image061.png" />
+    <Content Include="Manual del Usuario SLAM_archivos\image062.png" />
+    <Content Include="Manual del Usuario SLAM_archivos\image063.png" />
+    <Content Include="Manual del Usuario SLAM_archivos\item0072.xml" />
+    <Content Include="Manual del Usuario SLAM_archivos\item0074.xml" />
+    <Content Include="Manual del Usuario SLAM_archivos\props073.xml" />
+    <Content Include="Manual del Usuario SLAM_archivos\props075.xml" />
     <Content Include="Torneo.html">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

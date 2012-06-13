@@ -14,7 +14,7 @@
             RememberMeText="Recordar la proxima vez" TitleText="Ingreso a usuarios registrados" 
             UserNameLabelText="Usuario " 
             UserNameRequiredErrorMessage="Ingrese el nombre de Usuario..." 
-            Width="389px">
+            Width="389px" FailureAction="RedirectToLoginPage">
         </asp:Login>
    
     </div>

@@ -50,24 +50,24 @@ namespace Slam
 
         private void BtnAceptar_Click(object sender, EventArgs e)
         {
-            //if (EpLogin.GetError(TxtUsuario) == "" && EpLogin.GetError(TxtPassword) == "")
-            //{
-            //    try
-            //    {
-            //        if (LoginServicio.Validar(this) != 0)
-            //        {
-                          FrmPrincipal Principal = new FrmPrincipal(this);
-                          Principal.Show();
-                          this.Hide();
-            //        }
-            //        else
-            //            MessageBox.Show("Datos de Login incorrectos", "Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-            //    }
-            //    catch (Exception ex)
-            //    {
-            //        MessageBox.Show(ex.Message);
-            //    }
-            //}
+            if (EpLogin.GetError(TxtUsuario) == "" && EpLogin.GetError(TxtPassword) == "")
+            {
+                try
+                {
+                    if (LoginServicio.Validar(this) != 0)
+                    {
+                        FrmPrincipal Principal = new FrmPrincipal(this);
+                        Principal.Show();
+                        this.Hide();
+                    }
+                    else
+                        MessageBox.Show("Datos de Login incorrectos", "Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+            }
         }
 
         private void TxtUsuario_Validating(object sender, CancelEventArgs e)

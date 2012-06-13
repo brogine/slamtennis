@@ -14,35 +14,39 @@ namespace SlamWeb
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (this.IsPostBack != true)
+            try
             {
-                if (!Convert.ToBoolean(Session["Logeado"]))
+                if (this.IsPostBack != true)
                 {
-                    Response.Redirect("Login.aspx");
-                }
-                LblEmail.Text = Session["Email"].ToString().Trim();
-                LblNombre.Text = Session["Nombre"].ToString().Trim() + " " + Session["Apellido"].ToString().Trim();
-                LblUsuario.Text = Session["Usuario"].ToString().Trim();
-                LblSexo.Text = Session["Sexo"].ToString().Trim();
-                if (Session["Imagen"] != null)
-                {
-                    Image1.ImageUrl = "~/Profiles/" + Session["Imagen"].ToString().Trim();
+                    if (!Convert.ToBoolean(Session["Logeado"]))
+                    {
+                        Response.Redirect("Login.aspx");
+                    }
+                    LblEmail.Text = Session["Email"].ToString().Trim();
+                    LblNombre.Text = Session["Nombre"].ToString().Trim() + " " + Session["Apellido"].ToString().Trim();
+                    LblUsuario.Text = Session["Usuario"].ToString().Trim();
+                    LblSexo.Text = Session["Sexo"].ToString().Trim();
+                    if (Session["Imagen"] != null)
+                    {
+                        Image1.ImageUrl = "~/Profiles/" + Session["Imagen"].ToString().Trim();
+                    }
+                    else
+                    {
+                        Image1.ImageUrl = "~/Content/Alert_32x32-32.png";
+                    }
+                    IListadoTorneoServicio servicioTorneos = new TorneoServicio();
+                    servicioTorneos.ListarCerrados(this);
                 }
                 else
                 {
-                    Image1.ImageUrl = "~/Content/Alert_32x32-32.png";
-                }
-                IListadoTorneoServicio servicioTorneos = new TorneoServicio();
-                servicioTorneos.ListarCerrados(this);
-            }
-            else
-            {
-                if (Session["ReporteLlave"] != null)
-                {
-                    ReportViewerLlave.ReportSource = Session["ReporteLlave"];
-                    ReportViewerLlave.RefreshReport();
+                    if (Session["ReporteLlave"] != null)
+                    {
+                        ReportViewerLlave.ReportSource = Session["ReporteLlave"];
+                        ReportViewerLlave.RefreshReport();
+                    }
                 }
             }
+            catch { }
         }
 
         #region IListadoTorneos Members
@@ -78,22 +82,26 @@ namespace SlamWeb
 
         protected void CboTorneos_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (CboTorneos.SelectedIndex != 0)
+            try
             {
-                IReportesServicio servicioReportes = new ReportesServicio();
-                Object ReporteLlave = servicioReportes.CrearInstancia(ListadoReportes.Llave, Convert.ToInt32(CboTorneos.SelectedValue));
-                if (ReporteLlave != null)
+                if (CboTorneos.SelectedIndex != 0)
                 {
-                    Session["ReporteLlave"] = ReporteLlave;
-                    ReportViewerLlave.Visible = true;
-                    ReportViewerLlave.ReportSource = ReporteLlave;
-                    ReportViewerLlave.RefreshReport();
+                    IReportesServicio servicioReportes = new ReportesServicio();
+                    Object ReporteLlave = servicioReportes.CrearInstancia(ListadoReportes.Llave, Convert.ToInt32(CboTorneos.SelectedValue));
+                    if (ReporteLlave != null)
+                    {
+                        Session["ReporteLlave"] = ReporteLlave;
+                        ReportViewerLlave.Visible = true;
+                        ReportViewerLlave.ReportSource = ReporteLlave;
+                        ReportViewerLlave.RefreshReport();
+                    }
+                }
+                else
+                {
+                    ReportViewerLlave.Visible = false;
                 }
             }
-            else
-            {
-                ReportViewerLlave.Visible = false;
-            }
+            catch { }
         }
     }
 }

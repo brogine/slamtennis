@@ -14,29 +14,32 @@ namespace SlamWeb
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (!this.IsPostBack)
+            try
             {
-                if (!Convert.ToBoolean(Session["Logeado"]))
+                if (!this.IsPostBack)
                 {
-                    Response.Redirect("Login.aspx");
+                    if (!Convert.ToBoolean(Session["Logeado"]))
+                    {
+                        Response.Redirect("Login.aspx");
+                    }
+                    LblEmail.Text = Session["Email"].ToString().Trim();
+                    LblNombre.Text = Session["Nombre"].ToString().Trim() + " " + Session["Apellido"].ToString().Trim();
+                    LblUsuario.Text = Session["Usuario"].ToString().Trim();
+                    LblSexo.Text = Session["Sexo"].ToString().Trim();
+                    if (Session["Imagen"] != null)
+                    {
+                        Image1.ImageUrl = "~/Profiles/" + Session["Imagen"].ToString().Trim();
+                    }
+                    else
+                    {
+                        Image1.ImageUrl = "~/Content/Alert_32x32-32.png";
+                    }
+                    IListadoEstadisticasServicio servicioEstadisticas = new EstadisticasServicio();
+                    IListadoCategoriaServicio servicioCategorias = new CategoriaServicio();
+                    servicioCategorias.ListarActivas(this);
                 }
-                LblEmail.Text = Session["Email"].ToString().Trim();
-                LblNombre.Text = Session["Nombre"].ToString().Trim() + " " + Session["Apellido"].ToString().Trim();
-                LblUsuario.Text = Session["Usuario"].ToString().Trim();
-                LblSexo.Text = Session["Sexo"].ToString().Trim();
-                if (Session["Imagen"] != null)
-                {
-                    Image1.ImageUrl = "~/Profiles/" + Session["Imagen"].ToString().Trim();
-                }
-                else
-                {
-                    Image1.ImageUrl = "~/Content/Alert_32x32-32.png";
-                }
-                IListadoEstadisticasServicio servicioEstadisticas = new EstadisticasServicio();
-                IListadoCategoriaServicio servicioCategorias = new CategoriaServicio();
-                servicioCategorias.ListarActivas(this);
             }
-
+            catch { }
         }
 
         #region IListadoEstadisticasCategoria Members
@@ -104,18 +107,22 @@ namespace SlamWeb
         {
             set
             {
-                Dictionary<int, string> ListaCategorias = new Dictionary<int, string>();
-                ListaCategorias.Add(0, "Seleccione");
-                foreach (Object Categoria in value)
+                try
                 {
-                    Object[] DatosClub = Categoria.ToString().Split(',');
-                    ListaCategorias.Add(Convert.ToInt32(DatosClub[0]), DatosClub[1].ToString());
+                    Dictionary<int, string> ListaCategorias = new Dictionary<int, string>();
+                    ListaCategorias.Add(0, "Seleccione");
+                    foreach (Object Categoria in value)
+                    {
+                        Object[] DatosClub = Categoria.ToString().Split(',');
+                        ListaCategorias.Add(Convert.ToInt32(DatosClub[0]), DatosClub[1].ToString());
+                    }
+                    CboCategorias.DataSource = ListaCategorias;
+                    CboCategorias.DataTextField = "Value";
+                    CboCategorias.DataValueField = "Key";
+                    CboCategorias.SelectedIndex = -1;
+                    CboCategorias.DataBind();
                 }
-                CboCategorias.DataSource = ListaCategorias;
-                CboCategorias.DataTextField = "Value";
-                CboCategorias.DataValueField = "Key";
-                CboCategorias.SelectedIndex = -1;
-                CboCategorias.DataBind(); 
+                catch { }
             }
         }
 
