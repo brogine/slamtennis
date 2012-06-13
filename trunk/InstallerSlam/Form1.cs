@@ -42,14 +42,14 @@ namespace InstallerSlam
                 if (hdd == "Slam Tenis")
                 {
                     Unidad = Convert.ToString(partion["DeviceID"]);
-                    //cdslam = true;
+                    cdslam = true;
                 }
             }
 
             if (!cdslam)
             {
                 MessageBox.Show("Falta insetar el cd de instalacion de Slam Tenis", "Slam Tenis", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                //this.Close();
+                this.Close();
             }
             else
             {
