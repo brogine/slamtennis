@@ -324,7 +324,7 @@ namespace InstallerSlam
                 MessageBox.Show(ex.Message, "Instalacion de Slam Tenis", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
             }
                 
-        }
+        } 
 
         bool Running(string app)
         {
