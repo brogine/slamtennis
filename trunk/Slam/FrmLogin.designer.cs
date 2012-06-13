@@ -56,7 +56,7 @@
             this.gbLogin.Controls.Add(this.BtnAceptar);
             this.gbLogin.Controls.Add(this.TxtPassword);
             this.gbLogin.Controls.Add(this.TxtUsuario);
-            this.gbLogin.Location = new System.Drawing.Point(12, 11);
+            this.gbLogin.Location = new System.Drawing.Point(13, 16);
             this.gbLogin.Name = "gbLogin";
             this.gbLogin.Size = new System.Drawing.Size(359, 180);
             this.gbLogin.TabIndex = 1;
@@ -180,6 +180,7 @@
             this.Name = "FrmLogin";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Login";
+            this.Load += new System.EventHandler(this.FrmLogin_Load);
             this.gbLogin.ResumeLayout(false);
             this.gbLogin.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.EpLogin)).EndInit();

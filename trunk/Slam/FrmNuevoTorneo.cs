@@ -394,7 +394,7 @@ namespace Slam
 
         private void DTPFinTorneo_Validating(object sender, CancelEventArgs e)
         {
-            if (DTPFinTorneo.Value < DTPInicioTorneo.Value)
+            if (DTPFinTorneo.Value <= DTPInicioTorneo.Value)
                 EPTorneos.SetError(DTPFinTorneo, "La Fecha De Fin De Torneo No Puede Ser Menor Que La De Inicio");
             else
                 EPTorneos.SetError(DTPFinTorneo, "");
@@ -402,7 +402,7 @@ namespace Slam
 
         private void DTPFinInscripciones_Validating(object sender, CancelEventArgs e)
         {
-            if (DTPFinInscripciones.Value < DTPInicioInscripciones.Value)
+            if (DTPFinInscripciones.Value <= DTPInicioInscripciones.Value)
                 EPTorneos.SetError(DTPFinInscripciones, "La Fecha De Fin De Inscripciones No Puede Ser Menor Que La De Inicio");
             else
                 EPTorneos.SetError(DTPFinInscripciones, "");

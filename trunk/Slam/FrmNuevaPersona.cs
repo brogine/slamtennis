@@ -33,11 +33,20 @@ namespace Slam
         TipoPersona Tipo;
         public int Dni;
         int EdadJugador;
+        bool PrimerInicio = false;
         public FrmNuevaPersona(TipoPersona _Tipo)
         {
             InitializeComponent();
             Tipo = _Tipo;
             this.Text = "Nueva/o " + _Tipo.ToString();
+        }
+
+        public FrmNuevaPersona(TipoPersona _Tipo, bool primerInicio)
+        {
+            InitializeComponent();
+            Tipo = _Tipo;
+            this.Text = "Nueva/o " + _Tipo.ToString();
+            this.PrimerInicio = primerInicio;
         }
 
         public FrmNuevaPersona(TipoPersona _Tipo, int _Dni)
@@ -164,13 +173,16 @@ namespace Slam
                                 break;
                         }
                         this.DialogResult = DialogResult.OK;
-                        if (MessageBox.Show("Carga realizada con éxito. ¿Desea imprimir el carnet de usuario?", "Éxito", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                        if (!PrimerInicio)
                         {
-                            IReportesServicio servicioReportes = (IReportesServicio)AppContext.Instance.GetObject(ImplementaReportes);
-                            object ReporteCarnet = servicioReportes.CrearInstancia(ListadoReportes.Carnet, TxtDni.Text + "," + Tipo.ToString());
-                            FrmReportes frmReportes = new FrmReportes(ReporteCarnet);
-                            frmReportes.MdiParent = this.MdiParent;
-                            frmReportes.Show();
+                            if (MessageBox.Show("Carga realizada con éxito. ¿Desea imprimir el carnet de usuario?", "Éxito", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                            {
+                                IReportesServicio servicioReportes = (IReportesServicio)AppContext.Instance.GetObject(ImplementaReportes);
+                                object ReporteCarnet = servicioReportes.CrearInstancia(ListadoReportes.Carnet, TxtDni.Text + "," + Tipo.ToString());
+                                FrmReportes frmReportes = new FrmReportes(ReporteCarnet);
+                                frmReportes.MdiParent = this.MdiParent;
+                                frmReportes.Show();
+                            }
                         }
                         this.Close();
                     }
@@ -663,12 +675,12 @@ namespace Slam
 
         private void GbDatosLogin_Validating(object sender, CancelEventArgs e)
         {
-            if (TxtUsuario.Text == "")
-                EpNuevaPersona.SetError(TxtUsuario, "El campo no puede estar en blanco.");
+            if (TxtUsuario.Text == "" || TxtUsuario.Text.Length < 6 || TxtUsuario.Text.Length > 20)
+                EpNuevaPersona.SetError(TxtUsuario, "Campo requerido. Debe tener de 6 a 20 caracteres.");
             else
                 EpNuevaPersona.SetError(TxtUsuario, "");
-            if (TxtPassword.Text == "")
-                EpNuevaPersona.SetError(TxtPassword, "El campo no puede estar en blanco.");
+            if (TxtPassword.Text == "" || TxtPassword.Text.Length < 6 || TxtPassword.Text.Length > 20)
+                EpNuevaPersona.SetError(TxtPassword, "Campo requerido. Debe tener de 6 a 20 caracteres.");
             else
                 EpNuevaPersona.SetError(TxtPassword, "");
         }
