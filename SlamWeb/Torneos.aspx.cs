@@ -89,7 +89,6 @@ namespace SlamWeb
                                 System.Threading.Thread.Sleep(3000);
                                 ClientScriptManager manager = Page.ClientScript;
                                 manager.RegisterStartupScript(this.GetType(), "Alerta", "<script type='text/javascript'>Mensaje();</script>");
-
                             }
                             break;
                     }

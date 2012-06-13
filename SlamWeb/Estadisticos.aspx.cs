@@ -28,11 +28,11 @@ namespace SlamWeb
                     LblSexo.Text = Session["Sexo"].ToString().Trim();
                     if (Session["Imagen"] != null)
                     {
-                        Image1.ImageUrl = "~/Profiles/" + Session["Imagen"].ToString().Trim();
+                        Image2.ImageUrl = "~/Profiles/" + Session["Imagen"].ToString().Trim();
                     }
                     else
                     {
-                        Image1.ImageUrl = "~/Content/Alert_32x32-32.png";
+                        Image2.ImageUrl = "~/Content/Alert_32x32-32.png";
                     }
                     IListadoEstadisticasServicio servicioEstadisticas = new EstadisticasServicio();
                     IListadoCategoriaServicio servicioCategorias = new CategoriaServicio();

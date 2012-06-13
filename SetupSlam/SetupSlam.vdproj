@@ -848,6 +848,11 @@
                     "Name" = "8:.NET Framework 3.5"
                     "ProductCode" = "8:Microsoft.Net.Framework.3.5"
                     }
+                    "{EDC2488A-8267-493A-A98E-7D9C3B36CDF3}:Microsoft.Sql.Server.Express.9.2"
+                    {
+                    "Name" = "8:SQL Server 2005 Express Edition SP2 (x86)"
+                    "ProductCode" = "8:Microsoft.Sql.Server.Express.9.2"
+                    }
                     "{EDC2488A-8267-493A-A98E-7D9C3B36CDF3}:Microsoft.Windows.Installer.3.1"
                     {
                     "Name" = "8:Windows Installer 3.1"
@@ -2785,7 +2790,7 @@
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:Slam Tenis"
         "ProductCode" = "8:{716587A5-B848-4810-99F5-5CAC52290BEC}"
-        "PackageCode" = "8:{994507E1-F417-4F78-8896-274D3313BB7A}"
+        "PackageCode" = "8:{B825871D-0A38-4CE6-BC6E-2B7D12343868}"
         "UpgradeCode" = "8:{3B52A308-887E-4625-9F2D-120D568A5F41}"
         "RestartWWWService" = "11:FALSE"
         "RemovePreviousVersions" = "11:FALSE"

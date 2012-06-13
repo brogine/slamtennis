@@ -92,131 +92,144 @@ namespace InstallerSlam
 
         private void BtnSql_Click(object sender, EventArgs e)
         {
-            if (AplicacionInstalada("Microsoft SQL Server 2005") || AplicacionInstalada("Microsoft SQL Server 2008") || AplicacionInstalada("Microsoft SQL Server 2008 R2"))
+            try
             {
-                PnlSqlServer.Visible = true;
-            }
-            else 
-            {
-                if (Marshal.SizeOf(typeof(IntPtr)) == 8)
+
+                if (AplicacionInstalada("Microsoft SQL Server 2005") || AplicacionInstalada("Microsoft SQL Server 2008") || AplicacionInstalada("Microsoft SQL Server 2008 R2"))
                 {
-                    Process.Start(discoSlam + @"Base de Datos\SQL SERVER\SQLEXPR_x64_ENU.exe");
+                    PnlSqlServer.Visible = true;
                 }
                 else
                 {
-                    Process.Start(discoSlam + @"Base de Datos\SQL SERVER\SQLEXPR32_x86_ENU.exe");
-                }
+                    if (Marshal.SizeOf(typeof(IntPtr)) == 8)
+                    {
+                        throw new Exception("El instalador de SQL Server no es compatible con Sistemas X64 por favor instale manualmente y vuelva a instentarlo");
+                    }
+                    //else
+                    //{
+                    //    Process.Start(discoSlam + @"Base de Datos\SQL SERVER\sqlexpr32.exe");
+                    //}
 
                     //Process.Start(discoSlam + @"Base de Datos\SQL SERVER\sqlexpr32.exe");
-                
-                bool running = true;
-                while (running != false)
-                {
-                    running = Running("sqlexpr32");
-                    Application.DoEvents();
-                    if (running)
+
+                    bool running = true;
+                    while (running != false)
                     {
-                        System.Threading.Thread.Sleep(5000);
+                        running = Running("sqlexpr32");
+                        Application.DoEvents();
+                        if (running)
+                        {
+                            System.Threading.Thread.Sleep(5000);
+                        }
                     }
+
+                    XmlNodeList ListaNodos;
+                    XmlDocument doc = new XmlDocument();
+                    string dir = System.AppDomain.CurrentDomain.BaseDirectory + "\\Configuracion.xml";
+                    try
+                    {
+                        doc.Load(dir);
+                    }
+                    catch (Exception)
+                    {
+                        throw new Exception("El archivo de Configuración no se encuentra.");
+                    }
+
+                    ListaNodos = doc.GetElementsByTagName("config");
+
+                    try
+                    {
+                        string cadena = string.Empty;
+                        cadena = "Server=(Local)\\SQLEXPRESS;Database=master;Integrated Security =SSPI;";
+
+                        string script = string.Empty;
+                        //Crear la base de datos
+
+                        script += " USE master";
+                        script += " ";
+                        script += " if exists(select * from sysdatabases where name= 'SlamDB')";
+                        script += " BEGIN";
+                        script += "      drop database SlamDB";
+                        script += " END";
+                        script += " DECLARE @device_directory NVARCHAR(520),@comando varchar(500)";
+                        script += " set @device_directory = ''";
+                        script += " set @comando = ''";
+                        script += " SELECT @device_directory = SUBSTRING(filename, 1, CHARINDEX(N'master.mdf', LOWER(filename)) - 1)";
+                        script += " FROM master.dbo.sysaltfiles WHERE dbid = 1 AND fileid = 1";
+                        script += " set @comando = N'CREATE DATABASE [SlamDB] ON PRIMARY (NAME = N' + char(39) + 'SlamDB' + char(39) + ', FILENAME = N' + char(39) + @device_directory + N'SlamDB.mdf' + char(39) + ') LOG ON (NAME = N' + char(39) + 'SlamDB_log' + char(39) + ',  FILENAME = N' + char(39) + '' + @device_directory + N'SlamDB.ldf' + char(39) + ')'";
+                        script += " Execute(@comando)";
+                        script += " ";
+
+
+                        ListaNodos[0].Attributes["ConnectionString"].Value = cadena;
+                        ListaNodos[0].Attributes["Default"].Value = "True";
+                        ListaNodos[1].Attributes["Default"].Value = "False";
+                        doc.Save(dir);
+
+                        Repositorio.Conexiones.Conexion cnn = new Repositorio.Conexiones.Conexion();
+                        cnn.ActualizarOEliminar(script);
+                        GC.Collect();
+                        GC.SuppressFinalize(cnn);
+
+                        //Restaurar la base
+
+                        script = string.Empty;
+
+                        System.IO.StreamReader stream = new System.IO.StreamReader(discoSlam + @"Base de Datos\SQL SERVER\SlamDB.sql");
+                        script = stream.ReadToEnd();
+                        stream.Close();
+
+                        cnn.ActualizarOEliminar(script);
+                        GC.Collect();
+                        GC.SuppressFinalize(cnn);
+
+                        doc.Load(dir);
+                        ListaNodos[0].Attributes["ConnectionString"].Value = cadena.Replace("master", "SlamDb");
+                        ListaNodos[0].Attributes["Default"].Value = "True";
+                        ListaNodos[1].Attributes["Default"].Value = "False";
+                        doc.Save(dir);
+                    }
+                    catch (Exception ex)
+                    {
+                        throw new Exception(ex.Message);
+                    }
+                    groupBox1.Visible = false;
+                    groupBox2.Visible = true;
                 }
-                
-                XmlNodeList ListaNodos;
-                XmlDocument doc = new XmlDocument();
-                string dir = System.AppDomain.CurrentDomain.BaseDirectory + "\\Configuracion.xml";
-                try
-                {
-                    doc.Load(dir);
-                }
-                catch (Exception)
-                {
-                    throw new Exception("El archivo de Configuración no se encuentra.");
-                }
-
-                ListaNodos = doc.GetElementsByTagName("config");
-
-                try{
-                    string cadena = string.Empty;
-                    cadena = "Server=(Local)\\SQLEXPRESS;Database=master;Integrated Security =SSPI;";
-                    
-                    string script = string.Empty;
-                    //Crear la base de datos
-
-                    script += " USE master";
-                    script += " ";
-                    script += " if exists(select * from sysdatabases where name= 'SlamDB')";
-                    script += " BEGIN";
-                    script += "      drop database SlamDB";
-                    script += " END";
-                    script += " DECLARE @device_directory NVARCHAR(520),@comando varchar(500)";
-                    script += " set @device_directory = ''";
-                    script += " set @comando = ''";
-                    script += " SELECT @device_directory = SUBSTRING(filename, 1, CHARINDEX(N'master.mdf', LOWER(filename)) - 1)";
-                    script += " FROM master.dbo.sysaltfiles WHERE dbid = 1 AND fileid = 1";
-                    script += " set @comando = N'CREATE DATABASE [SlamDB] ON PRIMARY (NAME = N' + char(39) + 'SlamDB' + char(39) + ', FILENAME = N' + char(39) + @device_directory + N'SlamDB.mdf' + char(39) + ') LOG ON (NAME = N' + char(39) + 'SlamDB_log' + char(39) + ',  FILENAME = N' + char(39) + '' + @device_directory + N'SlamDB.ldf' + char(39) + ')'";
-                    script += " Execute(@comando)";
-                    script += " ";
-
-
-                    ListaNodos[0].Attributes["ConnectionString"].Value = cadena;
-                    ListaNodos[0].Attributes["Default"].Value = "True";
-                    ListaNodos[1].Attributes["Default"].Value = "False";
-                    doc.Save(dir);
-
-                    Repositorio.Conexiones.Conexion cnn = new Repositorio.Conexiones.Conexion();
-                    cnn.ActualizarOEliminar(script);
-                    GC.Collect();
-                    GC.SuppressFinalize(cnn);
-
-                    //Restaurar la base
-
-                    script = string.Empty;
-
-                    System.IO.StreamReader stream = new System.IO.StreamReader(discoSlam + @"Base de Datos\SQL SERVER\SlamDB.sql");
-                    script = stream.ReadToEnd();
-                    stream.Close();
-
-                    cnn.ActualizarOEliminar(script);
-                    GC.Collect();
-                    GC.SuppressFinalize(cnn);
-
-                    doc.Load(dir);
-                    ListaNodos[0].Attributes["ConnectionString"].Value = cadena.Replace("master", "SlamDb");
-                    ListaNodos[0].Attributes["Default"].Value = "True";
-                    ListaNodos[1].Attributes["Default"].Value = "False";
-                    doc.Save(dir);
-                }
-                catch (Exception ex)
-                {
-                    throw new Exception(ex.Message);
-                }
-                groupBox1.Visible = false;
-                groupBox2.Visible = true;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Ah ocurrido un error en la instalacion error devuelto: " + ex.Message, "Instalacion de Slam Tenis", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
             }
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            if (System.IO.Directory.Exists(@"C:\inetpub\wwwroot\"))
+            try
             {
-                System.IO.DirectoryInfo direc = new DirectoryInfo(discoSlam + @"Web Slam\");
-                if (System.IO.Directory.Exists(@"C:\inetpub\wwwroot\SlamWeb\"))
+                if (System.IO.Directory.Exists(@"C:\inetpub\wwwroot\"))
                 {
-                    System.IO.Directory.Delete(@"C:\inetpub\wwwroot\SlamWeb\");
-                    System.IO.Directory.CreateDirectory(@"C:\inetpub\wwwroot\SlamWeb\");
+                    System.IO.DirectoryInfo direc = new DirectoryInfo(discoSlam + @"Web Slam\");
+                    if (System.IO.Directory.Exists(@"C:\inetpub\wwwroot\SlamWeb\"))
+                    {
+                        System.IO.Directory.Delete(@"C:\inetpub\wwwroot\SlamWeb\");
+                        System.IO.Directory.CreateDirectory(@"C:\inetpub\wwwroot\SlamWeb\");
+                    }
+                    else
+                    {
+                        System.IO.Directory.CreateDirectory(@"C:\inetpub\wwwroot\SlamWeb\");
+                    }
+
+                    DirectoryCopy(discoSlam + @"Web Slam\", @"C:\inetpub\wwwroot\SlamWeb\", true);
+                    groupBox2.Visible = false;
+                    groupBox4.Visible = true;
                 }
                 else
                 {
-                    System.IO.Directory.CreateDirectory(@"C:\inetpub\wwwroot\SlamWeb\");
+                    MessageBox.Show("No se encuentre instalado Internet Information Services (IIS) o no es una version compatible, verifique...", "Slam Tenis", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 }
-
-                DirectoryCopy(discoSlam + @"Web Slam\", @"C:\inetpub\wwwroot\SlamWeb\", true);
-                groupBox2.Visible = false;
-                groupBox4.Visible = true;
             }
-            else
-            {
-                MessageBox.Show("No se encuentre instalado Internet Information Services (IIS) o no es una version compatible, verifique...", "Slam Tenis", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-            }
+            catch { }
         }
 
         private void DirectoryCopy(
@@ -302,12 +315,14 @@ namespace InstallerSlam
                 mail.Prioridad = Dominio.PrioridadEmail.Normal;
                 mail.Enviar();
                 string targetDirectory = System.AppDomain.CurrentDomain.BaseDirectory;
-                System.IO.File.Copy(targetDirectory + "Configuracion.xml", @"C:\inetpub\wwwroot\SlamWeb\Configuracion.xml", true);
-                System.IO.File.Copy(targetDirectory + "CuentaEmail.xml", @"C:\inetpub\wwwroot\SlamWeb\CuentaEmail.xml", true);
-                System.IO.File.Copy(targetDirectory + "CuentasSMTP.xml", @"C:\inetpub\wwwroot\SlamWeb\CuentasSMTP.xml", true);
+                System.IO.File.Copy(Path.Combine(targetDirectory,"Configuracion.xml"), @"C:\inetpub\wwwroot\SlamWeb\Configuracion.xml", true);
+                System.IO.File.Copy(Path.Combine(targetDirectory,"CuentaEmail.xml"), @"C:\inetpub\wwwroot\SlamWeb\CuentaEmail.xml", true);
+                System.IO.File.Copy(Path.Combine(targetDirectory,"CuentasSMTP.xml"), @"C:\inetpub\wwwroot\SlamWeb\CuentasSMTP.xml", true);
             }
-            catch
-            {}
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Instalacion de Slam Tenis", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
+            }
                 
         }
 
