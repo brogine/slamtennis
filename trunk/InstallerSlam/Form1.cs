@@ -80,6 +80,15 @@ namespace InstallerSlam
                         if (item.Application.ToString() == Nombre)
                         {
                             MSSql = true;
+                            break;
+                        }
+                        else
+                        {
+                            if (item.Application.ToString().Contains(Nombre))
+                            {
+                                MSSql = true;
+                                break;
+                            } 
                         }
                     }
                 }
