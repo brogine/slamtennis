@@ -14,85 +14,89 @@ namespace SlamWeb
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (!this.IsPostBack)
+            try
             {
-                if (!Convert.ToBoolean(Session["Logeado"]))
+                if (!this.IsPostBack)
                 {
-                    Response.Redirect("Login.aspx");
+                    if (!Convert.ToBoolean(Session["Logeado"]))
+                    {
+                        Response.Redirect("Login.aspx");
+                    }
+                    LblEmail.Text = Session["Email"].ToString().Trim();
+                    LblNombre.Text = Session["Nombre"].ToString().Trim() + " " + Session["Apellido"].ToString().Trim();
+                    LblUsuario.Text = Session["Usuario"].ToString().Trim();
+                    LblSexo.Text = Session["Sexo"].ToString().Trim();
+                    if (Session["Imagen"] != null)
+                        Image2.ImageUrl = "~/Profiles/" + Session["Imagen"].ToString().Trim();
+                    IListadoTorneoServicio TorneoServicio = new TorneoServicio();
+                    TorneoServicio.Actualizar();
+                    TorneoServicio.Listar(this);
+                    TxtDNI1.Text = Session["DNI"].ToString().Trim();
+                    LblFecha.Text = DateTime.Now.ToShortDateString();
+                    IInscripcionServicio incripservice = new InscripcionServicio();
+                    LblInscripcion.Text = Convert.ToString(incripservice.UltimaInscripcion() + 1);
                 }
-                LblEmail.Text = Session["Email"].ToString().Trim();
-                LblNombre.Text = Session["Nombre"].ToString().Trim() + " " + Session["Apellido"].ToString().Trim();
-                LblUsuario.Text = Session["Usuario"].ToString().Trim();
-                LblSexo.Text = Session["Sexo"].ToString().Trim();
-                if (Session["Imagen"] != null)
-                    Image2.ImageUrl = "~/Profiles/" + Session["Imagen"].ToString().Trim();
-                IListadoTorneoServicio TorneoServicio = new TorneoServicio();
-                TorneoServicio.Actualizar();
-                TorneoServicio.Listar(this);
-                TxtDNI1.Text = Session["DNI"].ToString().Trim();
-                LblFecha.Text = DateTime.Now.ToShortDateString();
-                IInscripcionServicio incripservice = new InscripcionServicio();
-                LblInscripcion.Text = Convert.ToString(incripservice.UltimaInscripcion() + 1);
-            }
-            else
-            {
-                string parametro1 = Request.Params[0].ToString();
-                if (parametro1 == string.Empty)
+                else
                 {
-                    return;
-                }
-                int index = parametro1.IndexOf("=");
-                string parametro2 = parametro1.Substring(0, index);
-                switch (parametro2)
-                {
-                    case "Torneo":
-                        int valor = Convert.ToInt32(parametro1.Substring((index + 1), parametro1.Length - (index + 1)));
-                        TxtIDTorneo.Text = valor.ToString();
-                        try
-                        {
-                            int IdInscripcionActual = Convert.ToInt32(LblInscripcion.Text);
-                            IInscripcionServicio servicioInscripciones = new InscripcionServicio();
-                            IdInscripcionActual = servicioInscripciones.Agregar(this);
-                            Session["NroIncripcion"] = IdInscripcionActual;
-                            LblInscripcion.Text = Convert.ToString(IdInscripcionActual);
-                            GC.Collect();
-                            GC.WaitForPendingFinalizers();
-                            ClientScriptManager manager = Page.ClientScript;
-                            manager.RegisterStartupScript(this.GetType(), "Alerta", "<script language='javascript' type='text/javascript'>ImprimirReporte();</script>");
+                    string parametro1 = Request.Params[0].ToString();
+                    if (parametro1 == string.Empty)
+                    {
+                        return;
+                    }
+                    int index = parametro1.IndexOf("=");
+                    string parametro2 = parametro1.Substring(0, index);
+                    switch (parametro2)
+                    {
+                        case "Torneo":
+                            int valor = Convert.ToInt32(parametro1.Substring((index + 1), parametro1.Length - (index + 1)));
+                            TxtIDTorneo.Text = valor.ToString();
+                            try
+                            {
+                                int IdInscripcionActual = Convert.ToInt32(LblInscripcion.Text);
+                                IInscripcionServicio servicioInscripciones = new InscripcionServicio();
+                                IdInscripcionActual = servicioInscripciones.Agregar(this);
+                                Session["NroIncripcion"] = IdInscripcionActual;
+                                LblInscripcion.Text = Convert.ToString(IdInscripcionActual);
+                                GC.Collect();
+                                GC.WaitForPendingFinalizers();
+                                ClientScriptManager manager = Page.ClientScript;
+                                manager.RegisterStartupScript(this.GetType(), "Alerta", "<script language='javascript' type='text/javascript'>ImprimirReporte();</script>");
 
-                        }
-                        catch (Exception ex)
-                        {
-                            ClientScriptManager manager = Page.ClientScript;
-                            manager.RegisterStartupScript(this.GetType(), "Alerta", "<script type='text/javascript'>window.alert('Error " + ex.Message + "');</script>");
-                        }
-                        break;
-                    case "Imprimir":
-                        bool imprime = Convert.ToBoolean(parametro1.Substring((index + 1), parametro1.Length - (index + 1)));
-                        if (imprime)
-                        {
-                            Session["NroIncripcion"] = Convert.ToInt32(LblInscripcion.Text);
-                            ClientScriptManager manager = Page.ClientScript;
-                            manager.RegisterStartupScript(this.GetType(), "Alerta", "<script type='text/javascript'>openpopup();</script>");
-                        }
-                        LblInscripcion.Text = (Convert.ToInt32(LblInscripcion.Text) + 1).ToString(); 
-                        break;
-                    case "Borrar":
-                        string[] borra = parametro1.Substring((index + 1), parametro1.Length - (index + 1)).Split(',');
-                        if (Convert.ToBoolean(borra[0]))
-                        {
-                            int idtorneo = Convert.ToInt32(borra[1]);
-                            Servicio.IInscripcionServicio servicioInscripciones = new Servicio.InscripcionServicio();
-                            servicioInscripciones.Eliminar(Convert.ToInt32(Session["DNI"]), idtorneo);
-                            System.Threading.Thread.Sleep(3000);
-                            ClientScriptManager manager = Page.ClientScript;
-                            manager.RegisterStartupScript(this.GetType(), "Alerta", "<script type='text/javascript'>Mensaje();</script>");
-                         
-                        }
-                        break;
-                }
+                            }
+                            catch (Exception ex)
+                            {
+                                ClientScriptManager manager = Page.ClientScript;
+                                manager.RegisterStartupScript(this.GetType(), "Alerta", "<script type='text/javascript'>window.alert('Error " + ex.Message + "');</script>");
+                            }
+                            break;
+                        case "Imprimir":
+                            bool imprime = Convert.ToBoolean(parametro1.Substring((index + 1), parametro1.Length - (index + 1)));
+                            if (imprime)
+                            {
+                                Session["NroIncripcion"] = Convert.ToInt32(LblInscripcion.Text);
+                                ClientScriptManager manager = Page.ClientScript;
+                                manager.RegisterStartupScript(this.GetType(), "Alerta", "<script type='text/javascript'>openpopup();</script>");
+                            }
+                            LblInscripcion.Text = (Convert.ToInt32(LblInscripcion.Text) + 1).ToString();
+                            break;
+                        case "Borrar":
+                            string[] borra = parametro1.Substring((index + 1), parametro1.Length - (index + 1)).Split(',');
+                            if (Convert.ToBoolean(borra[0]))
+                            {
+                                int idtorneo = Convert.ToInt32(borra[1]);
+                                Servicio.IInscripcionServicio servicioInscripciones = new Servicio.InscripcionServicio();
+                                servicioInscripciones.Eliminar(Convert.ToInt32(Session["DNI"]), idtorneo);
+                                System.Threading.Thread.Sleep(3000);
+                                ClientScriptManager manager = Page.ClientScript;
+                                manager.RegisterStartupScript(this.GetType(), "Alerta", "<script type='text/javascript'>Mensaje();</script>");
 
+                            }
+                            break;
+                    }
+
+                }
             }
+            catch { }
         }
 
         #region IListadoTorneos Members

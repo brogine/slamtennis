@@ -12,15 +12,19 @@ namespace SlamWeb
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (!Convert.ToBoolean(Session["Logeado"]))
+            try
             {
-                Response.Redirect("Login.aspx");
+                if (!Convert.ToBoolean(Session["Logeado"]))
+                {
+                    Response.Redirect("Login.aspx");
+                }
+                int inscripcion = Convert.ToInt32(Session["NroIncripcion"]);
+                IReportesServicio servicioReportes = new ReportesServicio();
+                object ReportedeInscripcion = servicioReportes.CrearInstancia(ListadoReportes.CuponInscripcion, inscripcion);
+                ReportViewerInscrip.ReportSource = ReportedeInscripcion;
+                ReportViewerInscrip.RefreshReport();
             }
-            int inscripcion = Convert.ToInt32(Session["NroIncripcion"]);
-            IReportesServicio servicioReportes = new ReportesServicio();
-            object ReportedeInscripcion = servicioReportes.CrearInstancia(ListadoReportes.CuponInscripcion, inscripcion);
-            ReportViewerInscrip.ReportSource = ReportedeInscripcion;
-            ReportViewerInscrip.RefreshReport();
+            catch { }
         }
     }
 }

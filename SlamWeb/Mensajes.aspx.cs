@@ -11,25 +11,30 @@ namespace SlamWeb
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (!Convert.ToBoolean(Session["Logeado"]))
+            try
             {
-                Response.Redirect("Login.aspx");
+                if (!Convert.ToBoolean(Session["Logeado"]))
+                {
+                    Response.Redirect("Login.aspx");
+                }
+                LblEmail.Text = Session["Email"].ToString().Trim();
+                LblNombre.Text = Session["Nombre"].ToString().Trim() + " " + Session["Apellido"].ToString().Trim();
+                LblUsuario.Text = Session["Usuario"].ToString().Trim();
+                LblSexo.Text = Session["Sexo"].ToString().Trim();
+                Image2.ImageUrl = "~/Profiles/" + Session["Imagen"].ToString().Trim();
             }
-            LblEmail.Text = Session["Email"].ToString().Trim();
-            LblNombre.Text = Session["Nombre"].ToString().Trim() + " " + Session["Apellido"].ToString().Trim();
-            LblUsuario.Text = Session["Usuario"].ToString().Trim();
-            LblSexo.Text = Session["Sexo"].ToString().Trim();
-            Image2.ImageUrl = "~/Profiles/" + Session["Imagen"].ToString().Trim();
+            catch { }
+
         }
 
         protected void Button1_Click(object sender, EventArgs e)
         {
-            //try
-            //{
+            try
+            {
                 Servicio.IJugadorServicio jugadorSvr = new Servicio.JugadorServicio();
                 jugadorSvr.EnviarMensaje(Session["Nombre"].ToString().Trim(), TextBox3.Text);
-            //}
-            //catch { }
+            }
+            catch { }
             Response.Redirect("Correcto.aspx");
         }
     }

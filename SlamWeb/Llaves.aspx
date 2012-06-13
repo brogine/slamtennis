@@ -39,7 +39,7 @@
             ReuseParameterValuesOnRefresh="True" HasDrillUpButton="False" 
             HasGotoPageButton="False" HasSearchButton="False" HasViewList="False" 
             
-            ToolbarImagesFolderUrl="/Slam/Content/" 
+            ToolbarImagesFolderUrl="/Content/" 
             DisplayGroupTree="False" />
         <CR:CrystalReportSource ID="CrystalReportSource1" runat="server">
             <Report FileName="C:\Users\Maxi\Documents\Visual Studio 2008\Projects\Slam\Reportes\RptLlave.rpt">

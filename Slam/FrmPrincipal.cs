@@ -90,8 +90,7 @@ namespace Slam
 
         private void FrmPrincipal_FormClosing(object sender, FormClosingEventArgs e)
         {
-            this.notifyIcon1.Icon = null;
-        	if (CerrarPadre) {
+            if (CerrarPadre) {
         		Padre.Close();
         	}
         }
@@ -263,7 +262,8 @@ namespace Slam
 
         private void manualHTMLToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            System.Diagnostics.Process.Start("IExplore.exe", "www.google.com"); 
+            string ubicacion = System.AppDomain.CurrentDomain.BaseDirectory;
+            System.Diagnostics.Process.Start("IExplore.exe", ubicacion + "Manual del Usuario SLAM.htm"); 
         }
 
     }

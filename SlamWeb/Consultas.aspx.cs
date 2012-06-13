@@ -12,27 +12,31 @@ namespace SlamWeb
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (!Convert.ToBoolean(Session["Logeado"]))
+            try
             {
-                Response.Redirect("Login.aspx");
+                if (!Convert.ToBoolean(Session["Logeado"]))
+                {
+                    Response.Redirect("Login.aspx");
+                }
+                LblEmail.Text = Session["Email"].ToString().Trim();
+                LblDNI.Text = Session["DNI"].ToString();
+                LblSexo.Text = Session["Sexo"].ToString().Trim();
+                if (Session["Imagen"] != null)
+                {
+                    Image1.ImageUrl = "~/Profiles/" + Session["Imagen"].ToString().Trim();
+                }
+                else
+                {
+                    Image1.ImageUrl = "~/Content/Alert_32x32-32.png";
+                }
+                IPaisServicio servicioPaises = new UbicacionServicio();
+                servicioPaises.ListarPaises(this);
+                //IProvinciaServicio servicioProv = new UbicacionServicio();
+                //servicioProv.ListarProvincias(this);
+                IJugadorServicio jugador = new JugadorServicio();
+                jugador.Buscar(this);
             }
-            LblEmail.Text = Session["Email"].ToString().Trim();
-            LblDNI.Text = Session["DNI"].ToString();
-            LblSexo.Text = Session["Sexo"].ToString().Trim();
-            if (Session["Imagen"] != null)
-            {
-                Image1.ImageUrl = "~/Profiles/" + Session["Imagen"].ToString().Trim();
-            }
-            else
-            {
-                Image1.ImageUrl = "~/Content/Alert_32x32-32.png";
-            }
-            IPaisServicio servicioPaises = new UbicacionServicio();
-            servicioPaises.ListarPaises(this);
-            //IProvinciaServicio servicioProv = new UbicacionServicio();
-            //servicioProv.ListarProvincias(this);
-            IJugadorServicio jugador = new JugadorServicio();
-            jugador.Buscar(this);
+            catch { }
            
         }
 

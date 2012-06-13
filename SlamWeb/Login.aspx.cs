@@ -52,19 +52,23 @@ namespace SlamWeb
 
         protected void Login1_Authenticate(object sender, AuthenticateEventArgs e)
         {
-            ILoginServicio LoginServicio = new LoginServicio();
-            this.Dni = LoginServicio.Validar(this);
-            if (this.Dni == 0)
+            try
             {
-                Login1.FailureText = "Su Nombre de usuario o clave no es valido, Verifique...";
+                ILoginServicio LoginServicio = new LoginServicio();
+                this.Dni = LoginServicio.Validar(this);
+                if (this.Dni == 0)
+                {
+                    Login1.FailureText = "Su Nombre de usuario o clave no es valido, Verifique...";
+                }
+                else
+                {
+                    IJugadorServicio jugador = new JugadorServicio();
+                    jugador.Buscar(this);
+                    Session["Logeado"] = true;
+                    Response.Redirect("Default.aspx");
+                }
             }
-            else
-            {
-                IJugadorServicio jugador = new JugadorServicio();
-                jugador.Buscar(this);
-                Session["Logeado"] = true;
-                Response.Redirect("Default.aspx");
-            }
+            catch { }
         }
 
         #region IJugadorUI Members
@@ -218,18 +222,22 @@ namespace SlamWeb
             }
             set
             {
-                System.Drawing.Image foto = value;
-                if (foto != null)
+                try
                 {
-                    if (!(System.IO.File.Exists(System.AppDomain.CurrentDomain.BaseDirectory + @"\Profiles\" + this.Dni + ".jpg")))
-                        System.IO.File.Delete(System.AppDomain.CurrentDomain.BaseDirectory + @"\Profiles\" + this.Dni + ".jpg");
-                    foto.Save(System.AppDomain.CurrentDomain.BaseDirectory + @"\Profiles\" + this.Dni + ".jpg", System.Drawing.Imaging.ImageFormat.Jpeg);
-                    Session["Imagen"] = this.Dni + ".jpg";
+                    System.Drawing.Image foto = value;
+                    if (foto != null)
+                    {
+                        if (!(System.IO.File.Exists(System.AppDomain.CurrentDomain.BaseDirectory + @"\Profiles\" + this.Dni + ".jpg")))
+                            System.IO.File.Delete(System.AppDomain.CurrentDomain.BaseDirectory + @"\Profiles\" + this.Dni + ".jpg");
+                        foto.Save(System.AppDomain.CurrentDomain.BaseDirectory + @"\Profiles\" + this.Dni + ".jpg", System.Drawing.Imaging.ImageFormat.Jpeg);
+                        Session["Imagen"] = this.Dni + ".jpg";
+                    }
+                    else
+                    {
+                        Session["Imagen"] = string.Empty;
+                    }
                 }
-                else
-                {
-                    Session["Imagen"] = string.Empty;
-                }
+                catch { }
             }
         }
 
