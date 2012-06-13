@@ -1,0 +1,112 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Servicio.CanchasServicio" BaseTypeListCollapsed="true">
+    <Position X="4" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAQAEAAAAAACAAAAgAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>CanchasServicio.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Servicio.ClubServicio" BaseTypeListCollapsed="true">
+    <Position X="9.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAQAEAAAAAACAAAAgAAAEAAAAAAAAAAAAEAAAE=</HashCode>
+      <FileName>ClubServicio.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Servicio.SedesServicio" BaseTypeListCollapsed="true">
+    <Position X="7.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAQAEAAAAAACAAAAgAAAAAAAAAAAAAAAAAEAAA=</HashCode>
+      <FileName>SedesServicio.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Interface Name="Servicio.ICanchasServicio">
+    <Position X="5.75" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAQAAAAAAAACAAAAgAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ICanchasServicio.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Servicio.IClubServicio">
+    <Position X="1.5" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAQAAAAAAAACAAAAgAAAAAAAAAAAAAAAAEAAAA=</HashCode>
+      <FileName>IClubServicio.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Servicio.IListadoCanchasServicio">
+    <Position X="7.75" Y="6.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>IListadoCanchasServicio.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Servicio.IListadoClubServicio">
+    <Position X="3.75" Y="6.75" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAEAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>IListadoClubServicio.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Servicio.IListadoSedesServicio">
+    <Position X="6" Y="6.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>IListadoSedesServicio.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Servicio.ISedesServicio">
+    <Position X="3.5" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAQAAAAAAAACAAAAgAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ISedesServicio.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Servicio.InterfacesUI.ICanchasUI">
+    <Position X="17.75" Y="1.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>gAAAEAEAAAAAAAAAACAAQAAAAAAAACAAAAAAAAAAAAA=</HashCode>
+      <FileName>InterfacesUI\ICanchasUI.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Servicio.InterfacesUI.IClubUI">
+    <Position X="13.75" Y="1.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ABAAAAAIAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAg=</HashCode>
+      <FileName>InterfacesUI\IClubUI.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Servicio.InterfacesUI.IListadoCanchas">
+    <Position X="7.75" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAEAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>InterfacesUI\IListadoCanchas.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Servicio.InterfacesUI.IListadoClubes">
+    <Position X="4.25" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAA=</HashCode>
+      <FileName>InterfacesUI\IListadoClubes.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Servicio.InterfacesUI.IListadoSedes">
+    <Position X="6" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAEAAAAAAA=</HashCode>
+      <FileName>InterfacesUI\IListadoSedes.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Servicio.InterfacesUI.ISedesUI">
+    <Position X="15.75" Y="1.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACAAAAAAECAAQAAAAACAAAAAAAAAAggAAAA=</HashCode>
+      <FileName>InterfacesUI\ISedesUI.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

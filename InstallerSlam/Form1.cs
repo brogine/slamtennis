@@ -42,14 +42,14 @@ namespace InstallerSlam
                 if (hdd == "Slam Tenis")
                 {
                     Unidad = Convert.ToString(partion["DeviceID"]);
-                    cdslam = true;
+                    //cdslam = true;
                 }
             }
 
             if (!cdslam)
             {
                 MessageBox.Show("Falta insetar el cd de instalacion de Slam Tenis", "Slam Tenis", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                this.Close();
+                //this.Close();
             }
             else
             {
@@ -58,6 +58,7 @@ namespace InstallerSlam
 
         }
 
+      
         bool AplicacionInstalada(string Nombre)
         {
             string registryKey = @"SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall";
@@ -76,10 +77,6 @@ namespace InstallerSlam
                 {
                     if (item.Application != null)
                     {
-                        //if (item.Application.ToString() == "Microsoft SQL Server 2005")
-                        //{
-                        //    MSSql = true;
-                        //}
                         if (item.Application.ToString() == Nombre)
                         {
                             MSSql = true;
@@ -94,8 +91,7 @@ namespace InstallerSlam
         {
             try
             {
-
-                if (AplicacionInstalada("Microsoft SQL Server 2005") || AplicacionInstalada("Microsoft SQL Server 2008") || AplicacionInstalada("Microsoft SQL Server 2008 R2"))
+                if (AplicacionInstalada("Microsoft SQL Server 2005") || AplicacionInstalada("Microsoft SQL Server 2008") || AplicacionInstalada("Microsoft SQL Server 2008 R2") || AplicacionInstalada("Microsoft SQL Server 2008 R2 Native Client"))
                 {
                     PnlSqlServer.Visible = true;
                 }
