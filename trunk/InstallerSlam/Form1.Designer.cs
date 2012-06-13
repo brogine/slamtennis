@@ -321,7 +321,7 @@
             // 
             // BtnSql
             // 
-            this.BtnSql.BackgroundImage = global::InstallerSlam.Properties.Resources.sql_server_2008_logo;
+            this.BtnSql.BackgroundImage = global::InstallerSlam.Properties.Resources.sql_server_logo_411303;
             this.BtnSql.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.BtnSql.Location = new System.Drawing.Point(84, 81);
             this.BtnSql.Name = "BtnSql";
