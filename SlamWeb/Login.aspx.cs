@@ -12,34 +12,43 @@ namespace SlamWeb
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            //if (this.IsPostBack)
-            //{
-            //    ILoginServicio LoginServicio = new LoginServicio();
-            //    this.Dni = LoginServicio.Validar(this);
-            //    if (this.Dni == 0)
-            //    {
-            //        Login1.FailureText = "Su Nombre de usuario o clave no es valido, Verifique...";
-            //    }
-            //    else
-            //    {
-            //        IJugadorServicio jugador = new JugadorServicio();
-            //        jugador.Buscar(this);
-            //        Session["Logeado"] = true;
-            //        Response.Redirect("Default.aspx");
-            //    }
-            //}
+            if (this.IsPostBack)
+            {
+                try
+                {
+                    ILoginServicio LoginServicio = new LoginServicio();
+                    this.Dni = LoginServicio.Validar(this);
+                    if (this.Dni == 0)
+                    {
+                        LblError.Visible = true;
+                        LblError.Text = "Su Nombre de usuario o clave no es valido, Verifique...";
+                    }
+                    else
+                    {
+                        IJugadorServicio jugador = new JugadorServicio();
+                        jugador.Buscar(this);
+                        Session["Logeado"] = true;
+                        Response.Redirect("Default.aspx");
+                    }
+                }
+                catch (Exception ex)
+                {
+                    LblError.Visible = true;
+                    LblError.Text = ex.Message;
+                }
+            }
         }
 
         #region ILoginUI Members
 
         public string Usuario
         {
-            get { return Login1.UserName; }
+            get { return TxtUsuario.Text; }
         }
 
         public string Password
         {
-            get { return Login1.Password; }
+            get { return this.TxtClave.Text; }
         }
 
         public bool Estado
@@ -49,27 +58,6 @@ namespace SlamWeb
         }
 
         #endregion
-
-        protected void Login1_Authenticate(object sender, AuthenticateEventArgs e)
-        {
-            try
-            {
-                ILoginServicio LoginServicio = new LoginServicio();
-                this.Dni = LoginServicio.Validar(this);
-                if (this.Dni == 0)
-                {
-                    Login1.FailureText = "Su Nombre de usuario o clave no es valido, Verifique...";
-                }
-                else
-                {
-                    IJugadorServicio jugador = new JugadorServicio();
-                    jugador.Buscar(this);
-                    Session["Logeado"] = true;
-                    Response.Redirect("Default.aspx");
-                }
-            }
-            catch { }
-        }
 
         #region IJugadorUI Members
 
@@ -242,5 +230,31 @@ namespace SlamWeb
         }
 
         #endregion
+
+        protected void BtnIniciar_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                ILoginServicio LoginServicio = new LoginServicio();
+                this.Dni = LoginServicio.Validar(this);
+                if (this.Dni == 0)
+                {
+                    LblError.Visible = true;
+                    LblError.Text = "Su Nombre de usuario o clave no es valido, Verifique...";
+                }
+                else
+                {
+                    IJugadorServicio jugador = new JugadorServicio();
+                    jugador.Buscar(this);
+                    Session["Logeado"] = true;
+                    Response.Redirect("Default.aspx");
+                }
+            }
+            catch (Exception ex)
+            {
+                LblError.Visible = true;
+                LblError.Text = ex.Message;
+            }
+        }
     }
 }

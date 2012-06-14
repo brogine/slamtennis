@@ -3,10 +3,10 @@
 
   <config nombre="SqlServer"
           Proveedor="System.Data.SqlClient"
-          ConnectionString="Server=MAXI-HP;Database=SlamDB;Integrated Security =SSPI;"
+          ConnectionString="Server=MAXI-HP;Database=SlamDB;User Id=Slam;Password=123456;"
           Default="True"></config>
   <config nombre="MySQL"
           Proveedor="MySql.Data.MySqlClient"
           ConnectionString="Server=localhost;Database=SlamDB;Uid=root;Pwd=;"
           Default="False"></config>
-</configuraciones> 
+</configuraciones>

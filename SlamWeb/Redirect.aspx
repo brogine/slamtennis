@@ -6,13 +6,13 @@
 
 
     function Redirigir() {
-        location.href = '../../Default.aspx';
+        location.href = '../../SlamWeb/Default.aspx';
     }
 
     window.onload = function() {
         setTimeout("Redirigir()", 5000);
     }
-
+    
 </script>
     <div style="height:300px">
     <br />
