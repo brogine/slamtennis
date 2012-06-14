@@ -30,6 +30,8 @@ namespace Slam
 
         private void FrmReporteLlave_Load(object sender, EventArgs e)
         {
+            ListaTorneos = new List<object>();
+            ListaTorneosView = new List<object>();
             DtpDesde.Value = DateTime.Today.AddDays(-60);
             TorneosServicio = (IListadoTorneoServicio)AppContext.Instance.GetObject(ImplementaTorneos);
             TorneosServicio.Listar(this);
@@ -48,6 +50,11 @@ namespace Slam
         }
 
         #endregion
+
+        public int IdTorneo
+        {
+            get { return (int)CboTorneos.SelectedValue; }
+        }
 
         private void DtpDesde_ValueChanged(object sender, EventArgs e)
         {
@@ -70,16 +77,36 @@ namespace Slam
                     DateTime.Parse(DatosTorneo[7].ToString()) <= DtpHasta.Value)
                     this.ListaTorneosView.Add(torneo);
             }
-            Dictionary<int, string> ListaTorneos = new Dictionary<int, string>();
-            foreach (Object Torneo in ListaTorneosView)
+            if (ListaTorneosView.Count > 0)
             {
-                Object[] DatosTorneo = Torneo.ToString().Split(',');
-                ListaTorneos.Add(Convert.ToInt32(DatosTorneo[0]), DatosTorneo[2].ToString());
+                Dictionary<int, string> ListaTorneos = new Dictionary<int, string>();
+                foreach (Object Torneo in ListaTorneosView)
+                {
+                    Object[] DatosTorneo = Torneo.ToString().Split(',');
+                    ListaTorneos.Add(Convert.ToInt32(DatosTorneo[0]), DatosTorneo[2].ToString());
+                }
+                CboTorneos.DataSource = new BindingSource(ListaTorneos, null);
+                CboTorneos.DisplayMember = "Value";
+                CboTorneos.ValueMember = "Key";
+                CboTorneos.SelectedIndex = -1;
             }
-            CboTorneos.DataSource = new BindingSource(ListaTorneos, null);
-            CboTorneos.DisplayMember = "Value";
-            CboTorneos.ValueMember = "Key";
-            CboTorneos.SelectedIndex = -1;
+        }
+
+        private void BtnAceptar_Click(object sender, EventArgs e)
+        {
+            if (EpReporteLlave.GetError(CboTorneos) == "")
+            {
+                this.DialogResult = DialogResult.OK;
+                this.Close();
+            }
+        }
+
+        private void CboTorneos_Validating(object sender, CancelEventArgs e)
+        {
+            if (CboTorneos.SelectedIndex < 0)
+                EpReporteLlave.SetError(CboTorneos, "Debe Elegir una Torneo para Proceder.");
+            else
+                EpReporteLlave.SetError(CboTorneos, "");
         }
     }
 }
