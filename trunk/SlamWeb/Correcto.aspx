@@ -4,7 +4,7 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
 <script type="text/javascript" language="javascript">
     function Redirigir() {
-        location.href = '../../Default.aspx';
+        location.href = '../../SlamWeb/Default.aspx';
     }
 
     window.onload = function() {

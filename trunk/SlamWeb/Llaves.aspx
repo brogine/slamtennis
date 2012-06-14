@@ -37,9 +37,8 @@
             Width="875px" Visible="False" EnableDatabaseLogonPrompt="False" 
             EnableParameterPrompt="False" HasCrystalLogo="False" 
             ReuseParameterValuesOnRefresh="True" HasDrillUpButton="False" 
-            HasGotoPageButton="False" HasSearchButton="False" HasViewList="False" 
-            
-            ToolbarImagesFolderUrl="/Content/" 
+            HasGotoPageButton="False" HasSearchButton="False" HasViewList="False"             
+            ToolbarImagesFolderUrl="/SlamWeb/Content/" 
             DisplayGroupTree="False" />
         <CR:CrystalReportSource ID="CrystalReportSource1" runat="server">
             <Report FileName="C:\Users\Maxi\Documents\Visual Studio 2008\Projects\Slam\Reportes\RptLlave.rpt">

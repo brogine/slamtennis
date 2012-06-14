@@ -3,31 +3,12 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
 <script type="text/javascript" language="javascript">
-        var i = 0;
-        var iterations = 100000;
-        var interval = 2000;
-        function TimerScript()
-        {
-	        if(i<iterations)
-	        {
-		        setTimeout("Redirigir();",interval);
-	            i++;
-	        };
-	        else
-	        {
-	            i=0;
-	        };
-	    };
-	    function Redirigir()        {   
-            location.href = '../../Login.aspx';
+    function Redirigir() {
+        location.href = '../../SlamWeb/Login.aspx';
+    }
 
-        };
-
-
-
-        window.onload = function() {
-            TimerScript();
-
+    window.onload = function() {
+        setTimeout("Redirigir()", 5000);
     }
 
 </script>
