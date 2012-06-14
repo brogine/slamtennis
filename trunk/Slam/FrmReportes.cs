@@ -67,16 +67,22 @@ namespace Slam
                             TipoPersona Tipo = frmReporteCarnet.Tipo;
                             object reporteActual = servicioReportes.CrearInstancia((ListadoReportes)Enum.Parse(typeof(ListadoReportes), e.Node.Text), Dni + "," + Tipo.ToString());
                             if (reporteActual == null)
-                            {
                                 MessageBox.Show("El Dni de la persona no existe, Verifique", "Reportes", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                            }
                             else
-                            {
                                 RptViewer.ReportSource = reporteActual;
-                            }
                         }
                         break;
                     case "Llave":
+                        FrmReporteLlave frmReporteLlave = new FrmReporteLlave();
+                        if (frmReporteLlave.ShowDialog() == DialogResult.OK)
+                        {
+                            int IdTorneo = frmReporteLlave.IdTorneo;
+                            object reporteActual = servicioReportes.CrearInstancia((ListadoReportes)Enum.Parse(typeof(ListadoReportes), e.Node.Text), IdTorneo);
+                            if (reporteActual == null)
+                                MessageBox.Show("El torneo no existe, Verifique", "Reportes", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                            else
+                                RptViewer.ReportSource = reporteActual;
+                        }
                         break;
                 }
             }

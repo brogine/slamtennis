@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.DtpDesde = new System.Windows.Forms.DateTimePicker();
             this.CboTorneos = new System.Windows.Forms.ComboBox();
             this.BtnAceptar = new System.Windows.Forms.Button();
@@ -35,6 +36,8 @@
             this.lblFechaHasta = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.DtpHasta = new System.Windows.Forms.DateTimePicker();
+            this.EpReporteLlave = new System.Windows.Forms.ErrorProvider(this.components);
+            ((System.ComponentModel.ISupportInitialize)(this.EpReporteLlave)).BeginInit();
             this.SuspendLayout();
             // 
             // DtpDesde
@@ -53,6 +56,7 @@
             this.CboTorneos.Name = "CboTorneos";
             this.CboTorneos.Size = new System.Drawing.Size(237, 21);
             this.CboTorneos.TabIndex = 1;
+            this.CboTorneos.Validating += new System.ComponentModel.CancelEventHandler(this.CboTorneos_Validating);
             this.CboTorneos.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.CboTorneos_KeyPress);
             // 
             // BtnAceptar
@@ -63,6 +67,7 @@
             this.BtnAceptar.TabIndex = 2;
             this.BtnAceptar.Text = "Ver Llave";
             this.BtnAceptar.UseVisualStyleBackColor = true;
+            this.BtnAceptar.Click += new System.EventHandler(this.BtnAceptar_Click);
             // 
             // lblFechaDesde
             // 
@@ -100,6 +105,10 @@
             this.DtpHasta.TabIndex = 0;
             this.DtpHasta.ValueChanged += new System.EventHandler(this.DtpHasta_ValueChanged);
             // 
+            // EpReporteLlave
+            // 
+            this.EpReporteLlave.ContainerControl = this;
+            // 
             // FrmReporteLlave
             // 
             this.AcceptButton = this.BtnAceptar;
@@ -113,12 +122,14 @@
             this.Controls.Add(this.CboTorneos);
             this.Controls.Add(this.DtpHasta);
             this.Controls.Add(this.DtpDesde);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "FrmReporteLlave";
+            this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "FrmReporteLlave";
             this.Load += new System.EventHandler(this.FrmReporteLlave_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.EpReporteLlave)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -133,5 +144,6 @@
         private System.Windows.Forms.Label lblFechaHasta;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.DateTimePicker DtpHasta;
+        private System.Windows.Forms.ErrorProvider EpReporteLlave;
     }
 }
