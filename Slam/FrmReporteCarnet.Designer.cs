@@ -78,6 +78,7 @@
             this.TxtDni.Name = "TxtDni";
             this.TxtDni.Size = new System.Drawing.Size(120, 20);
             this.TxtDni.TabIndex = 3;
+            this.TxtDni.TextMaskFormat = System.Windows.Forms.MaskFormat.ExcludePromptAndLiterals;
             this.TxtDni.Validating += new System.ComponentModel.CancelEventHandler(this.TxtDni_Validating);
             // 
             // LblTipo

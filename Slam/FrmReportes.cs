@@ -35,7 +35,8 @@ namespace Slam
                 System.Enum.GetNames(typeof(ListadoReportes));
             foreach (string TipoReporte in Values)
             {
-                TvReportes.Nodes["Index"].Nodes.Add(TipoReporte);
+                if (TipoReporte != "CuponInscripcion")
+                    TvReportes.Nodes["Index"].Nodes.Add(TipoReporte);
             }
         }
 
