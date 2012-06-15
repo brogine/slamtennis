@@ -140,6 +140,7 @@ namespace Slam
                         servicioPartidos.Listar(this);
                     }
                 }
+                this.IdTorneoActual = (int)CboListaTorneos.SelectedValue;
             }
             catch (Exception ex)
             {
@@ -176,7 +177,7 @@ namespace Slam
                 {
 
 
-                    FrmNuevoPartido ModificaPartido = new FrmNuevoPartido(Convert.ToInt32(DgvListaPartidos.SelectedRows[0].Cells[0].Value));
+                    FrmNuevoPartido ModificaPartido = new FrmNuevoPartido(Convert.ToInt32(DgvListaPartidos.SelectedRows[0].Cells[0].Value), (int)CboListaTorneos.SelectedValue);
                     if (ModificaPartido.ShowDialog() == DialogResult.OK)
                     {
                         servicioPartidos.Listar(this);
