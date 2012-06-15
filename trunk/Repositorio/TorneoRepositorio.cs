@@ -142,27 +142,29 @@ namespace Repositorio
                 Torneo Tor = this.Mapear(Dr);
                 int Inscripciones = InsRepo.Listar(Tor.IdTorneo).Count;
 
-                if (Tor.FechaFin > DateTime.Today)
-                {
-                    Tor.Estado = (int)EstadoTorneo.Finalizado;
-                }
-                if (Tor.FechaInicio >= DateTime.Today && DateTime.Today < Tor.FechaFin)
-                {
-                    Tor.Estado = (int)EstadoTorneo.Jugando;
-                }
-
-                if (Tor.FechaFinInscripcion > DateTime.Today && DateTime.Today < Tor.FechaInicio)
+                if (DateTime.Now > Tor.FechaFinInscripcion  && DateTime.Today < Tor.FechaInicio)
                 {
                     Tor.Estado = (int)EstadoTorneo.Cerrado;
                 }
-                if (Tor.FechaInicioInscripcion >= DateTime.Today && DateTime.Today < Tor.FechaFinInscripcion)
+                if (DateTime.Now >= Tor.FechaInicioInscripcion && DateTime.Today <= Tor.FechaFinInscripcion)
                 {
                     Tor.Estado = (int)EstadoTorneo.Abierto;
                 }
-                if (Tor.FechaInicioInscripcion < DateTime.Today)
+                if (DateTime.Now < Tor.FechaInicioInscripcion)
                 {
                     Tor.Estado = (int)EstadoTorneo.NoIniciado;
                 }
+                
+                if (DateTime.Now > Tor.FechaFin)
+                {
+                    Tor.Estado = (int)EstadoTorneo.Finalizado;
+                }
+
+                if (DateTime.Today >= Tor.FechaInicio && DateTime.Today <= Tor.FechaFin)
+                {
+                    Tor.Estado = (int)EstadoTorneo.Jugando;
+                }
+                
                 if (Tor.Cupo < Inscripciones)
                 {
                     if (Tor.FechaInicioInscripcion >= DateTime.Today && DateTime.Today < Tor.FechaFinInscripcion)
