@@ -38,6 +38,7 @@ namespace Slam
                 if (TipoReporte != "CuponInscripcion")
                     TvReportes.Nodes["Index"].Nodes.Add(TipoReporte);
             }
+            this.Activate();
         }
 
         private void TvReportes_NodeMouseClick(object sender, TreeNodeMouseClickEventArgs e)
