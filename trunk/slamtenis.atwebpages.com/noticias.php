@@ -1,3 +1,11 @@
+<?php require_once 'rss/rss_fetch.inc';
+define('MAGPIE_OUTPUT_ENCODING', 'UTF-8');
+define('MAGPIE_INPUT_ENCODING', 'UTF-8');
+define('MAGPIE_DETECT_ENCODING', false); 
+$url = 'http://www.lawebdeltenis.net/index.php?format=feed&type=rss';
+$rss = fetch_rss($url);
+?>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" dir="ltr" lang="en-US">
 <head profile="http://gmpg.org/xfn/11">
@@ -20,21 +28,6 @@
         color: #CCCCCC;
     }
 </style>
-	 <?php
-	/*	$noticias = simplexml_load_file('http://ar.noticias.yahoo.com/rss/tenis');   
-		$fp = fopen("Noticias.xml","a");
-		fwrite($fp, "Nombre: Noticias \t $noticias" . PHP_EOL);
-		fclose($fp);*/
-    ?> 
-    <script language="javascript" src="js/rss.js"></script>
-	<script type="text/javascript">
-		window.onload = function()
-		{
-			ReadRSS('Noticias.xml','rssBodyTemplate','rssTitleTemplate');
-		}
-	</script>
-
-
 	<style type="text/css">.recentcomments a{display:inline !important;padding:0 !important;margin:0 !important;}
         .style1
         {
@@ -43,8 +36,6 @@
     </style>
 </head>
 <body>
-
-
 <!-- wrapper start -->
 <div id="wrapper">
     <div id="bottom_frame">
@@ -82,27 +73,28 @@
             <ul>
                 <li>
                 <h2>Noticias</h2>
-                <ul>
-                	<li class="cat-item cat-item-87" style="display:none">
-                	    <div id="rssTitleTemplate">
-		                    (::Title::)<br/>
-		                    <a class="Titulos" href="(::Link::)">(::Description::)</a>
-	                    </div>
-                	</li>
-                	<li>
-                	    <div id="rssBodyTemplate">
-		                    <a href="(::Link::)"><b style="color: #003399">(::Title::)</b></a> 
-		                    <b>&nbsp;&nbsp;&nbsp; <span class="style1">(::Pubdate::)</span></b>
-		                    <br/>
-		                    <br />
-		                    <font size="-1">(::Description::)</font>
-		                    <br />
-		                    <br />
-		                    <hr />
-		                    <br/>
-	                    </div>
-                	</li>
-                </ul>
+				
+				<?php 
+				$items = array_slice($rss->items, 0);
+				$cont = 0;
+				while(!empty($items[$cont])){
+					echo '<ul>';
+					echo '<li class="cat-item cat-item-87" style="display:none">';
+					echo '<div id="rssTitleTemplate">';
+					echo $items[$cont]['title'].'<br />';
+					echo '<a class="Titulos" href="' . $items[$cont]['link'] . '">' . $items[$cont]['description'] . '</a>';
+					echo '</div>';
+					echo '</li>';
+                	echo '<li>';
+					echo '<div id="rssBodyTemplate">';
+					echo '<a href="' . $items[$cont]['link'] . '"><b style="color: #003399">' . $items[$cont]['title'] . '</b></a>';
+					echo '<b>&nbsp;&nbsp;&nbsp; <span class="style1">' . $items[$cont]['pubdate'] . '</span></b>';
+					echo '<br /><br />';
+					echo '<font size="-1">' . $items[$cont]['description'] . '</font><br /><br /><hr /><br/></div></li>';
+					echo '</ul>';
+					$cont++;
+				}
+				?>
                 </li>
             </ul>
 			</div>
