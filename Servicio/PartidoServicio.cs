@@ -30,19 +30,16 @@ namespace Servicio
 
         public void Agregar(IPartidoUI UI)
         {
-            bool Est = UI.Estado;
             Inscripcion Equipo1 = InscRepo.Buscar(UI.IdEquipo1);
             Inscripcion Equipo2 = InscRepo.Buscar(UI.IdEquipo2);
             Torneo Torneo = TornRepo.Buscar(UI.IdTorneo);
-            if (UI.IdEquipo2 == 0)
-                Est = false;
-            Partido Partido = new Partido(Torneo, Equipo1, Equipo2, UI.Fecha, UI.Resultado, UI.Ronda, Est);
+
+            Partido Partido = new Partido(Torneo, Equipo1, Equipo2, UI.Fecha, UI.Resultado, UI.Ronda, UI.Estado);
             PartidoRepo.Agregar(Partido);
 
             IInscripcionRepositorio repoInscripciones = new InscripcionRepositorio();
             repoInscripciones.BajaInscripcion(Equipo1);
-            if (Est)
-                repoInscripciones.BajaInscripcion(Equipo2);
+            repoInscripciones.BajaInscripcion(Equipo2);
         }
 
         public void Modificar(IPartidoUI UI)
