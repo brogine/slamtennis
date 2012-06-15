@@ -192,6 +192,8 @@ namespace Slam
         {
             set
             {
+                CboRonda.SelectedIndex = -1;
+                /*
                 if (idpartido == 0)
                 {
                     if (value.Count > 8 && value.Count < 32)
@@ -215,7 +217,7 @@ namespace Slam
                         CboRonda.SelectedValue = (int)Rondas.Final;
                     }
                 }
-
+                */
                 Dictionary<int, string> ListaInscripciones = new Dictionary<int, string>();
                 foreach (Object Inscripcion in value)
                 {
@@ -264,7 +266,9 @@ namespace Slam
                     else
                     {
                         if (servicioPartido.Existe(this.IdPartido))
+                        {
                             servicioPartido.Modificar(this);
+                        }
                         else
                             servicioPartido.Agregar(this);
                         this.DialogResult = DialogResult.OK;
