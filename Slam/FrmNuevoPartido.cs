@@ -43,14 +43,15 @@ namespace Slam
             this.idpartido = IdPartido;
             servicioTorneos = (IListadoTorneoServicio)AppContext.Instance.GetObject(ImplementaTorneos);
             servicioTorneos.ListarCerrados(this);
+            IInscripcionServicio servicioInscripciones = (IInscripcionServicio)AppContext.Instance.GetObject("InscripcionServicio");
+            servicioInscripciones.DarDeAltaPorPartido(IdPartido);
             servicioPartido = (IPartidoServicio)AppContext.Instance.GetObject(ImplemetaPartidos);
             servicioPartido.Buscar(this);
             
             CboEquipo1.Enabled = false;
             CboEquipo2.Enabled = false;
             CboListaTorneo.Enabled = false;
-            IInscripcionServicio servicioInscripciones = (IInscripcionServicio)AppContext.Instance.GetObject("InscripcionServicio");
-            servicioInscripciones.DarDeAltaPorPartido(IdPartido);
+            
         }
 
         #region Miembros de IPartidoUI
@@ -173,7 +174,7 @@ namespace Slam
                     Object[] DatosTorneo = Torneo.ToString().Split(',');
                     ListaTorneos.Add(Convert.ToInt32(DatosTorneo[0]), DatosTorneo[2].ToString());
                 }
-                CboListaTorneo.DataSource = new BindingSource(ListaTorneos, null);
+                CboListaTorneo.DataSource = new BindingSource(ListaTorneos, String.Empty);
                 CboListaTorneo.DisplayMember = "Value";
                 CboListaTorneo.ValueMember = "Key";
                 CboListaTorneo.SelectedIndex = -1;

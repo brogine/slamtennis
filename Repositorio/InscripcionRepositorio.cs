@@ -240,8 +240,8 @@ namespace Repositorio
         public List<Inscripcion> ListarPorPartido(int IdPartido)
         {
             String Consulta = " Select * From Torneos T Inner Join Inscripciones I ";
-            Consulta += " On T.IdTorneo = I.IdTorneo Inner Join Partidos P ";
-            Consulta += " On T.IdTorneo = P.IdTorneo Where P.IdPartido = " + IdPartido;
+            Consulta += " On T.IdTorneo = I.IdTorneo Inner Join InscripcionesJugador ij on I.IdInscripcion = ij.IdInscripcion ";
+            Consulta += " Inner Join Partidos P On T.IdTorneo = P.IdTorneo Where P.IdPartido = " + IdPartido;
             DataTable TablaInscripciones = Conn.Listar(Consulta);
             List<Inscripcion> ListaInscripciones = new List<Inscripcion>();
             IJugadorRepositorio repoJugadores = new JugadorRepositorio();
