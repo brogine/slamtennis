@@ -104,13 +104,12 @@ namespace Repositorio
             }
             else
             {
-                if (Existe(Inscripcion.Torneo.IdTorneo, Inscripcion.Equipo.Jugador1.Dni))
-                {
+                
                     String Consulta = " Update Inscripciones Set ";
                     Consulta += " Estado = " + (Inscripcion.Estado ? 1 : 0);
                     Consulta += " Where IdInscripcion = " + Inscripcion.IdInscripcion;
                     Conn.ActualizarOEliminar(Consulta);
-                }
+                
             }
         }
 
