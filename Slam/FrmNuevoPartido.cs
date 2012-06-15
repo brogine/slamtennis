@@ -41,10 +41,13 @@ namespace Slam
             InitializeComponent();
             this.Text = "Modificar Partido";
             this.idpartido = IdPartido;
-            servicioTorneos = (IListadoTorneoServicio)AppContext.Instance.GetObject(ImplementaTorneos);
-            servicioTorneos.ListarCerrados(this);
+
             IInscripcionServicio servicioInscripciones = (IInscripcionServicio)AppContext.Instance.GetObject("InscripcionServicio");
             servicioInscripciones.DarDeAltaPorPartido(IdPartido);
+
+            servicioTorneos = (IListadoTorneoServicio)AppContext.Instance.GetObject(ImplementaTorneos);
+            servicioTorneos.ListarCerrados(this);
+            
             servicioPartido = (IPartidoServicio)AppContext.Instance.GetObject(ImplemetaPartidos);
             servicioPartido.Buscar(this);
             
@@ -227,14 +230,17 @@ namespace Slam
                         ListaInscripciones.Add(Convert.ToInt32(DatosTorneo[0]), DatosTorneo[2].ToString());
                     }
                 }
-                CboEquipo2.DataSource = new BindingSource(ListaInscripciones, null);
-                CboEquipo2.DisplayMember = "Value";
-                CboEquipo2.ValueMember = "Key";
-                CboEquipo2.SelectedIndex = -1;
-                CboEquipo1.DataSource = new BindingSource(ListaInscripciones, null);
-                CboEquipo1.DisplayMember = "Value";
-                CboEquipo1.ValueMember = "Key";
-                CboEquipo1.SelectedIndex = -1;
+                if (ListaInscripciones.Count > 0)
+                {
+                    CboEquipo2.DataSource = new BindingSource(ListaInscripciones, null);
+                    CboEquipo2.DisplayMember = "Value";
+                    CboEquipo2.ValueMember = "Key";
+                    CboEquipo2.SelectedValue = ListaInscripciones.Keys.ElementAt(1);
+                    CboEquipo1.DataSource = new BindingSource(ListaInscripciones, null);
+                    CboEquipo1.DisplayMember = "Value";
+                    CboEquipo1.ValueMember = "Key";
+                    CboEquipo1.SelectedValue = ListaInscripciones.Keys.ElementAt(0);
+                }
             }
         }
 

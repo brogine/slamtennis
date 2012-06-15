@@ -134,6 +134,7 @@ namespace Servicio
             }
             if (bInscripcion.Equipo.Jugador2 == null && UI.DniJugador2 > 0)
                 bInscripcion.Equipo.Jugador2 = repoJugadores.Buscar(UI.DniJugador2);
+
             repoInscripciones.Modificar(bInscripcion);
         }
 
