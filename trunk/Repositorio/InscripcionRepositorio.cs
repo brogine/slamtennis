@@ -90,19 +90,28 @@ namespace Repositorio
                 if (Inscripcion.Equipo.Jugador2 != null)
                     this.Agregar(Inscripcion);
                 else
-                //Modifica una inscripcion en el caso que se quiera cambiar al jugador inscripto al torneo
-                if (Existe(Inscripcion.Torneo.IdTorneo, Inscripcion.Equipo.Jugador1.Dni) &&
-                    !Existe(Inscripcion.Torneo.IdTorneo, Inscripcion.Equipo.Jugador2.Dni))
+                    //Modifica una inscripcion en el caso que se quiera cambiar al jugador inscripto al torneo
+                    if (Existe(Inscripcion.Torneo.IdTorneo, Inscripcion.Equipo.Jugador1.Dni) &&
+                        !Existe(Inscripcion.Torneo.IdTorneo, Inscripcion.Equipo.Jugador2.Dni))
+                    {
+                        String Consulta = " Update InscripcionesJugador Set ";
+                        Consulta += " Dni = " + Inscripcion.Equipo.Jugador2.Dni;
+                        Consulta += " Estado = " + (Inscripcion.Estado ? 1 : 0);
+                        Consulta += " Where IdInscripcion = " + Inscripcion.IdInscripcion;
+                        Consulta += " And Dni = " + Inscripcion.Equipo.Jugador1.Dni;
+                        Conn.ActualizarOEliminar(Consulta);
+                    }
+            }
+            else
+            {
+                if (Existe(Inscripcion.Torneo.IdTorneo, Inscripcion.Equipo.Jugador1.Dni))
                 {
-                    String Consulta = " Update InscripcionesJugador Set ";
-                    Consulta += " Dni = " + Inscripcion.Equipo.Jugador2.Dni;
+                    String Consulta = " Update Inscripciones Set ";
                     Consulta += " Estado = " + (Inscripcion.Estado ? 1 : 0);
                     Consulta += " Where IdInscripcion = " + Inscripcion.IdInscripcion;
-                    Consulta += " And Dni = " + Inscripcion.Equipo.Jugador1.Dni;
                     Conn.ActualizarOEliminar(Consulta);
                 }
             }
-
         }
 
         public void Eliminar(int IdInscripcion)

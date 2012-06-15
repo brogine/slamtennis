@@ -59,13 +59,13 @@ namespace Servicio
         {
             Partido Partido = PartidoRepo.Buscar(UI.IdPartido);
             UI.Estado = Partido.Estado;
-            UI.IdTorneo = Partido.Torneo.IdTorneo;
             UI.IdEquipo1 = Partido.Equipo1.IdInscripcion;
             UI.IdEquipo2 = Partido.Equipo2.IdInscripcion;
             UI.Fecha = Partido.Fecha;
             UI.Resultado = Partido.Resultado;
             Rondas ronda = (Rondas)Enum.Parse(typeof(Rondas), Partido.Ronda);
             UI.Ronda = Convert.ToString((int)ronda);
+            UI.IdTorneo = Partido.Torneo.IdTorneo;
         }
 
         public bool Existe(int IdPartido)
