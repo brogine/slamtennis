@@ -84,7 +84,8 @@ namespace Servicio
                     }
                 }
             }
-
+            if (email == string.Empty)
+                return;
             Email enviaremail = new Email();
             enviaremail.Asunto = "Apertura de Torneo";
             enviaremail.EmailDestino = email.Substring(0, email.Length - 1);
