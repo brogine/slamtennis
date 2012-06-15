@@ -34,7 +34,7 @@ namespace SlamWeb
                 catch (Exception ex)
                 {
                     LblError.Visible = true;
-                    LblError.Text = ex.Message;
+                    LblError.Text = "El Usuario ingresado no es de tipo jugador, verifique";
                 }
             }
         }
