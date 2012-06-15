@@ -107,6 +107,8 @@ namespace Repositorio
                         //Alta al equipo Ganador
                         Partido.Equipo1.Estado = true;
                         InscRepo.Modificar(Partido.Equipo1);
+                        Partido.Equipo2.Estado = false;
+                        InscRepo.Modificar(Partido.Equipo2);
                     }
                     //Si El Ganador Del Partido Es El Equipo 2
                     else
@@ -135,6 +137,8 @@ namespace Repositorio
                         //Doy de alta al equipo Ganador
                         Partido.Equipo2.Estado = true;
                         InscRepo.Modificar(Partido.Equipo2);
+                        Partido.Equipo1.Estado = false;
+                        InscRepo.Modificar(Partido.Equipo1);
                     }
                     EstRepo.Modificar(Partido.Equipo1.Equipo.Jugador1, Est1Jug1);
                     EstRepo.Modificar(Partido.Equipo2.Equipo.Jugador1, Est2Jug1);
@@ -189,6 +193,8 @@ namespace Repositorio
                         }
                         Partido.Equipo1.Estado = true;
                         InscRepo.Modificar(Partido.Equipo1);
+                        Partido.Equipo2.Estado = false;
+                        InscRepo.Modificar(Partido.Equipo2);
                     }
                     else
                     {
@@ -222,6 +228,8 @@ namespace Repositorio
                         //Damos de alta a los Ganadores
                         Partido.Equipo2.Estado = true;
                         InscRepo.Modificar(Partido.Equipo2);
+                        Partido.Equipo1.Estado = false;
+                        InscRepo.Modificar(Partido.Equipo1);
                     }
                     EstRepo.Modificar(Partido.Equipo1.Equipo.Jugador1, Equipo1Jugador1);
                     EstRepo.Modificar(Partido.Equipo1.Equipo.Jugador2, Equipo1Jugador2);
