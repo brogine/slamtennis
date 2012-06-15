@@ -82,7 +82,7 @@ namespace Slam
         {
             set 
             {
-                CboClubes.Items.Add(new DictionaryEntry("Todos", "-1"));
+                CboClubes.Items.Add(new DictionaryEntry(string.Empty, "-1"));
                 foreach (Object Club in value)
                 {
                     Object[] DatosClub = Club.ToString().Split(',');

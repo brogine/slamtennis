@@ -200,25 +200,29 @@ namespace Slam
 
         private void BtnAceptar_Click(object sender, EventArgs e)
         {
-            if (EpAfiliacion.GetError(TxtDni) == "" && EpAfiliacion.GetError(CboListaClubes) == "")
+            try
             {
-                if (AfilServ.Existe(this))
+                if (EpAfiliacion.GetError(TxtDni) == "" && EpAfiliacion.GetError(CboListaClubes) == "")
                 {
-                    AfilServ.Modificar(this);
-                    this.DialogResult = DialogResult.OK;
-                    this.Close();
+                    if (AfilServ.Existe(this))
+                    {
+                        AfilServ.Modificar(this);
+                        this.DialogResult = DialogResult.OK;
+                        this.Close();
+                    }
+                    else
+                    {
+                        AfilServ.Agregar(this);
+                        this.DialogResult = DialogResult.OK;
+                        this.Close();
+                    }
                 }
                 else
                 {
-                    AfilServ.Agregar(this);
-                    this.DialogResult = DialogResult.OK;
-                    this.Close();
+                    MessageBox.Show("Complete Todos Los Campos Antes De Continuar");
                 }
             }
-            else
-            {
-                MessageBox.Show("Complete Todos Los Campos Antes De Continuar");
-            }
+            catch { }
         }
     }
 }
