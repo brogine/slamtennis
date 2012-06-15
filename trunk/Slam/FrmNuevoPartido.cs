@@ -36,7 +36,7 @@ namespace Slam
             ChkEstado.Enabled = false;
         }
 
-        public FrmNuevoPartido(int IdPartido)
+        public FrmNuevoPartido(int IdPartido, int idTorneo)
         {
             InitializeComponent();
             this.Text = "Modificar Partido";
@@ -54,7 +54,7 @@ namespace Slam
             CboEquipo1.Enabled = false;
             CboEquipo2.Enabled = false;
             CboListaTorneo.Enabled = false;
-            
+            this.CboListaTorneo.SelectedValue = idTorneo;
         }
 
         #region Miembros de IPartidoUI
