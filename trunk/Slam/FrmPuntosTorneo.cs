@@ -122,7 +122,8 @@ namespace Slam
                 PuntosServicio = (IPuntosServicio)AppContext.Instance.GetObject(ImplementaPuntos);
                 TorneoServicio = (IListadoTorneoServicio)AppContext.Instance.GetObject(ImplementaTorneos);
                 TorneoServicio.Listar(this);
-                this.DialogResult = DialogResult.Cancel;
+                //this.DialogResult = DialogResult.Cancel;
+                this.Activate();
             }
             catch (Exception ex)
             {

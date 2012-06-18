@@ -16,6 +16,7 @@ namespace Slam
     public partial class FrmNuevoPartido : Form, IPartidoUI, IListadoTorneos, IListadoInscripciones,IFechasTorneoUI
     {
         int idpartido = 0;
+        public int cantidad = 0;
         ITorneoServicio torneo;
         IListadoTorneoServicio servicioTorneos;
         IPartidoServicio servicioPartido;
@@ -232,17 +233,85 @@ namespace Slam
                         ListaInscripciones.Add(Convert.ToInt32(DatosTorneo[0]), DatosTorneo[2].ToString());
                     }
                 }
-                if (ListaInscripciones.Count > 0)
-                {
-                    CboEquipo2.DataSource = new BindingSource(ListaInscripciones, null);
-                    CboEquipo2.DisplayMember = "Value";
-                    CboEquipo2.ValueMember = "Key";
-                    CboEquipo2.SelectedValue = ListaInscripciones.Keys.ElementAt(1);
-                    CboEquipo1.DataSource = new BindingSource(ListaInscripciones, null);
-                    CboEquipo1.DisplayMember = "Value";
-                    CboEquipo1.ValueMember = "Key";
-                    CboEquipo1.SelectedValue = ListaInscripciones.Keys.ElementAt(0);
-                }
+
+                //if (cantidad == 0)
+                //{
+                CboEquipo2.DataSource = new BindingSource(ListaInscripciones, null);
+                CboEquipo2.DisplayMember = "Value";
+                CboEquipo2.ValueMember = "Key";
+                CboEquipo2.SelectedValue = ListaInscripciones.Keys.ElementAt(1);
+                CboEquipo1.DataSource = new BindingSource(ListaInscripciones, null);
+                CboEquipo1.DisplayMember = "Value";
+                CboEquipo1.ValueMember = "Key";
+                CboEquipo1.SelectedValue = ListaInscripciones.Keys.ElementAt(0);
+                //    return;
+                //}
+                
+                //IPartidoServicio partsvr = (IPartidoServicio)AppContext.Instance.GetObject("PartidoServicio");
+
+                //Dictionary<int, string> ListaInscripciones2 = new Dictionary<int, string>();
+
+                //foreach(var item in ListaInscripciones){
+                //    try
+                //    {
+                //        string split = partsvr.GanadorPartido(item.Key);
+                //        if (split != string.Empty)
+                //        {
+                //            string[] res = split.Split(',');
+                //            ListaInscripciones2.Add(Convert.ToInt32(res[0]), res[1]);
+                //        }
+                //    }
+                //    catch { }
+                //}
+
+                //Dictionary<int, string> ListaInscripciones3 = new Dictionary<int, string>();
+
+                //if (ListaInscripciones2.Count == 4)
+                //{
+                //    foreach (var item in ListaInscripciones2)
+                //    {
+                //        try
+                //        {
+                //            string split = partsvr.GanadorPartido(item.Key);
+                //            if (Convert.ToInt32(item.Key) == 1 || Convert.ToInt32(item.Key) == 4)
+                //            {                                
+                //                if (split != string.Empty)
+                //                {
+                //                    string[] res = split.Split(',');
+                //                    ListaInscripciones3.Add(Convert.ToInt32(res[0]), res[1]);
+                //                }
+                //            }                           
+
+                //        }
+                //        catch { }
+                //    }
+                //    if (ListaInscripciones3.Count > 0)
+                //    {
+                //        CboEquipo2.DataSource = new BindingSource(ListaInscripciones3, null);
+                //        CboEquipo2.DisplayMember = "Value";
+                //        CboEquipo2.ValueMember = "Key";
+                //        CboEquipo2.SelectedValue = ListaInscripciones3.Keys.ElementAt(1);
+                //        CboEquipo1.DataSource = new BindingSource(ListaInscripciones3, null);
+                //        CboEquipo1.DisplayMember = "Value";
+                //        CboEquipo1.ValueMember = "Key";
+                //        CboEquipo1.SelectedValue = ListaInscripciones3.Keys.ElementAt(0);
+                //    }
+                //}
+                //else
+                //{
+
+                //    if (ListaInscripciones2.Count > 0)
+                //    {
+                //        CboEquipo2.DataSource = new BindingSource(ListaInscripciones2, null);
+                //        CboEquipo2.DisplayMember = "Value";
+                //        CboEquipo2.ValueMember = "Key";
+                //        CboEquipo2.SelectedValue = ListaInscripciones2.Keys.ElementAt(1);
+                //        CboEquipo1.DataSource = new BindingSource(ListaInscripciones2, null);
+                //        CboEquipo1.DisplayMember = "Value";
+                //        CboEquipo1.ValueMember = "Key";
+                //        CboEquipo1.SelectedValue = ListaInscripciones2.Keys.ElementAt(0);
+                //    }
+                //}
             }
         }
 
@@ -304,7 +373,7 @@ namespace Slam
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
+                //MessageBox.Show(ex.Message);
             }
         }
 

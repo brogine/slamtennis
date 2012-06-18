@@ -158,6 +158,7 @@ namespace Slam
                     return;
                 }
                 FrmNuevoPartido NuevoPartido = new FrmNuevoPartido();
+                NuevoPartido.cantidad = DgvListaPartidos.RowCount;
                 if (NuevoPartido.ShowDialog() == DialogResult.OK)
                 {
                     servicioPartidos.Listar(this);
