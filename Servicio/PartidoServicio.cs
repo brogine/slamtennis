@@ -105,7 +105,7 @@ namespace Servicio
                 }
                 else
                 {
-                    Objeto += "BYE,";
+                    //Objeto += "BYE,";
 
                 }
                 
@@ -116,6 +116,28 @@ namespace Servicio
                 ListaObjeto.Add(Objeto);
             }
             UI.ListarPartidos = ListaObjeto;
+        }
+
+        public string GanadorPartido(int IdPartido)
+        {
+            string retro = string.Empty;
+            IPartidoRepositorio partrepo = new PartidoRepositorio();
+            var partido = partrepo.Buscar(IdPartido);
+            if (partido.Resultado == null)
+            {
+                return retro;
+            }
+            int retorno = partido.CalcularGanador(partido.Resultado);
+            
+            if (retorno == 1)
+            {
+                retro = partido.Equipo1.IdInscripcion + "," + partido.Equipo1.Equipo.Jugador1.Apellido;
+            }
+            else
+            {
+                retro = partido.Equipo2.IdInscripcion + "," + partido.Equipo2.Equipo.Jugador1.Apellido;
+            }
+            return retro;
         }
 
         #endregion

@@ -15,5 +15,7 @@ namespace Servicio
        void Buscar(IPartidoUI UI);
 
        bool Existe(int IdPartido);
+
+       string GanadorPartido(int IdPartido);
     }
 }
